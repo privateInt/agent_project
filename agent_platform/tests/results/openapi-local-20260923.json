@@ -1,0 +1,73 @@
+{
+  "date": "2026-09-23",
+  "stage": "A04",
+  "result": "local_passed_server_pending",
+  "version": "a04.1",
+  "schema_version": 3,
+  "go": {
+    "passed": 23,
+    "skipped": [
+      "TestDatabaseFoundation"
+    ],
+    "vet": "passed",
+    "build": "passed"
+  },
+  "python_runtime": {
+    "passed": 13
+  },
+  "python_operations": {
+    "passed": 5
+  },
+  "sql": "PGlite 0.5.8 / PostgreSQL 18.3 WASM, pool=1, DescribeExec",
+  "http": "real Python gRPC runtime and HTTP fixture; scratch-only fixture DNS to loopback; production resolver tested separately",
+  "mcp": "official SDK 1.8.0; protocol 2025-11-25; REST/MCP same key one effect",
+  "browser": {
+    "result": "passed",
+    "viewports": [
+      1440,
+      390
+    ],
+    "checks": [
+      "upload",
+      "unsupported_reason",
+      "connection",
+      "draft",
+      "publish_requires_success",
+      "nullable_test",
+      "publish",
+      "run",
+      "disable",
+      "lookup_after_login",
+      "no_token_storage",
+      "no_script_errors",
+      "no_horizontal_overflow",
+      "accepted_poll_failure_lookup"
+    ]
+  },
+  "compose": "normalized and boundary checks passed; no Docker daemon execution",
+  "local_reference": {
+    "tool_call_id": "eda035ae-62b5-4221-a847-d37cd4baf88a",
+    "tool_version_id": "b26852fb-76b1-4849-83d8-57b8ca5aeedd",
+    "server_lookup": false
+  },
+  "server_pending": [
+    "native PostgreSQL16/Compose build and migration",
+    "old A03 lookup",
+    "deployed import smoke and real HTTP checks",
+    "restart and persisted A04 lookup",
+    "user API browser acceptance"
+  ],
+  "regressions_fixed": [
+    "closed response socket timeout handling",
+    "truncated Content-Length rejection",
+    "example OpenAPI JSON syntax"
+  ],
+  "boundaries": "Agent code/docs only; no Model/Data/Knowledge/infra execution changes",
+  "details": "docs/agent-platform/testing-openapi-20260923.md",
+  "package": {
+    "patch_apply_reapply_conflict": "passed",
+    "full_tree_matches": "passed",
+    "other_platform_code_and_old_migrations": "unchanged",
+    "document_links": "passed"
+  }
+}

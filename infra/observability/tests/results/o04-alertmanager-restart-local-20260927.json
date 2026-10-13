@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "stage": "O04-alertmanager-restart-local",
+  "result": "passed",
+  "new_checker_tests": 26,
+  "infra_python_suite": {
+    "discovered": 102,
+    "passed": 100,
+    "skipped": 2,
+    "failed": 0,
+    "skipped_reason": "existing tests require OBS_TEST_COMPOSE executable"
+  },
+  "real_loopback_http": true,
+  "docker_lifecycle": "mocked",
+  "native_alertmanager_restart": "pending_user_server",
+  "production_api_requests": 0,
+  "production_service_control_requested": false,
+  "coverage": [
+    "durable restart intent and lost response before/after effect",
+    "original baseline hash and config drift refusal",
+    "actual inspect contract and owner/mount/command boundaries",
+    "snapshot file safety/write evidence and nonempty log loss guard",
+    "unexpired silence comparison and expiry/empty scope",
+    "current firing labels and post-restart scrape/evaluation freshness",
+    "protection includes Prometheus Ops domain services and other running containers",
+    "GET-only HTTP paths and redirect refusal"
+  ],
+  "not_verified": [
+    "production Docker restart",
+    "native snapshot load/content",
+    "production notification deduplication",
+    "external delivery",
+    "backup restore",
+    "user browser"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "recorded_on": "2026-09-22",
+  "evidence": {
+    "server_log_sha256": "be2fae304a462cdf903ba5a7abdb6da108385d34634905e11db870f682740eaf",
+    "server_log_name": "붙여넣은 텍스트 (1)(20260922-000012).txt",
+    "on_search": "User-pasted browser result and explicit success confirmation; not a fresh agent API request"
+  },
+  "server_lifecycle": {
+    "patch_files_applied": 19,
+    "python_tests": 12,
+    "python_seconds": 0.633,
+    "cleanup_verifier_go_test_and_build": "passed in Docker build",
+    "gateway_build_and_start": "passed",
+    "result": {
+      "status": "passed",
+      "scope": "Two owned versions; live API + independent OpenSearch/Data reads; not retrieval quality",
+      "index_id": "b2c0f0df-bb40-4d9b-a8bc-7ccd37235256",
+      "versions": {
+        "a": "ed640dc6-6443-4429-8057-341af2cf433a",
+        "b": "3635673b-5838-4ddf-adce-4bac1fad0b9c"
+      },
+      "baseline_index_id": "dab75094-38a6-47ec-9dee-d016397a0bce",
+      "baseline_version_id": "a1334595-583e-490c-8ad9-7ec279f188b3",
+      "baseline_unchanged": true,
+      "selected_chunks_per_version": 2,
+      "test_versions_deleted": 2,
+      "physical_indexes_absent": true,
+      "data_references": "released",
+      "canonical_and_chunks_preserved": true
+    }
+  },
+  "browser_observed": {
+    "deleted_versions_and_released_references": true,
+    "index_version_id": "a1334595-583e-490c-8ad9-7ec279f188b3",
+    "reranker_deployment_id": "cc64a683-a69f-48a5-836e-9f52f0255cc6",
+    "rerank": "applied",
+    "candidate_count": 20,
+    "returned_count": 5,
+    "displayed_search_total_ms": 300,
+    "duration_scope": "Knowledge search response; excludes preceding query embedding and browser/network elapsed time",
+    "visible_ranks": [
+      {
+        "section": "2.2.3. Impact assessment",
+        "retrieval_rank": 5,
+        "rank": 1,
+        "retrieval_score": 0.6721,
+        "rerank_score": -4.5361,
+        "input_tokens": 144
+      },
+      {
+        "section": "2.2.1. Goal and scope definition",
+        "retrieval_rank": 1,
+        "rank": 2,
+        "retrieval_score": 0.7182,
+        "rerank_score": -4.6126,
+        "input_tokens": 122
+      }
+    ],
+    "quality": "needs_ocr",
+    "not_confirmed": [
+      "Expanded provenance content"
+    ],
+    "off_search": {
+      "candidate_count": 5,
+      "returned_count": 5,
+      "displayed_search_total_ms": 5,
+      "rerank": "disabled"
+    },
+    "invalid_candidate_error_visible": true,
+    "management_selection_clears_previous_details": true
+  },
+  "search_feedback_fix": {
+    "status": "user confirmed local input-error display, OFF result, and management selection clearing after receiving patch; separate server apply/build log not supplied",
+    "cause": "Validation before the inference try/catch was only reported by the global action handler at the top of the page.",
+    "changes": [
+      "Local search-section error/progress display",
+      "Busy button labels and duplicate-click guard",
+      "Read-only reranker lookup feedback",
+      "Generation guard for stale action feedback"
+    ],
+    "local_node_scripts": [
+      "search_ui_test.cjs",
+      "indexing_ui_test.cjs",
+      "indexing_context_ui_test.cjs"
+    ],
+    "browser_rendering_test": false
+  },
+  "limits": [
+    "This is functional evidence, not general retrieval-quality acceptance.",
+    "No new lifecycle or model inference requests were made by the agent.",
+    "Original PDF bytes and production failure/concurrency coverage are outside this live lifecycle result."
+  ]
+}

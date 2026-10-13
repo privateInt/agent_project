@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "required": [
+    "index_id",
+    "index_version_id",
+    "embedding_space_id",
+    "returned_count",
+    "results"
+  ],
+  "properties": {
+    "index_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "index_version_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "embedding_space_id": {
+      "type": "string"
+    },
+    "returned_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

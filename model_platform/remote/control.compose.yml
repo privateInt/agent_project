@@ -1,0 +1,63 @@
+# Opt in: docker compose -f docker-compose.yml -f remote/control.compose.yml ...
+# Relative bind paths resolve from model_platform (the FIRST Compose file).
+services:
+  training:
+    environment:
+      DISPATCHER_NODE_NAME: ${MODEL_DISPATCHER_NODE_NAME:-simsys4090}
+      EXECUTION_NODES_FILE: /execution-nodes/nodes.json
+    volumes:
+      - ./remote/execution-nodes.json:/execution-nodes/nodes.json:ro
+  deployment:
+    environment:
+      DISPATCHER_NODE_NAME: ${MODEL_DISPATCHER_NODE_NAME:-simsys4090}
+  dispatcher:
+    environment:
+      DISPATCHER_NODE_NAME: ${MODEL_DISPATCHER_NODE_NAME:-simsys4090}
+      EXECUTION_NODES_FILE: /execution-nodes/nodes.json
+      NODE_SSH_CONFIG: /node-ssh/config
+    volumes:
+      - ./remote/execution-nodes.json:/execution-nodes/nodes.json:ro
+      - ./remote/ssh:/node-ssh:ro
+  reconciler:
+    environment:
+      DISPATCHER_NODE_NAME: ${MODEL_DISPATCHER_NODE_NAME:-simsys4090}
+      EXECUTION_NODES_FILE: /execution-nodes/nodes.json
+      NODE_SSH_CONFIG: /node-ssh/config
+    volumes:
+      - ./remote/execution-nodes.json:/execution-nodes/nodes.json:ro
+      - ./remote/ssh:/node-ssh:ro
+  node-tunnel:
+    image: model-platform-dispatcher:dev
+    pull_policy: never
+    restart: unless-stopped
+    networks: [ops-infra]
+    volumes:
+      - ./remote/ssh:/node-ssh:ro
+    entrypoint: [ssh]
+    command:
+      - -NT
+      - -F
+      - /node-ssh/config
+      - -o
+      - BatchMode=yes
+      - -o
+      - StrictHostKeyChecking=yes
+      - -o
+      - ExitOnForwardFailure=yes
+      - -o
+      - ForwardAgent=no
+      - -o
+      - ServerAliveInterval=10
+      - -o
+      - ServerAliveCountMax=3
+      - -R
+      - 127.0.0.1:19001:operation:9000
+      - -R
+      - 127.0.0.1:19002:management:9000
+      - -R
+      - 127.0.0.1:19003:training:9000
+      - -R
+      - 127.0.0.1:19004:${MODEL_MINIO_ENDPOINT:-ops-minio1:9000}
+      - -R
+      - 127.0.0.1:19005:${MODEL_NODE_MLFLOW_TARGET:-ops-mlflow:5000}
+      - ${MODEL_REMOTE_SSH_HOST:-model-simsys4070}

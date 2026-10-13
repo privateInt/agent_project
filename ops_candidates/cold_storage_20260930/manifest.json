@@ -1,0 +1,304 @@
+{
+  "schema": 1,
+  "activation_supported": false,
+  "production_cli_available": false,
+  "tests_run": 45,
+  "active_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+  "active_code_files": 61,
+  "base_files": [
+    {
+      "path": "infra/langfuse/ops/diagnose.py",
+      "sha256": "f1c67982f94eb9f2260a34a337af315d1176888f3f81e7b20626673558a2d417"
+    },
+    {
+      "path": "infra/langfuse/ops/health_repair.py",
+      "sha256": "1814049efb5aa49da9101d8ac7416c306fb22309eee122f27e5ab08b250fa600"
+    },
+    {
+      "path": "infra/langfuse/ops/lf_common.py",
+      "sha256": "90635a816fc87e21bcceaeffee74b904303cb8b9c2eeb0c5578bb6c022ef3de6"
+    },
+    {
+      "path": "infra/langfuse/ops/manage.py",
+      "sha256": "99203e728b43861e53aa7546336ea093a3f660ea890fdab7455f7a62657acb1b"
+    },
+    {
+      "path": "infra/langfuse/ops/restart_check.py",
+      "sha256": "8a959d39c41cd69839080f4c5b8f9c22dcbcc18b8079b549ee6c33e9042a9d40"
+    },
+    {
+      "path": "infra/langfuse/ops/trace_check.py",
+      "sha256": "9ee2f67aed754a3ff933c8a7b88b273a9f7289708a04b737d68c48bb13065baf"
+    },
+    {
+      "path": "infra/observability/ops/alert_probe.py",
+      "sha256": "36bcebb07c95906a2c2d12fc9aa127f45eb9f4fde81b73d3685adff90597d075"
+    },
+    {
+      "path": "infra/observability/ops/alertmanager_restart.py",
+      "sha256": "d98d05966af06acbffccab272b89eac1c7ce3322198ea340cf03484e743de101"
+    },
+    {
+      "path": "infra/observability/ops/alerts.py",
+      "sha256": "bace91fc52e80d1de0085697e2016bc2b49ff1075a1a7d6affe73a1c46efc109"
+    },
+    {
+      "path": "infra/observability/ops/backup_preflight.py",
+      "sha256": "a4900cfe89251470b6b2bb7aa15acc7d4dbbd6a2e9f96aff720ae08caf0e16f0"
+    },
+    {
+      "path": "infra/observability/ops/filesystem_update.py",
+      "sha256": "7fa3a793be0e5289d75b67f07035c9b16aa0a80a9c7c61384c86917c04faabac"
+    },
+    {
+      "path": "infra/observability/ops/gpu.py",
+      "sha256": "7c21d494b946f8c6d47b46310388f9073c4a2d737b8626ed2a70fede9cd377ef"
+    },
+    {
+      "path": "infra/observability/ops/manage.py",
+      "sha256": "ac66afd568e7c10c8db665e7003852bab31703a8d6860df82d2aae308db503c6"
+    },
+    {
+      "path": "infra/observability/ops/restart_check.py",
+      "sha256": "92f736a4e5968cb25c7ca3c6b76bb2f0e70587ce1f1be04888b77a917d4dd50a"
+    },
+    {
+      "path": "ops_platform/__init__.py",
+      "sha256": "16be830046abe0d3eb4e72027054a833ca93f9769563634d2f00c736dd8ea745"
+    },
+    {
+      "path": "ops_platform/alerts.py",
+      "sha256": "381106ac5e6364b8c87f1ef74ee3903ef8c829c71f6ae0c9f2b4ecd8e1ef6c7c"
+    },
+    {
+      "path": "ops_platform/client.py",
+      "sha256": "50d5c97ef8f0825f301c603be3e28990d45f0e2ddeb93094f29e8f5a91de4f9d"
+    },
+    {
+      "path": "ops_platform/contracts.py",
+      "sha256": "3f99383460c4066cf7db363c100f1af181232871eeb7754f7f00acd36b5545de"
+    },
+    {
+      "path": "ops_platform/healthcheck.py",
+      "sha256": "befb2962ba54d14c96e1b58d6ffc3f42e6407f7ca85e43e8a8d549eaf808c855"
+    },
+    {
+      "path": "ops_platform/observations.py",
+      "sha256": "d75d988cde1cb76da9af57dc27d75c2b1535c580a0f9c45fae884019735ba3ef"
+    },
+    {
+      "path": "ops_platform/ops/activate_discovery.py",
+      "sha256": "1137d0cdf77eb64283830c3d02aefc96a42cc6cecb6a65d3803ded7370b1d63b"
+    },
+    {
+      "path": "ops_platform/ops/activation_plan.py",
+      "sha256": "d2337d8001b2590ec608f63fe1b58354bb773036ca3017a80b43e17dd3c3f88d"
+    },
+    {
+      "path": "ops_platform/ops/auto_refresh.py",
+      "sha256": "5d99774bc9bf974d689577427cb2f1a164c44e568acab676aa81baea189e32a7"
+    },
+    {
+      "path": "ops_platform/ops/boot_lifecycle.py",
+      "sha256": "5f3ca8ff5d806cc25a2eef21f0ede2e8d338a2be0de5d639bbcedd36351c90fc"
+    },
+    {
+      "path": "ops_platform/ops/bootstrap_discovery.py",
+      "sha256": "5acd9b21042b7dbc2cff1f5dad41b3820405c3bddda98b147fcde91399ddd0e6"
+    },
+    {
+      "path": "ops_platform/ops/check_alerts.py",
+      "sha256": "0083fd9bf3225bc0f370d5bdcd9c098cb01d2e6a6bbbc1d5cacd3281c8ae7768"
+    },
+    {
+      "path": "ops_platform/ops/check_console.py",
+      "sha256": "58f61ffbf4df26ff826f95d91b6e183cfd75bb4abe4a5feb64ffaf055118fbc7"
+    },
+    {
+      "path": "ops_platform/ops/check_filesystems.py",
+      "sha256": "b0f9f943f6a3d40f5d693675375c1dd2ca5e8bb84ce73d0b99c48b6d6c68808c"
+    },
+    {
+      "path": "ops_platform/ops/discover.py",
+      "sha256": "162a720d2867eb427d4c4d376845b512808e718a3ebbcd95656e8e8b020a996d"
+    },
+    {
+      "path": "ops_platform/ops/discovery_compose.py",
+      "sha256": "5e074850f0630d5f5ebbb0351eac17158436e4107f6f2e7c30f35f7c954639a9"
+    },
+    {
+      "path": "ops_platform/ops/discovery_kubernetes.py",
+      "sha256": "f06d1cdf49efc0e857c2f263fea41371978c25ff41677ac759b39f8f85e8ce9e"
+    },
+    {
+      "path": "ops_platform/ops/discovery_metrics.py",
+      "sha256": "7afbb6241762fbc0887bed3c955357a54d6b509bda74dcfb8bb78eafaa4ee21b"
+    },
+    {
+      "path": "ops_platform/ops/docker_acceptance.py",
+      "sha256": "ab130ab04821a6c9d446f7ad4c9735eb0f1845ad522f0be1c402f19bf4941c8b"
+    },
+    {
+      "path": "ops_platform/ops/docker_acceptance_fixture.py",
+      "sha256": "9f289547858a0e4ff824b356d2927170b985419dbd355ed722155fb509c30479"
+    },
+    {
+      "path": "ops_platform/ops/fault_check.py",
+      "sha256": "627b58fa7eb54e313c01337ec1288ba92948bd3a3f0dd9e4b5d472e0cfee1716"
+    },
+    {
+      "path": "ops_platform/ops/fault_probe.py",
+      "sha256": "43c75d5eef654410c0d0daaa14546479065af53bbe3b8185b5b0ca458cf1fcce"
+    },
+    {
+      "path": "ops_platform/ops/kubernetes_client.py",
+      "sha256": "b2fda791c8292c0190b0aa7068770819fb1ad24e2388ae7523e66133a9ed0cc0"
+    },
+    {
+      "path": "ops_platform/ops/lifecycle_probe.py",
+      "sha256": "088cfb1482ffa201a244fcbeb657f1d4828cc4a1eed41982afb20a03c1a66173"
+    },
+    {
+      "path": "ops_platform/ops/lifecycle_state.py",
+      "sha256": "a095479477b218fa70b9d80fa759b14e8a0b8d4881ef4e04e89bcf8dbfb3c6f8"
+    },
+    {
+      "path": "ops_platform/ops/manage.py",
+      "sha256": "48cdef6c9cf072e748202d9242f905d36c336662a5cc31fdbbadcef1a76abdb9"
+    },
+    {
+      "path": "ops_platform/ops/platform_status.py",
+      "sha256": "90a786d07a02ee74a5609f57f205a1176480178677f32acf9ae3dbe6c94f01a2"
+    },
+    {
+      "path": "ops_platform/ops/refresh_discovery.py",
+      "sha256": "05290a219ce511ba8500d187a76f0d88471dbda0f6c1adcdce5176cd6adad2ee"
+    },
+    {
+      "path": "ops_platform/ops/refresh_plan.py",
+      "sha256": "92738c3597f93b963e5219cfcfa5d51c49b3b227d4869c9e9cd1e29f6b934498"
+    },
+    {
+      "path": "ops_platform/ops/refresh_worker.py",
+      "sha256": "a9ff9db17c9636bc12f20f5fc79a2dfdaeebd14fdf8df91a5edd270c0b6fb044"
+    },
+    {
+      "path": "ops_platform/ops/restart_check.py",
+      "sha256": "609b4bd008fd0353a1d3177e3207c249a574b85b6ba2640a12d506da10e4c93d"
+    },
+    {
+      "path": "ops_platform/ops/service_acceptance.py",
+      "sha256": "65596710754118fa4c3c8dfbddf5a79cf1c50afd7b6f5edf7a444d034115a356"
+    },
+    {
+      "path": "ops_platform/ops/service_check.py",
+      "sha256": "9ee36f36124b8249ea0f217025a233d58071c72b6d30db65a76f2e6da7c611d1"
+    },
+    {
+      "path": "ops_platform/ops/service_entry.py",
+      "sha256": "9f459c4fbe16097a835efaf58d728f7bcf2edf2797af906c983be6e1aa4f4f87"
+    },
+    {
+      "path": "ops_platform/ops/service_lifecycle.py",
+      "sha256": "c0560a8b7a74aae31b76018b9fe530c4d29b81244e0181a6a9858c9c44cde6c7"
+    },
+    {
+      "path": "ops_platform/ops/service_start.py",
+      "sha256": "8bb8dfba53769625f27561a7865618b29890048d556c54db0624df036cbcefe3"
+    },
+    {
+      "path": "ops_platform/ops/service_systemd.py",
+      "sha256": "6c693c4fb808a23e16a5d65c1ad0b964ea5cffdac10090c1d21580c45738a458"
+    },
+    {
+      "path": "ops_platform/ops/set_public_url.py",
+      "sha256": "183561a5fc3f8ac4e442c4f38c9b9603683f90568250ba8883677b6b5dbcd205"
+    },
+    {
+      "path": "ops_platform/ops/watch_acceptance.py",
+      "sha256": "985e68d01b7844f12c01f2af29a887f4e694766514bdaa8328cb1834865fe9d1"
+    },
+    {
+      "path": "ops_platform/ops/worker_check.py",
+      "sha256": "c5d0291e19c3c742ea12370b765c18124929d58ba7f0b38e5935892fad38fa5d"
+    },
+    {
+      "path": "ops_platform/ops/worker_state.py",
+      "sha256": "50a9ec5124fb69ef7510c3acfbf00a5e018d1aef1f23aed81d3ff7a0949edf89"
+    },
+    {
+      "path": "ops_platform/profiles/docker-compose.json",
+      "sha256": "bbbd31b731b710cb45ce318ddf43b6b91457e5163c3c671b9adacabeef08dbee"
+    },
+    {
+      "path": "ops_platform/resource_profiles.py",
+      "sha256": "db6668983735400fc4ad10bd2596cc9a57936c81a4e673564c8453d4aff2e8eb"
+    },
+    {
+      "path": "ops_platform/server.py",
+      "sha256": "f5d7a8158861af1ca2050056f24188f76efcefd66fce17470da37f2bfc937a89"
+    },
+    {
+      "path": "ops_platform/service.py",
+      "sha256": "b132a9836bc65bc1688bbc9ecf8fa2b2f149fc7c297f7cfe62d078b4d09f1466"
+    },
+    {
+      "path": "ops_platform/settings.py",
+      "sha256": "f6593837938a243b038240aaf0e6e6e0abc09bb3abe824d6cbfaeb1e00c47f08"
+    },
+    {
+      "path": "ops_platform/state.py",
+      "sha256": "865de35092e4a102a6881a692d79f785f02b4550069f6bc13042cf7d2b104894"
+    },
+    {
+      "path": "ops_platform/tests/test_service_lifecycle.py",
+      "sha256": "6cca429382b0d90ca1b222ca5bf1e218d1f123e45cd6347f20412a8a08f5d545"
+    },
+    {
+      "path": "ops_platform/transport.py",
+      "sha256": "102d3ed59ff05e0358ec790b2e5019c4500829b6442b6bcf47ab3aa50e398fec"
+    }
+  ],
+  "auxiliary_files": [
+    {
+      "path": "ops_candidates/backup_capture_20260930/age_tool.py",
+      "sha256": "76e8e3f1272de2ae2e76208929d111c01d9c4653458735c0a21e6db04ffcfaa9"
+    },
+    {
+      "path": "ops_candidates/backup_capture_20260930/capture.py",
+      "sha256": "16514b865aae7fea489844e986177e56ac8c49b5e3808c41c86f1c617261bb85"
+    },
+    {
+      "path": "ops_candidates/backup_capture_20260930/tests/test_capture.py",
+      "sha256": "344807cc6cd44046c53f6a0d3a58eb55276d79830a899726b429bee2189ed3e0"
+    },
+    {
+      "path": "ops_candidates/boot_start_20260929/arming.py",
+      "sha256": "5f666afa6f72fd5522cefd50d7231e274cf95e6cbf46b7355b23a0730bb4b582"
+    },
+    {
+      "path": "ops_candidates/cold_storage_20260930/reader.py",
+      "sha256": "b100c7d38faeb3074cbac57dc914383a91e34c72cc062ec760ba80685c223eb6"
+    },
+    {
+      "path": "ops_candidates/cold_storage_20260930/storage.py",
+      "sha256": "737ff298fad05b17dc4a4696edbba1a474c95d9aae177bbfd9805392a9e082f5"
+    },
+    {
+      "path": "ops_candidates/cold_storage_20260930/tests/test_storage.py",
+      "sha256": "cf4f610d456e55d4ad5b13cd62f86457aecd336540512ba836fca3648a6ce8f5"
+    },
+    {
+      "path": "ops_candidates/maintenance_20260930/maintenance.py",
+      "sha256": "92a700f1f907f7398ad009d7ec4e76ad95520ac6b80b74f85763736243fb3141"
+    },
+    {
+      "path": "ops_candidates/maintenance_20260930/tests/test_maintenance.py",
+      "sha256": "8053dd55b6f87f9eb2ef7fb5a249945ab9ea93d40cae1b009bfc2b9caea7560a"
+    },
+    {
+      "path": "ops_candidates/maintenance_intent_20260930/maintenance.py",
+      "sha256": "654f06edc6d4b14b1096007ea5ba6f339e285f2d785e64991cb6040b2f12cdfb"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# Optional overlay: docker compose -f docker-compose.yml -f runtime/compose.tracing.yml ...
+services:
+  agent-runtime:
+    environment:
+      AGENT_TRACE_CONFIG_FILE: /run/secrets/agent-langfuse-tracing
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    secrets:
+      - agent-langfuse-tracing
+secrets:
+  agent-langfuse-tracing:
+    file: ./.secrets/langfuse-tracing.json

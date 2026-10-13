@@ -1,0 +1,96 @@
+{
+  "stage": "A07",
+  "build": "a07.1",
+  "schema_version": 5,
+  "date": "2026-09-24",
+  "result": "local_checks_passed_server_acceptance_pending",
+  "n8n": {
+    "version": "2.40.5",
+    "image": "n8nio/n8n:2.40.5@sha256:9f693fd5565539efd5e75ad168526c8041a6af516d9e50bc4d9cb1c9c5031523",
+    "manifest_platforms": [
+      "linux/amd64",
+      "linux/arm64"
+    ],
+    "verification": "registry manifest and official npm package integrity checked"
+  },
+  "checks": {
+    "go": "all packages build/unit pass; DB/runtime cases run separately",
+    "python_runtime": 42,
+    "python_existing_ops": 15,
+    "n8n_ops_unittest": 6,
+    "n8n_code_contract_cases": 6,
+    "existing_console_dom": 27,
+    "existing_direct_registration_dom": 21,
+    "existing_knowledge_console_dom": 11,
+    "compose": {
+      "version": "2.39.4",
+      "real_config_normalization": "passed",
+      "boundary_mutations_rejected": [
+        "foreign secret",
+        "external DB network",
+        "Docker socket",
+        "DB host port"
+      ]
+    },
+    "n8n_engine_fixture": {
+      "engine": "real n8n 2.40.5 CLI with isolated SQLite",
+      "target": "HTTP Agent contract fixture",
+      "passed": [
+        "lost POST retries same body/key",
+        "bounded polling and answer/source propagation",
+        "new n8n execution replays original envelope",
+        "changed body/key conflict",
+        "no_evidence success",
+        "failed stops workflow",
+        "interrupted stops workflow"
+      ],
+      "accepted_effects": 4,
+      "post_requests_including_retries": 9
+    },
+    "n8n_agent_wire": {
+      "path": "real n8n -> Agent REST -> Go/Python gRPC -> PGlite SQL -> HTTP Model/Knowledge fixtures",
+      "same_request_two_n8n_executions": true,
+      "additional_chat_calls": 1,
+      "run_id": "9dfb92cb-99e3-4778-8346-a3cad6560c40",
+      "request_id": "9d882749-f32e-465b-b576-c16d6c742cc3",
+      "tool_call_id": "9d2b7ae8-31b0-43ca-95a3-8279e334e2e5"
+    },
+    "sql_regression": "internal/store + service/app all pass; native DatabaseFoundation skipped on PGlite",
+    "workflow_link_api": [
+      "create/get/list",
+      "same-key replay",
+      "duplicate and changed-key conflict",
+      "revision/disable",
+      "draft Agent rejected",
+      "invalid URL/cursor rejected",
+      "missing ID 404"
+    ]
+  },
+  "found_and_fixed": [
+    {
+      "issue": "empty workflow-link list cursor incorrectly validated as nonzero UUID",
+      "fix": "validate supplied cursor only; zero cursor remains internal query sentinel",
+      "verified": "Agent REST/SQL integration passes"
+    },
+    {
+      "issue": "initial external n8n wire fixture used a different question and source-page shape than strict Go fixture",
+      "fix": "align test question and read preserved source_spans metadata",
+      "verified": "full real n8n + Agent regression passes"
+    }
+  ],
+  "server_evidence": "A06 server Docker/5 Healthy/native DB/Agent integration PASS recorded separately in a06-server-20260924.json",
+  "deferred_by_user": [
+    "Agent/n8n page verification while working remotely",
+    "actual LLM answer/citations",
+    "user Agent publish/run",
+    "completed real AgentRun restart lookup",
+    "n8n owner login and workflow edit/save/run"
+  ],
+  "not_run": [
+    "A07 Docker image execution in this workspace",
+    "n8n PostgreSQL16 native initialization/permissions and restart",
+    "real GPU/Knowledge question"
+  ],
+  "scope": "Model/Data/Knowledge execution code unchanged; n8n DB separate; no real credentials in workflow template",
+  "artifact_policy": "compact JSON; no vendor/node_modules/native binaries/full logs/screenshots in deliverables"
+}

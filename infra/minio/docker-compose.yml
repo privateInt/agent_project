@@ -1,0 +1,155 @@
+name: ops-minio
+
+# ==============================================================================
+# MinIO 4-Node Distributed Cluster
+#
+# - 각 MinIO 노드는 동일 서버에서 별도 Container로 실행한다.
+# - 각 노드는 독립적인 Host 경로를 /data에 마운트한다.
+# - 공용 ops-infra Docker network를 사용한다.
+# - ops-infra network는 외부에서 미리 생성되어 있어야 한다.
+#
+# 실행:
+#   docker compose up -d
+#
+# 종료 (데이터 유지):
+#   docker compose down
+#
+# 주의:
+#   Host bind mount를 사용하므로 docker compose down -v를 실행해도
+#   MINIO_DATA1~4의 실제 Host 데이터는 삭제되지 않는다.
+# ==============================================================================
+
+
+# ==============================================================================
+# MinIO 공통 설정
+# ==============================================================================
+x-minio-common: &minio-common
+  image: ${MINIO_IMAGE:-minio/minio:latest}
+  restart: ${RESTART_POLICY:-unless-stopped}
+
+  env_file:
+    - .env
+
+  environment:
+    MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+    MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+
+    # File 기반 credential 사용하지 않음
+    MINIO_ROOT_USER_FILE: ""
+    MINIO_ROOT_PASSWORD_FILE: ""
+
+  command:
+    - server
+    - --console-address
+    - ":9001"
+    - http://ops-minio1/data
+    - http://ops-minio2/data
+    - http://ops-minio3/data
+    - http://ops-minio4/data
+
+  # ---------------------------------------------------------------------------
+  # Healthcheck
+  #
+  # 최근 MinIO image에는 curl이 포함되지 않는 경우가 있으므로
+  # HTTP curl 기반 healthcheck 대신 MinIO Client(mc)를 사용한다.
+  #
+  # MinIO 공식 Docker Compose 예제에서도
+  # "mc ready local" 방식을 사용한다.
+  # ---------------------------------------------------------------------------
+  healthcheck:
+    test:
+      [
+        "CMD",
+        "mc",
+        "ready",
+        "local"
+      ]
+    interval: 10s
+    timeout: 5s
+    retries: 5
+    start_period: 30s
+
+  networks:
+    - ops-infra
+
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+
+services:
+
+  # ============================================================================
+  # MinIO Node 1
+  #
+  # 외부 접근 Endpoint:
+  #   S3 API  : http://<SERVER_IP>:${MINIO_S3_HOST_PORT}
+  #   Console : http://<SERVER_IP>:${MINIO_CONSOLE_HOST_PORT}
+  # ============================================================================
+  ops-minio1:
+    <<: *minio-common
+
+    container_name: ops-minio1
+    hostname: ops-minio1
+
+    volumes:
+      - ${MINIO_DATA1}:/data
+
+    ports:
+      - "${MINIO_S3_HOST_PORT}:9000"
+      - "${MINIO_CONSOLE_HOST_PORT}:9001"
+
+
+  # ============================================================================
+  # MinIO Node 2
+  # ============================================================================
+  ops-minio2:
+    <<: *minio-common
+
+    container_name: ops-minio2
+    hostname: ops-minio2
+
+    volumes:
+      - ${MINIO_DATA2}:/data
+
+
+  # ============================================================================
+  # MinIO Node 3
+  # ============================================================================
+  ops-minio3:
+    <<: *minio-common
+
+    container_name: ops-minio3
+    hostname: ops-minio3
+
+    volumes:
+      - ${MINIO_DATA3}:/data
+
+
+  # ============================================================================
+  # MinIO Node 4
+  # ============================================================================
+  ops-minio4:
+    <<: *minio-common
+
+    container_name: ops-minio4
+    hostname: ops-minio4
+
+    volumes:
+      - ${MINIO_DATA4}:/data
+
+
+# ==============================================================================
+# Shared Infrastructure Network
+#
+# infrastructure/init-infra.sh 등에서 미리 생성된
+# ops-infra network를 사용한다.
+#
+# 이 Compose가 network lifecycle을 관리하지 않는다.
+# ==============================================================================
+networks:
+  ops-infra:
+    external: true
+    name: ops-infra

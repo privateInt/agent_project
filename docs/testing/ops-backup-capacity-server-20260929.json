@@ -1,0 +1,668 @@
+{
+  "schema": 1,
+  "stage": "O04-backup-capacity-server-observation",
+  "source": "user_returned_stdout",
+  "checked_at": "2026-09-29T06:34:35.850994Z",
+  "finished_at": "2026-09-29T06:34:38.091800Z",
+  "result": "planned",
+  "backup_ready": false,
+  "destination_selected": false,
+  "effects": {
+    "files_written": [],
+    "service_control_requested": false,
+    "backup_executed": false,
+    "restore_executed": false,
+    "application_api_requests": 0,
+    "inference_requested": false,
+    "new_container_requested": false,
+    "image_build_or_pull_requested": false,
+    "permissions_changed": false,
+    "mounts_changed": false,
+    "credential_contents_read": false
+  },
+  "components": {
+    "prometheus": "matched",
+    "alertmanager": "matched",
+    "langfuse": "matched",
+    "ops": "matched"
+  },
+  "identity_stable": true,
+  "identity_checks": {
+    "core_containers": true,
+    "exporters": true,
+    "database_discovery": true,
+    "configuration_metadata": true
+  },
+  "configuration_metadata_changed": [],
+  "database_discovery": {
+    "comparison": "unordered_collections_all_metadata_preserved",
+    "checks": [
+      {
+        "phase": "before_postgres",
+        "status": "stable",
+        "changed_fields": []
+      },
+      {
+        "phase": "before_clickhouse",
+        "status": "stable",
+        "changed_fields": []
+      },
+      {
+        "phase": "before_clickhouse-logs",
+        "status": "stable",
+        "changed_fields": []
+      },
+      {
+        "phase": "before_capacity",
+        "status": "stable",
+        "changed_fields": []
+      }
+    ]
+  },
+  "capacity": {
+    "status": "estimated",
+    "missing_sources": [],
+    "image_metadata_complete": true,
+    "total_required_bytes": null,
+    "capacity_sufficient": null,
+    "archive_size_verified": false,
+    "generations": 2,
+    "headroom_percent": 20,
+    "workspace_copies": 1,
+    "restore_copies": 1,
+    "compression_savings_assumed": false,
+    "defaults_are_proposals": true,
+    "live_logical_source_bytes": 1732986556,
+    "unique_image_count": 12,
+    "image_uncompressed_size_proxy_bytes": 4930237641,
+    "per_generation_estimated_bytes": 7995869037,
+    "retained_archives_estimated_bytes": 15991738074,
+    "staging_estimated_bytes": 7995869037,
+    "restore_estimated_bytes": 7995869037,
+    "destination_with_staging_estimated_bytes": 23987607111,
+    "all_on_one_filesystem_estimated_bytes": 31983476148,
+    "basis": "live_logical_sizes_plus_unique_image_Size_with_proposed_headroom_not_export_measurement"
+  },
+  "mount_table_stable": true,
+  "docker_exec_commands": 9,
+  "docker_metadata_commands": 166,
+  "reboot_acceptance": "deferred_by_user",
+  "limits": [
+    "proposal_not_backup_or_restore_acceptance",
+    "live_sizes_not_consistent_snapshot",
+    "image_Size_not_docker_save_archive_size",
+    "headroom_is_not_a_guaranteed_upper_bound",
+    "same_host_different_devices_not_offsite_backup",
+    "write_access_is_advisory_no_probe",
+    "core_nine_services_plus_three_exporter_images_code_worker_records_and_selected_host_metadata",
+    "host_OS_packages_user_accounts_linger_unit_links_and_optional_CLI_cache_not_fully_inventoried",
+    "local_metadata_scan_budget_cannot_interrupt_uninterruptible_kernel_IO"
+  ],
+  "observed_stage": "O04-backup-destination-capacity-plan",
+  "core_container_count": 9,
+  "exporter_count": 3,
+  "source_count": 22,
+  "source_status_counts": {
+    "complete": 22
+  },
+  "source_sizes": [
+    {
+      "name": "prometheus",
+      "status": "complete",
+      "logical_bytes": 247578885,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "observability-records",
+      "status": "complete",
+      "logical_bytes": 313869,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "alertmanager",
+      "status": "complete",
+      "logical_bytes": 58,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "langfuse-postgres",
+      "status": "complete",
+      "logical_bytes": 71816025,
+      "method": "du_apparent_bytes_including_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "langfuse-clickhouse",
+      "status": "complete",
+      "logical_bytes": 781461285,
+      "method": "du_apparent_bytes_including_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "langfuse-clickhouse-logs",
+      "status": "complete",
+      "logical_bytes": 573267536,
+      "method": "du_apparent_bytes_including_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "langfuse-redis",
+      "status": "complete",
+      "logical_bytes": 55519314,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "langfuse-minio",
+      "status": "complete",
+      "logical_bytes": 612159,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "langfuse-records",
+      "status": "complete",
+      "logical_bytes": 22207,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "ops-server",
+      "status": "complete",
+      "logical_bytes": 60246,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "ops-auto-refresh-records",
+      "status": "complete",
+      "logical_bytes": 143169,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "source-ops_platform",
+      "status": "complete",
+      "logical_bytes": 1045724,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "source-ops_tools",
+      "status": "complete",
+      "logical_bytes": 294722,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "source-ops_candidates",
+      "status": "complete",
+      "logical_bytes": 292719,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "source-infra-observability",
+      "status": "complete",
+      "logical_bytes": 386096,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "source-infra-langfuse",
+      "status": "complete",
+      "logical_bytes": 170399,
+      "method": "regular_file_metadata_excludes_directory_overhead",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "agent-token-reference",
+      "status": "complete",
+      "logical_bytes": 65,
+      "method": "file_stat_only",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "langfuse-key-reference",
+      "status": "complete",
+      "logical_bytes": 286,
+      "method": "file_stat_only",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "owned-user-unit-file",
+      "status": "complete",
+      "logical_bytes": 692,
+      "method": "file_stat_only",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "host-configuration-0",
+      "status": "complete",
+      "logical_bytes": 843,
+      "method": "file_stat_only",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "host-configuration-1",
+      "status": "complete",
+      "logical_bytes": 179,
+      "method": "file_stat_only",
+      "consistent_snapshot": false
+    },
+    {
+      "name": "host-configuration-2",
+      "status": "complete",
+      "logical_bytes": 78,
+      "method": "file_stat_only",
+      "consistent_snapshot": false
+    }
+  ],
+  "destination_count": 19,
+  "destination_status_counts": {
+    "rejected": 5,
+    "unavailable": 13,
+    "candidate": 1
+  },
+  "scan_complete": true,
+  "automatic_selection": false,
+  "destination_summaries": [
+    {
+      "parent": "/",
+      "proposed_path": "/agent-project-observability-backups",
+      "status": "rejected",
+      "reasons": [
+        "PARENT_NOT_WRITABLE_BY_CURRENT_USER"
+      ],
+      "error": null,
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": false,
+      "readonly": false,
+      "available_after_proposed_reserve_bytes": 125316416307,
+      "fits_colocated_estimate": true,
+      "capacity_sufficient": null,
+      "filesystem": {
+        "device": "259:4",
+        "mountpoint": "/",
+        "fstype": "ext4",
+        "source": "/dev/nvme0n1p2",
+        "readonly": false,
+        "available_bytes": 223598505984,
+        "total_bytes": 982820896768,
+        "physical_disks": [
+          "nvme0n1"
+        ]
+      }
+    },
+    {
+      "parent": "/boot/efi",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/home/shshin",
+      "proposed_path": "/home/shshin/agent-project-observability-backups",
+      "status": "candidate",
+      "reasons": [],
+      "error": null,
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": true,
+      "readonly": false,
+      "available_after_proposed_reserve_bytes": 125316416307,
+      "fits_colocated_estimate": true,
+      "capacity_sufficient": null,
+      "filesystem": {
+        "device": "259:4",
+        "mountpoint": "/",
+        "fstype": "ext4",
+        "source": "/dev/nvme0n1p2",
+        "readonly": false,
+        "available_bytes": 223598505984,
+        "total_bytes": 982820896768,
+        "physical_disks": [
+          "nvme0n1"
+        ]
+      }
+    },
+    {
+      "parent": "/media/simsys/SSD_EXT4",
+      "proposed_path": "/media/simsys/SSD_EXT4/agent-project-observability-backups",
+      "status": "rejected",
+      "reasons": [
+        "INSUFFICIENT_FOR_PROPOSED_ESTIMATE"
+      ],
+      "error": null,
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": true,
+      "readonly": false,
+      "available_after_proposed_reserve_bytes": 0,
+      "fits_colocated_estimate": false,
+      "capacity_sufficient": null,
+      "filesystem": {
+        "device": "8:2",
+        "mountpoint": "/media/simsys/SSD_EXT4",
+        "fstype": "ext4",
+        "source": "/dev/sda2",
+        "readonly": false,
+        "available_bytes": 123059507200,
+        "total_bytes": 3936803078144,
+        "physical_disks": [
+          "sda"
+        ]
+      }
+    },
+    {
+      "parent": "/media/simsys/T91",
+      "proposed_path": "/media/simsys/T91/agent-project-observability-backups",
+      "status": "rejected",
+      "reasons": [
+        "READ_ONLY_FILESYSTEM",
+        "PARENT_NOT_WRITABLE_BY_CURRENT_USER"
+      ],
+      "error": null,
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": false,
+      "readonly": true,
+      "available_after_proposed_reserve_bytes": 794161066803,
+      "fits_colocated_estimate": true,
+      "capacity_sufficient": null,
+      "filesystem": {
+        "device": "8:17",
+        "mountpoint": "/media/simsys/T91",
+        "fstype": "exfat",
+        "source": "/dev/sdb1",
+        "readonly": true,
+        "available_bytes": 894178033664,
+        "total_bytes": 1000169668608,
+        "physical_disks": null
+      }
+    },
+    {
+      "parent": "/mnt/nvme1",
+      "proposed_path": "/mnt/nvme1/agent-project-observability-backups",
+      "status": "rejected",
+      "reasons": [
+        "INSUFFICIENT_FOR_PROPOSED_ESTIMATE"
+      ],
+      "error": null,
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": true,
+      "readonly": false,
+      "available_after_proposed_reserve_bytes": 0,
+      "fits_colocated_estimate": false,
+      "capacity_sufficient": null,
+      "filesystem": {
+        "device": "259:1",
+        "mountpoint": "/mnt/nvme1",
+        "fstype": "ext4",
+        "source": "/dev/nvme1n1p1",
+        "readonly": false,
+        "available_bytes": 80005869568,
+        "total_bytes": 983350091776,
+        "physical_disks": [
+          "nvme1n1"
+        ]
+      }
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/2b2e836c-ee4e-4f38-84fa-d6190eadd221/volume-subpaths/config/core/0",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/801660e2-67db-4b5e-84c8-5db094efc8e8/volumes/kubernetes.io~local-volume/pvc-87ed47cf-ad6b-4c83-8f95-8594605fe539",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/ad1deece-c304-4a06-897f-c97c21e379b6/volume-subpaths/config/nginx/0",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/b0221439-a0ec-4e9f-b8c2-1693148f2f01/volume-subpaths/jobservice-config/jobservice/0",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/b0221439-a0ec-4e9f-b8c2-1693148f2f01/volumes/kubernetes.io~local-volume/pvc-5ce1285c-4ff0-49a1-8a87-28995d390758",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/c446bd65-ab4a-4efb-ab00-2c19d8bc09c2/volume-subpaths/registry-config/registry/2",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/c446bd65-ab4a-4efb-ab00-2c19d8bc09c2/volume-subpaths/registry-config/registryctl/1",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/c446bd65-ab4a-4efb-ab00-2c19d8bc09c2/volume-subpaths/registry-config/registryctl/2",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/c446bd65-ab4a-4efb-ab00-2c19d8bc09c2/volumes/kubernetes.io~local-volume/pvc-cb3f4fdd-0a1f-4e98-8cf0-60b207c70a22",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/da90d98b-a498-44a3-951d-2c22dbb4b374/volumes/kubernetes.io~local-volume/pvc-8bdcb42f-8fe6-4ca5-8285-a6a053811471",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/daca3abe-f70f-4270-871d-04be8e2bea46/volume-subpaths/portal-config/portal/0",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/lib/kubelet/pods/f6a6d965-a8c9-4584-b659-7c22de54e994/volume-subpaths/hubble-ui-nginx-conf/frontend/0",
+      "proposed_path": null,
+      "status": "unavailable",
+      "reasons": [],
+      "error": "PERMISSION_DENIED",
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": null,
+      "readonly": null,
+      "available_after_proposed_reserve_bytes": null,
+      "fits_colocated_estimate": null,
+      "capacity_sufficient": null,
+      "filesystem": null
+    },
+    {
+      "parent": "/var/snap/firefox/common/host-hunspell",
+      "proposed_path": "/var/snap/firefox/common/host-hunspell/agent-project-observability-backups",
+      "status": "rejected",
+      "reasons": [
+        "READ_ONLY_FILESYSTEM",
+        "PARENT_NOT_WRITABLE_BY_CURRENT_USER"
+      ],
+      "error": null,
+      "selected": false,
+      "write_probe_executed": false,
+      "write_access_advisory": false,
+      "readonly": true,
+      "available_after_proposed_reserve_bytes": 125316416307,
+      "fits_colocated_estimate": true,
+      "capacity_sufficient": null,
+      "filesystem": {
+        "device": "259:4",
+        "mountpoint": "/var/snap/firefox/common/host-hunspell",
+        "fstype": "ext4",
+        "source": "/dev/nvme0n1p2",
+        "readonly": true,
+        "available_bytes": 223598505984,
+        "total_bytes": 982820896768,
+        "physical_disks": [
+          "nvme0n1"
+        ]
+      }
+    }
+  ],
+  "accepted_candidate_source_relations": [
+    {
+      "parent": "/home/shshin",
+      "relations": {
+        "prometheus": "same_filesystem",
+        "observability-records": "same_filesystem",
+        "alertmanager": "same_filesystem",
+        "langfuse-postgres": "same_filesystem",
+        "langfuse-clickhouse": "same_filesystem",
+        "langfuse-clickhouse-logs": "same_filesystem",
+        "langfuse-redis": "same_filesystem",
+        "langfuse-minio": "same_filesystem",
+        "langfuse-records": "same_filesystem",
+        "ops-server": "same_filesystem",
+        "ops-auto-refresh-records": "same_filesystem",
+        "source-ops_platform": "same_filesystem",
+        "source-ops_tools": "same_filesystem",
+        "source-ops_candidates": "same_filesystem",
+        "source-infra-observability": "same_filesystem",
+        "source-infra-langfuse": "same_filesystem",
+        "agent-token-reference": "same_filesystem",
+        "langfuse-key-reference": "same_filesystem",
+        "owned-user-unit-file": "same_filesystem",
+        "host-configuration-0": "same_filesystem",
+        "host-configuration-1": "same_filesystem",
+        "host-configuration-2": "same_filesystem"
+      }
+    }
+  ],
+  "prior_failure_exact_cause": "unconfirmed_original_raw_changed_metadata_not_recorded",
+  "worker_health_rechecked": false,
+  "code_change_in_this_record": false,
+  "next_step": "define_destination_role_encryption_consistency_and_isolated_restore_workflow"
+}

@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "stage": "Q03a-upload-acceptance",
+  "checked_date": "2026-10-07",
+  "tests": {
+    "passed": 41,
+    "elapsed_seconds": 9.113,
+    "result": "OK",
+    "command": "python3 -B -m unittest discover -s apps/document_qa/tests -p test_uploads.py -q"
+  },
+  "scope": [
+    "temporary_private_SQLite",
+    "bounded_multipart",
+    "loopback_HTTP_Data_upload",
+    "loopback_authenticated_QA_API",
+    "concurrent_20_document_reservation",
+    "duplicate_request_keys_and_file_aliases",
+    "process_death_durable_intent_and_lock_release",
+    "uncertain_receipt_explicit_original_key_replay",
+    "page_disconnect_does_not_cancel_acceptance",
+    "verified_receipt_original_release_and_database_shrink"
+  ],
+  "production_api_requests": 0,
+  "gpu_used": false,
+  "model_lifecycle_requested": false,
+  "inference_requested": false,
+  "existing_platform_runtime_files_changed": false,
+  "workflow_started": false,
+  "service_control_requested": false,
+  "q01_q02_full_suites_rerun": false,
+  "full_platform_tests_rerun": false,
+  "server_patch_applied": null,
+  "server_store_initialized": null,
+  "production_data_upload_verified": false,
+  "defaults_ready": false,
+  "question_ready": false,
+  "semantic_quality_acceptance": false,
+  "deferred": [
+    "Q02_required_model_readiness",
+    "Q03b_workflow_handoff",
+    "Q04_refinement_OCR",
+    "Q05_indexing_embedding_search",
+    "Q06_Agent_binding_chat",
+    "Q07_Q08_UI",
+    "Q10_Q11_quality_and_product_acceptance"
+  ],
+  "next_step": "apply_Q03a_and_verify_only_test_uploads_and_own_init_status_then_Q03b"
+}

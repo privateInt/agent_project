@@ -1,0 +1,69 @@
+{
+  "stage": "O01-Langfuse-server",
+  "result": "passed",
+  "scope": "server readiness and synthetic trace delivery/readback only",
+  "evidence_source": "user-supplied server CLI output; not locally executed",
+  "reported_date": "2026-09-26",
+  "host": "simsys4090",
+  "health_repair": {
+    "result": "passed",
+    "mismatch_confirmed": {
+      "lf-worker": true,
+      "lf-web": true
+    },
+    "probe": {
+      "loopback": "ECONNREFUSED",
+      "configured_hostname_http_status": 200
+    },
+    "services_healthy": 6,
+    "version": "4.46.0",
+    "repaired_services": [
+      "lf-worker",
+      "lf-web"
+    ],
+    "storage_containers_unchanged": true,
+    "settings_and_secrets_preserved": true,
+    "images_pulled": false,
+    "domain_services_restarted": false
+  },
+  "trace": {
+    "trace_id": "9d84fa1067824eb5b82be42ade6959f7",
+    "project_id": "agent-traces-ab2000afdadb4a0fb4ce6691d980befa",
+    "observations_verified": 3,
+    "parent_child_status_time_verified": true,
+    "metadata_only": true,
+    "original_payload_sha256": "5bfa10529ebcd6e7d3d311998c5e12418f436defaaac6aaa9828041dd7052048",
+    "run": {
+      "result": "passed",
+      "post_submitted": true,
+      "post_attempts": 1
+    },
+    "check": {
+      "result": "passed",
+      "post_submitted": false,
+      "post_attempts": 1,
+      "same_trace_id_and_payload_hash": true
+    },
+    "record_file": "/home/shshin/.local/state/agent-project-langfuse/trace-check.json",
+    "intentional_error_span": "synthetic-error"
+  },
+  "web_url": "http://localhost:16320",
+  "state_dir": "/home/shshin/.local/state/agent-project-langfuse",
+  "retention_days": null,
+  "hard_disk_quota": false,
+  "agent_instrumented": false,
+  "inference_executed": false,
+  "restart_preservation_assessed": false,
+  "whole_storage_backup_verified": false,
+  "next": "preserve and compare the existing trace across a scoped Langfuse restart",
+  "pending": [
+    "trace restart preservation",
+    "storage backup/restore",
+    "retention/capacity policy before sustained Agent collection",
+    "Agent instrumentation and delivery failure isolation",
+    "Agent sender and ops reader credentials",
+    "ops API and UI"
+  ],
+  "document_update_only": true,
+  "new_server_test_requested": false
+}

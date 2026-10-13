@@ -1,0 +1,80 @@
+{
+  "schema_version": "session-review-v1",
+  "review_date": "2026-09-22",
+  "scope": "Uploaded source, documentation and offline regression; not a live server audit",
+  "input": {
+    "filename": "agent_project(3).tar",
+    "sha256": "7c2a0f632270714066e19715aeb6f0727295618685004826b07b5f84793e9da4",
+    "archive_files": 984,
+    "delivered_source_differences": 0,
+    "delivered_source_missing": 0,
+    "environment_additions_preserved": 2
+  },
+  "fixes": [
+    "preview_and_index_request_storage_failures",
+    "stale_ui_test_inputs_and_navigation",
+    "architecture_routes_packages_and_write_boundary",
+    "current_status_history_and_session_handoff"
+  ],
+  "checks": {
+    "knowledge_python": {
+      "passed": 76,
+      "skipped": 0,
+      "errors": 0
+    },
+    "model_python": {
+      "discovered": 269,
+      "passed": 217,
+      "skipped": 52,
+      "errors": 0,
+      "skip_reason": "Streamlit unavailable"
+    },
+    "data_python": {
+      "passed": 220,
+      "failed_module_imports": 2,
+      "command_success": false,
+      "blocked_modules": [
+        "test_data_console",
+        "test_data_tables"
+      ],
+      "reason": "Streamlit unavailable"
+    },
+    "knowledge_node": {
+      "passed_scripts": 5,
+      "rendering_verified": false
+    },
+    "playwright": {
+      "status": "blocked",
+      "reason": "Chromium executable unavailable; updated fixture syntax checked only"
+    },
+    "go_parse": {
+      "files": 483,
+      "issues": 0,
+      "typecheck_or_compile": false
+    },
+    "syntax": {
+      "python_files": 161,
+      "js_cjs_files": 10,
+      "shell_files": 3,
+      "toml_files": 2
+    },
+    "contracts": {
+      "copied_proto_pairs": 4,
+      "differences_except_go_package": 0
+    }
+  },
+  "prior_server_evidence": "docs/knowledge-platform/testing-failure-recovery-20260922.md",
+  "limitations": [
+    "No server connection or current runtime-image comparison",
+    "No local Docker/protoc/PostgreSQL execution",
+    "recursive ON original candidate mismatch root cause unresolved",
+    "No general retrieval-quality or production-readiness guarantee"
+  ],
+  "application": {
+    "server_confirmation": "not_received",
+    "runtime_target": "knowledge-gateway",
+    "automatic_service_actions": 0,
+    "data_or_model_lifecycle_actions": 0
+  },
+  "next": "Agent-owned MCP retrieval Tool contract design after checking final patch application"
+}

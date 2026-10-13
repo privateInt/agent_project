@@ -1,0 +1,26 @@
+services:
+  data-reconciler:
+    image: data-platform-reconciler:dev
+    build:
+      context: .
+      target: reconciler
+    pull_policy: never
+    container_name: data-reconciler
+    restart: unless-stopped
+    networks:
+    - data-infra
+    environment:
+      OPERATION_GRPC_ADDRESS: data-operation:9000
+      COLLECTION_GRPC_ADDRESS: data-collection:9000
+      REFINEMENT_GRPC_ADDRESS: data-refinement:9000
+      JOB_NETWORK: ${DATA_NETWORK:-ops-infra}
+      DATA_JOB_CLEANUP_MODE: ${DATA_JOB_CLEANUP_MODE:-apply}
+      DATA_JOB_SUCCESS_RETENTION: ${DATA_JOB_SUCCESS_RETENTION:-1h}
+      DATA_JOB_FAILURE_RETENTION: ${DATA_JOB_FAILURE_RETENTION:-168h}
+      DATA_JOB_CLEANUP_INTERVAL: ${DATA_JOB_CLEANUP_INTERVAL:-5m}
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+    - data-operation
+    - data-collection
+    - data-refinement

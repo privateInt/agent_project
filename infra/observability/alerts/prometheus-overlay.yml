@@ -1,0 +1,13 @@
+services:
+  obs-prometheus:
+    volumes:
+      - type: bind
+        source: ./alerts/prometheus.yml
+        target: /etc/prometheus/prometheus.yml
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ./alerts/o04.rules.yml
+        target: /etc/prometheus/rules/o04.rules.yml
+        read_only: true
+        bind: {create_host_path: false}

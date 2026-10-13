@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "checked_date_kst": "2026-10-02",
+  "result": "passed",
+  "new_direct_inventory_tests": 16,
+  "selected_suite": {
+    "total": 242,
+    "passed": 195,
+    "skipped": 47,
+    "failed": 0,
+    "elapsed_seconds": 50.382
+  },
+  "reproduced_helper_recipe_issue": "reviewed_plan_hashes_review_id_again_but_bound_internal_plan_omits_review_id",
+  "fix": "verify_review_id_then_generate_both_recipes_from_same_plan_body",
+  "protections": {
+    "exact_protected_baseline": true,
+    "scoped_identity_and_started_at": true,
+    "only_current_verified_helpers_excluded": true,
+    "unknown_helper_not_adopted": true,
+    "added_missing_restarted_protected_containers_blocked": true,
+    "malformed_partial_or_unstable_metadata_blocked": true
+  },
+  "server_protected_failure_root_cause": "unconfirmed_from_original_output",
+  "server_remeasure_after_fix": "pending",
+  "native_daemon_used": false,
+  "scope": "real helper subprocess/lease; synthetic Docker metadata and systemd; actual baseline/mutation/helper/remove methods",
+  "active_worker_files": 61,
+  "active_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+  "existing_candidate_plan_setup_worker_adapter_unchanged": true,
+  "python_3_10_syntax": true,
+  "production_service_control_requested": false,
+  "production_backup_executed": false,
+  "production_restore_executed": false,
+  "backup_ready": false
+}

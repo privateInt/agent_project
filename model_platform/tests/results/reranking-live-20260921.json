@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "scope": "Model reranker API and one short relevance pair; not retrieval quality evaluation",
+  "profile": {
+    "deployment_id": "cc64a683-a69f-48a5-836e-9f52f0255cc6",
+    "model_version_id": "68f1c0db-da9d-4195-b266-4cc7249916f1",
+    "profile_id": "ko-reranker-v1",
+    "reranker_profile_id": "rp_2717f05094bb6068f3edef2c93025792da740785f956b97dc07d06c29f228ff1",
+    "source_manifest_sha256": "ba99f09d8f92826622e89b23178e27ae70de45aa56f39ebbb34c1a0e7401898d",
+    "tokenizer_sha256": "88b4092bd201bf76aa9e795ca4059a77fa754a6b07b784519145faaf3d9cfdd1",
+    "runtime_image_id": "sha256:59c018a60d965607819387096449351ab9d7ca3134b0a6f7e3f239f33dad9f4b",
+    "runtime_container_id": "b25cca9eed0324b1778a34ae4ebf8668515ea56bb4ea2e4717ff25a0dc264018",
+    "served_model_name": "deployment-cc64a683-a69f-48a5-836e-9f52f0255cc6",
+    "repo_id": "Dongjin-kr/ko-reranker",
+    "resolved_revision": "8c2ab1a833734491fd3158164dd2b7d8b28e071c",
+    "registered_model_type": "llm",
+    "score_kind": "logit",
+    "score_direction": "higher_is_better",
+    "pair_policy": "xlmr-pair-special4-no-prefix-v1",
+    "max_input_tokens": 512,
+    "max_candidates": 100,
+    "max_input_bytes": 131072,
+    "truncation": "reject",
+    "capability": "reranker",
+    "status": "ready",
+    "serving_profile": "ko-reranker-v1"
+  },
+  "scores": [
+    {
+      "id": "relevant",
+      "index": 0,
+      "score": 9.869013786315918,
+      "input_tokens": 18
+    },
+    {
+      "id": "unrelated",
+      "index": 1,
+      "score": -9.824690818786621,
+      "input_tokens": 18
+    }
+  ],
+  "valid_scoring_requests": 2,
+  "lifecycle_changes": 0,
+  "checks": [
+    "profile_identity",
+    "input_id_order",
+    "finite_single_logit",
+    "pair_token_limit",
+    "short_relevance_pair",
+    "candidate_reorder",
+    "profile_mismatch_rejected",
+    "empty_candidates_rejected",
+    "duplicate_ids_rejected",
+    "unknown_field_rejected",
+    "overlong_pair_rejected"
+  ]
+}

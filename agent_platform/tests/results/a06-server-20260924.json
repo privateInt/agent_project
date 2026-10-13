@@ -1,0 +1,51 @@
+{
+  "stage": "A06",
+  "date": "2026-09-24",
+  "source": "붙여넣은 텍스트 (1)(20260924-040943).txt",
+  "source_sha256": "38a3fe47b53c0a3a57ceae3d345607d90f5abf8125434acf5cbd7835ed30d10f",
+  "source_type": "user_supplied_server_log",
+  "result": "server_functional_checks_passed_user_ui_deferred",
+  "patch_files": 59,
+  "tests_images": [
+    "go tests target built",
+    "python tests target built"
+  ],
+  "healthy": [
+    "agent-postgres",
+    "agent-service",
+    "agent-runtime",
+    "agent-mcp",
+    "agent-gateway"
+  ],
+  "lookup": {
+    "tool_call_id": "8e3b3160-8e29-49d8-96d2-e0540e67682e",
+    "request_id": "b611f3d7-8d9f-4dc1-9110-04496f5278ea",
+    "result": "passed"
+  },
+  "native_database_tests": [
+    "DatabaseFoundation",
+    "KnowledgeDatabase",
+    "OpenAPIManagementAndLeases",
+    "ToolsDatabase"
+  ],
+  "service_tests": [
+    "AgentEndToEnd",
+    "KnowledgeEndToEnd",
+    "OpenAPIEndToEnd",
+    "ToolsEndToEnd"
+  ],
+  "agent_fixture_chat_requests": 4,
+  "limitations": [
+    "Model/Knowledge in DB checks are HTTP fixtures",
+    "no real GPU LLM answer quality evidence",
+    "no completed real AgentRun restart lookup evidence"
+  ],
+  "user_instruction": "defer page verification, document pending checks, prioritize feature work",
+  "deferred": [
+    "Agent settings/question/history UI",
+    "real knowledge and ready LLM answer/citations",
+    "publish and ordinary question",
+    "completed real AgentRun restart persistence",
+    "n8n editor login/edit/save/run"
+  ]
+}

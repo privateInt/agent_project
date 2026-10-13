@@ -1,0 +1,732 @@
+{
+  "version": "ai-engineer-quality-v1",
+  "source_sha256": "11ac5d098013fed011e3f35573daa504b914dee8030cb86590bd937cf5f553db",
+  "page_count": 9,
+  "scope": "Authored sample-specific acceptance probes; not full-document CER or general OCR benchmark. Physical PDF pages. NFC/whitespace only; chemical subscripts are transcribed as plain digits. Process ordering in the diagram is not scored. Combined 10-column Table 1 layout is expected.",
+  "figure": {
+    "page": 3,
+    "bbox": [
+      67.8,
+      500.1,
+      521.6,
+      690.5
+    ],
+    "labels": [
+      "Raw cowhide",
+      "Trimming",
+      "Pre-soaking",
+      "Washing I",
+      "Main soaking",
+      "Splitting",
+      "Fleshing",
+      "Washing III",
+      "Liming",
+      "Washing II",
+      "Deliming",
+      "Washing IV",
+      "Pickling",
+      "Tanning",
+      "Sammying",
+      "Shaving",
+      "Re-tanning and Fixation",
+      "Washing V",
+      "Neutralization",
+      "Wetting back",
+      "Setting out",
+      "Stacking",
+      "Toogling",
+      "Cow-tanned leather"
+    ]
+  },
+  "table1": {
+    "page": 4,
+    "bbox": [
+      65,
+      425,
+      530,
+      775
+    ],
+    "process_columns": [
+      5,
+      6
+    ],
+    "processes": [
+      [
+        "14.",
+        "Sammying"
+      ],
+      [
+        "15.",
+        "Shaving"
+      ]
+    ],
+    "value_columns": [
+      7,
+      8,
+      9
+    ],
+    "triplets": [
+      [
+        "CO2",
+        "2.54",
+        "Kg"
+      ],
+      [
+        "Wastewater",
+        "748.55",
+        "Kg"
+      ],
+      [
+        "Chromium VI",
+        "47.44",
+        "Kg"
+      ],
+      [
+        "Electricity",
+        "70.87",
+        "kWh"
+      ],
+      [
+        "Formic acid",
+        "3.38",
+        "Kg"
+      ],
+      [
+        "Oils, unspecified",
+        "1.35",
+        "Kg"
+      ],
+      [
+        "Sodium carbonate",
+        "10.14",
+        "Kg"
+      ],
+      [
+        "Sodium chloride",
+        "67.62",
+        "Kg"
+      ],
+      [
+        "Sulfuric acid",
+        "1.35",
+        "Kg"
+      ],
+      [
+        "Water, ground",
+        "676.2",
+        "Kg"
+      ],
+      [
+        "CO2",
+        "52.44",
+        "Kg"
+      ]
+    ]
+  },
+  "table2": {
+    "page": 6,
+    "bbox": [
+      65,
+      356,
+      530,
+      620
+    ],
+    "cells": [
+      {
+        "row": 0,
+        "column": 0,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Impact category"
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Process"
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Amount"
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Unit"
+      },
+      {
+        "row": 1,
+        "column": 0,
+        "row_span": 20,
+        "column_span": 1,
+        "text": "Climate change"
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Pre-soaking"
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "6.30E+00"
+      },
+      {
+        "row": 1,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Washing I"
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "1.32E+00"
+      },
+      {
+        "row": 2,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 3,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Main soaking"
+      },
+      {
+        "row": 3,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "3.22E+01"
+      },
+      {
+        "row": 3,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 4,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Washing II"
+      },
+      {
+        "row": 4,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "1.63E+00"
+      },
+      {
+        "row": 4,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 5,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Liming"
+      },
+      {
+        "row": 5,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "1.06E+01"
+      },
+      {
+        "row": 5,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 6,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Washing III"
+      },
+      {
+        "row": 6,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "1.73E+00"
+      },
+      {
+        "row": 6,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 7,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Splitting"
+      },
+      {
+        "row": 7,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "6.96E+00"
+      },
+      {
+        "row": 7,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 8,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Deliming"
+      },
+      {
+        "row": 8,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "1.13E+01"
+      },
+      {
+        "row": 8,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 9,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Washing IV"
+      },
+      {
+        "row": 9,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "2.24E+00"
+      },
+      {
+        "row": 9,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 10,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Pickling"
+      },
+      {
+        "row": 10,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "2.54E+00"
+      },
+      {
+        "row": 10,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 11,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Tanning"
+      },
+      {
+        "row": 11,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "5.00E+01"
+      },
+      {
+        "row": 11,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 12,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Sammying"
+      },
+      {
+        "row": 12,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "1.32E+00"
+      },
+      {
+        "row": 12,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 13,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Shaving"
+      },
+      {
+        "row": 13,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "3.35E+00"
+      },
+      {
+        "row": 13,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 14,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Wetting back"
+      },
+      {
+        "row": 14,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "2.86E+00"
+      },
+      {
+        "row": 14,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 15,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Neutralization"
+      },
+      {
+        "row": 15,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "2.00E+00"
+      },
+      {
+        "row": 15,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 16,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Washing V"
+      },
+      {
+        "row": 16,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "1.01E+00"
+      },
+      {
+        "row": 16,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 17,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Re-tanning and Fixation"
+      },
+      {
+        "row": 17,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "3.60E+01"
+      },
+      {
+        "row": 17,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 18,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Setting out"
+      },
+      {
+        "row": 18,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "2.86E+02"
+      },
+      {
+        "row": 18,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 19,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Stacking"
+      },
+      {
+        "row": 19,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "8.28E+00"
+      },
+      {
+        "row": 19,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 20,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Toogling"
+      },
+      {
+        "row": 20,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "1.66E+01"
+      },
+      {
+        "row": 20,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg CO2 eq"
+      },
+      {
+        "row": 21,
+        "column": 0,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Human toxicity"
+      },
+      {
+        "row": 21,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Tanning"
+      },
+      {
+        "row": 21,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "9.26E+01"
+      },
+      {
+        "row": 21,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg 1,4-dichlorobenzene eq"
+      },
+      {
+        "row": 22,
+        "column": 0,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Marine aquatic ecotoxicity"
+      },
+      {
+        "row": 22,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Tanning"
+      },
+      {
+        "row": 22,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "3.88E+04"
+      },
+      {
+        "row": 22,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg 1,4-dichlorobenzene eq"
+      },
+      {
+        "row": 23,
+        "column": 0,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Freshwater aquatic ecotoxicity"
+      },
+      {
+        "row": 23,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Tanning"
+      },
+      {
+        "row": 23,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "3.12E+02"
+      },
+      {
+        "row": 23,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg 1,4-dichlorobenzene eq"
+      },
+      {
+        "row": 24,
+        "column": 0,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Terrestrial ecotoxicity"
+      },
+      {
+        "row": 24,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Tanning"
+      },
+      {
+        "row": 24,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "1.03E-17"
+      },
+      {
+        "row": 24,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg 1,4-dichlorobenzene eq"
+      },
+      {
+        "row": 25,
+        "column": 0,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Photochemical oxidation"
+      },
+      {
+        "row": 25,
+        "column": 1,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Setting out"
+      },
+      {
+        "row": 25,
+        "column": 2,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "6.00E-07"
+      },
+      {
+        "row": 25,
+        "column": 3,
+        "row_span": 1,
+        "column_span": 1,
+        "text": "Kg ethylene eq"
+      }
+    ]
+  }
+}

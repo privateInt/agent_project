@@ -1,0 +1,29 @@
+# Standalone file on the REMOTE Linux amd64 Docker host; not a root include.
+name: model-platform-worker
+services:
+  node-agent:
+    image: model-platform-dispatcher:dev
+    pull_policy: never
+    container_name: model-node-agent
+    restart: unless-stopped
+    network_mode: host
+    # Requests are authenticated by SSH and delivered via docker exec stdin.
+    # PID 1 is passive and has no GPU DeviceRequest or application listener.
+    entrypoint: [sleep, infinity]
+    env_file: worker.env
+    environment:
+      JOB_NETWORK: host
+      GPU_ADMISSION_DIR: /gpu-admission
+      OPERATION_GRPC_ADDRESS: 127.0.0.1:19001
+      MANAGEMENT_GRPC_ADDRESS: 127.0.0.1:19002
+      TRAINING_GRPC_ADDRESS: 127.0.0.1:19003
+      MINIO_ENDPOINT: 127.0.0.1:19004
+      MINIO_USE_SSL: 'false'
+      MLFLOW_TRACKING_URI: http://127.0.0.1:19005
+      TRAINING_JOB_IMAGE: model-platform-training-axolotl:launch-v1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - gpu-admission:/gpu-admission
+volumes:
+  gpu-admission:
+    name: model-gpu-admission

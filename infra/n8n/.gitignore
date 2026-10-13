@@ -1,0 +1,9 @@
+.env
+.secrets/
+.state.json
+.storage.json
+.handoff.json
+.ops.lock
+.setup-*/
+__pycache__/
+*.pyc

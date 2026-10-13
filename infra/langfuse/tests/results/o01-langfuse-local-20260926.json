@@ -1,0 +1,30 @@
+{
+  "stage": "O01-Langfuse",
+  "date": "2026-09-26",
+  "result": "local_passed",
+  "langfuse_version": "4.46.0",
+  "python_tests": 22,
+  "checks": [
+    "private state and literal raw environment",
+    "storage binding and image/ownership guards",
+    "isolated selector and bounded lifecycle commands",
+    "real local HTTP fixture: OTLP JSON and v2 observations",
+    "lost response exact-payload retry and read recovery",
+    "accepted pending and GET-only check",
+    "partial rejection and parent/status/time/project mismatch",
+    "real Compose 2.39.4 model parsing",
+    "Python 3.9 syntax parsing"
+  ],
+  "docker_daemon_used": false,
+  "real_langfuse_delivery_verified": false,
+  "agent_instrumented": false,
+  "inference_executed": false,
+  "server_acceptance": "pending",
+  "restart_preservation": "pending",
+  "project_retention": "not configured; entitlement required",
+  "test_limitations": [
+    "HTTP transport fixture is not a running Langfuse backend",
+    "Compose interpretation is not container startup",
+    "bind permissions and actual service compatibility require server acceptance"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "environment": "kubernetes",
+  "default_cluster": "example-cluster",
+  "scope": {"cluster": "example-cluster"},
+  "sources": {
+    "host": {"job": "node-exporter"},
+    "containers": {"job": "kubelet", "metrics_path": "/metrics/cadvisor"},
+    "gpu": {"job": "dcgm-exporter"}
+  },
+  "target_jobs": ["node-exporter", "kubelet", "dcgm-exporter"],
+  "container_name_label": "container",
+  "filesystems": {
+    "mountpoint_include": ".*",
+    "fstype_exclude": "tmpfs|overlay|squashfs"
+  }
+}

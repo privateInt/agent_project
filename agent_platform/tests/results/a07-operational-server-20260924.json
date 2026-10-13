@@ -1,0 +1,52 @@
+{
+  "stage": "A07-operational-server",
+  "date": "2026-09-24",
+  "evidence": "user pasted terminal output; no direct server access",
+  "accessfix": "already_applied",
+  "connection": {
+    "result": "connected",
+    "reused": false,
+    "password_saved": false,
+    "n8n_version": "2.40.5"
+  },
+  "prepare": {
+    "result": "prepared",
+    "agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+    "workflow_id": "HtgqKREU0RNPfSnB",
+    "workflow_link_id": "e9e79c18-9573-4772-af7f-80f410fe634c",
+    "inference_executed": false,
+    "webhook_authenticated": true
+  },
+  "run": {
+    "result": "failed",
+    "n8n_execution_ids": [
+      "1"
+    ],
+    "logical_request_id": "90868741-04b7-4978-afcb-3db4253f0f50",
+    "agent_run_id": "15981e7e-7ab3-41d6-bef8-ab2924cbe67e",
+    "request_id": "93218149-3ad0-45f7-81b2-48f0f72f5bcf",
+    "tool_call_id": "39eac542-0c91-4975-b2d6-434d9ad49e2e",
+    "steps": {
+      "validate": "succeeded",
+      "search": "succeeded",
+      "context": "succeeded",
+      "generate": "succeeded",
+      "finalize": "failed"
+    },
+    "error": {
+      "code": "ANSWER_REFERENCE_INVALID",
+      "stage": "finalize"
+    }
+  },
+  "limits": {
+    "exact_reference_error": "unknown; generated answer unavailable",
+    "second_run": "not_executed_due_to_set_e",
+    "separate_lookup": "not_executed_due_to_set_e; first_run_internal_lookup_confirmed_failure",
+    "n8n_terminal_status": "not_shown",
+    "operational_answer_delivery": "not_passed",
+    "replay_verified": false,
+    "quality_work": "deferred",
+    "account_HTTP400_root_cause": "not_retroactively_determined"
+  },
+  "runtime_changes": false
+}

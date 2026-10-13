@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "checked_date": "2026-10-02",
+  "result": "passed",
+  "selected_regression_suite": {
+    "total": 341,
+    "passed": 286,
+    "skipped": 55,
+    "failed": 0,
+    "elapsed_seconds": 57.596
+  },
+  "focused_prior_to_last_boundary_case": {
+    "total": 111,
+    "passed": 111,
+    "skipped": 0,
+    "failed": 0,
+    "elapsed_seconds": 5.997
+  },
+  "sources": {
+    "active_worker_files": 61,
+    "active_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+    "old_maintenance_boot_recovery_backup_and_candidates_unchanged": true
+  },
+  "diagnostics": {
+    "fixed_phase_reason_and_bounded_counts_only": true,
+    "stopped_after_list_missing_duplicate_unexpected_malformed_and_oversize_responses_refused": true,
+    "successful_projection_matches_original_reviewed_running_gate": true,
+    "diagnostic_added_only_to_current_recovery_instance": true,
+    "query_arguments_and_filters_unchanged": true,
+    "no_retry_or_failure_baseline_adoption": true,
+    "no_helper_or_other_container_exception": true,
+    "current_discovery_difference_counts_not_historical_failure_diffs": true,
+    "pre_journal_plan_failure_proven_without_readback_reset_start_or_writes": true,
+    "late_guard_failure_preserves_runtime_error_code_original_recovery_and_safe_diagnostics": true,
+    "raw_ids_names_paths_times_stderr_credentials_rejected": true
+  },
+  "server_plan_before_this_patch": "passed",
+  "server_apply_before_this_patch": "MAINTENANCE_RUNNING_SET_CHANGED_before_submission",
+  "exact_server_failed_row_or_container": "unconfirmed",
+  "actual_server_new_diagnostic": "pending",
+  "worker_recovery_completed": false,
+  "native_production_Docker_daemon_used": false,
+  "native_production_systemd_used": false,
+  "production_service_control_requested": false,
+  "production_capture_executed": false,
+  "production_restore_executed": false,
+  "identity_contents_read": false,
+  "backup_ready": false,
+  "python_3_10_syntax": true,
+  "package_checks": {
+    "dry_run": true,
+    "apply_without_project_backups": true,
+    "idempotence": true,
+    "rollback": true,
+    "conflict_refusal": true,
+    "symlink_refusal": true,
+    "mid_write_rollback": true,
+    "active_source_change_refusal": true,
+    "python310_syntax": true
+  }
+}

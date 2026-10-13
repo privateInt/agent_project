@@ -1,0 +1,27 @@
+services:
+  agent-mcp:
+    image: agent-platform-mcp:a07.1
+    build:
+      context: .
+      target: mcp
+    pull_policy: never
+    restart: unless-stopped
+    networks: [agent-private]
+    environment:
+      AGENT_MCP_ADDRESS: :8000
+      AGENT_SERVICE_ADDRESS: agent-service:9000
+      AGENT_API_TOKEN_FILE: /run/secrets/agent-api-token
+      AGENT_INTERNAL_TOKEN_FILE: /run/secrets/agent-internal-token
+      AGENT_MCP_ALLOWED_ORIGINS: ${AGENT_MCP_ALLOWED_ORIGINS:-}
+    secrets: [agent-api-token, agent-internal-token]
+    depends_on:
+      agent-service:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, /app/healthcheck, http]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]

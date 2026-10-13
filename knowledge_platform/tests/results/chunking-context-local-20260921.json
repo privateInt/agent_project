@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-21",
+  "scope": "local CPU chunking and CLI doubles; no live services or model requests",
+  "go_version": "go1.25.0 linux/amd64",
+  "go_tests": 26,
+  "go_subtests": 19,
+  "python_tool_tests": 4,
+  "legacy_full_result_hashes_checked": 6,
+  "structure_version": "2026-09-21.1",
+  "recursive_version": "2026-09-18.2",
+  "checks": [
+    "cross_block_unicode_overlap",
+    "consecutive_headings_with_body",
+    "hard_boundaries",
+    "coverage_and_metadata",
+    "maximum_size_and_forward_progress",
+    "historical_result_bytes",
+    "old_structure_fragments",
+    "version_registry",
+    "baseline_input_and_options",
+    "old_service_rejection",
+    "source_snapshot_drift_rejection"
+  ],
+  "server_apply": "pending",
+  "new_chunk_previews": "pending",
+  "retrieval_quality_after_change": "pending"
+}

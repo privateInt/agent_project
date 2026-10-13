@@ -1,0 +1,54 @@
+{
+  "stage": "O02-Agent-tracing-checkfix",
+  "result": "local_regression_passed",
+  "server_acceptance": "pending",
+  "server_log_sha256": "0acad0dbeb2d8cfa037087d400ea5c0d9bd0a9a838f3ab6f208213c31b070b32",
+  "server_observed": {
+    "patch_files_applied": 24,
+    "trace_config": "prepared",
+    "go_python_build_tests": "passed",
+    "service_runtime": "healthy o02.1",
+    "database_store_checks": "passed",
+    "knowledge_openapi_tools_end_to_end": "passed",
+    "agent_end_to_end": "workflow catalog assertion failed",
+    "dedicated_trace_trial": "not_reached"
+  },
+  "local_regression": {
+    "result": "passed",
+    "cases": [
+      {
+        "case": "original-empty-database",
+        "passed": true
+      },
+      {
+        "case": "seed-retained-records",
+        "passed": true
+      },
+      {
+        "case": "original-populated-database",
+        "passed": true
+      },
+      {
+        "case": "workflow-only-populated-database",
+        "passed": true
+      },
+      {
+        "case": "fixed-populated-database-twice",
+        "passed": true
+      },
+      {
+        "case": "retained-records-preserved",
+        "passed": true
+      }
+    ],
+    "retained_workflow_links": 130,
+    "retained_agent_runs": 130,
+    "scope": "scratch PostgreSQL WASM + actual Go/Python gRPC/HTTP; native server rerun pending",
+    "observations_received": 285,
+    "traces_received": 34
+  },
+  "code_scope": "test-only public catalog pagination and generated-ID matching",
+  "operating_service_rebuild_required": false,
+  "schema_changed": false,
+  "existing_results_preserved": true
+}

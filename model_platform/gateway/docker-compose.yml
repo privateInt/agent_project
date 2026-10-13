@@ -1,0 +1,29 @@
+# Included by ../docker-compose.yml with project_directory=model_platform.
+# Use the root Compose entry point so sibling dependencies and the shared network resolve.
+services:
+  gateway:
+    image: model-platform-gateway:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: gateway
+    pull_policy: never
+    restart: unless-stopped
+    networks:
+    - ops-infra
+    container_name: model-gateway
+    command:
+    - /app/gateway
+    ports:
+    - ${MODEL_GATEWAY_PORT:-13000}:8000
+    environment:
+      HTTP_ADDRESS: :8000
+      MANAGEMENT_GRPC_ADDRESS: management:9000
+      OPERATION_GRPC_ADDRESS: operation:9000
+      TRAINING_GRPC_ADDRESS: training:9000
+      DEPLOYMENT_GRPC_ADDRESS: deployment:9000
+    depends_on:
+    - management
+    - operation
+    - training
+    - deployment

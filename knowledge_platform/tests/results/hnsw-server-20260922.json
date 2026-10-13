@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-22",
+  "scope": "User server HNSW patch installation and tests; not a live custom-mapping build",
+  "patch_files": 32,
+  "evaluation_tests": 40,
+  "evaluation_seconds": 0.671,
+  "go_tests_target": "passed (go test -count=1 ./...)",
+  "postgres_service_app": "passed (1.784s)",
+  "service_and_gateway": "built and started",
+  "ui_advanced_hnsw": "confirmed by user",
+  "custom_hnsw_build": "pending",
+  "source_log_sha256": "3f46712c82a2f1957ef1c6bff886329be4636fe08830cccaf3be4cc3cb1826c5"
+}

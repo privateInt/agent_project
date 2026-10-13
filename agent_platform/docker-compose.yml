@@ -1,0 +1,39 @@
+name: agent-platform
+include:
+  - path: ./postgres/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./service/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./runtime/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./gateway/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./mcp/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./tests/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+networks:
+  agent-private:
+    internal: true
+  agent-api:
+    external: true
+    name: ${AGENT_NETWORK:-ops-infra}
+volumes:
+  agent-db:
+secrets:
+  agent-db-admin:
+    file: ./.secrets/db-admin
+  agent-db-app:
+    file: ./.secrets/db-app
+  agent-internal-token:
+    file: ./.secrets/internal-token
+  agent-api-token:
+    file: ./.secrets/api-token
+  agent-tool-credentials:
+    file: ./.secrets/tool-credentials.json

@@ -1,0 +1,56 @@
+{
+  "stage": "O01-Langfuse-health-repair",
+  "result": "passed",
+  "scope": "local checks only; not server acceptance",
+  "python_tests": 38,
+  "new_tests": 7,
+  "native_node": "24.19.0",
+  "http_fixture": "alternate local address versus loopback; wildcard listener",
+  "shipped_healthcheck_javascript": [
+    "HTTP 200 success",
+    "HTTP 503 failure",
+    "ECONNREFUSED failure",
+    "no response body output"
+  ],
+  "repair_checks": [
+    "only mismatched apps; no-deps/no-build/pull never",
+    "repeat read-only",
+    "partial repair continuation",
+    "unproven cause/foreign owner/image/mount/config blocked",
+    "store restart during operation not accepted",
+    "failed compose not retried; same settings retained"
+  ],
+  "compose": {
+    "result": "passed",
+    "compose_version": "2.39.4",
+    "node_version": "v24.19.0",
+    "four_store_effective_configs_unchanged": true,
+    "networks_ports_images_storage_unchanged": true,
+    "only_app_hostname_and_healthcheck_changed": true,
+    "special_password_preserved": true,
+    "python_39_syntax_passed": true
+  },
+  "server_evidence": {
+    "source": "user-provided 2026-09-26 diagnose output",
+    "stores_healthy": 4,
+    "apps_running_unhealthy": [
+      "lf-worker",
+      "lf-web"
+    ],
+    "store_paths_original": true,
+    "oom_or_restart_reported": false,
+    "binding_mismatch_probed": false
+  },
+  "docker_daemon_used_locally": false,
+  "server_recovery_verified": false,
+  "synthetic_trace_verified": false,
+  "agent_instrumented": false,
+  "inference_executed": false,
+  "pending": [
+    "server repair-health",
+    "synthetic trace run/check",
+    "trace restart preservation",
+    "Agent instrumentation",
+    "ops API/UI"
+  ]
+}

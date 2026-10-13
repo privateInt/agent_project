@@ -1,0 +1,21 @@
+# Contract example, not a deployment command or an operational Service.
+# Deployment templates should generate these labels for all seven roles.
+# Do not apply this file to create an empty/duplicate Service for acceptance.
+apiVersion: v1
+kind: Service
+metadata:
+  name: model-gateway-example
+  namespace: platform-example
+  labels:
+    app.kubernetes.io/part-of: agent-project
+    ops.agent-project.io/installation: example-installation
+    ops.agent-project.io/role: model
+spec:
+  selector:
+    app.kubernetes.io/name: model-gateway-example
+  ports:
+    - name: http
+      appProtocol: http
+      protocol: TCP
+      port: 8080
+      targetPort: http

@@ -1,0 +1,127 @@
+{
+  "date": "2026-09-18",
+  "status": "core_indexing_storage_activation_verified",
+  "local_checks": {
+    "python_tools_tests": 6,
+    "node_chunking_request_and_preview": "passed",
+    "node_indexing_replay_and_ui": "passed",
+    "python_ast": "passed",
+    "js_syntax": "passed",
+    "compose_yaml_parse": "passed"
+  },
+  "not_executed": [
+    "actual OpenSearch version deletion/reference release and live Data purge blocking",
+    "browser automation/rendering verification",
+    "same-input comparison of both chunkers",
+    "K05 search and retrieval quality evaluation"
+  ],
+  "new_gpu_runtimes": 0,
+  "server_acceptance": "docs/knowledge-platform/acceptance.md#k04",
+  "updated_at": "2026-09-21",
+  "server_attempt": {
+    "evidence": "user-provided server log received 2026-09-21",
+    "patch_applied_files": 64,
+    "knowledge_tests_image": "failed at Go compilation",
+    "error": "service/app/indexes.go:116: *chunking.Result passed to indexing.Select expecting chunking.Result",
+    "packages_reporting_ok": [
+      "dispatcher/app",
+      "internal/chunking",
+      "internal/idempotency",
+      "internal/indexing",
+      "internal/listing",
+      "internal/operationreport",
+      "internal/searchstore",
+      "operation/app",
+      "operation/outbox"
+    ],
+    "db_integration_pass_confirmed": false,
+    "subsequent_commands_in_block": "not executed because set -e stopped at first build"
+  },
+  "source_fix": {
+    "path": "service/app/indexes.go",
+    "change": "pass *result after chunking.Verify succeeds",
+    "post_fix_go_execution": "passed on user server after compile-fix patch, before bulk fix"
+  },
+  "server_after_compile_fix": {
+    "patch_applied_files": 7,
+    "knowledge_go_all": "passed",
+    "data_refinement_unit": "passed",
+    "postgresql_integration": [
+      "knowledge-platform/service/app",
+      "data-platform/refinement/app"
+    ],
+    "python_tools_tests": 3,
+    "built_images": 8,
+    "data_refinement_started": true,
+    "knowledge_services_started": 5,
+    "opensearch_configuration": "created and compose validated",
+    "live_input_chunks": 48,
+    "live_confirmed_indexed": 0,
+    "live_state": "failed",
+    "error_code": "INDEX_BATCH_UNCONFIRMED",
+    "error_message": "OPENSEARCH_HTTP_400"
+  },
+  "no_document_bulk_probe": {
+    "query_require_alias": "action_request_validation_exception: no requests added",
+    "metadata__require_alias": "illegal_argument_exception: unknown parameter [_require_alias]",
+    "metadata_require_alias": "action_request_validation_exception: no requests added",
+    "documents_submitted": 0
+  },
+  "bulk_fix": {
+    "metadata_field": "require_alias",
+    "query_alias_guard": "retained",
+    "error_diagnostics": "bounded type and unknown parameter name only",
+    "retry": "new version in same inactive test index, separate journal, preserve failed version",
+    "python_tools_tests": 6,
+    "post_fix_go_execution": "passed on user server: Docker tests target go test -count=1 ./...",
+    "live_success": "passed on user server: 48/48 ready and activated"
+  },
+  "validation_source": "user-provided server execution logs and live_indexing.py receipt; no direct server access from authoring environment",
+  "server_after_bulk_fix": {
+    "patch_applied_files": 11,
+    "python_tools_tests": 6,
+    "knowledge_go_all": "passed",
+    "knowledge_service_built_and_started": true,
+    "postgresql_integration": "already passed after compile fix; not rerun for bulk-only change"
+  },
+  "live_run": {
+    "date": "2026-09-21",
+    "mode": "new logical index; --retry-failed-from omitted after old journal was deleted",
+    "state_file": "~/workspace/indexing_check_bulk_fix_20260921.json",
+    "deployment_id": "44247297-5184-4a36-9225-7791c80d3add",
+    "states_observed": [
+      "protecting",
+      "indexing",
+      "ready"
+    ],
+    "prior_failed_index_cleanup": "not observed"
+  },
+  "live_receipt": {
+    "status": "passed",
+    "index_id": "aafe22b7-852b-424e-afaa-58fa8c1d739f",
+    "index_version_id": "150826c2-1f4c-495c-8e07-54aacaa1a245",
+    "active_version_id": "150826c2-1f4c-495c-8e07-54aacaa1a245",
+    "chunking_run_id": "6e3eaf24-c2dc-4756-87bb-83468a96c827",
+    "chunk_set_sha256": "48ed051d99525d9c247c1db63026f6ef82fba36c22d347da02e9156f59bab0a0",
+    "chunks": 48,
+    "indexed": 48,
+    "references": "held",
+    "embedding_space_id": "es_00cb26c80fff352a4cc494bef5b90d75a83584caf4d7e3b525f8516c2dcab76e",
+    "dimension": 1024,
+    "runtime_container_id": "36b3c91fbdc8bb7670dac3dd16da71055ebd40bd294960187254f3d5a9c452f9",
+    "chunker": {
+      "id": "structure_v1",
+      "version": "2026-09-18.2",
+      "options": {
+        "max_characters": 1000,
+        "overlap_characters": 100
+      },
+      "policy_hash": "71ce061f834fd495afba5fc07a3cb45468a1547c632c6a36b697544a0f78f250"
+    },
+    "canonical_ids": [
+      "157c335f-5436-4338-8078-edb040ebe1ca",
+      "acd8d804-ff15-484e-8cfb-0dd13d339eb2"
+    ]
+  },
+  "next_step": "K05 external query-vector search; caller obtains version/profile then Model query embedding and Knowledge search"
+}

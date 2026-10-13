@@ -1,0 +1,116 @@
+syntax = "proto3";
+package data.collection.v1;
+option go_package = "data-platform/gen/collection/v1;collectionv1";
+import "google/protobuf/timestamp.proto";
+
+service CollectionService {
+  rpc AssignDocumentGroup(AssignDocumentGroupRequest) returns (DocumentGroupAssignment);
+  rpc CreateGroup(CreateGroupRequest) returns (SourceGroup);
+  rpc RenameGroup(RenameGroupRequest) returns (SourceGroup);
+  rpc GetGroup(GetGroupRequest) returns (SourceGroup);
+  rpc ListGroups(ListGroupsRequest) returns (ListGroupsResponse);
+  rpc SetGroupDocument(SetGroupDocumentRequest) returns (GroupMembership);
+  rpc CreateCrawl(CreateCrawlRequest) returns (CrawlAccepted);
+  rpc GetCrawl(GetCrawlRequest) returns (CrawlRun);
+  rpc ListCrawls(ListCrawlsRequest) returns (ListCrawlsResponse);
+  rpc CompleteCrawl(CompleteCrawlRequest) returns (CrawlRun);
+  rpc CompleteCrawlBatch(CompleteCrawlBatchRequest) returns (CrawlRun);
+  rpc DeleteDocument(GetDocumentRequest) returns (SourceDocument);
+  rpc PurgeDocument(GetDocumentRequest) returns (SourceDocument);
+  rpc GetDocument(GetDocumentRequest) returns (SourceDocument);
+  rpc ListDocuments(ListDocumentsRequest) returns (ListDocumentsResponse);
+  rpc UploadDocument(stream UploadDocumentRequest) returns (SourceDocument);
+  rpc ReadDocument(GetDocumentRequest) returns (stream DocumentChunk);
+}
+message CrawlOptions {
+ int64 max_bytes = 1; int32 timeout_seconds = 2;
+ bool follow_links = 3; bool include_attachments = 4;
+ int32 max_depth = 5; int32 max_documents = 6; int64 max_total_bytes = 7;
+ bool render_javascript = 8; int32 render_wait_ms = 9;
+}
+message CreateCrawlRequest { string name = 1; string url = 2; CrawlOptions options = 3; string idempotency_key = 4; }
+message CrawlAccepted { string crawl_run_id = 1; string operation_id = 2; }
+message GetCrawlRequest { string crawl_run_id = 1; }
+message CrawlRun {
+  string crawl_run_id = 1; string operation_id = 2; string name = 3; string url = 4;
+  CrawlOptions options = 5; string output_document_id = 6;
+  google.protobuf.Timestamp created_at = 7;
+  string submission_status = 8; string submission_error_code = 9;
+  repeated string output_document_ids = 10;
+  bool document_limit_reached = 11; bool depth_limit_reached = 12;
+  bool link_limit_reached = 13;
+} 
+message CrawlSourceResult {
+ string source_url = 1; string final_url = 2; string parent_url = 3;
+ int32 depth = 4; string role = 5; string sha256 = 6; int64 size_bytes = 7;
+ string content_type = 8; int32 http_status = 9;
+ BrowserCapture browser_capture = 10;
+}
+message CompleteCrawlBatchRequest {
+ string crawl_run_id = 1; string operation_id = 2;
+ string dispatch_token = 3; string execution_instance_id = 4;
+ string processor_image_id = 5; repeated CrawlSourceResult sources = 6;
+ bool document_limit_reached = 7; bool depth_limit_reached = 8;
+ bool link_limit_reached = 9;
+}
+message CompleteCrawlRequest {
+  string crawl_run_id = 1; string operation_id = 2;
+  string dispatch_token = 3; string execution_instance_id = 4;
+  string sha256 = 5; int64 size_bytes = 6; string content_type = 7;
+  string final_url = 8; int32 http_status = 9; string processor_image_id = 10;
+}
+message SourceDocument {
+  string document_id = 1; string crawl_run_id = 2; string name = 3;
+  string source_url = 4; string final_url = 5; string sha256 = 6;
+  int64 size_bytes = 7; string content_type = 8; string artifact_uri = 9;
+  google.protobuf.Timestamp created_at = 10; string state = 11; string processor_version = 12;
+  string processor_image_id = 13;
+  string source_type = 14; string original_filename = 15;
+  string format = 16; string format_version = 17;
+  string parent_url = 18; int32 crawl_depth = 19; string crawl_role = 20;
+ BrowserCapture browser_capture = 21;
+ google.protobuf.Timestamp deleted_at = 22;
+ string purge_state = 23; google.protobuf.Timestamp purged_at = 24;
+ repeated SourceGroup groups = 25; // Current catalog membership, not immutable file content.
+}
+// /content is DOM when this metadata is present; response bytes are separate.
+message BrowserCapture {
+ string response_sha256 = 1; int64 response_size_bytes = 2;
+ string response_content_type = 3; string response_artifact_uri = 4;
+ int32 network_requests = 5; int64 network_bytes = 6; int32 blocked_requests = 7;
+ string representation = 8;
+}
+message GetDocumentRequest { string document_id = 1; bool http_response = 2; }
+message ListCrawlsRequest { int32 limit = 1; string cursor = 2; string q = 3; }
+message ListCrawlsResponse { repeated CrawlRun items = 1; string next_cursor = 2; }
+message ListDocumentsRequest { int32 limit = 1; string cursor = 2; string q = 3; bool include_deleted = 4; string group_id = 5; }
+message ListDocumentsResponse { repeated SourceDocument items = 1; string next_cursor = 2; }
+message DocumentChunk { bytes data = 1; }
+
+// First message: metadata only. Remaining messages: nonempty chunks <=64 KiB.
+// The whole stream must match metadata size/hash before any write occurs.
+message UploadDocumentMetadata {
+  string name = 1; string filename = 2; string idempotency_key = 3;
+  int64 size_bytes = 4; string sha256 = 5;
+}
+message UploadDocumentRequest {
+  UploadDocumentMetadata metadata = 1;
+  bytes data = 2;
+}
+
+// Membership changes never modify source bytes or existing refinement runs.
+message SourceGroup {
+ string group_id = 1; string name = 2;
+ google.protobuf.Timestamp created_at = 3; google.protobuf.Timestamp updated_at = 4;
+ int64 version = 5;
+}
+message CreateGroupRequest { string name = 1; string idempotency_key = 2; }
+message RenameGroupRequest { string group_id = 1; string name = 2; int64 expected_version = 3; }
+message GetGroupRequest { string group_id = 1; }
+message ListGroupsRequest { int32 limit = 1; string cursor = 2; string q = 3; }
+message ListGroupsResponse { repeated SourceGroup items = 1; string next_cursor = 2; }
+message SetGroupDocumentRequest { string group_id = 1; string document_id = 2; bool present = 3; }
+message GroupMembership { string group_id = 1; string document_id = 2; bool present = 3; }
+
+message AssignDocumentGroupRequest { string document_id = 1; string name = 2; string idempotency_key = 3; }
+message DocumentGroupAssignment { string document_id = 1; SourceGroup group = 2; }

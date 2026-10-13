@@ -1,0 +1,20 @@
+# 앞으로의 작업 순서
+
+현재 첫 작업은 **문서 QA의 인용 누락 해결**이다. 첫 TXT의 실제 GPU 색인·검색 Tool·QA Agent smoke/발행·head revision1은 확인됐지만 PC 코드 질문과 prompt-only 초안의 답변 인용은 실패했다. 최신 근거와 한계는 [상태표](status.md), 실제 환경과 재개 위치는 [인수인계](HANDOFF_NEXT_SESSION.md)에 둔다.
+
+| 순서 | 작업 | 완료선 |
+|---|---|---|
+| 0 | F0a 첫 문서 답변/출처 | 코드·담당 부서·근거 없는 질문 확인, 인용 gate·기존 head/실패 이력 보존 |
+| 1 | F10a CI 기준선 | 실제 runner에서 CPU/계약/화면 필수 검사, 지원 Node의 실제 JS 실행 |
+| 2 | F0b 문서 QA 제품 인수 | 두 번째 문서 누적·추가/제외·중복/유실/재개·품질·업로드부터 한 화면 경로 |
+| 3 | F1 학습데이터 Data 이전 → F5 형식/RAFT | legacy 입력/키 보존, 불변 Data 버전·변환/생성·Training 호환 |
+| 4 | F2 Data 일정/Airflow → F6 HWPX/HWP | 하나의 일정 소유자·구간 key·backfill, parser별 canonical/원본 회귀 |
+| 5 | F7 상용 API/F3a LiteLLM → F4 기본 MCP | Model backend/capability·비용/credential 경계, 날짜/시간대 Tool |
+| 6 | F8 세션/기억 → F9 문서 Tool | turn·권한/자료 pin, 명시 기억, 서식 채우기·수정·원본 보존/렌더 |
+| 7 | F3b/c LightRAG/Neo4j 평가 → F10b CD | 고정 검색 비교/출처/비용, 선택 저장소, staging·image pin·readback·복귀 |
+
+10개 사용자 요구의 책임·의존성·첫 작은 단위·단계별 검증과 Codex 연속 작업 규칙은 [플랫폼 확장 계획](plans/platform-expansion-work-plan-20261012.md)에서 관리한다. 이 순서는 범위를 채택한 설계 결정이며 모든 infra를 바로 설치하거나 운영 서비스를 자동 재시작하는 지시가 아니다. 기존 n8n/Langfuse를 재사용하고 LightRAG/Neo4j는 평가 결과에 따라 채택/종료한다. CI는 초기부터 확대하고 운영 CD는 후속 인수한다.
+
+문서 QA의 상세 계약/Q05c-2·Q09~Q11은 [기존 계획](plans/document-qa-work-plan-20261002.md)을 유지한다. 실제 question-policy의 질문 가능과 답변/의미 품질 인수는 구분한다. static production_* flag나 과거 보류 실행권을 바꿔 완료로 대체하지 않는다.
+
+Ops 운영 백업/복원·추가 운영 자동화·실제 재부팅·Kubernetes는 보류이며 backup_ready=false다. DDP/원격 다중 노드·ZenML·범용 자율 그래프·외부 알림·전체 복구는 별도 검토 범위다. [백업 범위](operations/backup-restore.md), [설계 원칙](design-principles.md)을 따른다.

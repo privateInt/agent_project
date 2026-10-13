@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-22",
+  "scope": "Console interaction using shipped HTML IDs and DOM/fetch doubles; not browser rendering or live platform verification",
+  "node_suites": [
+    "console_ui_test.cjs",
+    "indexing_ui_test.cjs",
+    "indexing_context_ui_test.cjs",
+    "search_ui_test.cjs"
+  ],
+  "status": "passed",
+  "checks": [
+    "three_step_create_and_read_only_navigation",
+    "named_model_capability_filter",
+    "canonical_zero_uuid_excluded",
+    "selection_and_hnsw_preflight",
+    "new_index_then_build_without_activation",
+    "existing_index_build_only",
+    "saved_chunk_subset",
+    "exact_index_and_build_replay_after_reload",
+    "no_mutation_when_storage_fails",
+    "duplicate_click_and_frozen_body",
+    "active_version_outside_first_page",
+    "automatic_reranker_profile_selection",
+    "late_selection_error_ignored",
+    "existing_CAS_and_stale_management_actions",
+    "existing_search_pin_validation_and_no_fallback",
+    "typing_preserves_automatic_version_and_profile_reads",
+    "editing_query_during_preparation_prevents_inference"
+  ],
+  "gateway_go_tests": "added; server tests target pending",
+  "browser_layout_and_live_console": "pending",
+  "live_model_requests": 0,
+  "live_lifecycle_changes": 0
+}

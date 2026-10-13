@@ -1,0 +1,18 @@
+# ==============================================================================
+# Shared Infrastructure Network Initialization
+# ==============================================================================
+# 최초 실행시 공용 network(ops-infra)가 없다면 생성 필요
+#
+# docker network create ops-infra
+# ==============================================================================
+
+name: infrastructure
+
+include:
+  - ./postgresql/docker-compose.yml
+  - ./minio/docker-compose.yml
+  - ./redis/docker-compose.yml
+  - ./kafka/docker-compose.yml
+  - ./opensearch/docker-compose.yml
+  - ./mlflow/docker-compose.yml
+  - ./n8n/docker-compose.yml

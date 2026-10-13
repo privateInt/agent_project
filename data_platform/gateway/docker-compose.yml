@@ -1,0 +1,21 @@
+services:
+  data-gateway:
+    image: data-platform-gateway:dev
+    build:
+      context: .
+      target: gateway
+    pull_policy: never
+    container_name: data-gateway
+    restart: unless-stopped
+    networks:
+    - data-infra
+    environment:
+      OPERATION_GRPC_ADDRESS: data-operation:9000
+      COLLECTION_GRPC_ADDRESS: data-collection:9000
+      REFINEMENT_GRPC_ADDRESS: data-refinement:9000
+    ports:
+    - 127.0.0.1:${DATA_GATEWAY_PORT:-14000}:8000
+    depends_on:
+    - data-operation
+    - data-collection
+    - data-refinement

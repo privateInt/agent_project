@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-18",
+  "scope": "K03 source implementation; existing runtime reuse; no server access",
+  "local": {
+    "python_unittest": {
+      "passed": 34,
+      "suites": {
+        "test_playground.py": 27,
+        "test_model_management_ui.py": 5,
+        "test_live_embedding.py": 2
+      }
+    },
+    "python_syntax": "passed"
+  },
+  "not_run": [
+    "Go compilation/unit/integration tests: Go unavailable",
+    "Docker builds: Docker unavailable",
+    "Streamlit AppTest: Streamlit unavailable",
+    "official API against user deployment",
+    "new explicit-profile GPU deployment",
+    "K02 stored-result inspection against user server"
+  ],
+  "prior_user_evidence": {
+    "kind": "direct runtime HTTP embeddings, not new official API",
+    "deployment_id": "44247297-5184-4a36-9225-7791c80d3add",
+    "inputs": 2,
+    "dimension": 1024,
+    "all_finite": true,
+    "rounded_l2_norm": 1.0
+  },
+  "next": "docs/testing/embedding.md; verify new official API before K04 indexing",
+  "server_verification_20260918": {
+    "patch_files": 53,
+    "python_ui_tests": 78,
+    "go_build_gates": "passed",
+    "database_integration": "not evidenced",
+    "existing_runtime_reused": true,
+    "deployment_id": "44247297-5184-4a36-9225-7791c80d3add",
+    "space_id": "es_00cb26c80fff352a4cc494bef5b90d75a83584caf4d7e3b525f8516c2dcab76e",
+    "registered_model_type": "llm",
+    "capability": "embedding",
+    "query_count": 1,
+    "document_count": 2,
+    "dimension": 1024,
+    "finite": true,
+    "unit_norm": true,
+    "space_mismatch_rejected": true,
+    "overlong_rejected": true
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "date": "2026-09-24",
+  "stage": "A07 n8n server verification",
+  "result": "server_startup_and_isolated_checks_passed",
+  "source": "user pasted server log; n8n-permissions-20260924T092438-aeza5294",
+  "agent_build": "a07.1",
+  "schema_version": 5,
+  "patch_files_applied": 10,
+  "image": {
+    "name": "agent-platform-n8n-checks:a07.3",
+    "id": "sha256:bd4da8a142fdf10a842a87c7e008b9934d9c88a1012dc5d8372dbc9856e6ed27",
+    "build": "passed",
+    "non_root_readability_syntax_and_code_contract_gate": "passed"
+  },
+  "execution": {
+    "result": "passed",
+    "stage": "A07",
+    "scope": "real n8n 2.40.5 CLI / isolated SQLite / Agent HTTP fixture",
+    "checks": [
+      "lost POST response retries same request",
+      "bounded polling then answer and original sources",
+      "new execution replay preserves original caller_context",
+      "changed body with same key fails 409",
+      "no_evidence success",
+      "Agent failure stops n8n",
+      "Agent interrupted stops n8n"
+    ],
+    "effects": 4,
+    "posts": 9,
+    "reads": 6
+  },
+  "previous_server_confirmation": {
+    "source": "DB fix user log; n8n-dbfix-20260924T052059",
+    "postgres": "healthy",
+    "n8n": "healthy",
+    "original_volumes_and_keys": "preserved; lifecycle PASS"
+  },
+  "closed_issues": [
+    "flows database CREATE permission missing",
+    "check-image COPY chmod directory traversal permissions"
+  ],
+  "not_proven_by_this_check": [
+    "actual production Agent API invocation from n8n",
+    "real Model/Knowledge answer quality",
+    "n8n login and user workflow editing/saving",
+    "user AgentRun persistence across restart"
+  ],
+  "user_deferred": [
+    "page confirmation",
+    "real user question/answer acceptance"
+  ],
+  "next_functional_verification": "n8n to actual Agent API and configured Model/Knowledge flow; keep fixture and real service evidence separate",
+  "source_change": "documentation and compact validation records only; no rebuild/restart required"
+}

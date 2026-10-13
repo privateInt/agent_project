@@ -1,0 +1,11 @@
+**
+!agent_platform/
+!agent_platform/n8n/
+!agent_platform/n8n/ops/
+!agent_platform/n8n/ops/*.py
+!agent_platform/n8n/tests/
+!agent_platform/n8n/tests/operational_check.py
+!infra/
+!infra/n8n/
+!infra/n8n/ops/
+!infra/n8n/ops/api_access.py

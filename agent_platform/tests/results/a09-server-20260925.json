@@ -1,0 +1,674 @@
+{
+  "date": "2026-09-25",
+  "source": "user supplied server command output; not direct workspace observation",
+  "a09_agent_capture_compare": {
+    "result": "preserved",
+    "record_checks": "passed",
+    "changed_sections": [],
+    "catalog_run_count": 23,
+    "tracked_run_count": 3,
+    "active_agent_runs": 0,
+    "tool_queue_checked": false,
+    "baseline_file": "/home/shshin/workspace/agent_acceptance_a09.json",
+    "run_ids": [
+      "15981e7e-7ab3-41d6-bef8-ab2924cbe67e",
+      "8e1ed8cc-f4e7-41e8-97dd-adcb4b201c72",
+      "dd6fd5e7-8188-45e5-a2a1-7c44375bf043"
+    ]
+  },
+  "local_operational_session": {
+    "exists": false,
+    "settings_exists": false,
+    "request_exists": false,
+    "api_key_file_exists": true,
+    "absence_cause": "unknown",
+    "observation": "original workspace path; missing again after an earlier successful recovery; cause unknown"
+  },
+  "n8n_remote_get": {
+    "workflow_id": "HtgqKREU0RNPfSnB",
+    "workflow_active": true,
+    "executions": [
+      {
+        "id": "1",
+        "status": "error",
+        "agent_run_id": "15981e7e-7ab3-41d6-bef8-ab2924cbe67e",
+        "answer_output_present": false
+      }
+    ],
+    "more_executions_available": false
+  },
+  "pending": [
+    "user_page_acceptance_deferred",
+    "semantic_quality_deferred",
+    "long_term_session_persistence"
+  ],
+  "inference_executed": false,
+  "mvp_acceptance": "incomplete",
+  "latest_user_observation": {
+    "source": "user supplied output; no direct server access",
+    "session_dir": "/home/shshin/.local/state/agent-platform/n8n",
+    "restore": "passed",
+    "status": "read",
+    "long_term_session_persistence": "not_attested",
+    "workflow_active": true,
+    "workflow_link_enabled": true,
+    "n8n_execution_ids": [
+      "2"
+    ],
+    "agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+    "agent_run_id": "5ea4459c-597b-4616-92dc-73d0214c0e75",
+    "logical_request_id": "73ceff0f-1f03-4189-8d7f-945980594d9c",
+    "request_id": "e6805af0-b6f7-4913-9884-5e04e55aba25",
+    "tool_call_id": "2c5f0d25-acca-41bd-940c-46091d1a5b20",
+    "state": "failed",
+    "error": {
+      "code": "ANSWER_REFERENCE_INVALID",
+      "stage": "finalize"
+    },
+    "steps": {
+      "validate": "succeeded",
+      "search": "succeeded",
+      "context": "succeeded",
+      "generate": "succeeded",
+      "finalize": "failed"
+    },
+    "inference_executed": true,
+    "exact_reference_failure_reason": "unavailable; original generation not retained",
+    "second_run_executed": false,
+    "new_baseline_captured": false,
+    "new_baseline_compared": false
+  },
+  "reference_diagnostic_server_observation": {
+    "source": "user attachment 붙여넣은 텍스트 (1)(20260925-095252).txt",
+    "patch_files_applied": 17,
+    "host_tests_passed": 5,
+    "runtime_tests_target_build": "passed",
+    "runtime_image": "a09.1",
+    "runtime_healthy": true,
+    "runtime_image_sha256": "9c2c9f947746431eb33f8b999e2a99b6fb19f00b5ac68014fa469694d09bd018",
+    "agent_tool_idle_gate": "passed; runtime replacement followed in the supplied script",
+    "workflow_status": "active and link enabled; existing session readable",
+    "n8n_execution_ids": [
+      "3"
+    ],
+    "agent_run_id": "cd38113f-e733-4b43-8a45-89550c8ce395",
+    "logical_request_id": "c22382a3-03e1-4dcc-bace-3e37e19abf46",
+    "request_id": "bf4e22bd-a62e-4815-b583-ec297a67a008",
+    "tool_call_id": "4c1f108a-a613-44c0-8c90-93f5ceb3f11d",
+    "agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+    "state": "failed",
+    "error": {
+      "code": "ANSWER_REFERENCE_INVALID",
+      "stage": "finalize"
+    },
+    "reference_diagnostics": {
+      "schema": 1,
+      "scope": "reference_syntax_only",
+      "status": "invalid",
+      "finish_reason": "stop",
+      "issues": [
+        "MISSING_REFERENCE"
+      ],
+      "selected_source_count": 5,
+      "max_tokens": 512,
+      "recognized_count": 0,
+      "malformed_count": 0,
+      "out_of_range_count": 0,
+      "completion_tokens": 175,
+      "answer_bytes": 803
+    },
+    "diagnosis_inference_executed": false,
+    "trial_inference_executed": true,
+    "answer_delivery_verified": false
+  },
+  "citation_candidate_server_observation": {
+    "source": "user supplied command output; not direct server access",
+    "patch_files_applied": 14,
+    "python_tests_passed": 13,
+    "agent_version_id": "ca50bb1e-ebac-4992-bcd7-c8aa60becf09",
+    "agent_version_state": "draft",
+    "changed_definition_fields": [
+      "prompt"
+    ],
+    "source_agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+    "source_run_id": "cd38113f-e733-4b43-8a45-89550c8ce395",
+    "agent_run_id": "770adf0a-11b1-4d4b-8653-03cea8062bbe",
+    "request_id": "668ed1af-4e30-4c8b-88fa-5fbf0ed1482e",
+    "tool_call_id": "a697feed-4d16-4442-ae39-d10260bcb9ad",
+    "result": "passed",
+    "state": "succeeded",
+    "steps": {
+      "validate": "succeeded",
+      "search": "succeeded",
+      "context": "succeeded",
+      "generate": "succeeded",
+      "finalize": "succeeded"
+    },
+    "outcome": "answered",
+    "citation_count": 1,
+    "answer_truncated": false,
+    "same_selected_chunks_as_source": true,
+    "reference_diagnostics": {
+      "schema": 1,
+      "scope": "reference_syntax_only",
+      "status": "valid",
+      "finish_reason": "stop",
+      "issues": [],
+      "selected_source_count": 5,
+      "max_tokens": 512,
+      "recognized_count": 5,
+      "malformed_count": 0,
+      "out_of_range_count": 0,
+      "completion_tokens": 70,
+      "answer_bytes": 229
+    },
+    "test_execution_request_submitted": true,
+    "lookup_execution_request_submitted": false,
+    "lookup_same_ids_and_result": true,
+    "agent_published_automatically": false,
+    "workflow_changed": false,
+    "answer_delivery_verified": false,
+    "semantic_quality": "not_assessed"
+  },
+  "operational_citation_server_observation": {
+    "source": "user supplied server output 20260925-103618; not direct server access",
+    "recorded_at_local": "2026-09-25T19:36:30+09:00",
+    "patch_files_applied": 12,
+    "patch_backup": "citation-verified-20260925T103604-a2xp6eja",
+    "prepare": {
+      "result": "prepared",
+      "scope": "operational n8n",
+      "agent_version_id": "ca50bb1e-ebac-4992-bcd7-c8aa60becf09",
+      "workflow_id": "qQBWRAilHBw4R9PS",
+      "workflow_link_id": "6864057d-ec03-4b09-b548-abf4ea2a5628",
+      "edit_url": "http://127.0.0.1:16200/workflow/qQBWRAilHBw4R9PS",
+      "inference_executed": false,
+      "webhook_authenticated": true
+    },
+    "first_run": {
+      "scope": "operational n8n",
+      "workflow_id": "qQBWRAilHBw4R9PS",
+      "n8n_execution_ids": [
+        "4"
+      ],
+      "logical_request_id": "9824b982-e1db-405f-9a44-2a2fb73b1ce4",
+      "result": "passed",
+      "agent_run_id": "cd67d431-0eac-4a4f-bf36-8a9c2d8d4f64",
+      "request_id": "0706744d-ef96-4a44-8e46-0588853a66bc",
+      "tool_call_id": "3f68dab0-452e-4166-842e-0cd1099ec9bf",
+      "state": "succeeded",
+      "steps": [
+        {
+          "step": "validate",
+          "state": "succeeded"
+        },
+        {
+          "step": "search",
+          "state": "succeeded"
+        },
+        {
+          "step": "context",
+          "state": "succeeded"
+        },
+        {
+          "step": "generate",
+          "state": "succeeded"
+        },
+        {
+          "step": "finalize",
+          "state": "succeeded"
+        }
+      ],
+      "outcome": "answered",
+      "citation_count": 1,
+      "answer_truncated": false,
+      "warnings": [],
+      "semantic_quality": "not_assessed",
+      "delivery_verified": true,
+      "replay_verified": false
+    },
+    "same_request_replay": {
+      "scope": "operational n8n",
+      "workflow_id": "qQBWRAilHBw4R9PS",
+      "n8n_execution_ids": [
+        "5",
+        "4"
+      ],
+      "logical_request_id": "9824b982-e1db-405f-9a44-2a2fb73b1ce4",
+      "result": "passed",
+      "agent_run_id": "cd67d431-0eac-4a4f-bf36-8a9c2d8d4f64",
+      "request_id": "0706744d-ef96-4a44-8e46-0588853a66bc",
+      "tool_call_id": "3f68dab0-452e-4166-842e-0cd1099ec9bf",
+      "state": "succeeded",
+      "steps": [
+        {
+          "step": "validate",
+          "state": "succeeded"
+        },
+        {
+          "step": "search",
+          "state": "succeeded"
+        },
+        {
+          "step": "context",
+          "state": "succeeded"
+        },
+        {
+          "step": "generate",
+          "state": "succeeded"
+        },
+        {
+          "step": "finalize",
+          "state": "succeeded"
+        }
+      ],
+      "outcome": "answered",
+      "citation_count": 1,
+      "answer_truncated": false,
+      "warnings": [],
+      "semantic_quality": "not_assessed",
+      "delivery_verified": true,
+      "replay_verified": true
+    },
+    "capture": {
+      "stage": "A09",
+      "result": "captured",
+      "record_checks": "passed",
+      "mvp_acceptance": "incomplete",
+      "inference_executed": false,
+      "remote_mutations": false,
+      "active_agent_runs": 0,
+      "tool_queue_checked": false,
+      "catalog_run_count": 27,
+      "tracked_run_count": 3,
+      "runs": [
+        {
+          "agent_run_id": "8e1ed8cc-f4e7-41e8-97dd-adcb4b201c72",
+          "agent_version_id": "a0fbe8ef-e58f-4180-a631-94299dbf80fc",
+          "request_id": "ebcc4c31-d5c1-410d-a125-e6d3b0c04ef6",
+          "state": "interrupted",
+          "steps": [
+            {
+              "step": "validate",
+              "state": "skipped"
+            },
+            {
+              "step": "search",
+              "state": "skipped"
+            },
+            {
+              "step": "context",
+              "state": "skipped"
+            },
+            {
+              "step": "generate",
+              "state": "skipped"
+            },
+            {
+              "step": "finalize",
+              "state": "skipped"
+            }
+          ],
+          "error": {
+            "code": "AGENT_EXECUTION_INTERRUPTED",
+            "stage": "execute"
+          }
+        },
+        {
+          "agent_run_id": "cd38113f-e733-4b43-8a45-89550c8ce395",
+          "agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+          "request_id": "bf4e22bd-a62e-4815-b583-ec297a67a008",
+          "state": "failed",
+          "steps": [
+            {
+              "step": "validate",
+              "state": "succeeded"
+            },
+            {
+              "step": "search",
+              "state": "succeeded"
+            },
+            {
+              "step": "context",
+              "state": "succeeded"
+            },
+            {
+              "step": "generate",
+              "state": "succeeded"
+            },
+            {
+              "step": "finalize",
+              "state": "failed"
+            }
+          ],
+          "error": {
+            "code": "ANSWER_REFERENCE_INVALID",
+            "stage": "finalize"
+          },
+          "tool_call_id": "4c1f108a-a613-44c0-8c90-93f5ceb3f11d",
+          "search_state": "succeeded"
+        },
+        {
+          "agent_run_id": "cd67d431-0eac-4a4f-bf36-8a9c2d8d4f64",
+          "agent_version_id": "ca50bb1e-ebac-4992-bcd7-c8aa60becf09",
+          "request_id": "0706744d-ef96-4a44-8e46-0588853a66bc",
+          "state": "succeeded",
+          "steps": [
+            {
+              "step": "validate",
+              "state": "succeeded"
+            },
+            {
+              "step": "search",
+              "state": "succeeded"
+            },
+            {
+              "step": "context",
+              "state": "succeeded"
+            },
+            {
+              "step": "generate",
+              "state": "succeeded"
+            },
+            {
+              "step": "finalize",
+              "state": "succeeded"
+            }
+          ],
+          "tool_call_id": "3f68dab0-452e-4166-842e-0cd1099ec9bf",
+          "search_state": "succeeded",
+          "outcome": "answered",
+          "citation_count": 1,
+          "answer_truncated": false
+        }
+      ],
+      "n8n": {
+        "status": "checked",
+        "workflow_id": "qQBWRAilHBw4R9PS",
+        "workflow_link_id": "6864057d-ec03-4b09-b548-abf4ea2a5628",
+        "workflow_active": true,
+        "published_version_matches": true,
+        "execution_states": [
+          {
+            "id": "4",
+            "state": "success"
+          },
+          {
+            "id": "5",
+            "state": "success"
+          }
+        ],
+        "delivery_verified": true,
+        "replay_verified": true,
+        "pending_executions": 0,
+        "agent_run_id": "cd67d431-0eac-4a4f-bf36-8a9c2d8d4f64",
+        "agent_state": "succeeded"
+      },
+      "pending": [
+        "user_page_acceptance_deferred",
+        "semantic_quality_deferred",
+        "full_restart_acceptance_not_attested"
+      ],
+      "baseline_file": "/home/shshin/.local/state/agent-platform/acceptance-a09-citation-20260925.json"
+    },
+    "compare": {
+      "stage": "A09",
+      "result": "preserved",
+      "record_checks": "passed",
+      "mvp_acceptance": "incomplete",
+      "inference_executed": false,
+      "remote_mutations": false,
+      "active_agent_runs": 0,
+      "tool_queue_checked": false,
+      "catalog_run_count": 27,
+      "tracked_run_count": 3,
+      "runs": [
+        {
+          "agent_run_id": "8e1ed8cc-f4e7-41e8-97dd-adcb4b201c72",
+          "agent_version_id": "a0fbe8ef-e58f-4180-a631-94299dbf80fc",
+          "request_id": "ebcc4c31-d5c1-410d-a125-e6d3b0c04ef6",
+          "state": "interrupted",
+          "steps": [
+            {
+              "step": "validate",
+              "state": "skipped"
+            },
+            {
+              "step": "search",
+              "state": "skipped"
+            },
+            {
+              "step": "context",
+              "state": "skipped"
+            },
+            {
+              "step": "generate",
+              "state": "skipped"
+            },
+            {
+              "step": "finalize",
+              "state": "skipped"
+            }
+          ],
+          "error": {
+            "code": "AGENT_EXECUTION_INTERRUPTED",
+            "stage": "execute"
+          }
+        },
+        {
+          "agent_run_id": "cd38113f-e733-4b43-8a45-89550c8ce395",
+          "agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+          "request_id": "bf4e22bd-a62e-4815-b583-ec297a67a008",
+          "state": "failed",
+          "steps": [
+            {
+              "step": "validate",
+              "state": "succeeded"
+            },
+            {
+              "step": "search",
+              "state": "succeeded"
+            },
+            {
+              "step": "context",
+              "state": "succeeded"
+            },
+            {
+              "step": "generate",
+              "state": "succeeded"
+            },
+            {
+              "step": "finalize",
+              "state": "failed"
+            }
+          ],
+          "error": {
+            "code": "ANSWER_REFERENCE_INVALID",
+            "stage": "finalize"
+          },
+          "tool_call_id": "4c1f108a-a613-44c0-8c90-93f5ceb3f11d",
+          "search_state": "succeeded"
+        },
+        {
+          "agent_run_id": "cd67d431-0eac-4a4f-bf36-8a9c2d8d4f64",
+          "agent_version_id": "ca50bb1e-ebac-4992-bcd7-c8aa60becf09",
+          "request_id": "0706744d-ef96-4a44-8e46-0588853a66bc",
+          "state": "succeeded",
+          "steps": [
+            {
+              "step": "validate",
+              "state": "succeeded"
+            },
+            {
+              "step": "search",
+              "state": "succeeded"
+            },
+            {
+              "step": "context",
+              "state": "succeeded"
+            },
+            {
+              "step": "generate",
+              "state": "succeeded"
+            },
+            {
+              "step": "finalize",
+              "state": "succeeded"
+            }
+          ],
+          "tool_call_id": "3f68dab0-452e-4166-842e-0cd1099ec9bf",
+          "search_state": "succeeded",
+          "outcome": "answered",
+          "citation_count": 1,
+          "answer_truncated": false
+        }
+      ],
+      "n8n": {
+        "status": "checked",
+        "workflow_id": "qQBWRAilHBw4R9PS",
+        "workflow_link_id": "6864057d-ec03-4b09-b548-abf4ea2a5628",
+        "workflow_active": true,
+        "published_version_matches": true,
+        "execution_states": [
+          {
+            "id": "4",
+            "state": "success"
+          },
+          {
+            "id": "5",
+            "state": "success"
+          }
+        ],
+        "delivery_verified": true,
+        "replay_verified": true,
+        "pending_executions": 0,
+        "agent_run_id": "cd67d431-0eac-4a4f-bf36-8a9c2d8d4f64",
+        "agent_state": "succeeded"
+      },
+      "pending": [
+        "user_page_acceptance_deferred",
+        "semantic_quality_deferred",
+        "full_restart_acceptance_not_attested"
+      ],
+      "changed_sections": [],
+      "preservation": "passed",
+      "baseline_file": "/home/shshin/.local/state/agent-platform/acceptance-a09-citation-20260925.json"
+    },
+    "observed_quality_issue": {
+      "code": "QUESTION_ECHO_REPETITION",
+      "repeated_line_count": 5,
+      "reference_marker": "S1",
+      "substantive_explanation_present": false,
+      "automated_semantic_assessment": "not_assessed",
+      "semantic_acceptance": "not_passed",
+      "improvement": "deferred_by_user"
+    },
+    "inference_scope": "first operational run; second run reused the same AgentRun; capture/compare read-only",
+    "restart_performed_in_this_log": false,
+    "old_workflow_cutover_or_disable_verified": false
+  },
+  "latest_observation_key": "restart_server_observation",
+  "observation_scope_note": "Older objects and flags describe their original observations. Latest restart acceptance is manually attested from user stop/restart/Healthy output and unchanged baseline; the GET-only CLI retains its original not_attested marker.",
+  "restart_server_observation": {
+    "source": "user supplied simsys4090 output 20260925-104916; not direct server access",
+    "result": "passed",
+    "scope": "restart of five Agent containers and two infra n8n containers; preservation of baseline-pinned records",
+    "pre_restart_idle_check": {
+      "source": "preceding user message",
+      "result": "idle_at_check",
+      "active_agent_runs": 0,
+      "active_tool_calls": 0,
+      "n8n_accessible_workflows": {
+        "new": 0,
+        "running": 0,
+        "waiting": 0
+      },
+      "inference_executed": false,
+      "restart_executed": false
+    },
+    "restart_log_started_at": "2026-09-25T19:48:01+09:00",
+    "restart_log_ready_at": "2026-09-25T19:48:41+09:00",
+    "timing_scope": "command log markers, not a measured downtime SLA",
+    "healthy_containers": [
+      "agent-platform-agent-postgres-1",
+      "agent-platform-agent-runtime-1",
+      "agent-platform-agent-service-1",
+      "agent-platform-agent-mcp-1",
+      "agent-platform-agent-gateway-1",
+      "infrastructure-flows-postgres-1",
+      "infrastructure-n8n-1"
+    ],
+    "container_recreation_requested": false,
+    "image_build_or_pull_requested": false,
+    "before_compare_result": "preserved",
+    "after_compare_result": "preserved",
+    "changed_sections": [],
+    "before_after_report_equal": true,
+    "record_checks": "passed",
+    "catalog_run_count": 27,
+    "tracked_run_count": 3,
+    "tracked_runs": [
+      {
+        "agent_run_id": "8e1ed8cc-f4e7-41e8-97dd-adcb4b201c72",
+        "state": "interrupted",
+        "request_id": "ebcc4c31-d5c1-410d-a125-e6d3b0c04ef6"
+      },
+      {
+        "agent_run_id": "cd38113f-e733-4b43-8a45-89550c8ce395",
+        "state": "failed",
+        "request_id": "bf4e22bd-a62e-4815-b583-ec297a67a008"
+      },
+      {
+        "agent_run_id": "cd67d431-0eac-4a4f-bf36-8a9c2d8d4f64",
+        "state": "succeeded",
+        "request_id": "0706744d-ef96-4a44-8e46-0588853a66bc"
+      }
+    ],
+    "flow_status": {
+      "result": "read",
+      "workflow_id": "qQBWRAilHBw4R9PS",
+      "active": true,
+      "published_version_id": "fc55358d-b40a-4ffd-a4a4-a0a8068e7771",
+      "link_enabled": true,
+      "agent_version_id": "ca50bb1e-ebac-4992-bcd7-c8aa60becf09",
+      "workflow_link_id": "6864057d-ec03-4b09-b548-abf4ea2a5628",
+      "edit_url": "http://127.0.0.1:16200/workflow/qQBWRAilHBw4R9PS",
+      "inference_executed": false
+    },
+    "lookup_result": "passed",
+    "agent_run_id": "cd67d431-0eac-4a4f-bf36-8a9c2d8d4f64",
+    "request_id": "0706744d-ef96-4a44-8e46-0588853a66bc",
+    "tool_call_id": "3f68dab0-452e-4166-842e-0cd1099ec9bf",
+    "logical_request_id": "9824b982-e1db-405f-9a44-2a2fb73b1ce4",
+    "n8n_execution_ids": [
+      "5",
+      "4"
+    ],
+    "delivery_verified": true,
+    "replay_verified": true,
+    "published_version_matches": true,
+    "lookup_matches_pre_restart_result": true,
+    "baseline_file": "/home/shshin/.local/state/agent-platform/acceptance-a09-citation-20260925.json",
+    "inference_executed_by_verification": false,
+    "cli_reported_pending": [
+      "user_page_acceptance_deferred",
+      "semantic_quality_deferred",
+      "full_restart_acceptance_not_attested"
+    ],
+    "cli_tool_queue_checked": false,
+    "manual_restart_attestation": "passed from actual stop/restart/start Healthy logs and unchanged baseline; GET-only CLI does not import this evidence",
+    "mvp_acceptance": "incomplete",
+    "current_acceptance_pending": [
+      "user_page_acceptance_deferred",
+      "semantic_quality_deferred"
+    ],
+    "quality_observation": "previously observed question echo repeated five times remains unchanged; semantic quality not accepted",
+    "not_covered": [
+      "Model/Data/Knowledge/shared-infra restart",
+      "all 27 run records compared",
+      "new post-restart inference",
+      "backup restore or host reboot",
+      "long-term session retention"
+    ]
+  }
+}

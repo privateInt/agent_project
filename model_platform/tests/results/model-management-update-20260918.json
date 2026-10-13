@@ -1,0 +1,74 @@
+{
+  "date": "2026-09-18",
+  "change": "model management labels, compact import progress, stopped deployment deletion",
+  "local_python": {
+    "passed": 30,
+    "skipped_streamlit": 42,
+    "failures": 0,
+    "errors": 0
+  },
+  "syntax": "Python AST passed",
+  "not_run": [
+    "actual browser import progress timer",
+    "separate Compose/Bake acceptance checker",
+    "independent filesystem verification of deployment private cache removal"
+  ],
+  "server_applied": true,
+  "server_evidence": {
+    "source": "user log 붙여넣은 텍스트 (1)(20260918-073440).txt",
+    "patch_files_applied": 41,
+    "go_packages_passed": [
+      "model-platform/management/app",
+      "model-platform/deployment/app",
+      "model-platform/deployment/runtime",
+      "model-platform/gateway/app",
+      "model-platform/tests/creation"
+    ],
+    "python_suites_passed": [
+      25,
+      5,
+      42
+    ],
+    "services_rebuilt_and_restarted": [
+      "management",
+      "deployment",
+      "gateway",
+      "playground"
+    ],
+    "reported_failure": "stopped deployment delete returned Unavailable",
+    "root_cause": "main.go passed Prepare-only FetchFunc, so cache Purge type assertion failed before runtime removal",
+    "source_sha256": "ca61c3b14b0527013503ba022e683fc76deb2a1d5b37fdfa2fa19c9a8adb2d40"
+  },
+  "hotfix": {
+    "change": "production servingFetcher retains Prepare and Purge; local purge independent of MinIO",
+    "new_go_regression_tests": 2,
+    "docker_build_gate": "go test -count=1 ./deployment ./deployment/runtime",
+    "local_go_docker": "unavailable; not executed",
+    "functional_confirmation": {
+      "source": "user conversation, 2026-09-18",
+      "statement": "응 이제 삭제 된다",
+      "result": "deployment deletion succeeded according to user",
+      "new_test_log": "not supplied; do not infer individual test passes"
+    },
+    "server_application_basis": "user-reported functional success after hotfix instructions; separate build log not supplied",
+    "server_applied": true
+  },
+  "gc_followup": {
+    "source": "붙여넣은 텍스트 (1)(20260918-074449).txt",
+    "source_sha256": "2c0456a789141e6f217f85ed30e89440e9e0d857dd60d2c553950546a839be4a",
+    "mode": "apply",
+    "success_retention": "1h",
+    "failure_retention": "168h",
+    "observed_cycles": 32,
+    "cycle_errors": 0,
+    "failed_jobs_archived_retained": [
+      "d37b3689e1ac",
+      "0318e857edde"
+    ],
+    "successful_jobs_removed": [
+      "47ec8fe134d3",
+      "5946ebbb3f93"
+    ],
+    "policy_change": false
+  }
+}

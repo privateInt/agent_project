@@ -1,0 +1,131 @@
+{
+  "sha": "3b3d4cdf88d6928b0acdc75181b13206ea67c4a3",
+  "siblings": [
+    {
+      "rfilename": ".eval_results/olmocrbench.yaml"
+    },
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "assets/corporate.png"
+    },
+    {
+      "rfilename": "assets/corporate_layout.png"
+    },
+    {
+      "rfilename": "assets/corporate_reading.png"
+    },
+    {
+      "rfilename": "assets/corporate_tablerec.png"
+    },
+    {
+      "rfilename": "assets/corporate_text.png"
+    },
+    {
+      "rfilename": "assets/excerpt.png"
+    },
+    {
+      "rfilename": "assets/excerpt_layout.png"
+    },
+    {
+      "rfilename": "assets/excerpt_text.png"
+    },
+    {
+      "rfilename": "assets/form.png"
+    },
+    {
+      "rfilename": "assets/form_layout.png"
+    },
+    {
+      "rfilename": "assets/form_reading.png"
+    },
+    {
+      "rfilename": "assets/form_tablerec.png"
+    },
+    {
+      "rfilename": "assets/form_text.png"
+    },
+    {
+      "rfilename": "assets/handwritten.png"
+    },
+    {
+      "rfilename": "assets/handwritten_layout.png"
+    },
+    {
+      "rfilename": "assets/handwritten_reading.png"
+    },
+    {
+      "rfilename": "assets/handwritten_tablerec.png"
+    },
+    {
+      "rfilename": "assets/handwritten_text.png"
+    },
+    {
+      "rfilename": "assets/newspaper.png"
+    },
+    {
+      "rfilename": "assets/newspaper_layout.png"
+    },
+    {
+      "rfilename": "assets/newspaper_reading.png"
+    },
+    {
+      "rfilename": "assets/newspaper_text.png"
+    },
+    {
+      "rfilename": "assets/olmocr_size_chart.png"
+    },
+    {
+      "rfilename": "assets/scanned_tablerec.png"
+    },
+    {
+      "rfilename": "assets/textbook.png"
+    },
+    {
+      "rfilename": "assets/textbook_layout.png"
+    },
+    {
+      "rfilename": "assets/textbook_reading.png"
+    },
+    {
+      "rfilename": "assets/textbook_text.png"
+    },
+    {
+      "rfilename": "chat_template.jinja"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "datalab-logo.png"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "preprocessor_config.json"
+    },
+    {
+      "rfilename": "processor_config.json"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    },
+    {
+      "rfilename": "video_preprocessor_config.json"
+    }
+  ]
+}

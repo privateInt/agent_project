@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "suite_id": "korean-layout-v1",
+  "rubric_version": "ocr-quality-v1",
+  "description": "Authored synthetic Korean fixtures; not a production-document benchmark.",
+  "font_sha256": "76f45ef4a6bcff344c837c95a7dcc26e017e38b5846d5ae0cdcb5b86be2e2d31",
+  "generation_versions": {
+    "reportlab": "4.4.9",
+    "pypdf": "6.10.0",
+    "pypdfium2": "5.3.0",
+    "pillow": "12.3.0"
+  },
+  "cases": [
+    {
+      "id": "korean-body",
+      "title": "한국어 본문·숫자",
+      "file": "korean-body.pdf",
+      "sha256": "11b8b43b94025c5d51a3a8b5b7d29da293871ad298f6efce033088bb5e026244",
+      "pages": [
+        {
+          "number": 1,
+          "mode": "ocr",
+          "width": 595.28,
+          "height": 841.89,
+          "text": "문서 처리 안내\n접수번호: DOC-2026-0915\n담당 부서: 데이터운영팀\n처리 기한: 2026년 9월 30일\n결제 금액: 128,400원 (부가세 포함)\n문의 시간은 평일 오전 9시부터 오후 6시까지입니다.\n원본 문서의 이름과 접수번호를 함께 확인하세요.",
+          "anchors": [
+            {
+              "text": "문서 처리 안내",
+              "bbox": [
+                44,
+                46,
+                552,
+                86
+              ]
+            },
+            {
+              "text": "접수번호: DOC-2026-0915",
+              "bbox": [
+                44,
+                126,
+                552,
+                296
+              ]
+            },
+            {
+              "text": "DOC-2026-0915",
+              "bbox": [
+                44,
+                126,
+                552,
+                296
+              ]
+            },
+            {
+              "text": "128,400원",
+              "bbox": [
+                44,
+                126,
+                552,
+                296
+              ]
+            },
+            {
+              "text": "2026년 9월 30일",
+              "bbox": [
+                44,
+                126,
+                552,
+                296
+              ]
+            }
+          ],
+          "reading_order": [
+            "문서 처리 안내",
+            "접수번호:",
+            "담당 부서:",
+            "처리 기한:",
+            "결제 금액:",
+            "문의 시간은",
+            "원본 문서의"
+          ],
+          "tables": []
+        }
+      ]
+    },
+    {
+      "id": "korean-table",
+      "title": "병합 표·셀 값",
+      "file": "korean-table.pdf",
+      "sha256": "81057b69bf71c7bfcd05c2071a7d29b8e828c9e1666aac9cba72af10f10a47b5",
+      "pages": [
+        {
+          "number": 1,
+          "mode": "ocr",
+          "width": 595.28,
+          "height": 841.89,
+          "text": "물품 신청 내역\n납품 장소: 본관 2층 자료실\n요청 부서: 데이터운영팀",
+          "anchors": [
+            {
+              "text": "물품 신청 내역",
+              "bbox": [
+                44,
+                46,
+                552,
+                86
+              ]
+            },
+            {
+              "text": "납품 장소: 본관 2층 자료실",
+              "bbox": [
+                44,
+                396,
+                552,
+                458
+              ]
+            },
+            {
+              "text": "51,000원",
+              "bbox": [
+                48,
+                130,
+                548,
+                350
+              ]
+            }
+          ],
+          "reading_order": [
+            "물품 신청 내역",
+            "납품 장소:",
+            "요청 부서:"
+          ],
+          "tables": [
+            {
+              "bbox": [
+                48,
+                130,
+                548,
+                350
+              ],
+              "cells": [
+                {
+                  "row": 0,
+                  "column": 0,
+                  "row_span": 1,
+                  "column_span": 4,
+                  "text": "2026년 9월 구매 목록"
+                },
+                {
+                  "row": 1,
+                  "column": 0,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "분류"
+                },
+                {
+                  "row": 1,
+                  "column": 1,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "품목"
+                },
+                {
+                  "row": 1,
+                  "column": 2,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "수량"
+                },
+                {
+                  "row": 1,
+                  "column": 3,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "금액"
+                },
+                {
+                  "row": 2,
+                  "column": 0,
+                  "row_span": 2,
+                  "column_span": 1,
+                  "text": "사무용품"
+                },
+                {
+                  "row": 2,
+                  "column": 1,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "노트"
+                },
+                {
+                  "row": 2,
+                  "column": 2,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "12"
+                },
+                {
+                  "row": 2,
+                  "column": 3,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "36,000원"
+                },
+                {
+                  "row": 3,
+                  "column": 1,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "연필"
+                },
+                {
+                  "row": 3,
+                  "column": 2,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "30"
+                },
+                {
+                  "row": 3,
+                  "column": 3,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "15,000원"
+                },
+                {
+                  "row": 4,
+                  "column": 0,
+                  "row_span": 1,
+                  "column_span": 3,
+                  "text": "합계"
+                },
+                {
+                  "row": 4,
+                  "column": 3,
+                  "row_span": 1,
+                  "column_span": 1,
+                  "text": "51,000원"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "two-columns",
+      "title": "2단 읽기 순서",
+      "file": "two-columns.pdf",
+      "sha256": "4e55392f0aac2d0e5296925a55e1ceafe981ce8373c6c1ce77887ac5089f4b53",
+      "pages": [
+        {
+          "number": 1,
+          "mode": "ocr",
+          "width": 595.28,
+          "height": 841.89,
+          "text": "자료 검토 절차\n1. 수집 단계\n가. 원본 파일을 등록합니다.\n나. 문서 형식을 확인합니다.\n다. 원본 해시를 기록합니다.\n2. 정제 단계\n라. 필요한 페이지를 판독합니다.\n마. 표의 셀 값을 확인합니다.\n바. 결과와 근거를 보관합니다.",
+          "anchors": [
+            {
+              "text": "자료 검토 절차",
+              "bbox": [
+                44,
+                46,
+                552,
+                86
+              ]
+            },
+            {
+              "text": "1. 수집 단계",
+              "bbox": [
+                44,
+                126,
+                277,
+                278
+              ]
+            },
+            {
+              "text": "2. 정제 단계",
+              "bbox": [
+                316,
+                126,
+                552,
+                278
+              ]
+            }
+          ],
+          "reading_order": [
+            "자료 검토 절차",
+            "1. 수집 단계",
+            "가. 원본 파일",
+            "나. 문서 형식",
+            "다. 원본 해시",
+            "2. 정제 단계",
+            "라. 필요한 페이지",
+            "마. 표의 셀",
+            "바. 결과와 근거"
+          ],
+          "tables": []
+        }
+      ]
+    },
+    {
+      "id": "mixed-pages",
+      "title": "텍스트·스캔 페이지 선택",
+      "file": "mixed-pages.pdf",
+      "sha256": "cc0a807619c5079394267ea4ec1736c1591bdde9dca25a3d5ff88e449c3273d3",
+      "pages": [
+        {
+          "number": 1,
+          "mode": "native",
+          "width": 595.28,
+          "height": 841.89,
+          "text": "혼합 문서 - 텍스트 페이지\n문서번호: MIX-2026-01\n이 페이지에는 검색 가능한 텍스트가 있습니다.\n원본 텍스트를 보존하고 다음 스캔 페이지만 판독합니다.",
+          "anchors": [
+            {
+              "text": "혼합 문서 - 텍스트 페이지",
+              "bbox": [
+                44,
+                46,
+                552,
+                86
+              ]
+            },
+            {
+              "text": "문서번호: MIX-2026-01",
+              "bbox": [
+                44,
+                126,
+                552,
+                215
+              ]
+            }
+          ],
+          "reading_order": [
+            "혼합 문서 - 텍스트 페이지",
+            "문서번호:",
+            "이 페이지에는",
+            "원본 텍스트를"
+          ],
+          "tables": []
+        },
+        {
+          "number": 2,
+          "mode": "ocr",
+          "width": 595.28,
+          "height": 841.89,
+          "text": "혼합 문서 - 스캔 페이지\n문서번호: MIX-2026-02\n검토 항목: 한글 문장과 숫자\n보관 수량: 247개\n최종 확인일: 2026년 10월 5일",
+          "anchors": [
+            {
+              "text": "혼합 문서 - 스캔 페이지",
+              "bbox": [
+                44,
+                46,
+                552,
+                86
+              ]
+            },
+            {
+              "text": "문서번호: MIX-2026-02",
+              "bbox": [
+                44,
+                126,
+                552,
+                242
+              ]
+            },
+            {
+              "text": "MIX-2026-02",
+              "bbox": [
+                44,
+                126,
+                552,
+                242
+              ]
+            },
+            {
+              "text": "247개",
+              "bbox": [
+                44,
+                126,
+                552,
+                242
+              ]
+            },
+            {
+              "text": "2026년 10월 5일",
+              "bbox": [
+                44,
+                126,
+                552,
+                242
+              ]
+            }
+          ],
+          "reading_order": [
+            "혼합 문서 - 스캔 페이지",
+            "문서번호:",
+            "검토 항목:",
+            "보관 수량:",
+            "최종 확인일:"
+          ],
+          "tables": []
+        }
+      ]
+    }
+  ]
+}

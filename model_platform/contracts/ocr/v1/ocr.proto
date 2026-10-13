@@ -1,0 +1,18 @@
+syntax = "proto3";
+package model.ocr.v1;
+option go_package = "model-platform/gen/ocr/v1;ocrv1";
+// Read-only identity discovery. No inference or model lifecycle mutation.
+service OCRDeploymentService {
+  rpc ResolveDeployment(ResolveDeploymentRequest) returns (DeploymentIdentity);
+}
+message ResolveDeploymentRequest { string deployment_id = 1; }
+message DeploymentIdentity {
+  string deployment_id = 1;
+  string model_version_id = 2;
+  string runtime_image_id = 3;
+  string runtime_container_id = 4;
+  string internal_endpoint = 5;
+  string served_model_name = 6;
+  string profile = 7;
+  string source_manifest_sha256 = 8;
+}

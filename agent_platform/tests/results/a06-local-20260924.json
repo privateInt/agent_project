@@ -1,0 +1,101 @@
+{
+  "stage": "A06",
+  "build": "a06.1",
+  "schema_version": 4,
+  "date": "2026-09-24",
+  "result": "local_checks_passed_server_acceptance_pending",
+  "scope": "Agent Platform only; Model/Data/Knowledge execution code unchanged",
+  "checks": {
+    "go": "all packages build/unit pass; DB/runtime cases skipped without explicit environment",
+    "python_runtime": {
+      "passed": 42,
+      "new_agent_cases": 12,
+      "real_langgraph": "1.2.12"
+    },
+    "python_ops": {
+      "passed": 15
+    },
+    "existing_ui_dom": {
+      "console": 27,
+      "direct": 21,
+      "knowledge": 11
+    },
+    "sql_wire": {
+      "engine": "PGlite PostgreSQL 18.3 WASM",
+      "transport": "actual Go/Python gRPC; HTTP fixtures for Model/Knowledge",
+      "passed": [
+        "ToolsDatabase",
+        "OpenAPIManagementAndLeases",
+        "KnowledgeDatabase",
+        "AgentEndToEnd",
+        "KnowledgeEndToEnd",
+        "OpenAPIEndToEnd",
+        "ToolsEndToEnd"
+      ],
+      "skipped": [
+        "DatabaseFoundation native identity/permissions"
+      ]
+    },
+    "chromium": {
+      "version": "153.0.8010.0",
+      "viewports": [
+        "desktop",
+        "390px mobile"
+      ],
+      "passed": [
+        "lost version response reuses one draft version",
+        "lost run response reuses AgentRun without extra chat",
+        "answer/citations/source page/5 steps",
+        "publish then ordinary question",
+        "reload/reauth/persisted history lookup",
+        "no JS errors/overflow/token storage"
+      ],
+      "model_calls_for_two_questions": 2
+    },
+    "execution_contract": [
+      "same-key replay",
+      "same-key conflict",
+      "pinned connection drift",
+      "empty search no chat",
+      "invalid citation fail",
+      "model identity mismatch no chat",
+      "search failure no chat",
+      "Model 400 no retry",
+      "lease heartbeat/fencing",
+      "expired running interrupted/no replay",
+      "expired accepted timeout",
+      "idempotent final report",
+      "disabled Agent rejects new but replays old key"
+    ],
+    "smoke_cli": "same state file invoked twice against fixture; one additional model call; REST replay and child/step persistence checked"
+  },
+  "failures_and_fixes": [
+    {
+      "failure": "full SQL suite ToolsEndToEnd cleanup context deadline after canceled worker",
+      "fix": "bounded 3s transaction rollback with cancellation-independent context",
+      "verification": "same full internal/store + service/app suite passed"
+    },
+    {
+      "failure": "browser save button stayed disabled after model selection",
+      "fix": "onchange updates controls",
+      "verification": "real Chromium full create/test/publish/run passed"
+    },
+    {
+      "failure": "uncertain save/question responses required recovery controls",
+      "fix": "preserve mutation key/resource and expose same-request recovery",
+      "verification": "real Chromium fetch-then-abort recovery produced no duplicate version/model call"
+    }
+  ],
+  "server_acceptance": {
+    "status": "not_run",
+    "pending": [
+      "Docker image build",
+      "native PostgreSQL16 migration/permissions",
+      "real existing Knowledge + ready GPU LLM answer/citation quality",
+      "UI publish/run",
+      "completed AgentRun/steps/ToolCall/request ID after restart"
+    ]
+  },
+  "prior_evidence": "A05 user UI reported success and 5 results; original question/selected knowledge not supplied; A04/A05 full acceptance not inferred",
+  "artifacts": "compact JSON only; no full logs/screenshots/large outputs in source"
+}

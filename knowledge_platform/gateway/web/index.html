@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>지식 관리 · Knowledge Platform</title><link rel="stylesheet" href="/style.css?v=closeout-20260922"></head>
+<body><main>
+<header><div><p class="eyebrow">KNOWLEDGE PLATFORM</p><h1>지식 관리</h1><p>정리된 자료를 검색 가능한 지식으로 만들고, 필요한 내용을 찾아보세요.</p></div><span class="platformBadge">자료 · 모델 연결</span></header>
+<nav class="tabs" aria-label="지식 작업"><button id="tabList" aria-current="page">지식 목록</button><button id="tabCreate">지식 만들기</button><button id="tabSearch">검색</button></nav>
+<div id="message" role="status" aria-live="polite"></div>
+<div id="recovery" class="notice" hidden><strong>접수 확인이 필요한 작업이 있습니다.</strong><p>아래 버튼으로 기존 요청의 처리 결과를 확인하세요.</p><button id="flowRetry" hidden>지식 만들기 이어서 확인</button><button id="indexRetry" hidden>관리 작업 이어서 확인</button><button id="retry" hidden>미리보기 이어서 확인</button></div>
+<section id="listPanel" data-feedback="listStatus">
+<div class="sectionTitle"><div><h2>지식 목록</h2><p class="hint">사용할 지식을 선택해 검색하거나, 자료를 바꾸어 새 버전을 만드세요.</p></div><button id="newKnowledge" class="primary">+ 지식 만들기</button></div>
+<div class="toolbar"><button id="indexesLoad">새로고침</button><label class="grow">지식 이름<input id="indexFilter" placeholder="불러온 목록에서 이름 검색"></label><label class="check"><input id="showDeleted" type="checkbox">삭제한 지식 포함</label></div>
+<p id="listStatus" role="status" aria-live="polite"></p><div id="indexList"></div><button id="indexesMore" hidden>지식 더 보기</button>
+<input id="indexes" type="hidden">
+<div id="indexDetail" class="detailPanel" hidden>
+<div class="sectionTitle"><h2>선택한 지식</h2><button id="closeIndex">상세 닫기</button></div><div id="indexInfo"></div>
+<div class="row actions"><button id="addVersion" class="primary">새 버전 만들기</button><button id="indexRefresh">상태 새로고침</button><button id="indexDelete" class="danger">지식 삭제</button></div>
+<p id="indexBuildStatus" role="status" aria-live="polite"></p><p class="hint">완료된 버전에서 ‘검색에 사용’을 누르면 기본 검색 버전으로 지정됩니다.</p><div id="indexVersions"></div><button id="versionsMore" hidden>버전 더 보기</button>
+</div></section>
+<section id="createPanel" data-feedback="createStatus" hidden>
+<div class="sectionTitle"><div><h2 id="createTitle">지식 만들기</h2><p class="hint" id="createSubtitle">자료와 모델을 선택하면 청크 생성부터 색인까지 순서대로 진행합니다.</p></div><button id="cancelCreate">목록으로</button></div>
+<ol class="steps" aria-label="만들기 단계"><li id="stepLabel1">1. 자료 선택</li><li id="stepLabel2">2. 처리 설정</li><li id="stepLabel3">3. 확인·시작</li></ol>
+<div id="createStep1">
+<label class="compact">사용할 자료<select id="indexInput"><option value="new">정리된 자료에서 선택</option><option value="saved">저장된 청크 결과 재사용</option></select></label>
+<div id="sourcePicker"><div class="toolbar"><label>그룹<select id="group"><option value="">모든 자료</option></select></label><button id="groupMore" hidden>그룹 더 보기</button><label class="grow">자료 이름<input id="query" placeholder="자료 이름으로 검색"></label><button id="sourcesLoad">자료 조회</button></div><p class="hint">데이터 플랫폼에서 정리한 결과를 사용합니다. 자료의 ‘추가’를 눌러 사용할 정리 버전을 고르세요.</p><div id="sources"></div><button id="sourcesMore" hidden>자료 더 보기</button><div class="selectionBox"><h3>선택한 자료 <span id="selectionCount">0</span>/20</h3><div id="selected"></div></div></div>
+<div id="savedPicker" hidden><div class="row"><label class="grow">청크 작업<select id="runs"><option value="">저장된 결과 선택</option></select></label><button id="runsLoad">새로고침</button><button id="runsMore" hidden>작업 더 보기</button></div><p id="savedStatus" class="hint"></p><div id="savedDocuments"></div></div>
+</div>
+<div id="createStep2" hidden>
+<div class="formGrid"><label>지식 이름<input id="indexName" maxlength="120" placeholder="예: 연구 보고서"></label><label>임베딩 모델<select id="indexDeployment"><option value="">사용할 모델 선택</option></select></label></div>
+<p class="hint">임베딩 모델은 자료를 검색용 벡터로 변환합니다. 모델 플랫폼에서 배포된 모델을 선택하세요.</p><div class="row"><button id="modelsRefresh">모델 새로고침</button><button id="modelsMore" hidden>배포된 모델 더 보기</button></div><p id="modelsStatus" class="hint" role="status"></p>
+<div id="chunkerSettings"><label class="compact">내용을 나누는 방식<select id="chunker"></select></label><p id="chunkerDescription" class="hint"></p><details><summary>청크 크기 조정</summary><div class="row"><label>최대 글자 수<input id="maxCharacters" type="number" min="100" max="8000" value="1000"></label><label>겹치는 글자 수<input id="overlap" type="number" min="0" value="100"></label></div><p class="hint">기본값으로 시작할 수 있습니다. 큰 표는 행 단위로, 코드는 줄 단위로 나눕니다. 원본 구조를 확인할 수 없으면 이유를 표시합니다.</p></details>
+<details id="previewPanel"><summary>청크 미리보기 (선택)</summary><p class="hint">색인 전에 나누어진 내용을 확인할 수 있습니다. 이 버튼은 청크만 생성합니다.</p><label>미리보기 이름<input id="name" maxlength="120" value="청크 미리보기"></label><div class="row actions"><button id="create">미리보기 생성</button><button id="refresh" hidden>상태 새로고침</button><button id="compare" hidden>다른 방식으로 비교</button></div><div id="runStatus"></div><div id="comparison"></div><div id="summary"></div><div id="chunks"></div><button id="chunksMore" hidden>청크 더 보기</button></details></div>
+<details><summary>고급 색인 설정 · HNSW</summary><div class="row"><label>그래프 연결 수 (m)<input id="buildHnswM" type="number" min="2" max="64" step="1" placeholder="16"></label><label>생성 탐색 후보 수 (ef_construction)<input id="buildHnswEF" type="number" min="16" max="1024" step="1" placeholder="128"></label></div><p class="hint">비우면 16 / 128을 사용합니다. 값을 높이면 메모리 사용량이나 색인 시간이 늘어날 수 있습니다. 새 버전에서 청크 임베딩도 다시 수행합니다.</p></details>
+<details id="lineageOptions" hidden><summary>이전 버전과 연결 (선택)</summary><label>부모 버전<select id="buildParent"><option value="">연결하지 않음</option></select></label><p class="hint">변경 이력을 연결합니다. 처리 설정은 이번에 선택한 값을 사용합니다.</p></details>
+</div>
+<div id="createStep3" hidden><h3>시작 전에 확인하세요</h3><div id="createReview" class="reviewBox"></div><p class="hint">‘생성 시작’을 누르면 모델을 사용해 자료를 색인합니다. 완료 후 목록에서 ‘검색에 사용’을 눌러 기본 검색 버전을 지정하세요.</p></div>
+<p id="createStatus" role="status" aria-live="polite"></p><div class="wizardFooter"><button id="stepBack" hidden>이전</button><button id="stepNext" class="primary">처리 설정으로</button><button id="startKnowledge" class="primary" hidden>생성 시작</button></div>
+</section>
+<section id="searchPanel" data-feedback="searchStatus" hidden>
+<div class="sectionTitle"><div><h2>지식 검색</h2><p class="hint">지식을 선택하고 질문을 입력하세요. 관련된 원문과 출처를 보여드립니다.</p></div><button id="searchIndexesLoad">목록 새로고침</button></div>
+<label class="compact">검색할 지식<select id="searchIndex"><option value="">지식 선택</option></select></label><button id="searchIndexesMore" hidden>지식 더 보기</button><div id="searchProfile"></div>
+<details><summary>검색 버전 변경</summary><label>검색할 버전<select id="searchVersion"><option value="">버전 선택</option></select></label><button id="searchVersionsLoad">버전 새로고침</button><button id="searchVersionsMore" hidden>버전 더 보기</button><p class="hint">기본 검색 버전을 자동으로 선택합니다. 보존된 다른 버전도 선택할 수 있습니다.</p></details>
+<label class="questionLabel">어떤 내용을 찾고 있나요?<textarea id="searchQuestion" rows="3" placeholder="예: 이 연구의 환경영향 평가 범위는 어디까지인가요?"></textarea></label>
+<div class="row"><button id="searchRun" class="primary">검색</button><label class="check"><input id="searchRerank" type="checkbox">모델로 관련성 재정렬</label></div>
+<div id="searchRerankOptions" class="optionBox" hidden><label>재정렬 모델<select id="searchReranker"><option value="">사용할 모델 선택</option></select></label><div class="row actions"><button id="searchModelsRefresh">모델 새로고침</button><button id="searchModelsMore" hidden>모델 더 보기</button></div><div id="searchRerankerProfile"></div><p class="hint">검색 후보를 질문과 비교해 다시 정렬합니다. 모델의 입력 길이를 초과하면 이유를 표시합니다.</p></div>
+<details><summary>검색 옵션</summary><div class="row"><label>결과 수<input id="searchTopK" type="number" min="1" max="50" value="5"></label><label>자료 범위<select id="searchDocument"><option value="">이 버전의 전체 자료</option></select></label><label>내용 종류<select id="searchKind"><option value="">전체</option><option value="text">본문</option><option value="table">표</option><option value="code">코드</option></select></label><label id="candidateOption" hidden>재정렬할 후보 수<input id="searchCandidateK" type="number" min="1" max="100" value="20"></label></div></details>
+<p id="searchStatus" role="status" aria-live="polite"></p><div id="searchResults"></div>
+</section>
+<footer>원본 자료와 정리 품질은 데이터 플랫폼에서 관리합니다. 여기에서는 정리된 내용을 나누고 색인하여 검색합니다.</footer>
+</main><script src="/app.js?v=closeout-20260922" defer></script><script src="/indexing.js?v=closeout-20260922" defer></script><script src="/search.js?v=closeout-20260922" defer></script><script src="/console.js?v=closeout-20260922" defer></script></body></html>

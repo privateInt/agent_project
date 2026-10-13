@@ -1,0 +1,293 @@
+{
+  "schema": 1,
+  "date": "2026-10-12",
+  "scope": "first_document_live_connection_and_citation_blocker",
+  "source": "user_supplied_terminal_outputs_and_PC_observations",
+  "latest_diagnostic_message_received_at_KST": "2026-10-12T15:08:28+09:00",
+  "direct_server_access_by_document_author": false,
+  "current_host_runtime_reverified_by_document_update": false,
+  "overall_product_acceptance": "incomplete",
+  "semantic_quality_verified": false,
+  "library": {
+    "library_id": "e1172d34-4500-426e-9440-d93310b6fbf1",
+    "accepted_document_count": 1
+  },
+  "document": {
+    "job_id": "430b0e7b-7b4c-4ae7-9c57-6c979ca94343",
+    "source_document_id": "8db38fb1-ba4e-41b8-aff3-b2421ff6ab16",
+    "filename": "document-qa-cpu-20261007.txt",
+    "size_bytes": 133,
+    "source_sha256": "0134788cc280b2c3fc5045c1b395b4624c008cbdaf465df4564e5cf27e9fe97c",
+    "canonical_id": "fec048c6-ea13-40f3-bef3-eddbfca9799a",
+    "canonical_size_bytes": 1024,
+    "canonical_sha256": "3c916e774f8240f0112f94e4027e8170b067cd2a6d9bd3176266e6e4d7ebe961",
+    "refinement_state": "canonical_verified",
+    "requires_ocr": false,
+    "block_count": 1,
+    "expected_code": "QA-CPU-20261007",
+    "expected_department": "플랫폼 개발팀",
+    "chunk_id": "2c31eb682538d72f09a5b2b81417aaac482f55641eab35343255fef12d437ca5"
+  },
+  "models": {
+    "embedding": {
+      "deployment_id": "d4d3eda4-a857-4083-8828-e36e7fa0f534",
+      "model_version_id": "65c3f2ff-b1fd-4a39-8dd7-aaf34c34579e",
+      "profile_id": "snowflake-ko-v1",
+      "embedding_space_id": "es_00cb26c80fff352a4cc494bef5b90d75a83584caf4d7e3b525f8516c2dcab76e",
+      "max_input_tokens": 2048,
+      "max_input_bytes": 131072,
+      "last_live_profile_verified": true,
+      "serving": {
+        "engine": "vllm",
+        "max_model_len": 2048,
+        "gpu_memory_utilization": 0.2
+      }
+    },
+    "chat": {
+      "deployment_id": "14527d72-751a-459f-8615-7186e5faa0f3",
+      "model_version_id": "a6debd09-1bc7-4978-9208-8f6eb7935163",
+      "model_name": "gemma3-v1",
+      "model_type": "llm",
+      "version": "base-v1",
+      "repo_id": "google/gemma-3-1b-it",
+      "resolved_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+      "last_live_identity_verified": true,
+      "serving": {
+        "engine": "vllm",
+        "max_model_len": 4096,
+        "gpu_memory_utilization": 0.5
+      },
+      "size_alone_diagnoses_failure": false
+    }
+  },
+  "indexing": {
+    "profile_fix_patch_sha256": "1fd0ad220d72d4a268abf798d6fbc5125a9354e5ee1668e04fc7f097c6f3fe7e",
+    "profile_fix_applied": true,
+    "server_indexing_related_tests": {
+      "count": 93,
+      "seconds": 8.919,
+      "result": "passed"
+    },
+    "historical_flow_generation_1": {
+      "state": "blocked",
+      "error_code": "GPU_VERIFICATION_DEFERRED",
+      "execution_id": "8"
+    },
+    "historical_flow_generation_2": {
+      "state": "attention_required",
+      "error_code": "INDEXING_PROFILE_INVALID",
+      "execution_id": "9"
+    },
+    "successful_flow_generation": 3,
+    "successful_execution_id": "10",
+    "successful_steps": 6,
+    "last_state": "indexing_activated",
+    "local_indexing_generation": 1,
+    "index_id": "a09f8482-6e10-44dc-aefe-ce0ad554841d",
+    "index_version_id": "fab90f1d-9d92-4923-8550-8c5cbcbe620f",
+    "document_count": 1,
+    "chunk_count": 1,
+    "indexed_count": 1,
+    "fresh_native_readbacks_in_Tool_Agent_trial_verified": true
+  },
+  "connections": {
+    "knowledge_connection_version_id": "ca719726-d81e-425c-8396-89014126bf13",
+    "model_connection_version_id": "f6bd1882-2cf4-4f0e-9550-3ba4b389436b"
+  },
+  "tool": {
+    "helper_sha256": "e37ec7eabeefc5242198e9dacc2ef89105bc87a3f2a0493149f4fb95853f7a59",
+    "plan_id": "fcff20e1-4eed-53d4-aac6-4f3e318e2728",
+    "tool_id": "75f50c3b-0d85-4d57-b1c3-c0d9fe3785c3",
+    "tool_version_id": "ecc5cc0b-fb25-4578-9521-3760dfd9747f",
+    "tool_call_id": "ea7be16a-bb4b-481d-b8d3-86fdd1137d08",
+    "result_sha256": "023183ec894ccd756d3919047b74e365daca97e779be4d5431989395b4fa2783",
+    "returned_count": 1,
+    "state": "verified",
+    "publication_verified": true,
+    "Agent_GET_requests": 17,
+    "Agent_resolve_POST_requests": 3,
+    "Agent_management_POST_attempts": 3,
+    "ToolCall_POST_attempts": 1,
+    "inference_requested": true,
+    "GPU_requested": true,
+    "semantic_quality_verified": false
+  },
+  "agent_smoke": {
+    "helper_sha256": "b8334954e86fcb10a5d3d8ea7368253bf75ae8ec0cfd83c0c4aec1ebefd6b0bd",
+    "plan_id": "b743f343-8b82-5a5e-a027-57003e9e2184",
+    "agent_version_id": "41330cd4-618f-429e-949e-a8ef3b1337ab",
+    "agent_run_id": "46e5c8ac-9e67-46fd-a0e8-d463683b0b2c",
+    "tool_call_id": "548bf8ed-421b-49e4-9c7f-cf6bf4f382f2",
+    "query": "이 문서에서 확인하려는 내용을 간단히 설명해 주세요.",
+    "answer": "문서 QA CPU 연결 확인입니다. [S1]",
+    "outcome": "answered",
+    "answer_truncated": false,
+    "warnings": [],
+    "citation_id": "S1",
+    "expected_original_source_verified": true,
+    "result_sha256": "5fe2a1a4e50a9ef07b3b4ffdcb0df89f1f4c192495cc2e91c82b61b09c5d5106",
+    "publication_verified": true,
+    "Agent_GET_requests": 28,
+    "Agent_resolve_POST_requests": 3,
+    "Agent_management_POST_attempts": 3,
+    "AgentRun_POST_attempts": 1,
+    "inference_requested": true,
+    "GPU_requested": true,
+    "semantic_quality_verified": false
+  },
+  "head": {
+    "helper_sha256": "0d170ae94e08e3e82d9e970415ad1802585cd71833fc4014d447b2518bcf7025",
+    "client_key": "32f2db49-3afd-5f74-97fd-7b3595685676",
+    "expected_revision": 0,
+    "previous_target_id": null,
+    "head_revision": 1,
+    "target_id": "01851866-e7bd-5c5f-a405-2f949c22c60d",
+    "target_sha256": "f9c9620b2d85308628098c931f8dafef29b1af5ffa92c7aaae3da681dceccf44",
+    "verification_sha256": "c5e1259796659691d2612323d8591a93a115a3cd12df1021132e5fd313c02ed8",
+    "activated_at": "2026-10-12T02:33:49Z",
+    "result": "applied",
+    "QA_GET_requests": 5,
+    "QA_head_activation_POST_attempts": 1,
+    "authenticated_question_policy_verified": true,
+    "question_ready_last_policy_observed": true,
+    "inference_requested": false,
+    "GPU_requested": false,
+    "semantic_quality_verified": false,
+    "head_unchanged_in_failed_prompt_trial": true
+  },
+  "PC_question": {
+    "question": "연결 검증 코드는 무엇인가요?",
+    "question_id": "cae86bb2-49ad-5009-bf84-4aa8e962e3cf",
+    "head_revision": 1,
+    "target_id": "01851866-e7bd-5c5f-a405-2f949c22c60d",
+    "agent_version_id": "41330cd4-618f-429e-949e-a8ef3b1337ab",
+    "agent_run_id": "f8923983-dfec-4b49-96e4-9933dbdbd3eb",
+    "request_id": "fe27ea2a-279b-4fe4-b13f-763744b9f6b6",
+    "tool_call_id": "949c1815-a45e-4169-844a-be68013a4407",
+    "state": "failed",
+    "error": {
+      "code": "ANSWER_REFERENCE_INVALID",
+      "stage": "finalize"
+    },
+    "reference_diagnostics": {
+      "schema": 1,
+      "scope": "reference_syntax_only",
+      "status": "invalid",
+      "finish_reason": "stop",
+      "issues": [
+        "MISSING_REFERENCE"
+      ],
+      "selected_source_count": 1,
+      "max_tokens": 512,
+      "recognized_count": 0,
+      "malformed_count": 0,
+      "out_of_range_count": 0,
+      "completion_tokens": 13,
+      "answer_bytes": 15
+    },
+    "answer_delivery_verified": false
+  },
+  "failed_prompt_trial": {
+    "helper_sha256": "49f621eb847f7301f8f71e7ce4e73cc4c36beca257c4586c9d87e6d315c4edba",
+    "plan_id": "1f903dcb-bca2-55c9-a4fa-0e0db7564661",
+    "agent_version_id": "73053c8f-2dd3-4e16-b37c-3c808bda43a9",
+    "agent_run_id": "ba35175e-002b-45d1-8e13-cd4b337fd77f",
+    "request_id": "3e0da915-41f5-4183-9ef4-171679697948",
+    "tool_call_id": "d1e292a4-6edc-425e-8942-979d2360f97b",
+    "changed_definition_fields": [
+      "prompt"
+    ],
+    "state": "failed",
+    "error": {
+      "code": "ANSWER_REFERENCE_INVALID",
+      "stage": "finalize"
+    },
+    "Agent_GET_requests": 31,
+    "Agent_resolve_POST_requests": 3,
+    "Agent_management_POST_attempts": 1,
+    "AgentRun_POST_attempts": 1,
+    "inference_requested": true,
+    "GPU_requested": true,
+    "agent_publication_requested": false,
+    "head_activation_requested": false,
+    "candidate_active": false,
+    "failed_original_run_replayed": false,
+    "reference_diagnostics": {
+      "schema": 1,
+      "scope": "reference_syntax_only",
+      "status": "invalid",
+      "finish_reason": "stop",
+      "issues": [
+        "MISSING_REFERENCE"
+      ],
+      "selected_source_count": 1,
+      "max_tokens": 512,
+      "recognized_count": 0,
+      "malformed_count": 0,
+      "out_of_range_count": 0,
+      "completion_tokens": 21,
+      "answer_bytes": 49
+    },
+    "answer_delivery_verified": false
+  },
+  "diagnosis": {
+    "both_runs_step_states": {
+      "validate": "succeeded",
+      "search": "succeeded",
+      "context": "succeeded",
+      "generate": "succeeded",
+      "finalize": "failed"
+    },
+    "operation_used_only_stored_run_and_steps_GET": true,
+    "diagnostic_inference_executed": false,
+    "diagnostic_changes_made": false,
+    "raw_generated_answer_recorded": false,
+    "length_truncation_observed": false
+  },
+  "screen_fixes": {
+    "UUID_patch_sha256": "d9c0d1ff2e995de0a38fcbe1ba88135692719ccce2c95219b96b2caabce9d7d8",
+    "UUID_patch_written": 8,
+    "first_server_tests": {
+      "count": 56,
+      "failures": 5,
+      "cause": "old_Node_optional_chaining_syntax"
+    },
+    "Node_gate_patch_sha256": "56d9dd9d443de0e1604cd8f84431a89b90e3b2a7832d6557c5c6f7c9b03df503",
+    "Node_gate_patch_written": 4,
+    "server_Node_version": "v12.22.9",
+    "server_screen_tests": {
+      "count": 58,
+      "seconds": 7.043,
+      "result": "OK",
+      "skipped": 1,
+      "new_JS_integration_class_executed": false
+    },
+    "development_screen_tests": {
+      "count": 63,
+      "result": "passed",
+      "skipped": 0,
+      "scope": "disposable_HTTP_and_DOM_fixtures_not_actual_GPU"
+    },
+    "PC_question_acceptance_observed_after_UUID_fix": true,
+    "PC_answer_and_source_acceptance_completed": false
+  },
+  "remaining": [
+    "first_PC_code_and_department_answers_and_citations",
+    "no_evidence_behavior_acceptance",
+    "new_upload_whole_automatic_pipeline",
+    "second_document_cumulative_acceptance",
+    "document_exclusion_and_failure_recovery",
+    "wider_semantic_quality_and_latency",
+    "small_screen_and_browser_recovery_acceptance"
+  ],
+  "document_update_effects": {
+    "runtime_changed": false,
+    "DB_or_keys_changed": false,
+    "head_changed": false,
+    "services_changed": false,
+    "production_API_requests": 0,
+    "inference_requested": false,
+    "GPU_requested": false
+  },
+  "next_step": "F0a_citation_blocker_then_F10a_CI_then_F0b_product_acceptance"
+}

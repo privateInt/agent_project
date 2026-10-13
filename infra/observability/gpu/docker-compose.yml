@@ -1,0 +1,45 @@
+name: infrastructure-observability-gpu
+services:
+  obs-gpu:
+    image: ${OBS_GPU_IMAGE:?Run gpu.py up first}
+    labels:
+      org.agent-project.observability.owner: ${OBS_GPU_CONFIG_ID:?}
+    entrypoint: [/usr/bin/dcgm-exporter]
+    command:
+      - --address=127.0.0.1:16313
+      - --collectors=/etc/dcgm-exporter/basic.csv
+      - --collect-interval=5000
+      - --devices=g
+      - --no-hostname
+      - --kubernetes=false
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: utility
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    network_mode: host
+    restart: unless-stopped
+    user: '0:0'
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    cpus: 0.5
+    mem_limit: 512m
+    memswap_limit: 512m
+    pids_limit: 128
+    tmpfs:
+      - "/tmp:size=16777216,mode=1777"
+    volumes:
+      - type: bind
+        source: ./basic.csv
+        target: /etc/dcgm-exporter/basic.csv
+        read_only: true
+        bind: {create_host_path: false}
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}

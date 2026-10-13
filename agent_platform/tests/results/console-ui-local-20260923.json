@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-23",
+  "stage": "A04 console follow-up",
+  "source": "user-uploaded agent_project.tar(2).gz",
+  "user_confirmed": "Original A04 console accessible; simplification requested",
+  "implementation": "completed",
+  "node_dom_api_test_groups": 27,
+  "node_result": "passed",
+  "javascript_syntax": "passed",
+  "html_structure": "passed",
+  "browser_layout": "not run: no executable Chromium; download returned empty archive",
+  "docker_go_postgresql": "not run in this environment; backend unchanged",
+  "server_acceptance": "New UI and remaining A04 functional acceptance pending",
+  "boundaries": "Only Agent web assets, UI tests and project documents updated; no changes to APIs, DB, Compose or other platform code",
+  "details": "docs/agent-platform/console-ux-20260923.md",
+  "patch_validation": [
+    "dry_run",
+    "exact_tree_match",
+    "backup",
+    "reapply",
+    "existing_file_conflict",
+    "new_file_conflict",
+    "symlink_rejection"
+  ],
+  "changed_markdown_links": "passed"
+}

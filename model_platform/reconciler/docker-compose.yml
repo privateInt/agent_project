@@ -1,0 +1,29 @@
+# Included by ../docker-compose.yml with project_directory=model_platform.
+# Use the root Compose entry point so sibling dependencies and the shared network resolve.
+services:
+  reconciler:
+    image: model-platform-reconciler:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: reconciler
+    pull_policy: never
+    restart: unless-stopped
+    networks:
+    - ops-infra
+    container_name: model-operation-reconciler
+    command:
+    - /app/reconciler
+    environment:
+      OPERATION_GRPC_ADDRESS: operation:9000
+      MANAGEMENT_GRPC_ADDRESS: management:9000
+      TRAINING_GRPC_ADDRESS: training:9000
+      DEPLOYMENT_GRPC_ADDRESS: deployment:9000
+      DISPATCHER_NODE_NAME: ${MODEL_DISPATCHER_NODE_NAME:-}
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+    - operation
+    - management
+    - training
+    - deployment

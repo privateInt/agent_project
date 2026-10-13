@@ -1,0 +1,31 @@
+services:
+  agent-gateway:
+    image: agent-platform-gateway:a08.1
+    build:
+      context: .
+      target: gateway
+    pull_policy: never
+    restart: unless-stopped
+    networks: [agent-private, agent-api]
+    environment:
+      AGENT_HTTP_ADDRESS: :8000
+      AGENT_SERVICE_ADDRESS: agent-service:9000
+      AGENT_MCP_URL: http://agent-mcp:8000
+      AGENT_API_TOKEN_FILE: /run/secrets/agent-api-token
+      AGENT_INTERNAL_TOKEN_FILE: /run/secrets/agent-internal-token
+    secrets: [agent-api-token, agent-internal-token]
+    ports:
+      - '${AGENT_BIND_HOST:-0.0.0.0}:${AGENT_GATEWAY_PORT:-16100}:8000'
+    depends_on:
+      agent-mcp:
+        condition: service_healthy
+      agent-service:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, /app/healthcheck, http]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]

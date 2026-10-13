@@ -1,0 +1,169 @@
+syntax = "proto3";
+
+package knowledge.operation.v1;
+
+option go_package = "knowledge-platform/gen/operation/v1;operationv1";
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/resources.proto";
+
+service OperationService {
+  // Internal Training controller only: fence launch/reports, then confirm stop.
+  rpc RequestTrainingCancellation(TrainingCancellationRequest) returns (Operation);
+  rpc ConfirmTrainingCancellation(TrainingCancellationRequest) returns (Operation);
+  rpc ListOperations(ListOperationsRequest) returns (ListOperationsResponse);
+  // Explicit new RPC prevents old servers from silently ignoring the reserved ID.
+  rpc EnsureOperation(CreateOperationRequest) returns (Operation);
+  rpc BeginExecution(BeginExecutionRequest) returns (Operation);
+  rpc RecoverDispatch(RecoverDispatchRequest) returns (Operation);
+  rpc FailDispatch(FailDispatchRequest) returns (Operation);
+  // Only for a GPU admission refusal before invoking Docker creation.
+  rpc DeferGPUDispatch(DeferGPUDispatchRequest) returns (Operation);
+  rpc ListReconcileOperations(ListReconcileOperationsRequest) returns (ListReconcileOperationsResponse);
+  rpc ApplyReconciliation(ApplyReconciliationRequest) returns (Operation);
+  rpc CreateOperation(CreateOperationRequest) returns (Operation);
+  rpc GetOperation(GetOperationRequest) returns (Operation);
+  rpc ClaimOperation(ClaimOperationRequest) returns (ClaimOperationResponse);
+  rpc MarkRunning(UpdateOperationRequest) returns (Operation);
+  rpc UpdatePhase(UpdateOperationRequest) returns (Operation);
+  rpc SucceedOperation(UpdateOperationRequest) returns (Operation);
+  rpc FailOperation(FailOperationRequest) returns (Operation);
+}
+
+message TrainingCancellationRequest {
+  string operation_id = 1;
+  string training_run_id = 2;
+  // Confirmation must refer to the generation returned by the request RPC.
+  string expected_dispatch_token = 3;
+}
+
+message CreateOperationRequest {
+  string kind = 1;
+  string execution_type = 2;
+  string resource_type = 3;
+  string resource_id = 4;
+  int32 max_attempts = 5;
+  knowledge.common.v1.ExecutionResources resources = 6;
+  // Reserved by the domain and replayed from its durable submission.
+  string operation_id = 7;
+}
+
+message GetOperationRequest {
+  string operation_id = 1;
+}
+
+message ClaimOperationRequest {
+  string operation_id = 1;
+  string owner_id = 2;
+}
+
+message ClaimOperationResponse {
+  bool claimed = 1;
+  Operation operation = 2;
+}
+
+message UpdateOperationRequest {
+  string operation_id = 1;
+  string phase = 2;
+  string dispatch_token = 3;
+  string execution_instance_id = 4;
+  TransferProgress progress = 5;
+}
+
+message FailOperationRequest {
+  string operation_id = 1;
+  string phase = 2;
+  string error_code = 3;
+  string error_message = 4;
+  bool retryable = 5;
+  string dispatch_token = 6;
+  string execution_instance_id = 7;
+}
+
+message Operation {
+  string operation_id = 1;
+  string kind = 2;
+  string execution_type = 3;
+  string resource_type = 4;
+  string resource_id = 5;
+  string status = 6;
+  string phase = 7;
+  int32 attempt = 8;
+  int32 max_attempts = 9;
+  string error_code = 10;
+  string error_message = 11;
+  bool retryable = 12;
+  google.protobuf.Timestamp created_at = 13;
+  google.protobuf.Timestamp updated_at = 14;
+  google.protobuf.Timestamp started_at = 15;
+  google.protobuf.Timestamp completed_at = 16;
+  knowledge.common.v1.ExecutionResources resources = 17;
+  int32 dispatch_protocol = 18;
+  int32 dispatch_generation = 19;
+  string dispatch_token = 20;
+  string dispatch_owner = 21;
+  google.protobuf.Timestamp dispatch_lease_until = 22;
+  google.protobuf.Timestamp execution_started_at = 23;
+  string execution_instance_id = 24;
+  int32 gpu_wait_count = 25;
+  google.protobuf.Timestamp gpu_wait_until = 26;
+  TransferProgress progress = 27;
+  google.protobuf.Timestamp progress_updated_at = 28;
+  string reconcile_note = 29;
+}
+
+message DeferGPUDispatchRequest {
+  string operation_id = 1;
+  string dispatch_token = 2;
+  string reason = 3;
+}
+
+message ListReconcileOperationsRequest { int32 limit = 1; }
+message ListReconcileOperationsResponse { repeated Operation operations = 1; }
+message ApplyReconciliationRequest {
+ string operation_id = 1;
+ string expected_status = 2;
+ int32 expected_attempt = 3;
+ google.protobuf.Timestamp expected_updated_at = 4;
+ // Empty target records an observation without changing execution state.
+ string target_status = 5;
+ string note = 6;
+}
+
+message BeginExecutionRequest {
+ string operation_id = 1;
+ string dispatch_token = 2;
+ string execution_instance_id = 3;
+ string resource_id = 4;
+ string execution_type = 5;
+}
+message RecoverDispatchRequest { string operation_id = 1; string expected_dispatch_token = 2; }
+message FailDispatchRequest {
+ string operation_id = 1;
+ string dispatch_token = 2;
+ string error_code = 3;
+ string error_message = 4;
+}
+
+// Read-only summary list, newest first. Cursor is bound to normalized filters.
+message ListOperationsRequest {
+  int32 limit = 1;
+  string cursor = 2;
+  string status = 3;
+  string resource_type = 4;
+  string resource_id = 5;
+  string kind = 6;
+  string phase = 7;
+}
+message ListOperationsResponse { repeated Operation operations = 1; string next_cursor = 2; }
+
+// Byte progress refers to the current file, never to overall job completion.
+message TransferProgress {
+  string stage = 1; // downloading, uploading, stored
+  string current_file = 2;
+  int64 bytes_completed = 3;
+  int64 bytes_total = 4; // 0 means unknown (or an empty file)
+  int32 files_completed = 5; // confirmed MinIO Put successes
+  int32 files_total = 6;
+  int64 sequence = 7; // monotonically increasing within the authorized process
+}

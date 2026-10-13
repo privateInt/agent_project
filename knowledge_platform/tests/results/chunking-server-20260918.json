@@ -1,0 +1,24 @@
+{
+  "run_id": "6e3eaf24-c2dc-4756-87bb-83468a96c827",
+  "documents": 2,
+  "chunker": "structure_v1",
+  "version": "2026-09-18.2",
+  "max_characters": 1000,
+  "overlap_characters": 100,
+  "chunks": 48,
+  "text": 38,
+  "table": 10,
+  "largest_chunk": 997,
+  "b90_parts": [
+    992,
+    495
+  ],
+  "b90_span_union": [
+    0,
+    1352
+  ],
+  "repeated_context_characters": 135,
+  "repeated_text_matches": true,
+  "excluded_images": 4,
+  "two_chunker_comparison": "pending"
+}

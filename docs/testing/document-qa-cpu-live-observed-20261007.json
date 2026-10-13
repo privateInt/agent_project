@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "evidence_source": "user_reported_terminal_output",
+  "reported_at": "2026-10-07T15:44:15+09:00",
+  "host": "simsys4090",
+  "library_id": "e1172d34-4500-426e-9440-d93310b6fbf1",
+  "workflow_registration": {
+    "result": "passed",
+    "engine_version": "2.40.5",
+    "entry_active_definition_verified": true,
+    "entry_published_version_verified": true,
+    "cpu_active_definition_verified": true,
+    "cpu_published_version_verified": true,
+    "registration_get_requests": 4,
+    "registration_post_requests": 0,
+    "wait_fix_host_tests_passed": 9,
+    "manual_QA_process_reloaded_by_user": true
+  },
+  "prior_failures_retained": {
+    "saved_job_upload_attempts_before_success": 2,
+    "upload_error_code": "DATA_UPLOAD_HTTP_UNCONFIRMED",
+    "reviewed_second_attempt_http_status": 503,
+    "reviewed_second_attempt_error_code": "Unavailable",
+    "reviewed_second_attempt_failure_category": "GENERIC_BACKEND_FAILURE",
+    "original_503_exact_storage_error_confirmed": false,
+    "old_helper_argument_error_before_replacement": "unrecognized arguments: --expect-upload-attempts 2",
+    "argument_error_started_upload": false
+  },
+  "storage_observation": {
+    "docker_and_minio_filesystem": "/dev/sda2",
+    "mountpoint": "/media/simsys/SSD_EXT4",
+    "cleanup_command": "docker image prune --force --filter 'until=168h'",
+    "image_retention_basis": "image_creation_time",
+    "all_unused_images_option_used": false,
+    "reclaimed_reported": "26.11GB",
+    "available_reported_after_cleanup": "50G",
+    "filesystem_used_reported_after_cleanup": "99%",
+    "all_four_minio_paths_share_one_filesystem": true,
+    "interpretation": "Upload succeeded after space was freed; storage shortage is supported as an inference, not a captured S3 error.",
+    "additional_cleanup_requested_by_this_patch": false
+  },
+  "acceptance": {
+    "schema": 1,
+    "stage": "Q04b-live-TXT-CPU-acceptance",
+    "result": "passed",
+    "job_id": "430b0e7b-7b4c-4ae7-9c57-6c979ca94343",
+    "source_document_id": "8db38fb1-ba4e-41b8-aff3-b2421ff6ab16",
+    "upload_state": "preparation_pending",
+    "entry_state": "accepted",
+    "cpu_flow_state": "canonical_verified",
+    "cpu_delivery_state": "accepted",
+    "steps": 2,
+    "refinement_state": "canonical_verified",
+    "error_codes": [],
+    "existing_test_job_reused": true,
+    "n8n_entry_callback_verified": true,
+    "n8n_cpu_callback_verified": true,
+    "production_Data_refinement_verified": true,
+    "canonical_expected_text_verified": true,
+    "canonical_document_id": "fec048c6-ea13-40f3-bef3-eddbfca9799a",
+    "qa_GET_requests": 10,
+    "qa_upload_POST_requests": 0,
+    "additional_Data_GET_requests": 1,
+    "question_ready": false,
+    "inference_requested": false,
+    "GPU_requested": false,
+    "next_step": "record_CPU_acceptance_then_Q05_indexing_adapter_without_GPU",
+    "reviewed_upload_retry": {
+      "data_upload_POST_requests": 1,
+      "http_observations": [
+        {
+          "method": "POST",
+          "route": "/api/source-documents",
+          "http_status": 200
+        }
+      ],
+      "job_id": "430b0e7b-7b4c-4ae7-9c57-6c979ca94343",
+      "upload_state": "preparation_pending",
+      "source_document_id": "8db38fb1-ba4e-41b8-aff3-b2421ff6ab16",
+      "error_code": null,
+      "saved_original_and_request_key_reused": true,
+      "reviewed_prior_upload_attempts": 2,
+      "upload_attempts": 3,
+      "automatic_POST_retry_performed": false
+    }
+  },
+  "limits": {
+    "format": "TXT",
+    "document_count": 1,
+    "entry_path": "reviewed_saved_job_retry_then_native_CPU_dispatch",
+    "new_QA_upload_full_path_verified": false,
+    "markdown_live_verified": false,
+    "PDF_live_verified": false,
+    "engine_timeout_or_restart_verified": false,
+    "indexing_verified": false,
+    "agent_question_verified": false,
+    "user_UI_verified": false,
+    "answer_quality_verified": false,
+    "GPU_acceptance": "deferred_by_user",
+    "automatic_future_model_start_scheduled": false
+  },
+  "next_step": {
+    "Q05a": "indexing_adapter_without_GPU",
+    "Q05b": "n8n_indexing_stage_without_GPU",
+    "Q05c": "separate_live_GPU_embedding_indexing_search_acceptance",
+    "question_ready": false
+  },
+  "patch_effects": {
+    "documentation_only": true,
+    "project_runtime_files_changed": false,
+    "service_control_requested": false,
+    "service_restart_required": false,
+    "patch_backups_created": false,
+    "remote_API_requests": 0
+  }
+}

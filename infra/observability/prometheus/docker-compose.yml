@@ -1,0 +1,45 @@
+services:
+  obs-prometheus:
+    image: ${OBS_PROMETHEUS_IMAGE:?Run observability prepare first}
+    user: ${OBS_UID:?}:${OBS_GID:?}
+    labels:
+      org.agent-project.observability.owner: ${OBS_CONFIG_ID:?}
+    network_mode: host
+    restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    cpus: 1.0
+    mem_limit: 1g
+    memswap_limit: 1g
+    pids_limit: 128
+    tmpfs:
+      - "/tmp:size=16777216,mode=1777"
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --web.listen-address=127.0.0.1:16310
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=7d
+      - --storage.tsdb.retention.size=5GB
+      - --query.timeout=15s
+      - --query.max-concurrency=4
+      - --query.max-samples=5000000
+    volumes:
+      - type: bind
+        source: ./prometheus.yml
+        target: /etc/prometheus/prometheus.yml
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${OBS_DATA_DIR:?}
+        target: /prometheus
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD, wget, -q, --spider, http://127.0.0.1:16310/-/ready]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}

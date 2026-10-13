@@ -1,0 +1,39 @@
+# Included by ../docker-compose.yml with project_directory=model_platform.
+# Use the root Compose entry point so sibling dependencies and the shared network resolve.
+services:
+  training:
+    image: model-platform-training:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: training
+    pull_policy: never
+    restart: unless-stopped
+    networks:
+    - ops-infra
+    container_name: model-training
+    command:
+    - /app/training
+    environment:
+      DISPATCHER_NODE_NAME: ${MODEL_DISPATCHER_NODE_NAME:-}
+      POSTGRES_URL: ${MODEL_POSTGRES_URL}
+      MANAGEMENT_GRPC_ADDRESS: management:9000
+      OPERATION_GRPC_ADDRESS: operation:9000
+      DATASET_BUCKET: ${MODEL_DATASET_BUCKET:-model-datasets}
+      GC_LOG_BUCKET: ${MODEL_GC_LOG_BUCKET:-model-job-logs}
+      GPU_ADMISSION_DIR: /gpu-admission
+      TRAINING_OUTPUT_ROOT: /training-outputs
+      MINIO_BUCKET: ${MODEL_MINIO_BUCKET:-model-artifacts}
+      MLFLOW_TRACKING_URI: ${MODEL_MLFLOW_TRACKING_URI:-http://ops-mlflow:5000}
+      MINIO_ENDPOINT: ${MODEL_MINIO_ENDPOINT:-ops-minio1:9000}
+      MINIO_ACCESS_KEY: ${MODEL_MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MODEL_MINIO_SECRET_KEY}
+      MINIO_USE_SSL: ${MODEL_MINIO_USE_SSL:-false}
+      GRPC_ADDRESS: :9000
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - gpu-admission:/gpu-admission
+    - training-outputs:/training-outputs
+    depends_on:
+    - management
+    - operation

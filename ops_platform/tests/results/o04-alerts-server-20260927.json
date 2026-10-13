@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "date": "2026-09-27",
+  "source": "user_provided_server_output",
+  "scope": "native_engine_tests_deployment_and_ops_readback",
+  "result": "passed",
+  "engine": {
+    "schema": 1,
+    "stage": "O04-alert-engine-acceptance",
+    "result": "passed",
+    "checked_at": "2026-09-27T04:18:00.755873Z",
+    "rule_count": 8,
+    "active_rule_alerts": 1,
+    "alertmanager_active_count": 0,
+    "external_delivery": "disabled_empty_receiver",
+    "prometheus_same_image_and_tsdb": true,
+    "historical_samples_exactly_preserved": {
+      "series": 162,
+      "samples": 966
+    },
+    "protected_containers_unchanged": 57,
+    "target_jobs": 5,
+    "tests": {
+      "promtool_config": "passed",
+      "promtool_rules": "passed",
+      "amtool_config": "passed",
+      "alertmanager_lifecycle": {
+        "result": "passed",
+        "synthetic_only": true,
+        "duplicate_submissions": 3,
+        "active_fingerprints": 1,
+        "firing_webhooks": 1,
+        "resolved_webhooks": 1,
+        "notification_dedup_after_same_probe_container_restart": true,
+        "webhook_destination": "temporary_host_loopback_fixture",
+        "production_alerts_posted": 0,
+        "external_notifications": 0
+      }
+    },
+    "prometheus_command_completion_recorded": true,
+    "business_api_requests": 0,
+    "inference_requested": false,
+    "browser_acceptance": "deferred_by_user",
+    "ops_api_acceptance": "separate_check_alerts.py",
+    "production_fault_injection": false,
+    "evidence_reused": false
+  },
+  "ops_startup": {
+    "result": "up",
+    "scope": "ops-web only",
+    "url": "http://localhost:17100",
+    "business_mutations_requested": false
+  },
+  "ops_readback": {
+    "stage": "O04-ops-alerts-readback",
+    "result": "passed",
+    "checked_at": "2026-09-27T04:18:09.366622Z",
+    "rules": [
+      {
+        "id": "OpsTargetDown",
+        "state": "inactive",
+        "health": "ok",
+        "last_evaluation": "2026-09-27T04:17:59.706970389Z"
+      },
+      {
+        "id": "OpsTargetMissing",
+        "state": "inactive",
+        "health": "ok",
+        "last_evaluation": "2026-09-27T04:17:59.707241898Z"
+      },
+      {
+        "id": "OpsHostCpuHigh",
+        "state": "inactive",
+        "health": "ok",
+        "last_evaluation": "2026-09-27T04:17:59.707334977Z"
+      },
+      {
+        "id": "OpsHostMemoryHigh",
+        "state": "inactive",
+        "health": "ok",
+        "last_evaluation": "2026-09-27T04:17:59.707502476Z"
+      },
+      {
+        "id": "OpsFilesystemHigh",
+        "state": "pending",
+        "health": "ok",
+        "last_evaluation": "2026-09-27T04:17:59.707618633Z"
+      },
+      {
+        "id": "OpsGpuTemperatureHigh",
+        "state": "inactive",
+        "health": "ok",
+        "last_evaluation": "2026-09-27T04:17:59.707931776Z"
+      },
+      {
+        "id": "OpsGpuTemperatureMissing",
+        "state": "inactive",
+        "health": "ok",
+        "last_evaluation": "2026-09-27T04:17:59.707996499Z"
+      },
+      {
+        "id": "OpsRuleEvaluationFailures",
+        "state": "inactive",
+        "health": "ok",
+        "last_evaluation": "2026-09-27T04:17:59.708044347Z"
+      }
+    ],
+    "sources": {
+      "prometheus": {
+        "status": "ok",
+        "error": null
+      },
+      "alertmanager": {
+        "status": "ok",
+        "error": null
+      }
+    },
+    "active_rule_alerts": 1,
+    "alertmanager_active_count": 0,
+    "external_delivery": "not_configured_by_this_release",
+    "scope": "readback_not_fault_injection_or_business_quality",
+    "production_alerts_posted": 0,
+    "business_api_requests": 0,
+    "inference_requested": false,
+    "browser_acceptance": "deferred_by_user"
+  },
+  "images": {
+    "alertmanager_repository_digest": "quay.io/prometheus/alertmanager@sha256:b85533a2eb45865835315810315f6951331b2dbc8c93a6cf9a51e156a006a706",
+    "ops_tag": "agent-project-ops:o04.1",
+    "ops_build_image_id": "sha256:9f50b0d9aeeda1e74fa6308b276ee60658bee2434c273f6ec7a204bdc7347746"
+  },
+  "remaining_observation": {
+    "rule": "OpsFilesystemHigh",
+    "state_at_readback": "pending",
+    "hold_seconds": 900,
+    "threshold": "configured filesystem usage > 90 percent",
+    "target_mountpoint": "not_in_supplied_readback",
+    "current_value": "not_in_supplied_readback",
+    "later_firing_or_resolution": "not_observed"
+  },
+  "boundaries": {
+    "protected_containers_57_scope": "engine_deployment_verification_before_subsequent_ops_rebuild",
+    "alertmanager_restart_scope": "temporary_probe_container",
+    "external_receiver_acceptance": false,
+    "production_outage_injection": false,
+    "browser_acceptance": "deferred_by_user",
+    "agent_business_result": "prior_failure_preserved_not_requeried_here",
+    "automatic_disk_cleanup_requested": false
+  }
+}

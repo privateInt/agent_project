@@ -1,0 +1,205 @@
+{
+  "schema": 1,
+  "date": "2026-09-27",
+  "source": "user_provided_server_output",
+  "scope": "filesystem_coverage_native_transition_and_ops_readback",
+  "result": "passed",
+  "engine": {
+    "schema": 1,
+    "stage": "O04-filesystem-coverage",
+    "result": "passed",
+    "checked_at": "2026-09-27T05:28:31.465196Z",
+    "same_prometheus_image_and_tsdb": true,
+    "mounted_rule_hash_verified": true,
+    "historical_samples_exactly_preserved": {
+      "series": 164,
+      "samples": 984
+    },
+    "protected_containers_unchanged": 57,
+    "protected_scope": "engine_update_before_subsequent_ops_rebuild",
+    "alertmanager_unchanged": true,
+    "filesystems": [
+      {
+        "labels": {
+          "device": "/dev/nvme0n1p2",
+          "fstype": "ext4",
+          "instance": "127.0.0.1:16311",
+          "job": "host",
+          "mountpoint": "/"
+        },
+        "usage_percent": 78.06222210160274
+      },
+      {
+        "labels": {
+          "device": "/dev/nvme1n1p1",
+          "fstype": "ext4",
+          "instance": "127.0.0.1:16311",
+          "job": "host",
+          "mountpoint": "/mnt/nvme1"
+        },
+        "usage_percent": 91.86394853296818
+      },
+      {
+        "labels": {
+          "device": "/dev/sda2",
+          "fstype": "ext4",
+          "instance": "127.0.0.1:16311",
+          "job": "host",
+          "mountpoint": "/media/simsys/SSD_EXT4"
+        },
+        "usage_percent": 96.84554279076242
+      },
+      {
+        "labels": {
+          "device": "/dev/sdb1",
+          "fstype": "exfat",
+          "instance": "127.0.0.1:16311",
+          "job": "host",
+          "mountpoint": "/media/simsys/T91"
+        },
+        "usage_percent": 10.597365454154929
+      }
+    ],
+    "rule_state": "pending",
+    "rule_health": "ok",
+    "hold_seconds": 900,
+    "target_jobs": 5,
+    "tests": {
+      "promtool_config": "passed",
+      "filesystem_scenarios": 8,
+      "expectation_times": 24
+    },
+    "prometheus_command_completion_recorded": true,
+    "native_firing_after_15_minutes": "not_required_for_coverage_acceptance",
+    "old_acceptance_record_preserved": true,
+    "data_cleanup_requested": false,
+    "external_notifications_requested": false,
+    "business_api_requests": 0,
+    "inference_requested": false,
+    "ops_readback": "separate_check_filesystems.py",
+    "browser_acceptance": "deferred_by_user",
+    "evidence_reused": false
+  },
+  "ops_startup": {
+    "result": "up",
+    "scope": "ops-web only",
+    "url": "http://localhost:17100",
+    "business_mutations_requested": false
+  },
+  "ops_readback": {
+    "schema": 1,
+    "stage": "O04-filesystem-ops-readback",
+    "result": "passed",
+    "checked_at": "2026-09-27T05:28:41.212319Z",
+    "filesystem_source_status": "ok",
+    "filesystem_error": null,
+    "filesystems": [
+      {
+        "labels": {
+          "device": "/dev/nvme0n1p2",
+          "instance": "127.0.0.1:16311",
+          "job": "host",
+          "mountpoint": "/"
+        },
+        "usage_percent": 78.06222210160274,
+        "value_status": "observed"
+      },
+      {
+        "labels": {
+          "device": "/dev/nvme1n1p1",
+          "instance": "127.0.0.1:16311",
+          "job": "host",
+          "mountpoint": "/mnt/nvme1"
+        },
+        "usage_percent": 91.86394853296818,
+        "value_status": "observed"
+      },
+      {
+        "labels": {
+          "device": "/dev/sda2",
+          "instance": "127.0.0.1:16311",
+          "job": "host",
+          "mountpoint": "/media/simsys/SSD_EXT4"
+        },
+        "usage_percent": 96.84554279076242,
+        "value_status": "observed"
+      },
+      {
+        "labels": {
+          "device": "/dev/sdb1",
+          "instance": "127.0.0.1:16311",
+          "job": "host",
+          "mountpoint": "/media/simsys/T91"
+        },
+        "usage_percent": 10.597365454154929,
+        "value_status": "observed"
+      }
+    ],
+    "filesystem_rule": {
+      "id": "OpsFilesystemHigh",
+      "title": "디스크 여유 공간 부족",
+      "state": "pending",
+      "condition": "대상 파일시스템 사용률 90% 초과가 15분 지속",
+      "health": "ok",
+      "last_evaluation": "2026-09-27T05:28:29.707666989Z",
+      "hold_seconds": 900,
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "OpsFilesystemHigh",
+            "device": "/dev/nvme1n1p1",
+            "instance": "127.0.0.1:16311",
+            "job": "host",
+            "mountpoint": "/mnt/nvme1",
+            "scope": "agent-project-o04",
+            "severity": "warning"
+          },
+          "state": "pending",
+          "active_at": "2026-09-27T05:28:29.706700174Z"
+        },
+        {
+          "labels": {
+            "alertname": "OpsFilesystemHigh",
+            "device": "/dev/sda2",
+            "instance": "127.0.0.1:16311",
+            "job": "host",
+            "mountpoint": "/media/simsys/SSD_EXT4",
+            "scope": "agent-project-o04",
+            "severity": "warning"
+          },
+          "state": "pending",
+          "active_at": "2026-09-27T05:28:29.706700174Z"
+        }
+      ]
+    },
+    "alert_source_status": {
+      "prometheus": {
+        "status": "ok",
+        "error": null
+      },
+      "alertmanager": {
+        "status": "ok",
+        "error": null
+      }
+    },
+    "scope": "coverage_and_readback_not_disk_cleanup_or_alert_resolution",
+    "external_delivery": "not_configured",
+    "business_api_requests": 0,
+    "inference_requested": false,
+    "browser_acceptance": "deferred_by_user"
+  },
+  "ops_build_image_id": "sha256:2a15adbd3f9f80b5b7925f1889b337b068ead484a0b733958c6283fd15a2c37e",
+  "boundaries": {
+    "protected_containers_57_scope": "engine_update_before_subsequent_ops_rebuild",
+    "pending_mounts_at_readback": [
+      "/mnt/nvme1",
+      "/media/simsys/SSD_EXT4"
+    ],
+    "later_firing_or_resolution": "not_observed_in_supplied_output",
+    "data_cleanup": "deferred_by_user_existing_data_needed",
+    "alertmanager_restart_acceptance": "not_performed_in_this_update",
+    "external_receiver_acceptance": false,
+    "browser_acceptance": "deferred_by_user",
+    "agent_business_result": "prior_failure_preserved_not_requeried_here"
+  }
+}

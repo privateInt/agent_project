@@ -1,0 +1,10 @@
+Host model-simsys4070
+    HostName 192.168.0.173
+    User simsys
+    IdentityFile /node-ssh/id_ed25519
+    UserKnownHostsFile /node-ssh/known_hosts
+    IdentitiesOnly yes
+    StrictHostKeyChecking yes
+    BatchMode yes
+    ForwardAgent no
+    RequestTTY no

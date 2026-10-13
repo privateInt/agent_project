@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "checked_date": "2026-10-02",
+  "result": "passed",
+  "reproduced_before_fix": {
+    "real_Docker_CLI": "28.5.1",
+    "Engine": "synthetic_loopback_HTTP",
+    "missing_Health": "COLD_DOCKER_METADATA_FAILED",
+    "missing_Volumes": "COLD_DOCKER_METADATA_FAILED"
+  },
+  "after_fix_native_CLI_suite": {
+    "total": 14,
+    "passed": 14,
+    "skipped": 0,
+    "failed": 0,
+    "elapsed_seconds": 4.606,
+    "formatter_and_create_serialization_cases": 8,
+    "diagnostic_and_helper_cleanup_cases": 6
+  },
+  "selected_offline_suite": {
+    "total": 256,
+    "passed": 201,
+    "skipped": 55,
+    "failed": 0,
+    "elapsed_seconds": 50.86,
+    "note": "8 new native CLI cases were skipped here and separately passed in the opt-in CLI suite; 6 diagnostic cases overlap"
+  },
+  "protections": {
+    "declared_image_volumes_refused_before_create": true,
+    "helper_security_conditions_preserved": true,
+    "existing_container_id_image_owner_mount_and_protected_checks_preserved": true,
+    "no_metadata_retry_or_rebind": true,
+    "original_failure_preserved_if_helper_cleanup_also_fails": true,
+    "unknown_helper_not_adopted": true,
+    "raw_metadata_stderr_paths_ids_credentials_not_returned": true
+  },
+  "active_worker_files": 61,
+  "active_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+  "existing_candidate_plan_setup_worker_adapter_unchanged": true,
+  "python_3_10_syntax": true,
+  "exact_server_failed_query_and_root_cause": "unconfirmed",
+  "server_remeasure_after_this_fix": "pending",
+  "native_Docker_daemon_used": false,
+  "native_systemd_used": false,
+  "production_service_control_requested": false,
+  "production_capture_executed": false,
+  "production_restore_executed": false,
+  "identity_contents_read": false,
+  "backup_ready": false
+}

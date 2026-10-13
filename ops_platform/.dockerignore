@@ -1,0 +1,7 @@
+**
+!*.py
+!requirements.txt
+!web
+!web/**
+!profiles
+!profiles/*.json

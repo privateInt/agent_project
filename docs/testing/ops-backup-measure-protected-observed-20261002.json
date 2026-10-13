@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "received_at_kst": "2026-10-02T09:56:31+09:00",
+  "execution_time_provided": false,
+  "patch_apply": {
+    "active_runtime_files_changed": false,
+    "patch_backups_created": false,
+    "service_control_requested": false,
+    "service_restart_required": false,
+    "status": "applied",
+    "written": 17
+  },
+  "measure": {
+    "action": "measure",
+    "automatic_recovery_supported": false,
+    "backup_ready": false,
+    "code": "BACKUP_MEASURE_PROTECTED_CHANGED",
+    "identity_contents_read": false,
+    "operation_replayed": false,
+    "production_restore_supported": false,
+    "restore_executed": false,
+    "result": "attention_required",
+    "schema": 1,
+    "stage": "O04-measured-production-backup-execution"
+  },
+  "interpretation": {
+    "measurement_success": false,
+    "changed_container_details_available": false,
+    "failure_phase_available": false,
+    "protected_baseline_must_not_be_rebound": true,
+    "production_capture_not_invoked": true,
+    "production_service_stop_start_not_supported_by_measure": true
+  }
+}

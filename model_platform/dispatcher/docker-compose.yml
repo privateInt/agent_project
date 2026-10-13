@@ -1,0 +1,51 @@
+# Included by ../docker-compose.yml with project_directory=model_platform.
+# Use the root Compose entry point so sibling dependencies and the shared network resolve.
+services:
+  dispatcher:
+    image: model-platform-dispatcher:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dispatcher
+    pull_policy: never
+    restart: unless-stopped
+    networks:
+    - ops-infra
+    container_name: model-operation-dispatcher
+    command:
+    - /app/dispatcher
+    environment:
+      KAFKA_BROKERS: ${MODEL_KAFKA_BROKERS:-ops-kafka:19092}
+      KAFKA_COMMAND_TOPIC: ${MODEL_KAFKA_COMMAND_TOPIC:-ops.operations.requested}
+      KAFKA_CONSUMER_GROUP: ${MODEL_KAFKA_CONSUMER_GROUP:-model-platform-dispatchers}
+      JOB_NETWORK: ${AGENT_PROJECT_NETWORK:-ops-infra}
+      DISPATCHER_NODE_NAME: ${MODEL_DISPATCHER_NODE_NAME:-}
+      GPU_ADMISSION_DIR: /gpu-admission
+      TRAINING_OUTPUT_VOLUME: model-training-outputs
+      TRAINING_TEST_CHECKPOINT_MODE: ${MODEL_TRAINING_TEST_CHECKPOINT_MODE:-failed}
+      TRAINING_TEST_STOP_AFTER_CHECKPOINT_RUN_ID: ${MODEL_TRAINING_TEST_STOP_AFTER_CHECKPOINT_RUN_ID:-}
+      TRAINING_TEST_FAIL_PUBLICATION_RUN_ID: ${MODEL_TRAINING_TEST_FAIL_PUBLICATION_RUN_ID:-}
+      OPERATION_GRPC_ADDRESS: operation:9000
+      MANAGEMENT_GRPC_ADDRESS: management:9000
+      TRAINING_GRPC_ADDRESS: training:9000
+      DEPLOYMENT_GRPC_ADDRESS: deployment:9000
+      MINIO_ENDPOINT: ${MODEL_MINIO_ENDPOINT:-ops-minio1:9000}
+      MINIO_ACCESS_KEY: ${MODEL_MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MODEL_MINIO_SECRET_KEY}
+      MINIO_BUCKET: ${MODEL_MINIO_BUCKET:-model-artifacts}
+      MINIO_USE_SSL: ${MODEL_MINIO_USE_SSL:-false}
+      MLFLOW_TRACKING_URI: ${MODEL_MLFLOW_TRACKING_URI:-http://ops-mlflow:5000}
+      MLFLOW_PUBLIC_URI: ${MODEL_MLFLOW_PUBLIC_URI:-http://127.0.0.1:5000}
+      MLFLOW_EXPERIMENT_NAME: ${MODEL_MLFLOW_EXPERIMENT_NAME:-model-platform-training}
+      MLFLOW_ENABLE_SYSTEM_METRICS_LOGGING: ${MODEL_MLFLOW_ENABLE_SYSTEM_METRICS_LOGGING:-true}
+      MLFLOW_SYSTEM_METRICS_SAMPLING_INTERVAL: ${MODEL_MLFLOW_SYSTEM_METRICS_SAMPLING_INTERVAL:-5}
+      MLFLOW_SYSTEM_METRICS_SAMPLES_BEFORE_LOGGING: ${MODEL_MLFLOW_SYSTEM_METRICS_SAMPLES_BEFORE_LOGGING:-1}
+      MANAGEMENT_IMPORT_JOB_IMAGE: model-platform-management-import-job:launch-v1
+      TRAINING_JOB_IMAGE: model-platform-training-axolotl:launch-v1
+      DEPLOYMENT_JOB_IMAGE: model-platform-deployment-job:launch-v1
+      DEPLOYMENT_SERVING_JOB_IMAGE: model-platform-deployment-job:serving-v1
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - gpu-admission:/gpu-admission
+    depends_on:
+    - operation

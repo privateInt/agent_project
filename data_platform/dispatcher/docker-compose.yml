@@ -1,0 +1,33 @@
+services:
+  data-dispatcher:
+    image: data-platform-dispatcher:dev
+    build:
+      context: .
+      target: dispatcher
+    pull_policy: never
+    container_name: data-dispatcher
+    restart: unless-stopped
+    networks:
+    - data-infra
+    environment:
+      KAFKA_BROKERS: ${DATA_KAFKA_BROKERS:?Run ops/configure.py first}
+      KAFKA_COMMAND_TOPIC: data.operations.requested
+      OPERATION_GRPC_ADDRESS: data-operation:9000
+      MODEL_DEPLOYMENT_GRPC_ADDRESS: ${DATA_MODEL_DEPLOYMENT_GRPC_ADDRESS:-model-deployment:9000}
+      COLLECTION_GRPC_ADDRESS: data-collection:9000
+      REFINEMENT_GRPC_ADDRESS: data-refinement:9000
+      MINIO_ENDPOINT: ${DATA_MINIO_ENDPOINT:?Run ops/configure.py first}
+      MINIO_ACCESS_KEY: ${DATA_MINIO_ACCESS_KEY:?Run ops/configure.py first}
+      MINIO_SECRET_KEY: ${DATA_MINIO_SECRET_KEY:?Run ops/configure.py first}
+      MINIO_USE_SSL: ${DATA_MINIO_USE_SSL:-false}
+      KAFKA_CONSUMER_GROUP: data-platform-dispatchers
+      JOB_NETWORK: ${DATA_NETWORK:-ops-infra}
+      BROWSER_JOB_IMAGE: data-platform-browser-job:dev
+      CRAWL_JOB_IMAGE: data-platform-crawl-job:dev
+      REFINEMENT_JOB_IMAGE: data-platform-refinement-job:dev
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+    - data-operation
+    - data-collection
+    - data-refinement

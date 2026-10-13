@@ -1,0 +1,50 @@
+{
+  "recorded_on": "2026-09-23",
+  "evidence_type": "user_provided_server_log_and_screenshot",
+  "log_filename": "붙여넣은 텍스트 (1)(20260923-022956).txt",
+  "screenshot_filename": "Cap 2026-09-23 11-28-10-306.png",
+  "patch": {
+    "name": "agent_platform_tool_registration_20260923",
+    "applied_files": 22,
+    "gateway_build": "passed",
+    "gateway_container": "healthy"
+  },
+  "ui_observation": "connection_panel_with_empty_token; tool_actions_disabled_before_connection",
+  "preparation": {
+    "status": "prepared",
+    "index_name": "test1",
+    "index_id": "e011832c-ecef-491c-a545-ddf16bb320dd",
+    "index_version_id": "0464117d-17a2-4696-a681-1be428671ac4",
+    "embedding_space_id": "es_00cb26c80fff352a4cc494bef5b90d75a83584caf4d7e3b525f8516c2dcab76e",
+    "embedding_deployment_id": "44247297-5184-4a36-9225-7791c80d3add",
+    "query_embedding_calls": 1,
+    "lifecycle_writes": 0,
+    "rerank": false,
+    "agent_tool_execution": "not_run",
+    "baseline_search": {
+      "status": "passed",
+      "returned_count": 5
+    }
+  },
+  "remaining": [
+    "Tool publication and published execution",
+    "remaining A04 acceptance"
+  ],
+  "limits": [
+    "Baseline search did not execute through Agent Tool",
+    "No claim of A05 implementation",
+    "No broad server tests inferred from Gateway build",
+    "The earlier preparation.agent_tool_execution=not_run is the original preparation receipt; a later Agent console test succeeded"
+  ],
+  "agent_console_test": {
+    "evidence_filename": "Cap 2026-09-23 11-38-57-376.png",
+    "user_reported_success": true,
+    "mode": "test",
+    "state": "succeeded",
+    "response_visible": true,
+    "returned_count": "not_confirmed_from_screenshot",
+    "publication": "not_confirmed",
+    "published_execution": "not_confirmed"
+  },
+  "requested_followup": "Contract-based internal API schema autofill and automatic internal argument binding; not implemented"
+}

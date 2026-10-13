@@ -1,0 +1,37 @@
+{
+  "stage": "A09",
+  "result": "implementation_and_local_checks_passed",
+  "server_acceptance": "operational_delivery_replay_and_baseline_preservation_passed; seven_container_restart_preservation_passed",
+  "mvp_acceptance": "incomplete",
+  "scope": "host GET-only audit/capture/compare; operations and evidence matrix",
+  "runtime_contract": "a07.1/A07/schema5",
+  "service_gateway_images": "a08.1 (unchanged)",
+  "checks": {
+    "python_unit_tests": 18,
+    "integration": "PASS TestAgentEndToEnd 18.26s; actual Go/Python/LangGraph/PGlite PostgreSQL WASM with model/search HTTP fixtures",
+    "n8n": "actual n8n 2.40.5 HTTP / isolated SQLite / same AgentRun delivered twice; A09 capture, compare, capture reuse",
+    "read_only_effects": "A09 adds zero embedding/search/chat calls; operational replay causes each once total",
+    "session_files": "operational settings/request and other session files byte-identical before/after A09 inspection",
+    "negative_cases": [
+      "search parent mismatch",
+      "forged source with same chunk ID",
+      "invalid/missing citation",
+      "model identity mismatch",
+      "failed Agent not delivered as success",
+      "same request multiple AgentRuns",
+      "n8n delivered output mismatch",
+      "execution record loss",
+      "baseline overwrite/symlink/project path rejection"
+    ],
+    "browser": "unchanged; A08 evidence reused"
+  },
+  "pending": [
+    "user page acceptance deferred",
+    "semantic quality deferred"
+  ],
+  "retention": "small summary only; no prompts/answers/source texts/secret credentials/large logs/fonts",
+  "server_evidence": "a09-server-20260925.json#restart_server_observation",
+  "observed_quality_issue": "question echoed five times; no substantive explanation; deferred",
+  "restart_attestation_scope": "five Agent containers and two infra n8n containers; three pinned AgentRun records and n8n executions 4/5; user server logs",
+  "cli_pending_note": "GET-only CLI still emits full_restart_acceptance_not_attested; original output preserved, external restart proof recorded separately"
+}

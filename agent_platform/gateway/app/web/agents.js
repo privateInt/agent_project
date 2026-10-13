@@ -1,0 +1,99 @@
+'use strict';
+const agentUI={items:[],tools:[],models:[],modelCursor:'',connection:null,agent:null,version:null,editing:null,saving:null,savedVersion:null,pending:null,active:null,runRequest:null,history:[],polling:false,stopPolling:false,resultView:'tools'};
+const agentStepNames={validate:'설정 확인',search:'자료 검색',context:'근거 선택',generate:'답변 생성',finalize:'출처 확인'};
+function resetAgents(){Object.assign(agentUI,{items:[],tools:[],models:[],modelCursor:'',connection:null,agent:null,version:null,editing:null,saving:null,savedVersion:null,pending:null,active:null,runRequest:null,history:[],polling:false,stopPolling:true,resultView:'tools'});for(const id of ['agent-list','agent-history','agent-answer','agent-citations','agent-run-json','agent-steps','agent-run-question','agent-run-origin','agent-run-message','agent-run-id','agent-definition','agent-detail-name','agent-detail-description','agent-answer-warnings','question-history','question-history-count'])$(id).replaceChildren();for(const id of ['agent-versions','agent-tool','agent-model','agent-model-connection'])clear($(id));$('question-history-state').value='';$('agent-prompt').value='';for(const id of ['agent-create','agent-detail','agent-answer-panel'])$(id).hidden=true;for(const id of ['agent-question','agent-filters','agent-name','agent-description','agent-lookup-id','agent-search','question-history-search'])$(id).value='';}
+function agentControls(){const ready=state.connected&&!state.busy,v=agentUI.version,blocked=!!agentUI.pending||state.keys.has('/api/agent-runs');
+ for(const id of ['agents-refresh','agent-new','agent-history-refresh','agent-lookup','agent-run-refresh'])$(id).disabled=!ready;
+ $('agent-poll-stop').hidden=!agentUI.polling;$('agent-poll-stop').disabled=!state.connected||!agentUI.polling;
+ for(const id of ['agent-search','question-history-search','question-history-state','question-history-refresh','results-show-questions','results-show-tools'])$(id).disabled=!ready;
+ $('agent-new').disabled=!ready||!!agentUI.saving||!!agentUI.runRequest||blocked;
+ $('agent-model-load').disabled=!ready||!$('agent-tool').value||!!agentUI.saving;
+ $('agent-model-more').disabled=!ready||!agentUI.modelCursor||!!agentUI.saving;
+ $('agent-save').disabled=!ready||(!agentUI.saving&&!$('agent-model').value);
+ $('agent-create-cancel').disabled=!ready||!!agentUI.saving;
+ for(const id of ['agent-tool','agent-model','agent-model-connection','agent-prompt','agent-name','agent-description','agent-context-limit','agent-max-tokens'])$(id).disabled=!ready||!!agentUI.saving;
+ $('agent-name').readOnly=!!agentUI.editing;$('agent-description').readOnly=!!agentUI.editing;
+ $('agent-ask').disabled=!ready||!v||!agentUI.agent?.enabled||v.state==='retired'||!!agentUI.pending;
+ $('agent-ask').textContent=state.keys.has('/api/agent-runs')?'이 질문 요청 다시 확인':v?.state==='published'?'질문하기':'시험 질문하기';
+ $('agent-publish').hidden=v?.state!=='draft';$('agent-publish').disabled=!ready||!v||!agentUI.agent?.enabled||blocked;
+ $('agent-new-version').disabled=!ready||!v||!!agentUI.saving||blocked;
+ $('agent-versions').disabled=!ready||blocked;
+ $('agent-toggle').disabled=!ready||!agentUI.agent||blocked;
+ $('agent-retire').hidden=v?.state!=='published';$('agent-retire').disabled=!ready||blocked;
+ for(const id of ['agent-question','agent-filters'])$(id).readOnly=blocked||!!agentUI.runRequest;
+}
+async function refreshAgents(){agentUI.items=await all('/api/agents');renderAgents();}
+function renderAgents(){const box=$('agent-list');box.replaceChildren();if(!agentUI.items.length){box.append(el('strong','첫 Agent를 만들어보세요'),el('p','사용 중인 지식 검색 도구와 답변 모델을 선택하면 됩니다.','hint'));}
+ const q=$('agent-search').value.trim().toLowerCase();const matches=agentUI.items.filter(a=>(a.display_name+' '+(a.description||'')).toLowerCase().includes(q));if(agentUI.items.length&&!matches.length)box.append(el('p','일치하는 Agent가 없습니다.','empty'));
+ for(const a of matches){const row=el('div',undefined,'tool-row'),name=el('div');name.append(el('strong',a.display_name),el('p',a.description||'문서 질의응답','hint'));const b=el('button','질문하기','secondary');b.onclick=()=>action(()=>openAgent(a.agent_id));row.append(name,el('span',a.enabled?'등록됨':'사용 중지','badge'),b);box.append(row);}}
+function agentBusyDraft(){if(agentUI.saving||agentUI.runRequest||agentUI.pending||state.keys.size)throw Error('확인 중인 저장 또는 실행 요청을 먼저 같은 버튼으로 확인하세요.');}
+async function openAgent(id,versionID,recover=false){if(!recover)agentBusyDraft();const a=await api('/api/agents/'+id);agentUI.agent=a;const versions=a.versions||[];agentUI.version=versions.find(v=>v.agent_version_id===versionID)||[...versions].reverse().find(v=>v.state==='published')||versions.at(-1)||null;
+ $('agent-create').hidden=true;$('agent-detail').hidden=false;clear($('agent-versions'));for(const v of versions)option($('agent-versions'),v.agent_version_id,`버전 ${v.version} · ${labels[v.state]}`);if(agentUI.version)$('agent-versions').value=agentUI.version.agent_version_id;
+ $('agent-detail-name').textContent=a.display_name;$('agent-detail-description').textContent=a.description||'자료에 근거한 단일 질문 답변';$('agent-definition').textContent=show(agentUI.version);badge($('agent-version-badge'),agentUI.version?.state||'draft',agentUI.version?`버전 ${agentUI.version.version} · ${labels[agentUI.version.state]}`:'설정 필요');
+ $('agent-version-help').textContent=agentUI.version?.state==='published'?'질문을 입력하면 자료를 검색하고 답변을 작성합니다.':agentUI.version?.state==='retired'?'이 버전은 폐기되어 새 질문을 실행할 수 없습니다.':'질문으로 시험한 뒤 답변과 출처를 확인하고 사용을 시작하세요.';
+ $('agent-ask').textContent=agentUI.version?.state==='published'?'질문하기':'시험 질문하기';$('agent-toggle').textContent=a.enabled?'사용 중지':'사용 재개';$('agent-question').value='';$('agent-filters').value='';$('agent-answer-panel').hidden=true;controls();navigate('agents');}
+async function loadAgentToolChoices(){const tools=await all('/api/tools');agentUI.tools=[];clear($('agent-tool'),'사용할 지식 검색 도구 선택');
+ for(const t of tools){if(!t.enabled)continue;const detail=await api('/api/tools/'+t.tool_id);for(const v of detail.versions||[]){if(v.kind!=='knowledge_search_v1'||v.state!=='published')continue;agentUI.tools.push({tool:t,version:v});option($('agent-tool'),v.tool_version_id,`${t.display_name} · 버전 ${v.version}`);}}
+ const cs=await all('/api/connections');clear($('agent-model-connection'),'검색 도구의 모델 연결 사용');for(const c of cs)option($('agent-model-connection'),c.current_version_id,c.display_name);
+ $('agent-tool-help').textContent=agentUI.tools.length?'시험을 마치고 사용 중인 지식 검색 도구만 표시합니다.':'사용 중인 지식 검색 도구가 없습니다. 도구 목록에서 시험에 성공한 검색 도구의 ‘사용 시작’을 눌러주세요.';}
+function invalidateAgentModels(){agentUI.connection=null;agentUI.models=[];agentUI.modelCursor='';clear($('agent-model'),'답변 모델 불러오기를 눌러주세요');$('agent-model-more').hidden=true;controls();}
+async function newAgent(editing=false){agentBusyDraft();agentUI.editing=editing?agentUI.agent:null;const old=editing?agentUI.version:null;
+ await loadAgentToolChoices();invalidateAgentModels();$('agent-create').hidden=false;$('agent-detail').hidden=true;$('agent-answer-panel').hidden=true;
+ $('agent-create-title').textContent=editing?'새 Agent 버전 만들기':'Agent 만들기';$('agent-name').value=agentUI.editing?.display_name||'';$('agent-description').value=agentUI.editing?.description||'';$('agent-prompt').value=old?.prompt||'선택한 자료에 근거해 질문에 한국어로 명확하게 답하세요. 자료에 없는 내용은 추측하지 마세요.';
+ $('agent-context-limit').value=old?.context_max_chars||8000;$('agent-max-tokens').value=old?.max_tokens||512;
+ if(old){$('agent-tool').value=old.tool_version_id;$('agent-model-connection').value=old.model.connection_version_id;}
+ controls();navigate('agents');}
+async function loadAgentModels(more=false){const selected=agentUI.tools.find(x=>x.version.tool_version_id===$('agent-tool').value);if(!selected)throw Error('검색 도구를 먼저 선택하세요.');
+ const cid=$('agent-model-connection').value||selected.version.binding.knowledge.model_connection_version_id;
+ if(!more){invalidateAgentModels();agentUI.connection=cid;}
+ const page=await api('/api/agent-models/inspect',{method:'POST',body:{action:'deployments',connection_version_id:cid,...(more?{cursor:agentUI.modelCursor}:{})}});
+ agentUI.models.push(...page.items);agentUI.modelCursor=page.next_cursor||'';clear($('agent-model'),'답변 모델 선택');for(const m of agentUI.models)option($('agent-model'),m.deployment_id,`${m.display_name}${m.version?' · '+m.version:''} · ${m.deployment_id.slice(0,8)}`);
+ $('agent-model-more').hidden=!agentUI.modelCursor;$('agent-model-help').textContent=agentUI.models.length?'답변에 사용할 모델을 선택하세요. 검색용 임베딩 모델과는 별도입니다.':agentUI.modelCursor?'이 페이지에는 답변 모델이 없습니다. 모델 더 보기를 눌러 확인하세요.':'준비된 답변 모델이 없습니다. Model Platform에서 LLM 배포를 확인한 뒤 다시 불러오세요.';}
+async function saveAgent(){if(!agentUI.saving){if(!['agent-name','agent-tool','agent-model','agent-prompt','agent-context-limit','agent-max-tokens'].every(id=>validField($(id))))return;
+ if(new TextEncoder().encode($('agent-prompt').value).length>4000)throw Error('답변 지침은 UTF-8 4000 바이트 이내로 줄여주세요.');
+ const resolved=await api('/api/agent-models/inspect',{method:'POST',body:{action:'resolve',connection_version_id:agentUI.connection,deployment_id:$('agent-model').value}});
+ agentUI.saving={agent:agentUI.editing?await api('/api/agents/'+agentUI.editing.agent_id):null,create:{display_name:$('agent-name').value.trim(),description:$('agent-description').value.trim()},definition:{template_id:'knowledge_qa_v1',template_version:1,tool_version_id:$('agent-tool').value,model:resolved.model,prompt:$('agent-prompt').value,context_max_chars:Number($('agent-context-limit').value),max_tokens:Number($('agent-max-tokens').value),temperature:0.2,timeout_ms:300000}};}
+ const draft=agentUI.saving;if(!draft.agent)draft.agent=await api('/api/agents',{method:'POST',body:draft.create});
+ if(!agentUI.savedVersion){const path='/api/agents/'+draft.agent.agent_id+'/versions';try{agentUI.savedVersion=await api(path,{method:'POST',body:{expected_revision:draft.agent.revision,...draft.definition}});}catch(e){if(!state.keys.has(path)){agentUI.editing=draft.agent;agentUI.saving=null;}throw e;}}
+ const id=draft.agent.agent_id,vid=agentUI.savedVersion.agent_version_id;
+ // Once saved, failed list reads recover this exact resource, never create it again.
+ await refreshAgents();await openAgent(id,vid,true);agentUI.saving=null;agentUI.savedVersion=null;agentUI.editing=null;notice('Agent를 저장했습니다. 자료에 맞는 질문으로 답변과 출처를 확인하세요.');}
+function showAgentRun(r,steps=[]){agentUI.active=r;$('agent-answer-panel').hidden=false;badge($('agent-run-badge'),r.state);$('agent-run-id').textContent='실행 ID: '+r.agent_run_id;$('agent-lookup-id').value=r.agent_run_id;$('agent-run-json').textContent=show({...r,steps});$('agent-run-question').textContent=r.input?.question||'';
+ $('agent-run-origin').textContent=agentOrigin(r)+(r.queue_ms!==undefined?' · 대기 '+durationLabel(r.queue_ms)+' · 실행 '+durationLabel(r.execution_ms):'')+' · 결과 조회는 새 질문을 실행하지 않습니다.';
+ const running=['accepted','running'].includes(r.state);$('agent-run-message').textContent=running?'질문을 접수했습니다. 아래 단계에서 진행 상태를 확인하세요.':r.state==='succeeded'?(r.result.outcome==='no_evidence'?'자료가 부족해 답변을 만들지 않았습니다.':'답변과 출처를 함께 확인하세요.'):(r.error?.code==='ANSWER_REFERENCE_INVALID'?'답변에 인용이 없거나 인용 형식·출처 번호가 맞지 않아 답변을 표시하지 않았습니다. 이 기록만으로 정확한 유형은 확정할 수 없습니다.':r.error?.code==='CONTEXT_TOO_LARGE'?'문서 조각이 답변 입력 한도를 초과했습니다. 검색 도구나 근거 예산을 검토하세요.':r.error?.code==='MODEL_INPUT_REJECTED'?'답변 모델이 입력 길이를 거절했습니다. 새 버전에서 근거 예산을 줄여주세요.':r.error?.code==='MODEL_NOT_READY'?'답변 모델이 준비되지 않았습니다. Model Platform의 배포 상태를 확인하세요.':r.state==='interrupted'?'실행이 중단됐습니다. 전체 과정을 자동으로 다시 실행하지 않습니다.':'답변을 완료하지 못했습니다.')+(r.error?' ('+r.error.code+' · '+(agentStepNames[r.error.stage]||r.error.stage)+')':'');
+ const list=$('agent-steps');list.replaceChildren();for(const step of steps){const li=el('li');li.append(el('span',(agentStepNames[step.step_id]||step.step_id)+(step.duration_ms!==undefined?' · '+durationLabel(step.duration_ms):'')),el('span',({pending:'대기',running:'진행 중',succeeded:'완료',skipped:'생략',failed:'실패',interrupted:'중단'})[step.state]||step.state,'badge'+(step.state==='succeeded'?' success':'')));list.append(li);}
+ $('agent-answer').textContent=r.state==='succeeded'?r.result.answer:'';$('agent-answer-warnings').textContent=r.result?.answer_truncated?'답변이 모델의 생성 길이 제한에서 끝났습니다. 일부 내용이 빠졌을 수 있습니다.':'';
+ const citations=$('agent-citations');citations.replaceChildren();if(r.result?.citations?.length){citations.append(el('h3','답변의 근거'));for(const c of r.result.citations){const hit=c.source,card=el('article',undefined,'knowledge-hit');const pages=[...new Set((hit.source_spans||[]).map(s=>s.metadata?.location?.page).filter(p=>p!==undefined))];card.append(el('h4',`[${c.citation_id}] ${pages.length?'원문 '+pages.join(', ')+'쪽':'출처 문서'}`),el('p',hit.text,'agent-source-text'));const details=el('details');details.append(el('summary','출처·품질·점수 확인'),el('pre',show(hit)));card.append(details);citations.append(card);}}
+ controls();}
+function durationLabel(ms){return Number.isFinite(ms)?(Math.max(0,ms)/1000).toFixed(1)+'초':'—';}
+function agentOrigin(r){const c=r.caller_context||{};return c.system==='n8n'?'호출 경로: n8n · 업무흐름 '+(c.workflow_id||'정보 없음'):c.system?'호출 경로: '+c.system:r.mode==='test'?'호출 경로: Agent 시험':'호출 경로: Agent 직접 실행';}
+function placeAgentResult(view){if(view==='results')$('question-history-result').append($('agent-answer-panel'));else if(view==='agents')$('agent-inline-result').append($('agent-answer-panel'));}
+function questionResults(){agentUI.resultView='questions';$('results-questions').hidden=false;$('results-tools').hidden=true;$('results-show-questions').setAttribute('aria-pressed','true');$('results-show-tools').setAttribute('aria-pressed','false');}
+function toolResults(){agentUI.resultView='tools';$('results-questions').hidden=true;$('results-tools').hidden=false;$('results-show-questions').setAttribute('aria-pressed','false');$('results-show-tools').setAttribute('aria-pressed','true');}
+async function waitAgentRun(id){if(agentUI.pending&&agentUI.pending!==id)throw Error('확인 중인 실행을 먼저 조회하세요: '+agentUI.pending);const until=Date.now()+610000;let last;agentUI.polling=true;agentUI.stopPolling=false;controls();
+ try{do{const r=await api('/api/agent-runs/'+id);last=r;const steps=await api('/api/agent-runs/'+id+'/steps');showAgentRun(r,steps.items);if(!['accepted','running'].includes(r.state)){agentUI.pending=null;agentUI.runRequest=null;return r;}agentUI.pending=id;if(agentUI.stopPolling)break;await new Promise(resolve=>setTimeout(resolve,1200));}while(!agentUI.stopPolling&&Date.now()<until);
+ notice('화면의 대기를 멈췄습니다. 서버 실행은 계속됩니다. 이 실행 결과 다시 확인으로 이어서 조회하세요.');return last;
+ }finally{agentUI.polling=false;controls();}}
+async function askAgent(){if(agentUI.pending){await waitAgentRun(agentUI.pending);return;}
+ if(!agentUI.runRequest){if(!validField($('agent-question')))return;const input={question:$('agent-question').value};if(new TextEncoder().encode(input.question).length>8192)throw Error('질문은 UTF-8 8 KiB 이내로 입력하세요.');if($('agent-filters').value.trim()){try{input.filters=JSON.parse($('agent-filters').value);}catch{throw Error('검색 필터 JSON 형식을 확인하세요.');}}agentUI.runRequest={agent_version_id:agentUI.version.agent_version_id,input,mode:agentUI.version.state==='draft'?'test':'run'};}
+ let accepted;try{accepted=await api('/api/agent-runs',{method:'POST',body:agentUI.runRequest});}catch(e){if(!state.keys.has('/api/agent-runs'))agentUI.runRequest=null;throw e;}
+ agentUI.pending=accepted.agent_run_id;showAgentRun({...accepted,input:agentUI.runRequest.input});await waitAgentRun(accepted.agent_run_id);}
+function runAgentName(r){return agentUI.items.find(a=>a.agent_id===r.agent_id)?.display_name||'Agent';}
+function renderAgentHistory(box,runs){box.replaceChildren();if(!runs.length){box.append(el('p','조건에 맞는 실행 기록이 없습니다.','empty'));return;}
+ for(const r of runs.slice(0,50)){const row=el('div',undefined,'recent-call'),info=el('div');info.append(el('strong',r.question||'질문'),el('p',runAgentName(r)+(r.agent_version?' · 버전 '+r.agent_version:'')+' · '+new Date(r.created_at).toLocaleString(),'hint'),el('p',agentOrigin(r),'hint'));if(r.error?.code)info.append(el('p',r.error.code+' · '+(agentStepNames[r.error.stage]||r.error.stage||''),'hint warning'));const b=el('button','결과 보기','secondary');b.onclick=()=>action(async()=>{navigate('results');questionResults();await waitAgentRun(r.agent_run_id);});const tag=el('span');badge(tag,r.state);row.append(info,tag,b);box.append(row);}}
+function filterAgentHistory(){const q=$('question-history-search').value.trim().toLowerCase(),status=$('question-history-state').value;const rows=agentUI.history.filter(r=>(!status||r.state===status)&&((r.question||'')+' '+runAgentName(r)).toLowerCase().includes(q));renderAgentHistory($('question-history'),rows);$('question-history-count').textContent='조건에 맞는 '+rows.length+'개 중 최근 '+Math.min(50,rows.length)+'개';}
+async function agentHistory(){const [list,agents]=await Promise.all([all('/api/agent-runs'),all('/api/agents')]);agentUI.items=agents;agentUI.history=list.sort((a,b)=>b.created_at.localeCompare(a.created_at));renderAgentHistory($('agent-history'),agentUI.history);filterAgentHistory();}
+$('nav-agents').onclick=()=>action(async()=>{navigate('agents');await refreshAgents();});$('agents-refresh').onclick=()=>action(refreshAgents);$('agent-new').onclick=()=>action(()=>newAgent());$('agent-go-tools').onclick=()=>navigate('tools');$('agent-create-cancel').onclick=()=>{$('agent-create').hidden=true;};
+$('agent-tool').onchange=$('agent-model-connection').onchange=invalidateAgentModels;$('agent-model').onchange=controls;$('agent-model-load').onclick=()=>action(()=>loadAgentModels());$('agent-model-more').onclick=()=>action(()=>loadAgentModels(true));$('agent-form').onsubmit=e=>{e.preventDefault();action(saveAgent);};$('agent-question-form').onsubmit=e=>{e.preventDefault();action(askAgent);};
+$('agent-versions').onchange=()=>action(()=>openAgent(agentUI.agent.agent_id,$('agent-versions').value));$('agent-new-version').onclick=()=>action(()=>newAgent(true));$('agent-run-refresh').onclick=()=>action(()=>waitAgentRun(agentUI.pending||agentUI.active.agent_run_id));$('agent-history-refresh').onclick=()=>action(agentHistory);
+$('agent-lookup-form').onsubmit=e=>{e.preventDefault();action(async()=>{const id=$('agent-lookup-id').value.trim();if(!/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/.test(id))throw Error('올바른 Agent 실행 ID를 입력하세요.');await waitAgentRun(id);});};
+for(const [id,verb]of [['agent-publish','publish'],['agent-retire','retire']])$(id).onclick=()=>action(async()=>{const v=agentUI.version;if(verb==='retire'&&!confirm('이 Agent 버전을 폐기할까요? 기존 기록은 유지됩니다.'))return;const changed=await api('/api/agent-versions/'+v.agent_version_id+'/'+verb,{method:'POST',body:{expected_revision:v.revision}});await openAgent(v.agent_id,changed.agent_version_id);notice(verb==='publish'?'Agent 사용을 시작했습니다. 질문 화면 또는 실행 API에서 사용할 수 있습니다.':'이 버전을 폐기했습니다.');});
+$('agent-toggle').onclick=()=>action(async()=>{agentBusyDraft();const a=await api('/api/agents/'+agentUI.agent.agent_id);if(a.enabled&&!confirm('이 Agent의 새 실행을 중지할까요?'))return;await api('/api/agents/'+a.agent_id,{method:'PATCH',body:{expected_revision:a.revision,enabled:!a.enabled}});await openAgent(a.agent_id,agentUI.version?.agent_version_id);await refreshAgents();});
+$('agent-search').oninput=renderAgents;
+$('question-history-search').oninput=$('question-history-state').onchange=filterAgentHistory;
+$('question-history-refresh').onclick=()=>action(agentHistory);
+$('results-show-questions').onclick=()=>action(async()=>{questionResults();await agentHistory();});
+$('results-show-tools').onclick=toolResults;
+$('nav-results').onclick=()=>action(async()=>{navigate('results');if(state.activeCall){toolResults();}else{questionResults();await agentHistory();}});
+$('agent-poll-stop').onclick=()=>{agentUI.stopPolling=true;};
+agentControls();

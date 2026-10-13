@@ -1,0 +1,1198 @@
+{
+  "version": "retained-test-evidence-v1",
+  "date": "2026-09-18",
+  "description": "요약본. 실행 재개·전체 오프라인 재채점용 원본 report.json이 아닙니다.",
+  "budget_bytes": 1000000,
+  "budget_scope": "두 플랫폼의 tests/results 파일 내용 합계. 테스트 코드·fixtures는 제외.",
+  "retained_originals": [
+    {
+      "path": "data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/figure-labels.json",
+      "size_bytes": 12885,
+      "sha256": "4c41bc655771202267dd578c5ec7c5c68a3373ff408356c35bb79da3aeba4feb",
+      "reason": "지정한 그림 영역의 라벨 전사 성공 사례"
+    },
+    {
+      "path": "data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/table-right.json",
+      "size_bytes": 16009,
+      "sha256": "42c207a172e701f8662412d7c436b950829810230f061f55db4452f2de4e00bb",
+      "reason": "지정한 표 영역의 부분 검사 성공 사례"
+    },
+    {
+      "path": "data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/table-left.json",
+      "size_bytes": 16747,
+      "sha256": "8bceece3ea339d777c69eeb116caa50d8565be79880ceb723237a343af526537",
+      "reason": "표 행·열 검사 실패 사례"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/figure-labels.json",
+      "size_bytes": 2298,
+      "sha256": "c0e585c96eb66b290976021ff5b55c3efb71b1276ae6654cba0ab4d381626083",
+      "reason": "OCR 시간 초과와 needs_ocr 사례"
+    },
+    {
+      "path": "data_platform/tests/results/console/server-flow-tests.log",
+      "size_bytes": 29209,
+      "sha256": "489f1a1bc9567db17bd6704817605d69e172e6aef5902c1914132790180917ad",
+      "reason": "서버 화면 테스트의 원본 실행 로그"
+    }
+  ],
+  "experiments": [
+    {
+      "version": "document-regions-v1",
+      "key": "771c8aba-3d83-49b4-be76-c7052873617c",
+      "code_identity": "54a402237464bf027eb9d33dd8983c0ed7fa7ea6e631a0e6c3b56f0e8cf2a8d4",
+      "fixed_sha256": "de1de6700ba359b7ab4f462f544cc0b6fb7e2a86c27a0c7aa2e69a3fe9ecc4c0",
+      "processor_image_id": "sha256:26b2de683033cb62ba7a42071e0b3d3845611feaf99dafdb1db24a5905d354e8",
+      "complete": true,
+      "all_probes_passed": false,
+      "production_result_modified": false,
+      "scope": "Authored sample regions, not automatic diagram detection. Only source pixels are supplied to OCR; answer text is used after inference for scoring. Figure arrows and reading order are not inferred.",
+      "candidate_parser_ms": 31146.576,
+      "original_report": {
+        "path": "data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/report.json",
+        "size_bytes": 2335424,
+        "sha256": "6802408fe995e5a668fbb94f5a69a84a09ca5efc69c3db36d7eb553acea284fd"
+      },
+      "source": {
+        "document_id": "00140153-b226-462b-9a6e-b5f6647f9525",
+        "sha256": "11ac5d098013fed011e3f35573daa504b914dee8030cb86590bd937cf5f553db",
+        "original_filename": "AI_Engineer_sample.pdf",
+        "size_bytes": 564114
+      },
+      "baseline": {
+        "document_id": "157c335f-5436-4338-8078-edb040ebe1ca",
+        "source_document_id": "00140153-b226-462b-9a6e-b5f6647f9525",
+        "refinement_run_id": "9a38f968-e035-49e3-acfd-740fa4614b86",
+        "sha256": "1882c65aafa125fe60971dc696cbac4e8578b487b905459a6ea440e5ce82680b",
+        "state": "needs_ocr",
+        "processor_version": "cpu-parser-surya-v1",
+        "processor_image_id": "sha256:2d7961ac87068629c815790bb9d0ff07d729dfa1c6bb9af289c35dd6cc8499c8"
+      },
+      "ocr_identity": {
+        "deployment_id": "29aac028-c0ad-49f6-a3fa-c2b3b67feade",
+        "model_version_id": "f91610ba-2792-4119-8da5-ddcdc1c62797",
+        "profile": "surya-ocr-v2",
+        "runtime_image_id": "sha256:aef4ebc906574fa2e6e52079937b7d3a8735e218f6353b58667b215e4257a34b",
+        "served_model_name": "deployment-29aac028-c0ad-49f6-a3fa-c2b3b67feade",
+        "source_manifest_sha256": "228b91df163243f45bd9bf4226a4c1f5b8559088c6a2cbc87f7ee8eb6aa50cba"
+      },
+      "cases": [
+        {
+          "id": "figure-labels",
+          "state": "evaluated",
+          "operation_id": "153eb4cc-e74f-4350-aa11-ac59e29dd3ed",
+          "refinement_run_id": "cb216f84-76fe-4b8d-9701-7768b2b140cb",
+          "source_sha256": "b948fa07a964db18d5add5c8396f638e55c0194a80b1ade81d0ecf8c941d7b30",
+          "canonical_sha256": "4c41bc655771202267dd578c5ec7c5c68a3373ff408356c35bb79da3aeba4feb",
+          "evaluation": {
+            "quality_state": "needs_review",
+            "scope": "Authored-region transcription probes, not full-document quality or automatic region detection.",
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 13.254,
+              "ocr_ms": 7137.82,
+              "parser_total_ms": 7151.075,
+              "table_comparison_ms": 0.0,
+              "version": "refinement-timing-v1"
+            },
+            "ocr_request_count": 1,
+            "matched": 24,
+            "expected": 24,
+            "missing": [],
+            "baseline_matched": 0,
+            "probes_passed": true,
+            "limitation": "Label recall only; no arrow relations, semantic reading order or automatic source-box attribution."
+          }
+        },
+        {
+          "id": "table-left",
+          "state": "evaluated",
+          "operation_id": "980bda19-a129-4c66-ac1d-8bef32abd0d3",
+          "refinement_run_id": "505b555a-9921-4132-8bd2-e2716dbab5de",
+          "source_sha256": "26ff6948ad291e136a8ea9d6107d905a0f7e1095d74b670033a78498e3a69138",
+          "canonical_sha256": "8bceece3ea339d777c69eeb116caa50d8565be79880ceb723237a343af526537",
+          "evaluation": {
+            "quality_state": "needs_review",
+            "scope": "Authored-region transcription probes, not full-document quality or automatic region detection.",
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 13.597,
+              "ocr_ms": 12291.473,
+              "parser_total_ms": 12305.07,
+              "table_comparison_ms": 0.0,
+              "version": "refinement-timing-v1"
+            },
+            "ocr_request_count": 1,
+            "values": {
+              "matched": 0,
+              "expected": 3,
+              "missing": [
+                [
+                  "Raw cowhide",
+                  "1500",
+                  "Kg"
+                ],
+                [
+                  "Electricity",
+                  "8.52",
+                  "kWh"
+                ],
+                [
+                  "Water, ground",
+                  "2415",
+                  "Kg"
+                ]
+              ]
+            },
+            "probes_passed": false,
+            "table_count": 1,
+            "limitation": "Same row and five-column position required; malformed spans fail. Probes do not cover every cell or the joined ten-column table."
+          }
+        },
+        {
+          "id": "table-right",
+          "state": "evaluated",
+          "operation_id": "f83353b4-b367-4a48-a5b4-466ea1d75167",
+          "refinement_run_id": "b4429cb3-dfc2-44b9-89e7-8bac1f33a34b",
+          "source_sha256": "50d247335f88ca59146150305b3e64a9ac5dc2cf48b9ab0e1919e31132e9d32a",
+          "canonical_sha256": "42c207a172e701f8662412d7c436b950829810230f061f55db4452f2de4e00bb",
+          "evaluation": {
+            "quality_state": "needs_review",
+            "scope": "Authored-region transcription probes, not full-document quality or automatic region detection.",
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 14.588,
+              "ocr_ms": 11675.843,
+              "parser_total_ms": 11690.431,
+              "table_comparison_ms": 0.0,
+              "version": "refinement-timing-v1"
+            },
+            "ocr_request_count": 1,
+            "values": {
+              "matched": 11,
+              "expected": 11,
+              "missing": []
+            },
+            "processes": {
+              "matched": 2,
+              "expected": 2,
+              "missing": []
+            },
+            "probes_passed": true,
+            "baseline_values_matched": 2,
+            "baseline_processes_matched": 0,
+            "table_count": 1,
+            "limitation": "Same row and five-column position required; malformed spans fail. Probes do not cover every cell or the joined ten-column table."
+          }
+        }
+      ]
+    },
+    {
+      "version": "raster-regions-v1",
+      "key": "e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240",
+      "code_identity": "ebaaa17296d946777282d723ae43142f23fc28f1ec22862fa87e48c03a63835f",
+      "fixed_sha256": "496d342cfa275a4b7dec0b22cda79f972821a6a36d3b2a42cea6056e7df2ff23",
+      "processor_image_id": "sha256:26b2de683033cb62ba7a42071e0b3d3845611feaf99dafdb1db24a5905d354e8",
+      "complete": true,
+      "all_probes_passed": false,
+      "production_result_modified": false,
+      "scope": "Automatic pixel geometry on authored sample pages 3/4. Nine candidate PNGs; no PDF text/parsed boxes, no arrow semantics or production merge.",
+      "candidate_parser_ms": 268743.311,
+      "original_report": {
+        "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/report.json",
+        "size_bytes": 2422544,
+        "sha256": "db92f4385258e9a13a9adf7c5f8530b7ff840e03e0dae193923262305901b100"
+      },
+      "source": {
+        "document_id": "00140153-b226-462b-9a6e-b5f6647f9525",
+        "sha256": "11ac5d098013fed011e3f35573daa504b914dee8030cb86590bd937cf5f553db",
+        "original_filename": "AI_Engineer_sample.pdf",
+        "size_bytes": 564114
+      },
+      "baseline": {
+        "document_id": "157c335f-5436-4338-8078-edb040ebe1ca",
+        "source_document_id": "00140153-b226-462b-9a6e-b5f6647f9525",
+        "refinement_run_id": "9a38f968-e035-49e3-acfd-740fa4614b86",
+        "sha256": "1882c65aafa125fe60971dc696cbac4e8578b487b905459a6ea440e5ce82680b",
+        "state": "needs_ocr",
+        "processor_version": "cpu-parser-surya-v1",
+        "processor_image_id": "sha256:2d7961ac87068629c815790bb9d0ff07d729dfa1c6bb9af289c35dd6cc8499c8"
+      },
+      "ocr_identity": {
+        "deployment_id": "29aac028-c0ad-49f6-a3fa-c2b3b67feade",
+        "model_version_id": "f91610ba-2792-4119-8da5-ddcdc1c62797",
+        "profile": "surya-ocr-v2",
+        "runtime_image_id": "sha256:aef4ebc906574fa2e6e52079937b7d3a8735e218f6353b58667b215e4257a34b",
+        "served_model_name": "deployment-29aac028-c0ad-49f6-a3fa-c2b3b67feade",
+        "source_manifest_sha256": "228b91df163243f45bd9bf4226a4c1f5b8559088c6a2cbc87f7ee8eb6aa50cba"
+      },
+      "cases": [
+        {
+          "id": "figure-labels",
+          "state": "evaluated",
+          "operation_id": "dbfdc181-eeae-4aea-a6f2-5ac270b6b43c",
+          "refinement_run_id": "e474816a-60b2-4c95-bee8-06437e31e722",
+          "source_sha256": "b198ca2a5957aa8926eef3cc6d2484924aa382a31205f10f360c4926851d86bc",
+          "canonical_sha256": "c0e585c96eb66b290976021ff5b55c3efb71b1276ae6654cba0ab4d381626083",
+          "evaluation": {
+            "probes_passed": false,
+            "quality_state": "needs_ocr",
+            "quality": {
+              "matched": 0,
+              "expected": 24,
+              "missing": [
+                "Raw cowhide",
+                "Trimming",
+                "Pre-soaking",
+                "Washing I",
+                "Main soaking",
+                "Splitting",
+                "Fleshing",
+                "Washing III",
+                "Liming",
+                "Washing II",
+                "Deliming",
+                "Washing IV",
+                "Pickling",
+                "Tanning",
+                "Sammying",
+                "Shaving",
+                "Re-tanning and Fixation",
+                "Washing V",
+                "Neutralization",
+                "Wetting back",
+                "Setting out",
+                "Stacking",
+                "Toogling",
+                "Cow-tanned leather"
+              ],
+              "passed": false,
+              "scope": "Visible labels only, not arrow relations or semantic order.",
+              "mapped_blocks": [],
+              "unmapped_blocks": [],
+              "region_label_mismatches": [],
+              "one_block_per_region": false
+            },
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 13.227,
+              "ocr_ms": 120226.159,
+              "parser_total_ms": 120239.387,
+              "table_comparison_ms": 0.0,
+              "version": "refinement-timing-v1"
+            },
+            "scope": "Raster candidate experiment; original document not replaced."
+          }
+        },
+        {
+          "id": "table-left-1",
+          "state": "evaluated",
+          "operation_id": "56b8c773-8910-489e-8bc1-3f25cc40afdb",
+          "refinement_run_id": "8a3e52e3-eb4d-4a1b-a0bd-d1e96afac98e",
+          "source_sha256": "43f54c3714e492b0a3e49d0e47b42dcb7a2ab9b40e3731c4ef28db8a1fce7b9d",
+          "canonical_sha256": "c34d12d3cf5e516700a6fde1b43db314722a8f82d1ffee9a27bb3d6dd06f4e8a",
+          "evaluation": {
+            "probes_passed": false,
+            "quality_state": "needs_review",
+            "quality": {
+              "matched": 0,
+              "expected": 3,
+              "missing": [
+                [
+                  "1.",
+                  "Trimming",
+                  "Inputs:",
+                  "Rawcowhide",
+                  "1500",
+                  "Kg"
+                ],
+                [
+                  "1.",
+                  "Trimming",
+                  "Outputs:",
+                  "Rejectedcowhide",
+                  "120",
+                  "Kg"
+                ],
+                [
+                  "1.",
+                  "Trimming",
+                  "Outputs:",
+                  "Rawcowhide",
+                  "1380",
+                  "Kg"
+                ]
+              ],
+              "extra": [
+                [
+                  "1.",
+                  "Trimming",
+                  "",
+                  "Inputs:RawcowhideOutputs:RejectedcowhideRawcowhide",
+                  "1500",
+                  "Kg"
+                ]
+              ],
+              "structural_errors": [],
+              "unexpected_processes": [],
+              "passed": false,
+              "scope": "Exact process number/name + Inputs/Outputs + item/amount/unit with multiplicity; no inferred process for unassigned leading rows."
+            },
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 12.964,
+              "ocr_ms": 2101.492,
+              "parser_total_ms": 2114.457,
+              "table_comparison_ms": 0.0,
+              "version": "refinement-timing-v1"
+            },
+            "scope": "Raster candidate experiment; original document not replaced."
+          }
+        },
+        {
+          "id": "table-left-2",
+          "state": "evaluated",
+          "operation_id": "5bb48d22-6e73-4b2b-a5c5-fcc0f2b9f700",
+          "refinement_run_id": "443aae76-fb88-4064-94ff-7e89ace379be",
+          "source_sha256": "2b2a514afe492f80d88f7e90abf6fdf3962a9ecb9d6c1b278d6112cbdc55e9a0",
+          "canonical_sha256": "3b831eeb09020a85986f89855a3f46a6fc5a39e8c5657c5a42b35b12a62bad75",
+          "evaluation": {
+            "probes_passed": false,
+            "quality_state": "needs_ocr",
+            "quality": {
+              "matched": 0,
+              "expected": 8,
+              "missing": [
+                [
+                  "2.",
+                  "Pre-Soaking",
+                  "Inputs:",
+                  "Alcohols,C12-14,ethoxylated,unspecified",
+                  "2.76",
+                  "Kg"
+                ],
+                [
+                  "2.",
+                  "Pre-Soaking",
+                  "Inputs:",
+                  "Alkylbenzenesulfonicacid,unspecified",
+                  "2.76",
+                  "Kg"
+                ],
+                [
+                  "2.",
+                  "Pre-Soaking",
+                  "Inputs:",
+                  "Electricity",
+                  "8.52",
+                  "kWh"
+                ],
+                [
+                  "2.",
+                  "Pre-Soaking",
+                  "Inputs:",
+                  "Rawcowhide",
+                  "1380",
+                  "Kg"
+                ],
+                [
+                  "2.",
+                  "Pre-Soaking",
+                  "Inputs:",
+                  "Water,ground",
+                  "2415",
+                  "Kg"
+                ],
+                [
+                  "2.",
+                  "Pre-Soaking",
+                  "Outputs:",
+                  "CO2",
+                  "6.3",
+                  "Kg"
+                ],
+                [
+                  "2.",
+                  "Pre-Soaking",
+                  "Outputs:",
+                  "Cowhide",
+                  "1380",
+                  "Kg"
+                ],
+                [
+                  "2.",
+                  "Pre-Soaking",
+                  "Outputs:",
+                  "Water,waste",
+                  "2420.52",
+                  "Kg"
+                ]
+              ],
+              "extra": [],
+              "structural_errors": [
+                "expected_one_table"
+              ],
+              "unexpected_processes": [],
+              "passed": false,
+              "scope": "Exact process number/name + Inputs/Outputs + item/amount/unit with multiplicity; no inferred process for unassigned leading rows."
+            },
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 13.845,
+              "ocr_ms": 120154.364,
+              "parser_total_ms": 120168.21,
+              "table_comparison_ms": 0.001,
+              "version": "refinement-timing-v1"
+            },
+            "scope": "Raster candidate experiment; original document not replaced."
+          }
+        },
+        {
+          "id": "table-left-3",
+          "state": "evaluated",
+          "operation_id": "bc517b3e-d66d-4e1a-b5c6-67b2a058e2cb",
+          "refinement_run_id": "1c50ef26-dca2-483c-bac9-38c213ce78e2",
+          "source_sha256": "f5563502f10f2460ed229aae58f5953b6a700622e3eac879b5ed6136857aa35a",
+          "canonical_sha256": "5013bc82131c9b074ba99f1cbcf555ee3faceb377b7ea99f6a2bb4d07044646a",
+          "evaluation": {
+            "probes_passed": false,
+            "quality_state": "needs_review",
+            "quality": {
+              "matched": 0,
+              "expected": 6,
+              "missing": [
+                [
+                  "3.",
+                  "WashingI",
+                  "Inputs:",
+                  "Electricity",
+                  "1.79",
+                  "kWh"
+                ],
+                [
+                  "3.",
+                  "WashingI",
+                  "Inputs:",
+                  "Rawcowhide",
+                  "1380",
+                  "Kg"
+                ],
+                [
+                  "3.",
+                  "WashingI",
+                  "Inputs:",
+                  "Water,ground",
+                  "1380",
+                  "Kg"
+                ],
+                [
+                  "3.",
+                  "WashingI",
+                  "Outputs:",
+                  "CO2",
+                  "1.32",
+                  "Kg"
+                ],
+                [
+                  "3.",
+                  "WashingI",
+                  "Outputs:",
+                  "Cowhide,washingI",
+                  "1380",
+                  "Kg"
+                ],
+                [
+                  "3.",
+                  "WashingI",
+                  "Outputs:",
+                  "Water,waste",
+                  "1380",
+                  "Kg"
+                ]
+              ],
+              "extra": [],
+              "structural_errors": [],
+              "unexpected_processes": [],
+              "passed": false,
+              "scope": "Exact process number/name + Inputs/Outputs + item/amount/unit with multiplicity; no inferred process for unassigned leading rows."
+            },
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 13.565,
+              "ocr_ms": 7189.747,
+              "parser_total_ms": 7203.313,
+              "table_comparison_ms": 0.0,
+              "version": "refinement-timing-v1"
+            },
+            "scope": "Raster candidate experiment; original document not replaced."
+          }
+        },
+        {
+          "id": "table-left-4",
+          "state": "evaluated",
+          "operation_id": "fb61ad64-5f12-4436-8a34-56b0fcd31bd7",
+          "refinement_run_id": "b23a40d8-e283-47ce-b18d-1c56627ab73e",
+          "source_sha256": "b822e162be074e5893165fd8a088c22de409b29abc0b1cc8a9e79496a4921809",
+          "canonical_sha256": "65c02414fe631ff5b36929f7e24079e3d39c371809bbebe85ca29e72087b177f",
+          "evaluation": {
+            "probes_passed": false,
+            "quality_state": "needs_review",
+            "quality": {
+              "matched": 0,
+              "expected": 3,
+              "missing": [
+                [
+                  "4.",
+                  "MainSoaking",
+                  "Inputs:",
+                  "Electricity",
+                  "43.51",
+                  "kWh"
+                ],
+                [
+                  "4.",
+                  "MainSoaking",
+                  "Inputs:",
+                  "Rawcowhide,washingI",
+                  "1380",
+                  "Kg"
+                ],
+                [
+                  "4.",
+                  "MainSoaking",
+                  "Inputs:",
+                  "Sodiumcarbonate",
+                  "4.14",
+                  "Kg"
+                ]
+              ],
+              "extra": [],
+              "structural_errors": [],
+              "unexpected_processes": [],
+              "passed": false,
+              "scope": "Exact process number/name + Inputs/Outputs + item/amount/unit with multiplicity; no inferred process for unassigned leading rows."
+            },
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 13.262,
+              "ocr_ms": 2573.773,
+              "parser_total_ms": 2587.035,
+              "table_comparison_ms": 0.0,
+              "version": "refinement-timing-v1"
+            },
+            "scope": "Raster candidate experiment; original document not replaced."
+          }
+        },
+        {
+          "id": "table-right-leading",
+          "state": "evaluated",
+          "operation_id": "2eab7173-5a91-4bb9-a915-cbb2bc51f7bd",
+          "refinement_run_id": "fabd083f-816c-4809-ac40-9c1cd8b0082b",
+          "source_sha256": "27ebb1394401e440ecdc1a4eaccd149aad03d44cf16315b4f6aca4c7ea22a089",
+          "canonical_sha256": "416c970779c3d80d7cd2a8b7f2f868977e3a64161446703960a2c0334d02e32a",
+          "evaluation": {
+            "probes_passed": false,
+            "quality_state": "needs_review",
+            "quality": {
+              "matched": 0,
+              "expected": 3,
+              "missing": [
+                [
+                  "",
+                  "",
+                  "Outputs:",
+                  "CO2",
+                  "2.54",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "Outputs:",
+                  "Cowhide,pickling",
+                  "676.2",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "Outputs:",
+                  "Wastewater",
+                  "748.55",
+                  "Kg"
+                ]
+              ],
+              "extra": [
+                [
+                  "Outputs:",
+                  "Outputs:",
+                  "",
+                  "Outputs:",
+                  "Outputs:",
+                  "Outputs:"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "CO2",
+                  "2.54",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Cowhide,pickling",
+                  "676.2",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Wastewater",
+                  "748.55",
+                  "Kg"
+                ]
+              ],
+              "structural_errors": [],
+              "unexpected_processes": [
+                [
+                  "Outputs:",
+                  "Outputs:"
+                ]
+              ],
+              "passed": false,
+              "scope": "Exact process number/name + Inputs/Outputs + item/amount/unit with multiplicity; no inferred process for unassigned leading rows."
+            },
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 14.039,
+              "ocr_ms": 2658.454,
+              "parser_total_ms": 2672.494,
+              "table_comparison_ms": 0.0,
+              "version": "refinement-timing-v1"
+            },
+            "scope": "Raster candidate experiment; original document not replaced."
+          }
+        },
+        {
+          "id": "table-right-1",
+          "state": "evaluated",
+          "operation_id": "b3ac284b-2810-4903-9708-ae8c84e5976e",
+          "refinement_run_id": "25260704-4299-43a6-acda-05c0e4ef7ea8",
+          "source_sha256": "4333fc0a8a29ceb48e473676c732026b3b412f09776d216f566ebb29afeaf287",
+          "canonical_sha256": "175d60d44086728154fffeec6a29cc5b5f33aeda119ce5a69b2f8de8701f6942",
+          "evaluation": {
+            "probes_passed": false,
+            "quality_state": "needs_review",
+            "quality": {
+              "matched": 0,
+              "expected": 12,
+              "missing": [
+                [
+                  "13.",
+                  "Tanning",
+                  "Inputs:",
+                  "ChromiumVI",
+                  "47.44",
+                  "Kg"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Inputs:",
+                  "Electricity",
+                  "70.87",
+                  "kWh"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Inputs:",
+                  "Formicacid",
+                  "3.38",
+                  "Kg"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Inputs:",
+                  "Cowhide,pickling",
+                  "676.2",
+                  "Kg"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Inputs:",
+                  "Oils,unspecified",
+                  "1.35",
+                  "Kg"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Inputs:",
+                  "Sodiumcarbonate",
+                  "10.14",
+                  "Kg"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Inputs:",
+                  "Sodiumchloride",
+                  "67.62",
+                  "Kg"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Inputs:",
+                  "Sulfuricacid",
+                  "1.35",
+                  "Kg"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Inputs:",
+                  "Water,ground",
+                  "676.2",
+                  "Kg"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Outputs:",
+                  "CO2",
+                  "52.44",
+                  "Kg"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Outputs:",
+                  "Cowhide,wetblue,tanning",
+                  "709.33",
+                  "Kg"
+                ],
+                [
+                  "13.",
+                  "Tanning",
+                  "Outputs:",
+                  "Wastewater",
+                  "774.24",
+                  "Kg"
+                ]
+              ],
+              "extra": [
+                [
+                  "13.",
+                  "Tanning",
+                  "",
+                  "Inputs:ChromiumVI",
+                  "47.44",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Electricity",
+                  "70.87",
+                  "kWh"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Formicacid",
+                  "3.38",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Cowhide,pickling",
+                  "676.2",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Oils,unspecified",
+                  "1.35",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Sodiumcarbonate",
+                  "10.14",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Sodiumchloride",
+                  "67.62",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Sulfuricacid",
+                  "1.35",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Water,ground",
+                  "676.2",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Outputs:CO2",
+                  "52.44",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Cowhide,wetblue,tanning",
+                  "709.33",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Wastewater",
+                  "774.24",
+                  "Kg"
+                ]
+              ],
+              "structural_errors": [],
+              "unexpected_processes": [],
+              "passed": false,
+              "scope": "Exact process number/name + Inputs/Outputs + item/amount/unit with multiplicity; no inferred process for unassigned leading rows."
+            },
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 13.456,
+              "ocr_ms": 6705.165,
+              "parser_total_ms": 6718.621,
+              "table_comparison_ms": 0.0,
+              "version": "refinement-timing-v1"
+            },
+            "scope": "Raster candidate experiment; original document not replaced."
+          }
+        },
+        {
+          "id": "table-right-2",
+          "state": "evaluated",
+          "operation_id": "971ccd0d-5344-43ab-b6f5-5a54ecf5e7ff",
+          "refinement_run_id": "6ab9159d-393f-43a3-b06b-498160f5634b",
+          "source_sha256": "1d7fad4c394fd548a1c11e636f526a13653a12a27e1db4194495f382d1e48423",
+          "canonical_sha256": "4b849fba1766066c2cafc66bbaea92e4d8941876d8ee56454ef4369109670659",
+          "evaluation": {
+            "probes_passed": false,
+            "quality_state": "needs_review",
+            "quality": {
+              "matched": 0,
+              "expected": 5,
+              "missing": [
+                [
+                  "14.",
+                  "Sammying",
+                  "Inputs:",
+                  "Electricity",
+                  "1.79",
+                  "kWh"
+                ],
+                [
+                  "14.",
+                  "Sammying",
+                  "Inputs:",
+                  "Cowhide,wetblue,tanning",
+                  "709.33",
+                  "Kg"
+                ],
+                [
+                  "14.",
+                  "Sammying",
+                  "Outputs:",
+                  "CO2",
+                  "1.32",
+                  "Kg"
+                ],
+                [
+                  "14.",
+                  "Sammying",
+                  "Outputs:",
+                  "Cowhide,sammying",
+                  "425.6",
+                  "Kg"
+                ],
+                [
+                  "14.",
+                  "Sammying",
+                  "Outputs:",
+                  "Wastewater",
+                  "283.73",
+                  "Kg"
+                ]
+              ],
+              "extra": [
+                [
+                  "",
+                  "",
+                  "",
+                  "Electricity",
+                  "1.79",
+                  "kWh"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "Cowhide,wetblue,",
+                  "709.33",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "",
+                  "tanning",
+                  "",
+                  ""
+                ],
+                [
+                  "",
+                  "",
+                  "Outputs:",
+                  "CO2",
+                  "1.32",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "Outputs:",
+                  "Cowhide,sammying",
+                  "425.6",
+                  "Kg"
+                ],
+                [
+                  "",
+                  "",
+                  "Outputs:",
+                  "Wastewater",
+                  "283.73",
+                  "Kg"
+                ]
+              ],
+              "structural_errors": [
+                "expected_one_table",
+                "header_mismatch"
+              ],
+              "unexpected_processes": [],
+              "passed": false,
+              "scope": "Exact process number/name + Inputs/Outputs + item/amount/unit with multiplicity; no inferred process for unassigned leading rows."
+            },
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 14.225,
+              "ocr_ms": 4877.772,
+              "parser_total_ms": 4891.997,
+              "table_comparison_ms": 0.0,
+              "version": "refinement-timing-v1"
+            },
+            "scope": "Raster candidate experiment; original document not replaced."
+          }
+        },
+        {
+          "id": "table-right-3",
+          "state": "evaluated",
+          "operation_id": "883824ca-c06b-4eae-bdf7-a6a98c20cee7",
+          "refinement_run_id": "e4458f22-c31a-4216-b885-708aea56c371",
+          "source_sha256": "ea733eb9e24dfe4290ed758e97c973e81f5ac4fb04b469cad22ceac3dceb875a",
+          "canonical_sha256": "415fab2aff42ae9b531c7811aa9010d7ecf19ff73c30748853a1ed4f029e472c",
+          "evaluation": {
+            "probes_passed": false,
+            "quality_state": "needs_review",
+            "quality": {
+              "matched": 0,
+              "expected": 1,
+              "missing": [
+                [
+                  "15.",
+                  "Shaving",
+                  "Inputs:",
+                  "Electricity",
+                  "4.77",
+                  "kWh"
+                ]
+              ],
+              "extra": [],
+              "structural_errors": [
+                "expected_five_columns",
+                "expected_one_table",
+                "header_mismatch"
+              ],
+              "unexpected_processes": [],
+              "passed": false,
+              "scope": "Exact process number/name + Inputs/Outputs + item/amount/unit with multiplicity; no inferred process for unassigned leading rows."
+            },
+            "timings": {
+              "clock": "monotonic",
+              "native_parse_ms": 14.143,
+              "ocr_ms": 2133.653,
+              "parser_total_ms": 2147.797,
+              "table_comparison_ms": 0.001,
+              "version": "refinement-timing-v1"
+            },
+            "scope": "Raster candidate experiment; original document not replaced."
+          }
+        }
+      ]
+    }
+  ],
+  "removed_originals": [
+    {
+      "path": "data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/baseline.json",
+      "size_bytes": 871717,
+      "sha256": "1882c65aafa125fe60971dc696cbac4e8578b487b905459a6ea440e5ce82680b"
+    },
+    {
+      "path": "data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/inputs/figure-labels.png",
+      "size_bytes": 517683,
+      "sha256": "b948fa07a964db18d5add5c8396f638e55c0194a80b1ade81d0ecf8c941d7b30"
+    },
+    {
+      "path": "data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/inputs/table-left.png",
+      "size_bytes": 448605,
+      "sha256": "26ff6948ad291e136a8ea9d6107d905a0f7e1095d74b670033a78498e3a69138"
+    },
+    {
+      "path": "data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/inputs/table-right.png",
+      "size_bytes": 431073,
+      "sha256": "50d247335f88ca59146150305b3e64a9ac5dc2cf48b9ab0e1919e31132e9d32a"
+    },
+    {
+      "path": "data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/report.json",
+      "size_bytes": 2335424,
+      "sha256": "6802408fe995e5a668fbb94f5a69a84a09ca5efc69c3db36d7eb553acea284fd"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/baseline.json",
+      "size_bytes": 871717,
+      "sha256": "1882c65aafa125fe60971dc696cbac4e8578b487b905459a6ea440e5ce82680b"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/inputs/figure-labels.png",
+      "size_bytes": 506349,
+      "sha256": "b198ca2a5957aa8926eef3cc6d2484924aa382a31205f10f360c4926851d86bc"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/inputs/table-left-1.png",
+      "size_bytes": 102024,
+      "sha256": "43f54c3714e492b0a3e49d0e47b42dcb7a2ab9b40e3731c4ef28db8a1fce7b9d"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/inputs/table-left-2.png",
+      "size_bytes": 227857,
+      "sha256": "2b2a514afe492f80d88f7e90abf6fdf3962a9ecb9d6c1b278d6112cbdc55e9a0"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/inputs/table-left-3.png",
+      "size_bytes": 154151,
+      "sha256": "f5563502f10f2460ed229aae58f5953b6a700622e3eac879b5ed6136857aa35a"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/inputs/table-left-4.png",
+      "size_bytes": 112232,
+      "sha256": "b822e162be074e5893165fd8a088c22de409b29abc0b1cc8a9e79496a4921809"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/inputs/table-right-1.png",
+      "size_bytes": 281097,
+      "sha256": "4333fc0a8a29ceb48e473676c732026b3b412f09776d216f566ebb29afeaf287"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/inputs/table-right-2.png",
+      "size_bytes": 154067,
+      "sha256": "1d7fad4c394fd548a1c11e636f526a13653a12a27e1db4194495f382d1e48423"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/inputs/table-right-3.png",
+      "size_bytes": 59984,
+      "sha256": "ea733eb9e24dfe4290ed758e97c973e81f5ac4fb04b469cad22ceac3dceb875a"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/inputs/table-right-leading.png",
+      "size_bytes": 89082,
+      "sha256": "27ebb1394401e440ecdc1a4eaccd149aad03d44cf16315b4f6aca4c7ea22a089"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/report.json",
+      "size_bytes": 2422544,
+      "sha256": "db92f4385258e9a13a9adf7c5f8530b7ff840e03e0dae193923262305901b100"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/table-left-1.json",
+      "size_bytes": 4522,
+      "sha256": "c34d12d3cf5e516700a6fde1b43db314722a8f82d1ffee9a27bb3d6dd06f4e8a"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/table-left-2.json",
+      "size_bytes": 2295,
+      "sha256": "3b831eeb09020a85986f89855a3f46a6fc5a39e8c5657c5a42b35b12a62bad75"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/table-left-3.json",
+      "size_bytes": 13203,
+      "sha256": "5013bc82131c9b074ba99f1cbcf555ee3faceb377b7ea99f6a2bb4d07044646a"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/table-left-4.json",
+      "size_bytes": 5013,
+      "sha256": "65c02414fe631ff5b36929f7e24079e3d39c371809bbebe85ca29e72087b177f"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/table-right-1.json",
+      "size_bytes": 11237,
+      "sha256": "175d60d44086728154fffeec6a29cc5b5f33aeda119ce5a69b2f8de8701f6942"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/table-right-2.json",
+      "size_bytes": 9498,
+      "sha256": "4b849fba1766066c2cafc66bbaea92e4d8941876d8ee56454ef4369109670659"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/table-right-3.json",
+      "size_bytes": 5254,
+      "sha256": "415fab2aff42ae9b531c7811aa9010d7ecf19ff73c30748853a1ed4f029e472c"
+    },
+    {
+      "path": "data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/table-right-leading.json",
+      "size_bytes": 5751,
+      "sha256": "416c970779c3d80d7cd2a8b7f2f868977e3a64161446703960a2c0334d02e32a"
+    }
+  ]
+}

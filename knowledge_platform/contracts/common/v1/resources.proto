@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package knowledge.common.v1;
+
+option go_package = "knowledge-platform/gen/common/v1;commonv1";
+
+// ExecutionResources describes generic compute placement requested by a domain.
+// It is intentionally independent from Docker/Kubernetes so executors can
+// translate the same contract into their own runtime-specific placement.
+message ExecutionResources {
+  // Optional node identity. In the current DockerExecutor this must match the
+  // local dispatcher node. A future KubernetesExecutor can translate it to
+  // node placement / affinity.
+  string node_name = 1;
+
+  // Number of GPUs requested when exact device IDs are not specified.
+  int32 gpu_count = 2;
+
+  // Exact node-local GPU indexes. Example: [0] or [0, 1]. When specified,
+  // gpu_count is normalized to the number of IDs.
+  repeated int32 gpu_ids = 3;
+}

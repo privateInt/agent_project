@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "stage": "Q08-optional-JS-test-Node-capability-gate",
+  "date": "2026-10-12",
+  "development_result": "passed",
+  "screen_tests": {
+    "count": 63,
+    "seconds": 8.252,
+    "skipped": 0,
+    "result": "passed"
+  },
+  "new_Node_gate_regression_tests": 7,
+  "real_HTTP_to_actual_JS_tests": 5,
+  "developer_Node_version": "v24.19.0",
+  "observed_user_server": {
+    "source": "user_supplied_terminal_output",
+    "message_received_at_KST": "2026-10-12T12:56:13+09:00",
+    "UUID_patch_checksum": "d9c0d1ff2e995de0a38fcbe1ba88135692719ccce2c95219b96b2caabce9d7d8",
+    "UUID_patch_status": "applied",
+    "UUID_patch_written": 8,
+    "QA_API_reload_required": false,
+    "screen_tests_run": 56,
+    "failures": 5,
+    "failure_class": "QuestionUUIDScreenTests",
+    "failure": "SyntaxError: Unexpected token . at optional chaining",
+    "Node_version": null,
+    "actual_Node_version_printed": false,
+    "reason": "prior_gate_checked_only_executable_presence_before_modern_JS_fixture_load",
+    "actual_post_fix_PC_question_result_observed": false
+  },
+  "implemented": {
+    "test_runtime_minimum": "Node >=18",
+    "required_features": [
+      "fetch",
+      "structuredClone",
+      "FormData",
+      "AbortController",
+      "TextEncoder",
+      "Object.hasOwn",
+      "crypto.webcrypto.getRandomValues"
+    ],
+    "old_syntax_compatible_probe_before_fixture_load": true,
+    "skip_incompatible_class_before_disposable_fixture_initialization": true,
+    "skip_does_not_count_as_JS_verification_pass": true,
+    "supported_runtime_still_executes_all_five_JS_integration_tests": true
+  },
+  "verified": [
+    "modern_Node_real_HTTP_and_UUID_v5_screen_flow",
+    "missing_or_old_Node_skip_before_JS_or_DB_fixture",
+    "missing_feature_invalid_probe_nonzero_probe_timeout_and_executable_error_skip",
+    "supported_version_uses_exact_probed_executable"
+  ],
+  "changed_runtime_files": [],
+  "changed_test_files": [
+    "apps/document_qa/tests/test_screen_questions_uuid.py",
+    "apps/document_qa/tests/test_screen_questions_node.py"
+  ],
+  "frontend_assets_changed": false,
+  "QA_API_changed": false,
+  "DB_or_schema_changed": false,
+  "head_or_key_changed": false,
+  "service_control_requested": false,
+  "production_API_requests": 0,
+  "inference_requested": false,
+  "GPU_requested": false,
+  "python_scope": "developer_Python_3_12_with_Python_3_10_AST_check",
+  "limits": [
+    "simulated_old_Node_capability_response_is_not_execution_on_user_Node_binary",
+    "new_test_gate_patch_not_applied_on_user_server",
+    "browser_question_answer_and_original_source_acceptance_pending"
+  ],
+  "next_step": "apply_test_gate_rerun_screen_tests_refresh_PC_existing_key_then_first_question"
+}

@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "stage": "Q04a-CPU-refinement-adapter",
+  "checked_date": "2026-10-07",
+  "tests": {
+    "passed": 41,
+    "elapsed_seconds": 0.616,
+    "result": "OK",
+    "command": "python3 -B -m unittest discover -s apps/document_qa/tests -p test_refinement.py -q"
+  },
+  "compatibility_checks": {
+    "passed": 2,
+    "elapsed_seconds": 0.045,
+    "result": "OK",
+    "scope": "Q03b upload with unconfigured workflow and actual loopback receipt callback; no full prior suite rerun"
+  },
+  "scope": [
+    "temporary_private_SQLite_additive_extension",
+    "stable_request_before_POST_and_manual_uncertain_replay",
+    "durable_single_library_refinement_lane",
+    "subprocess_death_lock_release",
+    "bounded_single_observation_no_background_loop",
+    "real_loopback_Data_HTTP_and_QA_operator_HTTP",
+    "immutable_canonical_ID_SHA_size_CPU_provenance_and_structure",
+    "partial_OCR_review_and_empty_not_search_ready",
+    "actual_existing_Data_CPU_parser_text_and_Markdown_compatibility"
+  ],
+  "production_api_requests": 0,
+  "gpu_used": false,
+  "inference_requested": false,
+  "model_lifecycle_requested": false,
+  "ocr_requested": false,
+  "existing_platform_runtime_files_changed": false,
+  "ops_source_unchanged": true,
+  "q01_q02_and_upload_store_unchanged": true,
+  "q03b_workflow_modules_unchanged": true,
+  "q01_q02_q03a_q03b_full_suites_rerun": false,
+  "full_platform_tests_rerun": false,
+  "native_Data_gateway_service_dispatcher_verified": false,
+  "native_PDF_parser_verified": false,
+  "production_data_refinement_verified": false,
+  "server_patch_applied": null,
+  "n8n_refinement_connected": false,
+  "question_ready": false,
+  "semantic_quality_acceptance": false,
+  "next_step": "apply_Q04a_verify_new_tests_and_own_init_status_then_Q04b_n8n_stage_binding"
+}

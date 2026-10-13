@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "stage": "Q03b-workflow-handoff",
+  "checked_date": "2026-10-07",
+  "tests": {
+    "passed": 36,
+    "skipped": 0,
+    "elapsed_seconds": 1.076,
+    "result": "OK",
+    "command": "python3 -B -m unittest discover -s apps/document_qa/tests -p test_workflows.py -q"
+  },
+  "scope": [
+    "temporary_private_SQLite_additive_compatible_extension",
+    "same_intent_manual_retry_after_unknown_delivery",
+    "receipt_committed_before_lost_reply_no_repost",
+    "subprocess_death_and_lock_release",
+    "concurrent_duplicate_callback_stable_receipt",
+    "four_operator_calls_with_loopback_HTTP_callbacks",
+    "scoped_API_authentication",
+    "fixed_workflow_Code_JavaScript_in_Node_VM",
+    "fake_n8n_API_version_and_publish_readback",
+    "local_HTTP_transport_limits"
+  ],
+  "production_api_requests": 0,
+  "gpu_used": false,
+  "model_lifecycle_requested": false,
+  "inference_requested": false,
+  "existing_platform_runtime_files_changed": false,
+  "ops_source_unchanged": true,
+  "q01_q02_code_unchanged": true,
+  "q03a_upload_store_unchanged": true,
+  "full_platform_tests_rerun": false,
+  "q01_q02_q03a_full_suites_rerun": false,
+  "question_ready": false,
+  "native_n8n_engine_verified": false,
+  "server_patch_applied": null,
+  "production_data_upload_verified": false,
+  "production_workflow_verified": false,
+  "document_processing_implemented": false,
+  "semantic_quality_acceptance": false,
+  "limitations": [
+    "n8n mock API is not native n8n 2.40.5 acceptance",
+    "Node VM evaluates shipped Code JavaScript, not webhook/HTTP nodes in engine",
+    "single_host_file_lock_SQLite_adapter",
+    "receipt only; no domain stage execution authority",
+    "explicit registration requires existing key and n8n reachable QA origin"
+  ],
+  "next_step": "apply_Q03b_verify_own_init_status_then_Q04_refinement_adapter; production_handoff_check_pending",
+  "compatibility_checks": {
+    "command": "python3 -B -m unittest apps.document_qa.tests.test_uploads.ApiTests -q",
+    "passed": 29,
+    "elapsed_seconds": 5.319,
+    "result": "OK",
+    "scope": "existing API class and inherited upload-store checks; not full 41-test suite"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "stage": "Q08-LAN-listener-offline",
+  "date": "2026-10-12",
+  "result": "passed",
+  "tests": [
+    {
+      "name": "new_listener_HTTP_and_CLI",
+      "pattern": "test_screen_hosts.py",
+      "count": 9,
+      "seconds": 2.75,
+      "result": "passed"
+    },
+    {
+      "name": "full_QA",
+      "pattern": "test_*.py",
+      "count": 559,
+      "seconds": 60.474,
+      "result": "passed"
+    }
+  ],
+  "python_scope": "developer_Python_3_12_with_Python_3_10_AST_check",
+  "observed_user_server": {
+    "source": "user_supplied_terminal_GPU_IP_readiness_listening_and_browser_timeout",
+    "message_received_at_KST": "2026-10-12T09:09:23+09:00",
+    "timestamp_scope": "message_receipt_not_execution_timestamp",
+    "GPU_name": "NVIDIA GeForce RTX 4090",
+    "GPU_memory_used_MiB": 279,
+    "GPU_memory_total_MiB": 24564,
+    "GPU_utilization_percent": 0,
+    "platforms_reachable": [
+      "data",
+      "knowledge",
+      "agent",
+      "model"
+    ],
+    "defaults_ready": false,
+    "embedding_candidates": 0,
+    "chat_candidates": 0,
+    "QA_listening": true,
+    "QA_bind": "172.25.0.1",
+    "QA_port": 17110,
+    "screen_version": "q08.1",
+    "question_API_connected": true,
+    "question_ready": false,
+    "head_activation_enabled": false,
+    "indexing_inference_enabled": false,
+    "question_inference_enabled": false,
+    "LAN_address": "192.168.0.119",
+    "Windows_browser": "ERR_CONNECTION_TIMED_OUT_at_Docker_address",
+    "browser_render_or_authenticated_library_observed": false,
+    "root_STORE_NOT_INITIALIZED_was_corrected_by_original_shshin_account": true
+  },
+  "implemented": {
+    "explicit_additional_private_IPv4_listener_in_same_process": true,
+    "same_handler_key_store_flow_callback_and_original_inference_policy": true,
+    "primary_n8n_callback_address_and_saved_workflow_resources_unchanged": true,
+    "aggregate_connection_limit_shared_between_interfaces": true,
+    "Host_port_Origin_auth_and_legacy_hostless_HTTP_1_0_checks_unchanged": true,
+    "bind_all_extras_before_request_loops_and_cleanup_on_failure_or_shutdown": true,
+    "wildcard_public_hostname_duplicate_and_more_than_four_extra_binds_rejected": true,
+    "no_frontend_asset_change_or_extra_frontend_server": true
+  },
+  "limits": [
+    "real_two_loopback_interfaces_HTTP_and_CLI_not_user_LAN_or_browser_acceptance",
+    "GPU_and_model_status_are_user_observations_not_new_inference_or_model_health_validation",
+    "actual_LAN_browser_firewall_and_route_reachability_remain_to_be_checked",
+    "no_operational_n8n_callback_execution_or_indexing_question_quality_acceptance",
+    "no_firewall_router_proxy_Docker_Ops_or_model_lifecycle_changes"
+  ],
+  "service_control_requested": false,
+  "DB_or_schema_changed": false,
+  "production_API_requests": 0,
+  "inference_requested": false,
+  "GPU_requested": false,
+  "screen_browser_acceptance": false,
+  "server_patch_application_observed": false,
+  "next_step": "apply_LAN_patch_explicit_QA_reload_then_PC_screen_readback_before_Q05c_model_preparation"
+}

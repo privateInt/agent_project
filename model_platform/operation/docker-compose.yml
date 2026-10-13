@@ -1,0 +1,21 @@
+# Included by ../docker-compose.yml with project_directory=model_platform.
+# Use the root Compose entry point so sibling dependencies and the shared network resolve.
+services:
+  operation:
+    image: model-platform-operation:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: operation
+    pull_policy: never
+    restart: unless-stopped
+    networks:
+    - ops-infra
+    container_name: model-operation
+    command:
+    - /app/operation
+    environment:
+      POSTGRES_URL: ${MODEL_POSTGRES_URL}
+      KAFKA_BROKERS: ${MODEL_KAFKA_BROKERS:-ops-kafka:19092}
+      KAFKA_COMMAND_TOPIC: ${MODEL_KAFKA_COMMAND_TOPIC:-ops.operations.requested}
+      GRPC_ADDRESS: :9000

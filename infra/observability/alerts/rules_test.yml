@@ -1,0 +1,622 @@
+{
+  "rule_files": [
+    "o04.rules.yml"
+  ],
+  "evaluation_interval": "30s",
+  "tests": [
+    {
+      "name": "target hold and recovery",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "0+0x5 1+0x10"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m30s",
+          "alertname": "OpsTargetDown",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "2m",
+          "alertname": "OpsTargetDown",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "scope": "agent-project-o04",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "수집 연결 실패"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "3m",
+          "alertname": "OpsTargetDown",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "missing target not healthy",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "_ _ _ _ _ _ _ _ _ _ _ _ 1+0x10"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "4m30s",
+          "alertname": "OpsTargetMissing",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "5m",
+          "alertname": "OpsTargetMissing",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "scope": "agent-project-o04",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "수집 대상 누락"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "6m",
+          "alertname": "OpsTargetMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "stale target",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "6m",
+          "alertname": "OpsTargetMissing",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "7m",
+          "alertname": "OpsTargetMissing",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "scope": "agent-project-o04",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "수집 대상 누락"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "host cpu sustained hold",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_cpu_seconds_total{job=\"host\",instance=\"127.0.0.1:16311\",cpu=\"0\",mode=\"idle\"}",
+          "values": "0+0x50"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "15m",
+          "alertname": "OpsHostCpuHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "16m",
+          "alertname": "OpsHostCpuHigh",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "instance": "127.0.0.1:16311",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "호스트 CPU 사용량 높음"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "memory hold and recovery",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_memory_MemTotal_bytes{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_memory_MemAvailable_bytes{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "5+0x21 50+0x20"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "9m30s",
+          "alertname": "OpsHostMemoryHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "10m",
+          "alertname": "OpsHostMemoryHigh",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "호스트 메모리 부족"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "11m",
+          "alertname": "OpsHostMemoryHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "filesystem threshold",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/test\",fstype=\"ext4\",mountpoint=\"/\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/test\",fstype=\"ext4\",mountpoint=\"/\"}",
+          "values": "5+0x31 50+0x10"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "14m30s",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "device": "/dev/test",
+                "fstype": "ext4",
+                "mountpoint": "/",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "디스크 여유 공간 부족"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "16m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "gpu temperature hold and recovery",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "DCGM_FI_DEV_GPU_TEMP{job=\"gpu\",instance=\"127.0.0.1:16313\",gpu=\"0\",UUID=\"GPU-test\",device=\"nvidia0\",modelName=\"RTX4090\"}",
+          "values": "90+0x11 70+0x10"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "4m30s",
+          "alertname": "OpsGpuTemperatureHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "5m",
+          "alertname": "OpsGpuTemperatureHigh",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "gpu",
+                "instance": "127.0.0.1:16313",
+                "gpu": "0",
+                "UUID": "GPU-test",
+                "device": "nvidia0",
+                "modelName": "RTX4090",
+                "scope": "agent-project-o04",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "GPU 온도 높음"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "6m",
+          "alertname": "OpsGpuTemperatureHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "exporter down masks resource alarms",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "0+0x30"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "DCGM_FI_DEV_GPU_TEMP{job=\"gpu\",instance=\"127.0.0.1:16313\",gpu=\"0\",UUID=\"GPU-test\",device=\"nvidia0\",modelName=\"RTX4090\"}",
+          "values": "90+0x30"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "6m",
+          "alertname": "OpsGpuTemperatureHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "6m",
+          "alertname": "OpsGpuTemperatureMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "invalid dcgm sentinel becomes unavailable",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "DCGM_FI_DEV_GPU_TEMP{job=\"gpu\",instance=\"127.0.0.1:16313\",gpu=\"0\",UUID=\"GPU-test\",device=\"nvidia0\",modelName=\"RTX4090\"}",
+          "values": "9223372036854775794+0x30"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "5m",
+          "alertname": "OpsGpuTemperatureMissing",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "gpu",
+                "instance": "127.0.0.1:16313",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "GPU 온도 관측값 없음"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "5m",
+          "alertname": "OpsGpuTemperatureHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "gpu stale metric does not stay high",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "DCGM_FI_DEV_GPU_TEMP{job=\"gpu\",instance=\"127.0.0.1:16313\",gpu=\"0\",UUID=\"GPU-test\",device=\"nvidia0\",modelName=\"RTX4090\"}",
+          "values": "90 stale _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "6m",
+          "alertname": "OpsGpuTemperatureHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "6m",
+          "alertname": "OpsGpuTemperatureMissing",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "gpu",
+                "instance": "127.0.0.1:16313",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "GPU 온도 관측값 없음"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "evaluation errors hold and clear",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "prometheus_rule_evaluation_failures_total{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "0+1x8 8+0x30"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "2m",
+          "alertname": "OpsRuleEvaluationFailures",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "3m",
+          "alertname": "OpsRuleEvaluationFailures",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "prometheus",
+                "instance": "127.0.0.1:16310",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "경보 규칙 평가 실패"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "10m",
+          "alertname": "OpsRuleEvaluationFailures",
+          "exp_alerts": []
+        }
+      ]
+    }
+  ]
+}

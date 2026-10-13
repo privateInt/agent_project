@@ -1,0 +1,543 @@
+{
+  "rule_files": [
+    "o04.rules.yml"
+  ],
+  "evaluation_interval": "30s",
+  "tests": [
+    {
+      "name": "existing root and media hold and recover",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/\"}",
+          "values": "5+0x31 50+0x10"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs1\",fstype=\"ext4\",mountpoint=\"/media/simsys/SSD_EXT4\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs1\",fstype=\"ext4\",mountpoint=\"/media/simsys/SSD_EXT4\"}",
+          "values": "5+0x31 50+0x10"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "14m30s",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "device": "/dev/fs0",
+                "fstype": "ext4",
+                "mountpoint": "/",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "디스크 여유 공간 부족"
+              }
+            },
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "device": "/dev/fs1",
+                "fstype": "ext4",
+                "mountpoint": "/media/simsys/SSD_EXT4",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "디스크 여유 공간 부족"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "16m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "nvme1 hold and recover",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "5+0x31 50+0x10"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "14m30s",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "device": "/dev/fs0",
+                "fstype": "ext4",
+                "mountpoint": "/mnt/nvme1",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "디스크 여유 공간 부족"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "16m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "simultaneous filesystem label identities",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/\"}",
+          "values": "5+0x31 50+0x10"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs1\",fstype=\"ext4\",mountpoint=\"/media/simsys/SSD_EXT4\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs1\",fstype=\"ext4\",mountpoint=\"/media/simsys/SSD_EXT4\"}",
+          "values": "5+0x31 50+0x10"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs2\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs2\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "5+0x31 50+0x10"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "14m30s",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "device": "/dev/fs0",
+                "fstype": "ext4",
+                "mountpoint": "/",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "디스크 여유 공간 부족"
+              }
+            },
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "device": "/dev/fs1",
+                "fstype": "ext4",
+                "mountpoint": "/media/simsys/SSD_EXT4",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "디스크 여유 공간 부족"
+              }
+            },
+            {
+              "exp_labels": {
+                "job": "host",
+                "instance": "127.0.0.1:16311",
+                "device": "/dev/fs2",
+                "fstype": "ext4",
+                "mountpoint": "/mnt/nvme1",
+                "scope": "agent-project-o04",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "디스크 여유 공간 부족"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "16m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "similar or nested mounts remain excluded",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/mnt/nvme10\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/mnt/nvme10\"}",
+          "values": "5+0x31 50+0x10"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs1\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1/sub\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs1\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1/sub\"}",
+          "values": "5+0x31 50+0x10"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs2\",fstype=\"ext4\",mountpoint=\"/mnt/other\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs2\",fstype=\"ext4\",mountpoint=\"/mnt/other\"}",
+          "values": "5+0x31 50+0x10"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "14m30s",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "16m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "exactly ninety percent is not over threshold",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "10+0x50"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "14m30s",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "16m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "pseudo filesystem stays excluded",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"tmpfs\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"tmpfs\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "5+0x31 50+0x10"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "14m30s",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "16m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "stale nvme sample does not become healthy zero",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "100+0x2 _x48"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "5+0x2 _x48"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "14m30s",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "16m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "exporter down suppresses stale resource alerts",
+      "interval": "30s",
+      "input_series": [
+        {
+          "series": "up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"host\",instance=\"127.0.0.1:16311\"}",
+          "values": "0+0x50"
+        },
+        {
+          "series": "up{job=\"containers\",instance=\"127.0.0.1:16312\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"gpu\",instance=\"127.0.0.1:16313\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}",
+          "values": "1+0x50"
+        },
+        {
+          "series": "node_filesystem_size_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "100+0x50"
+        },
+        {
+          "series": "node_filesystem_avail_bytes{job=\"host\",instance=\"127.0.0.1:16311\",device=\"/dev/fs0\",fstype=\"ext4\",mountpoint=\"/mnt/nvme1\"}",
+          "values": "5+0x31 50+0x10"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "14m30s",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "16m",
+          "alertname": "OpsFilesystemHigh",
+          "exp_alerts": []
+        }
+      ]
+    }
+  ]
+}

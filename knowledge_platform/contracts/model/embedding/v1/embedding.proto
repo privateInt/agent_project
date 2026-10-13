@@ -1,0 +1,54 @@
+syntax = "proto3";
+package model.embedding.v1;
+option go_package = "knowledge-platform/gen/model/embedding/v1;embeddingv1";
+
+// Model owns preprocessing, token limits and inference. Consumers supply no URL.
+service EmbeddingService {
+  rpc GetProfile(GetProfileRequest) returns (EmbeddingProfile);
+  rpc Embed(EmbedRequest) returns (EmbedResponse);
+}
+message GetProfileRequest { string deployment_id = 1; }
+message EmbeddingProfile {
+  string deployment_id = 1;
+  string model_version_id = 2;
+  string profile_id = 3;
+  string embedding_space_id = 4;
+  string source_manifest_sha256 = 5;
+  string tokenizer_sha256 = 6;
+  string runtime_image_id = 7;
+  string runtime_container_id = 8;
+  string served_model_name = 9;
+  string repo_id = 10;
+  string resolved_revision = 11;
+  string registered_model_type = 12;
+  string query_prefix = 13;
+  string document_prefix = 14;
+  string pooling = 15;
+  string normalization = 16;
+  int32 dimension = 17;
+  int32 max_input_tokens = 18;
+  int32 max_batch_size = 19;
+  int32 max_input_bytes = 20;
+  string truncation = 21;
+  string capability = 22;
+  string status = 23;
+  string serving_profile = 24;
+}
+message EmbeddingInput { string id = 1; string text = 2; }
+message EmbedRequest {
+  string deployment_id = 1;
+  string expected_embedding_space_id = 2;
+  string role = 3; // query or document; text is raw, without a caller-added prefix.
+  repeated EmbeddingInput inputs = 4;
+}
+message EmbeddingOutput {
+  string id = 1;
+  int32 index = 2;
+  repeated double embedding = 3;
+  int32 input_tokens = 4;
+}
+message EmbedResponse {
+  EmbeddingProfile profile = 1;
+  string role = 2;
+  repeated EmbeddingOutput data = 3;
+}

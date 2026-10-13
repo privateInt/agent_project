@@ -1,0 +1,42 @@
+{
+  "stage": "O02-platform-api-readback",
+  "date": "2026-09-27",
+  "result": "local_passed",
+  "tests": 28,
+  "scope": "loopback HTTP fixtures from source gateway contracts and CLI subprocess; source Go services not executed",
+  "server_acceptance": "pending",
+  "platforms": [
+    "model",
+    "data",
+    "knowledge",
+    "agent"
+  ],
+  "checks": [
+    "source state vs read result",
+    "linked operation and tool parent identities",
+    "Agent steps and original failure",
+    "pagination and partial failures",
+    "health vs readiness",
+    "HTTP auth/status, redirects, proxy exclusion",
+    "JSON, byte bounds, truncated HTTP, timeout",
+    "private field exclusion",
+    "last successful read timestamps, mode, lock, symlink handling",
+    "four-platform CLI and failure isolation"
+  ],
+  "source_services_changed": false,
+  "docker_or_database_started": false,
+  "new_port_or_server": false,
+  "business_jobs_or_inference_requested": false,
+  "source_gateway_auth": {
+    "model": "none",
+    "data": "none",
+    "knowledge": "none",
+    "agent": "existing bearer token; client GET-only"
+  },
+  "remaining": [
+    "live server GET-only acceptance",
+    "O03 serving API and UI",
+    "global counts, missing native readiness/catalog contracts",
+    "other O02 server tracing outage and credential/retention followups"
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "stage": "Q08-question-screen-server-UUID-compatibility",
+  "date": "2026-10-12",
+  "development_result": "passed",
+  "tests": [
+    {
+      "scope": "screen",
+      "count": 56,
+      "seconds": 8.149,
+      "result": "passed"
+    },
+    {
+      "scope": "agent",
+      "count": 45,
+      "seconds": 7.177,
+      "result": "passed"
+    },
+    {
+      "scope": "head",
+      "count": 47,
+      "seconds": 11.556,
+      "result": "passed"
+    }
+  ],
+  "JS_DOM_checks": [
+    {
+      "schema": 1,
+      "result": "passed",
+      "checks": 25,
+      "scope": "DOM_and_fetch_model_not_browser",
+      "production_API_requests": 0,
+      "inference_requested": false,
+      "GPU_requested": false
+    },
+    {
+      "schema": 1,
+      "result": "passed",
+      "checks": 24,
+      "scope": "Q07b_DOM_and_fetch_model_not_browser",
+      "production_API_requests": 0,
+      "inference_requested": false,
+      "GPU_requested": false
+    },
+    {
+      "schema": 1,
+      "result": "passed",
+      "checks": 36,
+      "scope": "Q08_DOM_and_fetch_model_not_browser",
+      "production_API_requests": 0,
+      "inference_requested": false,
+      "GPU_requested": false
+    }
+  ],
+  "new_disposable_HTTP_to_actual_screen_JS_tests": 5,
+  "original_failure_reproduced": {
+    "result": "reproduced",
+    "policy": {
+      "question_ready": true,
+      "question_inference_enabled": true,
+      "question_API_connected": true,
+      "head_active": true,
+      "head_revision": 1,
+      "head_target_id": "01851866-e7bd-5c5f-a405-2f949c22c60d",
+      "policy_source": "explicit_server_opt_in"
+    },
+    "error_code": "QUESTION_POLICY_UNAVAILABLE",
+    "UI_UUID_version": 4,
+    "backend_target_UUID_version": 5
+  },
+  "root_cause": "Q08_reused_UUID_v4_only_upload_validator_for_Q06b_UUID_v5_targets_and_questions",
+  "runtime_changed": [
+    "apps/document_qa/web/questions.js"
+  ],
+  "server_UUID_rule": "same_as_contracts_uid_canonical_lowercase_nonzero_UUID",
+  "browser_generated_request_key_rule": "existing_UUID_v4_unchanged",
+  "observed_user_server": {
+    "evidence_source": "user_terminal_receipts_and_PC_screenshot_not_developer_live_access",
+    "library_id": "e1172d34-4500-426e-9440-d93310b6fbf1",
+    "job_id": "430b0e7b-7b4c-4ae7-9c57-6c979ca94343",
+    "source_document_id": "8db38fb1-ba4e-41b8-aff3-b2421ff6ab16",
+    "canonical_id": "fec048c6-ea13-40f3-bef3-eddbfca9799a",
+    "indexed_document_count": 1,
+    "chunk_count": 1,
+    "indexed_count": 1,
+    "index_id": "a09f8482-6e10-44dc-aefe-ce0ad554841d",
+    "index_version_id": "fab90f1d-9d92-4923-8550-8c5cbcbe620f",
+    "indexing_flow_generation": 3,
+    "indexing_execution_id": "10",
+    "indexing_state": "indexing_activated",
+    "local_indexing_generation": 1,
+    "indexing_checked_at_UTC": "2026-10-12T00:51:36Z",
+    "tool_plan_id": "fcff20e1-4eed-53d4-aac6-4f3e318e2728",
+    "tool_version_id": "ecc5cc0b-fb25-4578-9521-3760dfd9747f",
+    "tool_call_id": "ea7be16a-bb4b-481d-b8d3-86fdd1137d08",
+    "tool_result_sha256": "023183ec894ccd756d3919047b74e365daca97e779be4d5431989395b4fa2783",
+    "first_document_search_and_tool_publication_verified": true,
+    "qa_plan_id": "b743f343-8b82-5a5e-a027-57003e9e2184",
+    "agent_version_id": "41330cd4-618f-429e-949e-a8ef3b1337ab",
+    "test_agent_run_id": "46e5c8ac-9e67-46fd-a0e8-d463683b0b2c",
+    "test_agent_result_sha256": "5fe2a1a4e50a9ef07b3b4ffdcb0df89f1f4c192495cc2e91c82b61b09c5d5106",
+    "test_answer": "문서 QA CPU 연결 확인입니다. [S1]",
+    "first_document_answer_citations_and_agent_publication_verified": true,
+    "head_activation": {
+      "client_key": "32f2db49-3afd-5f74-97fd-7b3595685676",
+      "expected_revision": 0,
+      "head_revision": 1,
+      "previous_target_id": null,
+      "target_id": "01851866-e7bd-5c5f-a405-2f949c22c60d",
+      "target_sha256": "f9c9620b2d85308628098c931f8dafef29b1af5ffa92c7aaae3da681dceccf44",
+      "verification_sha256": "c5e1259796659691d2612323d8591a93a115a3cd12df1021132e5fd313c02ed8",
+      "activated_at_UTC": "2026-10-12T02:33:49Z",
+      "result": "applied",
+      "QA_GET_requests": 5,
+      "QA_activation_POST_attempts": 1,
+      "inference_requested": false,
+      "GPU_requested": false,
+      "authenticated_question_policy_verified": true,
+      "question_ready": true
+    },
+    "PC_screen": {
+      "screenshot_display_timestamp_KST": "2026-10-12T11:39:31+09:00",
+      "registered_documents": 1,
+      "document_label": "검색 자료 준비됨",
+      "question_state": "확인 필요",
+      "question_submit_disabled": true,
+      "notice": "질문 연결을 확인할 수 없습니다. 자료함 상태를 다시 확인하세요.",
+      "actual_screen_question_completion_verified": false
+    },
+    "semantic_quality_verified": false
+  },
+  "development_verified": [
+    "actual_UUID_v5_target_and_question_generated_by_native_QA_stores_cross_loopback_HTTP_into_JS",
+    "new_question_one_Run_explicit_observe_and_checked_original_citation_display",
+    "lost_dispatch_ack_UUID_v5_pending_action_survives_reconnect_GET_then_explicit_observe_without_new_Run",
+    "active_head_paused_policy_displays_preparation_instead_of_invalid_connection",
+    "malformed_nil_uppercase_UUIDs_inconsistent_policy_and_non_v4_browser_key_still_refused",
+    "existing_jobs_head_keys_and_receipts_preserved"
+  ],
+  "limits": [
+    "new_patch_not_applied_on_user_server_yet",
+    "post_fix_PC_question_answer_and_original_source_acceptance_pending",
+    "DOM_HTTP_test_is_not_real_browser_render_or_production_GPU_semantic_quality_test",
+    "second_document_cumulative_index_and_Tool_Agent_head_transition_not_verified"
+  ],
+  "python_scope": "developer_Python_3_12_with_Python_3_10_AST_check",
+  "development_production_API_requests": 0,
+  "development_inference_requested": false,
+  "development_GPU_requested": false,
+  "DB_or_schema_changed": false,
+  "QA_API_reload_required_for_static_fix": false,
+  "next_step": "apply_screen_fix_refresh_PC_console_existing_key_then_two_questions_and_original_source_acceptance"
+}

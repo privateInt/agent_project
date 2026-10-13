@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+package deployment.v1;
+
+option go_package = "model-platform/gen/deployment/v1;deploymentv1";
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/resources.proto";
+
+service DeploymentService {
+ rpc BlockModelPurge(ModelPurgeFence) returns (ModelPurgeFence);
+  rpc ListDeployments(ListDeploymentsRequest) returns (ListDeploymentsResponse);
+  // Old servers must reject real serving instead of ignoring new request fields.
+  rpc CreateServingDeployment(DeployModelRequest) returns (DeployModelResponse);
+  rpc CreateOCRDeployment(DeployModelRequest) returns (DeployModelResponse);
+  rpc StartServing(StartServingRequest) returns (Deployment);
+  rpc StopDeployment(StopDeploymentRequest) returns (Deployment);
+  rpc DeleteDeployment(GetDeploymentRequest) returns (Deployment);
+  rpc DeployModel(DeployModelRequest) returns (DeployModelResponse);
+  rpc GetDeployment(GetDeploymentRequest) returns (Deployment);
+  rpc CompleteDeployment(CompleteDeploymentRequest) returns (Deployment);
+  rpc FailDeployment(FailDeploymentRequest) returns (Deployment);
+}
+
+message DeployModelRequest {
+  string model_version_id = 1;
+  common.v1.ExecutionResources resources = 2;
+  string idempotency_key = 3;
+  ServingSpec serving = 4;
+}
+
+message DeployModelResponse {
+  string deployment_id = 1;
+  string operation_id = 2;
+  string status = 3;
+}
+
+message GetDeploymentRequest {
+  string deployment_id = 1;
+}
+
+message CompleteDeploymentRequest {
+  string deployment_id = 1;
+}
+
+message FailDeploymentRequest {
+  string deployment_id = 1;
+}
+
+message Deployment {
+  string deployment_id = 1;
+  string model_version_id = 2;
+  string status = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  common.v1.ExecutionResources resources = 6;
+  string operation_id = 7;
+  string submission_status = 8;
+  string submission_error_code = 9;
+  ServingSpec serving = 10;
+  string apply_status = 11;
+  string runtime_state = 12;
+  string endpoint = 13;
+  string internal_endpoint = 14;
+  string served_model_name = 15;
+  string runtime_container_id = 16;
+  string runtime_image_id = 17;
+  string runtime_error_code = 18;
+  string runtime_error_message = 19;
+  string desired_state = 20;
+  google.protobuf.Timestamp runtime_checked_at = 21;
+  string artifact_kind = 22;
+  string base_model_version_id = 23;
+  string adapter_model_version_id = 24;
+  string base_served_model_name = 25;
+  google.protobuf.Timestamp deleted_at = 26;
+}
+
+// Missing serving keeps the legacy CPU demo contract. Real serving is explicit.
+message ServingSpec {
+  string engine = 1;
+  int32 max_model_len = 2;
+  double gpu_memory_utilization = 3;
+  string profile = 4;
+}
+// Only the approved deployment.serve process can activate provisioning.
+message StartServingRequest {
+  string deployment_id = 1;
+  string operation_id = 2;
+  string dispatch_token = 3;
+  string execution_instance_id = 4;
+}
+message StopDeploymentRequest { string deployment_id = 1; }
+
+// Read-only summary list, newest first. Cursor is bound to normalized filters.
+message ListDeploymentsRequest {
+  int32 limit = 1;
+  string cursor = 2;
+  string status = 3;
+  string model_version_id = 4;
+  string runtime_state = 5;
+}
+message ListDeploymentsResponse { repeated Deployment deployments = 1; string next_cursor = 2; }
+
+message ModelPurgeFence { string model_version_id = 1; }

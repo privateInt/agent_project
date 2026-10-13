@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-22",
+  "stage": "A02",
+  "source": "user_pasted_execution_log",
+  "third_server_attempt": {
+    "patch_applied": 9,
+    "preflight": "passed",
+    "healthy_services": [
+      "agent-runtime",
+      "agent-service",
+      "agent-gateway",
+      "agent-postgres"
+    ],
+    "smoke": "failed_persisted_diagnostic_changed",
+    "database_checks": "not_run_due_to_set_e"
+  },
+  "code_path_inference": [
+    "health_ready_auth_and_status_checks_passed",
+    "diagnostic_post_201_and_get_200_succeeded"
+  ],
+  "reproduction": {
+    "driver": "pgx 5.10.0",
+    "original_local_timestamp": "2026-09-22T07:06:59.280162739Z",
+    "decoded_local_timestamp": "2026-09-22T07:06:59.280162Z",
+    "before_fix": "failed",
+    "after_fix_binary_and_text": "passed"
+  },
+  "correction": {
+    "created_and_completed_precision": "UTC microsecond",
+    "smoke_exact_equality": "retained",
+    "db_integration_comparison": "all protobuf fields",
+    "service_tests_passed": 5,
+    "optional_tests_skipped": 2,
+    "service_build": "passed",
+    "server_retest": "pending"
+  }
+}

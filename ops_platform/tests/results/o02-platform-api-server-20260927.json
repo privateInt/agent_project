@@ -1,0 +1,338 @@
+{
+  "schema": 1,
+  "stage": "O02-platform-api-readback",
+  "result": "server_bounded_api_readback_passed",
+  "checked_at": "2026-09-26T23:37:01.794209Z",
+  "checked_at_kst": "2026-09-27T08:37:01.794209+09:00",
+  "evidence": "user-supplied patch apply and GET-only CLI output",
+  "server_log_sha256": "8d1e9b08fcdc39fbc7cd666bfd123c50c66b65a8b0445df92106145dd8c876b2",
+  "source_archive": "agent_project.tar(10).gz",
+  "preceding_patches": [
+    "agent_tracing_verified_20260927",
+    "ops_platform_api_o02_20260927"
+  ],
+  "platform_api_patch_files_applied": 18,
+  "scope": "bounded_api_readback_not_full_platform_acceptance",
+  "platforms": {
+    "model": {
+      "result": "passed",
+      "gateway": "ok",
+      "gateway_scope": "gateway_only",
+      "readiness": "unsupported",
+      "resources": {
+        "operations": {
+          "status": "ok",
+          "sampled_count": 3,
+          "has_more": true,
+          "total_count": null,
+          "sample_detail": {
+            "status": "ok",
+            "id": "b9af73ed-a149-4849-8b2e-2d851f0c5866",
+            "state": "succeeded",
+            "phase": "completed"
+          }
+        },
+        "model-versions": {
+          "status": "ok",
+          "sampled_count": 3,
+          "has_more": true,
+          "total_count": null,
+          "sample_detail": {
+            "status": "ok",
+            "id": "68f1c0db-da9d-4195-b266-4cc7249916f1",
+            "state": "ready",
+            "phase": null,
+            "operation": {
+              "status": "ok",
+              "id": "641fe5e9-050f-4988-9690-758aedf6deec",
+              "state": "succeeded"
+            }
+          }
+        },
+        "training-runs": {
+          "status": "ok",
+          "sampled_count": 0,
+          "has_more": false,
+          "total_count": null,
+          "detail_status": "not_checked_empty_page"
+        },
+        "deployments": {
+          "status": "ok",
+          "sampled_count": 3,
+          "has_more": true,
+          "total_count": null,
+          "sample_detail": {
+            "status": "ok",
+            "id": "537ea34d-b066-40dd-b08a-dbabec066da9",
+            "state": "ready",
+            "phase": null,
+            "operation": {
+              "status": "ok",
+              "id": "b9af73ed-a149-4849-8b2e-2d851f0c5866",
+              "state": "succeeded"
+            }
+          }
+        }
+      }
+    },
+    "data": {
+      "result": "passed",
+      "gateway": "ok",
+      "gateway_scope": "gateway_only",
+      "readiness": "unsupported",
+      "resources": {
+        "operations": {
+          "status": "ok",
+          "sampled_count": 3,
+          "has_more": true,
+          "total_count": null,
+          "sample_detail": {
+            "status": "ok",
+            "id": "883824ca-c06b-4eae-bdf7-a6a98c20cee7",
+            "state": "succeeded",
+            "phase": "completed"
+          }
+        },
+        "crawl-runs": {
+          "status": "ok",
+          "sampled_count": 3,
+          "has_more": true,
+          "total_count": null,
+          "sample_detail": {
+            "status": "ok",
+            "id": "ca3b22c6-cdb6-4b32-b1ce-72cfd2fd1456",
+            "state": null,
+            "phase": "completed",
+            "operation": {
+              "status": "ok",
+              "id": "d4217e8e-776b-4686-8fae-37d8e5545291",
+              "state": "succeeded"
+            }
+          }
+        },
+        "refinement-runs": {
+          "status": "ok",
+          "sampled_count": 3,
+          "has_more": true,
+          "total_count": null,
+          "sample_detail": {
+            "status": "ok",
+            "id": "6ab9159d-393f-43a3-b06b-498160f5634b",
+            "state": null,
+            "phase": "completed",
+            "operation": {
+              "status": "ok",
+              "id": "971ccd0d-5344-43ab-b6f5-5a54ecf5e7ff",
+              "state": "succeeded"
+            }
+          }
+        }
+      }
+    },
+    "knowledge": {
+      "result": "passed",
+      "gateway": "ok",
+      "gateway_scope": "gateway_only",
+      "readiness": "unsupported",
+      "resources": {
+        "operations": {
+          "status": "unsupported",
+          "reason": "DETAIL_ONLY_API"
+        },
+        "chunking-runs": {
+          "status": "ok",
+          "sampled_count": 3,
+          "has_more": true,
+          "total_count": null,
+          "sample_detail": {
+            "status": "ok",
+            "id": "e0f24e88-cd61-4c27-b6ee-8db39b112c65",
+            "state": null,
+            "phase": null,
+            "operation": {
+              "status": "ok",
+              "id": "bde788d1-e6a7-4f5a-bfc6-3fcff4e7aa18",
+              "state": "succeeded"
+            }
+          }
+        },
+        "indexes": {
+          "status": "ok",
+          "sampled_count": 3,
+          "has_more": true,
+          "total_count": null,
+          "sample_detail": {
+            "status": "ok",
+            "id": "e011832c-ecef-491c-a545-ddf16bb320dd",
+            "state": "active",
+            "phase": null
+          }
+        },
+        "index-versions": {
+          "status": "ok",
+          "sampled_count": 1,
+          "has_more": false,
+          "total_count": null,
+          "sample_detail": {
+            "status": "ok",
+            "id": "0464117d-17a2-4696-a681-1be428671ac4",
+            "state": "ready",
+            "phase": null,
+            "operation": {
+              "status": "ok",
+              "id": "f444af36-ec52-4494-8903-08fb3607c9ae",
+              "state": "succeeded"
+            }
+          }
+        }
+      }
+    },
+    "agent": {
+      "result": "passed",
+      "gateway": "ok",
+      "gateway_scope": "gateway_only",
+      "readiness": {
+        "ready": true,
+        "scope": "agent_service_database_runtime",
+        "database": "ready",
+        "runtime": "ready",
+        "request_id": "3d7a9659-1750-435a-8b56-4bc6cb3ba7f2"
+      },
+      "resources": {
+        "agent-runs": {
+          "status": "ok",
+          "sampled_count": 3,
+          "has_more": true,
+          "total_count": null,
+          "sample_detail": {
+            "status": "ok",
+            "id": "0051b6db-5756-4a55-b6d5-029e53d365d7",
+            "state": "succeeded",
+            "phase": null,
+            "tool_call": {
+              "status": "ok",
+              "id": "10050863-f355-48e9-89ce-13ee8b8744ac",
+              "state": "succeeded"
+            },
+            "steps": {
+              "validate": "succeeded",
+              "search": "succeeded",
+              "context": "succeeded",
+              "generate": "succeeded",
+              "finalize": "succeeded"
+            }
+          }
+        },
+        "tool-calls": {
+          "status": "unsupported",
+          "reason": "DETAIL_ONLY_API"
+        }
+      }
+    }
+  },
+  "pinned_agent_run": {
+    "status": "ok",
+    "last_success_at": "2026-09-26T23:37:01.029753Z",
+    "error": null,
+    "id": "1a7d571b-e7e5-4b07-8f41-ad3392025b95",
+    "state": "failed",
+    "phase": null,
+    "identifiers": {
+      "request_id": "1ae83dd8-60f5-49a0-8e4a-2d6f7e13af91",
+      "agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+      "tool_call_id": "c64e4b1c-0b74-411b-ad15-d7fa1770ca87"
+    },
+    "business_error": {
+      "code": "ANSWER_REFERENCE_INVALID",
+      "stage": "finalize"
+    },
+    "steps": [
+      {
+        "step_id": "validate",
+        "state": "succeeded",
+        "started_at": "2026-09-26T13:36:44.464085Z",
+        "completed_at": "2026-09-26T13:36:44.466982Z",
+        "error_code": null
+      },
+      {
+        "step_id": "search",
+        "state": "succeeded",
+        "started_at": "2026-09-26T13:36:44.474449Z",
+        "completed_at": "2026-09-26T13:36:45.323553Z",
+        "error_code": null
+      },
+      {
+        "step_id": "context",
+        "state": "succeeded",
+        "started_at": "2026-09-26T13:36:45.334308Z",
+        "completed_at": "2026-09-26T13:36:45.33728Z",
+        "error_code": null
+      },
+      {
+        "step_id": "generate",
+        "state": "succeeded",
+        "started_at": "2026-09-26T13:36:45.344536Z",
+        "completed_at": "2026-09-26T13:36:47.748574Z",
+        "error_code": null
+      },
+      {
+        "step_id": "finalize",
+        "state": "failed",
+        "started_at": "2026-09-26T13:36:47.752909Z",
+        "completed_at": "2026-09-26T13:36:47.756475Z",
+        "error_code": "ANSWER_REFERENCE_INVALID"
+      }
+    ],
+    "tool_call": {
+      "status": "ok",
+      "last_success_at": "2026-09-26T23:37:01.033537Z",
+      "error": null,
+      "id": "c64e4b1c-0b74-411b-ad15-d7fa1770ca87",
+      "state": "succeeded",
+      "phase": null,
+      "identifiers": {
+        "request_id": "1ae83dd8-60f5-49a0-8e4a-2d6f7e13af91",
+        "tool_version_id": "7bef17f9-f287-475d-8655-ae5ab5906738",
+        "tool_call_id": "c64e4b1c-0b74-411b-ad15-d7fa1770ca87",
+        "parent_agent_run_id": "1a7d571b-e7e5-4b07-8f41-ad3392025b95"
+      },
+      "business_error": {
+        "code": null,
+        "stage": null
+      }
+    }
+  },
+  "previous_reference_diagnosis": {
+    "source": "prior read-only diagnose_answer output; not rerun by this check",
+    "issue": "MISSING_REFERENCE",
+    "selected_source_count": 5,
+    "recognized_count": 0
+  },
+  "method": "GET",
+  "inference_requested": false,
+  "remote_mutations_requested": false,
+  "business_success_assessed": false,
+  "global_counts_supported": false,
+  "ops_api_ui_implemented": false,
+  "o02_overall_complete": false,
+  "query_code_changes_required": false,
+  "patch_scope": "documentation and compact server evidence only",
+  "limitations": [
+    "training-run detail not checked: empty source page",
+    "resource pages are samples, not global totals or latest-order guarantees",
+    "knowledge index-version page covers one sampled index",
+    "native non-Agent dependency readiness unsupported",
+    "global Knowledge Operation and standalone ToolCall lists unsupported; linked details verified",
+    "source resource states and related operation states remain distinct",
+    "no new Langfuse or Prometheus acceptance performed by this check",
+    "failure isolation and restart acceptance not performed by this readback"
+  ],
+  "next": "O03 read API and integrated UI",
+  "remaining": [
+    "missing native global catalogs/counts/readiness contracts as needed",
+    "server tracing outage acceptance, credential separation and retention/capacity policy",
+    "O03 Prometheus/Langfuse and platform read API integration, permissions, stale/error/unsupported UI",
+    "O04 alerting and operations acceptance"
+  ],
+  "quality_work": "existing Agent UI and answer quality work remains deferred"
+}

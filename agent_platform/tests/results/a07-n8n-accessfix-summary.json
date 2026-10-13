@@ -1,0 +1,36 @@
+{
+  "result": "passed",
+  "stage": "A07-n8n-accessfix",
+  "scope": "real n8n 2.40.5 HTTP / isolated SQLite / no Agent or model calls",
+  "checks": [
+    "read-only diagnosis creates no local files",
+    "server minimum 16 and three password validation rules",
+    "Korean first and last names accepted",
+    "account setup success followed by real API key HTTP 400",
+    "existing account login resumes after key rejection; no account reset",
+    "scoped API key creation, verification and unchanged reuse"
+  ],
+  "inference_executed": false,
+  "unit_tests": {
+    "infra": 26,
+    "infra_access_subset": 10,
+    "agent_n8n_ops": 3
+  },
+  "runtime_changes": false,
+  "account_reset": false,
+  "answer_quality": "deferred",
+  "previous_server_evidence": {
+    "operational_patch": "already_applied",
+    "account_connection": "HTTP_400",
+    "failure_stage": "unknown_in_old_output",
+    "prepare_run_lookup": "not_executed_due_to_set_e",
+    "accessfix": "pending_server_retry"
+  },
+  "server_evidence": {
+    "accessfix": "already_applied",
+    "account_connection": "connected",
+    "operational_prepare": "prepared",
+    "first_run": "failed: ANSWER_REFERENCE_INVALID/finalize",
+    "latest_record": "a07-operational-server-20260924.json"
+  }
+}

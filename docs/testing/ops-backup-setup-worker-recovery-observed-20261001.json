@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "stage": "O04-observed-production-backup-setup-and-worker-recovery-gate",
+  "source": "user_provided_server_JSON",
+  "production_setup": {
+    "result": "passed",
+    "setup_ready": true,
+    "new_identity_created": true,
+    "destination": "/home/shshin/.local/state/agent-project-ops/backups",
+    "recipient": "age1zaye9qzk7fqs9fucgrk2s2jv8eu02gqyqfx3d9ggleymxm89zygs26s4cn",
+    "identity_contents_returned": false,
+    "identity_custody_verified": false
+  },
+  "production_backup_plan": {
+    "result": "attention_required",
+    "code": "WORKER_RECOVERY_REQUIRED",
+    "adapter_metadata_commands": 40,
+    "includes_core_metadata_queries": false,
+    "worker_service_control_commands": 0
+  },
+  "worker_status": {
+    "checked_at": "2026-10-01T06:44:15.074281Z",
+    "provider": "failed_exit_2",
+    "desired_state": "paused",
+    "recovery": "WORKER_DOCKER_NOT_READY",
+    "prior_completed_cycles": 2511,
+    "failure_checked_at": "2026-10-01T00:36:22.810844Z",
+    "historical_root_cause": "unconfirmed"
+  },
+  "preflight": {
+    "checked_at": "2026-10-01T06:45:23.729683Z",
+    "result": "attention_required",
+    "blockers": [
+      "WORKER_RECOVERY_REQUIRED"
+    ],
+    "warnings": [
+      "EXTERNAL_REFERENCE_PRIVATE_MODE_DIFFERS"
+    ],
+    "prepared_state_stable": true,
+    "intent": null,
+    "pending_generation": null,
+    "installation_configuration_provenance": "ok",
+    "docker": "ok",
+    "ops": "healthy",
+    "daemon_id": "58e28582-1270-4855-bee0-d6bc89122364",
+    "ops_container_id": "b386b6f328085430d030c55a75019d784af57315c0a7cc27f533d84bf9faf557",
+    "ops_image_id": "sha256:9713182672c2380dd0e95385011685bfd4b1ac3647ba09aa355cc13c403318da",
+    "systemd_manager_version": 249,
+    "linger": true,
+    "persistence": "boot",
+    "enabled": true,
+    "metadata_commands": 11,
+    "service_control_requested": false,
+    "application_credentials_read": false,
+    "upstream_api_requests": 0
+  },
+  "recovery_tool_native_server_acceptance": false,
+  "production_backup_executed": false,
+  "production_restore_executed": false,
+  "backup_ready": false,
+  "actual_reboot_acceptance": "deferred_by_user",
+  "kubernetes_acceptance": "deferred"
+}

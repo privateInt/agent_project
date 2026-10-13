@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-09-27",
+  "scope": "O03 partial server readback and GPU query correction",
+  "source": "user pasted build and check_console output, 2026-09-27 10:04 KST",
+  "server_before_gpu_fix": {
+    "ops_healthy": true,
+    "build_import_guard": "passed",
+    "image_id": "sha256:d27ce07d0b27c63da1b9d3c6c462c8dd134bfd6648bd8a7be546581e28f1d9b2",
+    "gateways": {
+      "model": "ok",
+      "data": "ok",
+      "knowledge": "ok",
+      "agent": "ok"
+    },
+    "agent_readiness": {
+      "ready": true,
+      "database": "ready",
+      "runtime": "ready"
+    },
+    "other_readiness": "unsupported",
+    "resource_result_counts": {
+      "targets": 4,
+      "host_cpu": 1,
+      "host_memory": 1,
+      "filesystems": 3,
+      "container_cpu": 60,
+      "container_memory": 60
+    },
+    "down_targets": 0,
+    "gpu": {
+      "status": "error",
+      "code": "UPSTREAM_HTTP_ERROR",
+      "http_status": 422,
+      "error_body_observed": false
+    },
+    "agent": {
+      "status": "ok",
+      "id": "1a7d571b-e7e5-4b07-8f41-ad3392025b95",
+      "state": "failed",
+      "error": {
+        "code": "ANSWER_REFERENCE_INVALID",
+        "stage": "finalize"
+      }
+    },
+    "trace": {
+      "status": "ok",
+      "id": "7f0695514f939240bc83312baf917ab7",
+      "span_count": 10,
+      "missing_spans": [],
+      "relationship": "verified_records"
+    },
+    "result": "attention_required"
+  },
+  "local_fix_validation": {
+    "python_tests": 51,
+    "promql_syntax_queries": 7,
+    "projection_fields": 6,
+    "zero_utilization_preserved": true,
+    "metric_names_and_units_preserved": true,
+    "promtool_fixture_cases": 3,
+    "promtool_fixture_execution": "not_run",
+    "native_prometheus_evaluation": "not_run"
+  },
+  "fixed_query_server_readback": "pending",
+  "browser_acceptance": "pending",
+  "docker_restart_acceptance": "separate_pending",
+  "inference_requested": false,
+  "business_mutations_requested": false,
+  "credentials_included": false
+}

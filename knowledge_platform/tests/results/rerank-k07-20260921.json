@@ -1,0 +1,111 @@
+{
+  "phase": "K07",
+  "date": "2026-09-21",
+  "status": "server_go_postgres_and_live_api_passed_browser_pending",
+  "local": {
+    "python_passed": 14,
+    "python_suites": {
+      "test_rerank_search_tools": 6,
+      "test_search_tools": 8
+    },
+    "javascript_suites": [
+      "search_ui_test.cjs",
+      "indexing_ui_test.cjs",
+      "request_state_test.cjs"
+    ],
+    "knowledge_go_files_syntax_checked": 87,
+    "go_compile": "not_run_no_local_go_or_docker",
+    "postgres_integration": "not_run",
+    "gpu_search": "not_run",
+    "browser_rendering": "not_run"
+  },
+  "go_test_sources_added": {
+    "retrieval_root_tests": 3,
+    "gateway_root_tests": 1,
+    "postgres_root_tests": 3
+  },
+  "runtime_behavior": {
+    "default_rerank": false,
+    "off_model_calls": 0,
+    "on_profile_calls": 1,
+    "on_scoring_calls_if_candidates": 1,
+    "on_scoring_calls_if_empty": 0,
+    "automatic_fallback": false,
+    "search_deadline_seconds": {
+      "off": 15,
+      "on": 60
+    },
+    "profile_timeout_seconds": 5,
+    "rerank_timeout_seconds": 45
+  },
+  "existing_indexes_or_model_lifecycle_changed": false,
+  "model_redeploy_ui_server_acceptance": "not_reported",
+  "server_checks_planned_at_implementation": [
+    "Docker tests target",
+    "run_rerank_db_checks.py",
+    "live_rerank_search.py on existing 48-chunk index and ready deployments",
+    "browser optional rerank selection and score rendering"
+  ],
+  "user_server": {
+    "evidence": {
+      "filename": "붙여넣은 텍스트 (1)(20260921-035918).txt",
+      "sha256": "2444be51f41ce19b5e3b47806621dbcbad931c56ba11bdba16e86eef1a3b83da",
+      "bytes": 27245,
+      "source": "user-provided execution log; not direct assistant access to server"
+    },
+    "patch": {
+      "name": "knowledge_rerank_update_20260921",
+      "applied_files": 37
+    },
+    "python_passed": 14,
+    "go_tests": {
+      "command": "go test -count=1 ./...",
+      "status": "passed_in_Docker_tests_target",
+      "image_id": "sha256:3279edc2c05590e7cee4df40661441af8a65e03d22ce5ee3495bc2817d5c8663"
+    },
+    "postgres_integration": {
+      "tool": "run_rerank_db_checks.py",
+      "status": "passed",
+      "scope": "real PostgreSQL disposable schema; Model/OpenSearch doubles",
+      "checks": [
+        "off",
+        "on",
+        "empty",
+        "error",
+        "cancel",
+        "deadline",
+        "read-delete"
+      ],
+      "package": "knowledge-platform/service/app",
+      "seconds": 1.148
+    },
+    "build_and_start": {
+      "knowledge-service": {
+        "status": "passed_and_started",
+        "image_id": "sha256:bb5b377496feefc6c6c426bf9fa1434dbdae37ec3e729fc242bf01e5cc693a3c"
+      },
+      "knowledge-gateway": {
+        "status": "passed_and_started",
+        "image_id": "sha256:526b6eb471608e399e45e20691d8354e2aa8ce59970094ce4f60fc67a4319fdc"
+      }
+    },
+    "live_api": {
+      "status": "passed",
+      "result_file": "rerank-search-live-20260921.json",
+      "result_sha256": "3a436b53c86e0fb25152874386dbd2fead022eb3512b73b1a1f43203880a63db",
+      "candidate_count": 20,
+      "returned_count": 5,
+      "query_embedding_calls": 1,
+      "valid_rerank_search_requests": 1,
+      "lifecycle_changes": 0
+    },
+    "browser_rendering": "not_reported",
+    "retrieval_quality": "not_evaluated"
+  },
+  "remaining": [
+    "actual Knowledge browser rerank off/on and scores/errors display",
+    "K08 representative source/block/range ground truth and chunker/rerank comparison",
+    "actual OpenSearch version deletion and reference release",
+    "Model redeploy UI actual server operation"
+  ]
+}

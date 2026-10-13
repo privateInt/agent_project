@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "recorded_date": "2026-09-26",
+  "evidence": "user-provided terminal output; no direct server access or rerun by assistant",
+  "host": "simsys4090",
+  "patch": {
+    "name": "infra_observability_gpu_20260926",
+    "validated_files": 19,
+    "applied_files": 19,
+    "backup": "/home/shshin/workspace/agent_project/.patch-backups/infra-o01-gpu-20260926T085803-h42aqnta"
+  },
+  "probe": {
+    "gpu_uuid": "GPU-79eac19d-f850-bc43-330b-8964242d2d47",
+    "name": "NVIDIA GeForce RTX 4090",
+    "driver": "580.126.09",
+    "memory_total_mib": 24564.0
+  },
+  "commands_passed": [
+    "python3 -B infra/observability/ops/gpu.py probe",
+    "python3 -B infra/ops/up.py --gpu-only",
+    "python3 -B infra/observability/ops/gpu.py check --wait-seconds 120"
+  ],
+  "promtool_config_check": "passed",
+  "gpu_container_started": "infrastructure-observability-gpu-obs-gpu-1",
+  "prometheus_recreated_healthy": "infrastructure-observability-obs-prometheus-1",
+  "up_and_read_only_check_outputs_match": true,
+  "observed_result": {
+    "stage": "O01-gpu",
+    "result": "passed",
+    "scope": "passive whole-GPU metrics",
+    "gpu_count": 1,
+    "gpus": {
+      "GPU-79eac19d-f850-bc43-330b-8964242d2d47": {
+        "GPU_UTIL": 0.0,
+        "FB_TOTAL": 24564.0,
+        "FB_USED": 16177.0,
+        "FB_FREE": 7894.0,
+        "GPU_TEMP": 47.0,
+        "POWER_USAGE": 12.221
+      }
+    },
+    "targets_up": 4,
+    "platform_containers_verified": 47,
+    "historical_samples_preserved": true,
+    "historical_counts": {
+      "series": 140,
+      "samples": 838
+    },
+    "original_tsdb_and_image_pins_preserved": true,
+    "node_exporter_and_cadvisor_unchanged": true,
+    "gpu_image": "nvcr.io/nvidia/k8s/dcgm-exporter@sha256:148b0c025e5f2850256816fa33754fbf4733b7a086697a95613fc0ba3db5b003",
+    "inference_executed": false,
+    "gpu_configuration_changed": false,
+    "profiling_or_stress_test_executed": false,
+    "domain_services_restarted": false,
+    "per_model_usage_attribution": "not_assessed",
+    "llm_traces_assessed": false,
+    "baseline_file": "/home/shshin/.local/state/agent-project-observability/gpu-transition-o01.json"
+  },
+  "earlier_restart_acceptance": {
+    "series": 140,
+    "samples": 824,
+    "scope": "earlier separate three-container restart baseline; preserved as its own evidence"
+  },
+  "scope_limits": [
+    "values are a snapshot at check time, not a load/performance or model attribution test",
+    "140 series / 838 samples refer to the GPU transition baseline, not a replacement for the previous restart baseline",
+    "whole TSDB backup/restore and later GPU time-series restart preservation not assessed",
+    "LLM tracing and ops UI remain pending; Agent UI and answer quality remain deferred"
+  ],
+  "documentation_update": {
+    "runtime_code_changed": false,
+    "rebuild_required": false,
+    "restart_required": false,
+    "inference_required": false,
+    "test_rerun_required": false
+  }
+}

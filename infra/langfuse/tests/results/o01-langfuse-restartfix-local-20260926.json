@@ -1,0 +1,40 @@
+{
+  "stage": "O01-Langfuse-restartfix-local",
+  "result": "passed",
+  "scope": "local v1 baseline/order proof/read-only diagnostics; not server acceptance",
+  "python_tests": 56,
+  "new_tests": 6,
+  "python39_syntax": "passed",
+  "cli_diagnose": "passed",
+  "checks": [
+    "v1 baseline bytes preserved across diagnose/compare/repeated run",
+    "exact original mount hash reconstructed from bounded current permutations",
+    "alternating inspect array order during capture and final check",
+    "RW/Mode/Propagation/Source changes rejected",
+    "other Config/HostConfig differences remain failures",
+    "no raw environment or unknown credential values in diagnostic output",
+    "missing baseline does not create files",
+    "duplicate destinations and more than two mounts rejected",
+    "actual HTTP GET-only trace recheck"
+  ],
+  "server_evidence": {
+    "source": "user-provided 2026-09-26 CLI output",
+    "restart_attempt_recorded": true,
+    "comparison_failed": true,
+    "error": "container/image/config/storage identity mismatch",
+    "specific_field_known": false,
+    "mount_order_as_server_root_cause_confirmed": false,
+    "restart_acceptance": "incomplete"
+  },
+  "baseline_rewritten": false,
+  "docker_daemon_used_locally": false,
+  "restart_executed_locally": false,
+  "inference_executed": false,
+  "original_server_trace_id": "9d84fa1067824eb5b82be42ade6959f7",
+  "pending": [
+    "server diagnose and compare",
+    "confirmed restart preservation",
+    "Agent instrumentation",
+    "ops API/UI"
+  ]
+}

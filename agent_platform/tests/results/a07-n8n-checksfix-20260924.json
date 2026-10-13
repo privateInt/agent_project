@@ -1,0 +1,87 @@
+{
+  "date": "2026-09-24",
+  "stage": "A07 isolated n8n check image fix",
+  "agent_build": "a07.1",
+  "schema_version": 5,
+  "result": "local_cli_passed_server_image_build_failed",
+  "server_evidence": {
+    "source": "user terminal log; backup 20260924T052059",
+    "dbfix_files_applied": 19,
+    "postgres": "healthy",
+    "n8n": "healthy",
+    "exact_app_role_startup_statement": "passed",
+    "original_volumes_and_keys": "preserved; lifecycle PASS",
+    "isolated_check": "MODULE_NOT_FOUND /checks/tests/run.cjs; no assertions executed",
+    "reported_container_node_version": "26.7.0",
+    "mount_failure_details": "not established from available log"
+  },
+  "fix": {
+    "check_image": "agent-platform-n8n-checks:a07.2",
+    "n8n_base": "2.40.5; unchanged pinned digest",
+    "explicit_build_inputs": [
+      "tests/run.cjs",
+      "tests/contract.cjs",
+      "workflows/agent-question.json"
+    ],
+    "bind_mounts": 0,
+    "runtime_network": "none",
+    "production_state_or_secrets_mounted": false,
+    "application_source_or_database_schema_changed": false,
+    "operational_restart_required": false
+  },
+  "local_checks": {
+    "compose": {
+      "result": "passed",
+      "compose_version": "2.39.4",
+      "cwd_variations": [
+        ".",
+        "agent_platform",
+        "agent_platform/n8n/tests"
+      ],
+      "host_bind_mounts": 0,
+      "production_dependencies": 0,
+      "runtime_network": "none",
+      "docker_daemon_available": false
+    },
+    "code_node_contract": {
+      "result": "passed",
+      "checks": 6,
+      "scope": "shipped n8n Code nodes: raw question, stable retry, status URL boundary, time/count limits, invalid answer"
+    },
+    "real_n8n_cli": {
+      "result": "passed",
+      "stage": "A07",
+      "scope": "real n8n 2.40.5 CLI / isolated SQLite / Agent HTTP fixture",
+      "checks": [
+        "lost POST response retries same request",
+        "bounded polling then answer and original sources",
+        "new execution replay preserves original caller_context",
+        "changed body with same key fails 409",
+        "no_evidence success",
+        "Agent failure stops n8n",
+        "Agent interrupted stops n8n"
+      ],
+      "effects": 4,
+      "posts": 9,
+      "reads": 6
+    },
+    "node_version": "24.19.0",
+    "test_files": "copied in image directory layout with mode 0444; local n8n executable",
+    "docker_image_build_or_run": false
+  },
+  "limitations": [
+    "Docker daemon unavailable locally; exact image build and container execution await server command",
+    "server mount/file/permission details behind original MODULE_NOT_FOUND remain unknown",
+    "real user LLM/Knowledge question quality, n8n UI and user AgentRun restart acceptance remain deferred"
+  ],
+  "server_image_build_followup": {
+    "source": "user terminal log; backup 20260924T091721",
+    "files_applied": 18,
+    "copy_test_inputs": "passed",
+    "copy_workflow": "passed",
+    "node_syntax_check": "MODULE_NOT_FOUND /checks/tests/run.cjs",
+    "checks_executed": false,
+    "newly_identified_defect": "COPY --chmod=0444 can remove search permission from newly created directories",
+    "next_fix": "agent-platform-n8n-checks:a07.3; directory0555 file0444; non-root build verification"
+  }
+}

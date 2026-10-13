@@ -1,0 +1,21 @@
+.env
+.env.*.local
+.ipynb_checkpoints
+**/.ipynb_checkpoints
+*.tar
+*.tar.gz
+.git
+.gitignore
+__pycache__/
+*.pyc
+
+# Build definitions are consumed by Docker/Bake, not by Go compilation.
+**/docker-compose.yml
+**/Dockerfile
+docker-bake.hcl
+tests/results/
+
+# Remote node operator configuration and keys never enter build contexts.
+remote/ssh/
+remote/worker.env
+remote/execution-nodes.json

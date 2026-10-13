@@ -1,0 +1,18 @@
+const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert/strict');
+const flow=JSON.parse(fs.readFileSync(path.join(__dirname,'../workflows/agent-question.json'),'utf8'));
+const code=name=>flow.nodes.find(n=>n.name===name).parameters.jsCode;
+const execute=(name,input,refs={},extra={})=>vm.runInNewContext('(function(){'+code(name)+'})()',{$input:{first:()=>({json:input})},$:n=>({first:()=>({json:refs[n]})}),$workflow:{id:'flow'},$execution:{id:'exec'},$runIndex:0,require,Buffer,Date,...extra})[0].json;
+const version='11111111-1111-4111-8111-111111111111',id='22222222-2222-4222-8222-222222222222';
+const prepared=execute('Prepare request',{base_url:'http://agent-gateway:8000',agent_version_id:version,question:'  연구 범위?  '});
+assert.equal(prepared.request.body.input.question,'  연구 범위?  ');
+const again=execute('Prepare request',{base_url:'http://agent-gateway:8000',request:prepared.request},{},{$execution:{id:'new'}});
+assert.equal(JSON.stringify(again.request),JSON.stringify(prepared.request));assert.equal(again.trace.execution_id,'new');
+const accepted={statusCode:202,body:{state:'accepted',agent_run_id:id,agent_version_id:version,status_url:'/api/agent-runs/'+id}};
+const pointer=execute('Run pointer',accepted,{'Prepare request':prepared});
+assert.throws(()=>execute('Run pointer',{...accepted,body:{...accepted.body,status_url:'https://other/steal'}},{'Prepare request':prepared}));
+const running={statusCode:200,body:{agent_run_id:id,agent_version_id:version,state:'running'}};
+const deadline=execute('Evaluate state',running,{'Run pointer':{...pointer,started_ms:0}});
+assert.equal(deadline.state,'poll_timeout');assert.equal(deadline.keep_waiting,false);
+const attempts=execute('Evaluate state',running,{'Run pointer':pointer},{$runIndex:300});assert.equal(attempts.state,'poll_timeout');
+assert.throws(()=>execute('Evaluate state',{statusCode:200,body:{...running.body,state:'succeeded',result:{outcome:'answered',answer:'ungrounded',citations:[]}}},{'Run pointer':pointer}));
+console.log(JSON.stringify({result:'passed',checks:6,scope:'shipped n8n Code nodes: raw question, stable retry, status URL boundary, time/count limits, invalid answer'}));

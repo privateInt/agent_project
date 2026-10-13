@@ -1,0 +1,39 @@
+{
+  "stage": "O01",
+  "date": "2026-09-26",
+  "scope": "Prometheus RFC3339Nano scrape timestamp compatibility",
+  "server_evidence": {
+    "tmpfs_patch_files_applied": 8,
+    "promtool": "passed",
+    "healthy": [
+      "obs-prometheus",
+      "obs-cadvisor",
+      "obs-node-exporter"
+    ],
+    "collection_check": "blocked_by_timestamp_parser",
+    "failing_timestamp": "2026-09-26T04:39:56.158859873+00:00",
+    "python_version": "not supplied"
+  },
+  "local": {
+    "result": "passed",
+    "tests": 23,
+    "seconds": 2.753,
+    "runner_python": "3.12.14",
+    "real_compose": "2.39.4",
+    "fractions": "0 through 9 digits",
+    "explicit_timezones_preserved": true,
+    "freshness_seconds": 90,
+    "stale_future_invalid_timestamps_rejected": true,
+    "legacy_datetime": {
+      "result": "passed",
+      "reference": "CPython v3.10.20 Lib/datetime.py pure Python implementation",
+      "runner": "Python 3.12.14",
+      "original_error_reproduced": true,
+      "new_parser_with_legacy_datetime": "passed",
+      "actual_python310_interpreter_used": false
+    }
+  },
+  "resume": "read-only manage.py check; no up/restart/pull",
+  "server_collection_acceptance": "pending",
+  "inference_executed": false
+}

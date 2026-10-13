@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-22",
+  "status": "user_observed",
+  "evidence": "User-provided version JSON and new Knowledge console search output in conversation",
+  "index_name": "test1",
+  "index_id": "e011832c-ecef-491c-a545-ddf16bb320dd",
+  "index_version_id": "0464117d-17a2-4696-a681-1be428671ac4",
+  "chunking_run_id": "e0f24e88-cd61-4c27-b6ee-8db39b112c65",
+  "chunk_set_sha256": "60e614de28cb3722a9fab923039bbe43dfe723130a6c2fdc305b2882d2c98e99",
+  "snapshot_id": "880576ae1e8be1dc911881bfe63c034aa470c5b41ecb77b0135731b2b5edd981",
+  "canonical_ids": [
+    "157c335f-5436-4338-8078-edb040ebe1ca"
+  ],
+  "source_display_name": "AI_Engineer_sample.pdf",
+  "chunk_count": 42,
+  "indexed_count": 42,
+  "state": "ready",
+  "reference_state": "held",
+  "chunker": {
+    "id": "recursive_character_v1",
+    "version": "2026-09-18.2",
+    "max_characters": 1000,
+    "overlap_characters": 100
+  },
+  "indexing_config": {
+    "method": "hnsw",
+    "engine": "lucene",
+    "space_type": "cosinesimil",
+    "m": 32,
+    "ef_construction": 256
+  },
+  "active_default_version_observed": true,
+  "embedding": {
+    "deployment_id": "44247297-5184-4a36-9225-7791c80d3add",
+    "dimension": 1024
+  },
+  "reranker_deployment_id": "cc64a683-a69f-48a5-836e-9f52f0255cc6",
+  "search": {
+    "candidate_count": 20,
+    "returned_count": 5,
+    "knowledge_processing_ms": 295,
+    "rerank_applied": true,
+    "original_text_and_source_displayed": true
+  },
+  "not_established": [
+    "independent raw OpenSearch mapping inspection",
+    "new console rerank OFF result",
+    "retrieval quality judgement for this query",
+    "full console patch Go test/build log",
+    "browser layout/accessibility audit"
+  ]
+}

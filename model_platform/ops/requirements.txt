@@ -1,0 +1,2 @@
+# S3 backup, restore-drill and test reset use this SDK; audit/verify-backup/clean-cache use stdlib.
+boto3==1.43.79

@@ -1,0 +1,58 @@
+syntax = "proto3";
+package data.refinement.v1;
+option go_package = "knowledge-platform/gen/data/refinement/v1;refinementv1";
+import "google/protobuf/timestamp.proto";
+
+service RefinementService {
+  // Internal platform contract: durable, non-expiring references; release is terminal.
+  rpc AcquireKnowledgeReferences(KnowledgeReferencesRequest) returns (KnowledgeReferences);
+  rpc ReleaseKnowledgeReferences(KnowledgeReferenceOwner) returns (KnowledgeReferences);
+  rpc GetKnowledgeReferences(KnowledgeReferenceOwner) returns (KnowledgeReferences);
+  rpc CreateOCRRun(CreateRunRequest) returns (RunAccepted);
+  rpc CreateRun(CreateRunRequest) returns (RunAccepted);
+  rpc DeleteRun(GetRunRequest) returns (RefinementRun);
+  rpc PurgeRun(GetRunRequest) returns (RefinementRun);
+  rpc BlockSourcePurge(GetDocumentRequest) returns (PurgeFence);
+  rpc GetRun(GetRunRequest) returns (RefinementRun);
+  rpc ListRuns(ListRunsRequest) returns (ListRunsResponse);
+  rpc CompleteRun(CompleteRunRequest) returns (RefinementRun);
+  rpc GetDocument(GetDocumentRequest) returns (CanonicalDocument);
+  rpc ReadDocument(GetDocumentRequest) returns (stream DocumentChunk);
+}
+message CreateRunRequest { string name = 1; string document_id = 2; string rules_version = 3; string idempotency_key = 4; string ocr_deployment_id = 5; }
+message RunAccepted { string refinement_run_id = 1; string operation_id = 2; }
+message GetRunRequest { string refinement_run_id = 1; }
+message RefinementRun {
+  string refinement_run_id = 1; string operation_id = 2; string name = 3;
+  string source_document_id = 4; string source_sha256 = 5; string source_format = 6;
+  string rules_version = 7; string output_document_id = 8;
+  google.protobuf.Timestamp created_at = 9;
+  string submission_status = 10; string submission_error_code = 11;
+  string ocr_json = 12;
+  google.protobuf.Timestamp deleted_at = 13;
+ string purge_state = 14; google.protobuf.Timestamp purged_at = 15;
+}
+message CompleteRunRequest {
+  string refinement_run_id = 1; string operation_id = 2; string dispatch_token = 3;
+  string execution_instance_id = 4; string sha256 = 5; int64 size_bytes = 6;
+  string processor_image_id = 7;
+}
+message CanonicalDocument {
+  string document_id = 1; string refinement_run_id = 2; string source_document_id = 3;
+  string sha256 = 4; int64 size_bytes = 5; string artifact_uri = 6;
+  string state = 7; string schema_version = 8; string processor_version = 9;
+  string rules_version = 10; string processor_image_id = 11;
+  int32 block_count = 12; int32 page_count = 13;
+  google.protobuf.Timestamp created_at = 14;
+}
+message GetDocumentRequest { string document_id = 1; }
+message ListRunsRequest { int32 limit = 1; string cursor = 2; string q = 3; bool include_deleted = 4; string source_document_id = 5; }
+message ListRunsResponse { repeated RefinementRun items = 1; string next_cursor = 2; }
+message DocumentChunk { bytes data = 1; }
+
+message PurgeFence { string document_id = 1; }
+
+message KnowledgeReferenceOwner { string index_version_id = 1; }
+message CanonicalPin { string canonical_id = 1; string sha256 = 2; }
+message KnowledgeReferencesRequest { string index_version_id = 1; repeated CanonicalPin documents = 2; }
+message KnowledgeReferences { string index_version_id = 1; string state = 2; string fingerprint = 3; repeated CanonicalPin documents = 4; }

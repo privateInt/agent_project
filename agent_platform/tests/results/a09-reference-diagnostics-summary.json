@@ -1,0 +1,26 @@
+{
+  "stage": "A09-reference-diagnostics",
+  "result": "local_checks_passed",
+  "runtime_image": "a09.1",
+  "runtime_contract": "a07.1",
+  "schema_version": 5,
+  "runtime_python_tests": 49,
+  "host_diagnostic_python_tests": 5,
+  "grpc": "real Runtime and authenticated Service callback fixture; lost callback reply replays same metadata without another model call",
+  "preserved": [
+    "strict citation validation",
+    "single model call",
+    "original-source identity checks",
+    "published template and prompt",
+    "old failed runs and request files"
+  ],
+  "not_tested": [
+    "server Docker build and runtime replacement",
+    "actual PostgreSQL detail persistence",
+    "live LLM new diagnostics",
+    "Go integration"
+  ],
+  "answer_generation_issue_fixed": false,
+  "server_inference_executed_by_assistant": false,
+  "mvp_acceptance": "incomplete"
+}

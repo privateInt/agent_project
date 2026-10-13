@@ -1,0 +1,25 @@
+name: agent-n8n-live-check
+services:
+  live-check:
+    image: agent-platform-n8n-live:a07.1
+    build:
+      context: ..
+      dockerfile: live/Dockerfile
+    user: "${AGENT_CHECK_UID:?use live_check.py}:${AGENT_CHECK_GID:?use live_check.py}"
+    environment:
+      AGENT_LIVE_SESSION: /session
+    volumes:
+      - type: bind
+        source: ${AGENT_CHECK_DIR:?use live_check.py}
+        target: /session
+        bind:
+          create_host_path: false
+    networks: [agent-api]
+    tmpfs:
+      - '/tmp:size=512m,mode=1777'
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+networks:
+  agent-api:
+    external: true
+    name: ${AGENT_NETWORK:-ops-infra}

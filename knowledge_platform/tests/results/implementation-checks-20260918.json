@@ -1,0 +1,21 @@
+{
+  "schema_version": "knowledge-implementation-checks-v1",
+  "date": "2026-09-18",
+  "scope": "first chunking source implementation; not server acceptance",
+  "passed": [
+    "Node request-state suite with DOM/fetch doubles: default, ambiguous replay, reload, rejection, comparison, overlap validation",
+    "node --check for shipped UI JavaScript",
+    "YAML parse and static service/build-target references",
+    "Python AST and live-check --help",
+    "Data wire contract copy comparison",
+    "documentation links and JSON examples",
+    "update applicator: original archive, conflict without writes, matching output and no-op replay"
+  ],
+  "not_executed": {
+    "go_compile_and_tests": "Go, protoc and Docker unavailable; tool downloads unsuccessful",
+    "postgres_docker_integration": "Docker and target server connection unavailable",
+    "browser_rendering": "Playwright Chromium executable unavailable",
+    "actual_model_or_search": "outside this implementation stage"
+  },
+  "runtime_data_deleted": false
+}

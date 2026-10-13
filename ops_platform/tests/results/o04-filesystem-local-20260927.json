@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "date": "2026-09-27",
+  "scope": "filesystem_coverage_patch_local_validation",
+  "python": {
+    "ops_related": 39,
+    "infra_transition": 10,
+    "passed_total": 59,
+    "infra_existing_o04_compatibility": 10
+  },
+  "promql_syntax_queries": 15,
+  "native_promtool": {
+    "status": "pending_server",
+    "filesystem_scenarios": 8,
+    "expectation_times": 24
+  },
+  "docker_deployment": "pending_server",
+  "ops_readback": "pending_server",
+  "browser_acceptance": "deferred_by_user",
+  "production_api_requests": 0,
+  "data_cleanup_requested": false,
+  "large_test_artifacts_retained": false
+}

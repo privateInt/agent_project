@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "stage": "Q06a-search-tool-adapter-server-local-observed",
+  "date": "2026-10-08",
+  "source": "user_supplied_terminal_checksum_patch_test_init_status_output",
+  "received_at_KST": "2026-10-08T10:22:10+09:00",
+  "timestamp_scope": "message_receipt_time_not_execution_timestamp",
+  "result": "passed",
+  "host": "simsys4090",
+  "environment": "sh_test",
+  "project_root": "/home/shshin/workspace/agent_project",
+  "package": {
+    "filename": "agent_project_q06a_search_tool_20261008.tar.gz",
+    "sha256": "ece1cc074d5e356415803c42865ac96ff4469a7519736066c20ecc5d1c064f17",
+    "checksum": "OK",
+    "revision": "extract-permissions-v2"
+  },
+  "patch": {
+    "status": "applied",
+    "written": 0,
+    "patch_backups_created": false,
+    "service_restart_required": false,
+    "inference_requested": false,
+    "local_additive_init_required": true,
+    "meaning": "all_13_target_file_contents_already_match_after_payload_and_unchanged_source_pins_pass",
+    "first_installation_time_and_route_observed": false
+  },
+  "server_tests": {
+    "pattern": "test_search_tool.py",
+    "count": 52,
+    "seconds": 4.399,
+    "result": "passed",
+    "scope": "temporary_private_SQLite_independent_Agent_fake_and_real_loopback_HTTP_not_production_Tool"
+  },
+  "init": {
+    "schema": 1,
+    "search_tool_schema": 1,
+    "upload_schema": 1,
+    "plan_count": 0,
+    "search_tool_adapter_implemented": true,
+    "question_ready": false,
+    "production_tool_verified": false,
+    "next_step": "Q06b_1_question_head_storage_migration",
+    "result": "passed",
+    "production_api_requests": 0,
+    "inference_requested": false,
+    "GPU_requested": false
+  },
+  "status": {
+    "schema": 1,
+    "search_tool_schema": 1,
+    "upload_schema": 1,
+    "plan_count": 0,
+    "search_tool_adapter_implemented": true,
+    "question_ready": false,
+    "production_tool_verified": false,
+    "next_step": "Q06b_1_question_head_storage_migration",
+    "result": "passed",
+    "production_api_requests": 0,
+    "inference_requested": false,
+    "GPU_requested": false
+  },
+  "previous_attempt": {
+    "source": "earlier_user_supplied_terminal_output",
+    "package_sha256": "bc3aaf4a77a496c21132b3413f3397cf9c463a78dd4f5995abeb5ef778ab0587",
+    "checksum": "OK",
+    "status": "blocked",
+    "reason": "PACKAGE_CONTENT_CHANGED:README.md",
+    "service_control_requested": false,
+    "inference_requested": false,
+    "project_files_written": 0,
+    "subsequent_tests_init_status_reached": false
+  },
+  "installer_correction": {
+    "source": "developer_local_reproduction_and_regression_checks",
+    "old_installer_reproduction": "PACKAGE_CONTENT_CHANGED:README.md",
+    "extraction_umask": "077",
+    "tar_options": [
+      "--no-same-permissions"
+    ],
+    "manifest_mode": "0644",
+    "extracted_mode": "0600",
+    "server_umask_and_payload_mode_observed": false,
+    "correction": "verify_payload_and_expected_target_content_by_sha256_preserve_existing_target_modes_apply_umask_to_new_files_keep_exact_content_and_mode_race_checks",
+    "package_regression_checks": 18,
+    "restricted_extraction_umasks_verified": [
+      "022",
+      "027",
+      "077"
+    ]
+  },
+  "effects_reported_by_local_CLI": {
+    "production_api_requests": 0,
+    "inference_requested": false,
+    "GPU_requested": false
+  },
+  "limits": [
+    "server_test_suite_uses_temporary_state_and_loopback_not_operational_Agent_assets",
+    "developer_full_QA_376_not_rerun_on_server_in_this_output",
+    "no_operational_Connection_selection_Tool_prepare_test_publish_or_AgentRun_acceptance",
+    "no_actual_QA_embedding_index_build_activation_search_or_question_target_switch",
+    "no_direct_host_service_inventory_current_GPU_or_package_extraction_mode_query",
+    "written_0_does_not_show_when_or_how_Q06a_was_first_installed",
+    "question_ready_false_and_production_tool_verified_false_remain"
+  ],
+  "next_development": "Q06b_1_question_head_storage_compatibility_migration_without_GPU",
+  "question_ready": false,
+  "production_tool_verified": false
+}

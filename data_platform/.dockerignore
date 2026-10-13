@@ -1,0 +1,7 @@
+.env
+.env.*
+**/__pycache__
+tests/results
+*.tar
+*.tar.gz
+.go-cache

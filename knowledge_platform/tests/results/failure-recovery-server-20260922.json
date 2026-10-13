@@ -1,0 +1,70 @@
+{
+  "date": "2026-09-22",
+  "status": "passed",
+  "evidence": "User-provided server execution log",
+  "source_log_name": "붙여넣은 텍스트 (1)(20260922-011944).txt",
+  "source_log_sha256": "9a9091c610c807b63689ec5060127f9ff7b841d5301bac983429659f10eca503",
+  "patch": "knowledge_failure_recovery_20260922",
+  "applied_files": 18,
+  "go": {
+    "command": "go test -count=1 ./...",
+    "passed_packages": [
+      "knowledge-platform/dispatcher/app",
+      "knowledge-platform/gateway/app",
+      "knowledge-platform/internal/chunking",
+      "knowledge-platform/internal/idempotency",
+      "knowledge-platform/internal/indexing",
+      "knowledge-platform/internal/listing",
+      "knowledge-platform/internal/operationreport",
+      "knowledge-platform/internal/retrieval",
+      "knowledge-platform/internal/searchstore",
+      "knowledge-platform/jobs/indexing",
+      "knowledge-platform/operation/app",
+      "knowledge-platform/operation/outbox",
+      "knowledge-platform/ops/verify_cleanup",
+      "knowledge-platform/reconciler/app",
+      "knowledge-platform/service/app"
+    ],
+    "scope": "Docker tests target; opt-in PostgreSQL tests run separately"
+  },
+  "tests_image": {
+    "tag": "knowledge-platform-tests:failure-recovery",
+    "id": "sha256:34a8062d6c3320c6b2964ef23092ea6fcd5dc41c29ee7bd916f5ec4f7234571f"
+  },
+  "postgres": {
+    "package": "knowledge-platform/service/app",
+    "top_level_passed": 17,
+    "tests": [
+      "TestIndexPartialBatchAndSealRecovery",
+      "TestIndexActivationRacesVersionDeletion",
+      "TestSearchRerankerUnavailableThenRecovery",
+      "TestIndexFailedOperationPreservesProgressAndActiveVersion",
+      "TestHNSWLegacyReplayCustomConflictAndPersistence",
+      "TestHNSWInvalidDirectRPCDoesNotCreateOrInvokeModel",
+      "TestIndexBuildReplayBatchesSealActivationAndCleanup",
+      "TestConcurrentActivationHasOneWinnerAndFailedBuildPreservesWinner",
+      "TestSearchRerankOffOnEmptyAndFailures",
+      "TestSearchRerankCancellationAndDeleteLock",
+      "TestSearchRerankDeadline",
+      "TestSearchPinsOldVersionAndNeverCallsModel",
+      "TestDeleteWaitsForBoundedInFlightSearch",
+      "TestSearchCancellationReleasesLocks",
+      "TestAuthorizationChecksEveryExecutionIdentity",
+      "TestCursorsAreBoundToRunAndResult",
+      "TestCreateReplaySurvivesDataOutageAndRejectsChangedBody"
+    ],
+    "elapsed_seconds": 2.356,
+    "skips_observed": 0,
+    "disposable_schema_runner_completed": true
+  },
+  "gateway_go_tests_included": true,
+  "live_model_requests": 0,
+  "live_index_mutations": 0,
+  "service_restarts": 0,
+  "limits": [
+    "Model, Data and OpenSearch dependencies are test doubles in catalog tests",
+    "Job gRPC and bulk HTTP run against loopback test servers",
+    "Not live GPU/OpenSearch node fault injection or retrieval quality evaluation"
+  ],
+  "follow_up": "Agent-owned MCP search Tool contract; preserve unresolved original recursive candidate identity discrepancy"
+}

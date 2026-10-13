@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "stage": "Q03a",
+  "ownership": "document_qa_integration_only",
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/api/uploads",
+      "content_type": "multipart/form-data",
+      "fields": [
+        "name",
+        "file"
+      ],
+      "idempotency_key": "canonical UUID",
+      "http_status": 202,
+      "meaning": "own job durably accepted; Data receipt is separate"
+    },
+    {
+      "method": "GET",
+      "path": "/api/library"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs/{job_id}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/upload-requests/{request_key}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/jobs/{job_id}/retry-upload",
+      "json": {},
+      "meaning": "explicit one-shot same stored Data intent"
+    },
+    {
+      "method": "GET",
+      "path": "/api/readiness",
+      "adapter": "Q02 inspect; GET discovery only"
+    }
+  ],
+  "authentication": "private QA bearer file; loopback binding only",
+  "upstream": {
+    "method": "POST",
+    "path": "/api/source-documents",
+    "http_status": 200,
+    "fields": [
+      "name",
+      "file"
+    ],
+    "receipt_resource": "document_id",
+    "asynchronous_operation": false,
+    "automatic_retry": false,
+    "original_key_stable": true,
+    "origin_pinned": true
+  },
+  "limits": {
+    "file_bytes": 33554432,
+    "multipart_request_bytes": 33619968,
+    "active_plus_pending_documents": 20,
+    "unknown_original_bytes": 671088640,
+    "aliases_per_job": 100,
+    "explicit_upload_attempts_per_job": 100,
+    "concurrent_HTTP_requests": 4,
+    "Data_receipt_bytes": 65536
+  },
+  "states": [
+    "upload_accepted",
+    "upload_confirmation_required",
+    "preparation_pending"
+  ],
+  "temporary_original_release": "same transaction as verified matching source receipt; SQLite FULL auto-vacuum",
+  "question_ready": false,
+  "workflow_started": false,
+  "storage_adapter": "Linux single-writer-host SQLite schema 1, private state directory; not shared multi-replica storage",
+  "workflow_handoff": "Q03b; no trigger implemented here",
+  "source_sha256": {
+    "data_platform/gateway/app/upload.go": "cb22c3f8c218628fdba6eba9663374d1af4dcbbe833a80031d793127866b9cc7",
+    "data_platform/gateway/app/server.go": "58121ea80db6d75dc0fe4664c9349b202846fa30a90285837d945e6a06566b17",
+    "data_platform/collection/app/upload.go": "c55191ae2646eb89860106f6e57bf04838261a126680525f84281e74924b5cd9",
+    "data_platform/internal/sourcefile/format.go": "e0794c4a6be8730b08f64777f58bfbb7b537c97e493911b679860b18115b8d5a",
+    "data_platform/internal/idempotency/requests.go": "b0d5174ac65b65f756df75d1c1ac00799d69df2272d0440d09a3fc7248fd1fe4"
+  }
+}

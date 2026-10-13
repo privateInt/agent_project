@@ -1,0 +1,55 @@
+{
+  "stage": "O01-restart",
+  "date": "2026-09-26",
+  "result": "local_passed",
+  "server_restart_acceptance": "pending",
+  "unit_tests": {
+    "count": 39,
+    "passed": 39,
+    "skipped": 0,
+    "python": "3.12.14",
+    "compose": "2.39.4 standalone (no Docker daemon)"
+  },
+  "native": {
+    "result": "passed",
+    "prometheus": "3.13.3",
+    "scope": "real native Prometheus process restart / temporary TSDB and HTTP exporters",
+    "historical_counts": {
+      "series": 8,
+      "samples": 16
+    },
+    "raw_samples_preserved": true,
+    "new_scrapes_and_process_start_verified": true,
+    "repeat_run_restarts": 0,
+    "production_config_changed": false,
+    "test_scrape_interval_seconds": 1,
+    "docker_boundary": "fixture only; actual three-container restart is pending on user server",
+    "inference_executed": false
+  },
+  "checks": [
+    "fixed raw-sample query time reused across run and compare",
+    "changed labels/sample times/values and missing history rejected",
+    "owner/storage binding/container/image changes refused",
+    "durable restart intent before Docker submission",
+    "lost response after restart verified by actual state; before restart cannot pass",
+    "same baseline never submits a second restart",
+    "only three owned immutable container IDs passed to docker restart",
+    "fresh post-restart scrapes and runtimeinfo startTime required",
+    "hash changes/symlinks/private permissions guarded",
+    "39 local tests include original tmpfs and nanosecond parser regressions"
+  ],
+  "boundaries": {
+    "domain_services_changed": false,
+    "production_compose_or_images_changed": false,
+    "inference_executed": false,
+    "whole_tsdb_backup_verified": false,
+    "gpu_metrics_assessed": false,
+    "llm_traces_assessed": false,
+    "server_collection_acceptance": "previous O01 PASS retained"
+  },
+  "source_sha256": {
+    "infra/observability/ops/restart_check.py": "ec37514a0fd3e15423722d0aaa4b697e4af01d1ad705282afdf11a986bc3ae29",
+    "infra/observability/tests/test_restart_check.py": "e3b2718fd9fd0bb85c2f80e2b3671cb68a4750249acc3824a921731af866ac2e",
+    "infra/observability/tests/native_restart_check.py": "fe1e9084e44bd1ba9c0feea83ff2591bcfb6e8e90a57625626ea783bcfa63976"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-23",
+  "stage": "A03",
+  "build": "a03.1",
+  "result": "server_acceptance_passed",
+  "evidence_source": "user_supplied_server_logs",
+  "server": "shshin@simsys4090",
+  "patch": {
+    "updated": 36,
+    "new": 25,
+    "unchanged": 29,
+    "applied": 61
+  },
+  "checks": {
+    "preflight": "passed",
+    "go_tests_target_build": "passed",
+    "python_tests_target_build": "passed",
+    "image_build": "passed",
+    "five_services_healthy": "passed",
+    "a02_lookup": "passed",
+    "rest_mcp_smoke": "passed",
+    "TestDatabaseFoundation": "passed",
+    "TestToolsDatabase": "passed",
+    "sql_subtests_passed": 4,
+    "TestToolsEndToEnd": "passed",
+    "restart_five_services_healthy": "passed",
+    "existing_tool_call_lookup_after_restart": "passed"
+  },
+  "call": {
+    "tool_id": "32287037-6807-40b4-ac89-e88fd802e54d",
+    "tool_version_id": "08b14d62-699c-4d81-ad4b-afe28e04a107",
+    "tool_call_id": "8e3b3160-8e29-49d8-96d2-e0540e67682e",
+    "request_id": "b611f3d7-8d9f-4dc1-9110-04496f5278ea",
+    "tool_disabled_and_retired": true
+  },
+  "restart_lookup_identity_fields": [
+    "tool_call_id",
+    "tool_version_id",
+    "request_id"
+  ],
+  "mcp_protocol": "2025-11-25",
+  "schema_version": 2,
+  "a02": {
+    "check_id": "8a441176-a891-481e-87da-2e73e1762777",
+    "request_id": "786dad1e-9a66-42a6-9e43-b25919c7335b"
+  },
+  "out_of_scope": [
+    "actual_external_HTTP_call",
+    "OpenAPI_registration",
+    "Knowledge_tool",
+    "Agent_LangGraph",
+    "n8n",
+    "UI",
+    "full_MVP_acceptance"
+  ],
+  "next_stage": "A04 OpenAPI registration",
+  "runtime_changes_in_this_update": 0
+}

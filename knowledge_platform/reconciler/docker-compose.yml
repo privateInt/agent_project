@@ -1,0 +1,23 @@
+services:
+  knowledge-reconciler:
+    image: knowledge-platform-reconciler:dev
+    build:
+      context: .
+      target: reconciler
+    pull_policy: never
+    container_name: knowledge-reconciler
+    restart: unless-stopped
+    networks: [knowledge-infra]
+    environment:
+      JOB_NETWORK: ${KNOWLEDGE_NETWORK:-ops-infra}
+      KNOWLEDGE_JOB_CLEANUP_MODE: ${KNOWLEDGE_JOB_CLEANUP_MODE:-apply}
+      KNOWLEDGE_JOB_SUCCESS_RETENTION: ${KNOWLEDGE_JOB_SUCCESS_RETENTION:-1h}
+      KNOWLEDGE_JOB_FAILURE_RETENTION: ${KNOWLEDGE_JOB_FAILURE_RETENTION:-168h}
+      KNOWLEDGE_JOB_CLEANUP_INTERVAL: ${KNOWLEDGE_JOB_CLEANUP_INTERVAL:-5m}
+      OPERATION_GRPC_ADDRESS: knowledge-operation:9000
+      KNOWLEDGE_GRPC_ADDRESS: knowledge-service:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - knowledge-operation
+      - knowledge-service

@@ -1,0 +1,64 @@
+{
+  "stage": "O01",
+  "date": "2026-09-26",
+  "result": "passed",
+  "scope": "local source, lifecycle/HTTP fixtures, real Compose and native Prometheus/Node Exporter; not server Docker acceptance",
+  "python_unittest": {
+    "passed": 16,
+    "seconds": 2.07
+  },
+  "compose": {
+    "result": "passed",
+    "compose_version": "2.39.4",
+    "services": 3,
+    "literal_regex_verified": true,
+    "host_bind_mounts_resolved": true
+  },
+  "native": {
+    "result": "passed",
+    "prometheus": "3.13.3",
+    "node_exporter": "1.12.1",
+    "official_archive_sha256_verified": true,
+    "promtool_config": "passed",
+    "real_prometheus_scrape_targets": 3,
+    "node_native_host_cpu_memory": "passed",
+    "cadvisor_endpoint": "HTTP fixture; Docker not available",
+    "drop_unnamed_cgroups_and_one_shot_jobs": "passed",
+    "drop_container_env_and_custom_labels": "passed",
+    "storage": "temporary scratch TSDB only",
+    "server_acceptance": "pending"
+  },
+  "server_inventory": {
+    "evidence": "two user-supplied read-only inventories",
+    "host": "simsys4090",
+    "docker": "29.0.4",
+    "compose": "2.40.3",
+    "cgroup": "v2/systemd",
+    "storage_driver": "overlay2",
+    "cpu": 24,
+    "ram_gib": 125,
+    "ram_available_gib": 86,
+    "home_disk_free_human": "202G",
+    "docker_disk_free_human": "122G",
+    "docker_disk_used_percent": 97,
+    "swarm": "active manager; zero services listed",
+    "gpu": "RTX 4090",
+    "driver": "580.126.09"
+  },
+  "unchanged_domains": [
+    "model_platform",
+    "data_platform",
+    "knowledge_platform",
+    "agent_platform"
+  ],
+  "not_run": [
+    "Docker daemon/image startup",
+    "server cAdvisor container stats",
+    "server TSDB writes/restart preservation",
+    "GPU collection",
+    "LLM trace capture",
+    "platform inference",
+    "ops UI acceptance"
+  ],
+  "server_acceptance": "pending"
+}

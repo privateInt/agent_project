@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "index_version_id",
+    "embedding_space_id",
+    "query_embedding"
+  ],
+  "properties": {
+    "index_version_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "embedding_space_id": {
+      "type": "string",
+      "pattern": "^es_[a-f0-9]{64}$"
+    },
+    "query_embedding": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 1024,
+      "maxItems": 1024
+    },
+    "top_k": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50
+    },
+    "candidate_k": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    }
+  }
+}

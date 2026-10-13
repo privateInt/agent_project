@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "stage": "Q06b-1-question-storage-server-local-observed",
+  "date": "2026-10-08",
+  "source": "user_supplied_terminal_checksum_patch_test_migrate_status_output",
+  "received_at_KST": "2026-10-08T11:18:38+09:00",
+  "timestamp_scope": "message_receipt_time_not_execution_timestamp",
+  "result": "passed",
+  "host": "simsys4090",
+  "environment": "sh_test",
+  "project_root": "/home/shshin/workspace/agent_project",
+  "package": {
+    "filename": "agent_project_q06b1_question_storage_20261008.tar.gz",
+    "sha256": "f0e90d017007a3d7558574f5bdffff44c9b34e36c7e7c72ad3be3d1570e10008",
+    "checksum": "OK"
+  },
+  "patch": {
+    "status": "applied",
+    "written": 13,
+    "patch_backups_created": false,
+    "service_restart_required": false,
+    "inference_requested": false,
+    "local_additive_init_required": true,
+    "local_question_migration_required": true
+  },
+  "server_tests": {
+    "pattern": "test_question_store.py",
+    "count": 40,
+    "seconds": 2.199,
+    "result": "passed",
+    "scope": "temporary_private_SQLite_independent_platform_fakes_and_real_loopback_HTTP_not_production_questions"
+  },
+  "migrate": {
+    "schema": 1,
+    "question_storage_schema": 1,
+    "upload_schema": 1,
+    "head_revision": 0,
+    "head_target_id": null,
+    "target_count": 0,
+    "max_targets": 100,
+    "revision_authority": "question_head",
+    "legacy_question_revision": 0,
+    "question_ready": false,
+    "head_activation_implemented": false,
+    "production_question_verified": false,
+    "next_step": "Q06b_2_fixed_QA_Agent_adapter",
+    "result": "passed",
+    "production_api_requests": 0,
+    "inference_requested": false,
+    "GPU_requested": false
+  },
+  "status": {
+    "schema": 1,
+    "question_storage_schema": 1,
+    "upload_schema": 1,
+    "head_revision": 0,
+    "head_target_id": null,
+    "target_count": 0,
+    "max_targets": 100,
+    "revision_authority": "question_head",
+    "legacy_question_revision": 0,
+    "question_ready": false,
+    "head_activation_implemented": false,
+    "production_question_verified": false,
+    "next_step": "Q06b_2_fixed_QA_Agent_adapter",
+    "result": "passed",
+    "production_api_requests": 0,
+    "inference_requested": false,
+    "GPU_requested": false
+  },
+  "effects_reported_by_local_CLI": {
+    "production_api_requests": 0,
+    "inference_requested": false,
+    "GPU_requested": false
+  },
+  "limits": [
+    "server_test_suite_uses_temporary_state_and_loopback_not_operational_Agent_assets",
+    "developer_full_QA_416_not_rerun_on_server_in_this_output",
+    "operational_old_jobs_keys_receipts_and_Flow_setup_not_independently_read_back_in_this_output",
+    "preservation_and_interruption_checks_are_developer_and_server_test_fixture_evidence",
+    "no_operational_Agent_or_Tool_prepare_test_publish_AgentRun_or_question_acceptance",
+    "no_head_activation_CAS_or_actual_GPU_embedding_index_search_acceptance",
+    "no_direct_host_service_inventory_or_current_GPU_query",
+    "question_ready_false_head_activation_implemented_false_and_production_question_verified_false_remain"
+  ],
+  "next_development": "Q06b_2_fixed_QA_Agent_adapter_without_GPU",
+  "question_ready": false,
+  "production_question_verified": false
+}

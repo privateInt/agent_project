@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "stage": "O04-measured-production-backup-execution",
+  "checked_date_utc": "2026-10-02",
+  "result": "passed",
+  "new_tests": {
+    "total": 30,
+    "passed": 30,
+    "scope": "real private files/leases/child pipes; synthetic Docker/systemd/cipher codec/capacity metadata"
+  },
+  "selected_suite": {
+    "total": 226,
+    "passed": 179,
+    "skipped": 47,
+    "failed": 0,
+    "elapsed_seconds": 49.419
+  },
+  "native_age_generation": {
+    "cases": 35,
+    "status": "unavailable",
+    "reason": "pinned native age test tools absent; attempted module setup fails before execution; excluded from final selected offline suite"
+  },
+  "syntax_python_3_10": true,
+  "active_worker_files": 61,
+  "active_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+  "existing_runtime_and_candidate_files_changed": false,
+  "production_service_control_requested": false,
+  "production_application_api_requests": 0,
+  "production_backup_executed": false,
+  "production_restore_executed": false,
+  "native_new_adapter_acceptance": false,
+  "backup_ready": false
+}

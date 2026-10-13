@@ -1,0 +1,42 @@
+{
+  "stage": "A07",
+  "build": "a07.1",
+  "schema_version": 5,
+  "date": "2026-09-24",
+  "evidence_file": "붙여넣은 텍스트 (1)(20260924-044402).txt",
+  "result": "agent_server_checks_passed_n8n_unhealthy",
+  "agent_healthy_services": 5,
+  "a03_lookup": {
+    "result": "passed",
+    "mode": "lookup",
+    "tool_call_id": "8e3b3160-8e29-49d8-96d2-e0540e67682e",
+    "request_id": "b611f3d7-8d9f-4dc1-9110-04496f5278ea"
+  },
+  "native_database_tests": [
+    "Foundation",
+    "Knowledge",
+    "OpenAPIManagementAndLeases",
+    "Tools"
+  ],
+  "end_to_end": [
+    "Agent including WorkflowLink",
+    "Knowledge",
+    "OpenAPI",
+    "Tools"
+  ],
+  "n8n": {
+    "settings": "created",
+    "preflight": "passed",
+    "images": "pulled",
+    "postgres": "healthy",
+    "application": "unhealthy after ~329s",
+    "engine_checks": "not_run_due_to_set_e",
+    "root_cause": "unknown; startup/health output absent"
+  },
+  "deferred": [
+    "user pages",
+    "real LLM answer/source quality",
+    "published user Agent run",
+    "restart preservation"
+  ]
+}

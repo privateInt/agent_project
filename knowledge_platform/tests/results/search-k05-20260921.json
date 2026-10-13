@@ -1,0 +1,107 @@
+{
+  "date": "2026-09-21",
+  "status": "user_confirmed_server_go_db_and_live_search_passed",
+  "local_checks": {
+    "python_search_tools": 8,
+    "python_existing_indexing_tools": 6,
+    "javascript_suites": [
+      "search_ui_test.cjs",
+      "indexing_ui_test.cjs",
+      "request_state_test.cjs"
+    ],
+    "python_ast": "passed",
+    "javascript_syntax": "passed",
+    "compose_yaml": "passed",
+    "go_syntax": {
+      "files": 15,
+      "parser": "tree-sitter",
+      "status": "passed",
+      "scope": "grammar only; not type checking or compilation"
+    }
+  },
+  "not_executed": [
+    "real browser rendering/user flow confirmation",
+    "retrieval quality evaluation",
+    "actual OpenSearch deletion and Data reference release",
+    "same-input two-chunker comparison",
+    "reranker inference"
+  ],
+  "existing_live_baseline": {
+    "index_id": "aafe22b7-852b-424e-afaa-58fa8c1d739f",
+    "index_version_id": "150826c2-1f4c-495c-8e07-54aacaa1a245",
+    "chunks": 48,
+    "source": "user-confirmed K04 indexing; not K05 search success"
+  },
+  "changed_runtime_services": [
+    "knowledge-service",
+    "knowledge-gateway"
+  ],
+  "new_gpu_runtimes": 0,
+  "new_schema_or_mapping": false,
+  "live_tool_behavior": {
+    "query_embedding_calls": 1,
+    "document_embedding_calls": 0,
+    "index_mutations": 0,
+    "vectors_saved": false,
+    "source_text_saved": false
+  },
+  "server_acceptance": "docs/knowledge-platform/acceptance.md#k05",
+  "server_verification": {
+    "source": "붙여넣은 텍스트 (1)(20260921-013327).txt",
+    "source_sha256": "1a5826b4d580a0047a42f58dfa4de252cf636e350d0a4a29273dbc409d1f5272",
+    "evidence": "user-provided log; no direct server access",
+    "patch_applied_files": 38,
+    "python_search_tools_passed": 8,
+    "go_command": "go test -count=1 ./...",
+    "postgresql": "passed; disposable schema; Model/OpenSearch doubles",
+    "service_build_and_start": [
+      "knowledge-service",
+      "knowledge-gateway"
+    ],
+    "test_image": "sha256:dc3cc23ee59e684e98f7a4f0e3d406e7a515bf114b2386c53cd233315d5c9084",
+    "service_image": "sha256:f66a611d35c603147fab3699d1a9f7d2df417144d8e3fb7f656d56d0fd340b35",
+    "gateway_image": "sha256:bda0789eb0984498da659f1b0fce064317f5845a586efa62218364c92a361440"
+  },
+  "live_receipt": {
+    "status": "passed",
+    "scope": "API integration; retrieval quality is not evaluated",
+    "index_id": "aafe22b7-852b-424e-afaa-58fa8c1d739f",
+    "index_version_id": "150826c2-1f4c-495c-8e07-54aacaa1a245",
+    "embedding_space_id": "es_00cb26c80fff352a4cc494bef5b90d75a83584caf4d7e3b525f8516c2dcab76e",
+    "dimension": 1024,
+    "deployment_id": "44247297-5184-4a36-9225-7791c80d3add",
+    "query_runtime_container_id": "36b3c91fbdc8bb7670dac3dd16da71055ebd40bd294960187254f3d5a9c452f9",
+    "indexed_chunks": 48,
+    "candidate_count": 5,
+    "returned_count": 5,
+    "filtered_count": 5,
+    "query_embedding_calls": 1,
+    "index_mutations": 0,
+    "top_chunk_ids": [
+      "f155cae57c50cd4549d71afa31ceb1d0e0644bb25cb8eb6ee94c6f2218bf8b77",
+      "3908abaf920a5190f06bd082fcd88748ff00534c27ac3c832f3255665682189b",
+      "d226e7adb83b3cf06988f2a9bbb98b359d8fbddfb68e1b49dcf6a1f60047c262",
+      "7890989f41428e7949afbca9323223689def2eb45fde6e24b149b1fdda2bb409",
+      "10f5eb25b92aa84ce1cb4c3b4febaa064be9bca9f5c1b1083e08f20ac032b72d"
+    ],
+    "canonical_ids": [
+      "157c335f-5436-4338-8078-edb040ebe1ca"
+    ],
+    "quality_states": [
+      "needs_ocr"
+    ],
+    "checks": [
+      "query_document_space_match",
+      "explicit_version",
+      "result_integrity",
+      "candidate_filter",
+      "score_order",
+      "space_mismatch_rejected",
+      "dimension_mismatch_rejected",
+      "empty_filter_rejected",
+      "unknown_filter_rejected"
+    ],
+    "elapsed_seconds": 0.246
+  },
+  "timing_scope": "elapsed_seconds is a single whole-tool run; not search-only latency or performance evaluation"
+}

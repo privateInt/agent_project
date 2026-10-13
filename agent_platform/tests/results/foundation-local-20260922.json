@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-22",
+  "stage": "A02",
+  "status": "local_checks_passed_server_acceptance_pending",
+  "go_tests": {
+    "passed": 10,
+    "skipped_database_test": 1,
+    "includes_live_go_python_grpc_test": true,
+    "repository_in_wire_test": "memory_double"
+  },
+  "python_runtime_tests_passed": 3,
+  "python_configuration_tests_passed": 2,
+  "go_build": [
+    "service",
+    "gateway",
+    "healthcheck"
+  ],
+  "go_vet": "passed",
+  "go_version": "1.26.8",
+  "compose_config": {
+    "version": "2.39.4",
+    "passed": true,
+    "default_services": 4,
+    "optional_database_check_services": 1,
+    "published_ports": 1
+  },
+  "not_run": [
+    "docker_image_build",
+    "docker_container_start",
+    "postgresql_16_initialization_and_migrations",
+    "database_roles_and_persistence",
+    "server_restart_lookup",
+    "server_port_and_resource_check",
+    "server_LAN_access"
+  ],
+  "other_platform_runtime_files_changed": 0
+}

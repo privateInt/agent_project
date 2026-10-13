@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "record_date": "2026-10-02",
+  "source": "user_terminal_output_in_current_thread",
+  "exact_server_execution_timestamp_supplied": false,
+  "patch_application": {
+    "status": "applied",
+    "written": 8,
+    "patch": "ops_backup_measure_inventory_fix_20261002",
+    "active_runtime_files_changed": false,
+    "patch_backups_created": false,
+    "service_control_requested": false,
+    "service_restart_required": false
+  },
+  "reported_result": {
+    "action": "measure",
+    "automatic_recovery_supported": false,
+    "backup_ready": false,
+    "code": "COLD_DOCKER_METADATA_FAILED",
+    "identity_contents_read": false,
+    "operation_replayed": false,
+    "production_restore_supported": false,
+    "restore_executed": false,
+    "result": "attention_required",
+    "schema": 1,
+    "stage": "O04-measured-production-backup-execution"
+  },
+  "exact_failed_query_and_server_root_cause": "unconfirmed_no_query_phase_or_stderr_classification_supplied",
+  "size_measurement_success": false,
+  "production_capture_started": false
+}

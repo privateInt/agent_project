@@ -1,0 +1,31 @@
+{
+  "result": "passed",
+  "stage": "A07-operational",
+  "scope": "real n8n HTTP / isolated SQLite / Agent HTTP fixture",
+  "checks": [
+    "normal owner setup and scoped API key; existing key reused",
+    "lost create response reconciled; prepare twice preserves IDs and does not infer",
+    "webhook authentication required; workflow JSON contains no tokens",
+    "all three acceptance responses lost; durable request replay preserves one Agent effect and original caller",
+    "same key with changed question rejected locally and by Agent",
+    "no_evidence is successful; Agent failure preserves code/stage and n8n fails",
+    "n8n process restart preserves published workflow/credentials/executions; GET-only lookup",
+    "workflow drift blocked; unpublish preserves GET-only history"
+  ],
+  "effects": 3,
+  "posts": 10,
+  "agent_wire": {
+    "result": "passed",
+    "test": "TestAgentEndToEnd",
+    "seconds": 17.19,
+    "scope": "actual n8n HTTP, Go/Python/SQL; Model/Knowledge HTTP fixtures",
+    "additional_embedding_calls": 1,
+    "additional_search_calls": 1,
+    "additional_chat_calls": 1
+  },
+  "existing_ops_tests": 14,
+  "compose": "normalized and checked; no Docker daemon available",
+  "server_operational_acceptance": "pending",
+  "ui": "deferred",
+  "semantic_quality": "deferred"
+}

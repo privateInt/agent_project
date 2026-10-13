@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-25",
+  "result": "passed",
+  "scope": "local operational session recovery and baseline scope preservation",
+  "unit_tests": {
+    "recovery": 14,
+    "existing_acceptance": 18,
+    "result": "passed"
+  },
+  "integration": {
+    "result": "passed",
+    "scope": "real n8n 2.40.5 HTTP/CLI; isolated SQLite; Agent HTTP fixture",
+    "effects": 2,
+    "checks": [
+      "failed request reconstruction",
+      "same workflow and credential IDs/data",
+      "no inference in recovery",
+      "idempotent local recovery",
+      "original Agent-only baseline preserved",
+      "old failed request replay has no new effect",
+      "new request delivery/replay has one effect",
+      "expanded baseline capture/compare"
+    ]
+  },
+  "preserved": [
+    "workflow ID and published content",
+    "credential IDs and values",
+    "original failed logical request and AgentRun",
+    "existing Agent-only baseline"
+  ],
+  "server_recovery": "pending user execution",
+  "limitations": [
+    "native Docker/PostgreSQL16 recovery not run locally",
+    "real Model/Knowledge inference not performed",
+    "user page and semantic quality deferred",
+    "Go/Python/SQL integration not rerun: module cache unavailable; no service/runtime code changes"
+  ],
+  "core_contract": "a07.1 / A07 / schema 5",
+  "service_gateway_image": "a08.1",
+  "rebuild_required": false
+}

@@ -1,0 +1,296 @@
+syntax = "proto3";
+
+package training.v1;
+
+option go_package = "model-platform/gen/training/v1;trainingv1";
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/resources.proto";
+
+service TrainingService {
+ rpc BlockModelPurge(ModelPurgeFence) returns (ModelPurgeFence);
+  rpc ListTrainingRuns(ListTrainingRunsRequest) returns (ListTrainingRunsResponse);
+  rpc CreateDataset(CreateDatasetRequest) returns (Dataset);
+  rpc GetDataset(GetDatasetRequest) returns (Dataset);
+  rpc ListDatasets(ListDatasetsRequest) returns (ListDatasetsResponse);
+  rpc UploadDatasetVersion(stream UploadDatasetVersionRequest) returns (DatasetVersion);
+  rpc GetDatasetVersion(GetDatasetVersionRequest) returns (DatasetVersion);
+  rpc ListDatasetVersions(ListDatasetVersionsRequest) returns (ListDatasetVersionsResponse);
+  rpc GetTrainingEvaluation(GetTrainingRunRequest) returns (TrainingEvaluation);
+  rpc CompareTrainingRuns(CompareTrainingRunsRequest) returns (CompareTrainingRunsResponse);
+  rpc StartTraining(StartTrainingRequest) returns (StartTrainingResponse);
+  rpc GetTrainingRun(GetTrainingRunRequest) returns (TrainingRun);
+  rpc CancelTraining(GetTrainingRunRequest) returns (TrainingRun);
+  rpc GetTrainingLogs(GetTrainingLogsRequest) returns (TrainingLogs);
+  rpc ListTrainingCheckpoints(GetTrainingRunRequest) returns (TrainingCheckpoints);
+  rpc ResumeTraining(ResumeTrainingRequest) returns (StartTrainingResponse);
+  rpc GetTrainingOutput(GetTrainingRunRequest) returns (TrainingOutput);
+  rpc RetryTrainingOutput(RetryTrainingOutputRequest) returns (TrainingOutput);
+  rpc ReleaseTrainingOutput(GetTrainingRunRequest) returns (TrainingOutput);
+  rpc CompleteTraining(CompleteTrainingRequest) returns (TrainingRun);
+  rpc FailTraining(FailTrainingRequest) returns (TrainingRun);
+  rpc SetTrainingTracking(SetTrainingTrackingRequest) returns (TrainingRun);
+}
+
+// DatasetSpec is framework-neutral. The Axolotl adapter translates it into
+// an Axolotl dataset stanza; callers never send Axolotl YAML directly.
+message DatasetSpec {
+  // synthetic: built-in two-record integration validation fixture (current default)
+  // s3: one JSONL object in MinIO/S3
+  // version: a registered, immutable dataset version with verified file content
+  string source_type = 1;
+  string source_uri = 2;
+  // Current milestone supports OpenAI-style {"messages":[...]} JSONL.
+  string format = 3;
+  // source_type=version: callers send only this ID. Other pin fields are server-owned.
+  string dataset_version_id = 4;
+  string sha256 = 5;
+  int64 size_bytes = 6;
+  int64 record_count = 7;
+}
+
+message CreateDatasetRequest {
+  string name = 1;
+  string description = 2;
+  string idempotency_key = 3;
+}
+message GetDatasetRequest { string dataset_id = 1; }
+message Dataset {
+  string dataset_id = 1;
+  string name = 2;
+  string description = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+message ListDatasetsRequest { int32 limit = 1; string after_id = 2; string q = 3; }
+message ListDatasetsResponse { repeated Dataset datasets = 1; string next_after_id = 2; }
+message DatasetUploadHeader {
+  string dataset_id = 1;
+  string version = 2;
+  string idempotency_key = 3;
+}
+message UploadDatasetVersionRequest {
+  oneof payload {
+    DatasetUploadHeader header = 1;
+    bytes chunk = 2;
+  }
+}
+message GetDatasetVersionRequest { string dataset_version_id = 1; }
+message DatasetVersion {
+  string dataset_version_id = 1;
+  string dataset_id = 2;
+  string version = 3;
+  string state = 4;
+  string format = 5;
+  string artifact_uri = 6;
+  string sha256 = 7;
+  int64 size_bytes = 8;
+  int64 record_count = 9;
+  google.protobuf.Timestamp created_at = 10;
+}
+message ListDatasetVersionsRequest { string dataset_id = 1; int32 limit = 2; string after_id = 3; }
+message ListDatasetVersionsResponse { repeated DatasetVersion versions = 1; string next_after_id = 2; }
+
+message LoraSpec {
+  int32 r = 1;
+  int32 alpha = 2;
+  double dropout = 3;
+}
+
+// TrainingSpec expresses platform training intent without exposing Axolotl
+// config keys. The adapter owns the engine-specific translation.
+message TrainingSpec {
+  // Current engine milestone supports qlora. lora/full can be added without
+  // changing the Operation/Dispatcher contract.
+  string method = 1;
+  int32 sequence_length = 2;
+  int32 max_steps = 3;
+  int32 micro_batch_size = 4;
+  int32 gradient_accumulation_steps = 5;
+  double learning_rate = 6;
+  LoraSpec lora = 7;
+  bool sample_packing = 8;
+  // Empty/single for one GPU; ddp for multiple GPUs on the same Docker host.
+  // FSDP/DeepSpeed and cross-node placement are not exposed by this milestone.
+  string strategy = 9;
+  // Zero preserves legacy behavior. Positive interval enables retained checkpoints.
+  int32 checkpoint_steps = 10;
+}
+
+message StartTrainingRequest {
+  string source_model_version_id = 1;
+  common.v1.ExecutionResources resources = 2;
+  DatasetSpec dataset = 3;
+  TrainingSpec training = 4;
+  string idempotency_key = 5;
+  EvaluationSpec evaluation = 6;
+}
+
+message StartTrainingResponse {
+  string training_run_id = 1;
+  string operation_id = 2;
+  string status = 3;
+}
+
+message GetTrainingRunRequest {
+  string training_run_id = 1;
+}
+
+// Publication recovery is independent of the original, immutable execution
+// outcome. It never submits an Operation or launches another training Job.
+message RetryTrainingOutputRequest {
+  string training_run_id = 1;
+  string idempotency_key = 2;
+}
+message TrainingOutput {
+  string training_run_id = 1;
+  string operation_id = 2;
+  string availability = 3;
+  string manifest_sha256 = 4;
+  int64 file_count = 5;
+  int64 size_bytes = 6;
+  string recovery_id = 7;
+  string recovery_status = 8;
+  string error_code = 9;
+  string output_model_version_id = 10;
+  google.protobuf.Timestamp requested_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
+}
+
+message CompleteTrainingRequest {
+  string training_run_id = 1;
+  reserved 2;
+  string result_json = 3;
+  string output_model_version_id = 4;
+}
+
+message FailTrainingRequest {
+  string training_run_id = 1;
+  string result_json = 2;
+}
+
+message TrainingRun {
+  string training_run_id = 1;
+  string source_model_version_id = 2;
+  string status = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  common.v1.ExecutionResources resources = 6;
+  reserved 7;
+  string result_json = 8;
+  DatasetSpec dataset = 9;
+  TrainingSpec training = 10;
+  string mlflow_experiment_id = 11;
+  string mlflow_run_id = 12;
+  string mlflow_run_url = 13;
+  string output_model_version_id = 14;
+  string operation_id = 15;
+  string submission_status = 16;
+  string submission_error_code = 17;
+  google.protobuf.Timestamp cancel_requested_at = 18;
+  google.protobuf.Timestamp cancelled_at = 19;
+  string cancellation_error_code = 20;
+  string output_recovery_status = 21;
+  string recovered_model_version_id = 22;
+  TrainingResume resume = 23;
+  EvaluationSpec evaluation = 24;
+}
+
+message GetTrainingLogsRequest {
+  string training_run_id = 1;
+  int32 tail_lines = 2;
+  int32 max_bytes = 3;
+}
+message TrainingLogs {
+  string training_run_id = 1;
+  string operation_id = 2;
+  // docker, archive, or none (with an explicit availability explanation).
+  string source = 3;
+  string availability = 4;
+  string stdout = 5;
+  string stderr = 6;
+  bool truncated = 7;
+  int32 tail_lines = 8;
+  int32 max_bytes = 9;
+}
+
+// Internal Job -> Training linkage; not a public credential-bearing API.
+message SetTrainingTrackingRequest {
+  string training_run_id = 1;
+  string mlflow_experiment_id = 2;
+  string mlflow_run_id = 3;
+  string mlflow_run_url = 4;
+}
+
+// Read-only summary list, newest first. Cursor is bound to normalized filters.
+message ListTrainingRunsRequest {
+  int32 limit = 1;
+  string cursor = 2;
+  string status = 3;
+  string source_model_version_id = 4;
+  string dataset_version_id = 5;
+}
+message ListTrainingRunsResponse { repeated TrainingRun runs = 1; string next_cursor = 2; }
+
+// Resume always creates a new run/Operation; model, data, settings and total
+// target steps are inherited. The original execution remains terminal.
+message ResumeTrainingRequest {
+  string training_run_id = 1;
+  int32 checkpoint_step = 2;
+  string idempotency_key = 3;
+}
+message TrainingResume {
+  string source_training_run_id = 1;
+  int32 checkpoint_step = 2;
+  string checkpoint_sha256 = 3;
+}
+message TrainingCheckpoint {
+  int32 step = 1;
+  int32 max_steps = 2;
+  string checkpoint_sha256 = 3;
+  int64 size_bytes = 4;
+  int64 file_count = 5;
+  bool resumable = 6;
+}
+message TrainingCheckpoints {
+  string training_run_id = 1;
+  string availability = 2;
+  repeated TrainingCheckpoint checkpoints = 3;
+}
+
+// Evaluation is optional and always uses a separate registered dataset version.
+message EvaluationSpec { DatasetSpec dataset = 1; }
+message EvaluationResult {
+  string protocol = 1;
+  string compatibility_sha256 = 2;
+  string dataset_version_id = 3;
+  string dataset_sha256 = 4;
+  int64 record_count = 5;
+  int64 scored_tokens = 6;
+  int32 sequence_length = 7;
+  int32 trained_steps = 8;
+  double nll_sum = 9;
+  double loss = 10;
+  optional double perplexity = 11;
+  bool perplexity_overflow = 12;
+  string tokenized_sha256 = 13;
+  string source_model_version_id = 14;
+  string training_run_id = 15;
+}
+message TrainingEvaluation {
+  string training_run_id = 1;
+  string state = 2;
+  EvaluationSpec evaluation = 3;
+  EvaluationResult result = 4;
+  string output_model_version_id = 5;
+  string source_model_version_id = 6;
+  string mlflow_run_id = 7;
+  string result_origin = 8;
+}
+message CompareTrainingRunsRequest { repeated string training_run_ids = 1; }
+message CompareTrainingRunsResponse {
+  repeated TrainingEvaluation evaluations = 1;
+  bool comparable = 2;
+  string reason = 3;
+}
+
+message ModelPurgeFence { string model_version_id = 1; }

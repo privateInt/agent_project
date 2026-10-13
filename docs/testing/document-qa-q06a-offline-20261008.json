@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "stage": "Q06a-search-tool-adapter-offline",
+  "date": "2026-10-08",
+  "result": "passed",
+  "environment": "temporary_private_SQLite_independent_Agent_lifecycle_fake_and_real_loopback_HTTP",
+  "server_applied": false,
+  "server_initialization_verified": false,
+  "new_tests": {
+    "pattern": "test_search_tool.py",
+    "count": 52,
+    "result": "passed"
+  },
+  "document_qa_regression_tests": {
+    "pattern": "test_*.py",
+    "count": 376,
+    "seconds": 21.204,
+    "result": "passed"
+  },
+  "python_3_10_syntax": "passed",
+  "python_test_runtime": "3.12",
+  "source_sha256": {
+    "apps/document_qa/search_tool.py": "58ed8b776a6cf919a10b1f08aa9834584e5393b77170f42efa91e63f4be5e836",
+    "apps/document_qa/search_tool_results.py": "44f1d549ffa0f36ac0c0fb90ad08983cd4591b65678b48fd8fff118b823eee9d",
+    "apps/document_qa/search_tool_transport.py": "011dbd4a0582a12d896a0dbb9a245ba91e6bfedf8362662b313a12743bbe5176",
+    "apps/document_qa/tests/test_search_tool.py": "9d73c0e426b04171666817f07e4e17b9f124e810cb4da67e872fdf438d2760f6"
+  },
+  "verified": [
+    "additive_init_atomic_error_rollback_and_existing_job_token_head_preservation",
+    "frozen_activated_index_snapshot_profile_Connection_versions_and_definition",
+    "logical_Tool_reuse_with_new_version_on_second_index_generation",
+    "saved_intent_before_POST_same_key_body_after_loss_and_process_interruption",
+    "no_automatic_POST_retry_or_revision_rebase_after_conflict",
+    "concurrent_Tool_and_indexing_lane_exclusion",
+    "exact_ToolCall_key_query_hash_definition_and_result_data_metadata_identity",
+    "compact_reference_summary_without_hit_text_or_vector_replication",
+    "failed_interrupted_unknown_terminal_preservation",
+    "published_revision_GET_recovery_after_lost_reply_and_interruption",
+    "readonly_discovery_via_pinned_internal_Connections_and_independent_write_inference_gates",
+    "authenticated_adapter_lifecycle_over_real_HTTP_with_fresh_budgets",
+    "HTTP_path_status_MIME_JSON_size_budget_proxy_redirect_and_error_redaction"
+  ],
+  "effects": {
+    "production_api_requests": 0,
+    "service_control_requested": false,
+    "inference_requested": false,
+    "GPU_requested": false,
+    "n8n_registration_requested": false,
+    "existing_QA_API_code_changed": false,
+    "qa_manual_process_reload_required": false,
+    "existing_credential_files_changed": false
+  },
+  "question_ready": false,
+  "production_tool_verified": false,
+  "question_revision_migrated": false,
+  "operational_Connection_discovery_implemented": false,
+  "next_step": "apply_related_tests_local_init_status_then_Q06b_1_question_head_storage_migration",
+  "deferred": [
+    "live_Q05c_indexing_search",
+    "production_Tool_test_publish_Agent_question_target_acceptance",
+    "question_head_migration_AgentRun_API_CAS_UI_quality",
+    "Ops_backup_restore_reboot_Kubernetes"
+  ]
+}

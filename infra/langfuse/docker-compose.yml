@@ -1,0 +1,146 @@
+name: infrastructure-langfuse
+x-service: &service
+  restart: unless-stopped
+  labels:
+    org.agent-project.langfuse.owner: ${LF_OWNER:?run prepare first}
+  networks: [private]
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: '3'
+  stop_grace_period: 60s
+x-dependencies: &dependencies
+  lf-postgres: {condition: service_healthy}
+  lf-clickhouse: {condition: service_healthy}
+  lf-redis: {condition: service_healthy}
+  lf-minio: {condition: service_healthy}
+services:
+  lf-postgres:
+    <<: *service
+    image: docker.io/postgres@sha256:d74eeac9a635390a49bc21bd49fccd973de707e2a53a76ac49b552b8712ec46f
+    mem_limit: 2g
+    cpus: 2
+    env_file:
+      - {path: '${LF_STATE_DIR}/postgres.env', format: raw}
+    volumes:
+      - type: bind
+        source: ${LF_STATE_DIR}/data/postgres
+        target: /var/lib/postgresql/data
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U langfuse -d langfuse']
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+  lf-clickhouse:
+    <<: *service
+    image: docker.io/clickhouse/clickhouse-server@sha256:8a790dd3468db22b1d4e7b18a176f378ff5ff6053b9c48dd4ea1fa71a24c5ba6
+    user: '101:101'
+    mem_limit: 8g
+    cpus: 4
+    env_file:
+      - {path: '${LF_STATE_DIR}/clickhouse.env', format: raw}
+    ulimits:
+      nofile: {soft: 262144, hard: 262144}
+    volumes:
+      - type: bind
+        source: ${LF_STATE_DIR}/data/clickhouse
+        target: /var/lib/clickhouse
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${LF_STATE_DIR}/data/clickhouse-logs
+        target: /var/log/clickhouse-server
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD, wget, --quiet, --tries=1, --spider, 'http://127.0.0.1:8123/ping']
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+  lf-redis:
+    <<: *service
+    image: docker.io/redis@sha256:c6eabf748fc7a61dbb5a705c78bcf3d6377b1127a97d0ce965c11c44ba46896f
+    user: '${LF_UID}:${LF_GID}'
+    mem_limit: 1g
+    cpus: 1
+    env_file:
+      - {path: '${LF_STATE_DIR}/redis.env', format: raw}
+    command: [sh, -ec, 'exec redis-server --requirepass "$${REDISCLI_AUTH}" --appendonly yes --appendfsync everysec --maxmemory 512mb --maxmemory-policy noeviction']
+    volumes:
+      - type: bind
+        source: ${LF_STATE_DIR}/data/redis
+        target: /data
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD-SHELL, 'test "$$(redis-cli ping)" = PONG']
+      interval: 5s
+      timeout: 5s
+      retries: 30
+  lf-minio:
+    <<: *service
+    image: cgr.dev/chainguard/minio@sha256:bd014394a80898e68c149f2311fdf8d5a2c2f3bb2c33b9327ae6d02b4b065ae1
+    user: '${LF_UID}:${LF_GID}'
+    mem_limit: 2g
+    cpus: 2
+    env_file:
+      - {path: '${LF_STATE_DIR}/minio.env', format: raw}
+    entrypoint: [sh, -ec]
+    command: ['mkdir -p /data/langfuse && exec minio server --address :9000 --console-address :9001 /data']
+    volumes:
+      - type: bind
+        source: ${LF_STATE_DIR}/data/minio
+        target: /data
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD, mc, --config-dir, /tmp/mc, ready, local]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
+  lf-worker:
+    <<: *service
+    image: docker.langfuse.com/langfuse/langfuse-worker@sha256:3568d2d1eb5dd570f4087b37972ddffa3f6ae4f872553e0b0e2eedf4896a29e9
+    mem_limit: 4g
+    cpus: 2
+    env_file:
+      - {path: '${LF_STATE_DIR}/worker.env', format: raw}
+    environment:
+      HOSTNAME: 0.0.0.0
+    depends_on: *dependencies
+    healthcheck:
+      test: ["CMD", "node", "-e", "const endpoints=[[\"health\",\"/api/health?failIfEventPropagationStuck=true\"]];Promise.all(endpoints.map(async([endpoint,path])=>{try{const r=await fetch('http://127.0.0.1:3030'+path,{signal:AbortSignal.timeout(4000),redirect:'error'});await r.body?.cancel();return {endpoint,status:r.status};}catch(e){const code=e.cause?.code||e.name;return {endpoint,error:['ECONNREFUSED','ETIMEDOUT','ENOTFOUND','EHOSTUNREACH','TimeoutError','AbortError'].includes(code)?code:'REQUEST_FAILED'};}})).then(rows=>{console.log(JSON.stringify(rows));process.exit(rows.every(r=>r.status===200)?0:1);}).catch(()=>{console.log('HEALTHCHECK_FAILED');process.exit(1);})"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 120s
+  lf-web:
+    <<: *service
+    image: docker.langfuse.com/langfuse/langfuse@sha256:755b821ba8f73a20d43d90e68f2b75d2f597dd164c55890f67a05f5a8d0f0e24
+    mem_limit: 4g
+    cpus: 2
+    env_file:
+      - {path: '${LF_STATE_DIR}/web.env', format: raw}
+    environment:
+      HOSTNAME: 0.0.0.0
+    depends_on: *dependencies
+    networks: [private, ingress]
+    ports:
+      - target: 3000
+        published: '16320'
+        host_ip: 0.0.0.0
+    healthcheck:
+      test: ["CMD", "node", "-e", "const endpoints=[[\"ready\",\"/api/public/ready\"],[\"health\",\"/api/public/health?failIfDatabaseUnavailable=true\"]];Promise.all(endpoints.map(async([endpoint,path])=>{try{const r=await fetch('http://127.0.0.1:3000'+path,{signal:AbortSignal.timeout(4000),redirect:'error'});await r.body?.cancel();return {endpoint,status:r.status};}catch(e){const code=e.cause?.code||e.name;return {endpoint,error:['ECONNREFUSED','ETIMEDOUT','ENOTFOUND','EHOSTUNREACH','TimeoutError','AbortError'].includes(code)?code:'REQUEST_FAILED'};}})).then(rows=>{console.log(JSON.stringify(rows));process.exit(rows.every(r=>r.status===200)?0:1);}).catch(()=>{console.log('HEALTHCHECK_FAILED');process.exit(1);})"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 120s
+networks:
+  private:
+    internal: true
+    labels:
+      org.agent-project.langfuse.owner: ${LF_OWNER}
+  ingress:
+    labels:
+      org.agent-project.langfuse.owner: ${LF_OWNER}

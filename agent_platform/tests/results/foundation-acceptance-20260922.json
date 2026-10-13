@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-22",
+  "stage": "A02",
+  "acceptance": "passed",
+  "source": {
+    "kind": "user_pasted_execution_log",
+    "host": "simsys4090",
+    "project": "~/workspace/agent_project/agent_platform"
+  },
+  "restart": {
+    "services": [
+      "agent-postgres",
+      "agent-service",
+      "agent-runtime",
+      "agent-gateway"
+    ],
+    "all_started": true,
+    "all_healthy_after_wait": true,
+    "build_requested": false
+  },
+  "smoke": {
+    "result": "passed",
+    "stage": "A02",
+    "check_id": "8a441176-a891-481e-87da-2e73e1762777",
+    "request_id": "786dad1e-9a66-42a6-9e43-b25919c7335b",
+    "mode": "lookup"
+  },
+  "matched_previous_create_result": {
+    "check_id": true,
+    "request_id": true
+  },
+  "prior_evidence": "foundation-server-attempt4-20260922.json",
+  "acceptance_scope": [
+    "service_startup_and_health",
+    "authenticated_status_and_diagnostic_api",
+    "create_lookup_exact_equality",
+    "dedicated_postgresql_checks",
+    "existing_diagnostic_retained_after_container_restart"
+  ],
+  "not_tested_in_restart_log": [
+    "host_reboot",
+    "backup_restore",
+    "full_response_equality_before_and_after_restart"
+  ],
+  "next_stage": "A03 Tool/MCP",
+  "a03_implementation": "not_started",
+  "this_update": "documentation_and_compact_result_only"
+}

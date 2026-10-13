@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "stage": "Q05c-indexing-saved-defaults-compatibility",
+  "date": "2026-10-12",
+  "development_result": "passed",
+  "tests": [
+    {
+      "scope": "indexing_related",
+      "pattern": "test_indexing*.py",
+      "count": 93,
+      "seconds": 8.291,
+      "result": "passed"
+    },
+    {
+      "scope": "readiness_related",
+      "pattern": "test_readiness.py",
+      "count": 29,
+      "seconds": 0.53,
+      "result": "passed"
+    },
+    {
+      "scope": "full_QA",
+      "pattern": "test_*.py",
+      "count": 569,
+      "seconds": 59.524,
+      "result": "passed"
+    }
+  ],
+  "new_regression_tests": 10,
+  "original_failure_reproduced": {
+    "original_result": "INDEXING_PROFILE_INVALID",
+    "corrected_result": "passed",
+    "saved_display_fields": [
+      "name",
+      "version",
+      "label"
+    ],
+    "normalized_profile_fields": [
+      "deployment_id",
+      "embedding_space_id",
+      "max_input_bytes",
+      "max_input_tokens",
+      "model_version_id",
+      "profile_id"
+    ],
+    "production_API_requests": 0
+  },
+  "python_scope": "developer_Python_3_12_with_Python_3_10_AST_check",
+  "observed_user_server": {
+    "source": "user_supplied_terminal_output_and_LAN_screen_observations",
+    "timestamp_scope": "message_receipt_not_execution_timestamp",
+    "LAN_screen_authenticated_existing_document_observed_at_KST": "2026-10-12T09:24:54+09:00",
+    "LAN_screen_rendered": true,
+    "LAN_screen_authenticated": true,
+    "LAN_registered_documents": 1,
+    "embedding_ready_profile_verified_at_KST": "2026-10-12T09:33:12+09:00",
+    "defaults_configure_observed_at_KST": "2026-10-12T09:38:28+09:00",
+    "flow_failure_observed_at_KST": "2026-10-12T09:42:52+09:00",
+    "platforms_reachable": [
+      "data",
+      "knowledge",
+      "agent",
+      "model"
+    ],
+    "defaults_ready": true,
+    "configuration_written": true,
+    "defaults_blockers": [],
+    "configuration_GET_requests": 14,
+    "configuration_inference_requested": false,
+    "embedding_selection": {
+      "deployment_id": "d4d3eda4-a857-4083-8828-e36e7fa0f534",
+      "model_version_id": "65c3f2ff-b1fd-4a39-8dd7-aaf34c34579e",
+      "embedding_space_id": "es_00cb26c80fff352a4cc494bef5b90d75a83584caf4d7e3b525f8516c2dcab76e",
+      "profile_id": "snowflake-ko-v1",
+      "max_input_tokens": 2048,
+      "max_input_bytes": 131072
+    },
+    "chat_selection": {
+      "deployment_id": "14527d72-751a-459f-8615-7186e5faa0f3",
+      "model_version_id": "a6debd09-1bc7-4978-9208-8f6eb7935163",
+      "model_id": "f9f6580b-9250-4e99-bda8-1bb561d852b5",
+      "max_model_len": 4096,
+      "name": "gemma3-v1",
+      "version": "base-v1"
+    },
+    "chunker": {
+      "id": "structure_v1",
+      "version": "2026-09-21.1",
+      "options": {
+        "max_characters": 1000,
+        "overlap_characters": 100
+      }
+    },
+    "GPU": {
+      "name": "NVIDIA GeForce RTX 4090",
+      "memory_used_MiB": 14482,
+      "memory_total_MiB": 24564,
+      "utilization_percent": 0
+    },
+    "library_id": "e1172d34-4500-426e-9440-d93310b6fbf1",
+    "accepted_sequence": 1,
+    "job_id": "430b0e7b-7b4c-4ae7-9c57-6c979ca94343",
+    "source_document_id": "8db38fb1-ba4e-41b8-aff3-b2421ff6ab16",
+    "canonical_id": "fec048c6-ea13-40f3-bef3-eddbfca9799a",
+    "CPU_state": "canonical_verified",
+    "indexing_flow": {
+      "workflow_id": "st0prKQNT3XIYasC",
+      "published_version_id": "838e64bc-84e3-4fe7-9fe0-0f4d4afb77bc",
+      "handoff_id": "d06cbe53-8832-5015-b44c-b20e57a05f8e",
+      "generation": 2,
+      "first_execution_id": "9",
+      "delivery_state": "accepted",
+      "inference_mode": "server_policy",
+      "state": "attention_required",
+      "steps": 1,
+      "error_code": "INDEXING_PROFILE_INVALID"
+    },
+    "index_configured": false,
+    "indexing_job_state": "not_requested",
+    "indexing_generation": 0,
+    "active_document_count": 0,
+    "head_revision": 0,
+    "head_target_id": null,
+    "activation_count": 0,
+    "question_count": 0,
+    "question_ready": false,
+    "QA_reload_listening_output_observed": false
+  },
+  "root_cause": {
+    "saved_embedding_profile_has_Q02_display_fields": [
+      "name",
+      "version",
+      "label"
+    ],
+    "old_defaults_checked_required_exact_six_fields": true,
+    "failure_location": "IndexingGate.defaults_checked_before_native_Model_GET_or_Knowledge_creation"
+  },
+  "implemented": {
+    "project_only_known_optional_string_display_fields": true,
+    "unknown_fields_missing_ids_invalid_profile_space_or_limits_still_rejected": true,
+    "fresh_Model_profile_and_chunker_GET_and_binding_CAS_checks_unchanged": true,
+    "saved_Q02_settings_not_rewritten": true,
+    "runtime_code_changed": [
+      "apps/document_qa/indexing_results.py"
+    ]
+  },
+  "development_verified": [
+    "Q02_inspect_and_configure_disk_roundtrip_into_live_readiness_gate",
+    "optional_display_subsets_and_label_changes_keep_same_core_identity",
+    "wrong_core_and_unknown_fields_rejected_before_native_metadata_or_Knowledge_calls",
+    "paused_grant_preserved_new_generation_resumes_under_server_policy",
+    "fake_Knowledge_create_build_ready_fresh_CAS_activate_readback",
+    "original_CPU_receipts_keys_settings_and_old_flow_receipt_preserved"
+  ],
+  "limits": [
+    "no_actual_server_patch_application_or_resume_after_fix_observed",
+    "no_actual_QA_index_build_embedding_search_or_question_success",
+    "no_actual_new_upload_CPU_recovery_POST_or_browser_answer_citation_acceptance",
+    "offline_fake_lifecycle_is_not_native_GPU_semantic_quality_acceptance",
+    "static_next_step_and_production_verified_fields_do_not_define_latest_acceptance"
+  ],
+  "patch_service_control_requested": false,
+  "DB_or_schema_changed": false,
+  "development_production_API_requests": 0,
+  "development_inference_requested": false,
+  "development_GPU_requested": false,
+  "actual_server_patch_application_observed": false,
+  "actual_indexing_verified": false,
+  "next_step": "apply_fix_test_reload_QA_with_indexing_opt_in_resume_existing_attention_generation_once_then_observe"
+}

@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "stage": "O03-ops-console-readback",
+  "result": "passed",
+  "evidence": {
+    "source": "user pasted apply/build/check_console output",
+    "received_at_kst": "2026-09-27T10:16:39+09:00",
+    "server_directly_accessed_by_assistant": false,
+    "raw_output_and_credentials_retained": false
+  },
+  "image_id": "sha256:879c4a9874e0e1f8a02d9820daf7cb88566557b9b54832674dac1ee1d86e6bbf",
+  "container_health": "healthy",
+  "method": "GET",
+  "inference_requested": false,
+  "remote_business_mutations_requested": false,
+  "overview": {
+    "model": {
+      "status": "ok",
+      "gateway": "ok",
+      "readiness": "unsupported"
+    },
+    "data": {
+      "status": "ok",
+      "gateway": "ok",
+      "readiness": "unsupported"
+    },
+    "knowledge": {
+      "status": "ok",
+      "gateway": "ok",
+      "readiness": "unsupported"
+    },
+    "agent": {
+      "status": "ok",
+      "gateway": "ok",
+      "readiness": {
+        "ready": true,
+        "scope": "agent_service_database_runtime",
+        "database": "ready",
+        "runtime": "ready",
+        "request_id": "bb34ac5f-2ae6-43c0-84ee-d465405971f3"
+      }
+    }
+  },
+  "resources": {
+    "targets": {
+      "status": "ok",
+      "count": 4,
+      "error": null,
+      "coverage": "query_result",
+      "unavailable_values": 0,
+      "down_targets": 0
+    },
+    "host_cpu": {
+      "status": "ok",
+      "count": 1,
+      "error": null,
+      "coverage": "query_result",
+      "unavailable_values": 0,
+      "down_targets": null
+    },
+    "host_memory": {
+      "status": "ok",
+      "count": 1,
+      "error": null,
+      "coverage": "query_result",
+      "unavailable_values": 0,
+      "down_targets": null
+    },
+    "filesystems": {
+      "status": "ok",
+      "count": 3,
+      "error": null,
+      "coverage": "query_result",
+      "unavailable_values": 0,
+      "down_targets": null
+    },
+    "container_cpu": {
+      "status": "ok",
+      "count": 61,
+      "error": null,
+      "coverage": "query_result",
+      "unavailable_values": 0,
+      "down_targets": null
+    },
+    "container_memory": {
+      "status": "ok",
+      "count": 61,
+      "error": null,
+      "coverage": "query_result",
+      "unavailable_values": 0,
+      "down_targets": null
+    },
+    "gpu": {
+      "status": "ok",
+      "count": 6,
+      "error": null,
+      "coverage": "query_result",
+      "unavailable_values": 0,
+      "down_targets": null
+    }
+  },
+  "agent": {
+    "status": "ok",
+    "id": "1a7d571b-e7e5-4b07-8f41-ad3392025b95",
+    "state": "failed",
+    "identifiers": {
+      "request_id": "1ae83dd8-60f5-49a0-8e4a-2d6f7e13af91",
+      "agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+      "tool_call_id": "c64e4b1c-0b74-411b-ad15-d7fa1770ca87"
+    },
+    "business_error": {
+      "code": "ANSWER_REFERENCE_INVALID",
+      "stage": "finalize"
+    },
+    "query_error": null
+  },
+  "trace": {
+    "status": "ok",
+    "trace_id": "7f0695514f939240bc83312baf917ab7",
+    "relationship": "verified_records",
+    "span_count": 10,
+    "missing_spans": [],
+    "error": null
+  },
+  "scope": "new Ops API readback; browser and Docker restart acceptance separate",
+  "remaining": {
+    "user_browser": "pending",
+    "ops_restart_session_cache": "pending",
+    "O04_alerting": "pending",
+    "promtool_branch_fixtures": "not_run"
+  },
+  "changes_for_this_record": "documentation_and_summary_only"
+}

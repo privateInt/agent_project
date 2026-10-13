@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko" data-screen-version="q08.1">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>문서 자료함</title>
+  <link rel="stylesheet" href="/console/style.css">
+  <script src="/console/upload.js" defer></script><script src="/console/recovery.js" defer></script><script src="/console/questions.js" defer></script><script src="/console/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/console"><span class="brand-mark" aria-hidden="true">문</span> 문서 자료함</a><div class="top-actions"><span id="connection-state">연결 전</span><button id="logout" class="quiet" hidden>연결 해제</button></div></header>
+  <main>
+    <section id="login-panel" class="login-card card">
+      <span class="eyebrow">나의 문서, 한곳에</span><h1>문서를 넣고<br>준비 상태를 확인하세요.</h1>
+      <p class="muted">자료함에 연결하면 이전에 올린 문서와 진행 중인 작업을 함께 볼 수 있습니다.</p>
+      <form id="login-form"><label for="token">접속 키</label><input id="token" type="password" autocomplete="off" spellcheck="false" required maxlength="43" placeholder="관리자가 제공한 접속 키"><button id="login-submit" class="primary">자료함 연결</button></form>
+      <p class="small muted">접속 키는 이 화면에서만 사용합니다. 새로고침 후 다시 입력하세요.</p>
+    </section>
+    <div id="notice" class="notice" role="status" aria-live="polite"></div>
+    <div id="workspace" hidden>
+      <div id="recovery-pending" class="pending-box recovery-pending" hidden><strong>이전 동작의 결과 확인이 필요합니다.</strong><p id="recovery-pending-text" class="small"></p><button id="recover-action" class="secondary">이전 동작 상태 확인</button><p class="small muted">조회는 처리 요청을 다시 전송하지 않습니다.</p></div>
+      <div class="page-heading"><div><span class="eyebrow">DOCUMENT LIBRARY</span><h1 id="library-name">문서 자료함</h1><p class="muted">문서를 올리고, 검색에 사용할 자료가 준비되는 과정을 확인하세요.</p></div><button id="refresh" class="secondary">상태 다시 확인</button></div>
+      <section class="summary" aria-label="자료함 요약"><div><span class="muted">등록한 문서</span><strong id="document-count">—</strong><span class="small muted">최대 20개</span></div><div><span class="muted">질문 준비 상태</span><strong id="question-state" class="summary-state">확인 중</strong><span id="question-help" class="small muted">자료 준비 상태를 확인합니다.</span></div><div><span class="muted">마지막 확인</span><strong id="checked-at" class="summary-state">—</strong><span id="freshness" class="small muted">등록된 작업을 다시 조회합니다.</span></div></section>
+      <div class="content-grid">
+        <section class="card upload-card"><div class="section-title"><span class="step-number">1</span><h2>문서 올리기</h2></div>
+          <p class="muted">파일을 선택하면 문서 이름을 자동으로 채웁니다.</p>
+          <form id="upload-form"><label class="file-zone" for="file"><span class="file-symbol" aria-hidden="true">＋</span><strong>파일 선택</strong><span class="small muted">TXT · Markdown · PDF</span><input id="file" type="file" accept=".txt,.md,.markdown,.pdf" required></label><p id="file-description" class="small muted">파일당 32MiB까지 올릴 수 있습니다.</p><label for="document-name">문서 이름</label><input id="document-name" maxlength="200" required placeholder="파일을 먼저 선택하세요"><p class="small muted">텍스트 PDF를 지원합니다. 스캔 PDF는 문자 인식 준비가 필요합니다.</p><button id="upload-submit" class="primary full">자료함에 올리기</button></form>
+          <div id="pending-panel" class="pending-box" hidden><strong>이전 업로드를 확인하고 있습니다.</strong><p id="pending-description" class="small"></p><button id="recover-upload" class="secondary">접수 여부 확인</button><p class="small muted">응답이 없더라도 같은 파일을 중복 등록하지 않습니다.</p></div>
+        </section>
+        <section class="card documents-card"><div class="section-title"><span class="step-number">2</span><h2>내 문서</h2><span id="list-count" class="count-pill">0</span></div><label class="search-label" for="search">문서 찾기<input id="search" type="search" placeholder="문서 이름 또는 파일명으로 검색"></label><div id="documents" class="documents" aria-live="polite"><p class="empty">아직 등록한 문서가 없습니다.</p></div></section>
+      </div>
+      <section id="detail-panel" class="card detail-card" hidden><div class="detail-heading"><div><span class="eyebrow">문서 준비 과정</span><h2 id="detail-name"></h2><p id="detail-file" class="small muted"></p></div><button id="refresh-job" class="secondary">이 문서 다시 확인</button></div><ol id="detail-steps" class="progress-steps"></ol><p id="detail-help" class="detail-help"></p><div class="recovery-box"><p id="recovery-help" class="small muted"></p><div id="recovery-actions" class="recovery-actions"></div><div id="recovery-review" class="recovery-review" hidden><strong id="recovery-title"></strong><p id="recovery-description"></p><p class="small muted">선택한 동작을 한 번 요청합니다. 응답이 없으면 상태부터 확인합니다.</p><div class="recovery-actions"><button id="recovery-confirm" class="primary">이 동작 실행</button><button id="recovery-cancel" class="secondary">취소</button></div></div></div><details><summary>자세한 확인 정보</summary><dl id="detail-info"></dl></details></section>
+      <section class="card question-card" aria-labelledby="question-heading"><div class="section-title"><span class="step-number">3</span><h2 id="question-heading">문서에 질문하기</h2><span id="qa-status" class="badge">준비 확인 중</span></div><p id="qa-help" class="muted">질문할 수 있는 자료와 답변 연결을 확인합니다.</p><form id="question-form"><label for="question-input">궁금한 내용</label><textarea id="question-input" rows="3" maxlength="8192" required placeholder="올린 문서에서 궁금한 내용을 질문하세요."></textarea><div class="question-form-actions"><span id="question-size" class="small muted">질문은 UTF-8 기준 8KiB까지 입력할 수 있습니다.</span><button id="question-submit" class="primary">질문하기</button></div></form><div id="question-pending" class="pending-box" hidden><strong>이전 질문의 확인이 필요합니다.</strong><p id="question-pending-text" class="small"></p><button id="question-recover" class="secondary">이전 질문 상태 확인</button><p class="small muted">조회는 질문을 다시 실행하지 않습니다. 확인 기록에는 질문 내용이 이 탭에만 임시 보관됩니다.</p></div><div class="question-grid"><section><h3>질문 기록</h3><div id="question-list" class="question-list"></div></section><section id="answer-panel" class="answer-panel" hidden aria-live="polite"><div class="answer-heading"><h3 id="answer-question"></h3><span id="answer-state" class="badge"></span></div><p id="answer-help" class="small muted"></p><div id="answer-actions" class="recovery-actions"></div><div id="question-review" class="recovery-review" hidden><strong id="question-review-title"></strong><p id="question-review-help"></p><div class="recovery-actions"><button id="question-confirm" class="primary">이 동작 실행</button><button id="question-cancel" class="secondary">취소</button></div></div><div id="answer-warnings" class="answer-warnings"></div><div id="answer-text" class="answer-text"></div><nav id="answer-links" class="citation-links" aria-label="답변 출처"></nav><div id="answer-sources" class="answer-sources"></div><details><summary>질문의 확인 정보</summary><dl id="answer-info"></dl></details></section></div></section>
+    </div>
+  </main>
+  <footer>문서의 준비 상태는 마지막으로 조회한 결과를 기준으로 표시합니다.</footer>
+</body>
+</html>

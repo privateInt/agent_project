@@ -1,0 +1,41 @@
+{
+  "recorded_at_local": "2026-09-26T13:55:19+09:00",
+  "evidence": "user-provided server output after timefix patch; no direct remote access",
+  "patch_applied_files": 6,
+  "command": "python3 -B infra/observability/ops/manage.py check --wait-seconds 120",
+  "server_result": {
+    "result": "passed",
+    "stage": "O01",
+    "scope": "host and Docker resource metrics",
+    "targets_up": 3,
+    "host_cpu_count": 24,
+    "host_memory_verified": true,
+    "filesystem_mounts_verified": [
+      "/",
+      "/media/simsys/SSD_EXT4"
+    ],
+    "platform_containers_verified": 46,
+    "inference_executed": false,
+    "domain_success_assessed": false,
+    "gpu_metrics_assessed": false,
+    "llm_traces_assessed": false,
+    "data_dir": "/home/shshin/.local/state/agent-project-observability/prometheus",
+    "docker_root": "/media/simsys/SSD_EXT4/docker",
+    "retention": {
+      "time": "7d",
+      "size": "5GB",
+      "hard_disk_quota": false
+    }
+  },
+  "prior_server_startup": "all three observation containers Healthy after tmpfs fix",
+  "acceptance": {
+    "host_docker_resource_collection": "passed",
+    "observation_restart_data_preservation": "pending",
+    "gpu_collection": "pending",
+    "llm_traces": "pending",
+    "platform_domain_state_integration": "pending",
+    "ops_ui_alerting": "pending"
+  },
+  "record_update_only": true,
+  "restart_or_inference_performed_for_record": false
+}

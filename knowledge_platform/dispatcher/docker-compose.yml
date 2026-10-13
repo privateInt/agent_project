@@ -1,0 +1,31 @@
+services:
+  knowledge-dispatcher:
+    image: knowledge-platform-dispatcher:dev
+    build:
+      context: .
+      target: dispatcher
+    pull_policy: never
+    container_name: knowledge-dispatcher
+    restart: unless-stopped
+    networks: [knowledge-infra]
+    environment:
+      KAFKA_BROKERS: ${KNOWLEDGE_KAFKA_BROKERS:?Run ops/configure.py first}
+      KAFKA_COMMAND_TOPIC: knowledge.operations.requested
+      KAFKA_CONSUMER_GROUP: knowledge-platform-dispatchers
+      JOB_NETWORK: ${KNOWLEDGE_NETWORK:-ops-infra}
+      CHUNKING_JOB_IMAGE: knowledge-platform-chunking-job:dev
+      INDEXING_JOB_IMAGE: knowledge-platform-indexing-job:dev
+      MODEL_EMBEDDING_GRPC_ADDRESS: ${KNOWLEDGE_MODEL_EMBEDDING_GRPC_ADDRESS:-model-deployment:9000}
+      OPERATION_GRPC_ADDRESS: knowledge-operation:9000
+      KNOWLEDGE_GRPC_ADDRESS: knowledge-service:9000
+      DATA_COLLECTION_GRPC_ADDRESS: ${KNOWLEDGE_DATA_COLLECTION_GRPC_ADDRESS:-data-collection:9000}
+      DATA_REFINEMENT_GRPC_ADDRESS: ${KNOWLEDGE_DATA_REFINEMENT_GRPC_ADDRESS:-data-refinement:9000}
+      MINIO_ENDPOINT: ${KNOWLEDGE_MINIO_ENDPOINT:?Run ops/configure.py first}
+      MINIO_ACCESS_KEY: ${KNOWLEDGE_MINIO_ACCESS_KEY:?Run ops/configure.py first}
+      MINIO_SECRET_KEY: ${KNOWLEDGE_MINIO_SECRET_KEY:?Run ops/configure.py first}
+      MINIO_USE_SSL: ${KNOWLEDGE_MINIO_USE_SSL:-false}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - knowledge-operation
+      - knowledge-service

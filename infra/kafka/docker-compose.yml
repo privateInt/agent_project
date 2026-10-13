@@ -1,0 +1,102 @@
+name: ops-kafka
+
+services:
+  kafka:
+    image: apache/kafka:4.3.1
+    container_name: ops-kafka
+    hostname: ops-kafka
+    restart: unless-stopped
+
+    # 외부 서버/PC에서 Kafka에 직접 접근할 때 사용
+    ports:
+      - "${KAFKA_HOST_PORT:-9092}:9092"
+
+    environment:
+      # =========================================================
+      # KRaft - ZooKeeper 없이 Kafka 자체 metadata 관리
+      # =========================================================
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: "broker,controller"
+
+      CLUSTER_ID: "${KAFKA_CLUSTER_ID:-4L6g3nShT-eMCtK--X86sw}"
+
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@ops-kafka:29093"
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+
+      # =========================================================
+      # Listener
+      #
+      # INTERNAL
+      #   Docker ops-infra 내부 플랫폼에서 접근
+      #   ops-kafka:19092
+      #
+      # EXTERNAL
+      #   Docker host 외부에서 접근
+      #   <SERVER_IP>:9092
+      #
+      # CONTROLLER
+      #   KRaft 내부 controller 통신
+      # =========================================================
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT"
+
+      KAFKA_LISTENERS: "CONTROLLER://:29093,INTERNAL://:19092,EXTERNAL://:9092"
+
+      KAFKA_ADVERTISED_LISTENERS: "INTERNAL://ops-kafka:19092,EXTERNAL://${KAFKA_ADVERTISED_HOST:?KAFKA_ADVERTISED_HOST must be set in .env}:${KAFKA_HOST_PORT:-9092}"
+
+      KAFKA_INTER_BROKER_LISTENER_NAME: "INTERNAL"
+
+      # =========================================================
+      # Single-node Kafka 설정
+      # =========================================================
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+      KAFKA_SHARE_COORDINATOR_STATE_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_SHARE_COORDINATOR_STATE_TOPIC_MIN_ISR: 1
+
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+
+      # 오타 등으로 topic이 자동 생성되는 것을 방지
+      # 각 Platform에서 필요한 topic을 명시적으로 생성하는 방향
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_NUM_PARTITIONS: "3"
+      KAFKA_DEFAULT_REPLICATION_FACTOR: "1"
+      # =========================================================
+      # Storage
+      # =========================================================
+      KAFKA_LOG_DIRS: "/var/lib/kafka/data"
+
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:19092 --list >/dev/null 2>&1 || exit 1"
+        ]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+    networks:
+      - ops-infra
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+
+volumes:
+  kafka-data:
+
+
+networks:
+  ops-infra:
+    external: true
+    name: ops-infra

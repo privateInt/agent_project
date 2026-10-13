@@ -1,0 +1,261 @@
+{
+  "schema": 1,
+  "stage": "O03-O04-lan-and-user-browser-acceptance",
+  "result": "passed",
+  "scope": "reported_native_url_change_and_user_screenshots_of_selected_core_read_flow",
+  "recorded_date": "2026-09-28",
+  "display_timezone": "Asia/Seoul",
+  "native_evidence_source": "user_pasted_full_set_public_url_report",
+  "native_url_change_report": {
+    "stage": "O03-ops-public-url-change",
+    "result": "passed",
+    "checked_at": "2026-09-28T00:17:58.225741Z",
+    "public_url": "http://192.168.0.119:17100",
+    "same_ops_container_image_mounts": true,
+    "container_id": "0c25866d0b3a7557ca11ffd9c1f1c3589643f9a134db174a0388855bda60e7ad",
+    "started_after": "2026-09-28T00:17:52.727174079Z",
+    "configuration_change": "public_url_only_in_host_and_container_config",
+    "credentials_preserved": true,
+    "cache": {
+      "baseline_entries_preserved": 19,
+      "current_entries": 19,
+      "timestamps_unchanged": true
+    },
+    "same_access_code_login_and_logout": true,
+    "unconfigured_host_rejected": true,
+    "prior_restart_record_preserved": true,
+    "protected_containers_unchanged": 61,
+    "restart_command_completion_recorded": true,
+    "build_requested": false,
+    "new_container_requested": false,
+    "upstream_api_requests": 0,
+    "inference_requested": false,
+    "browser_acceptance": "ready_for_user_check",
+    "evidence_reused": false
+  },
+  "browser": {
+    "evidence_source": "user_screenshots_reviewed_by_assistant",
+    "automated_native_browser_suite_run": false,
+    "screenshot_count": 9,
+    "evidence": [
+      {
+        "file": "Cap 2026-09-28 09-19-21-653.png",
+        "sha256": "06a25031cb3b9ff8b51e675a78ad2f9c7bdd51c5d94964a2d5e7dd74a06f266c",
+        "scope": "overview"
+      },
+      {
+        "file": "Cap 2026-09-28 09-20-42-398.png",
+        "sha256": "22efec5423be09a76aa236d8806a8429a81219010a38575ab666eaebbf18fa55",
+        "scope": "resource_targets_host_filesystems"
+      },
+      {
+        "file": "Cap 2026-09-28 09-20-48-146.png",
+        "sha256": "6666b942d28623de95fee0989f8f985c7b4598b1eeca1245f7beaf0b9a12ee9f",
+        "scope": "container_cpu_visible_rows"
+      },
+      {
+        "file": "Cap 2026-09-28 09-20-52-758.png",
+        "sha256": "348c535cb71cd7053397d35829c0eb7be7043102f158db12729ab28aab27d728",
+        "scope": "container_memory_visible_rows"
+      },
+      {
+        "file": "Cap 2026-09-28 09-20-59-408.png",
+        "sha256": "839c81258ee1e78a251497e661e6688b66a23dd44ea5c1818d0f52983fa477bc",
+        "scope": "gpu"
+      },
+      {
+        "file": "Cap 2026-09-28 09-22-13-499.png",
+        "sha256": "8d94e78f270d5deeb6c2538aaa405c10698f9a8970fd6443a0e2b052ee6a30e8",
+        "scope": "alert_rules"
+      },
+      {
+        "file": "Cap 2026-09-28 09-22-17-458.png",
+        "sha256": "ecb85306ab89dcdd0e68fa8c90fb85156ba92848bf7fe39d24fffb62adc2c971",
+        "scope": "alertmanager_receipts"
+      },
+      {
+        "file": "Cap 2026-09-28 09-25-25-765.png",
+        "sha256": "48ce494ae0c5f1121286ef96cae2c66a6deeb8d9fde9a85f96928a5ca70b0912",
+        "scope": "agent_detail_trace_top"
+      },
+      {
+        "file": "Cap 2026-09-28 09-25-59-981.png",
+        "sha256": "f1abe329365edd636a852f37d335c20a17cae7ff1354aedf6383f0f40f37135c",
+        "scope": "agent_trace_all_ten"
+      }
+    ],
+    "authenticated_console_visible": true,
+    "browser_login_form_submission_or_logout_captured": false,
+    "overview": {
+      "displayed_query_time": "2026-09-28T09:19:10+09:00",
+      "platform_gateway_cards": 4,
+      "agent_database_runtime_ready": true,
+      "model_data_knowledge_readiness": "unsupported_as_displayed"
+    },
+    "resources": {
+      "displayed_query_time": "2026-09-28T09:20:30+09:00",
+      "groups_visible": 7,
+      "targets_collecting": [
+        "host",
+        "containers",
+        "prometheus",
+        "gpu"
+      ],
+      "host_cpu_percent": 4.11,
+      "host_memory_percent": 33.75,
+      "filesystem_usage_percent": {
+        "/": 78.1,
+        "/mnt/nvme1": 91.86,
+        "/media/simsys/SSD_EXT4": 96.85,
+        "/media/simsys/T91": 10.6
+      },
+      "container_cpu_and_memory": "visible_rows_and_units_only_not_all_rows_or_total_count",
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 4090",
+        "index": 0,
+        "utilization_percent": 0,
+        "total_mib": 24564,
+        "used_mib": 16177,
+        "free_mib": 7894,
+        "temperature_c": 47,
+        "power_w": 12.19
+      }
+    },
+    "alerts": {
+      "displayed_query_time": "2026-09-28T09:22:00+09:00",
+      "distinct_rules": 8,
+      "visible_rule_rows": 9,
+      "evaluation_error_visible": false,
+      "firing_and_received_mountpoints": [
+        "/mnt/nvme1",
+        "/media/simsys/SSD_EXT4"
+      ],
+      "external_delivery": "unconfigured"
+    },
+    "agent": {
+      "displayed_query_time": "2026-09-28T09:25:02+09:00",
+      "id": "1a7d571b-e7e5-4b07-8f41-ad3392025b95",
+      "state": "failed",
+      "error": {
+        "code": "ANSWER_REFERENCE_INVALID",
+        "stage": "finalize"
+      },
+      "quality": "not_evaluated",
+      "current_stage_display": "원본 값 없음",
+      "stages": {
+        "validate": "succeeded",
+        "search": "succeeded",
+        "context": "succeeded",
+        "generate": "succeeded",
+        "finalize": "failed"
+      },
+      "tool_call_id": "c64e4b1c-0b74-411b-ad15-d7fa1770ca87",
+      "tool_call_state": "succeeded",
+      "collapsed_request_and_version_identifiers": "not_visible_not_newly_verified"
+    },
+    "trace": {
+      "displayed_query_time": "2026-09-28T09:25:18+09:00",
+      "id": "7f0695514f939240bc83312baf917ab7",
+      "visible_span_count": 10,
+      "spans": [
+        {
+          "key": "agent.execute",
+          "label": "Agent 실행",
+          "parent_key": null,
+          "state": "failed",
+          "displayed_duration_ms": 3297
+        },
+        {
+          "key": "validate",
+          "label": "입력 확인",
+          "parent_key": "agent.execute",
+          "state": "succeeded",
+          "displayed_duration_ms": 11
+        },
+        {
+          "key": "search",
+          "label": "검색",
+          "parent_key": "agent.execute",
+          "state": "succeeded",
+          "displayed_duration_ms": 859
+        },
+        {
+          "key": "tool.execute",
+          "label": "검색 도구 호출",
+          "parent_key": "search",
+          "state": "succeeded",
+          "displayed_duration_ms": 622
+        },
+        {
+          "key": "model.embedding",
+          "label": "질문 임베딩",
+          "parent_key": "tool.execute",
+          "state": "succeeded",
+          "displayed_duration_ms": 42
+        },
+        {
+          "key": "knowledge.search",
+          "label": "지식 검색",
+          "parent_key": "tool.execute",
+          "state": "succeeded",
+          "displayed_duration_ms": 15
+        },
+        {
+          "key": "context",
+          "label": "문맥 준비",
+          "parent_key": "agent.execute",
+          "state": "succeeded",
+          "displayed_duration_ms": 10
+        },
+        {
+          "key": "generate",
+          "label": "답변 생성",
+          "parent_key": "agent.execute",
+          "state": "succeeded",
+          "displayed_duration_ms": 2407
+        },
+        {
+          "key": "model.chat",
+          "label": "답변 모델 호출",
+          "parent_key": "generate",
+          "state": "succeeded",
+          "displayed_duration_ms": 2205
+        },
+        {
+          "key": "finalize",
+          "label": "최종 확인",
+          "parent_key": "agent.execute",
+          "state": "failed",
+          "displayed_duration_ms": 3
+        }
+      ],
+      "search_result_count": 5,
+      "knowledge_result_count": 5,
+      "selected_context_count": 5,
+      "input_tokens": 1261,
+      "completion_tokens": 176,
+      "total_tokens": 1437
+    }
+  },
+  "not_accepted_by_this_evidence": [
+    "all_platform_record_lists_and_pagination",
+    "all_container_rows",
+    "browser_error_empty_or_stale_views",
+    "browser_logout_or_session_expiry",
+    "mobile_or_other_browsers",
+    "agent_dedicated_console",
+    "answer_semantic_quality",
+    "external_notification_delivery",
+    "nonempty_alertmanager_state_semantic_preservation",
+    "backup_restore"
+  ],
+  "documentation_patch": {
+    "runtime_changes": false,
+    "build_requested": false,
+    "restart_requested": false,
+    "api_test_rerun_requested": false,
+    "inference_requested": false,
+    "screenshots_or_credentials_included": false
+  },
+  "next": "remaining_o04_scope_and_observability_backup_restore_planning"
+}

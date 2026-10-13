@@ -1,0 +1,21 @@
+services:
+  knowledge-gateway:
+    image: knowledge-platform-gateway:dev
+    build:
+      context: .
+      target: gateway
+    pull_policy: never
+    container_name: knowledge-gateway
+    restart: unless-stopped
+    networks: [knowledge-infra]
+    environment:
+      OPERATION_GRPC_ADDRESS: knowledge-operation:9000
+      KNOWLEDGE_GRPC_ADDRESS: knowledge-service:9000
+      DATA_COLLECTION_GRPC_ADDRESS: ${KNOWLEDGE_DATA_COLLECTION_GRPC_ADDRESS:-data-collection:9000}
+      DATA_REFINEMENT_GRPC_ADDRESS: ${KNOWLEDGE_DATA_REFINEMENT_GRPC_ADDRESS:-data-refinement:9000}
+      MODEL_GATEWAY_URL: ${KNOWLEDGE_MODEL_GATEWAY_URL:-http://model-gateway:8000}
+    ports:
+      - "${KNOWLEDGE_UI_BIND_HOST:-0.0.0.0}:${KNOWLEDGE_GATEWAY_PORT:-15100}:8000"
+    depends_on:
+      - knowledge-operation
+      - knowledge-service

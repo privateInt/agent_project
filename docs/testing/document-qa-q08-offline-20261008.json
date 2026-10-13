@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "stage": "Q08-question-answer-citation-screen-offline",
+  "date": "2026-10-08",
+  "result": "passed",
+  "python_scope": "developer_Python_3_12_with_Python_3_10_AST_check",
+  "tests": [
+    {
+      "scope": "related_screen_HTTP",
+      "count": 42,
+      "seconds": 3.569,
+      "result": "passed"
+    },
+    {
+      "scope": "full_QA",
+      "count": 550,
+      "seconds": 42.649,
+      "result": "passed"
+    },
+    {
+      "suite": "Q07a_DOM_fetch_model",
+      "schema": 1,
+      "result": "passed",
+      "checks": 25,
+      "scope": "DOM_and_fetch_model_not_browser",
+      "production_API_requests": 0,
+      "inference_requested": false,
+      "GPU_requested": false
+    },
+    {
+      "suite": "Q07b_DOM_fetch_model",
+      "schema": 1,
+      "result": "passed",
+      "checks": 24,
+      "scope": "Q07b_DOM_and_fetch_model_not_browser",
+      "production_API_requests": 0,
+      "inference_requested": false,
+      "GPU_requested": false
+    },
+    {
+      "suite": "Q08_DOM_fetch_model",
+      "schema": 1,
+      "result": "passed",
+      "checks": 36,
+      "scope": "Q08_DOM_and_fetch_model_not_browser",
+      "production_API_requests": 0,
+      "inference_requested": false,
+      "GPU_requested": false
+    }
+  ],
+  "implemented": {
+    "same_API_q08_1_fixed_public_questions_asset_and_existing_bearer_Host_Origin_CSP": true,
+    "private_question_policy_required_not_legacy_question_ready_projection": true,
+    "explicit_new_question_policy_preflight_intake_then_first_dispatch_only_on_known_ack": true,
+    "local_GET_only_polling_and_manual_existing_Run_observe_no_new_inference": true,
+    "pending_question_or_run_saved_before_POST_without_credentials_or_file_bytes": true,
+    "uncertain_accept_keeps_original_client_key_and_exact_question_and_GET_first": true,
+    "recovered_or_replayed_intake_does_not_automatically_dispatch": true,
+    "uncertain_run_uses_same_question_and_backend_original_intent_key_body": true,
+    "pending_action_preflight_latest_question_policy_and_state_with_duplicate_click_guard": true,
+    "known_Run_observe_available_when_new_question_inference_disabled": true,
+    "logout_401_pagehide_clear_question_answer_and_auth_memory_keep_uncertain_tab_record": true,
+    "old_answers_keep_target_head_revision_Agent_version_and_verified_source_excerpt": true,
+    "failure_no_evidence_incomplete_result_and_answer_truncation_are_distinct": true,
+    "plain_text_rendering_and_fixed_local_source_anchors_no_arbitrary_external_URL": true,
+    "actual_source_id_matches_library_job_name_and_document_status_link": true,
+    "page_only_from_positive_metadata_location_page_else_block_and_saved_offsets": true,
+    "no_original_or_canonical_full_document_download_route_added": true,
+    "existing_upload_and_CPU_recovery_regressions_passed": true
+  },
+  "Q07b_notes_server_observed": {
+    "source": "user_supplied_terminal_checksum_and_apply_output",
+    "received_at_KST": "2026-10-08T14:54:10+09:00",
+    "timestamp_scope": "message_receipt_time_not_execution_timestamp",
+    "filename": "agent_project_q07b_server_notes_20261008.tar.gz",
+    "sha256": "423e82618608713e0d495852e7f168d7005be1dedcbad1a5a345355006827f77",
+    "checksum": "OK",
+    "status": "applied",
+    "written": 9,
+    "patch_backups_created": false,
+    "service_restart_required": false,
+    "manual_QA_API_reload_required_for_screen_view": false,
+    "inference_requested": false,
+    "local_additive_init_required": false,
+    "local_question_migration_required": false,
+    "local_qa_agent_init_required": false,
+    "local_question_head_init_required": false
+  },
+  "prior_server_evidence": "document-qa-q07b-server-observed-20261008.json",
+  "limits": [
+    "disposable_SQLite_independent_Agent_Knowledge_Data_fakes_loopback_HTTP_and_DOM_fetch_models_not_production",
+    "no_actual_browser_render_mobile_or_browser_question_POST_acceptance",
+    "Q08_server_apply_tests_status_or_running_API_reload_not_yet_observed",
+    "automatic_polling_reads_local_question_state_only_manual_observe_is_needed_to_refresh_remote_Run",
+    "source_excerpt_is_the_verified_historical_chunk_not_a_new_full_original_or_canonical_readback",
+    "page_numbers_not_inferred_and_old_source_not_replaced_with_new_canonical_or_current_head",
+    "client_preflight_is_not_a_new_global_CAS_or_distributed_transaction",
+    "uncertain_intake_text_is_temporarily_kept_in_tab_sessionStorage_for_exact_key_body_recovery",
+    "tab_records_are_not_shared_and_disappear_on_permanent_tab_close",
+    "new_question_inference_or_head_activation_permissions_not_enabled",
+    "no_actual_GPU_indexing_search_Tool_Agent_head_activation_question_or_semantic_quality_acceptance",
+    "no_current_upstream_inventory_or_existing_server_key_byte_audit"
+  ],
+  "final_UI_regression_after_logout_DOM_memory_clear": {
+    "result": "passed",
+    "checks": 85,
+    "scope": "DOM_fetch_models_not_browser"
+  },
+  "DB_or_migration_changed": false,
+  "default_inference_policy_changed": false,
+  "service_control_requested": false,
+  "production_API_requests": 0,
+  "inference_requested": false,
+  "GPU_requested": false,
+  "browser_visual_acceptance": false,
+  "production_question_verified": false,
+  "semantic_quality_verified": false,
+  "next_step": "Q08_server_code_apply_related_42_tests_local_status_then_live_Q05c_when_GPU_available"
+}

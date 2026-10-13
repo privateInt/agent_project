@@ -1,0 +1,59 @@
+name: data-platform
+include:
+- path: ./operation/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+- path: ./collection/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+- path: ./refinement/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+- path: ./gateway/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+- path: ./dispatcher/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+- path: ./reconciler/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+- path: ./console/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+networks:
+  data-infra:
+    external: true
+    name: ${DATA_NETWORK:-ops-infra}
+services:
+  crawl-job:
+    profiles:
+    - jobs
+    image: data-platform-crawl-job:dev
+    build:
+      context: .
+      target: crawl-job
+    pull_policy: never
+    network_mode: none
+    entrypoint:
+    - /bin/true
+  browser-job:
+    profiles: [jobs]
+    image: data-platform-browser-job:dev
+    build:
+      context: .
+      target: browser-job
+    pull_policy: never
+    network_mode: none
+    entrypoint: [/bin/true]
+  refinement-job:
+    profiles:
+    - jobs
+    image: data-platform-refinement-job:dev
+    build:
+      context: .
+      target: refinement-job
+    pull_policy: never
+    network_mode: none
+    entrypoint:
+    - /bin/true

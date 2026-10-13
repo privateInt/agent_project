@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "stage": "ops-portability-local",
+  "checked_at": "2026-09-28",
+  "result": "passed",
+  "ops_python_tests": 111,
+  "preflight_python_tests": 32,
+  "native_docker_cli": "28.5.1",
+  "native_docker_scope": "synthetic_loopback_engine_no_daemon",
+  "native_promtool": "3.13.3",
+  "native_promql_scenarios": 7,
+  "native_promql_expression_evaluations": 41,
+  "native_promql_included_in_ops_count": true,
+  "browser": "synthetic_chromium_core_flow_scope_rows_mobile_xss",
+  "patch_installer_checks": 7,
+  "runtime_image": "agent-project-ops:o04.3",
+  "server_acceptance": "pending",
+  "kubernetes_deployment_or_storage_inventory": false,
+  "backup_or_restore_executed": false,
+  "inference_requested": false
+}

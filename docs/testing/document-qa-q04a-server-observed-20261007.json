@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "stage": "Q04a-CPU-refinement-adapter",
+  "evidence_source": "user_reported_terminal_output",
+  "reported_at": "2026-10-07T10:28:52+09:00",
+  "host": "shshin@simsys4090",
+  "patch": {
+    "status": "applied",
+    "written": 18,
+    "active_runtime_files_changed": false,
+    "patch_backups_created": false,
+    "service_control_requested": false,
+    "service_restart_required": false
+  },
+  "tests": {
+    "passed": 41,
+    "elapsed_seconds": 1.413,
+    "result": "OK",
+    "skipped": 0
+  },
+  "init_and_status": {
+    "result": "passed",
+    "schema": 1,
+    "refinement_schema": 1,
+    "upload_schema": 1,
+    "active_job_id": null,
+    "refinement_counts": {},
+    "question_ready": false,
+    "configuration_live_verified": false,
+    "n8n_refinement_connected": false,
+    "ocr_supported": false,
+    "next_step": "Q04b_n8n_refinement_stage",
+    "production_api_requests": 0,
+    "inference_requested": false
+  },
+  "api_status": {
+    "result": "passed",
+    "library_id": "e1172d34-4500-426e-9440-d93310b6fbf1",
+    "name": "문서 자료함",
+    "accepted_sequence": 0,
+    "question_revision": 0,
+    "reserved_documents": 0,
+    "pending_original_bytes": 0,
+    "question_ready": false,
+    "workflow_started": false,
+    "jobs": []
+  },
+  "production_data_refinement_verified": false,
+  "native_n8n_execution_verified": false,
+  "GPU_acceptance": "deferred_by_user"
+}

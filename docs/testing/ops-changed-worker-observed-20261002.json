@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "stage": "O04-changed-worker-read-only-observation",
+  "source": "user_supplied_terminal_JSON",
+  "checked_date": "2026-10-02",
+  "code_review_date": "2026-10-02",
+  "latest_patch": {
+    "name": "ops_backup_measure_docker_query_fix_20261002",
+    "status": "already_applied",
+    "written": 0,
+    "runtime_files_changed": false,
+    "service_control_requested": false
+  },
+  "subsequent_measure": {
+    "result": "attention_required",
+    "code": "WORKER_RECOVERY_REQUIRED",
+    "exit_code": 2,
+    "docker_query_phase_reached": false,
+    "backup_ready": false
+  },
+  "boot_controller": {
+    "checked_at": "2026-10-02T01:51:33.464385Z",
+    "code_state": "candidate",
+    "code_files": 61,
+    "code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+    "transition_phase": "committed",
+    "initial_start_phase": "accepted",
+    "initial_start_is_historical": true,
+    "same_boot_as_initial_start": true,
+    "current_health_verified": false
+  },
+  "latest_auto_refresh": {
+    "checked_at": "2026-10-02T01:55:20.520404Z",
+    "installation_status": "ok",
+    "configuration_status": "ok",
+    "provenance_status": "ok",
+    "provenance_generations": 0,
+    "provenance_pending": null,
+    "blockers": [
+      "WORKER_RECOVERY_REQUIRED"
+    ],
+    "warnings": [
+      "EXTERNAL_REFERENCE_PRIVATE_MODE_DIFFERS"
+    ],
+    "effects": {
+      "files_changed": [],
+      "service_control_requested": false,
+      "application_credentials_read": false,
+      "upstream_api_requests": 0,
+      "inference_requested": false
+    }
+  },
+  "worker": {
+    "desired_state": "paused",
+    "recovery": "OTHER_CONTAINER_CHANGED",
+    "intent": null,
+    "provider": {
+      "ActiveState": "failed",
+      "SubState": "failed",
+      "MainPID": "0",
+      "Result": "exit-code",
+      "ExecMainStatus": "2",
+      "InvocationID": "1de2468e7b1e445c83d5c4dee1d9188f"
+    },
+    "observation_checked_at": "2026-10-02T01:49:12.793758Z",
+    "completed_cycles": 1040,
+    "last_success_at": "2026-10-02T01:48:09.079567Z",
+    "classification": "blocked",
+    "child_process_group_stopped": true,
+    "current_invocation_verified": false,
+    "evaluation_status": "not_running"
+  },
+  "docker": {
+    "status": "ok",
+    "rootful": true,
+    "local_daemon": true,
+    "server_version": "29.0.4",
+    "compose_version": "2.40.3",
+    "ops_running": true,
+    "ops_health": "healthy",
+    "owner_and_mounts_verified": true,
+    "mounted_file_contents_verified": false
+  },
+  "systemd": {
+    "status": "ok",
+    "provider": "systemd-user",
+    "linger": true,
+    "version": 249,
+    "user_manager_state": "degraded",
+    "selected_runtime_verified": true,
+    "environment_source": "logind_runtime_current_user"
+  },
+  "interpretation": {
+    "exact_changed_container": "unconfirmed",
+    "historical_failure_cause": "unconfirmed",
+    "ephemeral_helper_collision": "reproduced_with_synthetic_metadata_not_proven_as_server_cause",
+    "external_reference_mode_warning_is_current_blocker": false,
+    "docker_query_fix_server_acceptance": false,
+    "size_survey_server_acceptance": false,
+    "production_capture_executed": false,
+    "production_restore_executed": false,
+    "next_step": "apply_patch_then_read_only_recover_changed_worker_plan"
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "schema": 1,
+  "date": "2026-09-27",
+  "stage": "O03-observation-fault-isolation-local",
+  "result": "passed",
+  "runner_unit_tests": 8,
+  "real_http_scenarios": 16,
+  "ops": {
+    "cases": [
+      {
+        "source": "prometheus",
+        "fault": "http_503",
+        "result": "passed",
+        "error_code": "UPSTREAM_HTTP_ERROR",
+        "last_success_preserved": true,
+        "persisted_cache_reloaded": true,
+        "recovery_verified": true
+      },
+      {
+        "source": "prometheus",
+        "fault": "http_401",
+        "result": "passed",
+        "error_code": "UNAUTHENTICATED",
+        "last_success_preserved": true,
+        "persisted_cache_reloaded": true,
+        "recovery_verified": true
+      },
+      {
+        "source": "prometheus",
+        "fault": "invalid_json",
+        "result": "passed",
+        "error_code": "INVALID_RESPONSE",
+        "last_success_preserved": true,
+        "persisted_cache_reloaded": true,
+        "recovery_verified": true
+      },
+      {
+        "source": "prometheus",
+        "fault": "timeout",
+        "result": "passed",
+        "error_code": "TIMEOUT",
+        "last_success_preserved": true,
+        "persisted_cache_reloaded": true,
+        "recovery_verified": true
+      },
+      {
+        "source": "prometheus",
+        "fault": "connection_refused",
+        "result": "passed",
+        "error_code": "CONNECTION_FAILED",
+        "last_success_preserved": true,
+        "persisted_cache_reloaded": true,
+        "recovery_verified": true
+      },
+      {
+        "source": "langfuse",
+        "fault": "http_503",
+        "result": "passed",
+        "error_code": "UPSTREAM_HTTP_ERROR",
+        "last_success_preserved": true,
+        "persisted_cache_reloaded": true,
+        "recovery_verified": true
+      },
+      {
+        "source": "langfuse",
+        "fault": "http_401",
+        "result": "passed",
+        "error_code": "UNAUTHENTICATED",
+        "last_success_preserved": true,
+        "persisted_cache_reloaded": true,
+        "recovery_verified": true
+      },
+      {
+        "source": "langfuse",
+        "fault": "invalid_json",
+        "result": "passed",
+        "error_code": "INVALID_RESPONSE",
+        "last_success_preserved": true,
+        "persisted_cache_reloaded": true,
+        "recovery_verified": true
+      },
+      {
+        "source": "langfuse",
+        "fault": "timeout",
+        "result": "passed",
+        "error_code": "TIMEOUT",
+        "last_success_preserved": true,
+        "persisted_cache_reloaded": true,
+        "recovery_verified": true
+      },
+      {
+        "source": "langfuse",
+        "fault": "connection_refused",
+        "result": "passed",
+        "error_code": "CONNECTION_FAILED",
+        "last_success_preserved": true,
+        "persisted_cache_reloaded": true,
+        "recovery_verified": true
+      }
+    ],
+    "actual_ops_http_server": true,
+    "source_hashes_verified": 10,
+    "persistent_timestamp_cache_verified": true,
+    "synthetic_agent_failure_preserved": true
+  },
+  "agent": {
+    "cases": [
+      {
+        "fault": "http_503",
+        "result": "passed",
+        "failed_or_rejected_spans": 14,
+        "recovered_spans": 14,
+        "business_results_and_callbacks_unchanged": true
+      },
+      {
+        "fault": "http_401",
+        "result": "passed",
+        "failed_or_rejected_spans": 14,
+        "recovered_spans": 14,
+        "business_results_and_callbacks_unchanged": true
+      },
+      {
+        "fault": "invalid_json",
+        "result": "passed",
+        "failed_or_rejected_spans": 14,
+        "recovered_spans": 14,
+        "business_results_and_callbacks_unchanged": true
+      },
+      {
+        "fault": "timeout",
+        "result": "passed",
+        "failed_or_rejected_spans": 14,
+        "recovered_spans": 14,
+        "business_results_and_callbacks_unchanged": true
+      },
+      {
+        "fault": "connection_refused",
+        "result": "passed",
+        "failed_or_rejected_spans": 14,
+        "recovered_spans": 14,
+        "business_results_and_callbacks_unchanged": true
+      }
+    ],
+    "queue_pressure": {
+      "result": "passed",
+      "dropped": 62,
+      "business_returned_before_reply_release": true,
+      "bounded_close": true
+    },
+    "source_hashes_verified": 8,
+    "runtime_rpc_method_and_graph": "actual",
+    "service_callbacks": "in_memory_fixture",
+    "model_responses": "synthetic_no_inference",
+    "metadata_only_export_verified": true
+  },
+  "native_docker_image_acceptance": "pending_on_user_server",
+  "docker_adapter": "mocked; inspect and exact exec IDs",
+  "production_runtime_code_changed": false,
+  "images_rebuilt": false,
+  "restart_requested": false,
+  "production_api_requests": 0,
+  "live_backend_outage_or_database_acceptance": false,
+  "browser_acceptance": "deferred_by_user",
+  "previous_65_python_tests": "prior_evidence_not_rerun",
+  "next": "deployed image isolated probes then O04 alerts"
+}

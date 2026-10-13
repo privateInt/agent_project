@@ -1,0 +1,181 @@
+{
+  "schema": 1,
+  "stage": "O03-observation-fault-isolation",
+  "scope": "deployed_images_isolated_synthetic_processes",
+  "checked_at": "2026-09-27T02:43:22.312152Z",
+  "result": "passed",
+  "components": {
+    "ops": {
+      "result": "passed",
+      "cases": [
+        {
+          "source": "prometheus",
+          "fault": "http_503",
+          "result": "passed",
+          "error_code": "UPSTREAM_HTTP_ERROR",
+          "last_success_preserved": true,
+          "persisted_cache_reloaded": true,
+          "recovery_verified": true
+        },
+        {
+          "source": "prometheus",
+          "fault": "http_401",
+          "result": "passed",
+          "error_code": "UNAUTHENTICATED",
+          "last_success_preserved": true,
+          "persisted_cache_reloaded": true,
+          "recovery_verified": true
+        },
+        {
+          "source": "prometheus",
+          "fault": "invalid_json",
+          "result": "passed",
+          "error_code": "INVALID_RESPONSE",
+          "last_success_preserved": true,
+          "persisted_cache_reloaded": true,
+          "recovery_verified": true
+        },
+        {
+          "source": "prometheus",
+          "fault": "timeout",
+          "result": "passed",
+          "error_code": "TIMEOUT",
+          "last_success_preserved": true,
+          "persisted_cache_reloaded": true,
+          "recovery_verified": true
+        },
+        {
+          "source": "prometheus",
+          "fault": "connection_refused",
+          "result": "passed",
+          "error_code": "CONNECTION_FAILED",
+          "last_success_preserved": true,
+          "persisted_cache_reloaded": true,
+          "recovery_verified": true
+        },
+        {
+          "source": "langfuse",
+          "fault": "http_503",
+          "result": "passed",
+          "error_code": "UPSTREAM_HTTP_ERROR",
+          "last_success_preserved": true,
+          "persisted_cache_reloaded": true,
+          "recovery_verified": true
+        },
+        {
+          "source": "langfuse",
+          "fault": "http_401",
+          "result": "passed",
+          "error_code": "UNAUTHENTICATED",
+          "last_success_preserved": true,
+          "persisted_cache_reloaded": true,
+          "recovery_verified": true
+        },
+        {
+          "source": "langfuse",
+          "fault": "invalid_json",
+          "result": "passed",
+          "error_code": "INVALID_RESPONSE",
+          "last_success_preserved": true,
+          "persisted_cache_reloaded": true,
+          "recovery_verified": true
+        },
+        {
+          "source": "langfuse",
+          "fault": "timeout",
+          "result": "passed",
+          "error_code": "TIMEOUT",
+          "last_success_preserved": true,
+          "persisted_cache_reloaded": true,
+          "recovery_verified": true
+        },
+        {
+          "source": "langfuse",
+          "fault": "connection_refused",
+          "result": "passed",
+          "error_code": "CONNECTION_FAILED",
+          "last_success_preserved": true,
+          "persisted_cache_reloaded": true,
+          "recovery_verified": true
+        }
+      ],
+      "actual_ops_http_server": true,
+      "fixture_source_requests": 254,
+      "synthetic_agent_failure_preserved": true,
+      "persistent_timestamp_cache_verified": true,
+      "component": "ops",
+      "source_hashes_verified": 10,
+      "synthetic_only": true,
+      "production_credentials_read": false,
+      "production_api_requests": 0,
+      "container_id": "105e0c7d491996dfd21c46b3b6bb57e83ca282992e18827f9575b02b96f521d9",
+      "image_id": "sha256:879c4a9874e0e1f8a02d9820daf7cb88566557b9b54832674dac1ee1d86e6bbf",
+      "same_container_and_started_at": true
+    },
+    "agent": {
+      "result": "passed",
+      "cases": [
+        {
+          "fault": "http_503",
+          "result": "passed",
+          "failed_or_rejected_spans": 14,
+          "recovered_spans": 14,
+          "business_results_and_callbacks_unchanged": true
+        },
+        {
+          "fault": "http_401",
+          "result": "passed",
+          "failed_or_rejected_spans": 14,
+          "recovered_spans": 14,
+          "business_results_and_callbacks_unchanged": true
+        },
+        {
+          "fault": "invalid_json",
+          "result": "passed",
+          "failed_or_rejected_spans": 14,
+          "recovered_spans": 14,
+          "business_results_and_callbacks_unchanged": true
+        },
+        {
+          "fault": "timeout",
+          "result": "passed",
+          "failed_or_rejected_spans": 14,
+          "recovered_spans": 14,
+          "business_results_and_callbacks_unchanged": true
+        },
+        {
+          "fault": "connection_refused",
+          "result": "passed",
+          "failed_or_rejected_spans": 14,
+          "recovered_spans": 14,
+          "business_results_and_callbacks_unchanged": true
+        }
+      ],
+      "queue_pressure": {
+        "result": "passed",
+        "dropped": 62,
+        "business_returned_before_reply_release": true,
+        "bounded_close": true
+      },
+      "production_runtime_rpc_method_and_graph": true,
+      "service_callbacks": "in_memory_fixture",
+      "grpc_transport_or_database_acceptance": false,
+      "model_inference_requested": false,
+      "metadata_only_export_verified": true,
+      "component": "agent",
+      "source_hashes_verified": 8,
+      "synthetic_only": true,
+      "production_credentials_read": false,
+      "production_api_requests": 0,
+      "container_id": "a36d770f33d410dc47028f21199e9c86117e0a178a73a6838a2bb1b01a342c90",
+      "image_id": "sha256:2dae410341d23703daa7b4aec4d37ffc11a599991c52a9178de8606a77a977c9",
+      "same_container_and_started_at": true
+    }
+  },
+  "restart_requested": false,
+  "new_container_requested": false,
+  "production_api_requests": 0,
+  "inference_requested": false,
+  "browser_acceptance": "deferred_by_user",
+  "live_backend_outage_or_database_acceptance": false
+}

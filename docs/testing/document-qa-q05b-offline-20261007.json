@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "stage": "Q05b-owned-indexing-workflow-offline",
+  "date": "2026-10-07",
+  "result": "passed",
+  "environment": "temporary_SQLite_synthetic_n8n_Model_Knowledge_and_real_loopback_QA_HTTP_Node",
+  "server_applied": false,
+  "native_n8n_registration_verified": false,
+  "native_n8n_callback_verified": false,
+  "production_indexing_verified": false,
+  "new_tests": {
+    "pattern": "test_indexing_flow.py",
+    "count": 48,
+    "result": "passed"
+  },
+  "document_qa_regression_tests": {
+    "pattern": "test_*.py",
+    "count": 324,
+    "result": "passed"
+  },
+  "source_sha256": {
+    "apps/document_qa/api.py": "0c992b24eb0f23d97c555145b75611e9af403c20cc0d4a402e1040112396f5cb",
+    "apps/document_qa/indexing_flow.py": "b354546fbb9a00151fd1b9f521bf1fab62fe62723892fe479c4d4365a62b6550",
+    "apps/document_qa/indexing_flow_template.py": "e3341b9c9289da631def76c0f48e132229662ff7163f979cf7b43d270239ec2e",
+    "apps/document_qa/indexing_runtime.py": "2b84c4fc94327e9f4caf69c6431a87cbeffe7442f2496343ee9c082e26599ffb",
+    "apps/document_qa/indexing_connection.py": "b5da8ba2209027584bb6b20ab818bafed8dec92e5f76f73d9d9b342dc6d9887e",
+    "apps/document_qa/tests/test_indexing_flow.py": "9bf37a522e1589b01649e6d6564ca0c6560d14aee5dfaf0308375a7908e3ebda"
+  },
+  "python_3_10_syntax": "passed",
+  "verified": [
+    "additive_state_and_distinct_credentials",
+    "existing_entry_CPU_resource_and_key_preservation",
+    "separate_owned_indexing_definition_and_receipts",
+    "first_execution_grant_and_generation_scope",
+    "default_server_policy_blocks_before_Model_or_Knowledge",
+    "immutable_paused_check_even_if_server_policy_changes",
+    "selected_embedding_chunker_GET_gate",
+    "CPU_completion_to_indexing_real_loopback_callbacks",
+    "unknown_domain_POST_never_replayed_by_resume",
+    "fresh_revision_readback_and_previous_head_preservation",
+    "bounded_steps_deadlines_connections",
+    "explicit_paused_connection_preflight_and_callback_acceptance_with_fake_n8n"
+  ],
+  "limits": {
+    "steps": 80,
+    "seconds": 1200,
+    "wait_seconds": 5,
+    "callback_seconds": 125,
+    "n8n_HTTP_timeout_ms": 135000,
+    "generations": 16,
+    "deliveries": 16
+  },
+  "effects": {
+    "production_api_requests": 0,
+    "inference_requested": false,
+    "GPU_requested": false,
+    "service_control_requested": false,
+    "platform_runtime_files_changed": false,
+    "existing_n8n_definitions_changed": false,
+    "manual_QA_process_reload_required": true
+  },
+  "question_ready": false,
+  "next_step": "apply_init_reload_QA_then_explicit_new_Flow_registration_and_paused_callback"
+}

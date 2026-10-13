@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "stage": "O03-ops-lan-access-local",
+  "result": "passed",
+  "new_tests": 12,
+  "existing_console_and_restart_tests": 36,
+  "total_passed": 48,
+  "skipped": 0,
+  "real_web_process_restart": true,
+  "before_lan_host": "HOST_NOT_ALLOWED",
+  "after_lan_host_origin_login_logout": "passed",
+  "unknown_host_rejection": "passed",
+  "configuration_update_scope": "public_url_only_in_two_existing_files",
+  "interruption_cases": [
+    "initial record write failure",
+    "partial config pair resume",
+    "restart response lost before effect",
+    "restart response lost after effect"
+  ],
+  "preservation": [
+    "original config bytes retained privately",
+    "credentials unchanged",
+    "cache entries retained with nondecreasing times",
+    "old acceptance record untouched"
+  ],
+  "docker_adapter": "mocked",
+  "native_docker_acceptance": "pending_user_server",
+  "user_browser_acceptance": "ready_for_user_check",
+  "upstream_api_requests": 0,
+  "inference_requested": false
+}

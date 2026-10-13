@@ -1,0 +1,22 @@
+services:
+  flows-postgres:
+    image: postgres:16-bookworm@sha256:efedf3595f1d6f415c08568ba171029bf54052e754cc9f030e3f2412b21f3d67
+    restart: unless-stopped
+    networks: [flows-private]
+    environment:
+      POSTGRES_USER: flows_admin
+      POSTGRES_DB: flows
+      POSTGRES_PASSWORD_FILE: /run/secrets/flows-db-admin
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    secrets: [flows-db-admin, flows-db-app]
+    volumes:
+      - flows-db:/var/lib/postgresql/data
+      - ./postgres/init-flows.sh:/docker-entrypoint-initdb.d/01-flows.sh:ro
+      - ./postgres/check-db.sh:/opt/n8n/check-db.sh:ro
+      - ./postgres/repair-privileges.sql:/opt/n8n/repair-privileges.sql:ro
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U flows_admin -d flows']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    security_opt: [no-new-privileges:true]

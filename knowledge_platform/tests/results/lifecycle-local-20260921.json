@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-21",
+  "scope": "Knowledge management UI and dedicated index lifecycle tooling",
+  "local_python_tests": 12,
+  "node_double_suites": [
+    "indexing_ui_test.cjs",
+    "indexing_context_ui_test.cjs",
+    "search_ui_test.cjs"
+  ],
+  "go_observer": "syntax/format checked; compile and 7 HTTP subtests gated by server image build",
+  "server_apply": "pending",
+  "live_lifecycle": "pending",
+  "live_browser": "pending",
+  "changes": [
+    "selection and delayed management replies",
+    "clear stale search results before input validation",
+    "two owned versions with saved replay keys",
+    "independent read-only OpenSearch/Data observer"
+  ],
+  "preserved": [
+    "baseline index/version",
+    "canonical and source metadata",
+    "shared ChunkSet",
+    "Model deployment lifecycle",
+    "retrieval and rerank contracts"
+  ],
+  "prior_scope_docs_server_apply": {
+    "files": 15,
+    "status": "APPLIED, user log"
+  }
+}

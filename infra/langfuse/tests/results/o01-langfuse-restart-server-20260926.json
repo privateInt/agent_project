@@ -1,0 +1,108 @@
+{
+  "stage": "O01-Langfuse-restart-server",
+  "result": "passed",
+  "scope": "six original containers and pinned synthetic trace source fields; not whole-store backup",
+  "evidence_source": "user-supplied server diagnose/compare output; not locally executed",
+  "reported_date": "2026-09-26",
+  "host": "simsys4090",
+  "diagnose": {
+    "result": "diagnosed",
+    "binding_matches_baseline": true,
+    "services": {
+      "lf-postgres": {
+        "changed_fields": [],
+        "mount_order_equivalence_verified": false,
+        "unresolved_fields": [],
+        "running": true,
+        "health": "healthy",
+        "restart_observed": true
+      },
+      "lf-clickhouse": {
+        "changed_fields": [],
+        "mount_order_equivalence_verified": false,
+        "unresolved_fields": [],
+        "running": true,
+        "health": "healthy",
+        "restart_observed": true
+      },
+      "lf-redis": {
+        "changed_fields": [],
+        "mount_order_equivalence_verified": false,
+        "unresolved_fields": [],
+        "running": true,
+        "health": "healthy",
+        "restart_observed": true
+      },
+      "lf-minio": {
+        "changed_fields": [],
+        "mount_order_equivalence_verified": false,
+        "unresolved_fields": [],
+        "running": true,
+        "health": "healthy",
+        "restart_observed": true
+      },
+      "lf-worker": {
+        "changed_fields": [],
+        "mount_order_equivalence_verified": false,
+        "unresolved_fields": [],
+        "running": true,
+        "health": "healthy",
+        "restart_observed": true
+      },
+      "lf-web": {
+        "changed_fields": [],
+        "mount_order_equivalence_verified": false,
+        "unresolved_fields": [],
+        "running": true,
+        "health": "healthy",
+        "restart_observed": true
+      }
+    },
+    "readiness_and_project_verified": true,
+    "trace_state": "preserved",
+    "observations_verified": 3,
+    "restart_acceptance": "not_assessed",
+    "baseline_rewritten": false,
+    "changes_made": false,
+    "restart_executed": false,
+    "post_submitted": false,
+    "inference_executed": false
+  },
+  "compare": {
+    "result": "passed",
+    "mode": "compare",
+    "services_healthy": 6,
+    "services_restarted_since_baseline": 6,
+    "same_container_ids_images_config_storage": true,
+    "mount_order_equivalence_verified": [],
+    "settings_secrets_original_trace_preserved": true,
+    "observations_verified": 3,
+    "trace_content_preserved": true,
+    "readiness_and_project_verified": true,
+    "restart_requested_this_invocation": false,
+    "restart_command_error_this_invocation": false,
+    "post_submitted": false,
+    "new_trace_created": false,
+    "inference_executed": false,
+    "domain_services_restarted_by_this_tool": false,
+    "whole_storage_backup_verified": false,
+    "agent_instrumented": false
+  },
+  "trace_id": "9d84fa1067824eb5b82be42ade6959f7",
+  "project_id": "agent-traces-ab2000afdadb4a0fb4ce6691d980befa",
+  "original_payload_sha256": "5bfa10529ebcd6e7d3d311998c5e12418f436defaaac6aaa9828041dd7052048",
+  "baseline_sha256": "2cb1d1dd0575b6a98028ecd1d762f83aa5d142f513bcc33dbdd1cae5e763238e",
+  "baseline_file": "/home/shshin/.local/state/agent-project-langfuse/restart-acceptance-o01.json",
+  "original_failure_root_cause": "unconfirmed; no differing fields or mount-order proof in the successful snapshot",
+  "document_update_only": true,
+  "new_server_test_requested": false,
+  "next": "O02 Agent instrumentation with bounded metadata-only export independent of business results",
+  "pending": [
+    "Agent instrumentation and delivery failure isolation",
+    "ops API/UI",
+    "whole-storage backup/restore",
+    "retention/capacity policy before sustained collection",
+    "Agent sender and ops reader credentials",
+    "user page acceptance and answer quality remain deferred"
+  ]
+}

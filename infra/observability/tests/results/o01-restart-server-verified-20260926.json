@@ -1,0 +1,75 @@
+{
+  "reported_at_local": "2026-09-26T14:28:40+09:00",
+  "evidence": "user-provided server run and compare output; no direct remote access",
+  "applied_patch": "infra_observability_restart_20260926",
+  "patch_applied_files": 10,
+  "commands": [
+    "python3 -B infra/observability/ops/restart_check.py run --wait-seconds 180",
+    "python3 -B infra/observability/ops/restart_check.py compare --wait-seconds 60"
+  ],
+  "server_results": {
+    "run": {
+      "stage": "O01-restart",
+      "result": "passed",
+      "scope": "three observation containers; pinned historical metric samples",
+      "observation_containers_restarted": 3,
+      "same_container_ids": true,
+      "same_images_and_storage_binding": true,
+      "historical_samples_preserved": true,
+      "new_scrapes_after_restart": true,
+      "historical_counts": {
+        "series": 140,
+        "samples": 824
+      },
+      "baseline_sha256": "ee481929242de6ac85da548035dd14e1546a83894f5ec4191e2651a541fc365c",
+      "query_time": "1790400245.679",
+      "targets_up": 3,
+      "platform_containers_verified": 46,
+      "inference_executed": false,
+      "domain_services_restarted_by_this_tool": false,
+      "whole_tsdb_backup_verified": false,
+      "gpu_metrics_assessed": false,
+      "llm_traces_assessed": false,
+      "baseline_file": "/home/shshin/.local/state/agent-project-observability/restart-acceptance-o01.json"
+    },
+    "compare": {
+      "stage": "O01-restart",
+      "result": "passed",
+      "scope": "three observation containers; pinned historical metric samples",
+      "observation_containers_restarted": 3,
+      "same_container_ids": true,
+      "same_images_and_storage_binding": true,
+      "historical_samples_preserved": true,
+      "new_scrapes_after_restart": true,
+      "historical_counts": {
+        "series": 140,
+        "samples": 824
+      },
+      "baseline_sha256": "ee481929242de6ac85da548035dd14e1546a83894f5ec4191e2651a541fc365c",
+      "query_time": "1790400245.679",
+      "targets_up": 3,
+      "platform_containers_verified": 46,
+      "inference_executed": false,
+      "domain_services_restarted_by_this_tool": false,
+      "whole_tsdb_backup_verified": false,
+      "gpu_metrics_assessed": false,
+      "llm_traces_assessed": false,
+      "baseline_file": "/home/shshin/.local/state/agent-project-observability/restart-acceptance-o01.json"
+    }
+  },
+  "same_baseline_in_both_outputs": true,
+  "compare_submits_restart": false,
+  "acceptance": {
+    "host_docker_resource_collection": "previous server PASS retained",
+    "observation_restart_pinned_data_preservation": "passed",
+    "fresh_collection_after_restart": "passed",
+    "whole_tsdb_backup_restore": "not_assessed",
+    "gpu_collection": "pending",
+    "llm_traces": "pending",
+    "platform_domain_state_integration": "pending",
+    "ops_ui_alerting": "pending"
+  },
+  "record_update_only": true,
+  "restart_or_inference_performed_for_record": false,
+  "next_work": "GPU collection support assessment and configuration preparation"
+}

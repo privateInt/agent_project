@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "stage": "Q02-server-observed",
+  "evidence": "user_pasted_terminal_output",
+  "reported_at": "2026-10-02T14:07:49+09:00",
+  "application": {
+    "status": "applied",
+    "written": 17
+  },
+  "tests": {
+    "passed": 29,
+    "elapsed_seconds": 0.013,
+    "result": "OK"
+  },
+  "result": "attention_required",
+  "defaults_ready": false,
+  "question_ready": false,
+  "connections": {
+    "data": {
+      "status": "reachable"
+    },
+    "knowledge": {
+      "status": "reachable"
+    },
+    "agent": {
+      "status": "reachable"
+    },
+    "model": {
+      "status": "reachable"
+    }
+  },
+  "excluded_models": [
+    {
+      "deployment_id": "537ea34d-b066-40dd-b08a-dbabec066da9",
+      "code": "MODEL_NOT_READY"
+    },
+    {
+      "deployment_id": "cc64a683-a69f-48a5-836e-9f52f0255cc6",
+      "code": "MODEL_NOT_READY"
+    },
+    {
+      "deployment_id": "44247297-5184-4a36-9225-7791c80d3add",
+      "code": "MODEL_NOT_READY"
+    },
+    {
+      "deployment_id": "29aac028-c0ad-49f6-a3fa-c2b3b67feade",
+      "code": "MODEL_NOT_READY"
+    }
+  ],
+  "blockers": [
+    {
+      "scope": "embedding",
+      "code": "NO_COMPATIBLE_MODEL"
+    },
+    {
+      "scope": "chat",
+      "code": "NO_COMPATIBLE_MODEL"
+    }
+  ],
+  "effects": {
+    "configuration_written": false,
+    "service_control_requested": false,
+    "model_lifecycle_requested": false,
+    "inference_requested": false,
+    "upload_requested": false,
+    "api_methods": [
+      "GET"
+    ],
+    "api_requests": 8,
+    "credential_contents_read": true
+  },
+  "next_action": "Q03a_upload_acceptance_without_GPU",
+  "model_start_authorized_by_this_result": false,
+  "deployment_status_observed": {
+    "reported_at": "2026-10-02T14:09:32+09:00",
+    "evidence": "user_pasted_terminal_output",
+    "current_as_of": "2026-10-02",
+    "all_four": {
+      "status": "stopped",
+      "apply_status": "ready",
+      "runtime_state": "stopped",
+      "desired_state": "stopped",
+      "runtime_error_code": ""
+    },
+    "models": [
+      "gemma3-v1",
+      "한국어 reranker",
+      "한국어 embedding",
+      "OCR (document AI)"
+    ]
+  },
+  "gpu_validation": {
+    "status": "deferred_by_user",
+    "decided_at": "2026-10-07",
+    "user_statement": "GPU가 사용 중이며 3~4일 후 사용 가능",
+    "estimated_availability_dates": [
+      "2026-10-10",
+      "2026-10-11"
+    ],
+    "scheduled_automation_created": false,
+    "model_start_requested": false,
+    "readiness_and_inference_revalidated_after_20261002": false
+  }
+}

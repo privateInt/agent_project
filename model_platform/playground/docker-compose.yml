@@ -1,0 +1,18 @@
+# Optional UI: docker compose --profile playground up -d playground
+services:
+  playground:
+    profiles: [playground]
+    image: model-platform-playground:dev
+    build:
+      context: .
+      dockerfile: playground/Dockerfile
+    pull_policy: never
+    container_name: model-playground
+    restart: unless-stopped
+    networks: [ops-infra]
+    ports:
+      - ${MODEL_PLAYGROUND_PORT:-13100}:8501
+    environment:
+      MODEL_GATEWAY_URL: http://gateway:8000
+      MODEL_PLAYGROUND_GPU_ID: ${MODEL_PLAYGROUND_GPU_ID:-0}
+    depends_on: [gateway]

@@ -1,0 +1,284 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.16kB done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 0.3s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/library/python:3.12-slim
+#4 DONE 0.3s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 106B done
+#5 DONE 0.0s
+
+#6 [runtime 1/7] FROM docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 166.58kB done
+#7 DONE 0.0s
+
+#8 [runtime 3/7] COPY --chmod=0644 console/requirements.txt /app/requirements.txt
+#8 CACHED
+
+#9 [runtime 2/7] WORKDIR /app
+#9 CACHED
+
+#10 [runtime 4/7] RUN pip install --no-cache-dir -r requirements.txt     && useradd --uid 10001 --create-home console     && install -d -m 0755 /app/.streamlit     && install -d -m 0700 -o 10001 -g 10001 /var/lib/data-console
+#10 CACHED
+
+#11 [runtime 5/7] COPY --chmod=0644 console/app.py console/data_api.py console/data_state.py console/data_ui.py console/data_ui_actions.py console/data_ui_documents.py console/data_preview.py console/data_requests.py console/data_results.py console/check_connection.py /app/
+#11 DONE 0.2s
+
+#12 [runtime 6/7] COPY --chmod=0644 console/.streamlit/config.toml /app/.streamlit/config.toml
+#12 DONE 0.1s
+
+#13 [runtime 7/7] RUN python -c "import os, tomllib; from pathlib import Path; import data_api, data_state, data_preview, data_requests, pypdfium2, PIL; assert os.getuid()==10001; probe=Path('/var/lib/data-console/.write-check'); probe.write_bytes(b''); probe.unlink(); [compile(p.read_text(), str(p), 'exec') for p in Path('.').glob('*.py')]; tomllib.loads(Path('.streamlit/config.toml').read_text())"
+#13 DONE 0.5s
+
+#14 [tests 1/8] COPY --chmod=0644 tests/test_data_console.py /app/test_data_console.py
+#14 DONE 0.1s
+
+#15 [tests 2/8] COPY --chmod=0644 tests/test_data_preview.py /app/test_data_preview.py
+#15 DONE 0.1s
+
+#16 [tests 3/8] COPY --chmod=0644 tests/test_data_requests.py /app/test_data_requests.py
+#16 DONE 0.1s
+
+#17 [tests 4/8] COPY --chmod=0644 tests/test_data_connection.py /app/test_data_connection.py
+#17 DONE 0.1s
+
+#18 [tests 5/8] RUN python /app/test_data_requests.py -v
+#18 0.368 test_accepted_receipt_releases_inputs_and_does_not_recreate_pending_payload (__main__.RequestStoreTests.test_accepted_receipt_releases_inputs_and_does_not_recreate_pending_payload) ... ok
+#18 0.396 test_changed_gateway_or_ticket_cannot_retrieve_saved_file (__main__.RequestStoreTests.test_changed_gateway_or_ticket_cannot_retrieve_saved_file) ... ok
+#18 0.416 test_changed_inputs_cannot_replace_saved_request (__main__.RequestStoreTests.test_changed_inputs_cannot_replace_saved_request) ... ok
+#18 0.436 test_corrupt_disk_payload_fails_closed (__main__.RequestStoreTests.test_corrupt_disk_payload_fails_closed) ... ok
+#18 0.463 test_invalid_receipt_cannot_clear_pending_bytes (__main__.RequestStoreTests.test_invalid_receipt_cannot_clear_pending_bytes) ... ok
+#18 0.487 test_new_store_restores_exact_filename_and_binary_without_original_session (__main__.RequestStoreTests.test_new_store_restores_exact_filename_and_binary_without_original_session) ... ok
+#18 0.505 test_unknown_or_expired_ticket_has_no_guessed_payload (__main__.RequestStoreTests.test_unknown_or_expired_ticket_has_no_guessed_payload) ... ok
+#18 0.532 test_unwritable_location_fails_before_prepare_success (__main__.RequestStoreTests.test_unwritable_location_fails_before_prepare_success) ... ok
+#18 0.533 
+#18 0.533 ----------------------------------------------------------------------
+#18 0.533 Ran 8 tests in 0.165s
+#18 0.533 
+#18 0.533 OK
+#18 DONE 0.6s
+
+#19 [tests 6/8] RUN python /app/test_data_preview.py -v
+#19 0.475 test_corrupt_and_unsupported_files_have_download_fallback (__main__.PreviewTests.test_corrupt_and_unsupported_files_have_download_fallback) ... ok
+#19 1.246 test_extension_and_format_labels_follow_metadata (__main__.PreviewTests.test_extension_and_format_labels_follow_metadata) ... ok
+#19 1.247 test_html_retains_title_body_table_but_no_active_content_or_attributes (__main__.PreviewTests.test_html_retains_title_body_table_but_no_active_content_or_attributes) ... ok
+#19 1.411 test_image_worker_scales_actual_pixels (__main__.PreviewTests.test_image_worker_scales_actual_pixels) ... ok
+#19 1.650 test_korean_charset_and_utf16_text (__main__.PreviewTests.test_korean_charset_and_utf16_text) ... ok
+#19 1.929 test_malformed_html_and_oversize_text_stay_bounded (__main__.PreviewTests.test_malformed_html_and_oversize_text_stay_bounded) ... ok
+#19 1.931 test_office_entities_and_zip_bombs_rejected (__main__.PreviewTests.test_office_entities_and_zip_bombs_rejected) ... ok
+#19 2.440 test_pdf_rasterizes_selected_page_and_preserves_source (__main__.PreviewTests.test_pdf_rasterizes_selected_page_and_preserves_source) ... ok
+#19 3.033 test_spreadsheet_selects_sheets_and_shows_cached_values_without_evaluation (__main__.PreviewTests.test_spreadsheet_selects_sheets_and_shows_cached_values_without_evaluation) ... ok
+#19 3.525 test_timeout_does_not_hang_ui (__main__.PreviewTests.test_timeout_does_not_hang_ui) ... ok
+#19 3.526 test_word_extracts_namespaced_runs_and_tables_as_escaped_text (__main__.PreviewTests.test_word_extracts_namespaced_runs_and_tables_as_escaped_text) ... ok
+#19 3.690 
+#19 3.690 ----------------------------------------------------------------------
+#19 3.690 Ran 11 tests in 3.215s
+#19 3.690 
+#19 3.690 OK
+#19 DONE 3.7s
+
+#20 [tests 7/8] RUN python /app/test_data_console.py -v
+#20 0.602 test_crawl_and_refinement_have_correct_body_and_one_key (__main__.ClientTests.test_crawl_and_refinement_have_correct_body_and_one_key) ... ok
+#20 0.607 test_cursor_and_search_are_query_encoded (__main__.ClientTests.test_cursor_and_search_are_query_encoded) ... ok
+#20 0.611 test_download_checks_both_hash_and_size_and_limits_read (__main__.ClientTests.test_download_checks_both_hash_and_size_and_limits_read) ... ok
+#20 0.615 test_errors_and_malformed_acceptance_cannot_look_successful (__main__.ClientTests.test_errors_and_malformed_acceptance_cannot_look_successful) ... ok
+#20 0.618 test_gateway_upload_rejection_keeps_its_original_reason (__main__.ClientTests.test_gateway_upload_rejection_keeps_its_original_reason) ... ok
+#20 0.622 test_multipart_preserves_korean_filename_and_exact_bytes (__main__.ClientTests.test_multipart_preserves_korean_filename_and_exact_bytes) ... ok
+#20 0.628 test_untrusted_paths_origins_and_redirects_rejected (__main__.ClientTests.test_untrusted_paths_origins_and_redirects_rejected) ... ok
+#20 0.632 test_browser_crawl_options_and_source_links (__main__.ConsoleUITests.test_browser_crawl_options_and_source_links) ... 2026-09-16 00:53:22.548 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 0.894 ok
+#20 0.894 test_collection_chooses_browser_and_bounded_scope_without_engine_inputs (__main__.ConsoleUITests.test_collection_chooses_browser_and_bounded_scope_without_engine_inputs) ... 2026-09-16 00:53:22.803 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 1.098 ok
+#20 1.098 test_corrupt_download_is_not_offered (__main__.ConsoleUITests.test_corrupt_download_is_not_offered) ... 2026-09-16 00:53:23.008 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 1.155 ok
+#20 1.155 test_corrupt_result_is_not_previewed_or_downloaded (__main__.ConsoleUITests.test_corrupt_result_is_not_previewed_or_downloaded) ... 2026-09-16 00:53:23.064 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 1.210 ok
+#20 1.210 test_crawl_needs_only_url_and_validation_does_not_lock_form (__main__.ConsoleUITests.test_crawl_needs_only_url_and_validation_does_not_lock_form) ... 2026-09-16 00:53:23.119 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 1.419 ok
+#20 1.419 test_definitive_bad_request_allows_input_correction (__main__.ConsoleUITests.test_definitive_bad_request_allows_input_correction) ... 2026-09-16 00:53:23.328 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 1.516 2026-09-16 00:53:23.425 The widget with key "crawl_attachments" was created with a default value but also had its value set via the Session State API.
+#20 1.516 Stack (most recent call last):
+#20 1.516   File "/usr/local/lib/python3.12/threading.py", line 1032, in _bootstrap
+#20 1.516     self._bootstrap_inner()
+#20 1.516   File "/usr/local/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+#20 1.516     self.run()
+#20 1.516   File "/usr/local/lib/python3.12/threading.py", line 1012, in run
+#20 1.516     self._target(*self._args, **self._kwargs)
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 399, in _run_script_thread
+#20 1.516     self._run_script(request.rerun_data)
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 852, in _run_script
+#20 1.516     ) = exec_func_with_error_handling(code_to_exec, ctx)
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 136, in exec_func_with_error_handling
+#20 1.516     result = func()
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 827, in code_to_exec
+#20 1.516     exec(code, module.__dict__)  # noqa: S102
+#20 1.516   File "/app/app.py", line 23, in <module>
+#20 1.516     render()
+#20 1.516   File "/app/data_ui.py", line 297, in render
+#20 1.516     request_dialog(s['dialog'])
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/elements/dialog_decorator.py", line 113, in wrap
+#20 1.516     fragmented_dialog_content()
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/runtime/fragment.py", line 749, in wrap
+#20 1.516     return wrapped_fragment()
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/runtime/fragment.py", line 717, in wrapped_fragment
+#20 1.516     result = non_optional_func(*args, **kwargs)
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/elements/dialog_decorator.py", line 101, in dialog_content
+#20 1.516     _ = non_optional_func(*args, **kwargs)
+#20 1.516   File "/app/data_ui_actions.py", line 304, in request_dialog
+#20 1.516     request_form(kind)
+#20 1.516   File "/app/data_ui_actions.py", line 278, in request_form
+#20 1.516     attachments = st.checkbox('첨부파일도 함께 가져오기', value=True, key='crawl_attachments')
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/runtime/metrics_util.py", line 725, in wrapped_func
+#20 1.516     result = non_optional_func(*args, **kwargs)
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/elements/widgets/checkbox.py", line 237, in checkbox
+#20 1.516     return self._checkbox(
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/elements/widgets/checkbox.py", line 466, in _checkbox
+#20 1.516     check_widget_policies(
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/elements/lib/policies.py", line 146, in check_widget_policies
+#20 1.516     check_session_state_rules(
+#20 1.516   File "/usr/local/lib/python3.12/site-packages/streamlit/elements/lib/policies.py", line 90, in check_session_state_rules
+#20 1.516     _LOGGER.warning(
+#20 1.707 ok
+#20 1.707 test_direct_refine_lost_reply_recovers_with_original_file_and_key (__main__.ConsoleUITests.test_direct_refine_lost_reply_recovers_with_original_file_and_key) ... 2026-09-16 00:53:23.616 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 2.094 ok
+#20 2.094 test_document_formats_run_without_recognition_settings (__main__.ConsoleUITests.test_document_formats_run_without_recognition_settings) ... 2026-09-16 00:53:24.003 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 2.142 2026-09-16 00:53:24.051 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 2.384 2026-09-16 00:53:24.293 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 2.567 2026-09-16 00:53:24.476 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 2.804 2026-09-16 00:53:24.713 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 3.046 2026-09-16 00:53:24.955 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 3.463 ok
+#20 3.463 test_download_selection_uses_complete_stored_result_without_new_work (__main__.ConsoleUITests.test_download_selection_uses_complete_stored_result_without_new_work) ... 2026-09-16 00:53:25.372 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 3.529 ok
+#20 3.529 test_failed_preview_retains_verified_download (__main__.ConsoleUITests.test_failed_preview_retains_verified_download) ... 2026-09-16 00:53:25.438 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 3.578 ok
+#20 3.578 test_html_refinement_does_not_send_ocr_even_when_deployment_is_configured (__main__.ConsoleUITests.test_html_refinement_does_not_send_ocr_even_when_deployment_is_configured) ... 2026-09-16 00:53:25.488 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 3.852 ok
+#20 3.852 test_image_and_pdf_refinement_use_configured_recognition_automatically (__main__.ConsoleUITests.test_image_and_pdf_refinement_use_configured_recognition_automatically) ... 2026-09-16 00:53:25.762 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 3.901 2026-09-16 00:53:25.810 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 4.193 2026-09-16 00:53:26.102 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 4.427 2026-09-16 00:53:26.336 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 4.660 ok
+#20 4.660 test_incomplete_recognition_is_not_presented_as_fully_read (__main__.ConsoleUITests.test_incomplete_recognition_is_not_presented_as_fully_read) ... 2026-09-16 00:53:26.569 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 4.714 ok
+#20 4.714 test_invalid_ticket_blocks_mutations_but_allows_lists (__main__.ConsoleUITests.test_invalid_ticket_blocks_mutations_but_allows_lists) ... 2026-09-16 00:53:26.623 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 4.759 2026-09-16 00:53:26.668 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 4.807 ok
+#20 4.807 test_known_acceptance_from_old_link_opens_result_without_post (__main__.ConsoleUITests.test_known_acceptance_from_old_link_opens_result_without_post) ... 2026-09-16 00:53:26.717 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 5.060 2026-09-16 00:53:26.969 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 5.279 ok
+#20 5.279 test_lost_reply_retries_original_key_and_never_auto_resubmits (__main__.ConsoleUITests.test_lost_reply_retries_original_key_and_never_auto_resubmits) ... 2026-09-16 00:53:27.188 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 5.535 ok
+#20 5.535 test_main_flow_has_one_primary_action_and_optional_controls_stay_closed (__main__.ConsoleUITests.test_main_flow_has_one_primary_action_and_optional_controls_stay_closed) ... 2026-09-16 00:53:27.445 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 5.764 ok
+#20 5.764 test_navigation_search_pagination_and_rerun_are_read_only (__main__.ConsoleUITests.test_navigation_search_pagination_and_rerun_are_read_only) ... 2026-09-16 00:53:27.674 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 5.837 ok
+#20 5.837 test_new_browser_session_restores_request_without_reentry (__main__.ConsoleUITests.test_new_browser_session_restores_request_without_reentry) ... 2026-09-16 00:53:27.746 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 5.917 2026-09-16 00:53:27.826 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 6.143 ok
+#20 6.143 test_old_operation_link_is_readable_without_exposing_a_fourth_menu (__main__.ConsoleUITests.test_old_operation_link_is_readable_without_exposing_a_fourth_menu) ... 2026-09-16 00:53:28.052 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 6.191 2026-09-16 00:53:28.100 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 6.257 ok
+#20 6.257 test_old_pending_link_can_start_a_new_request_without_matching_inputs (__main__.ConsoleUITests.test_old_pending_link_can_start_a_new_request_without_matching_inputs) ... 2026-09-16 00:53:28.167 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 6.302 2026-09-16 00:53:28.211 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 6.498 ok
+#20 6.498 test_one_file_metadata_failure_keeps_other_files_usable (__main__.ConsoleUITests.test_one_file_metadata_failure_keeps_other_files_usable) ... 2026-09-16 00:53:28.408 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 6.845 ok
+#20 6.845 test_pdf_page_selection_updates_preview_without_downloading_source_again (__main__.ConsoleUITests.test_pdf_page_selection_updates_preview_without_downloading_source_again) ... 2026-09-16 00:53:28.754 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 7.330 ok
+#20 7.330 test_refine_selected_collection_file_uses_that_file_id (__main__.ConsoleUITests.test_refine_selected_collection_file_uses_that_file_id) ... 2026-09-16 00:53:29.240 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 7.696 ok
+#20 7.696 test_rejected_pdf_upload_explains_stage_and_preserves_server_reason (__main__.ConsoleUITests.test_rejected_pdf_upload_explains_stage_and_preserves_server_reason) ... 2026-09-16 00:53:29.605 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 7.783 ok
+#20 7.783 test_request_storage_failure_does_not_send_unrecoverable_post (__main__.ConsoleUITests.test_request_storage_failure_does_not_send_unrecoverable_post) ... 2026-09-16 00:53:29.692 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 8.040 ok
+#20 8.040 test_result_and_original_can_be_compared_without_new_requests (__main__.ConsoleUITests.test_result_and_original_can_be_compared_without_new_requests) ... 2026-09-16 00:53:29.950 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 8.271 ok
+#20 8.271 test_result_link_restores_only_a_file_belonging_to_its_collection (__main__.ConsoleUITests.test_result_link_restores_only_a_file_belonging_to_its_collection) ... 2026-09-16 00:53:30.180 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 8.314 2026-09-16 00:53:30.223 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 8.526 2026-09-16 00:53:30.435 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 8.688 ok
+#20 8.688 test_result_page_selects_documents_without_id_entry (__main__.ConsoleUITests.test_result_page_selects_documents_without_id_entry) ... 2026-09-16 00:53:30.597 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 8.943 ok
+#20 8.943 test_result_shows_actual_recognition_page_completion (__main__.ConsoleUITests.test_result_shows_actual_recognition_page_completion) ... 2026-09-16 00:53:30.852 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 9.004 ok
+#20 9.004 test_running_collection_waits_for_real_files_then_finishes (__main__.ConsoleUITests.test_running_collection_waits_for_real_files_then_finishes) ... 2026-09-16 00:53:30.913 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 9.225 ok
+#20 9.225 test_running_phase_refresh_then_terminal_stops_polling (__main__.ConsoleUITests.test_running_phase_refresh_then_terminal_stops_polling) ... 2026-09-16 00:53:31.134 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 9.283 ok
+#20 9.283 test_source_shows_page_content_without_http_response_controls (__main__.ConsoleUITests.test_source_shows_page_content_without_http_response_controls) ... 2026-09-16 00:53:31.192 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 9.466 ok
+#20 9.466 test_spreadsheet_selection_shows_selected_sheet (__main__.ConsoleUITests.test_spreadsheet_selection_shows_selected_sheet) ... 2026-09-16 00:53:31.375 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 9.860 ok
+#20 9.860 test_success_result_opens_readable_body_and_table_with_quality_warning (__main__.ConsoleUITests.test_success_result_opens_readable_body_and_table_with_quality_warning) ... 2026-09-16 00:53:31.770 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 9.920 ok
+#20 9.920 test_three_user_menus_and_forms_have_no_technical_controls (__main__.ConsoleUITests.test_three_user_menus_and_forms_have_no_technical_controls) ... 2026-09-16 00:53:31.829 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 9.977 ok
+#20 9.977 test_unified_intake_switching_modes_does_not_submit (__main__.ConsoleUITests.test_unified_intake_switching_modes_does_not_submit) ... 2026-09-16 00:53:31.886 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 10.04 ok
+#20 10.04 test_unknown_server_reason_is_plain_text_and_never_active_html (__main__.ConsoleUITests.test_unknown_server_reason_is_plain_text_and_never_active_html) ... 2026-09-16 00:53:31.946 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 10.11 ok
+#20 10.11 test_upload_retry_in_new_session_keeps_file_without_selecting_again (__main__.ConsoleUITests.test_upload_retry_in_new_session_keeps_file_without_selecting_again) ... 2026-09-16 00:53:32.021 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 10.19 2026-09-16 00:53:32.102 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 10.42 ok
+#20 10.42 test_upload_stops_at_source_and_explicit_refinement_reuses_deployment (__main__.ConsoleUITests.test_upload_stops_at_source_and_explicit_refinement_reuses_deployment) ... 2026-09-16 00:53:32.327 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 10.66 ok
+#20 10.66 test_url_results_keep_files_and_preview_together_without_new_jobs (__main__.ConsoleUITests.test_url_results_keep_files_and_preview_together_without_new_jobs) ... 2026-09-16 00:53:32.566 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+#20 11.01 ok
+#20 11.01 test_domain_results_do_not_invent_operation_success (__main__.IntentTests.test_domain_results_do_not_invent_operation_success) ... ok
+#20 11.01 test_refinement_identity_and_corrupt_ticket_fail_closed (__main__.IntentTests.test_refinement_identity_and_corrupt_ticket_fail_closed) ... ok
+#20 11.01 test_ticket_has_no_inputs_and_rejects_changed_request_or_gateway (__main__.IntentTests.test_ticket_has_no_inputs_and_rejects_changed_request_or_gateway) ... ok
+#20 11.01 test_upload_recovery_requires_original_bytes_and_filename (__main__.IntentTests.test_upload_recovery_requires_original_bytes_and_filename) ... ok
+#20 11.01 test_automatic_recognition_follows_backend_supported_formats (__main__.PresentationTests.test_automatic_recognition_follows_backend_supported_formats) ... ok
+#20 11.01 test_canonical_html_escapes_text_and_ignores_generated_html (__main__.PresentationTests.test_canonical_html_escapes_text_and_ignores_generated_html) ... ok
+#20 11.01 test_markdown_keeps_full_tables_pages_and_escaped_model_text (__main__.PresentationTests.test_markdown_keeps_full_tables_pages_and_escaped_model_text) ... ok
+#20 11.01 test_markdown_keeps_xlsx_merges_and_quality_caveats (__main__.PresentationTests.test_markdown_keeps_xlsx_merges_and_quality_caveats) ... ok
+#20 11.01 test_markdown_sparse_ambiguous_tables_keep_every_cell_without_expanding_grid (__main__.PresentationTests.test_markdown_sparse_ambiguous_tables_keep_every_cell_without_expanding_grid) ... ok
+#20 11.01 test_quality_guidance_has_meaning_and_page_locations_without_codes (__main__.PresentationTests.test_quality_guidance_has_meaning_and_page_locations_without_codes) ... ok
+#20 11.01 test_recognition_summary_distinguishes_completed_failed_and_skipped (__main__.PresentationTests.test_recognition_summary_distinguishes_completed_failed_and_skipped) ... ok
+#20 11.01 test_spreadsheet_merged_ranges_and_large_ranges_are_bounded (__main__.PresentationTests.test_spreadsheet_merged_ranges_and_large_ranges_are_bounded) ... ok
+#20 11.01 test_table_positions_and_spans_become_readable_cells (__main__.PresentationTests.test_table_positions_and_spans_become_readable_cells) ... ok
+#20 11.01 test_text_download_contains_full_text_and_values_without_running_formulas (__main__.PresentationTests.test_text_download_contains_full_text_and_values_without_running_formulas) ... ok
+#20 11.01 test_unknown_error_does_not_invent_a_damaged_file_diagnosis (__main__.PresentationTests.test_unknown_error_does_not_invent_a_damaged_file_diagnosis) ... ok
+#20 11.01 test_upload_rejections_explain_format_size_encoding_and_filename (__main__.PresentationTests.test_upload_rejections_explain_format_size_encoding_and_filename) ... ok
+#20 11.01 
+#20 11.01 ----------------------------------------------------------------------
+#20 11.01 Ran 64 tests in 10.412s
+#20 11.01 
+#20 11.01 OK
+#20 DONE 11.1s
+
+#21 [tests 8/8] RUN python /app/test_data_connection.py -v
+#21 0.443 test_completed_ocr_checks_original_and_both_pages_using_reads_only (__main__.ConnectionTests.test_completed_ocr_checks_original_and_both_pages_using_reads_only) ... ok
+#21 0.444 test_completed_status_cannot_hide_empty_page_or_unresolved_ocr (__main__.ConnectionTests.test_completed_status_cannot_hide_empty_page_or_unresolved_ocr) ... ok
+#21 0.444 test_corrupt_original_or_canonical_download_fails (__main__.ConnectionTests.test_corrupt_original_or_canonical_download_fails) ... ok
+#21 0.444 test_failed_run_or_mismatched_metadata_fails (__main__.ConnectionTests.test_failed_run_or_mismatched_metadata_fails) ... ok
+#21 0.444 test_invalid_cli_expectations_fail_before_any_network_call (__main__.ConnectionTests.test_invalid_cli_expectations_fail_before_any_network_call) ... ok
+#21 0.446 test_missing_duplicate_failed_skipped_or_extra_ocr_pages_fail (__main__.ConnectionTests.test_missing_duplicate_failed_skipped_or_extra_ocr_pages_fail) ... ok
+#21 0.446 test_native_result_does_not_require_ocr_without_an_expectation (__main__.ConnectionTests.test_native_result_does_not_require_ocr_without_an_expectation) ... ok
+#21 0.446 test_wrong_expected_file_or_changed_provenance_fails (__main__.ConnectionTests.test_wrong_expected_file_or_changed_provenance_fails) ... ok
+#21 0.446 
+#21 0.446 ----------------------------------------------------------------------
+#21 0.446 Ran 8 tests in 0.003s
+#21 0.446 
+#21 0.446 OK
+#21 DONE 0.5s
+
+#22 exporting to image
+#22 exporting layers
+#22 exporting layers 0.3s done
+#22 writing image sha256:8cd50159a97813bb2daa81969f7c9f8d0dab6edbbf68b79df34a260388f43b89 done
+#22 naming to docker.io/library/data-platform-console-tests:dev done
+#22 DONE 0.3s

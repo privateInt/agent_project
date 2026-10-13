@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "stage": "Q04b",
+  "engine_version": "2.40.5",
+  "source_sha256": {
+    "apps/document_qa/contracts.py": "239e4a4a2d41a129169d31b10a4205fc40c73a7ee6b1cb6725554eedb84e6633",
+    "apps/document_qa/intake.py": "660a428b9b8926e77770a45003a338764315b57d10086afdd85f875d45213aa9",
+    "apps/document_qa/uploads.py": "c4fcd440dfc8144753242a5dbcafb2013418d4ea33ac39b7b87a04795abfc522",
+    "apps/document_qa/readiness.py": "39d8829bffd785f69ec7edfbedb3d98310c8d4399fb46d10054e1093b942ac5a",
+    "apps/document_qa/refinement.py": "9f85289852545408fe977eb78c926ab39ff2fbce2c9632a3bb5088c7cc3ae87b",
+    "apps/document_qa/canonical_results.py": "29d24b247c97c50dfc095107f303271b30c0335201bb794752e266fb17b010fc",
+    "apps/document_qa/workflow_template.py": "79694417f749e428a7c169fc54698ec30bd7990c771079f6c868f02dfc028b31",
+    "infra/n8n/service/docker-compose.yml": "b7e75ac4bf6e4240e49e104e24f98582ef62ddc7d8460d64f94577ba46386505"
+  },
+  "entry_template": "Q03b immutable five nodes",
+  "CPU_template": "Q04b separate nine nodes",
+  "grant_scope": "saved_job_and_generation_first_execution_CPU_refinement_only",
+  "routes": [
+    "POST /api/workflow/refinement/receipts",
+    "POST /api/workflow/refinement/step"
+  ],
+  "limits": {
+    "steps": 40,
+    "seconds": 600,
+    "wait_seconds": 5,
+    "Data_action_budget_seconds": 60,
+    "deliveries": 16,
+    "executions_per_generation": 16,
+    "generations": 16
+  },
+  "automatic_uncertain_Data_POST_replay": false,
+  "OCR_fields_allowed": false,
+  "question_ready": false,
+  "acceptance": {
+    "offline": true,
+    "native_engine_and_Data": false
+  },
+  "official_references": [
+    "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.respondtowebhook/",
+    "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.wait/"
+  ]
+}

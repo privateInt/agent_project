@@ -1,0 +1,21 @@
+services:
+  data-collection:
+    image: data-platform-collection:dev
+    build:
+      context: .
+      target: collection
+    pull_policy: never
+    container_name: data-collection
+    restart: unless-stopped
+    networks:
+    - data-infra
+    environment:
+      POSTGRES_URL: ${DATA_POSTGRES_URL:?Run ops/configure.py first}
+      OPERATION_GRPC_ADDRESS: data-operation:9000
+      MINIO_ENDPOINT: ${DATA_MINIO_ENDPOINT:?Run ops/configure.py first}
+      MINIO_ACCESS_KEY: ${DATA_MINIO_ACCESS_KEY:?Run ops/configure.py first}
+      MINIO_SECRET_KEY: ${DATA_MINIO_SECRET_KEY:?Run ops/configure.py first}
+      MINIO_USE_SSL: ${DATA_MINIO_USE_SSL:-false}
+      DATA_SOURCE_BUCKET: data-sources
+    depends_on:
+    - data-operation

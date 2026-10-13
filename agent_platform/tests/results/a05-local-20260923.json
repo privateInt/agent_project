@@ -1,0 +1,62 @@
+{
+  "stage": "A05",
+  "date": "2026-09-23",
+  "build": "a05.1",
+  "contract": "agent.platform.v1/a05",
+  "schema_version": 3,
+  "result": "local_passed_server_acceptance_pending",
+  "checks": {
+    "go_compile_and_unit_tests": "go1.26.8, pinned A04 module dependencies, go test -p 1 -count=1 ./... passed; native DB-dependent tests skipped here",
+    "python_runtime_tests": {
+      "passed": 30,
+      "knowledge_http_fixture_tests": 17
+    },
+    "python_ops_regression_tests": {
+      "passed": 15
+    },
+    "node_dom_api_fixture_checks": {
+      "console": 27,
+      "direct_registration": 21,
+      "knowledge": 11
+    },
+    "sql_integration": "TestKnowledgeDatabase, existing ToolsDatabase/OpenAPI cases passed on isolated PGlite PostgreSQL 18.3 WASM",
+    "wire_integration": "real Go/Python gRPC, pinned HTTP fixtures, REST and official MCP SDK; TestKnowledgeEndToEnd plus A03/A04 regressions passed",
+    "smoke_script": "smoke_knowledge.py run twice against fixture-published Tool; same invocation and only one additional embedding/search",
+    "browser": "Chromium with real gateway/service/runtime and isolated SQL/HTTP fixtures; register, natural query, source cards, publish, run, lookup, mobile 390px no overflow, no script error, no token storage passed"
+  },
+  "important_scenarios": [
+    "raw query preserved; one query embedding then search",
+    "selected index and both connection versions stay pinned when current pointers change",
+    "profile mismatch stops before inference",
+    "invalid receipt, vector, input or scope rejected",
+    "empty search succeeds; requested rerank failure never falls back",
+    "no HTTP retry or redirect; timeout prevents downstream search",
+    "REST/MCP replay returns the same persisted call without repeated inference",
+    "failed stage and timings persist",
+    "unconfirmed creation response recovers without duplicate connection/Tool/version",
+    "Knowledge opaque base64 cursor is bounded and forwarded unchanged; not treated as an Agent UUID"
+  ],
+  "fixed_during_verification": [
+    "textarea type is read-only in real browsers; do not assign input.type on textarea",
+    "test Chromium font configuration and missing textContent() assertion calls corrected before final passing browser run",
+    "Knowledge pagination cursor validated as a bounded opaque URL-safe token; Go regex repeat limit handled with a separate length check"
+  ],
+  "not_run": [
+    "user-server Docker image build and Compose rollout",
+    "native PostgreSQL 16 acceptance (Foundation skipped in PGlite)",
+    "actual Model GPU inference and real Knowledge index search",
+    "user-server post-restart A05 call lookup"
+  ],
+  "unchanged_platform_execution_code": [
+    "model_platform",
+    "data_platform",
+    "knowledge_platform"
+  ],
+  "future_scope": [
+    "general internal API schema catalog",
+    "service API bundle management",
+    "reranker picker UI",
+    "A06 answer generation",
+    "generic flow builder"
+  ]
+}

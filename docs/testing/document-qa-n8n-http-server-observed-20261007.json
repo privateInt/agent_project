@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "stage": "Q04b-engine-version-verification",
+  "evidence_source": "user_reported_terminal_output",
+  "reported_date": "2026-10-07",
+  "host": "shshin@simsys4090",
+  "patch": {
+    "name": "document_qa_n8n_version_fix_20261007",
+    "status": "applied",
+    "written": 10,
+    "document_qa_code_changed": true,
+    "patch_backups_created": false,
+    "platform_runtime_files_changed": false,
+    "service_control_requested": false,
+    "service_restart_required": false
+  },
+  "tests": {
+    "file": "test_engine_identity.py",
+    "run": 15,
+    "seconds": 0.137,
+    "result": "OK"
+  },
+  "engine_check": {
+    "result": "attention_required",
+    "code": "ENGINE_HTTP_UNCONFIRMED",
+    "metadata_checks": {},
+    "metadata_commands": 0,
+    "production_GET_requests": 1,
+    "http_status_reported": false
+  },
+  "effects": {
+    "files_written": [],
+    "remote_POST_requests": 0,
+    "service_control_requested": false,
+    "inference_requested": false,
+    "GPU_requested": false
+  },
+  "interpretation": {
+    "patch_and_version_tests_passed": true,
+    "first_settings_GET_failed": true,
+    "exact_HTTP_status_unknown": true,
+    "live_image_check_not_attempted": true,
+    "QA_API_start_not_attempted": true,
+    "Flow_registration_not_attempted": true,
+    "question_ready": false
+  },
+  "code_review": {
+    "successful_MetadataEngine_bodyless_GET_headers": [
+      "Accept: application/json"
+    ],
+    "failed_EngineHTTP_bodyless_GET_headers": [
+      "Accept: application/json",
+      "Content-Type: application/json"
+    ],
+    "header_difference_confirmed": true,
+    "difference_causes_production_error_verified": false
+  },
+  "next_step": "bodyless_GET_header_alignment_and_safe_HTTP_status_then_engine_check_QA_start_and_explicit_Flow_registration"
+}

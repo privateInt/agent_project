@@ -1,0 +1,29 @@
+{
+  "stage": "O01-Langfuse-diagnostics",
+  "date": "2026-09-26",
+  "result": "local_passed",
+  "python_tests": 31,
+  "diagnostic_tests": 9,
+  "existing_tests": 22,
+  "checks": [
+    "read-only diagnostic preserves settings/key/data bytes and mtime",
+    "both stdout/stderr retained privately; exception string redacts",
+    "known secrets and JSON/URL/Basic auth variants masked before truncation",
+    "foreign-container logs refused",
+    "partial startup and missing storage represented",
+    "up failure diagnoses once without retry and keeps failure status"
+  ],
+  "server_evidence": {
+    "source": "user-provided CLI output",
+    "patch_files_applied": 17,
+    "image_preparation_reached_compose_up": true,
+    "compose_exit_code": 1,
+    "failure_service": "unknown",
+    "root_cause": "unknown",
+    "synthetic_trace_executed": false
+  },
+  "docker_daemon_used": false,
+  "server_recovery_verified": false,
+  "inference_executed": false,
+  "restart_executed": false
+}

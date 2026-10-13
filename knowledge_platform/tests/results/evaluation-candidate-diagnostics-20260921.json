@@ -1,0 +1,119 @@
+{
+  "date": "2026-09-21",
+  "scope": "User-supplied server results plus local diagnostic regression tests; not general retrieval quality certification",
+  "evidence": [
+    {
+      "file": "report-leather-lca-v1.json",
+      "sha256": "a79c7cec005a8d55f9e90bcfdf4ca0ead145e6cbfab4adb317976e19060642f3"
+    },
+    {
+      "file": "report-chunkers-context-v1.json",
+      "sha256": "ab51487cbc82c258396b3ac6c914c947a6ae956a9858c2b52c0208119069118f"
+    },
+    {
+      "file": "inspection-recursive-body-03.json",
+      "sha256": "8f11ae177d9f5a8dda0bfa9c2295362b66e934f47173409d0c16ffc06cd7f476"
+    },
+    {
+      "file": "chunking_comparison_b191_20260921.json",
+      "sha256": "8e318f3242aca8ede9c21e92cec2687e952daaddbb193d29085e1af588d93b08"
+    },
+    {
+      "file": "chunking_comparison_b66_20260921.json",
+      "sha256": "1f5e3f4d80ca9c12244818fc2011eb90e0ad5e88855dbf64b7896f3952528388"
+    }
+  ],
+  "snapshot_id": "8abb4c67b353d892fc3d7f625dff8060c512b584895c44da9afcb3385a6c3fb2",
+  "dataset_sha256": "7bea41064fb64e957dcc8915a8fb6e8ac8ca5b747e3c505efa8e9101cd6e4ae3",
+  "candidate_k": 20,
+  "top_k": 5,
+  "questions": 12,
+  "original_report_status": "completed_with_errors",
+  "metrics": [
+    {
+      "variant": "baseline-off",
+      "report": "original",
+      "succeeded": 12,
+      "failed": 0,
+      "hit_at_5": 0.8333333333333334,
+      "mrr_at_5": 0.75,
+      "ndcg_at_5": 0.7718216255952429
+    },
+    {
+      "variant": "baseline-on",
+      "report": "original",
+      "succeeded": 12,
+      "failed": 0,
+      "hit_at_5": 0.9166666666666666,
+      "mrr_at_5": 0.8333333333333334,
+      "ndcg_at_5": 0.8551549589285763
+    },
+    {
+      "variant": "structure-new-off",
+      "report": "context",
+      "succeeded": 12,
+      "failed": 0,
+      "hit_at_5": 0.9166666666666666,
+      "mrr_at_5": 0.8194444444444445,
+      "ndcg_at_5": 0.8442441461309548
+    },
+    {
+      "variant": "structure-new-on",
+      "report": "context",
+      "succeeded": 12,
+      "failed": 0,
+      "hit_at_5": 1.0,
+      "mrr_at_5": 0.875,
+      "ndcg_at_5": 0.9077324383928644
+    },
+    {
+      "variant": "recursive-off",
+      "report": "context",
+      "succeeded": 12,
+      "failed": 0,
+      "hit_at_5": 1.0,
+      "mrr_at_5": 0.8055555555555555,
+      "ndcg_at_5": 0.8551549589285763
+    },
+    {
+      "variant": "recursive-on",
+      "report": "context",
+      "succeeded": 11,
+      "failed": 1,
+      "hit_at_5": 0.9166666666666666,
+      "mrr_at_5": 0.7916666666666666,
+      "ndcg_at_5": 0.8243991050595311
+    }
+  ],
+  "body_07": {
+    "original_off_rank": 7,
+    "original_on_rank": 17,
+    "new_structure_off_rank": 3,
+    "new_structure_on_rank": 2,
+    "recursive_off_rank": 3,
+    "recursive_on_rank": 2
+  },
+  "body_03_replay": {
+    "status": "completed",
+    "off_rank": 1,
+    "on_rank": 1,
+    "off_on_identical": true,
+    "off_candidates_match_previous": false,
+    "root_cause": "unresolved",
+    "replaces_original_report": false
+  },
+  "local_evaluation_tests": 37,
+  "new_diagnostic_tests": 8,
+  "diagnostic_server_apply": "verified_by_user_log",
+  "new_model_inference_for_this_patch": 0,
+  "lifecycle_changes_for_this_patch": 0,
+  "server_verification": {
+    "date": "2026-09-21",
+    "patch_files_applied": 17,
+    "unittest_pattern": "test_evaluation*.py",
+    "tests": 37,
+    "elapsed_seconds": 0.657,
+    "status": "OK",
+    "scope": "Patch application and evaluation unit tests; not live retrieval or root-cause resolution"
+  }
+}

@@ -1,0 +1,24 @@
+services:
+  data-console:
+    profiles: [ui]
+    image: data-platform-console:dev
+    build:
+      context: .
+      dockerfile: console/Dockerfile
+      target: runtime
+    container_name: data-console
+    restart: unless-stopped
+    networks: [data-infra]
+    ports:
+      - "${DATA_UI_BIND_ADDRESS:-0.0.0.0}:${DATA_UI_PORT:-14100}:8501"
+    environment:
+      DATA_GATEWAY_URL: http://data-gateway:8000
+      MODEL_GATEWAY_URL: http://gateway:8000
+      DATA_UI_OCR_DEPLOYMENT_ID: ${DATA_UI_OCR_DEPLOYMENT_ID:-}
+      DATA_UI_REQUEST_DIR: /var/lib/data-console
+    volumes:
+      - data-console-requests:/var/lib/data-console
+    depends_on: [data-gateway]
+
+volumes:
+  data-console-requests:

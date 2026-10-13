@@ -1,0 +1,28 @@
+services:
+  agent-service:
+    image: agent-platform-service:o02.1
+    build:
+      context: .
+      target: service
+    pull_policy: never
+    restart: unless-stopped
+    networks: [agent-private]
+    environment:
+      AGENT_GRPC_ADDRESS: :9000
+      AGENT_RUNTIME_ADDRESS: agent-runtime:9001
+      AGENT_DB_HOST: agent-postgres
+      AGENT_DB_PASSWORD_FILE: /run/secrets/agent-db-app
+      AGENT_INTERNAL_TOKEN_FILE: /run/secrets/agent-internal-token
+    secrets: [agent-db-app, agent-internal-token]
+    depends_on:
+      agent-postgres:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, /app/healthcheck]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+      start_period: 30s
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]

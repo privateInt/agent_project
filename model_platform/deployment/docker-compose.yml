@@ -1,0 +1,43 @@
+# Included by ../docker-compose.yml with project_directory=model_platform.
+# Use the root Compose entry point so sibling dependencies and the shared network resolve.
+services:
+  deployment:
+    image: model-platform-deployment:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: deployment
+    pull_policy: never
+    restart: unless-stopped
+    networks:
+    - ops-infra
+    container_name: model-deployment
+    command:
+    - /app/deployment
+    environment:
+      POSTGRES_URL: ${MODEL_POSTGRES_URL}
+      MANAGEMENT_GRPC_ADDRESS: management:9000
+      OPERATION_GRPC_ADDRESS: operation:9000
+      GRPC_ADDRESS: :9000
+      SURYA_VLLM_IMAGE: ${MODEL_SURYA_VLLM_IMAGE:-vllm/vllm-openai:v0.20.1}
+      VLLM_IMAGE: ${MODEL_VLLM_IMAGE:-vllm/vllm-openai:v0.15.0}
+      SERVING_NETWORK: ${AGENT_PROJECT_NETWORK:-ops-infra}
+      SERVING_CACHE_VOLUME: ${MODEL_SERVING_CACHE_VOLUME:-model-serving-cache}
+      DISPATCHER_NODE_NAME: ${MODEL_DISPATCHER_NODE_NAME:-}
+      GPU_ADMISSION_DIR: /gpu-admission
+      MINIO_BUCKET: ${MODEL_MINIO_BUCKET:-model-artifacts}
+      MINIO_ENDPOINT: ${MODEL_MINIO_ENDPOINT:-ops-minio1:9000}
+      MINIO_ACCESS_KEY: ${MODEL_MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MODEL_MINIO_SECRET_KEY}
+      MINIO_USE_SSL: ${MODEL_MINIO_USE_SSL:-false}
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - gpu-admission:/gpu-admission
+    - serving-cache:/serving-cache
+    depends_on:
+    - management
+    - operation
+
+volumes:
+  serving-cache:
+    name: ${MODEL_SERVING_CACHE_VOLUME:-model-serving-cache}

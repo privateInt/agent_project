@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "kind": "synthetic_API_projections_not_server_results",
+  "embedding": {
+    "deployment_id": "00000001-0000-4000-8000-000000000001",
+    "model_version_id": "0000000b-0000-4000-8000-000000000001",
+    "status": "ready",
+    "runtime_state": "ready",
+    "desired_state": "running",
+    "served_model_name": "deployment-00000001-0000-4000-8000-000000000001",
+    "serving": {
+      "engine": "vllm",
+      "profile": "snowflake-ko-v1",
+      "max_model_len": 8192
+    },
+    "runtime_container_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "runtime_image_id": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "internal_endpoint": "http://model-serving-00000001-0000-4000-8000-000000000001:8000/v1"
+  },
+  "chat": {
+    "deployment_id": "00000002-0000-4000-8000-000000000001",
+    "model_version_id": "0000000c-0000-4000-8000-000000000001",
+    "status": "ready",
+    "runtime_state": "ready",
+    "desired_state": "running",
+    "served_model_name": "deployment-00000002-0000-4000-8000-000000000001",
+    "serving": {
+      "engine": "vllm",
+      "profile": "",
+      "max_model_len": 8192
+    },
+    "runtime_container_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "runtime_image_id": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "internal_endpoint": "http://model-serving-00000002-0000-4000-8000-000000000001:8000/v1"
+  },
+  "profile": {
+    "deployment_id": "00000001-0000-4000-8000-000000000001",
+    "model_version_id": "0000000b-0000-4000-8000-000000000001",
+    "profile_id": "snowflake-ko-v1",
+    "embedding_space_id": "es_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "source_manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "tokenizer_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "runtime_image_id": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "runtime_container_id": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "served_model_name": "deployment-00000001-0000-4000-8000-000000000001",
+    "repo_id": "dragonkue/snowflake-arctic-embed-l-v2.0-ko",
+    "resolved_revision": "synthetic-v1",
+    "query_prefix": "query: ",
+    "document_prefix": "",
+    "pooling": "cls",
+    "normalization": "l2",
+    "dimension": 1024,
+    "max_input_tokens": 2048,
+    "max_batch_size": 16,
+    "max_input_bytes": 131072,
+    "truncation": "reject",
+    "capability": "embedding",
+    "status": "ready",
+    "serving_profile": "snowflake-ko-v1"
+  },
+  "version": {
+    "model_version_id": "0000000c-0000-4000-8000-000000000001",
+    "model_id": "00000016-0000-4000-8000-000000000001",
+    "repo_id": "example/synthetic-chat",
+    "version": "test-v1"
+  },
+  "model": {
+    "model_id": "00000016-0000-4000-8000-000000000001",
+    "name": "테스트 답변 모델",
+    "model_type": "llm"
+  },
+  "chunkers": {
+    "items": [
+      {
+        "id": "recursive_character_v1",
+        "version": "2026-09-18.2",
+        "name": "문자 기반 재귀 분할",
+        "defaults": {
+          "max_characters": 1000,
+          "overlap_characters": 100
+        },
+        "min_characters": 100,
+        "max_characters": 8000
+      },
+      {
+        "id": "structure_v1",
+        "version": "2026-09-21.1",
+        "name": "문서 구조 기반 분할",
+        "defaults": {
+          "max_characters": 1000,
+          "overlap_characters": 100
+        },
+        "min_characters": 100,
+        "max_characters": 8000
+      }
+    ]
+  }
+}

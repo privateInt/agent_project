@@ -1,0 +1,23 @@
+services:
+  agent-db-checks:
+    profiles: [checks]
+    image: agent-platform-db-checks:a07.1
+    build:
+      context: .
+      target: database-tests
+    pull_policy: never
+    networks: [agent-private]
+    environment:
+      AGENT_DB_HOST: agent-postgres
+      AGENT_DB_PASSWORD_FILE: /run/secrets/agent-db-app
+      AGENT_TEST_DATABASE: '1'
+      AGENT_TEST_RUNTIME_ADDRESS: agent-runtime:9001
+      AGENT_INTERNAL_TOKEN_FILE: /run/secrets/agent-internal-token
+    secrets: [agent-db-app, agent-internal-token]
+    depends_on:
+      agent-runtime:
+        condition: service_healthy
+      agent-service:
+        condition: service_healthy
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]

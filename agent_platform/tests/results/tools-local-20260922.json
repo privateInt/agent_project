@@ -1,0 +1,82 @@
+{
+  "date": "2026-09-22",
+  "stage": "A03",
+  "result": "local_passed_server_pending",
+  "go": {
+    "passed_top_level": 16,
+    "skipped_top_level": [
+      "TestDatabaseFoundation"
+    ],
+    "tests": [
+      "TestHTTPGRPCRequestCorrelationAndPersistedResponse",
+      "TestPublicHealthAndAuthenticatedAPIs",
+      "TestInvalidInputsDoNotReachBackend",
+      "TestBackendErrorIsRedacted",
+      "TestInternalAuthenticationAndRequestID",
+      "TestToolsDatabase",
+      "TestStrictJSONAndSchemas",
+      "TestConnectionReferencesAndUnsafeURLs",
+      "TestMCPTransportBoundaries",
+      "TestPythonRuntimeContract",
+      "TestDiagnosticPersistsAndRetrievesOriginalRequest",
+      "TestRuntimeFailureRecordedAndReadinessDegraded",
+      "TestDatabaseFailureDoesNotReturnSuccessfulCreation",
+      "TestLookupValidationAndMissing",
+      "TestDiagnosticResponseSurvivesPostgresTimestampEncoding",
+      "TestToolsEndToEnd"
+    ],
+    "sql_subtests_passed": 4,
+    "actual_python_runtime": true,
+    "official_mcp_sdk_client": true,
+    "delivered_smoke_script": "passed_create_and_lookup",
+    "build_targets": [
+      "service",
+      "gateway",
+      "mcp",
+      "healthcheck"
+    ],
+    "vet": "passed"
+  },
+  "python": {
+    "runtime_tests_passed": 5,
+    "ops_tests_passed": 5
+  },
+  "compose": {
+    "cli": "2.39.4",
+    "normalized_config_and_boundaries": "passed",
+    "default_services": 5,
+    "optional_checks": 1,
+    "host_ports": [
+      16100
+    ]
+  },
+  "sql_engine": {
+    "local": "PostgreSQL 18.3 (PGlite 0.5.8), WASM",
+    "driver": "pgx 5.10.0",
+    "scratch_only": true,
+    "limitations": [
+      "single_connection_and_describe_exec_mode",
+      "no_native_identity_or_permission_acceptance",
+      "no_Docker_daemon"
+    ]
+  },
+  "mcp": {
+    "sdk": "github.com/modelcontextprotocol/go-sdk v1.8.0",
+    "protocol": "2025-11-25",
+    "transport": "stateless Streamable HTTP, JSON responses",
+    "default_latest_sdk_client_negotiation": "passed",
+    "focused_recheck": "TestMCPTransportBoundaries and service/app suite including delivered smoke passed"
+  },
+  "compatibility": {
+    "migration_001_unchanged": true,
+    "other_platform_runtime_changes": 0,
+    "a02_acceptance_preserved": true
+  },
+  "pending": [
+    "server_image_build_and_five_services_healthy",
+    "native_PostgreSQL_16_migration_permissions_and_tool_checks",
+    "server_REST_MCP_smoke",
+    "existing_ToolCall_lookup_after_server_container_restart"
+  ],
+  "next_stage": "A04 OpenAPI registration"
+}

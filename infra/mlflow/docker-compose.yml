@@ -1,0 +1,51 @@
+name: ops-mlflow
+
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.15.1
+    container_name: ops-mlflow
+    restart: unless-stopped
+
+    command:
+      - mlflow
+      - server
+      - --backend-store-uri
+      - sqlite:////mlflow/mlflow.db
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "5000"
+      # MLflow 3.5+ validates Host headers. Allow the shared Docker-network
+      # service/container names used by one-shot Training Jobs plus local UI.
+      - --allowed-hosts
+      - "ops-mlflow:5000,mlflow:5000,localhost:*,127.0.0.1:*,192.168.*"
+
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - mlflow-data:/mlflow
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/health', timeout=5)"
+        ]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+    networks:
+      - ops-infra
+
+volumes:
+  mlflow-data:
+
+networks:
+  ops-infra:
+    external: true
+    name: ops-infra

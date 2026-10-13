@@ -1,0 +1,9 @@
+# Paths resolve relative to the first Compose file (observability/docker-compose.yml).
+services:
+  obs-prometheus:
+    volumes:
+      - type: bind
+        source: ./gpu/prometheus.yml
+        target: /etc/prometheus/prometheus.yml
+        read_only: true
+        bind: {create_host_path: false}

@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "date": "2026-09-27",
+  "source": "user_provided_server_output",
+  "scope": "read_only_filesystem_diagnosis",
+  "result": "identified",
+  "rule": {
+    "name": "OpsFilesystemHigh",
+    "state": "firing",
+    "health": "ok",
+    "last_evaluation": "2026-09-27T04:46:59.708087224Z",
+    "active_since": "2026-09-27T04:17:59.706700174Z",
+    "mountpoint": "/media/simsys/SSD_EXT4",
+    "device": "/dev/sda2",
+    "fstype": "ext4",
+    "usage_percent": 96.84548691923528
+  },
+  "df_summary": [
+    {
+      "mountpoint": "/",
+      "usage_percent_rounded": 77,
+      "available": "201G"
+    },
+    {
+      "mountpoint": "/mnt/nvme1",
+      "usage_percent_rounded": 92,
+      "available": "75G"
+    },
+    {
+      "mountpoint": "/media/simsys/SSD_EXT4",
+      "usage_percent_rounded": 97,
+      "available": "116G"
+    }
+  ],
+  "docker_root": "/media/simsys/SSD_EXT4/docker",
+  "du_summary": {
+    "disk_total": "3.3T",
+    "docker": "283G",
+    "largest_dataset": "764G",
+    "second_largest_dataset": "567G",
+    "personal_backup": "389G"
+  },
+  "observations": {
+    "df_and_du_human_readable_values": "rounded_units_as_reported",
+    "nvme1_previous_scope": "omitted_from_ops_query_and_alert_selector",
+    "collection_configuration": "does_not_exclude_nvme1; actual_fresh_series_verified_by_new_apply_preflight",
+    "alertmanager_receipt": "not_queried_in_this_diagnosis"
+  },
+  "user_decision": "existing_data_needed_keep_and_continue_monitoring_work",
+  "data_cleanup_requested": false,
+  "threshold_change_requested": false,
+  "inference_requested": false
+}

@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "stage": "Q06b-3-question-head-CAS-offline",
+  "date": "2026-10-08",
+  "result": "passed",
+  "python_runtime_scope": "developer_Python_3_12_with_Python_3_10_AST_compatibility_check",
+  "tests": [
+    {
+      "suite": "related",
+      "count": 47,
+      "seconds": 10.779,
+      "exit_code": 0,
+      "result": "passed"
+    },
+    {
+      "suite": "full",
+      "count": 508,
+      "seconds": 38.437,
+      "exit_code": 0,
+      "result": "passed"
+    }
+  ],
+  "implementation": {
+    "head_CAS_implemented": true,
+    "default_CLI_serve_question_adapter_connected_when_initialized": true,
+    "caller_supplied_target_or_verified_flags_accepted": false,
+    "live_index_full_snapshot_profile_and_chunker_readback": true,
+    "Tool_Agent_publication_test_result_and_child_citation_readback": true,
+    "read_only_chat_model_inspection_no_inference": true,
+    "one_transaction_target_head_immutable_receipt": true,
+    "expected_revision_plus_one_and_prewrite_source_snapshot": true,
+    "same_key_replay_and_local_lookup_before_transport_setup": true,
+    "new_key_for_same_active_assets_refused": true,
+    "question_acceptance_checks_head_receipt_in_its_write_transaction": true,
+    "separate_head_question_and_indexing_opt_ins_default_false": true,
+    "partial_foreign_schema_or_unverified_positive_head_refused_without_reset": true
+  },
+  "verification_scope": [
+    "temporary_private_SQLite_and_independent_Agent_Knowledge_fakes",
+    "real_authenticated_loopback_Agent_Knowledge_and_local_question_HTTP",
+    "readback_activation_uses_13_Agent_requests_and_3_Knowledge_GETs_under_existing_transport_limits",
+    "process_death_during_first_and_all_DDL_and_after_schema_commit",
+    "process_death_after_target_insert_head_update_receipt_insert_and_after_commit",
+    "parallel_activation_has_one_winner_and_conflict_preserves_prior_state",
+    "stale_revision_changed_model_connection_version_result_citation_or_index_refused",
+    "new_second_index_generation_has_two_documents_and_old_completed_question_unchanged",
+    "CLI_serve_connects_initialized_stores_without_turning_on_any_inference_or_CAS",
+    "CLI_serve_old_state_does_not_silently_initialize_head_storage",
+    "legacy_schema_job_key_receipt_Flow_data_preservation_and_code_rollback_are_fixture_evidence"
+  ],
+  "previous_step_server_notes_observed": {
+    "source": "user_supplied_terminal_checksum_and_apply_output",
+    "received_at_KST": "2026-10-08T12:42:12+09:00",
+    "timestamp_scope": "message_receipt_time_not_execution_timestamp",
+    "filename": "agent_project_q06b2_server_notes_20261008.tar.gz",
+    "sha256": "4ac0522712cae2060980466c567ac9a72c2ffaca759ae3b79e8bec8c88b97fa0",
+    "checksum": "OK",
+    "status": "applied",
+    "written": 8,
+    "patch_backups_created": false,
+    "service_restart_required": false,
+    "inference_requested": false,
+    "local_additive_init_required": false,
+    "local_question_migration_required": false,
+    "local_qa_agent_init_required": false
+  },
+  "limits": [
+    "Q06b3_server_code_apply_related_tests_and_local_init_status_not_yet_observed",
+    "no_actual_operational_index_Tool_Agent_prepare_test_publish_head_activation_or_question_run",
+    "no_operational_old_jobs_keys_receipts_Flow_or_service_inventory_readback",
+    "not_a_cross_platform_distributed_transaction_or_multi_replica_acceptance",
+    "cached_local_head_and_operator_opt_ins_do_not_prove_current_remote_model_liveness",
+    "no_actual_GPU_embedding_build_search_chat_or_semantic_quality_acceptance"
+  ],
+  "server_code_applied": false,
+  "server_local_init_verified": false,
+  "production_api_requests": 0,
+  "service_control_requested": false,
+  "inference_requested": false,
+  "GPU_requested": false,
+  "question_ready": false,
+  "production_question_verified": false,
+  "semantic_quality_verified": false,
+  "next_step": "server_apply_related_tests_and_question_head_init_status",
+  "next_live_stage": "Q05c_1_first_document_live_indexing_when_GPU_available"
+}

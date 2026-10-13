@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "environment": "docker-compose",
+  "default_cluster": null,
+  "scope": {},
+  "sources": {
+    "host": {"job": "host"},
+    "containers": {"job": "containers"},
+    "gpu": {"job": "gpu"}
+  },
+  "target_jobs": ["prometheus", "host", "containers", "gpu"],
+  "container_name_label": "name",
+  "filesystems": {
+    "mountpoint_include": "/|/media/.*|/mnt/nvme1",
+    "fstype_exclude": "tmpfs|overlay|squashfs"
+  }
+}

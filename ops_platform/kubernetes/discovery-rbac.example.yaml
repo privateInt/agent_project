@@ -1,0 +1,17 @@
+# Reference only: never applied by discover.py. Bind to an existing trusted identity.
+# Namespace-scoped operators may use --namespace and narrower Role list grants;
+# namespace UID GET permission is still needed, including kube-system.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: agent-project-ops-discovery
+rules:
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["list"]
+  - apiGroups: ["discovery.k8s.io"]
+    resources: ["endpointslices"]
+    verbs: ["list"]
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get"]

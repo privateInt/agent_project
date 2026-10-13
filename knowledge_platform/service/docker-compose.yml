@@ -1,0 +1,23 @@
+services:
+  knowledge-service:
+    image: knowledge-platform-service:dev
+    build:
+      context: .
+      target: service
+    pull_policy: never
+    container_name: knowledge-service
+    restart: unless-stopped
+    networks: [knowledge-infra]
+    environment:
+      OPERATION_GRPC_ADDRESS: knowledge-operation:9000
+      MODEL_RERANKING_GRPC_ADDRESS: ${KNOWLEDGE_MODEL_RERANKING_GRPC_ADDRESS:-model-deployment:9000}
+      MODEL_EMBEDDING_GRPC_ADDRESS: ${KNOWLEDGE_MODEL_EMBEDDING_GRPC_ADDRESS:-model-deployment:9000}
+      DATA_COLLECTION_GRPC_ADDRESS: ${KNOWLEDGE_DATA_COLLECTION_GRPC_ADDRESS:-data-collection:9000}
+      DATA_REFINEMENT_GRPC_ADDRESS: ${KNOWLEDGE_DATA_REFINEMENT_GRPC_ADDRESS:-data-refinement:9000}
+      MINIO_ENDPOINT: ${KNOWLEDGE_MINIO_ENDPOINT:?Run ops/configure.py first}
+      MINIO_ACCESS_KEY: ${KNOWLEDGE_MINIO_ACCESS_KEY:?Run ops/configure.py first}
+      MINIO_SECRET_KEY: ${KNOWLEDGE_MINIO_SECRET_KEY:?Run ops/configure.py first}
+      MINIO_USE_SSL: ${KNOWLEDGE_MINIO_USE_SSL:-false}
+      POSTGRES_URL: ${KNOWLEDGE_POSTGRES_URL:?Run ops/configure.py first}
+    depends_on:
+      - knowledge-operation

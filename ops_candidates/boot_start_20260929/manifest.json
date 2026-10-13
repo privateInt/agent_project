@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "activation_supported": false,
+  "production_cli_available": false,
+  "transition_manifest_sha256": "aace1d36c462631608e88294be21b11bf85dc1b3e83033096fdba124a475426f",
+  "base_code_sha256": "a24257d8636b5842167e74f7b02931c467d105519fb9b5f70ceb577437fccca4",
+  "candidate_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+  "auxiliary_files": [
+    {
+      "path": "arming.py",
+      "sha256": "5f666afa6f72fd5522cefd50d7231e274cf95e6cbf46b7355b23a0730bb4b582"
+    },
+    {
+      "path": "tests/test_arming.py",
+      "sha256": "200d7c779445073a0da7f256429629d032a002412c6814d40f040894aabf8fa7"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "stage": "Q04b-connection-error-diagnostics",
+  "evidence_source": "user_reported_terminal_output",
+  "reported_at": "2026-10-07T11:11:00+09:00",
+  "host": "shshin@simsys4090",
+  "patch": {
+    "status": "applied",
+    "written": 9,
+    "document_qa_code_changed": true,
+    "patch_backups_created": false,
+    "platform_runtime_files_changed": false,
+    "service_control_requested": false,
+    "service_restart_required": false
+  },
+  "result": "attention_required",
+  "blockers": [
+    "N8N_VERSION_METADATA_UNAVAILABLE",
+    "QA_API_NOT_LISTENING"
+  ],
+  "n8n": {
+    "expected_version": "2.40.5",
+    "configuration_readable": true,
+    "workflow_list_readable": true,
+    "metadata_get_requests": 2,
+    "origin": "http://127.0.0.1:16200",
+    "version_field_present": false,
+    "http_observations": [
+      {
+        "route": "/rest/settings",
+        "http_status": 200,
+        "response_format": "json_object"
+      },
+      {
+        "route": "/api/v1/workflows?limit=100",
+        "http_status": 200,
+        "response_format": "json_object"
+      }
+    ]
+  },
+  "data": {
+    "connection_reference_available": true,
+    "origin": "http://127.0.0.1:14000",
+    "enabled": true
+  },
+  "qa_ports": [
+    {
+      "address": "127.0.0.1",
+      "port": 17110,
+      "listening": false
+    },
+    {
+      "address": "172.25.0.1",
+      "port": 17110,
+      "listening": false
+    }
+  ],
+  "qa_origin_candidate": "http://172.25.0.1:17110",
+  "candidate_reachability_verified": false,
+  "existing_ops_port": 17100,
+  "private_host_address_count": 30,
+  "n8n_networks": [
+    {
+      "name": "infrastructure_flows-private",
+      "gateway": null,
+      "internal": true,
+      "gateway_is_local": false
+    },
+    {
+      "name": "ops-infra",
+      "gateway": "172.25.0.1",
+      "internal": false,
+      "gateway_is_local": true
+    }
+  ],
+  "effects": {
+    "files_written": [],
+    "remote_post_requests": 0,
+    "service_control_requested": false,
+    "document_uploaded": false,
+    "inference_requested": false,
+    "gpu_requested": false
+  },
+  "interpretation": {
+    "n8n_settings_and_API_key_read_access_verified": true,
+    "expected_version_field_absent": true,
+    "QA_API_not_started": true,
+    "live_image_digest_verified": false,
+    "workflow_registration_verified": false,
+    "production_Data_refinement_verified": false
+  },
+  "next_step": "verify_owned_running_image_then_start_QA_API_authenticate_library_and_explicitly_prepare_two_Flows"
+}

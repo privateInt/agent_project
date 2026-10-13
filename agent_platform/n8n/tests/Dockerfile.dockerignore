@@ -1,0 +1,11 @@
+# Only the three explicit test inputs enter the build context.
+**
+!tests/
+tests/**
+!tests/Dockerfile
+!tests/Dockerfile.dockerignore
+!tests/run.cjs
+!tests/contract.cjs
+!workflows/
+workflows/**
+!workflows/agent-question.json

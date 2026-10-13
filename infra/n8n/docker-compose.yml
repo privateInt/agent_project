@@ -1,0 +1,28 @@
+name: infrastructure
+include:
+  - path: ./postgres/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./service/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+networks:
+  flows-private:
+    internal: true
+  flows-api:
+    external: true
+    name: ${N8N_AGENT_NETWORK:-ops-infra}
+volumes:
+  flows-db:
+    external: true
+    name: ${N8N_DB_VOLUME:?Run infra/ops/up.py first}
+  flows-data:
+    external: true
+    name: ${N8N_DATA_VOLUME:?Run infra/ops/up.py first}
+secrets:
+  flows-db-admin:
+    file: ./.secrets/db-admin
+  flows-db-app:
+    file: ./.secrets/db-app
+  flows-encryption:
+    file: ./.secrets/encryption-key

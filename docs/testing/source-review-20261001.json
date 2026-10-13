@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "review_date_kst": "2026-10-01",
+  "source_archive": {
+    "name": "agent_project(4).tar",
+    "sha256": "bcab165707c7bb32fde0fd4b372ea6898f26b00b10eb4362d6c289f31cd69846",
+    "bytes": 61337600
+  },
+  "scope": "Uploaded code review and selected offline checks; historical server summaries are evidence, not current runtime attestation",
+  "environment": {
+    "python": "3.12.14",
+    "go": false,
+    "docker": false,
+    "protoc": false,
+    "streamlit": false,
+    "langgraph": false,
+    "grpc": false
+  },
+  "static": {
+    "python": 415,
+    "json": 266,
+    "node_syntax": 25,
+    "errors": []
+  },
+  "python": {
+    "totals": {
+      "model": {
+        "discovered": 53,
+        "passed": 53,
+        "skipped": 0,
+        "failed": 0
+      },
+      "data": {
+        "discovered": 81,
+        "passed": 81,
+        "skipped": 0,
+        "failed": 0
+      },
+      "knowledge": {
+        "discovered": 76,
+        "passed": 76,
+        "skipped": 0,
+        "failed": 0
+      },
+      "agent": {
+        "discovered": 60,
+        "passed": 60,
+        "skipped": 0,
+        "failed": 0
+      },
+      "ops": {
+        "discovered": 89,
+        "passed": 44,
+        "skipped": 45,
+        "failed": 0
+      }
+    },
+    "selected_commands": {
+      "model": [
+        {
+          "file": "model_platform/tests/test_platform_ops.py",
+          "exit_code": 0,
+          "tests_run": 18,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.247
+        },
+        {
+          "file": "model_platform/tests/test_multi_gpu.py",
+          "exit_code": 0,
+          "tests_run": 6,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.149
+        },
+        {
+          "file": "model_platform/tests/test_training_checkpoint.py",
+          "exit_code": 0,
+          "tests_run": 13,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.279
+        },
+        {
+          "file": "model_platform/tests/test_training_evaluation.py",
+          "exit_code": 0,
+          "tests_run": 16,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.162
+        }
+      ],
+      "data": [
+        {
+          "file": "data_platform/tests/test_refinement_parser.py",
+          "exit_code": 0,
+          "tests_run": 23,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.905
+        },
+        {
+          "file": "data_platform/tests/test_refinement_geometry.py",
+          "exit_code": 0,
+          "tests_run": 5,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 2.169
+        },
+        {
+          "file": "data_platform/tests/test_refinement_ocr.py",
+          "exit_code": 0,
+          "tests_run": 37,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 1.759
+        },
+        {
+          "file": "data_platform/tests/test_data_requests.py",
+          "exit_code": 0,
+          "tests_run": 8,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.23
+        },
+        {
+          "file": "data_platform/tests/test_upload_tools.py",
+          "exit_code": 0,
+          "tests_run": 8,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.197
+        }
+      ],
+      "knowledge": [
+        {
+          "file": "knowledge_platform/tests/test_chunking_tools.py",
+          "exit_code": 0,
+          "tests_run": 4,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.21
+        },
+        {
+          "file": "knowledge_platform/tests/test_evaluation.py",
+          "exit_code": 0,
+          "tests_run": 25,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.751
+        },
+        {
+          "file": "knowledge_platform/tests/test_evaluation_aggregate.py",
+          "exit_code": 0,
+          "tests_run": 4,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.161
+        },
+        {
+          "file": "knowledge_platform/tests/test_evaluation_diagnostics.py",
+          "exit_code": 0,
+          "tests_run": 8,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.319
+        },
+        {
+          "file": "knowledge_platform/tests/test_evaluation_hnsw.py",
+          "exit_code": 0,
+          "tests_run": 3,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.132
+        },
+        {
+          "file": "knowledge_platform/tests/test_index_lifecycle.py",
+          "exit_code": 0,
+          "tests_run": 12,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.81
+        },
+        {
+          "file": "knowledge_platform/tests/test_indexing_tools.py",
+          "exit_code": 0,
+          "tests_run": 6,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.235
+        },
+        {
+          "file": "knowledge_platform/tests/test_rerank_search_tools.py",
+          "exit_code": 0,
+          "tests_run": 6,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.092
+        },
+        {
+          "file": "knowledge_platform/tests/test_search_tools.py",
+          "exit_code": 0,
+          "tests_run": 8,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.107
+        }
+      ],
+      "agent": [
+        {
+          "file": "agent_platform/tests/test_answer_diagnostics.py",
+          "exit_code": 0,
+          "tests_run": 5,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.137
+        },
+        {
+          "file": "agent_platform/tests/test_citation_trial.py",
+          "exit_code": 0,
+          "tests_run": 13,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 1.187
+        },
+        {
+          "file": "agent_platform/tests/test_prepare_knowledge_tool.py",
+          "exit_code": 0,
+          "tests_run": 10,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.63
+        },
+        {
+          "file": "agent_platform/tests/test_acceptance.py",
+          "exit_code": 0,
+          "tests_run": 18,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.208
+        },
+        {
+          "file": "agent_platform/tests/test_n8n_recovery.py",
+          "exit_code": 0,
+          "tests_run": 14,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.282
+        }
+      ],
+      "ops": [
+        {
+          "file": "ops_tools/tests/test_backup_plan_contract.py",
+          "exit_code": 0,
+          "tests_run": 11,
+          "skipped": 4,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.558
+        },
+        {
+          "file": "ops_tools/tests/test_backup_plan_snapshots.py",
+          "exit_code": 0,
+          "tests_run": 15,
+          "skipped": 13,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.423
+        },
+        {
+          "file": "ops_tools/tests/test_backup_production_plan.py",
+          "exit_code": 0,
+          "tests_run": 33,
+          "skipped": 28,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 0.466
+        },
+        {
+          "file": "ops_tools/tests/test_boot_worker_recovery.py",
+          "exit_code": 0,
+          "tests_run": 30,
+          "skipped": 0,
+          "errors": 0,
+          "failures": 0,
+          "seconds": 3.633
+        }
+      ]
+    },
+    "summary": {
+      "discovered": 359,
+      "passed": 314,
+      "skipped": 45,
+      "failed": 0
+    },
+    "skip_reason": "45 Ops tests require cached pinned age/age-keygen. Tools were not downloaded and skipped cases are not counted as passed."
+  },
+  "node": [
+    {
+      "file": "knowledge_platform/tests/console_ui_test.cjs",
+      "exit_code": 0,
+      "stdout_tail": "PASS console UI: real HTML IDs; three-step flow; named capability-verified models; no implicit mutation; exact reload recovery for both phases; blocked storage and invalid selections; custom HNSW; saved subset; existing-index build; active-version paging; automatic reranker selection.\n",
+      "stderr_tail": ""
+    },
+    {
+      "file": "knowledge_platform/tests/indexing_ui_test.cjs",
+      "exit_code": 0,
+      "stdout_tail": "PASS index storage: blocked writes send no request; failed cleanup keeps the exact replay key\nPASS indexing UI: persisted exact replay/CAS; unknown request blocks a new mutation; literal text; progress; bounded HNSW options.\n",
+      "stderr_tail": ""
+    },
+    {
+      "file": "knowledge_platform/tests/search_ui_test.cjs",
+      "exit_code": 0,
+      "stdout_tail": "PASS search UI: explicit Model query call; pinned version across activation; filters; literal provenance/quality; no stored vectors; mismatch and stale request cancellation.\nPASS rerank UI: default off; read-only profile selection; candidate_k/top_k; one Knowledge search; distinct scores; error/mismatch never falls back; switching off excludes raw query.\nPASS search feedback: actual click handlers; local validation/profile errors; no invalid inference; old results cleared; busy label restored; duplicate click blocked; stale feedback suppressed.\n",
+      "stderr_tail": ""
+    },
+    {
+      "file": "knowledge_platform/tests/indexing_context_ui_test.cjs",
+      "exit_code": 0,
+      "stdout_tail": "PASS management context: late index/version/list replies ignored; selection clears actions; stale card cannot delete; mutation acknowledgement preserves new selection.\n",
+      "stderr_tail": ""
+    },
+    {
+      "file": "knowledge_platform/tests/request_state_test.cjs",
+      "exit_code": 0,
+      "stdout_tail": "PASS preview storage: blocked writes send no request; failed cleanup keeps the exact replay key\nPASS structure preview: primary rows, repeated context rows, literal source text\nPASS request state: default strategy; ambiguous response blocks new create; reload preserves exact replay; definitive rejection clears pending; comparison reuses canonical inputs/options; invalid overlap makes no request\n",
+      "stderr_tail": ""
+    },
+    {
+      "file": "agent_platform/tests/console_ui_test.cjs",
+      "exit_code": 0,
+      "stdout_tail": "{\n  \"result\": \"passed\",\n  \"checks\": 27,\n  \"scope\": \"shipped HTML/JS + DOM/API doubles; no browser/native services\"\n}\n",
+      "stderr_tail": ""
+    },
+    {
+      "file": "agent_platform/tests/knowledge_console_test.cjs",
+      "exit_code": 0,
+      "stdout_tail": "{\n  \"result\": \"passed\",\n  \"checks\": 11,\n  \"scope\": \"Knowledge wizard, raw question, result cards and uncertain-response recovery; DOM/API doubles\"\n}\n",
+      "stderr_tail": ""
+    },
+    {
+      "file": "agent_platform/tests/workflow_console_test.cjs",
+      "exit_code": 0,
+      "stdout_tail": "{\"result\":\"passed\",\"checks\":9,\"scope\":\"URL boundary, remote loopback guidance, retired/disabled Agent, exact workflow history, revision conflict, failed citation display, stopped polling, cleared session; DOM/API doubles\"}\n",
+      "stderr_tail": ""
+    }
+  ],
+  "not_executed": [
+    "Go compile/typecheck/test",
+    "PostgreSQL integration",
+    "GPU inference or training",
+    "Docker/systemd services",
+    "native age backup tests",
+    "live browser rendering",
+    "current server image/source comparison",
+    "production backup or restore"
+  ],
+  "mutations": {
+    "project_runtime_code": false,
+    "compose_or_environment": false,
+    "server_actions": false,
+    "documentation_only": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "nodes": [
+    {
+      "name": "simsys4070",
+      "ssh_host": "model-simsys4070",
+      "container": "model-node-agent",
+      "architecture": "amd64",
+      "daemon_id": "",
+      "enabled": false
+    }
+  ]
+}

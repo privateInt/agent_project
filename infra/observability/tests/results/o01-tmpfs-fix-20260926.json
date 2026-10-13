@@ -1,0 +1,33 @@
+{
+  "stage": "O01",
+  "date": "2026-09-26",
+  "scope": "tmpfs YAML fix and pre-start validation",
+  "server_evidence": {
+    "patch_files_applied": 20,
+    "images_pulled": 3,
+    "promtool": "passed",
+    "container_creation": "failed",
+    "error": "invalid mount path: 'mode=1777' mount path must be absolute",
+    "node_exporter": "Creating shown; final state not attested",
+    "collection_acceptance": "not_reached",
+    "image_digests": {
+      "prometheus": "sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+      "node_exporter": "sha256:1b4e4438faca4dd7e001dd445d161a4a2091b0fededa84093b3a8dfeae1f1be0",
+      "cadvisor": "sha256:b8e7d1093144fd088f425ff003d75a4aa405de075db78dae3bc563730b1bd07a"
+    }
+  },
+  "local": {
+    "result": "passed",
+    "tests": 19,
+    "seconds": 2.234,
+    "real_compose": "2.39.4",
+    "original_yaml_error_reproduced": true,
+    "fixed_tmpfs_is_one_mount": true,
+    "other_compose_fields_unchanged": true,
+    "bad_tmpfs_rejected_before_container_creation": true,
+    "retry_preserves_partial_create_state_pins_and_data": true,
+    "docker_daemon_available": false
+  },
+  "server_fix_acceptance": "pending",
+  "inference_executed": false
+}

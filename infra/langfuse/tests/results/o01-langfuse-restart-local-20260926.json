@@ -1,0 +1,37 @@
+{
+  "stage": "O01-Langfuse-restart-local",
+  "result": "passed",
+  "scope": "local HTTP fixtures and Docker fault simulation; not server restart acceptance",
+  "python_tests": 50,
+  "new_restart_tests": 12,
+  "python39_syntax": "passed",
+  "cli_entrypoint": "passed",
+  "checks": [
+    "six owned immutable IDs only",
+    "durable intent before external restart",
+    "same run/compare reads unchanged baseline",
+    "real HTTP readiness/project and observations GET only",
+    "lost restart response/timeout never causes a second request",
+    "interruption before dispatch and partial restart never pass",
+    "missing trace never reposted",
+    "span relationship/status/time/metadata/body corruption rejected",
+    "foreign owner/image/mount and unhealthy preflight block before mutation",
+    "changed ID/image/config/private trace/baseline rejected",
+    "pending CLI returns exit 2",
+    "settings/keys/trace bytes and private baseline permissions preserved"
+  ],
+  "docker_daemon_used_locally": false,
+  "server_restart_executed": false,
+  "restart_preservation_server_verified": false,
+  "inference_executed": false,
+  "new_trace_submitted": false,
+  "historical_server_trace_id": "9d84fa1067824eb5b82be42ade6959f7",
+  "historical_payload_sha256": "5bfa10529ebcd6e7d3d311998c5e12418f436defaaac6aaa9828041dd7052048",
+  "pending": [
+    "server restart_check run and compare",
+    "Agent instrumentation",
+    "ops API/UI",
+    "storage backup/restore"
+  ],
+  "existing_runtime_code_changed": false
+}

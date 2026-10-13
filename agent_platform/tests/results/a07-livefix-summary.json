@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-24",
+  "stage": "A07-livefix",
+  "result": "local_checks_passed_server_diagnosis_pending",
+  "agent_build": "a07.1",
+  "schema_version": 5,
+  "server_observed": {
+    "live_patch_files_applied": 17,
+    "check_image_build": "passed",
+    "image_sha256": "a103796bc9d6613beeb11feba4502bd33fbee139e3fd08f2cae5daf105de67cd",
+    "agent_version_id": "1ce733f5-bd68-40e5-831c-3297919565a6",
+    "agent_run_id": "42762502-b93d-46bb-b431-cd66d3b5e741",
+    "selected_answer_model_label": "한국어 embedding",
+    "execution_report": "N8N_EXECUTION_FAILED",
+    "root_agent_error": "not yet supplied"
+  },
+  "confirmed_code_issue": "Agent model identity omitted the two legacy non-chat repository exclusions already enforced by Model Platform chat.go; empty profile + llm registration alone was insufficient.",
+  "fixes": [
+    "runtime list/resolve excludes existing embedding/reranking repositories by repo_id",
+    "display repository in answer choices",
+    "prepare excludes and rejects selected search embedding deployment as answer model",
+    "diagnose uses GET-only existing run, steps and ToolCall; prints error code/stage without secret/body/raw log",
+    "failed host run performs read-only diagnosis when acceptance pointer exists"
+  ],
+  "checks": {
+    "runtime_agents": 15,
+    "n8n_operations": 14,
+    "actual_n8n_go_python_pglite_http_fixtures": "PASS 45.94s",
+    "retry_inference_deltas": {
+      "embedding": 1,
+      "search": 1,
+      "chat": 1
+    }
+  },
+  "unchanged": [
+    "Model/Data/Knowledge execution code",
+    "operational n8n database and keys",
+    "existing AgentRun and ToolCall records",
+    "existing session request envelope",
+    "schema 5"
+  ],
+  "deployment": "apply patch, diagnose existing run without rebuild; server model filter requires rebuilding only agent-runtime after active runs complete",
+  "not_verified": [
+    "root cause of supplied server AgentRun",
+    "actual user GPU answer inference",
+    "server application of this fix",
+    "user page checks"
+  ],
+  "code_sha256": {
+    "agent_platform/runtime/agent_runtime/agents.py": "af233bd8564b17cee1d6ca9d7bb0559991626c69ae823b13488c6450f0e44854",
+    "agent_platform/runtime/tests/test_agents.py": "16234bf1ba32a8c8ab7218296c57f7d500a78fd301cf481715c03619204f4d72",
+    "agent_platform/n8n/ops/live_check.py": "72c221a22cf7390e4ae580aec2ab35ce6cb9303b12b3483293842d4b42df507b",
+    "agent_platform/n8n/tests/test_live.py": "98d069319b08652fadf923d19cad71a273c732943bed7286d2c0a9686c0a3f29"
+  }
+}

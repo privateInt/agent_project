@@ -1,0 +1,84 @@
+{
+  "date": "2026-09-24",
+  "stage": "A07-live",
+  "result": "local_checks_passed_server_acceptance_pending",
+  "agent_build": "a07.1",
+  "schema_version": 5,
+  "server_prior_evidence": {
+    "verified_document_patch_files_applied": 14,
+    "n8n_infra_healthy": true,
+    "isolated_n8n_checks_passed": 7,
+    "source": "user supplied terminal logs"
+  },
+  "runtime": {
+    "n8n": "2.40.5",
+    "node": "24.19.0",
+    "go": "1.26.8",
+    "pglite": "0.5.8",
+    "pglite_socket": "0.2.11",
+    "scope": "actual n8n CLI + Agent Go Gateway/Service + Python Runtime + PGlite SQL; Model/Knowledge HTTP fixtures"
+  },
+  "checks": {
+    "python_n8n_operations": 12,
+    "node_live_validation": 8,
+    "shipped_workflow_contract": 6,
+    "agent_end_to_end": "PASS 45.22 seconds",
+    "compose": "normalized with Docker Compose 2.39.4; isolated session, host UID/GID, external Agent network"
+  },
+  "integration_evidence": {
+    "new_agent_created_as_draft": true,
+    "mode": "test",
+    "lost_initial_acceptance_responses": 3,
+    "durable_request_before_post": true,
+    "resume_after_failed_n8n_process": true,
+    "second_host_run_reuses_saved_request": true,
+    "lookup_without_inference": true,
+    "inference_deltas": {
+      "embedding": 1,
+      "search": 1,
+      "chat": 1
+    },
+    "agent_run_tool_call_request_ids_preserved": true,
+    "original_caller_context_preserved": true,
+    "new_n8n_execution_ids": true,
+    "idempotency_response_header": true,
+    "answer_citations_preserve_original_search_source": true
+  },
+  "unit_evidence": [
+    "uncertain Agent creation retries same key/body without duplicate creation",
+    "prepared and interrupted sessions reject changed resource selections",
+    "ready resource drift stops before mutation",
+    "draft Tool needs explicit publish choice; Agent remains draft",
+    "existing Agent prepare makes no write",
+    "private session and origin validation",
+    "wrong embedding/definition/correlation/citation data rejected",
+    "no_evidence returns incomplete",
+    "default run and draft test workflow modes"
+  ],
+  "not_verified": [
+    "new live Docker image build on user server",
+    "actual user Model/Knowledge/GPU inference",
+    "actual PostgreSQL 16 integration of this new runner",
+    "semantic answer quality",
+    "operational n8n UI import/edit/WorkflowLink execution",
+    "user server restart then lookup"
+  ],
+  "unchanged": [
+    "infra n8n PostgreSQL volumes and keys",
+    "operational settings and secrets",
+    "Agent service build/schema",
+    "Model/Data/Knowledge execution code"
+  ],
+  "code_sha256": {
+    "agent_platform/n8n/live/run.cjs": "43b0e9378b6e602804678d54deca49aaa5a33ff1f4301a4cc8dd263564a779c5",
+    "agent_platform/n8n/ops/live_check.py": "d6f5c5a0350c122975827fdc296ee7c7c61d8e140c9dfe97ab2ae2fbe8cfb2ae",
+    "agent_platform/n8n/ops/workflow.py": "51e4ac3698a30d1f42cb6a8ecd43068528e974abf2ad1d6472dcae0b3fdc5be8",
+    "agent_platform/n8n/workflows/agent-question.json": "dfd4e9b15e6ead4104a7fffc09ec6e809b596023071bb3cf1d30df4c42aefcab",
+    "agent_platform/n8n/live/Dockerfile": "2bb7d91b4cbb2c93c3e8adeda486b86b2c43eed878d4b42103d4074c84d8e51b",
+    "agent_platform/n8n/live/Dockerfile.dockerignore": "e2a6fa778536e32250f736952fa634ad01fa2249b92f118b3770928dd1da765e",
+    "agent_platform/n8n/live/docker-compose.yml": "c3414af7905ac8f46f426a10c6fb43c4da909296e030af896ca359179e138986",
+    "agent_platform/n8n/tests/test_live.py": "0ff3e829ad7d2f1547fb3408ba4dca2cce6b56e8fe4e8b16147c7f76e7f38b44",
+    "agent_platform/n8n/tests/live.cjs": "4591375d5a5cb289028fd990ec5fca4e689fdb6a59cb348950c58748f4059017",
+    "agent_platform/service/app/agent_end_to_end_test.go": "e403c740e79bcb57df2d0669d8c99c8bebede3e998e85e24e2cac00402cf41bb"
+  }
+}

@@ -1,0 +1,48 @@
+syntax = "proto3";
+package knowledge.chunking.v1;
+option go_package = "knowledge-platform/gen/chunking/v1;chunkingv1";
+import "google/protobuf/timestamp.proto";
+
+// JSON fields use versioned domain schemas. Raw canonical fields remain JSON
+// so new Data provenance fields are preserved without a lossy protobuf DTO.
+service ChunkingService {
+ rpc ListChunkers(Empty) returns (JSONResponse);
+ rpc CreateRun(CreateRunRequest) returns (RunAccepted);
+ rpc GetRun(GetRunRequest) returns (ChunkingRun);
+ rpc ListRuns(ListRunsRequest) returns (ListRunsResponse);
+ rpc CompleteRun(CompleteRunRequest) returns (ChunkingRun);
+ rpc ListChunks(ListChunksRequest) returns (JSONResponse);
+}
+message Empty {}
+message JSONResponse { bytes json = 1; }
+message CreateRunRequest {
+ string name = 1;
+ repeated string canonical_ids = 2;
+ string chunker_id = 3;
+ bytes options_json = 4;
+ string idempotency_key = 5;
+}
+message RunAccepted { string chunking_run_id = 1; string operation_id = 2; }
+message GetRunRequest { string chunking_run_id = 1; }
+message ChunkingRun {
+ string chunking_run_id = 1;
+ string operation_id = 2;
+ string name = 3;
+ bytes spec_json = 4;
+ string result_sha256 = 5;
+ int64 result_size_bytes = 6;
+ int32 chunk_count = 7;
+ bytes summary_json = 8;
+ string processor_image_id = 9;
+ google.protobuf.Timestamp created_at = 10;
+ string submission_status = 11;
+ string submission_error_code = 12;
+}
+message ListRunsRequest { int32 limit = 1; string cursor = 2; }
+message ListRunsResponse { repeated ChunkingRun items = 1; string next_cursor = 2; }
+message CompleteRunRequest {
+ string chunking_run_id = 1; string operation_id = 2;
+ string dispatch_token = 3; string execution_instance_id = 4;
+ string sha256 = 5; int64 size_bytes = 6; string processor_image_id = 7;
+}
+message ListChunksRequest { string chunking_run_id = 1; int32 limit = 2; string cursor = 3; }

@@ -1,0 +1,42 @@
+{
+  "stage": "O02-Agent-tracing-local",
+  "result": "passed",
+  "server_acceptance": "pending",
+  "runtime_python_tests": 59,
+  "tracing_ops_tests": 4,
+  "preflight_tests": 2,
+  "go_test_packages": 6,
+  "integration": {
+    "result": "passed",
+    "scope": "real Go/Python gRPC + HTTP fixtures + PostgreSQL WASM; not Docker/PostgreSQL16/Langfuse/GPU",
+    "observations_received": 68,
+    "traces_received": 8,
+    "normal_agent_spans": 10,
+    "durable_parent_propagation": true,
+    "same_request_replay_no_additional_execution_or_spans": true
+  },
+  "compose_config": "passed",
+  "python39_syntax": "passed",
+  "image_tags": {
+    "service": "o02.1",
+    "runtime": "o02.1"
+  },
+  "schema_version": 5,
+  "metadata_only": true,
+  "bounded_best_effort_export": true,
+  "in_memory_queue_loss_possible": true,
+  "user_server_inference_executed": false,
+  "new_server_trace_verified": false,
+  "pending": [
+    "server build and limited service/runtime rollout",
+    "real Langfuse delivery/readback and same-request replay",
+    "dedicated sender/reader credentials and retention/capacity before sustained collection",
+    "ops API/UI"
+  ],
+  "unchanged": [
+    "infra Langfuse lifecycle/images/config/storage and original baseline",
+    "Model/Data/Knowledge code",
+    "Agent domain API/schema",
+    "existing n8n Flow/session/key"
+  ]
+}

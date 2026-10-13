@@ -1,0 +1,57 @@
+services:
+  obs-cadvisor:
+    image: ${OBS_CADVISOR_IMAGE:?Run observability prepare first}
+    labels:
+      org.agent-project.observability.owner: ${OBS_CONFIG_ID:?}
+    network_mode: host
+    cgroup: host
+    restart: unless-stopped
+    privileged: true
+    read_only: true
+    cpus: 1.0
+    mem_limit: 512m
+    memswap_limit: 512m
+    pids_limit: 256
+    tmpfs:
+      - "/tmp:size=16777216,mode=1777"
+    command:
+      - --listen_ip=127.0.0.1
+      - --port=16312
+      - --docker=unix:///var/run/docker.sock
+      - --docker_only=true
+      - --store_container_labels=false
+      - --enable_metrics=cpu,memory,network,diskIO
+      - --housekeeping_interval=15s
+      - --max_housekeeping_interval=30s
+      - --storage_duration=1m
+      - --disable_root_cgroup_stats=true
+    volumes:
+      - type: bind
+        source: /
+        target: /rootfs
+        read_only: true
+        bind: {propagation: rslave, create_host_path: false}
+      - type: bind
+        source: /sys
+        target: /sys
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${OBS_DOCKER_ROOT:?}
+        target: ${OBS_DOCKER_ROOT:?}
+        read_only: true
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD, wget, -q, --spider, http://127.0.0.1:16312/healthz]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}

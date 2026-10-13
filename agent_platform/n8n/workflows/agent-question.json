@@ -1,0 +1,390 @@
+{
+  "name": "Agent Platform · 질문과 출처",
+  "active": false,
+  "nodes": [
+    {
+      "id": "8fadc74c-9d90-59a3-95b4-f73773c81975",
+      "name": "Manual start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "parameters": {},
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "8301d01e-c31f-5463-85ae-0a08addd3836",
+      "name": "Question settings",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "return [{json:JSON.parse(\"{\\\"base_url\\\": \\\"http://agent-gateway:8000\\\", \\\"agent_version_id\\\": \\\"00000000-0000-0000-0000-000000000000\\\", \\\"question\\\": \\\"선택한 자료의 연구 범위는 무엇인가요?\\\"}\")}];"
+      },
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "id": "cc5959f3-bfb4-5ac2-8d13-cdc363e53a53",
+      "name": "Prepare request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const x=$input.first().json;\nconst uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;\nif (typeof x.base_url!=='string'||!/^https?:\\/\\/[^\\s/?#@]+(?::\\d+)?$/.test(x.base_url)) throw Error('Configure the Agent Gateway origin');\nlet request=x.request;\nif (!request) {\n  const mode=x.mode||'run';if(!['run','test'].includes(mode))throw Error('Choose run or test mode');\n  if(!uuid.test(x.agent_version_id)||x.agent_version_id==='00000000-0000-0000-0000-000000000000')throw Error('Choose a published Agent version');\n  if(typeof x.question!=='string'||!x.question.trim()||x.question.includes('\\0')||Buffer.byteLength(x.question,'utf8')>8192)throw Error('Question must be nonblank and at most 8 KiB');\n  // Stable inside this execution; HTTP retries consume this saved output.\n  const hex=require('crypto').createHash('sha256').update(String($workflow.id)+'/'+String($execution.id)+'/agent-call').digest('hex');\n  const key=hex.slice(0,8)+'-'+hex.slice(8,12)+'-4'+hex.slice(13,16)+'-a'+hex.slice(17,20)+'-'+hex.slice(20,32);\n  request={invocation_key:key,body:{agent_version_id:x.agent_version_id,mode,input:{question:x.question},caller_context:{system:'n8n',workflow_id:String($workflow.id),execution_id:String($execution.id),node_id:'agent-call'}}};\n}\nif(!uuid.test(request.invocation_key)||!uuid.test(request.body?.agent_version_id)||!['run','test'].includes(request.body.mode)||typeof request.body.input?.question!=='string'||!request.body.input.question.trim()||request.body.input.question.includes('\\0')||Buffer.byteLength(request.body.input.question,'utf8')>8192||!request.body.caller_context?.execution_id)throw Error('Invalid replay envelope: preserve the original key, body and caller_context');\nreturn [{json:{base_url:x.base_url,request,started_ms:Date.now(),trace:{workflow_id:String($workflow.id),execution_id:String($execution.id)}}}];"
+      },
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "id": "7e1a3cb1-7532-5dc3-b6c9-0654c47fbc50",
+      "name": "Accept Agent run",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 8000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          },
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        },
+        "method": "POST",
+        "url": "={{ $json.base_url + \"/api/agent-runs\" }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Idempotency-Key",
+              "value": "={{ $json.request.invocation_key }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.request.body) }}"
+      },
+      "position": [
+        660,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000
+    },
+    {
+      "id": "22104023-e8be-5965-bbec-d114860ad0e8",
+      "name": "Run pointer",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const p=$('Prepare request').first().json,r=$input.first().json;\nconst b=r.body;\nif(r.statusCode!==202||!b||b.state!=='accepted'||!/^[-0-9a-f]{36}$/.test(b.agent_run_id)||b.agent_version_id!==p.request.body.agent_version_id||b.status_url!=='/api/agent-runs/'+b.agent_run_id)throw Error('Invalid Agent acceptance; preserve Prepare request output before retry');\nreturn [{json:{...p,agent_run_id:b.agent_run_id,status_url:b.status_url}}];"
+      },
+      "position": [
+        880,
+        0
+      ]
+    },
+    {
+      "id": "947bac19-66e8-5706-8bf9-fda14b2a4eb3",
+      "name": "Read Agent run",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "parameters": {
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 8000,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          },
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        },
+        "method": "GET",
+        "url": "={{ $(\"Run pointer\").first().json.base_url + $(\"Run pointer\").first().json.status_url }}"
+      },
+      "position": [
+        1100,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000
+    },
+    {
+      "id": "3d3f37dc-c858-5206-8bc1-e037b6bf21c1",
+      "name": "Evaluate state",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const p=$('Run pointer').first().json,r=$input.first().json,b=r.body;\nif(r.statusCode!==200||!b||b.agent_run_id!==p.agent_run_id||b.agent_version_id!==p.request.body.agent_version_id||!['accepted','running','succeeded','failed','interrupted'].includes(b.state))throw Error('Invalid Agent status; use the saved run ID to look up the result');\nlet keep_waiting=['accepted','running'].includes(b.state);\nconst timed_out=keep_waiting&&(Date.now()-p.started_ms>=650000||$runIndex>=300);\nif(timed_out)keep_waiting=false;\nif(b.state==='succeeded'&&(!b.result||!['answered','no_evidence'].includes(b.result.outcome)||typeof b.result.answer!=='string'||!Array.isArray(b.result.citations)||(b.result.outcome==='answered'&&!b.result.citations.length)))throw Error('Invalid final Agent result');\nreturn [{json:{...p,keep_waiting,succeeded:b.state==='succeeded',state:timed_out?'poll_timeout':b.state,request_id:b.request_id||'',tool_call_id:b.tool_call_id||'',result:b.result||null,error:timed_out?{code:'POLL_TIMEOUT',stage:'poll'}:b.error||null,poll_count:$runIndex+1}}];"
+      },
+      "position": [
+        1320,
+        0
+      ]
+    },
+    {
+      "id": "bedb6d08-06b0-51c5-b3f0-b0971a4ab6e7",
+      "name": "Still waiting",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0cb00d41-7771-5ad2-8b02-18aad60c9525",
+              "leftValue": "={{ $json.keep_waiting }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "position": [
+        1540,
+        0
+      ]
+    },
+    {
+      "id": "ecc815b9-fb39-5a0d-a79b-7da926ff9cdb",
+      "name": "Wait two seconds",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "parameters": {
+        "amount": 2,
+        "unit": "seconds"
+      },
+      "position": [
+        1540,
+        -200
+      ]
+    },
+    {
+      "id": "d4f45051-afb7-5d3a-9a30-427e94222f37",
+      "name": "Agent succeeded",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7a0d2e75-507f-5ee2-a03a-3d54783e55f0",
+              "leftValue": "={{ $json.succeeded }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "position": [
+        1760,
+        120
+      ]
+    },
+    {
+      "id": "e28692af-8e71-5682-a064-7b95c5139185",
+      "name": "Answer and sources",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "parameters": {
+        "jsCode": "const x=$input.first().json;return [{json:{agent_run_id:x.agent_run_id,agent_version_id:x.request.body.agent_version_id,request_id:x.request_id,tool_call_id:x.tool_call_id,state:x.state,answer:x.result.answer,citations:x.result.citations,outcome:x.result.outcome,answer_truncated:x.result.answer_truncated,warnings:x.result.warnings||[],agent_status_url:x.base_url+x.status_url,n8n_execution:x.trace,original_caller_context:x.request.body.caller_context,replay_request:x.request}}];"
+      },
+      "position": [
+        1980,
+        40
+      ]
+    },
+    {
+      "id": "56a3cc2f-a541-5b25-b093-71d5b3e59048",
+      "name": "Agent failure",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "parameters": {
+        "errorMessage": "={{ JSON.stringify({state:$json.state,error:$json.error,agent_run_id:$json.agent_run_id,request_id:$json.request_id,tool_call_id:$json.tool_call_id,status_url:$json.base_url+$json.status_url}) }}"
+      },
+      "position": [
+        1980,
+        240
+      ]
+    }
+  ],
+  "connections": {
+    "Manual start": {
+      "main": [
+        [
+          {
+            "node": "Question settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Question settings": {
+      "main": [
+        [
+          {
+            "node": "Prepare request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare request": {
+      "main": [
+        [
+          {
+            "node": "Accept Agent run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Accept Agent run": {
+      "main": [
+        [
+          {
+            "node": "Run pointer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run pointer": {
+      "main": [
+        [
+          {
+            "node": "Read Agent run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Agent run": {
+      "main": [
+        [
+          {
+            "node": "Evaluate state",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evaluate state": {
+      "main": [
+        [
+          {
+            "node": "Still waiting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Still waiting": {
+      "main": [
+        [
+          {
+            "node": "Wait two seconds",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Agent succeeded",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait two seconds": {
+      "main": [
+        [
+          {
+            "node": "Read Agent run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent succeeded": {
+      "main": [
+        [
+          {
+            "node": "Answer and sources",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Agent failure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "executionTimeout": 720,
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "callerPolicy": "workflowsFromSameOwner"
+  }
+}

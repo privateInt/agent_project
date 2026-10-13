@@ -1,0 +1,28 @@
+services:
+  agent-runtime:
+    image: agent-platform-runtime:o02.1
+    build:
+      context: .
+      dockerfile: runtime/Dockerfile
+      target: runtime
+    pull_policy: never
+    restart: unless-stopped
+    networks: [agent-private, agent-api]
+    environment:
+      AGENT_SERVICE_ADDRESS: agent-service:9000
+      LANGSMITH_TRACING: "false"
+      LANGCHAIN_TRACING_V2: "false"
+      AGENT_RUNTIME_ADDRESS: '[::]:9001'
+      AGENT_INTERNAL_TOKEN_FILE: /run/secrets/agent-internal-token
+      AGENT_TOOL_CREDENTIALS_FILE: /run/secrets/agent-tool-credentials
+    secrets: [agent-internal-token, agent-tool-credentials]
+    healthcheck:
+      test: [CMD, python, -m, agent_runtime.healthcheck]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+    read_only: true
+    tmpfs:
+      - "/tmp:size=16m,mode=1777"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]

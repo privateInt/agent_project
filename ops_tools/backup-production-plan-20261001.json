@@ -1,0 +1,22 @@
+{
+  "active_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+  "kind": "production-generation-metadata-connection-v1",
+  "schema": 1,
+  "source_pins": {
+    "ops_candidates/backup_capture_20260930/age_tool.py": "76e8e3f1272de2ae2e76208929d111c01d9c4653458735c0a21e6db04ffcfaa9",
+    "ops_candidates/backup_capture_20260930/capture.py": "16514b865aae7fea489844e986177e56ac8c49b5e3808c41c86f1c617261bb85",
+    "ops_candidates/backup_generation_20261001/generation.py": "e00b1755a28a6b2f7acffbe7261bf66418bc1a0134d60b86f1588400659136b3",
+    "ops_candidates/cold_storage_20260930/reader.py": "b100c7d38faeb3074cbac57dc914383a91e34c72cc062ec760ba80685c223eb6",
+    "ops_candidates/cold_storage_20260930/storage.py": "737ff298fad05b17dc4a4696edbba1a474c95d9aae177bbfd9805392a9e082f5",
+    "ops_tools/maintenance_control.py": "4361ee6f37be74614bb79829849bdc213693d76c9bcb2bb39668f9315a979ca8"
+  },
+  "tools": {
+    "architecture": "amd64",
+    "archive_sha256": "cbe24006683f8eb669266162894b9a522a1af52f2665fbc63a4bb032ed26ac10",
+    "binaries": {
+      "age": "eb7dd1b518f0a307c99cd97782623c5321da049154b04acd2d98d21aa7bc9b2c",
+      "age-keygen": "0a0009db842259d6717f7eeb30acb6b90d2a2eb924c6acd0a0db0ca1f1537899"
+    },
+    "version": "v1.3.2"
+  }
+}

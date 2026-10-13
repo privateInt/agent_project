@@ -1,0 +1,80 @@
+{
+  "date": "2026-09-24",
+  "stage": "A07 n8n DB CREATE fix",
+  "agent_build": "a07.1",
+  "schema_version": 5,
+  "result": "server_recovery_confirmed_isolated_check_launch_failed",
+  "server_evidence": {
+    "file": "붙여넣은 텍스트 (1)(20260924-050729).txt",
+    "source_patch_applied": 39,
+    "infra_ownership_handoff": "confirmed",
+    "original_volumes_reused": [
+      "agent-flows_flows-db",
+      "agent-flows_flows-data"
+    ],
+    "postgres_version": "16.15",
+    "application_login_and_table_ddl": "passed",
+    "n8n": "unhealthy",
+    "error": "permission denied for database flows",
+    "statement": "CREATE SCHEMA IF NOT EXISTS \"n8n\"",
+    "n8n_checks": "not_run_due_to_set_e"
+  },
+  "fix": {
+    "privileges": "GRANT CONNECT, CREATE ON DATABASE flows TO flows_service",
+    "scope": "dedicated flows DB only; no cluster role attribute changes",
+    "fresh_initialization": true,
+    "existing_database_repair": "guarded and idempotent SQL",
+    "preflight": "execute the exact n8n schema statement as app role",
+    "recovery": "stop unhealthy n8n then up; healthy n8n not stopped",
+    "credentials_and_data": "unchanged"
+  },
+  "checks": {
+    "operations_unittests": 16,
+    "real_compose": "2.39.4; root/subset match; 6 boundary rejections",
+    "sql_regression": {
+      "result": "passed",
+      "engine": "PGlite PostgreSQL18.3 WASM",
+      "native_postgresql16": false,
+      "checks": [
+        "fresh shipped initialization permits exact n8n startup statement",
+        "exact existing-schema startup statement denied with 42501 before repair",
+        "shipped existing-DB repair idempotent",
+        "existing schema and row preserved",
+        "application-role startup check passes",
+        "superuser/createdb/createrole/replication/bypassrls remain false",
+        "creating another database or role denied"
+      ]
+    },
+    "real_n8n_readiness_and_restart": {
+      "result": "passed",
+      "engine": "real n8n 2.40.5",
+      "database": "PGlite PostgreSQL18.3 WASM with restricted flows_service and n8n schema",
+      "native_postgresql16": false,
+      "fresh_migrations": "passed",
+      "http_readiness": [
+        200,
+        200
+      ],
+      "restart_workflow_id_preserved": true,
+      "encryption_key_unchanged": true,
+      "workflow_executed": false
+    }
+  },
+  "limitations": [
+    "no local Docker daemon; native PostgreSQL16/n8n server recovery subsequently confirmed in user log; isolated check execution still pending",
+    "user pages and real LLM/Knowledge flows remain deferred",
+    "local restart validates an inactive test workflow and key, not actual user AgentRun acceptance"
+  ],
+  "source_scope": "infra n8n operations, tests and docs only; no Agent runtime/API/DB schema change; other platforms unchanged",
+  "server_recovery_confirmation": {
+    "source": "user pasted terminal log; patch backup timestamp 20260924T052059",
+    "patch_applied_files": 19,
+    "database_privilege_repair": "BEGIN / DO / GRANT / COMMIT",
+    "app_role_exact_schema_and_table_check": "passed; transaction rolled back",
+    "postgres": "healthy",
+    "n8n": "healthy",
+    "original_volumes_and_keys": "preserved; lifecycle PASS",
+    "isolated_checks": "launch failed: MODULE_NOT_FOUND /checks/tests/run.cjs",
+    "details": "docs/agent-platform/n8n-checks-fix-20260924.md"
+  }
+}

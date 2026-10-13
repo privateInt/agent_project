@@ -1,0 +1,31 @@
+
+# Public review safety rules; templates contain placeholders only.
+**/.env
+**/.env.*
+!**/.env.example
+**/*.env
+!**/*.env.example
+**/.secrets/
+**/var/
+**/build/
+**/.patch-backups/
+**/activation-backups/
+**/node_modules/
+**/.venv/
+**/__pycache__/
+**/*.pyc
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.db
+**/*.sqlite*
+**/*.log
+**/.state.json
+**/.storage.json
+**/.handoff.json
+**/.ops.lock
+**/certs/*.crt
+**/certs/*.csr
+**/certs/*.srl
+# Source packages named storage are intentionally included.

@@ -1,0 +1,295 @@
+{
+  "schema": 1,
+  "kind": "synthetic_minimal_api_projections_not_server_results",
+  "ids": {
+    "job": "00000001-0000-4000-8000-000000000001",
+    "library": "00000001-0000-4000-8000-000000000002",
+    "source": "00000001-0000-4000-8000-000000000003",
+    "refinement": "00000001-0000-4000-8000-000000000004",
+    "refinement_operation": "00000001-0000-4000-8000-000000000005",
+    "canonical": "00000001-0000-4000-8000-000000000006",
+    "index": "00000001-0000-4000-8000-000000000007",
+    "index_version": "00000001-0000-4000-8000-000000000008",
+    "index_operation": "00000001-0000-4000-8000-000000000009",
+    "embedding": "00000001-0000-4000-8000-000000000010",
+    "tool_version": "00000001-0000-4000-8000-000000000011",
+    "agent_version": "00000001-0000-4000-8000-000000000012",
+    "tool_call": "00000001-0000-4000-8000-000000000013",
+    "agent_run": "00000001-0000-4000-8000-000000000014",
+    "connection": "00000001-0000-4000-8000-000000000015",
+    "model_connection": "00000001-0000-4000-8000-000000000016"
+  },
+  "space_id": "es_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "canonical_content": {
+    "schema_version": "canonical-document-v1",
+    "source": {
+      "document_id": "00000001-0000-4000-8000-000000000003",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "format": "text"
+    },
+    "processor": {
+      "version": "cpu-parser-v1",
+      "rules_version": "basic-cleaning-v1",
+      "image_id": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "blocks": [
+      {
+        "id": "b1",
+        "order": 0,
+        "type": "text",
+        "text": "테스트 자료의 운영 시간은 오전 9시입니다."
+      }
+    ],
+    "pages": [],
+    "quality": {
+      "state": "ready",
+      "issues": []
+    },
+    "cleaning": {
+      "version": "basic-cleaning-v1"
+    }
+  },
+  "canonical_metadata": {
+    "document_id": "00000001-0000-4000-8000-000000000006",
+    "source_document_id": "00000001-0000-4000-8000-000000000003",
+    "refinement_run_id": "00000001-0000-4000-8000-000000000004",
+    "sha256": "d9cfd4a01c271049820d5f7bb7aa9ca1a1df481b6d91d93d08f70994327e0d35",
+    "size_bytes": 568,
+    "schema_version": "canonical-document-v1",
+    "state": "ready",
+    "block_count": 1,
+    "page_count": 0
+  },
+  "receipts": {
+    "data.upload": {
+      "document_id": "00000001-0000-4000-8000-000000000003",
+      "state": "ready",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "size_bytes": 128,
+      "format": "text",
+      "deleted_at": null,
+      "purge_state": ""
+    },
+    "data.refine": {
+      "refinement_run_id": "00000001-0000-4000-8000-000000000004",
+      "operation_id": "00000001-0000-4000-8000-000000000005",
+      "status": "accepted"
+    },
+    "knowledge.build": {
+      "schema_version": "index-version-v1",
+      "index_id": "00000001-0000-4000-8000-000000000007",
+      "index_version_id": "00000001-0000-4000-8000-000000000008",
+      "operation_id": "00000001-0000-4000-8000-000000000009",
+      "chunking_run_id": "00000001-0000-4000-8000-000000000005",
+      "state": "protecting",
+      "reference_state": "pending",
+      "canonical_ids": [
+        "00000001-0000-4000-8000-000000000006"
+      ],
+      "embedding_profile": {
+        "deployment_id": "00000001-0000-4000-8000-000000000010",
+        "embedding_space_id": "es_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": "ready",
+        "capability": "embedding",
+        "profile_id": "snowflake-ko-v1",
+        "dimension": 1024
+      },
+      "chunk_count": 0,
+      "indexed_count": 0,
+      "error_code": ""
+    },
+    "agent.tool_call": {
+      "tool_call_id": "00000001-0000-4000-8000-000000000013",
+      "tool_version_id": "00000001-0000-4000-8000-000000000011",
+      "state": "accepted",
+      "status_url": "/api/tool-calls/00000001-0000-4000-8000-000000000013"
+    },
+    "agent.run": {
+      "agent_run_id": "00000001-0000-4000-8000-000000000014",
+      "agent_version_id": "00000001-0000-4000-8000-000000000012",
+      "state": "accepted",
+      "status_url": "/api/agent-runs/00000001-0000-4000-8000-000000000014"
+    }
+  },
+  "refinement_completed": {
+    "refinement_run_id": "00000001-0000-4000-8000-000000000004",
+    "operation_id": "00000001-0000-4000-8000-000000000005",
+    "source_document_id": "00000001-0000-4000-8000-000000000003",
+    "status": "succeeded",
+    "phase": "completed",
+    "output_document_id": "00000001-0000-4000-8000-000000000006",
+    "error_code": "",
+    "deleted_at": null,
+    "purge_state": ""
+  },
+  "binding_readback": {
+    "index": {
+      "index_id": "00000001-0000-4000-8000-000000000007",
+      "state": "active",
+      "revision": 3,
+      "active_version_id": "00000001-0000-4000-8000-000000000008",
+      "embedding_deployment_id": "00000001-0000-4000-8000-000000000010",
+      "name": "contract fixture"
+    },
+    "version": {
+      "schema_version": "index-version-v1",
+      "index_id": "00000001-0000-4000-8000-000000000007",
+      "index_version_id": "00000001-0000-4000-8000-000000000008",
+      "operation_id": "00000001-0000-4000-8000-000000000009",
+      "chunking_run_id": "00000001-0000-4000-8000-000000000005",
+      "state": "ready",
+      "reference_state": "held",
+      "canonical_ids": [
+        "00000001-0000-4000-8000-000000000006"
+      ],
+      "embedding_profile": {
+        "deployment_id": "00000001-0000-4000-8000-000000000010",
+        "embedding_space_id": "es_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "status": "ready",
+        "capability": "embedding",
+        "profile_id": "snowflake-ko-v1",
+        "dimension": 1024
+      },
+      "chunk_count": 1,
+      "indexed_count": 1,
+      "error_code": ""
+    },
+    "tool": {
+      "tool_version_id": "00000001-0000-4000-8000-000000000011",
+      "state": "published",
+      "kind": "knowledge_search_v1",
+      "binding": {
+        "connection_version_id": "00000001-0000-4000-8000-000000000015",
+        "knowledge": {
+          "model_connection_version_id": "00000001-0000-4000-8000-000000000016",
+          "index_id": "00000001-0000-4000-8000-000000000007",
+          "index_version_id": "00000001-0000-4000-8000-000000000008",
+          "embedding_deployment_id": "00000001-0000-4000-8000-000000000010",
+          "embedding_space_id": "es_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "top_k": 5,
+          "candidate_k": 20
+        }
+      }
+    },
+    "agent": {
+      "agent_version_id": "00000001-0000-4000-8000-000000000012",
+      "state": "published",
+      "template_id": "knowledge_qa_v1",
+      "template_version": 1,
+      "tool_version_id": "00000001-0000-4000-8000-000000000011"
+    },
+    "tool_test": {
+      "tool_call_id": "00000001-0000-4000-8000-000000000013",
+      "tool_version_id": "00000001-0000-4000-8000-000000000011",
+      "mode": "test",
+      "state": "succeeded",
+      "result": {
+        "data": {
+          "index_id": "00000001-0000-4000-8000-000000000007",
+          "index_version_id": "00000001-0000-4000-8000-000000000008",
+          "embedding_space_id": "es_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "returned_count": 1,
+          "results": [
+            {
+              "chunk_id": "chunk-fixture",
+              "canonical_id": "00000001-0000-4000-8000-000000000006",
+              "source_document_id": "00000001-0000-4000-8000-000000000003",
+              "text": "테스트 자료의 운영 시간은 오전 9시입니다.",
+              "source_spans": [
+                {
+                  "block_id": "b1",
+                  "start": 0,
+                  "end": 24
+                }
+              ]
+            }
+          ]
+        },
+        "completion": "completed",
+        "metadata": {
+          "adapter": "knowledge_search_v1",
+          "connection_version_id": "00000001-0000-4000-8000-000000000015",
+          "model_connection_version_id": "00000001-0000-4000-8000-000000000016",
+          "index_version_id": "00000001-0000-4000-8000-000000000008",
+          "embedding_profile": {
+            "deployment_id": "00000001-0000-4000-8000-000000000010",
+            "embedding_space_id": "es_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "status": "ready",
+            "capability": "embedding",
+            "profile_id": "snowflake-ko-v1",
+            "dimension": 1024
+          },
+          "embedding_input_tokens": 8,
+          "embedding_calls": 1,
+          "search_calls": 1
+        },
+        "timings_ms": {
+          "search": 1
+        }
+      }
+    },
+    "agent_test": {
+      "agent_run_id": "00000001-0000-4000-8000-000000000014",
+      "agent_version_id": "00000001-0000-4000-8000-000000000012",
+      "mode": "test",
+      "state": "succeeded",
+      "result": {
+        "answer": "운영 시간은 오전 9시입니다. [S1]",
+        "outcome": "answered",
+        "citations": [
+          {
+            "citation_id": "S1",
+            "source": {
+              "chunk_id": "chunk-fixture",
+              "canonical_id": "00000001-0000-4000-8000-000000000006",
+              "source_document_id": "00000001-0000-4000-8000-000000000003",
+              "text": "테스트 자료의 운영 시간은 오전 9시입니다.",
+              "source_spans": [
+                {
+                  "block_id": "b1",
+                  "start": 0,
+                  "end": 24
+                }
+              ]
+            }
+          }
+        ],
+        "warnings": [],
+        "answer_truncated": false,
+        "tool_call_id": "00000001-0000-4000-8000-000000000013",
+        "selected_chunk_ids": [
+          "chunk-fixture"
+        ],
+        "excluded_sources": [],
+        "usage": {
+          "prompt_tokens": 20,
+          "completion_tokens": 12,
+          "total_tokens": 32
+        },
+        "identity": {
+          "template_id": "knowledge_qa_v1",
+          "template_version": 1,
+          "tool_version_id": "00000001-0000-4000-8000-000000000011",
+          "model": {},
+          "knowledge": {
+            "adapter": "knowledge_search_v1",
+            "connection_version_id": "00000001-0000-4000-8000-000000000015",
+            "model_connection_version_id": "00000001-0000-4000-8000-000000000016",
+            "index_version_id": "00000001-0000-4000-8000-000000000008",
+            "embedding_profile": {
+              "deployment_id": "00000001-0000-4000-8000-000000000010",
+              "embedding_space_id": "es_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "status": "ready",
+              "capability": "embedding",
+              "profile_id": "snowflake-ko-v1",
+              "dimension": 1024
+            },
+            "embedding_input_tokens": 8,
+            "embedding_calls": 1,
+            "search_calls": 1
+          }
+        }
+      }
+    }
+  }
+}

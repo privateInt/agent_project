@@ -1,0 +1,40 @@
+name: knowledge-platform
+include:
+- path: ./operation/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+- path: ./service/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+- path: ./gateway/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+- path: ./dispatcher/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+- path: ./reconciler/docker-compose.yml
+  project_directory: .
+  env_file: ./.env
+networks:
+  knowledge-infra:
+    external: true
+    name: ${KNOWLEDGE_NETWORK:-ops-infra}
+services:
+  chunking-job:
+    profiles: [jobs]
+    image: knowledge-platform-chunking-job:dev
+    build:
+      context: .
+      target: chunking-job
+    pull_policy: never
+    network_mode: none
+    entrypoint: [/bin/true]
+  indexing-job:
+    profiles: [jobs]
+    image: knowledge-platform-indexing-job:dev
+    build:
+      context: .
+      target: indexing-job
+    pull_policy: never
+    network_mode: none
+    entrypoint: [/bin/true]

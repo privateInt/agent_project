@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "stage": "Q04a",
+  "ownership": "document_qa_integration_only",
+  "mode": "explicit_parser_only_CPU",
+  "rules_version": "basic-cleaning-v1",
+  "processor_version": "cpu-parser-v1",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/api/refinements",
+      "auth": "operator",
+      "meaning": "local_only"
+    },
+    {
+      "method": "GET",
+      "path": "/api/jobs/{job_id}/refinement",
+      "auth": "operator",
+      "meaning": "local_only"
+    },
+    {
+      "method": "POST",
+      "path": "/api/jobs/{job_id}/start-refinement",
+      "json": {},
+      "auth": "operator"
+    },
+    {
+      "method": "POST",
+      "path": "/api/jobs/{job_id}/retry-refinement",
+      "json": {},
+      "auth": "operator",
+      "meaning": "explicit same-intent replay only before receipt"
+    },
+    {
+      "method": "POST",
+      "path": "/api/jobs/{job_id}/observe-refinement",
+      "json": {},
+      "auth": "operator",
+      "meaning": "one bounded GET observation; never POST replay"
+    }
+  ],
+  "Data_POST": {
+    "path": "/api/refinement-runs",
+    "status": 202,
+    "fields": [
+      "name",
+      "document_id",
+      "rules_version"
+    ],
+    "Idempotency-Key": "Q01 data.refine job/sequence key"
+  },
+  "states": [
+    "pending",
+    "confirmation_required",
+    "waiting",
+    "canonical_verified",
+    "attention_required",
+    "failed"
+  ],
+  "storage": {
+    "upload_user_version": 1,
+    "refinement_metadata_version": 1,
+    "migration": "explicit additive tables; no existing schema change",
+    "lane": "one durable nonterminal refinement task per library",
+    "contents": "intent/body IDs; acceptance/verified canonical metadata only; no long-term canonical text"
+  },
+  "boundaries": {
+    "max_attempts": 16,
+    "HTTP_timeout_seconds": 10,
+    "HTTP_action_budget_seconds": 60,
+    "max_HTTP_calls_per_action": 8,
+    "metadata_response_bytes": 65536,
+    "canonical_bytes": 33554432,
+    "canonical_blocks": 100000,
+    "canonical_pages": 300,
+    "observation": "one GET run then completed-only metadata/content; no wait loop"
+  },
+  "uncertain_outcome": "hold original intent/lane; no automatic POST retry",
+  "known_terminal_failure": "retain failure; no new generation or POST on retry",
+  "n8n_receipt_credential_authorizes_refinement": false,
+  "n8n_refinement_connected": false,
+  "ocr_supported": false,
+  "question_ready": false,
+  "source_sha256": {
+    "data_platform/gateway/app/refinement.go": "67e7aeec9756a0c797ba5103712fd78f399ffa269c3349d4997a5f36bf665c52",
+    "data_platform/gateway/app/server.go": "58121ea80db6d75dc0fe4664c9349b202846fa30a90285837d945e6a06566b17",
+    "data_platform/refinement/app/service.go": "fd701252f68f330077a393831c5d740a6d949850db9c891739c2081eb926741e",
+    "data_platform/refinement/app/ocr.go": "41f1bfdd91cafb209f3b85f3eb8e8b0ec24b224e82e2ebf68cbf80ddbc8e2e75",
+    "data_platform/internal/canonical/document.go": "708538a6ac4468d12d010fcae4f823bf6f89d2d98b56651097b362e53f5f0602",
+    "data_platform/jobs/refinement/parse/parser.py": "7b6c7992e28d428fc550bec8aba089ec77e8112d465c0088b6c24c11b5cd1f4f",
+    "data_platform/internal/submission/submission.go": "5f94355e5b0aa2288b14f9a262c5be5918419805c97466343d81abb9daf670b8"
+  }
+}

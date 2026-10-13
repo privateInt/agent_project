@@ -1,0 +1,22 @@
+[ req ]
+default_bits = 4096
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+prompt = no
+default_md = sha256
+
+[ req_distinguished_name ]
+C = KR
+ST = Seoul
+L = Seoul
+O = MyOrg
+CN = admin
+
+[ v3_req ]
+basicConstraints = critical, CA:false
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage = clientAuth
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = admin

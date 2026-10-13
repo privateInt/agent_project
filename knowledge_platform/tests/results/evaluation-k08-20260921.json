@@ -1,0 +1,53 @@
+{
+  "phase": "K08",
+  "date": "2026-09-21",
+  "status": "evaluation_tools_implemented_local_tests_passed_real_dataset_pending",
+  "local": {
+    "python_tests_passed": 25,
+    "command": "python3 -m unittest discover -s knowledge_platform/tests -p 'test_evaluation.py' -v",
+    "scope": "synthetic fixtures and local HTTP doubles; no GPU/DB or real retrieval quality evaluation",
+    "cli_workflow": [
+      "prepare",
+      "add-case",
+      "review",
+      "run",
+      "compare"
+    ],
+    "checks": [
+      "canonical_byte_hash_size",
+      "unicode_codepoint_anchors",
+      "review_and_source_hash",
+      "duplicate_overlapping_judgments",
+      "union_span_coverage",
+      "hand_calculated_graded_metrics",
+      "greedy_one_to_one",
+      "one_query_embedding_across_variants",
+      "full_candidate_identity",
+      "runtime_profile_freeze",
+      "failure_in_denominator",
+      "empty_success_zero",
+      "checkpoint_interruption",
+      "controlled_report_comparison",
+      "no_lifecycle_endpoints"
+    ]
+  },
+  "runtime_changes": {
+    "go": false,
+    "protobuf": false,
+    "docker": false,
+    "database": false,
+    "service_restart_required": false
+  },
+  "server": "not_run",
+  "representative_questions": "pending_actual_canonical_text",
+  "retrieval_quality": "not_evaluated",
+  "remaining": [
+    "source packet export from existing index",
+    "human-reviewed representative source/block/range judgments",
+    "actual off/on evaluation",
+    "recursive ready index and same-snapshot comparison",
+    "K07 browser acceptance",
+    "actual version deletion/reference release",
+    "Model redeploy UI real operation"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-21",
+  "status": "local_passed_server_pending",
+  "scope": "Stopped deployment UI creates a new deployment through existing POST API; Gateway responses are doubles",
+  "streamlit_version": "1.63.0",
+  "local_suites": {
+    "test_playground_ui": 52,
+    "test_model_management_ui": 7,
+    "test_playground": 27
+  },
+  "local_passed": 86,
+  "new_cases": 10,
+  "source_settings": [
+    "model_version_id",
+    "serving.engine",
+    "serving.profile",
+    "serving.max_model_len",
+    "serving.gpu_memory_utilization",
+    "resources.gpu_ids",
+    "resources.gpu_count",
+    "resources.node_name"
+  ],
+  "checks": [
+    "explicit_confirmation_no_automatic_post",
+    "ocr_18000_and_reranker_512_preserved",
+    "legacy_blank_profile_and_adapter_version_preserved",
+    "embedding_profile_preserved",
+    "stop_state_checked_on_open_and_confirm",
+    "deleted_or_stopping_blocked",
+    "changed_settings_rejected",
+    "cancel_does_not_submit",
+    "lost_reply_and_url_restore_keep_same_key",
+    "gateway_change_rejected"
+  ],
+  "server_build": "not_run",
+  "server_gpu_redeployment": "not_run",
+  "backend_or_database_changed": false,
+  "existing_deployments_modified": false
+}

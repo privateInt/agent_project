@@ -1,0 +1,28 @@
+{
+  "result": "passed",
+  "stage": "A07-live",
+  "evidence": "user server log 20260924-104323",
+  "scope": "separate n8n CLI/SQLite -> actual Agent/Model/Knowledge",
+  "mode": "test",
+  "agent_run_id": "dd6fd5e7-8188-45e5-a2a1-7c44375bf043",
+  "agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+  "request_id": "940c66da-aa68-482d-9156-dc9c65da358d",
+  "tool_call_id": "f9bd7229-0d70-4ea5-8514-d106976c61d2",
+  "model_deployment_id": "537ea34d-b066-40dd-b08a-dbabec066da9",
+  "returned_count": 5,
+  "citation_count": 2,
+  "replay_verified": true,
+  "generation_called": true,
+  "answer_truncated": false,
+  "warnings": [],
+  "semantic_quality": "not_assessed",
+  "agent_published": false,
+  "operational_flow_acceptance": "pending",
+  "prior_failure": {
+    "agent_run_id": "42762502-b93d-46bb-b431-cd66d3b5e741",
+    "code": "MODEL_NOT_READY",
+    "stage": "generate",
+    "search": "succeeded",
+    "user_confirmed": "LLM was not deployed at that time"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "checked_date": "2026-10-02",
+  "result": "passed",
+  "selected_regression_suite": {
+    "total": 327,
+    "passed": 272,
+    "skipped": 55,
+    "failed": 0,
+    "elapsed_seconds": 55.978
+  },
+  "initial_focused_suite": {
+    "total": 101,
+    "passed": 101,
+    "skipped": 0,
+    "failed": 0,
+    "elapsed_seconds": 21.634
+  },
+  "sources": {
+    "active_worker_files": 61,
+    "active_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+    "original_boot_recovery_controller_plan_setup_maintenance_and_candidates_unchanged": true
+  },
+  "protections": {
+    "plan_reads_metadata_only": true,
+    "original_failure_retained_before_mutation": true,
+    "fresh_current_inventory_review_required": true,
+    "historical_changed_container_not_claimed_identified": true,
+    "exact_reason_same_boot_and_owned_invocation_required": true,
+    "unfinished_refresh_or_maintenance_refused": true,
+    "real_exclusive_lease_and_empty_worker_cgroup_required": true,
+    "all_labeled_reader_helpers_block_without_adoption": true,
+    "owned_service_unit_enable_and_source_drift_refused": true,
+    "live_auth_readback_before_owned_worker_reset_and_start": true,
+    "stop_token_or_inventory_drift_refused": true,
+    "unknown_start_and_saved_job_never_replayed": true,
+    "current_new_invocation_receipt_and_healthy_evaluation_required": true,
+    "check_is_readonly": true,
+    "public_measure_refused_before_backend_helper_lock_or_record": true
+  },
+  "reproduced_helper_collision": {
+    "metadata": "synthetic",
+    "original_guard_modified": false,
+    "server_cause_identified": false
+  },
+  "native_production_Docker_daemon_used": false,
+  "native_production_systemd_used": false,
+  "actual_server_new_recovery_plan": "pending",
+  "server_worker_recovered": false,
+  "actual_server_size_survey": "pending_reviewed_maintenance_implementation",
+  "production_service_control_requested": false,
+  "production_capture_executed": false,
+  "production_restore_executed": false,
+  "identity_contents_read": false,
+  "backup_ready": false,
+  "python_3_10_syntax": true,
+  "package_checks": {
+    "dry_run": true,
+    "apply_without_project_backups": true,
+    "idempotence": true,
+    "rollback": true,
+    "conflict_refusal": true,
+    "symlink_refusal": true,
+    "mid_write_rollback": true,
+    "active_source_change_refusal": true,
+    "python310_syntax": true
+  }
+}

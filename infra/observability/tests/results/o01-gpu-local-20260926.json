@@ -1,0 +1,59 @@
+{
+  "stage": "O01-gpu-local",
+  "result": "passed",
+  "checked_at": "2026-09-26",
+  "scope": "host CLI and effective Compose plus native Prometheus with HTTP GPU fixture",
+  "python_tests": {
+    "passed": 56,
+    "skipped": 0,
+    "command": "OBS_TEST_COMPOSE=/path/to/docker-compose python3 -B -m unittest discover -s infra/observability/tests -v",
+    "compose_version": "2.39.4"
+  },
+  "native_prometheus": {
+    "result": "passed",
+    "prometheus": "3.13.3",
+    "scope": "real native Prometheus / HTTP GPU fixture / same temporary TSDB",
+    "targets_up": 4,
+    "gpu_fields_verified": [
+      "DCGM_FI_DEV_GPU_UTIL",
+      "DCGM_FI_DEV_FB_TOTAL",
+      "DCGM_FI_DEV_FB_USED",
+      "DCGM_FI_DEV_FB_FREE",
+      "DCGM_FI_DEV_GPU_TEMP",
+      "DCGM_FI_DEV_POWER_USAGE"
+    ],
+    "unselected_metrics_and_labels_dropped": true,
+    "historical_counts": {
+      "series": 8,
+      "samples": 28
+    },
+    "raw_history_preserved": true,
+    "test_scrape_interval_seconds": 1,
+    "production_configuration_changed": false,
+    "real_gpu_and_dcgm_container_assessed": false,
+    "inference_executed": false
+  },
+  "image_registry": {
+    "tag": "nvcr.io/nvidia/k8s/dcgm-exporter:4.6.1-4.8.4-distroless",
+    "digest": "sha256:148b0c025e5f2850256816fa33754fbf4733b7a086697a95613fc0ba3db5b003",
+    "architectures": [
+      "amd64",
+      "arm64"
+    ],
+    "registry_manifest_checked": true
+  },
+  "boundaries": [
+    "GPU unknown/missing/sentinel/NaN/Inf values never become zero",
+    "duplicate UUID and invalid VRAM rejected",
+    "base Compose changes only Prometheus config mount when GPU enabled",
+    "only Prometheus recreation submitted once; lost response after effect resumes by read",
+    "intent without effect refuses blind recreation",
+    "external collector, config or storage changes rejected"
+  ],
+  "server_acceptance": "pending",
+  "real_dcgm_gpu_container_executed": false,
+  "inference_executed": false,
+  "gpu_settings_changed": false,
+  "whole_tsdb_backup_assessed": false,
+  "llm_traces_assessed": false
+}

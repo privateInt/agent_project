@@ -1,0 +1,120 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "지식 검색",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://knowledge-gateway:8000"
+    }
+  ],
+  "paths": {
+    "/api/indexes/{index_id}/search": {
+      "post": {
+        "operationId": "agent_console_direct_v1",
+        "summary": "지식 검색",
+        "parameters": [
+          {
+            "name": "index_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "index_id",
+                    "index_version_id",
+                    "embedding_space_id",
+                    "returned_count",
+                    "results"
+                  ],
+                  "properties": {
+                    "index_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "index_version_id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "embedding_space_id": {
+                      "type": "string"
+                    },
+                    "returned_count": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "index_version_id",
+                  "embedding_space_id",
+                  "query_embedding"
+                ],
+                "properties": {
+                  "index_version_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "embedding_space_id": {
+                    "type": "string",
+                    "pattern": "^es_[a-f0-9]{64}$"
+                  },
+                  "query_embedding": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 1024,
+                    "maxItems": 1024
+                  },
+                  "top_k": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 50
+                  },
+                  "candidate_k": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  }
+}

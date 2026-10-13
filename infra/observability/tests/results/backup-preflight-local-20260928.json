@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "stage": "observability-backup-preflight-local",
+  "checked_at": "2026-09-28",
+  "result": "passed",
+  "python_tests": 26,
+  "fixture_containers": 9,
+  "scope": "local_filesystem_and_fake_docker_metadata",
+  "privacy_sentinel_absent": true,
+  "fixture_file_content_mode_mtime_unchanged": true,
+  "native_server_acceptance": "pending",
+  "actual_backup_or_restore": false,
+  "service_control_requested": false,
+  "inference_requested": false,
+  "limits": [
+    "running_sizes_not_consistent_backup",
+    "unreadable_bytes_unknown",
+    "destination_is_candidate_only",
+    "image_export_and_capacity_not_measured",
+    "exporter_images_optional_cli_cache_followup"
+  ]
+}

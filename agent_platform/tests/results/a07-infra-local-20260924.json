@@ -1,0 +1,40 @@
+{
+  "stage": "A07 infra layout",
+  "agent_build": "a07.1",
+  "schema_version": 5,
+  "date": "2026-09-24",
+  "result": "layout_and_migration_checks_passed_server_acceptance_pending",
+  "checks": {
+    "infra_operations_unittests": 14,
+    "agent_integration_operations_unittests": 3,
+    "shipped_workflow_code_contracts": 6,
+    "real_compose_version": "2.39.4",
+    "root_infra_services": 14,
+    "root_and_n8n_subcompose_services_volumes_secrets_identical": true,
+    "boundary_rejections": 6,
+    "secrets_and_env_bytes_preserved": true,
+    "migration_order": "image pull before restart disable/stop; old containers stop before new DB start",
+    "existing_data_guard": [
+      "missing original volumes",
+      "foreign volume owner",
+      "unrelated container consumer",
+      "different keys",
+      "reconfigured volume names",
+      "new keys with existing A07 storage",
+      "missing previously provisioned new volume"
+    ],
+    "no_agent_image_or_schema_change": true
+  },
+  "server_evidence": "a07-server-20260924.json",
+  "not_proven": [
+    "actual Docker ownership handoff in this workspace (no daemon)",
+    "server n8n unhealthy cause/resolution",
+    "server n8n PostgreSQL readiness after handoff",
+    "user pages/real LLM answer/source quality/restart preservation"
+  ],
+  "diagnostic_attempts": {
+    "n8n_cli_postgres_wasm_probe": "inconclusive: 150-second timeout; not a native PostgreSQL test or a passing startup result"
+  },
+  "scope": "infra owns n8n runtime; Agent owns only integration/templates/tests and existing WorkflowLink API",
+  "test_artifacts": "compact JSON only; no dependencies/full logs/operational settings/keys in deliverables"
+}

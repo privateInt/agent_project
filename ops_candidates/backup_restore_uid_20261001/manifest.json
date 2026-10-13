@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "stage": "O04-inactive-leased-uid-filesystem-restore",
+  "activation_supported": false,
+  "production_cli_available": false,
+  "active_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+  "files": {
+    "ops_candidates/backup_restore_uid_20261001/writer.py": "eaf303ad0d9540538fec9424e95e93f74f7859d031fcfa86aa59d81db21cf027",
+    "ops_candidates/backup_restore_uid_20261001/restore_uid.py": "dfd6ce04b91335679a1c36fe2bd0d464773f50e7a54429020245c1c1030a7879"
+  }
+}

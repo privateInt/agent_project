@@ -1,0 +1,107 @@
+{
+  "groups": [
+    {
+      "name": "agent-project-o04",
+      "interval": "30s",
+      "limit": 500,
+      "rules": [
+        {
+          "alert": "OpsTargetDown",
+          "expr": "(up{job=~\"prometheus|host|containers|gpu|alertmanager\"} == 0) and (time() - timestamp(up{job=~\"prometheus|host|containers|gpu|alertmanager\"}) < 90)",
+          "for": "120s",
+          "labels": {
+            "scope": "agent-project-o04",
+            "severity": "critical"
+          },
+          "annotations": {
+            "summary": "수집 연결 실패"
+          }
+        },
+        {
+          "alert": "OpsTargetMissing",
+          "expr": "absent_over_time(up{job=\"prometheus\",instance=\"127.0.0.1:16310\"}[90s]) or absent_over_time(up{job=\"host\",instance=\"127.0.0.1:16311\"}[90s]) or absent_over_time(up{job=\"containers\",instance=\"127.0.0.1:16312\"}[90s]) or absent_over_time(up{job=\"gpu\",instance=\"127.0.0.1:16313\"}[90s]) or absent_over_time(up{job=\"alertmanager\",instance=\"127.0.0.1:16330\"}[90s])",
+          "for": "300s",
+          "labels": {
+            "scope": "agent-project-o04",
+            "severity": "critical"
+          },
+          "annotations": {
+            "summary": "수집 대상 누락"
+          }
+        },
+        {
+          "alert": "OpsHostCpuHigh",
+          "expr": "((100 * (1 - avg by(instance)(rate(node_cpu_seconds_total{job=\"host\",mode=\"idle\"}[5m])))) and on(instance) (time() - max by(instance)(timestamp(node_cpu_seconds_total{job=\"host\",mode=\"idle\"})) < 90) and on(instance) (up{job=\"host\"} == 1)) > 90",
+          "for": "900s",
+          "labels": {
+            "scope": "agent-project-o04",
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "호스트 CPU 사용량 높음"
+          }
+        },
+        {
+          "alert": "OpsHostMemoryHigh",
+          "expr": "((100 * (1 - node_memory_MemAvailable_bytes{job=\"host\"} / node_memory_MemTotal_bytes{job=\"host\"})) and ((node_memory_MemTotal_bytes{job=\"host\"}) and (time() - timestamp(node_memory_MemTotal_bytes{job=\"host\"}) < 90) and on(instance) (up{job=\"host\"} == 1)) and ((node_memory_MemAvailable_bytes{job=\"host\"}) and (time() - timestamp(node_memory_MemAvailable_bytes{job=\"host\"}) < 90) and on(instance) (up{job=\"host\"} == 1))) > 90",
+          "for": "600s",
+          "labels": {
+            "scope": "agent-project-o04",
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "호스트 메모리 부족"
+          }
+        },
+        {
+          "alert": "OpsFilesystemHigh",
+          "expr": "((100 * (1 - node_filesystem_avail_bytes{job=\"host\",fstype!~\"tmpfs|overlay|squashfs\",mountpoint=~\"/|/media/.*|/mnt/nvme1\"} / node_filesystem_size_bytes{job=\"host\",fstype!~\"tmpfs|overlay|squashfs\",mountpoint=~\"/|/media/.*|/mnt/nvme1\"})) and ((node_filesystem_size_bytes{job=\"host\",fstype!~\"tmpfs|overlay|squashfs\",mountpoint=~\"/|/media/.*|/mnt/nvme1\"}) and (time() - timestamp(node_filesystem_size_bytes{job=\"host\",fstype!~\"tmpfs|overlay|squashfs\",mountpoint=~\"/|/media/.*|/mnt/nvme1\"}) < 90) and on(instance) (up{job=\"host\"} == 1)) and ((node_filesystem_avail_bytes{job=\"host\",fstype!~\"tmpfs|overlay|squashfs\",mountpoint=~\"/|/media/.*|/mnt/nvme1\"}) and (time() - timestamp(node_filesystem_avail_bytes{job=\"host\",fstype!~\"tmpfs|overlay|squashfs\",mountpoint=~\"/|/media/.*|/mnt/nvme1\"}) < 90) and on(instance) (up{job=\"host\"} == 1))) > 90",
+          "for": "900s",
+          "labels": {
+            "scope": "agent-project-o04",
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "디스크 여유 공간 부족"
+          }
+        },
+        {
+          "alert": "OpsGpuTemperatureHigh",
+          "expr": "(((DCGM_FI_DEV_GPU_TEMP{job=\"gpu\"} >= 0) and (DCGM_FI_DEV_GPU_TEMP{job=\"gpu\"} < 200) and (time() - timestamp(DCGM_FI_DEV_GPU_TEMP{job=\"gpu\"}) < 90)) > 85) and on(instance) (up{job=\"gpu\"} == 1)",
+          "for": "300s",
+          "labels": {
+            "scope": "agent-project-o04",
+            "severity": "critical"
+          },
+          "annotations": {
+            "summary": "GPU 온도 높음"
+          }
+        },
+        {
+          "alert": "OpsGpuTemperatureMissing",
+          "expr": "(up{job=\"gpu\"} == 1) unless on(instance) ((DCGM_FI_DEV_GPU_TEMP{job=\"gpu\"} >= 0) and (DCGM_FI_DEV_GPU_TEMP{job=\"gpu\"} < 200) and (time() - timestamp(DCGM_FI_DEV_GPU_TEMP{job=\"gpu\"}) < 90))",
+          "for": "300s",
+          "labels": {
+            "scope": "agent-project-o04",
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "GPU 온도 관측값 없음"
+          }
+        },
+        {
+          "alert": "OpsRuleEvaluationFailures",
+          "expr": "increase(prometheus_rule_evaluation_failures_total{job=\"prometheus\"}[5m]) > 0",
+          "for": "120s",
+          "labels": {
+            "scope": "agent-project-o04",
+            "severity": "warning"
+          },
+          "annotations": {
+            "summary": "경보 규칙 평가 실패"
+          }
+        }
+      ]
+    }
+  ]
+}

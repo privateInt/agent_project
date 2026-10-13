@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "recorded_on": "2026-09-28",
+  "source": "user_pasted_server_stdout",
+  "installer": {
+    "validated_files": 15,
+    "files_needing_update": 0,
+    "result": "already_applied",
+    "files_changed": false
+  },
+  "evidence_limitations": {
+    "stdout_complete": false,
+    "evidence_reused_field_visible": false,
+    "current_invocation_restart_performed": "not_determined",
+    "current_invocation_fresh_api_readback": "not_determined",
+    "acceptance_checked_at_kst": "2026-09-27T15:12:01.519475+09:00",
+    "scope": "visible_report_fields_only; no reconstructed missing tail"
+  },
+  "observed_report": {
+    "alerts": {
+      "baseline_firing_no_longer_firing": 0,
+      "current_firing_received": 2,
+      "delivery_sample_verified": true,
+      "manager_active_count": 2,
+      "rules_healthy": 8,
+      "scope": "current_prometheus_firing_readback_not_disk_restore"
+    },
+    "backup_restore_acceptance": false,
+    "browser_acceptance": "deferred_by_user",
+    "business_api_requests": 0,
+    "checked_at": "2026-09-27T06:12:01.519475Z",
+    "configuration_preserved": true,
+    "container_id": "70f836b9abd72410136a95f1acf0632320a244e78ad1b942be5cb874981e476e",
+    "external_delivery": "unconfigured",
+    "image_id": "sha256:70de09e17623fef1f37aef24cdcd9a034d609ff203cff2857d8640736e537c2f",
+    "inference_requested": false,
+    "new_container_requested": false,
+    "notification_log_semantic_preservation": "not_verified_no_production_notification_probe",
+    "original_acceptance_records_preserved": true,
+    "other_service_control_requested": false,
+    "protected_running_containers_unchanged": 61,
+    "restart_command_completion_recorded": true,
+    "result": "passed",
+    "same_container_image_mounts": true,
+    "same_storage_directory_and_owner": true,
+    "schema": 1,
+    "scope": "same_container_configuration_storage_binding_snapshot_files_silence_readback",
+    "silences": {
+      "after": 0,
+      "before": 0,
+      "expired_outside_comparison": 0,
+      "nonempty_unexpired_preservation_verified": false,
+      "unexpired_preserved": 0
+    },
+    "snapshots": {
+      "nflog": {
+        "after_bytes": 0,
+        "before_exists": true,
+        "bytes_equal_to_pre_restart": true,
+        "write_observed_after_intent": true
+      },
+      "silences": {
+        "after_bytes": 0,
+        "before_exists": true,
+        "bytes_equal_to_pre_restart": true,
+        "write_observed_after_intent": true
+      }
+    },
+    "stage": "O04-alertmanager-restart",
+    "started_after": "2026-09-27T06:11:11.070313904Z",
+    "started_before": "2026-09-27T04:17:36.384424658Z",
+    "synthetic_alert_or_silence_writes": 0
+  }
+}

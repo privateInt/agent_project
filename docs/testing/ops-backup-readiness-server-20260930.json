@@ -1,0 +1,284 @@
+{
+  "schema": 1,
+  "stage": "O04-backup-readiness-server-observation",
+  "result": "attention_required",
+  "diagnostic_status": "completed",
+  "checked_at": "2026-09-30T00:15:04.570946Z",
+  "finished_at": "2026-09-30T00:15:05.653356Z",
+  "source": "user_supplied_terminal_output",
+  "attachment_sha256": "f0307429ae3d9ba82e54060455ca608ffcc857c4b7e7c634ce5283d0b4f09834",
+  "patch_application": {
+    "files_applied": 18,
+    "backup": "/home/shshin/workspace/agent_project/.patch-backups/ops-backup-readiness-20260930-819cugwf"
+  },
+  "backup_ready": false,
+  "installation": {
+    "status": "matched",
+    "core_container_count": 9,
+    "exporter_count": 3,
+    "identity_stable": true,
+    "mount_table_stable": true
+  },
+  "worker": {
+    "status": "saved_records_matched",
+    "code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+    "code_files": 61,
+    "source_review": "reviewed",
+    "maintenance_return_supported": false,
+    "live_health_checked": false,
+    "saved_state_is_live_health": false,
+    "persistence": "boot",
+    "desired_state": "running",
+    "recovery_present": false,
+    "open_intent_present": false,
+    "unit_name": "agent-project-ops-refresh-f62ab5072b704ba4bbb083dfcfae9299.service"
+  },
+  "resources": {
+    "status": "observed",
+    "memory_total_bytes": 134843293696,
+    "memory_available_bytes": 88567566336,
+    "current_process_cpu_affinity_count": 24,
+    "container_limits": {
+      "obs-prometheus": {
+        "memory_limit_bytes": 1073741824,
+        "cpu_limit": 1.0
+      },
+      "obs-alertmanager": {
+        "memory_limit_bytes": 268435456,
+        "cpu_limit": 0.5
+      },
+      "lf-worker": {
+        "memory_limit_bytes": 4294967296,
+        "cpu_limit": 2.0
+      },
+      "lf-web": {
+        "memory_limit_bytes": 4294967296,
+        "cpu_limit": 2.0
+      },
+      "lf-postgres": {
+        "memory_limit_bytes": 2147483648,
+        "cpu_limit": 2.0
+      },
+      "lf-redis": {
+        "memory_limit_bytes": 1073741824,
+        "cpu_limit": 1.0
+      },
+      "lf-clickhouse": {
+        "memory_limit_bytes": 8589934592,
+        "cpu_limit": 4.0
+      },
+      "lf-minio": {
+        "memory_limit_bytes": 2147483648,
+        "cpu_limit": 2.0
+      },
+      "ops-web": {
+        "memory_limit_bytes": 402653184,
+        "cpu_limit": 1.0
+      }
+    },
+    "configured_restore_memory_limits_sum_bytes": 24293408768,
+    "proposed_host_memory_reserve_percent": 10,
+    "memory_after_proposed_reserve_bytes": 75083236966,
+    "fits_existing_limits_estimate": true,
+    "capacity_sufficient": null,
+    "resources_reserved": false,
+    "helper_memory_budget_included": false,
+    "cpu_budget_confirmed": false,
+    "cgroup_limits_evaluated": false,
+    "scope": "current_proc_view_and_existing_container_limits_not_actual_restore_requirement"
+  },
+  "age": {
+    "status": "not_installed",
+    "version_commands": 0,
+    "binary_authenticity_verified": false,
+    "backup_compatibility_verified": false,
+    "key_or_plugin_commands": 0
+  },
+  "recipients": {
+    "status": "not_supplied",
+    "count": 0,
+    "fingerprints": [],
+    "scope": "public_recipient_syntax_only",
+    "identity_file_read": false,
+    "key_possession_verified": false,
+    "encryption_test_executed": false
+  },
+  "blockers": {
+    "environment": [
+      "AGE_NOT_INSTALLED"
+    ],
+    "decisions": [
+      "OBSERVATION_OUTAGE_BUDGET_NOT_SET",
+      "WORKER_PAUSE_BUDGET_NOT_SET",
+      "DESTINATION_NOT_SELECTED",
+      "PUBLIC_RECIPIENT_NOT_SUPPLIED",
+      "RESTORE_RESOURCE_BUDGET_UNCONFIRMED"
+    ],
+    "implementation": [
+      "BOOT_MAINTENANCE_RETURN_NOT_IMPLEMENTED",
+      "STOPPED_STORAGE_HELPER_NOT_IMPLEMENTED",
+      "ENCRYPTED_CAPTURE_NOT_IMPLEMENTED",
+      "ISOLATED_RESTORE_NOT_IMPLEMENTED"
+    ],
+    "acceptance": [
+      "DESTINATION_WRITE_PROBE_PENDING",
+      "KEY_CUSTODY_AND_DECRYPTION_PROOF_PENDING",
+      "CONSISTENCY_AND_RESTORE_ACCEPTANCE_PENDING",
+      "FRESH_EXECUTION_CAPACITY_PENDING"
+    ]
+  },
+  "effects": {
+    "files_written": [],
+    "service_control_requested": false,
+    "application_credential_contents_read": false,
+    "private_identity_read": false,
+    "application_api_requests": 0,
+    "docker_exec_commands": 0,
+    "key_generation_requested": false,
+    "encryption_requested": false,
+    "tool_installation_requested": false,
+    "directory_or_write_probe_requested": false,
+    "backup_executed": false,
+    "restore_executed": false,
+    "new_container_requested": false,
+    "image_build_or_pull_requested": false,
+    "inference_requested": false
+  },
+  "capacity_reference": {
+    "status": "historical_reference_only",
+    "record": "docs/testing/ops-backup-capacity-server-20260929.json",
+    "checked_at": "2026-09-29T06:34:35.850994Z",
+    "per_generation_estimated_bytes": 7995869037,
+    "all_on_one_filesystem_estimated_bytes": 31983476148,
+    "reused_as_current": false,
+    "source_sizes_remeasured": false,
+    "archive_size_verified": false
+  },
+  "docker_metadata_commands": 91,
+  "destinations": {
+    "reported_count": 19,
+    "reported_status_counts": {
+      "rejected": 3,
+      "unavailable": 13,
+      "candidate": 3
+    },
+    "selected": false,
+    "scan_complete": true,
+    "capacity_estimates_applied": false,
+    "main_filesystems": [
+      {
+        "proposed_path": "/home/shshin/agent-project-observability-backups",
+        "parent": "/home/shshin",
+        "status": "candidate",
+        "reasons": [],
+        "error": null,
+        "selected": false,
+        "write_probe_executed": false,
+        "write_access_advisory": true,
+        "readonly": false,
+        "fstype": "ext4",
+        "device": "259:4",
+        "available_bytes": 223213826048,
+        "available_after_proposed_reserve_bytes": 124931736371,
+        "source_relation_counts": {
+          "same_filesystem": 44
+        },
+        "capacity_sufficient": null,
+        "independent_failure_domain_verified": false,
+        "role_proposal": "local_recovery_validation"
+      },
+      {
+        "proposed_path": "/media/simsys/SSD_EXT4/agent-project-observability-backups",
+        "parent": "/media/simsys/SSD_EXT4",
+        "status": "candidate",
+        "reasons": [],
+        "error": null,
+        "selected": false,
+        "write_probe_executed": false,
+        "write_access_advisory": true,
+        "readonly": false,
+        "fstype": "ext4",
+        "device": "8:2",
+        "available_bytes": 123037880320,
+        "available_after_proposed_reserve_bytes": 0,
+        "source_relation_counts": {
+          "different_block_devices_same_host": 44
+        },
+        "capacity_sufficient": null,
+        "independent_failure_domain_verified": false,
+        "role_proposal": "local_recovery_validation"
+      },
+      {
+        "proposed_path": "/media/simsys/T91/agent-project-observability-backups",
+        "parent": "/media/simsys/T91",
+        "status": "rejected",
+        "reasons": [
+          "READ_ONLY_FILESYSTEM",
+          "PARENT_NOT_WRITABLE_BY_CURRENT_USER"
+        ],
+        "error": null,
+        "selected": false,
+        "write_probe_executed": false,
+        "write_access_advisory": false,
+        "readonly": true,
+        "fstype": "exfat",
+        "device": "8:17",
+        "available_bytes": 894178033664,
+        "available_after_proposed_reserve_bytes": 794161066803,
+        "source_relation_counts": {
+          "unknown": 44
+        },
+        "capacity_sufficient": null,
+        "independent_failure_domain_verified": false,
+        "role_proposal": null
+      },
+      {
+        "proposed_path": "/mnt/nvme1/agent-project-observability-backups",
+        "parent": "/mnt/nvme1",
+        "status": "candidate",
+        "reasons": [],
+        "error": null,
+        "selected": false,
+        "write_probe_executed": false,
+        "write_access_advisory": true,
+        "readonly": false,
+        "fstype": "ext4",
+        "device": "259:1",
+        "available_bytes": 80005869568,
+        "available_after_proposed_reserve_bytes": 0,
+        "source_relation_counts": {
+          "different_block_devices_same_host": 44
+        },
+        "capacity_sufficient": null,
+        "independent_failure_domain_verified": false,
+        "role_proposal": "local_recovery_validation"
+      }
+    ],
+    "unavailable_reason_counts": {
+      "PERMISSION_DENIED": 13
+    }
+  },
+  "display_correction": {
+    "reason": "NO_SPACE_AFTER_PROPOSED_RESERVE",
+    "affected_parents": [
+      "/media/simsys/SSD_EXT4",
+      "/mnt/nvme1"
+    ],
+    "corrected_counts_from_reported_metadata": {
+      "rejected": 5,
+      "unavailable": 13,
+      "candidate": 1
+    },
+    "usable_metadata_candidate": "/home/shshin/agent-project-observability-backups",
+    "native_corrected_checker_result_observed": false,
+    "local_readiness_tests": 29,
+    "local_capacity_regression_tests": 41,
+    "umask_0002_readiness_tests": 29,
+    "fresh_capacity_or_write_acceptance": false
+  },
+  "next_step": "implement_scoped_boot_worker_maintenance_stop_and_return",
+  "reboot_acceptance": "deferred_by_user",
+  "current_worker_health_acceptance": false,
+  "backup_executed": false,
+  "restore_executed": false
+}

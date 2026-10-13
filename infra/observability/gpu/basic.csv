@@ -1,0 +1,7 @@
+# Basic passive device metrics only; no profiling, diagnostics, process or job labels.
+DCGM_FI_DEV_GPU_UTIL, gauge, GPU utilization percent.
+DCGM_FI_DEV_FB_TOTAL, gauge, Total framebuffer memory in MiB.
+DCGM_FI_DEV_FB_USED, gauge, Used framebuffer memory in MiB.
+DCGM_FI_DEV_FB_FREE, gauge, Free framebuffer memory in MiB.
+DCGM_FI_DEV_GPU_TEMP, gauge, GPU temperature in degrees Celsius.
+DCGM_FI_DEV_POWER_USAGE, gauge, Board power in watts.

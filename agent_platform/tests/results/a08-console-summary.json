@@ -1,0 +1,109 @@
+{
+  "stage": "A08",
+  "result": "local_and_server_read_only_checks_passed",
+  "console_version": "a08.1",
+  "images_changed": [
+    "agent-service:a08.1",
+    "agent-gateway:a08.1"
+  ],
+  "execution_contract": "a07.1/A07/schema5",
+  "database_migration": false,
+  "checks": {
+    "tool_ui_dom": 27,
+    "knowledge_ui_dom": 11,
+    "workflow_ui_dom": 9,
+    "chromium_contract_items": 18,
+    "go_packages_with_tests": 7,
+    "go_scope": "gateway/... internal/... service/... (DB tests skipped without env; separately exercised by integration)",
+    "integration": "TestAgentEndToEnd: real Go/Python/LangGraph, PGlite PostgreSQL WASM and HTTP model/search fixtures; PASS 11.24s",
+    "read_only_smoke": "before-update and stored failed n8n-origin run checked against test API; no added model/search/embedding calls",
+    "visual": "Korean text, desktop and 390px mobile; no horizontal overflow"
+  },
+  "unchanged_execution_code": [
+    "model_platform",
+    "data_platform",
+    "knowledge_platform",
+    "infra",
+    "agent_platform/runtime",
+    "agent_platform/mcp",
+    "agent_platform/n8n (README only)"
+  ],
+  "pending": [
+    "user page/n8n editor acceptance",
+    "operational n8n successful answer delivery and replay",
+    "answer quality follow-up"
+  ],
+  "preserved_server_failure": {
+    "agent_run_id": "15981e7e-7ab3-41d6-bef8-ab2924cbe67e",
+    "workflow_link_id": "e9e79c18-9573-4772-af7f-80f410fe634c",
+    "state": "failed",
+    "code": "ANSWER_REFERENCE_INVALID",
+    "stage": "finalize"
+  },
+  "privacy": "no tokens, source content, question/answer payloads or generated test IDs stored in this summary",
+  "server_confirmation": {
+    "source": "붙여넣은 텍스트 (1)(20260924-122357).txt",
+    "source_sha256": "5a0242f037d29ca38e300d91f3a87a5832cbb5396d5e96f04f1174f1db5961c7",
+    "date": "2026-09-24",
+    "applied_files": 24,
+    "preflight": "passed; host port check skipped",
+    "active_agent_runs_before_update": 0,
+    "tool_queue_checked": false,
+    "healthy_updated_services": [
+      "agent-service",
+      "agent-gateway"
+    ],
+    "build_tests_target_rerun": false,
+    "full_database_regression_rerun": false,
+    "smoke": {
+      "result": "passed",
+      "stage": "A08",
+      "scope": "read-only assets/catalog/stored records; no answer generation",
+      "console_version": "a08.1",
+      "agent_run_count": 23,
+      "workflow_link_count": 2,
+      "inference_executed": false,
+      "page_acceptance": "deferred",
+      "answer_quality": "not_assessed",
+      "workflow": {
+        "workflow_link_id": "e9e79c18-9573-4772-af7f-80f410fe634c",
+        "workflow_id": "HtgqKREU0RNPfSnB",
+        "agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+        "enabled": true
+      },
+      "stored_run": {
+        "agent_run_id": "15981e7e-7ab3-41d6-bef8-ab2924cbe67e",
+        "agent_version_id": "6f0fb4b9-2796-4e33-b040-cc6149bd0988",
+        "request_id": "93218149-3ad0-45f7-81b2-48f0f72f5bcf",
+        "tool_call_id": "39eac542-0c91-4975-b2d6-434d9ad49e2e",
+        "state": "failed",
+        "error": {
+          "code": "ANSWER_REFERENCE_INVALID",
+          "stage": "finalize"
+        },
+        "steps": [
+          {
+            "step": "validate",
+            "state": "succeeded"
+          },
+          {
+            "step": "search",
+            "state": "succeeded"
+          },
+          {
+            "step": "context",
+            "state": "succeeded"
+          },
+          {
+            "step": "generate",
+            "state": "succeeded"
+          },
+          {
+            "step": "finalize",
+            "state": "failed"
+          }
+        ]
+      }
+    }
+  }
+}

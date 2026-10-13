@@ -1,0 +1,325 @@
+{
+  "version": "raster-associations-v1",
+  "source_sha256": "11ac5d098013fed011e3f35573daa504b914dee8030cb86590bd937cf5f553db",
+  "scope": "Authored from visible source pixels, not OCR output. Leading right-side outputs have no visible process anchor and must remain unassigned. All visible data rows on page 4; arrow semantics and other pages excluded.",
+  "cases": [
+    {
+      "id": "table-left-1",
+      "process": [
+        "1.",
+        "Trimming"
+      ],
+      "rows": [
+        [
+          "Inputs:",
+          "Raw cowhide",
+          "1500",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Rejected cowhide",
+          "120",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Raw cowhide",
+          "1380",
+          "Kg"
+        ]
+      ]
+    },
+    {
+      "id": "table-left-2",
+      "process": [
+        "2.",
+        "Pre-Soaking"
+      ],
+      "rows": [
+        [
+          "Inputs:",
+          "Alcohols, C12-14, ethoxylated, unspecified",
+          "2.76",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Alkylbenzenesulfonic acid, unspecified",
+          "2.76",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Electricity",
+          "8.52",
+          "kWh"
+        ],
+        [
+          "Inputs:",
+          "Raw cowhide",
+          "1380",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Water, ground",
+          "2415",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "CO2",
+          "6.3",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Cowhide",
+          "1380",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Water, waste",
+          "2420.52",
+          "Kg"
+        ]
+      ]
+    },
+    {
+      "id": "table-left-3",
+      "process": [
+        "3.",
+        "Washing I"
+      ],
+      "rows": [
+        [
+          "Inputs:",
+          "Electricity",
+          "1.79",
+          "kWh"
+        ],
+        [
+          "Inputs:",
+          "Raw cowhide",
+          "1380",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Water, ground",
+          "1380",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "CO2",
+          "1.32",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Cowhide, washing I",
+          "1380",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Water, waste",
+          "1380",
+          "Kg"
+        ]
+      ]
+    },
+    {
+      "id": "table-left-4",
+      "process": [
+        "4.",
+        "Main Soaking"
+      ],
+      "rows": [
+        [
+          "Inputs:",
+          "Electricity",
+          "43.51",
+          "kWh"
+        ],
+        [
+          "Inputs:",
+          "Raw cowhide, washing I",
+          "1380",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Sodium carbonate",
+          "4.14",
+          "Kg"
+        ]
+      ]
+    },
+    {
+      "id": "table-right-leading",
+      "process": [
+        "",
+        ""
+      ],
+      "rows": [
+        [
+          "Outputs:",
+          "CO2",
+          "2.54",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Cowhide, pickling",
+          "676.2",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Wastewater",
+          "748.55",
+          "Kg"
+        ]
+      ]
+    },
+    {
+      "id": "table-right-1",
+      "process": [
+        "13.",
+        "Tanning"
+      ],
+      "rows": [
+        [
+          "Inputs:",
+          "Chromium VI",
+          "47.44",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Electricity",
+          "70.87",
+          "kWh"
+        ],
+        [
+          "Inputs:",
+          "Formic acid",
+          "3.38",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Cowhide, pickling",
+          "676.2",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Oils, unspecified",
+          "1.35",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Sodium carbonate",
+          "10.14",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Sodium chloride",
+          "67.62",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Sulfuric acid",
+          "1.35",
+          "Kg"
+        ],
+        [
+          "Inputs:",
+          "Water, ground",
+          "676.2",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "CO2",
+          "52.44",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Cowhide, wet blue, tanning",
+          "709.33",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Wastewater",
+          "774.24",
+          "Kg"
+        ]
+      ]
+    },
+    {
+      "id": "table-right-2",
+      "process": [
+        "14.",
+        "Sammying"
+      ],
+      "rows": [
+        [
+          "Inputs:",
+          "Electricity",
+          "1.79",
+          "kWh"
+        ],
+        [
+          "Inputs:",
+          "Cowhide, wet blue, tanning",
+          "709.33",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "CO2",
+          "1.32",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Cowhide, sammying",
+          "425.6",
+          "Kg"
+        ],
+        [
+          "Outputs:",
+          "Wastewater",
+          "283.73",
+          "Kg"
+        ]
+      ]
+    },
+    {
+      "id": "table-right-3",
+      "process": [
+        "15.",
+        "Shaving"
+      ],
+      "rows": [
+        [
+          "Inputs:",
+          "Electricity",
+          "4.77",
+          "kWh"
+        ]
+      ]
+    }
+  ]
+}

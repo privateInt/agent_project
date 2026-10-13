@@ -1,0 +1,175 @@
+syntax = "proto3";
+
+package management.v1;
+
+option go_package = "model-platform/gen/management/v1;managementv1";
+
+import "google/protobuf/timestamp.proto";
+
+service ManagementService {
+  rpc ListModels(ListModelsRequest) returns (ListModelsResponse);
+  rpc ListModelVersions(ListModelVersionsRequest) returns (ListModelVersionsResponse);
+  rpc CreateModel(CreateModelRequest) returns (Model);
+  rpc GetModel(GetModelRequest) returns (Model);
+  rpc RenameModel(RenameModelRequest) returns (Model);
+  rpc RenameModelVersion(RenameModelVersionRequest) returns (ModelVersion);
+  // Catalog removal only: keep artifacts and existing execution history.
+  rpc DeleteModel(GetModelRequest) returns (Model);
+  rpc PurgeModel(GetModelRequest) returns (Model);
+  rpc ImportHuggingFace(ImportHuggingFaceRequest) returns (ImportHuggingFaceResponse);
+  rpc GetModelVersion(GetModelVersionRequest) returns (ModelVersion);
+  rpc GetImportSpec(GetImportSpecRequest) returns (ImportSpec);
+  rpc GetImportCredential(GetImportCredentialRequest) returns (ImportCredential);
+  rpc CompleteImport(CompleteImportRequest) returns (ModelVersion);
+  rpc FailImport(FailImportRequest) returns (ModelVersion);
+  rpc RegisterTrainingOutput(RegisterTrainingOutputRequest) returns (ModelVersion);
+  rpc CompleteTrainingOutput(CompleteTrainingOutputRequest) returns (ModelVersion);
+  rpc FailTrainingOutput(FailTrainingOutputRequest) returns (ModelVersion);
+}
+
+message CreateModelRequest {
+  string name = 1;
+  string model_type = 2;
+  string description = 3;
+  string idempotency_key = 4;
+}
+
+message GetModelRequest {
+  string model_id = 1;
+}
+
+// Compare the label read by the editor. Repeating the desired label is safe.
+message RenameModelRequest { string model_id = 1; string name = 2; string expected_name = 3; }
+message RenameModelVersionRequest { string model_version_id = 1; string version = 2; string expected_version = 3; }
+
+message Model {
+  string model_id = 1;
+  string name = 2;
+  string model_type = 3;
+  string description = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+  google.protobuf.Timestamp deleted_at = 7;
+ string purge_state = 8; google.protobuf.Timestamp purged_at = 9;
+}
+
+message ImportHuggingFaceRequest {
+  string model_id = 1;
+  string version = 2;
+  string repo_id = 3;
+  string revision = 4;
+  // User-owned token. It is accepted only at the API boundary and is never
+  // placed in Kafka, Operation rows, or Docker environment variables.
+  string hf_token = 5;
+  string idempotency_key = 6;
+}
+
+message ImportHuggingFaceResponse {
+  string model_version_id = 1;
+  string operation_id = 2;
+  string status = 3;
+}
+
+message GetModelVersionRequest {
+  string model_version_id = 1;
+}
+
+message ModelVersion {
+  string model_version_id = 1;
+  string model_id = 2;
+  string version = 3;
+  string state = 4;
+  string source_type = 5;
+  string repo_id = 6;
+  string requested_revision = 7;
+  string resolved_revision = 8;
+  string artifact_uri = 9;
+  string artifact_sha256 = 10;
+  int64 artifact_size_bytes = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  string artifact_kind = 14;
+  string training_run_id = 15;
+  string source_model_version_id = 16;
+  string base_model_artifact_uri = 17;
+  string artifact_manifest_sha256 = 18;
+  int64 artifact_file_count = 19;
+  string operation_id = 20;
+  string submission_status = 21;
+  string submission_error_code = 22;
+  // List summaries include the owning model label for selection UIs.
+  string model_name = 23;
+  string model_type = 24;
+}
+
+message GetImportSpecRequest {
+  string model_version_id = 1;
+}
+
+message ImportSpec {
+  string model_version_id = 1;
+  string model_id = 2;
+  string repo_id = 3;
+  string requested_revision = 4;
+}
+
+// Internal-only credential lookup used by the one-shot import Job.
+message GetImportCredentialRequest {
+  string model_version_id = 1;
+}
+
+message ImportCredential {
+  string hf_token = 1;
+}
+
+message CompleteImportRequest {
+  string model_version_id = 1;
+  string resolved_revision = 2;
+  string artifact_uri = 3;
+  string artifact_sha256 = 4;
+  int64 artifact_size_bytes = 5;
+}
+
+message FailImportRequest {
+  string model_version_id = 1;
+}
+
+// Reserve one immutable, content-addressed output for a Training Run.
+// Repeating the same request returns the same model_version.
+message RegisterTrainingOutputRequest {
+  string training_run_id = 1;
+  string source_model_version_id = 2;
+  string manifest_sha256 = 3;
+}
+message CompleteTrainingOutputRequest {
+  string model_version_id = 1;
+  string artifact_uri = 2;
+  string manifest_sha256 = 3;
+  int64 artifact_size_bytes = 4;
+  int64 artifact_file_count = 5;
+}
+message FailTrainingOutputRequest {
+  string model_version_id = 1;
+}
+
+// Read-only summary list, newest first. Cursor is bound to normalized filters.
+message ListModelsRequest {
+  int32 limit = 1;
+  string cursor = 2;
+  string q = 3;
+  string model_type = 4;
+ bool include_deleted = 5;
+}
+message ListModelsResponse { repeated Model models = 1; string next_cursor = 2; }
+
+// Read-only summary list, newest first. Cursor is bound to normalized filters.
+message ListModelVersionsRequest {
+  int32 limit = 1;
+  string cursor = 2;
+  string q = 3;
+  string model_id = 4;
+  string state = 5;
+  string artifact_kind = 6;
+  string source_type = 7;
+}
+message ListModelVersionsResponse { repeated ModelVersion versions = 1; string next_cursor = 2; }

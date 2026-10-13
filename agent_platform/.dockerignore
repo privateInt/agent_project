@@ -1,0 +1,16 @@
+.env
+.secrets
+__pycache__
+**/__pycache__
+*.pyc
+**/*.pyc
+tests/results
+.git
+
+# Legacy n8n operational files are retained for migration, never build inputs.
+**/.env
+**/.secrets
+**/.state.json
+**/.storage.json
+**/.handoff.json
+**/.ops.lock

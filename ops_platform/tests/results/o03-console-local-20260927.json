@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "stage": "O03-ops-console",
+  "date": "2026-09-27",
+  "result": "local_passed",
+  "python_tests": 49,
+  "o02_regression_tests": 28,
+  "o03_tests": 21,
+  "browser": "Chromium 133 / Playwright 1.51.1 with synthetic loopback sources",
+  "browser_checks": [
+    "login/logout",
+    "four platform readiness views",
+    "original failed Agent and five steps",
+    "ten identity-checked spans",
+    "metadata exclusion",
+    "unsupported list",
+    "seven metric groups",
+    "HTML injection rendered as text",
+    "empty vs failed observations",
+    "last success and stale display",
+    "390px mobile overflow",
+    "no browser storage or CSP errors"
+  ],
+  "promql_syntax_queries": 7,
+  "native_source_services_executed": false,
+  "docker_build_or_compose_executed": false,
+  "server_acceptance": "pending",
+  "business_inference_requested": false,
+  "existing_service_restart_requested": false,
+  "ops_service": {
+    "name": "ops-web",
+    "image": "agent-project-ops:o03.1",
+    "default_port": 17100,
+    "platform": "linux/amd64",
+    "runtime": "CPython 3.12",
+    "framework": "FastAPI 0.135.2 / Uvicorn 0.42.0",
+    "source_methods": [
+      "GET"
+    ],
+    "processes": 1
+  },
+  "known_business_failure": {
+    "agent_run_id": "1a7d571b-e7e5-4b07-8f41-ad3392025b95",
+    "state": "failed",
+    "error": "ANSWER_REFERENCE_INVALID",
+    "stage": "finalize",
+    "reference_issue": "MISSING_REFERENCE"
+  },
+  "native_contract_gaps_retained": [
+    "non-Agent readiness",
+    "global counts and recency",
+    "standalone ToolCall and Knowledge Operation catalogs",
+    "n8n complete history"
+  ],
+  "remaining": [
+    "new Ops image build/start and live API readback",
+    "user browser acceptance",
+    "Ops restart/session/cache acceptance",
+    "O04 alerting and operational acceptance",
+    "separate read credentials, RBAC/TLS deployment, retention/capacity policy",
+    "server tracing outage isolation",
+    "long-term resource trends and model attribution"
+  ],
+  "test_artifacts": "compact summary only; no browser/wheel/font/screenshots/raw logs in patch"
+}

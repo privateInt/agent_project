@@ -1,0 +1,115 @@
+{
+  "phase": "K06",
+  "date": "2026-09-21",
+  "status": "accepted_model_api_and_ui_not_retrieval_quality",
+  "local": {
+    "python_passed": 42,
+    "python_suites": {
+      "test_live_reranking": 8,
+      "test_playground": 27,
+      "test_model_management_ui": 5,
+      "test_live_embedding": 2
+    },
+    "changed_go_files_syntax_checked": 19,
+    "go_compile": "not_run_no_local_go_or_docker",
+    "postgres_integration": "not_run",
+    "gpu_inference": "not_run",
+    "browser": "not_run"
+  },
+  "server_checks": [
+    "build-deployment and build-gateway Go tests",
+    "two PostgreSQL reranker integration tests with runtime doubles",
+    "explicit ko-reranker-v1 deployment and live_reranking.py"
+  ],
+  "knowledge_search_rerank_integration": "K07_pending",
+  "existing_embedding_and_index_modified": false,
+  "server_initial": {
+    "evidence": "붙여넣은 텍스트 (1)(20260921-020211).txt",
+    "evidence_sha256": "0112e474c3f7de43f407ed2aec2df3bd120784d81fb60d03bb953150fde1b975",
+    "patch_files_applied": 41,
+    "python_passed": 42,
+    "deployment_builder": "passed Go tests and compile; DB tests skipped in image build",
+    "postgres_integration": "failed: two tests rejected ko-reranker-v1 at CreateServingDeployment",
+    "gateway_build": "not_observed",
+    "service_replacement": "not_observed",
+    "gpu_inference": "not_observed"
+  },
+  "fix": {
+    "change": "Normalize owns profile support; CreateServingDeployment requires vllm and routes only Surya to OCR",
+    "database_free_regression_cases": 6,
+    "local_go_syntax_files": 2,
+    "go_compile": "passed_on_user_server",
+    "postgres_integration": "passed_on_user_server"
+  },
+  "server_profile_fix": {
+    "evidence": "붙여넣은 텍스트 (1)(20260921-020832).txt",
+    "evidence_sha256": "520b3dcafc35640c0cec1c945af4e315db03499c9800a49ef381679d27a4831e",
+    "patch_files_applied": 10,
+    "reapply_files": 0,
+    "deployment_go_build": "passed",
+    "gateway_go_build": "passed",
+    "postgres_integration": "passed; two tests with runtime doubles",
+    "service_builds": [
+      "deployment",
+      "gateway",
+      "playground"
+    ],
+    "service_replacements": [
+      "deployment",
+      "gateway",
+      "playground"
+    ],
+    "browser": "user reported ModuleNotFoundError reranking_view",
+    "gpu_inference": "not_observed"
+  },
+  "playground_import_fix": {
+    "files_missing_from_image": [
+      "reranking_view.py",
+      "reranking_validation.py"
+    ],
+    "change": "copy playground/*.py and import app in the build as runtime user",
+    "local_checks": [
+      {
+        "case": "fixed_payload_import_and_initial_screen",
+        "passed": true,
+        "python_modules": 15,
+        "network_calls": 0
+      },
+      {
+        "case": "missing_reranking_view_fails_entrypoint_import",
+        "passed": true
+      },
+      {
+        "case": "missing_reranking_validation_fails_entrypoint_import",
+        "passed": true
+      }
+    ],
+    "docker_build": "command_log_not_provided",
+    "browser": "user_reported_successful_reranking_screen",
+    "gpu_inference": "user_live_api_passed",
+    "streamlit_version": "1.63.0",
+    "check_scope": "isolated Docker COPY payload; actual Streamlit app import and initial-screen AppTest; not a Docker/browser/GPU acceptance"
+  },
+  "server_live": {
+    "evidence": "user supplied live_reranking.py output and Playground score screen",
+    "summary": "reranking-live-20260921.json",
+    "status": "passed",
+    "deployment_id": "cc64a683-a69f-48a5-836e-9f52f0255cc6",
+    "valid_scoring_requests": 2,
+    "lifecycle_changes": 0,
+    "checks": [
+      "profile_identity",
+      "input_id_order",
+      "finite_single_logit",
+      "pair_token_limit",
+      "short_relevance_pair",
+      "candidate_reorder",
+      "profile_mismatch_rejected",
+      "empty_candidates_rejected",
+      "duplicate_ids_rejected",
+      "unknown_field_rejected",
+      "overlong_pair_rejected"
+    ],
+    "retrieval_quality": "not_evaluated"
+  }
+}

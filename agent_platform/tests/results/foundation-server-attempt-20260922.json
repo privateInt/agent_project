@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-22",
+  "stage": "A02",
+  "source_log_sha256": "a341f8e6bf09659e81a9f746a2544b6f3ffdf79361128eff1bdd8be154daef5d",
+  "server_attempt": {
+    "patch_applied": 56,
+    "configure": "passed",
+    "preflight": "passed",
+    "python_tests_image_build": "passed",
+    "python_runtime_image_build": "passed",
+    "go_build": "failed_missing_standard_proto_definitions",
+    "smoke": "connection_refused",
+    "database_checks": "blocked_by_go_build"
+  },
+  "correction": {
+    "file": "agent_platform/Dockerfile",
+    "added_package": "libprotobuf-dev",
+    "package_file_checks": [
+      "google/protobuf/empty.proto",
+      "google/protobuf/timestamp.proto"
+    ],
+    "local_debian_protoc_generation": "passed",
+    "local_generated_go_build": "passed",
+    "server_rebuild": "pending"
+  }
+}

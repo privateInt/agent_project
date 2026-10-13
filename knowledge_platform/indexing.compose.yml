@@ -1,0 +1,14 @@
+# Use together with docker-compose.yml and --env-file .env.indexing.
+services:
+  knowledge-service:
+    networks: [knowledge-infra, knowledge-search]
+    environment:
+      KNOWLEDGE_INDEXING_ENABLED: 'true'
+      OPENSEARCH_ENDPOINT: ${KNOWLEDGE_OPENSEARCH_ENDPOINT:?Run ops/configure_indexing.py}
+      OPENSEARCH_USERNAME: ${KNOWLEDGE_OPENSEARCH_USERNAME:?Run ops/configure_indexing.py}
+      OPENSEARCH_PASSWORD: ${KNOWLEDGE_OPENSEARCH_PASSWORD:?Run ops/configure_indexing.py}
+      OPENSEARCH_CA_BASE64: ${KNOWLEDGE_OPENSEARCH_CA_BASE64:?Run ops/configure_indexing.py}
+networks:
+  knowledge-search:
+    external: true
+    name: ${KNOWLEDGE_OPENSEARCH_NETWORK:-opensearch-net}

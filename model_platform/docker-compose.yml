@@ -1,0 +1,45 @@
+# Service configuration lives beside its source. Run Compose from this directory.
+name: model-platform-e2e
+
+include:
+  - path: ./playground/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./gateway/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./management/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./operation/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./training/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./deployment/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./dispatcher/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./reconciler/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+  - path: ./gc/docker-compose.yml
+    project_directory: .
+    env_file: ./.env
+
+networks:
+  ops-infra:
+    external: true
+    name: ${AGENT_PROJECT_NETWORK:-ops-infra}
+
+# Shared by GPU creators and Training cancellation on this Docker daemon.
+# Preserve it with the DB: it contains uncertain creates and durable cancellation fences.
+volumes:
+  gpu-admission:
+    name: model-gpu-admission
+
+  training-outputs:
+    name: model-training-outputs

@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-22",
+  "status": "local_preflight_passed_server_tests_pending",
+  "production_code_changed": false,
+  "checks": {
+    "changed_go_test_files_parse_and_gofmt": 6,
+    "python_runner_syntax_and_stubbed_dispatch": "passed",
+    "synthetic_chunk_fixture_check": "passed",
+    "synthetic_fixture_chunk_counts": [
+      12,
+      14
+    ]
+  },
+  "not_run": [
+    "new Go/gRPC/HTTP/reconciler tests",
+    "new PostgreSQL recovery tests"
+  ],
+  "reason": "Docker, protoc/generated Go contracts and PostgreSQL are unavailable in this environment",
+  "live_model_requests": 0,
+  "live_index_changes": 0,
+  "service_restarts": 0
+}

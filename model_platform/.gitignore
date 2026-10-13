@@ -1,0 +1,7 @@
+.env
+.env.*.local
+.ipynb_checkpoints/
+*.tar
+*.tar.gz
+__pycache__/
+*.pyc

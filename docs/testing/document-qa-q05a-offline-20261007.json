@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "stage": "Q05a-indexing-adapter-offline",
+  "date": "2026-10-07",
+  "result": "passed",
+  "environment": "temporary_local_state_and_fake_Knowledge_with_loopback_HTTP",
+  "server_applied": false,
+  "server_initialization_verified": false,
+  "new_tests": {
+    "pattern": "test_indexing.py",
+    "count": 35,
+    "result": "passed"
+  },
+  "document_qa_regression_tests": {
+    "pattern": "test_*.py",
+    "count": 276,
+    "result": "passed"
+  },
+  "python_3_10_syntax": "passed",
+  "source_sha256": {
+    "apps/document_qa/indexing.py": "6f1cf5f073cb5fe8d1348a1bd12c15546bb5d15575f07dd8df3eb011e40806b6",
+    "apps/document_qa/indexing_results.py": "37bf7e1ce4f542fbbb4b208e1b981255bbcbcdd07cf010a508f5af672cfd5abc",
+    "apps/document_qa/indexing_transport.py": "54ae517f0351d01d5bbabe432545e5149a1d368a7cffb3e73300f454e0160ed8",
+    "apps/document_qa/tests/test_indexing.py": "1261a0b289154cffae4b29a17a48018deac88218d25bcb721d98b25c65d1b954"
+  },
+  "verified": [
+    "additive_local_schema_and_original_job_token_receipt_preservation",
+    "frozen_full_library_canonical_snapshot_and_size_limit",
+    "same_body_key_unknown_receipt_and_explicit_retry",
+    "concurrent_lane_and_process_interruption",
+    "readback_input_profile_chunker_counts_reference_integrity",
+    "fresh_revision_CAS_and_GET_confirmation",
+    "old_active_version_preserved_after_failure",
+    "no_automatic_POST_replay"
+  ],
+  "effects": {
+    "production_api_requests": 0,
+    "service_control_requested": false,
+    "inference_requested": false,
+    "gpu_requested": false,
+    "n8n_registration_requested": false,
+    "existing_QA_API_code_changed": false,
+    "existing_qa_manual_process_reload_required": false
+  },
+  "question_ready": false,
+  "n8n_indexing_connected": false,
+  "production_indexing_verified": false,
+  "next_step": "apply_local_init_status_plan_then_Q05b_workflow_without_GPU",
+  "deferred": [
+    "Q05b_live_workflow",
+    "Q05c_live_embedding_build_search",
+    "Q06_Agent_binding",
+    "UI_and_answer_quality",
+    "Kubernetes_execution"
+  ]
+}

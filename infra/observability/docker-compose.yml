@@ -1,0 +1,5 @@
+name: infrastructure-observability
+include:
+  - ./prometheus/docker-compose.yml
+  - ./node-exporter/docker-compose.yml
+  - ./cadvisor/docker-compose.yml

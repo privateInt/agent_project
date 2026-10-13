@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "date": "2026-09-27",
+  "stage": "O04-alerts-local",
+  "result": "passed",
+  "scope": "local_tests_only_not_native_engine_or_server_acceptance",
+  "python": {
+    "ops_tests_run": 83,
+    "ops_passed": 83,
+    "infra_tests_run": 66,
+    "infra_passed": 64,
+    "infra_skipped": 2,
+    "skip_reason": "standalone Docker Compose binary unavailable",
+    "new_o04_api_tests": 10,
+    "new_o04_deployment_tests": 10
+  },
+  "promql": {
+    "syntax_expressions_passed": 8,
+    "parser": "promql-parser 0.10.0",
+    "native_rule_scenarios_prepared": 11,
+    "native_time_assertions_prepared": 28,
+    "promtool_execution": "not_executed_locally"
+  },
+  "browser": {
+    "result": "passed",
+    "scope": "local_synthetic_Chromium_flow",
+    "checks": [
+      "login_logout",
+      "four_platforms",
+      "original_failed_agent_steps_and_ten_spans",
+      "metadata_exclusion",
+      "resource_empty_error_recovery",
+      "xss_text",
+      "stale_view",
+      "mobile_no_overflow",
+      "eight_alert_rules",
+      "firing_and_resolution",
+      "alert_source_outage_not_empty",
+      "no_browser_storage_or_CSP_error"
+    ],
+    "user_acceptance": "deferred_by_user",
+    "native_server_browser": "not_executed",
+    "korean_font_visual_acceptance": "not_asserted_in_headless_environment"
+  },
+  "native_alertmanager_lifecycle": "prepared_not_executed_locally",
+  "native_compose_and_prometheus_transition": "prepared_not_executed_locally",
+  "business_inference_requested": false,
+  "production_api_requests": 0,
+  "external_notifications": 0,
+  "source_sha256": {
+    "ops_platform/alerts.py": "381106ac5e6364b8c87f1ef74ee3903ef8c829c71f6ae0c9f2b4ecd8e1ef6c7c",
+    "ops_platform/service.py": "927d5758f12c919e8896f45f5bebbd7d407991de086afe959d30a35e269192ab",
+    "ops_platform/server.py": "f5d7a8158861af1ca2050056f24188f76efcefd66fce17470da37f2bfc937a89",
+    "ops_platform/transport.py": "102d3ed59ff05e0358ec790b2e5019c4500829b6442b6bcf47ab3aa50e398fec",
+    "ops_platform/settings.py": "600c5de9178c7601aa86dbb5a21f6105284d9c27d764a14e50c19919a23e57dc",
+    "ops_platform/web/app.js": "28bc5ebc57e8265d76bd4ad93514f5c2e556118e3d6fddd12e8f63e67ce503dd",
+    "ops_platform/web/index.html": "ee7e8a9c760d4178001cc2df38ebd6b8c8b2b20b6b53a8dfb4ab21486fc0125b",
+    "infra/observability/ops/alerts.py": "bace91fc52e80d1de0085697e2016bc2b49ff1075a1a7d6affe73a1c46efc109",
+    "infra/observability/ops/alert_probe.py": "36bcebb07c95906a2c2d12fc9aa127f45eb9f4fde81b73d3685adff90597d075",
+    "infra/observability/ops/manage.py": "ac66afd568e7c10c8db665e7003852bab31703a8d6860df82d2aae308db503c6",
+    "infra/observability/alerts/o04.rules.yml": "82b7f967426fa189d2f7024b09eddd3ffdc19d8c50132e1ed3c4f85f42dab99a",
+    "infra/observability/alerts/rules_test.yml": "36082d750d00669380cf35fcb5b132c7a1542de80c06e19bfdf446121b24b363"
+  },
+  "installer": {
+    "result": "passed",
+    "files": 39,
+    "checks": [
+      "dry_run_no_change",
+      "original_backups",
+      "apply_payload_hashes",
+      "idempotence",
+      "conflict_no_changes",
+      "symlink_rejection",
+      "mid_write_rollback",
+      "archive_private_state_exclusion"
+    ]
+  }
+}

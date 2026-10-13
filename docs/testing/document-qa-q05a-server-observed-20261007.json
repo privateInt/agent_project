@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "stage": "Q05a-indexing-adapter-server-observed",
+  "result": "passed",
+  "source": "user_provided_terminal_output",
+  "received_at": "2026-10-07T16:12:02+09:00",
+  "patch": {
+    "status": "applied",
+    "written": 13,
+    "document_qa_code_changed": true,
+    "document_qa_manual_process_reload_required": false,
+    "patch_backups_created": false,
+    "platform_runtime_files_changed": false,
+    "service_control_requested": false,
+    "service_restart_required": false
+  },
+  "tests": {
+    "pattern": "test_indexing.py",
+    "count": 35,
+    "seconds": 1.564,
+    "result": "passed"
+  },
+  "init": "passed",
+  "status": "passed",
+  "status_projection": {
+    "index_configured": false,
+    "index_id": null,
+    "indexing_counts": {},
+    "indexing_generation": 0,
+    "active_job_id": null,
+    "active_document_count": 0,
+    "question_ready": false,
+    "configuration_live_verified": false,
+    "n8n_indexing_connected": false,
+    "production_indexing_verified": false
+  },
+  "plan": {
+    "result": "passed",
+    "job_id": "430b0e7b-7b4c-4ae7-9c57-6c979ca94343",
+    "base_generation": 0,
+    "base_version_id": "",
+    "document_count": 1,
+    "documents": [
+      {
+        "canonical_id": "fec048c6-ea13-40f3-bef3-eddbfca9799a",
+        "canonical_sha256": "3c916e774f8240f0112f94e4027e8170b067cd2a6d9bd3176266e6e4d7ebe961",
+        "size_bytes": 1024,
+        "source_document_id": "8db38fb1-ba4e-41b8-aff3-b2421ff6ab16",
+        "source_sha256": "0134788cc280b2c3fc5045c1b395b4624c008cbdaf465df4564e5cf27e9fe97c",
+        "refinement_run_id": "22d73791-ddc8-4d56-864f-e84444fb4c7c",
+        "schema_version": "canonical-document-v1",
+        "processor_version": "cpu-parser-v1",
+        "rules_version": "basic-cleaning-v1",
+        "processor_image_id": "sha256:26b2de683033cb62ba7a42071e0b3d3845611feaf99dafdb1db24a5905d354e8",
+        "format": "text"
+      }
+    ]
+  },
+  "effects": {
+    "production_api_requests": 0,
+    "inference_requested": false,
+    "GPU_requested": false
+  },
+  "production_indexing_verified": false,
+  "next_step": "Q05b_owned_indexing_workflow_without_GPU"
+}

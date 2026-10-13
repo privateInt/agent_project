@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-22",
+  "stage": "A02",
+  "source_log_sha256": "f1a5e4a6985f8445b032949472196bf36400f5ab02f58896e818842b6e2f9bd5",
+  "second_server_attempt": {
+    "patch_applied": 7,
+    "go_tests_image_build": "passed",
+    "gateway_image_build": "passed",
+    "service_image_build": "passed",
+    "runtime_image_build": "passed",
+    "private_network": "created",
+    "database_volume": "created",
+    "container_creation": "failed_invalid_tmpfs_mount_mode_1777",
+    "smoke": "not_run",
+    "database_checks": "not_run"
+  },
+  "correction": {
+    "runtime_tmpfs": [
+      "/tmp:size=16m,mode=1777"
+    ],
+    "preflight_absolute_tmpfs_target_check": true,
+    "regression_tests_passed": 2,
+    "compose_version": "2.39.4",
+    "real_compose_normalization": "passed",
+    "old_rendered_config_rejected": true,
+    "server_container_start": "pending"
+  }
+}

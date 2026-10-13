@@ -1,0 +1,150 @@
+syntax = "proto3";
+package agent.platform.v1;
+option go_package = "agent-platform/gen/agent/platform/v1;platformv1";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+// A02 diagnostic contract. Business Tool/Agent execution is added separately.
+service PlatformService {
+  rpc GetStatus(google.protobuf.Empty) returns (PlatformStatus);
+  rpc CreateSystemCheck(google.protobuf.Empty) returns (SystemCheck);
+  rpc GetSystemCheck(GetSystemCheckRequest) returns (SystemCheck);
+}
+service RuntimeService {
+  rpc Probe(google.protobuf.Empty) returns (RuntimeProbe);
+  rpc ExecuteTool(ToolExecution) returns (ToolExecutionResult);
+  rpc InspectKnowledge(KnowledgeInspection) returns (KnowledgeInspectionResult);
+  rpc InspectAgentModel(AgentModelInspection) returns (KnowledgeInspectionResult);
+  rpc ExecuteAgent(AgentExecution) returns (AgentExecutionResult);
+}
+message RuntimeProbe {
+  string instance_id = 1;
+  string contract_version = 2;
+  string request_id = 3;
+}
+message PlatformStatus {
+  string platform = 1;
+  string version = 2;
+  string stage = 3;
+  bool ready = 4;
+  string database = 5;
+  string runtime = 6;
+  int32 schema_version = 7;
+  string request_id = 8;
+}
+message GetSystemCheckRequest { string check_id = 1; }
+message SystemCheck {
+  string check_id = 1;
+  string request_id = 2;
+  string state = 3; // succeeded or failed; final diagnostic outcome only
+  string runtime_instance_id = 4;
+  string error_code = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp completed_at = 7;
+}
+
+// JSON bytes retain schema documents and exact JSON numbers at service boundaries.
+// Each operation has its own authenticated RPC; no arbitrary REST forwarding.
+service ToolService {
+  rpc InspectKnowledge(ToolRequest) returns (ToolResponse);
+ rpc CreateOpenAPIImport(ToolRequest) returns (ToolResponse);
+ rpc ListOpenAPIImports(ToolRequest) returns (ToolResponse);
+ rpc GetOpenAPIImport(ToolRequest) returns (ToolResponse);
+  rpc CreateTool(ToolRequest) returns (ToolResponse);
+  rpc ListTools(ToolRequest) returns (ToolResponse);
+  rpc GetTool(ToolRequest) returns (ToolResponse);
+  rpc UpdateTool(ToolRequest) returns (ToolResponse);
+  rpc CreateToolVersion(ToolRequest) returns (ToolResponse);
+  rpc GetToolVersion(ToolRequest) returns (ToolResponse);
+  rpc PublishToolVersion(ToolRequest) returns (ToolResponse);
+  rpc RetireToolVersion(ToolRequest) returns (ToolResponse);
+  rpc CreateConnection(ToolRequest) returns (ToolResponse);
+  rpc ListConnections(ToolRequest) returns (ToolResponse);
+  rpc GetConnection(ToolRequest) returns (ToolResponse);
+  rpc CreateConnectionVersion(ToolRequest) returns (ToolResponse);
+  rpc GetConnectionVersion(ToolRequest) returns (ToolResponse);
+  rpc CreateToolCall(ToolRequest) returns (ToolResponse);
+  rpc GetToolCall(ToolRequest) returns (ToolResponse);
+  rpc ListMCPTools(ToolRequest) returns (ToolResponse);
+}
+message ToolRequest {
+ string resource_id = 1;
+ string idempotency_key = 2;
+ bytes json = 3;
+ int32 limit = 4;
+ string cursor = 5;
+ string document_format = 6;
+}
+message ToolResponse { bytes json = 1; bool replayed = 2; }
+message ToolExecution {
+ string tool_call_id = 1;
+ string tool_version_id = 2;
+ string kind = 3;
+ bytes binding_json = 4;
+ bytes arguments_json = 5;
+ bytes connection_json = 6;
+ string lease_token = 7;
+ string invocation_key = 8;
+}
+message ToolExecutionResult {
+ string tool_call_id = 1;
+ string tool_version_id = 2;
+ string lease_token = 3;
+ bytes result_json = 4;
+ string error_code = 5;
+ string runtime_instance_id = 6;
+}
+
+// Read-only discovery. Connection snapshots come exclusively from Agent Service.
+message KnowledgeInspection {
+ bytes request_json = 1;
+ bytes knowledge_connection_json = 2;
+ bytes model_connection_json = 3;
+}
+message KnowledgeInspectionResult { bytes json = 1; string error_code = 2; }
+
+// Agent Service owns definitions, queue, leases and durable step records.
+service AgentService {
+ rpc CreateWorkflowLink(ToolRequest) returns (ToolResponse);
+ rpc ListWorkflowLinks(ToolRequest) returns (ToolResponse);
+ rpc GetWorkflowLink(ToolRequest) returns (ToolResponse);
+ rpc UpdateWorkflowLink(ToolRequest) returns (ToolResponse);
+ rpc CreateAgent(ToolRequest) returns (ToolResponse);
+ rpc ListAgents(ToolRequest) returns (ToolResponse);
+ rpc GetAgent(ToolRequest) returns (ToolResponse);
+ rpc UpdateAgent(ToolRequest) returns (ToolResponse);
+ rpc CreateAgentVersion(ToolRequest) returns (ToolResponse);
+ rpc GetAgentVersion(ToolRequest) returns (ToolResponse);
+ rpc PublishAgentVersion(ToolRequest) returns (ToolResponse);
+ rpc RetireAgentVersion(ToolRequest) returns (ToolResponse);
+ rpc CreateAgentRun(ToolRequest) returns (ToolResponse);
+ rpc GetAgentRun(ToolRequest) returns (ToolResponse);
+ rpc ListAgentRuns(ToolRequest) returns (ToolResponse);
+ rpc GetAgentSteps(ToolRequest) returns (ToolResponse);
+ rpc InspectAgentModel(ToolRequest) returns (ToolResponse);
+ // Internal only: never exposed by Gateway/MCP. Lease-fenced and state-checked.
+ rpc AgentRuntimeCommand(AgentCommand) returns (ToolResponse);
+}
+message AgentModelInspection { bytes request_json = 1; bytes connection_json = 2; }
+message AgentExecution {
+ string agent_run_id = 1;
+ string agent_version_id = 2;
+ string lease_token = 3;
+ bytes snapshot_json = 4;
+ bytes input_json = 5;
+}
+message AgentExecutionResult {
+ string agent_run_id = 1;
+ string agent_version_id = 2;
+ string lease_token = 3;
+ string runtime_instance_id = 4;
+ bytes result_json = 5;
+ string error_code = 6;
+ string error_stage = 7;
+}
+message AgentCommand {
+ string agent_run_id = 1;
+ string lease_token = 2;
+ string operation = 3;
+ string step_id = 4;
+ bytes json = 5;
+}

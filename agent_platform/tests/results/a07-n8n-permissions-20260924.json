@@ -1,0 +1,81 @@
+{
+  "date": "2026-09-24",
+  "stage": "A07 check image directory permissions",
+  "agent_build": "a07.1",
+  "schema_version": 5,
+  "result": "server_image_build_and_isolated_cli_passed",
+  "server_evidence": {
+    "source": "user terminal log; backup 20260924T091721",
+    "files_applied": 18,
+    "copy_checks_and_workflow": "passed",
+    "build_node_syntax_check": "MODULE_NOT_FOUND /checks/tests/run.cjs",
+    "node_version": "26.7.0",
+    "workflow_assertions_executed": false
+  },
+  "defect": {
+    "setting": "COPY --chmod=0444",
+    "impact": "new parent directories can inherit mode without search/execute permission",
+    "primary_reference": "https://github.com/moby/buildkit/issues/6801",
+    "previous_bind_mount_failure": "exact remote filesystem state remains unconfirmed"
+  },
+  "fix": {
+    "check_image": "agent-platform-n8n-checks:a07.3",
+    "copy_chmod_removed": true,
+    "directory_mode": "0555",
+    "input_file_mode": "0444",
+    "metadata_step_user": "root (image build only)",
+    "final_user": "node",
+    "build_gate": "non-root UID, directory read/search and file read access; syntax and contract checks"
+  },
+  "local_validation": {
+    "result": "passed",
+    "effective_capabilities": 0,
+    "test_uid": 0,
+    "permission_bypass": false,
+    "docker_build_run": false,
+    "failure_reproduced": "directory0444 / node MODULE_NOT_FOUND",
+    "repair": "actual shipped Dockerfile permission command",
+    "directory_mode": "0555",
+    "file_mode": "0444",
+    "node_version": "v24.19.0",
+    "contract": {
+      "result": "passed",
+      "checks": 6,
+      "scope": "shipped n8n Code nodes: raw question, stable retry, status URL boundary, time/count limits, invalid answer"
+    },
+    "real_n8n_cli": {
+      "result": "passed",
+      "stage": "A07",
+      "scope": "real n8n 2.40.5 CLI / isolated SQLite / Agent HTTP fixture",
+      "checks": [
+        "lost POST response retries same request",
+        "bounded polling then answer and original sources",
+        "new execution replay preserves original caller_context",
+        "changed body with same key fails 409",
+        "no_evidence success",
+        "Agent failure stops n8n",
+        "Agent interrupted stops n8n"
+      ],
+      "effects": 4,
+      "posts": 9,
+      "reads": 6
+    }
+  },
+  "compose_validation": "Compose2.39.4 normalized; expected context; no mounts, secrets, production dependencies; network none",
+  "limitations": [
+    "No local Docker daemon; exact image build/run subsequently passed on user server",
+    "Local uid0/CapEff0 reproduction retained; actual USER node build gate subsequently passed on user server",
+    "Node24.19.0 locally vs Node26.7.0 image",
+    "Production n8n/DB healthy confirmed before this test build failure; no restart or data mutation required",
+    "User pages, real model/Knowledge response quality and user AgentRun restart acceptance remain deferred"
+  ],
+  "server_confirmation": {
+    "source": "user terminal log; backup 20260924T092438",
+    "image": "agent-platform-n8n-checks:a07.3",
+    "build": "passed",
+    "non_root_readability_syntax_contract_gate": "passed",
+    "cli_result": "passed",
+    "cli_checks": 7,
+    "details": "a07-n8n-server-verified-20260924.json"
+  }
+}

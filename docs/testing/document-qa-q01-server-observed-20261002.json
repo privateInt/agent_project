@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "stage": "Q01-document-qa-server-application",
+  "evidence": "user_pasted_terminal_output",
+  "reported_at": "2026-10-02T13:50:01+09:00",
+  "execution_timestamp_in_output": false,
+  "patch": "document_qa_q01_contract_20261002",
+  "application": {
+    "status": "applied",
+    "written": 15,
+    "active_runtime_files_changed": false,
+    "patch_backups_created": false,
+    "service_control_requested": false,
+    "service_restart_required": false
+  },
+  "tests": {
+    "command": "python3 -B -m unittest discover -s apps/document_qa/tests -p test_*.py -q",
+    "passed": 28,
+    "elapsed_seconds": 0.037,
+    "result": "OK"
+  },
+  "actual_api_integration_verified": false,
+  "semantic_quality_acceptance": false
+}

@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "stage": "O03-ops-restart-acceptance",
+  "result": "passed",
+  "checked_at": "2026-09-27T01:47:38.844128Z",
+  "scope": "same Ops container restart, configuration, persisted cache and auth lifecycle",
+  "container_id": "105e0c7d491996dfd21c46b3b6bb57e83ca282992e18827f9575b02b96f521d9",
+  "image_id": "sha256:879c4a9874e0e1f8a02d9820daf7cb88566557b9b54832674dac1ee1d86e6bbf",
+  "started_before": "2026-09-27T01:16:27.170989297Z",
+  "started_after": "2026-09-27T01:47:33.118942737Z",
+  "same_container_image_mounts": true,
+  "configuration_and_credentials_preserved": true,
+  "cache_entries_preserved": 16,
+  "cache_times_exactly_preserved": true,
+  "old_session_rejected": true,
+  "same_access_code_login": true,
+  "test_session_logged_out": true,
+  "restart_command_completion_recorded": true,
+  "business_inference_requested": false,
+  "upstream_api_requests": 0,
+  "other_service_control_requested": false,
+  "browser_acceptance": "deferred_by_user",
+  "evidence_reused": false,
+  "evidence": {
+    "source": "user pasted apply_patch and restart_check run output",
+    "server_directly_accessed_by_assistant": false,
+    "applied_patch": "ops-console-restart-o03-20260927",
+    "applied_files": 14,
+    "private_baseline_or_credentials_collected": false
+  },
+  "remaining": {
+    "observation_fault_isolation": "next",
+    "O04_alerting_and_operational_acceptance": "pending",
+    "ops_browser": "deferred_by_user",
+    "agent_ui_and_answer_quality": "deferred_by_user"
+  },
+  "changes_for_this_record": "documentation_and_summary_only"
+}

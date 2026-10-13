@@ -1,0 +1,363 @@
+{
+  "schema": 1,
+  "stage": "O04-production-encrypted-generation-plan",
+  "action": "plan",
+  "effects": {
+    "files_written": [],
+    "service_control_requested": false,
+    "application_credential_contents_read": false,
+    "identity_contents_read": false,
+    "application_api_requests": 0,
+    "container_exec_commands": 0,
+    "backup_executed": false,
+    "restore_executed": false,
+    "inference_requested": false,
+    "image_build_or_pull_requested": false,
+    "linger_changed": false
+  },
+  "activation_supported": false,
+  "actual_reboot_acceptance": "deferred_by_user",
+  "kubernetes_acceptance": "deferred",
+  "result": "passed",
+  "diagnostic_status": "completed",
+  "review_id": "c14415bd7afdafc6d5a1782ffba19e40d07b3c57490795ab4823c4f5cbf8e70a",
+  "review_authorizes_execution": false,
+  "production_generation_plan_connected": true,
+  "destination": "/home/shshin/.local/state/agent-project-ops/backups",
+  "recipient": "age1zaye9qzk7fqs9fucgrk2s2jv8eu02gqyqfx3d9ggleymxm89zygs26s4cn",
+  "identity_path": "/home/shshin/.local/state/agent-project-ops/backup-control/keys/identity.agekey",
+  "identity_contents_read": false,
+  "identity_custody_verified": false,
+  "setup_ready": true,
+  "scoped_services": [
+    "lf-clickhouse",
+    "lf-minio",
+    "lf-postgres",
+    "lf-redis",
+    "lf-web",
+    "lf-worker",
+    "obs-alertmanager",
+    "obs-prometheus",
+    "ops-web"
+  ],
+  "scoped_service_count": 9,
+  "protected_running_count": 58,
+  "source_count": 22,
+  "sources": [
+    {
+      "name": "prometheus",
+      "path": "/home/shshin/.local/state/agent-project-observability/prometheus",
+      "exclude_children": []
+    },
+    {
+      "name": "observability-records",
+      "path": "/home/shshin/.local/state/agent-project-observability",
+      "exclude_children": [
+        "prometheus",
+        "alertmanager"
+      ]
+    },
+    {
+      "name": "alertmanager",
+      "path": "/home/shshin/.local/state/agent-project-observability/alertmanager",
+      "exclude_children": []
+    },
+    {
+      "name": "langfuse-postgres",
+      "path": "/home/shshin/.local/state/agent-project-langfuse/data/postgres",
+      "exclude_children": []
+    },
+    {
+      "name": "langfuse-clickhouse",
+      "path": "/home/shshin/.local/state/agent-project-langfuse/data/clickhouse",
+      "exclude_children": []
+    },
+    {
+      "name": "langfuse-clickhouse-logs",
+      "path": "/home/shshin/.local/state/agent-project-langfuse/data/clickhouse-logs",
+      "exclude_children": []
+    },
+    {
+      "name": "langfuse-redis",
+      "path": "/home/shshin/.local/state/agent-project-langfuse/data/redis",
+      "exclude_children": []
+    },
+    {
+      "name": "langfuse-minio",
+      "path": "/home/shshin/.local/state/agent-project-langfuse/data/minio",
+      "exclude_children": []
+    },
+    {
+      "name": "langfuse-records",
+      "path": "/home/shshin/.local/state/agent-project-langfuse",
+      "exclude_children": [
+        "data"
+      ]
+    },
+    {
+      "name": "ops-server",
+      "path": "/home/shshin/.local/state/agent-project-ops/server",
+      "exclude_children": []
+    },
+    {
+      "name": "ops-auto-refresh-records",
+      "path": "/home/shshin/.local/state/agent-project-ops/auto-refresh/f62ab507-2b70-4ba4-bbb0-83dfcfae9299",
+      "exclude_children": []
+    },
+    {
+      "name": "source-ops_platform",
+      "path": "/home/shshin/workspace/agent_project/ops_platform",
+      "exclude_children": []
+    },
+    {
+      "name": "source-ops_tools",
+      "path": "/home/shshin/workspace/agent_project/ops_tools",
+      "exclude_children": []
+    },
+    {
+      "name": "source-ops_candidates",
+      "path": "/home/shshin/workspace/agent_project/ops_candidates",
+      "exclude_children": []
+    },
+    {
+      "name": "source-infra-observability",
+      "path": "/home/shshin/workspace/agent_project/infra/observability",
+      "exclude_children": []
+    },
+    {
+      "name": "source-infra-langfuse",
+      "path": "/home/shshin/workspace/agent_project/infra/langfuse",
+      "exclude_children": []
+    },
+    {
+      "name": "agent-token-reference",
+      "path": "/home/shshin/workspace/agent_project/agent_platform/.secrets/api-token",
+      "exclude_children": []
+    },
+    {
+      "name": "host-configuration-0",
+      "path": "/etc/fstab",
+      "exclude_children": []
+    },
+    {
+      "name": "host-configuration-1",
+      "path": "/etc/docker/daemon.json",
+      "exclude_children": []
+    },
+    {
+      "name": "host-configuration-2",
+      "path": "/etc/systemd/system/docker.service.d/90-agent-project-storage.conf",
+      "exclude_children": []
+    },
+    {
+      "name": "langfuse-key-reference",
+      "path": "/home/shshin/workspace/agent_project/agent_platform/.secrets/langfuse-tracing.json",
+      "exclude_children": []
+    },
+    {
+      "name": "owned-user-unit-file",
+      "path": "/home/shshin/.config/systemd/user/agent-project-ops-refresh-f62ab5072b704ba4bbb083dfcfae9299.service",
+      "exclude_children": []
+    }
+  ],
+  "required_file_dispositions": {
+    "observability-state": "files:source-infra-observability",
+    "observability-env": "files:source-infra-observability",
+    "observability-owner": "files:observability-records",
+    "prometheus/docker-compose.yml": "files:source-infra-observability",
+    "alerts/prometheus-overlay.yml": "files:source-infra-observability",
+    "alerts/prometheus.yml": "files:source-infra-observability",
+    "alerts/o04.rules.yml": "files:source-infra-observability",
+    "gpu/.state.json": "files:source-infra-observability",
+    "gpu/.env": "files:source-infra-observability",
+    "alerts/.state.json": "files:source-infra-observability",
+    "alerts/.env": "files:source-infra-observability",
+    "alerts/alertmanager.yml": "files:source-infra-observability",
+    "alerts/docker-compose.yml": "files:source-infra-observability",
+    "alertmanager-owner": "storage-alertmanager",
+    "langfuse-settings.json": "files:langfuse-records",
+    "langfuse-owner.json": "files:langfuse-records",
+    "langfuse-compose.env": "files:langfuse-records",
+    "langfuse-postgres.env": "files:langfuse-records",
+    "langfuse-clickhouse.env": "files:langfuse-records",
+    "langfuse-redis.env": "files:langfuse-records",
+    "langfuse-minio.env": "files:langfuse-records",
+    "langfuse-worker.env": "files:langfuse-records",
+    "langfuse-web.env": "files:langfuse-records",
+    "ops-owner.json": "files:ops-server",
+    "ops-host-config.json": "files:ops-server",
+    "ops-config.json": "files:ops-server",
+    "ops-compose.env": "files:ops-server",
+    "ops-access-key": "files:ops-server",
+    "ops-cache/api-success.json": "storage-ops-server-runtime",
+    "agent-token-reference": "files:agent-token-reference",
+    "langfuse-key-reference": "files:langfuse-key-reference",
+    "ops-compose": "files:source-ops_platform",
+    "owned-user-unit-file": "files:owned-user-unit-file",
+    "owned-service-record": "files:ops-auto-refresh-records",
+    "host-configuration-0": "files:host-configuration-0",
+    "host-configuration-1": "files:host-configuration-1",
+    "host-configuration-2": "files:host-configuration-2"
+  },
+  "storage": [
+    {
+      "role": "alertmanager",
+      "path": "/home/shshin/.local/state/agent-project-observability/alertmanager",
+      "uid": 1006,
+      "gid": 1007,
+      "target": "/alertmanager",
+      "service": "obs-alertmanager"
+    },
+    {
+      "role": "langfuse-clickhouse",
+      "path": "/home/shshin/.local/state/agent-project-langfuse/data/clickhouse",
+      "uid": 101,
+      "gid": 101,
+      "target": "/var/lib/clickhouse",
+      "service": "lf-clickhouse"
+    },
+    {
+      "role": "langfuse-clickhouse-logs",
+      "path": "/home/shshin/.local/state/agent-project-langfuse/data/clickhouse-logs",
+      "uid": 101,
+      "gid": 101,
+      "target": "/var/log/clickhouse-server",
+      "service": "lf-clickhouse"
+    },
+    {
+      "role": "langfuse-minio",
+      "path": "/home/shshin/.local/state/agent-project-langfuse/data/minio",
+      "uid": 1006,
+      "gid": 1007,
+      "target": "/data",
+      "service": "lf-minio"
+    },
+    {
+      "role": "langfuse-postgres",
+      "path": "/home/shshin/.local/state/agent-project-langfuse/data/postgres",
+      "uid": 999,
+      "gid": 1007,
+      "target": "/var/lib/postgresql/data",
+      "service": "lf-postgres"
+    },
+    {
+      "role": "langfuse-redis",
+      "path": "/home/shshin/.local/state/agent-project-langfuse/data/redis",
+      "uid": 1006,
+      "gid": 1007,
+      "target": "/data",
+      "service": "lf-redis"
+    },
+    {
+      "role": "ops-server-runtime",
+      "path": "/home/shshin/.local/state/agent-project-ops/server/cache",
+      "uid": 1006,
+      "gid": 1007,
+      "target": "/var/lib/ops",
+      "service": "ops-web"
+    },
+    {
+      "role": "prometheus",
+      "path": "/home/shshin/.local/state/agent-project-observability/prometheus",
+      "uid": 1006,
+      "gid": 1007,
+      "target": "/prometheus",
+      "service": "obs-prometheus"
+    }
+  ],
+  "image_role_count": 12,
+  "unique_image_count": 12,
+  "image_ids": [
+    "sha256:0e76d9807edfac0345554816cd7f54aa9b650892848809932557c46e46bc3450",
+    "sha256:212aeeeb8faaef6c46498d86cbec6b9344d8d9492996b174664ff82c562ab685",
+    "sha256:346be9cc3f4743f7e57bce36d4037f165ab44f7a0d14920739c8839189cd36d7",
+    "sha256:4a6e2ddd9ed6c72af62964c06331bbfe0666f1d50cace234d0b03b9fb974f86c",
+    "sha256:64035c2c9726d90bea2a217d43da49d7a3f13dde8647c1f409059e02e0e61287",
+    "sha256:68ab64b26f7a75a996873f7cccd9ee256a7ff2dce177ae622497b466277551ff",
+    "sha256:70de09e17623fef1f37aef24cdcd9a034d609ff203cff2857d8640736e537c2f",
+    "sha256:7b4cd8eebf6fc667aebe8a32df59ec6326349c0a2560336cb5cb2e5e554a4950",
+    "sha256:7d467fbb6bbbd6a96d87a0e4b2ef53840ce11521af0a8c27b995daa82896a241",
+    "sha256:9713182672c2380dd0e95385011685bfd4b1ac3647ba09aa355cc13c403318da",
+    "sha256:9bbbca8f5cb8e9bd1b835e8ec086b6df6d9a458d2d10ef1c97ea4a9a3ae7e54b",
+    "sha256:d280a05f4391d4707f3d2407114e47083989c8dcfb1c6de976676620c2c0d1dd"
+  ],
+  "stop_order": [
+    "ops-web",
+    "lf-web",
+    "obs-prometheus",
+    "lf-worker",
+    "obs-alertmanager",
+    "lf-clickhouse",
+    "lf-minio",
+    "lf-postgres",
+    "lf-redis"
+  ],
+  "return_order": [
+    "lf-redis",
+    "lf-postgres",
+    "lf-minio",
+    "lf-clickhouse",
+    "obs-alertmanager",
+    "lf-worker",
+    "obs-prometheus",
+    "lf-web",
+    "ops-web"
+  ],
+  "dependency_order_is_application_drain_proof": false,
+  "stream_budgets": {
+    "per_storage_bytes": 8589934592,
+    "per_file_tree_bytes": 2147483648,
+    "per_image_export_bytes": 17179869184,
+    "per_artifact_entries": 65536,
+    "strict_generation_plaintext_envelope_bytes": 319840845824,
+    "capture_seconds": 3600,
+    "per_container_stop_seconds": 60
+  },
+  "capacity": {
+    "available_bytes": 220951834624,
+    "reserve_bytes": 98282089677,
+    "usable_after_reserve_bytes": 122669744947,
+    "reserve_percent": 10,
+    "proposed_generations": 2,
+    "staging_copies": 1,
+    "restore_copies": 1,
+    "declared_stream_budget_with_allowance_bytes": 1343331552464,
+    "stream_budget_fits_reserved_capacity": false,
+    "actual_source_size_measured": false,
+    "actual_archive_size_verified": false,
+    "filesystem": {
+      "mountpoint": "/",
+      "source": "/dev/nvme0n1p2",
+      "fstype": "ext4"
+    },
+    "independence_from_source_disk_verified": false
+  },
+  "generation_metadata_stable": true,
+  "maintenance_review_id": "0b6f76538a9ecb000c9a3e4b812c808d4cf73f9a6c8c617edc6175cde9df8a2d",
+  "source": {
+    "code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+    "code_state": "candidate",
+    "code_files": 61,
+    "base_code_sha256": "a24257d8636b5842167e74f7b02931c467d105519fb9b5f70ceb577437fccca4",
+    "candidate_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+    "controller_sha256": "9943a3c35dd0d30782506f29f750ac7331def01a76909f6ade1dd9f6c0c93cab"
+  },
+  "current_worker_invocation": "1de2468e7b1e445c83d5c4dee1d9188f",
+  "current_worker_verified": true,
+  "continuous_uptime_verified": false,
+  "production_execution_adapter_available": false,
+  "backup_ready": false,
+  "pending": [
+    "reviewed_capture_and_explicit_recovery_executor",
+    "separate_identity_custody",
+    "clean_application_drain_and_shutdown",
+    "initial_production_capture",
+    "isolated_actual_database_image_and_application_restore"
+  ],
+  "next_step": "implement_reviewed_capture_recovery_executor_using_this_generation_contract",
+  "metadata_command_counts": {
+    "adapter": 185,
+    "includes_core_metadata_queries": false
+  },
+  "worker_service_control_commands": 0
+}

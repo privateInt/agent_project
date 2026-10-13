@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "index_id": {
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "required": [
+    "index_id"
+  ],
+  "additionalProperties": false
+}

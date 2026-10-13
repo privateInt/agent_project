@@ -1,0 +1,45 @@
+services:
+  obs-node-exporter:
+    image: ${OBS_NODE_IMAGE:?Run observability prepare first}
+    labels:
+      org.agent-project.observability.owner: ${OBS_CONFIG_ID:?}
+    network_mode: host
+    pid: host
+    uts: host
+    restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    cpus: 0.5
+    mem_limit: 256m
+    memswap_limit: 256m
+    pids_limit: 128
+    command:
+      - --web.listen-address=127.0.0.1:16311
+      - --path.rootfs=/host
+      - --collector.disable-defaults
+      - --collector.cpu
+      - --collector.meminfo
+      - --collector.loadavg
+      - --collector.stat
+      - --collector.time
+      - --collector.uname
+      - --collector.filesystem
+      - --collector.diskstats
+      - --collector.netdev
+      - --collector.filesystem.mount-points-exclude=${OBS_FS_EXCLUDE:?}
+    volumes:
+      - type: bind
+        source: /
+        target: /host
+        read_only: true
+        bind: {propagation: rslave, create_host_path: false}
+    healthcheck:
+      test: [CMD, wget, -q, --spider, http://127.0.0.1:16311/]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}

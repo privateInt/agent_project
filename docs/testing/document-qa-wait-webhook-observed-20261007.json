@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "stage": "Q04b-existing-CPU-workflow-generated-Wait-metadata",
+  "source": "user_pasted_server_outputs",
+  "reported_at": "2026-10-07T13:52:25+09:00",
+  "project_root": "/home/shshin/workspace/agent_project",
+  "library_id": "e1172d34-4500-426e-9440-d93310b6fbf1",
+  "storage_recovery_observed": {
+    "docker_root": "/media/simsys/SSD_EXT4/docker",
+    "postgres_data_device": "/dev/sda2",
+    "prior_available_bytes_report": "0",
+    "postgres_log_error": "No space left on device",
+    "build_cache_prune_summary": "Total: 104.5GB",
+    "physical_bytes_saved_verified": false,
+    "available_after_report": "31G",
+    "postgres_accepting_connections": true,
+    "n8n_readiness_http_status": 200,
+    "capacity_remediation_complete": false
+  },
+  "engine_check": {
+    "result": "passed",
+    "version": "2.40.5",
+    "version_source": "owned_local_pinned_image",
+    "origin": "http://127.0.0.1:16200",
+    "image_digest": "sha256:9f693fd5565539efd5e75ad168526c8041a6af516d9e50bc4d9cb1c9c5031523",
+    "metadata_commands": 4,
+    "production_GET_requests": 2,
+    "settings_http_status": 200,
+    "workflow_list_http_status": 200
+  },
+  "qa_api": {
+    "result": "listening",
+    "bind": "172.25.0.1",
+    "port": 17110,
+    "authenticated_library_verified": true,
+    "refinement_route_verified": true,
+    "verification_production_GET_requests": 3,
+    "n8n_callback_execution_verified": false
+  },
+  "entry_prepare": {
+    "result": "prepared",
+    "workflow_configured": true,
+    "configuration_live_verified_status_field": false,
+    "handoff_counts": {},
+    "question_ready": false
+  },
+  "cpu_prepare": {
+    "result": "attention_required",
+    "code": "ENGINE_WORKFLOW_CHANGED"
+  },
+  "read_only_comparison": {
+    "production_GET_requests": 2,
+    "remote_POST_requests": 0,
+    "entry": {
+      "workflow_recorded": true,
+      "definition_matches": true,
+      "name_matches": true,
+      "connections_match": true,
+      "changed_settings": [],
+      "node_differences": [],
+      "active": true,
+      "published_version_matches": true
+    },
+    "cpu_refinement": {
+      "workflow_recorded": true,
+      "definition_matches": false,
+      "name_matches": true,
+      "connections_match": true,
+      "changed_settings": [],
+      "node_differences": [
+        {
+          "node": "Wait before observation",
+          "fields": [
+            "webhookId"
+          ]
+        }
+      ],
+      "active": false,
+      "published_version_matches": false
+    },
+    "webhookId_value_or_UUID_shape_reported": false
+  },
+  "current_patch": {
+    "name": "document_qa_wait_webhook_fix_20261007",
+    "local_regression_tests_passed": 9,
+    "affected_existing_tests_passed": 4,
+    "actual_server_application_verified": false,
+    "actual_CPU_publish_verified": false,
+    "template_request_or_definition_digest_changed": false,
+    "existing_registration_reuse_tested_with_fake_engine": true,
+    "canonical_nonzero_UUID_required_before_tolerating_extra_field": true,
+    "manual_QA_foreground_reload_required_before_document_acceptance": true
+  },
+  "production_Data_refinement_verified": false,
+  "inference_requested_by_current_patch": false,
+  "GPU_requested_by_current_patch": false,
+  "question_ready": false,
+  "home_cleanup_followup": {
+    "tachoi_moved": false,
+    "tachoi_reported_size": "79G",
+    "nvme1_available_report": "75G",
+    "destination_has_sufficient_space_verified": false,
+    "shshin_go_and_pip_cache_cleanup_completed": true,
+    "shshin_trash_cleanup_completed": true,
+    "root_nvme_available_after_home_cleanup_report": "200G",
+    "vscode_server_cleanup_completed": false
+  }
+}

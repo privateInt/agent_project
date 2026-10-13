@@ -1,0 +1,344 @@
+# 권한 문제로 OpenSearch 실행이 안되는 경우 아래 과정 다시 실행
+# ===========================================
+# certs gen sh 실행 방법
+# bash gen-opensearch-certs.sh
+#
+# 소유자가 shshin인 상태에서 certs 권한 변경
+# chmod 755 ./certs
+# chmod 644 ./certs/*.key
+# chmod 644 ./certs/*.crt ./certs/*.pem
+# ===========================================
+
+# ==============================================================================
+# OpenSearch 배포 및 멀티 서버 분리 참고
+# ==============================================================================
+#
+# [현재 구성]
+# - opensearch-node1과 opensearch-node2가 동일한 서버에서 실행된다.
+# - 두 노드의 데이터는 각각 별도의 Docker named volume에 저장된다.
+#   - node1: opensearch-data1 -> /usr/share/opensearch/data
+#   - node2: opensearch-data2 -> /usr/share/opensearch/data
+# - docker compose down은 데이터를 유지한다.
+# - docker compose down -v는 OpenSearch 데이터 볼륨까지 삭제하므로 주의한다.
+#
+# [네트워크 구성]
+# - OpenSearch는 공용 ops-infra 네트워크에 연결하지 않는다.
+# - OpenSearch Compose가 opensearch-net을 직접 생성한다.
+# - Knowledge Platform이 OpenSearch에 접근해야 할 경우,
+#   Knowledge Platform Compose에서 opensearch-net을 external network로 참조한다.
+#
+# [노드를 서로 다른 서버로 분리할 때]
+# 1. 서버마다 별도의 compose.yaml을 실행한다.
+# 2. Docker 서비스명 대신 실제 서버의 내부 DNS 또는 IP로 노드를 검색한다.
+#    예: discovery.seed_hosts=10.0.0.11:9300,10.0.0.12:9300
+# 3. 각 노드에 외부에서 접근 가능한 주소를 설정한다.
+#    - network.host=0.0.0.0
+#    - transport.publish_host=<해당 서버의 내부 IP 또는 DNS>
+#    - transport.publish_port=9300
+# 4. 각 서버에서 9300 포트를 공개한다.
+# 5. 방화벽의 9300/TCP는 OpenSearch 노드 사이에서만 허용한다.
+# 6. 9200/TCP는 API 사용자와 Dashboards 서버에서만 접근하도록 제한한다.
+#
+# [인증서]
+# - 모든 노드 인증서는 동일한 Root CA로 서명해야 한다.
+# - 각 노드 인증서 SAN에 실제 서버 DNS/IP를 포함한다.
+# - 서버에는 rootCA.pem과 해당 노드의 crt/key만 배포한다.
+# - rootCA.key는 OpenSearch 서버나 컨테이너에 배포하지 않는다.
+#
+# [기존 데이터를 유지하면서 node2를 다른 서버로 이동할 때]
+# - 실행 중인 Docker volume을 직접 복사하지 않는다.
+# - 먼저 snapshot을 생성하는 것을 권장한다.
+# - 원격 서버에 임시 node3를 추가하고 클러스터가 GREEN이 될 때까지 기다린다.
+# - shard allocation exclude 설정으로 기존 node2의 shard를 이동한다.
+# - 기존 node2에 남은 shard가 없는지 확인한다.
+# - Voting Configuration Exclusions API로 기존 node2를 투표 구성에서 제외한다.
+# - 기존 node2를 중지한 후 exclusion 설정을 해제한다.
+#
+# [2노드 구성의 한계]
+# - cluster-manager-eligible 노드가 2개이면 1개 장애를 허용하지 못한다.
+# - 한 노드가 중단되면 quorum 부족으로 cluster state 변경이 불가능할 수 있다.
+# - 운영 HA 환경에서는 서로 다른 장애 영역에 전용 cluster manager 3개를 권장한다.
+#
+# [아키텍처가 다른 서버로 이동할 때]
+# - ARM64 서버에는 x86_64에서 빌드한 local 이미지를 그대로 복사하지 않는다.
+# - 대상 서버에서 Dockerfile을 다시 빌드하거나 multi-architecture 이미지를 사용한다.
+#
+# ==============================================================================
+
+# 실행
+# docker compose up -d --build
+#
+# 종료 (데이터 유지)
+# docker compose down
+#
+# 종료 + 데이터 삭제
+# 주의: 아래 명령은 OpenSearch 데이터까지 삭제한다.
+# docker compose down -v
+
+name: opensearch
+
+
+services:
+
+  # ============================================================================
+  # OpenSearch Node 1
+  # ============================================================================
+  opensearch-node1:
+    image: local/opensearch-nori:3.8.0
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        OPENSEARCH_VERSION: "3.8.0"
+
+    container_name: opensearch-node1
+    restart: unless-stopped
+
+    environment:
+      cluster.name: opensearch-cluster
+      node.name: opensearch-node1
+
+      discovery.seed_hosts: opensearch-node1,opensearch-node2
+      cluster.initial_cluster_manager_nodes: opensearch-node1,opensearch-node2
+
+      bootstrap.memory_lock: "true"
+      OPENSEARCH_JAVA_OPTS: "-Xms512m -Xmx512m"
+
+      DISABLE_INSTALL_DEMO_CONFIG: "false"
+      DISABLE_SECURITY_PLUGIN: "false"
+
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: "${OPENSEARCH_INITIAL_ADMIN_PASSWORD:?OPENSEARCH_INITIAL_ADMIN_PASSWORD must be set in .env}"
+
+      # 개발 환경에서 디스크 사용량으로 인한 shard 차단 방지
+      cluster.routing.allocation.disk.threshold_enabled: "false"
+
+      # ------------------------------------------------------------------------
+      # HTTP TLS
+      # ------------------------------------------------------------------------
+      plugins.security.ssl.http.enabled: "true"
+      plugins.security.ssl.http.pemcert_filepath: certs/node1.crt
+      plugins.security.ssl.http.pemkey_filepath: certs/node1.key
+      plugins.security.ssl.http.pemtrustedcas_filepath: certs/rootCA.pem
+
+      # ------------------------------------------------------------------------
+      # 노드 간 Transport TLS
+      # ------------------------------------------------------------------------
+      plugins.security.ssl.transport.enabled: "true"
+      plugins.security.ssl.transport.pemcert_filepath: certs/node1.crt
+      plugins.security.ssl.transport.pemkey_filepath: certs/node1.key
+      plugins.security.ssl.transport.pemtrustedcas_filepath: certs/rootCA.pem
+
+      transport.ssl.enforce_hostname_verification: "false"
+      transport.ssl.resolve_hostname: "false"
+
+      # Admin 인증서 DN
+      plugins.security.authcz.admin_dn: '["CN=admin,O=MyOrg,L=Seoul,ST=Seoul,C=KR"]'
+
+      # OpenSearch 노드 인증서 DN
+      plugins.security.nodes_dn: '["CN=opensearch-node1,O=MyOrg,L=Seoul,ST=Seoul,C=KR","CN=opensearch-node2,O=MyOrg,L=Seoul,ST=Seoul,C=KR"]'
+
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+      nofile:
+        soft: 65536
+        hard: 65536
+
+    volumes:
+      - opensearch-data1:/usr/share/opensearch/data
+
+      # 실행에 필요한 파일만 개별 마운트
+      # rootCA.key와 admin.key는 노드에 제공하지 않음
+      - ./certs/rootCA.pem:/usr/share/opensearch/config/certs/rootCA.pem:ro
+      - ./certs/node1.crt:/usr/share/opensearch/config/certs/node1.crt:ro
+      - ./certs/node1.key:/usr/share/opensearch/config/certs/node1.key:ro
+
+    ports:
+      # 호스트 개발/관리용.
+      # 컨테이너 간 접근에는 포트 publish가 필요하지 않음.
+      - "9200:9200"
+      - "9600:9600"
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          curl
+          --silent
+          --show-error
+          --fail
+          --max-time 8
+          --cacert /usr/share/opensearch/config/certs/rootCA.pem
+          --user "admin:$${OPENSEARCH_INITIAL_ADMIN_PASSWORD}"
+          "https://opensearch-node1:9200/_cluster/health?wait_for_status=yellow&timeout=5s"
+          >/dev/null
+      start_period: 90s
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+    networks:
+      - opensearch-net
+
+
+  # ============================================================================
+  # OpenSearch Node 2
+  # ============================================================================
+  opensearch-node2:
+    image: local/opensearch-nori:3.8.0
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        OPENSEARCH_VERSION: "3.8.0"
+
+    container_name: opensearch-node2
+    restart: unless-stopped
+
+    environment:
+      cluster.name: opensearch-cluster
+      node.name: opensearch-node2
+
+      discovery.seed_hosts: opensearch-node1,opensearch-node2
+      cluster.initial_cluster_manager_nodes: opensearch-node1,opensearch-node2
+
+      bootstrap.memory_lock: "true"
+      OPENSEARCH_JAVA_OPTS: "-Xms512m -Xmx512m"
+
+      DISABLE_INSTALL_DEMO_CONFIG: "false"
+      DISABLE_SECURITY_PLUGIN: "false"
+
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: "${OPENSEARCH_INITIAL_ADMIN_PASSWORD:?OPENSEARCH_INITIAL_ADMIN_PASSWORD must be set in .env}"
+
+      cluster.routing.allocation.disk.threshold_enabled: "false"
+
+      # ------------------------------------------------------------------------
+      # HTTP TLS
+      # ------------------------------------------------------------------------
+      plugins.security.ssl.http.enabled: "true"
+      plugins.security.ssl.http.pemcert_filepath: certs/node2.crt
+      plugins.security.ssl.http.pemkey_filepath: certs/node2.key
+      plugins.security.ssl.http.pemtrustedcas_filepath: certs/rootCA.pem
+
+      # ------------------------------------------------------------------------
+      # 노드 간 Transport TLS
+      # ------------------------------------------------------------------------
+      plugins.security.ssl.transport.enabled: "true"
+      plugins.security.ssl.transport.pemcert_filepath: certs/node2.crt
+      plugins.security.ssl.transport.pemkey_filepath: certs/node2.key
+      plugins.security.ssl.transport.pemtrustedcas_filepath: certs/rootCA.pem
+
+      transport.ssl.enforce_hostname_verification: "false"
+      transport.ssl.resolve_hostname: "false"
+
+      plugins.security.authcz.admin_dn: '["CN=admin,O=MyOrg,L=Seoul,ST=Seoul,C=KR"]'
+
+      plugins.security.nodes_dn: '["CN=opensearch-node1,O=MyOrg,L=Seoul,ST=Seoul,C=KR","CN=opensearch-node2,O=MyOrg,L=Seoul,ST=Seoul,C=KR"]'
+
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+      nofile:
+        soft: 65536
+        hard: 65536
+
+    volumes:
+      - opensearch-data2:/usr/share/opensearch/data
+
+      - ./certs/rootCA.pem:/usr/share/opensearch/config/certs/rootCA.pem:ro
+      - ./certs/node2.crt:/usr/share/opensearch/config/certs/node2.crt:ro
+      - ./certs/node2.key:/usr/share/opensearch/config/certs/node2.key:ro
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          curl
+          --silent
+          --show-error
+          --fail
+          --max-time 8
+          --cacert /usr/share/opensearch/config/certs/rootCA.pem
+          --user "admin:$${OPENSEARCH_INITIAL_ADMIN_PASSWORD}"
+          "https://opensearch-node2:9200/_cluster/health?wait_for_status=yellow&timeout=5s"
+          >/dev/null
+      start_period: 90s
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+    networks:
+      - opensearch-net
+
+
+  # ============================================================================
+  # OpenSearch Dashboards
+  # ============================================================================
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:3.8.0
+
+    container_name: opensearch-dashboards
+    restart: unless-stopped
+
+    depends_on:
+      opensearch-node1:
+        condition: service_healthy
+
+      opensearch-node2:
+        condition: service_healthy
+
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch-node1:9200","https://opensearch-node2:9200"]'
+      OPENSEARCH_SSL_VERIFICATIONMODE: none
+
+      OPENSEARCH_INITIAL_ADMIN_PASSWORD: "${OPENSEARCH_INITIAL_ADMIN_PASSWORD:?OPENSEARCH_INITIAL_ADMIN_PASSWORD must be set in .env}"
+
+    ports:
+      - "5601:5601"
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          curl
+          --silent
+          --show-error
+          --fail
+          --max-time 8
+          --user "admin:$${OPENSEARCH_INITIAL_ADMIN_PASSWORD}"
+          "http://localhost:5601/api/status"
+          >/dev/null
+      start_period: 90s
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+    networks:
+      - opensearch-net
+
+
+# ==============================================================================
+# Persistent Volumes
+# ==============================================================================
+volumes:
+  opensearch-data1:
+  opensearch-data2:
+
+
+# ==============================================================================
+# Network
+#
+# OpenSearch Compose가 직접 생성한다.
+# 실제 Docker network 이름을 opensearch-net으로 고정하여
+# 다른 독립 Compose(Knowledge Platform)가 external network로 연결할 수 있다.
+# ==============================================================================
+networks:
+  opensearch-net:
+    name: opensearch-net
+    driver: bridge

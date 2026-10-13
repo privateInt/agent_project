@@ -1,0 +1,14 @@
+services:
+  knowledge-operation:
+    image: knowledge-platform-operation:dev
+    build:
+      context: .
+      target: operation
+    pull_policy: never
+    container_name: knowledge-operation
+    restart: unless-stopped
+    networks: [knowledge-infra]
+    environment:
+      POSTGRES_URL: ${KNOWLEDGE_POSTGRES_URL:?Run ops/configure.py first}
+      KAFKA_BROKERS: ${KNOWLEDGE_KAFKA_BROKERS:?Run ops/configure.py first}
+      KAFKA_COMMAND_TOPIC: knowledge.operations.requested

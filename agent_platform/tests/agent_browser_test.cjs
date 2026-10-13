@@ -1,0 +1,78 @@
+// Optional Playwright acceptance against the real Agent/SQL/runtime fixture stack.
+const assert=require('node:assert/strict'),path=require('node:path');
+const {chromium}=require(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES?process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright':'playwright');
+(async()=>{
+ const browser=await chromium.launch({headless:true,...(process.env.AGENT_TEST_CHROMIUM?{executablePath:process.env.AGENT_TEST_CHROMIUM}:{}),args:['--no-sandbox','--disable-dev-shm-usage','--no-zygote','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+ try{
+ const page=await browser.newPage({viewport:{width:1365,height:1000}}),errors=[];page.setDefaultTimeout(15000);page.on('pageerror',e=>errors.push(e.message));
+ const login=async()=>{await page.locator('#token').fill(process.env.AGENT_BROWSER_TOKEN);await page.locator('#login-submit').click();await page.waitForFunction(()=>document.querySelector('#connection-status').textContent==='연결됨');};
+ await page.goto(process.env.AGENT_BROWSER_URL+'/console');await login();await page.locator('#nav-agents').click();await page.locator('#agent-new').click();await page.locator('#agent-create').waitFor({state:'visible'});
+ await page.locator('#agent-name').fill('내 문서 답변 도우미');await page.locator('#agent-tool').selectOption({index:1});await page.locator('#agent-model-load').click();await page.waitForFunction(()=>document.querySelector('#agent-model').options.length>1&&!document.querySelector('#agent-model-load').disabled);
+ await page.locator('#agent-model').selectOption({index:1});
+ let versionLost=false;await page.route('**/api/agents/*/versions',async route=>{if(!versionLost){versionLost=true;await route.fetch();await route.abort();}else await route.continue();});
+ await page.locator('#agent-save').click();await page.waitForFunction(()=>document.querySelector('#notice').textContent.includes('같은 버튼')&&!document.querySelector('#agent-save').disabled);
+ await page.locator('#agent-save').click();await page.locator('#agent-detail').waitFor({state:'visible'});await page.unroute('**/api/agents/*/versions');
+ const definition=JSON.parse(await page.locator('#agent-definition').textContent());assert.equal(definition.version,1);
+ await page.locator('#agent-question').fill('  자연어 질문  ');
+ let acceptanceLost=false;await page.route('**/api/agent-runs',async route=>{if(route.request().method()==='POST'&&!acceptanceLost){acceptanceLost=true;await route.fetch();await route.abort();}else await route.continue();});
+ await page.locator('#agent-ask').click();await page.waitForFunction(()=>document.querySelector('#agent-ask').textContent==='이 질문 요청 다시 확인'&&!document.querySelector('#agent-ask').disabled);
+ assert.equal(await page.locator('#agent-question').getAttribute('readonly'),'');await page.locator('#agent-ask').click();await page.waitForFunction(()=>document.querySelector('#agent-run-badge').textContent==='성공'&&!document.querySelector('#agent-ask').disabled);await page.unroute('**/api/agent-runs');
+ const test=JSON.parse(await page.locator('#agent-run-json').textContent());assert.equal(test.mode,'test');assert.equal(test.state,'succeeded');assert.equal(test.steps.length,5);assert.match(await page.locator('#agent-answer').textContent(),/\[S1\]/);assert.match(await page.locator('#agent-citations').textContent(),/원문 3쪽/);assert.match(await page.locator('#agent-citations').textContent(),/본문과 출처 보존/);
+ await page.locator('#agent-publish').click();await page.waitForFunction(()=>document.querySelector('#agent-version-badge').textContent.includes('사용 중')&&!document.querySelector('#agent-ask').disabled);
+ await page.locator('#agent-question').fill('  자연어 질문  ');await page.locator('#agent-ask').click();await page.waitForFunction(()=>document.querySelector('#agent-run-badge').textContent==='성공'&&!document.querySelector('#agent-ask').disabled);
+ const run=JSON.parse(await page.locator('#agent-run-json').textContent());assert.equal(run.mode,'run');assert.notEqual(run.agent_run_id,test.agent_run_id);
+ // A08 connects existing workflows without giving n8n credentials to the browser.
+ const writes=[];page.on('request',r=>{if(['POST','PATCH'].includes(r.method()))writes.push({url:r.url(),method:r.method(),data:r.postData(),key:r.headers()['idempotency-key']});});
+ await page.locator('#nav-workflows').click();await page.locator('#workflow-new').click();
+ await page.locator('#workflow-create-name').fill('A08 문서 자동화');
+ await page.locator('#workflow-create-url').fill('http://127.0.0.1:16200/workflow/a08_fixture');
+ await page.locator('#workflow-create-agent').selectOption(definition.agent_version_id);
+ let linkLost=false;await page.route('**/api/workflow-links',async route=>{if(route.request().method()==='POST'&&!linkLost){linkLost=true;await route.fetch();await route.abort();}else await route.continue();});
+ await page.locator('#workflow-save').click();await page.waitForFunction(()=>document.querySelector('#workflow-save').textContent==='이 등록 요청 다시 확인'&&!document.querySelector('#workflow-save').disabled);
+ assert.equal(await page.locator('#workflow-create-url').isDisabled(),true);
+ await page.locator('#workflow-save').click();await page.locator('#workflow-detail').waitFor({state:'visible'});await page.unroute('**/api/workflow-links');
+ const workflow=JSON.parse(await page.locator('#workflow-definition').textContent());
+ const creates=writes.filter(x=>x.method==='POST'&&x.url.endsWith('/api/workflow-links'));assert.equal(creates.length,2);assert.deepEqual(creates[0],creates[1]);
+ assert.equal(workflow.agent_version_id,definition.agent_version_id);
+ assert.match(await page.locator('#workflow-agent-label').textContent(),/내 문서 답변 도우미/);
+ assert.match(await page.locator('#workflow-status-help').textContent(),/n8n의 게시/);
+ assert.equal(await page.locator('#workflow-edit').getAttribute('href'),'http://127.0.0.1:16200/workflow/a08_fixture');
+ assert.equal(await page.locator('#workflow-edit').getAttribute('rel'),'noopener noreferrer');
+ await page.locator('#workflow-address-panel summary').click();
+ await page.locator('#workflow-browser-origin').fill('javascript:alert(1)');assert.equal(await page.locator('#workflow-edit').getAttribute('href'),null);
+ await page.locator('#workflow-browser-origin').fill('http://user:secret@flows.example.test');assert.equal(await page.locator('#workflow-edit').getAttribute('href'),null);
+ await page.locator('#workflow-browser-origin').fill('http://flows.example.test:16200');assert.equal(await page.locator('#workflow-edit').getAttribute('href'),'http://flows.example.test:16200/workflow/a08_fixture');
+ await page.locator('#workflow-rename-form').locator('..').locator('summary').click();
+ await page.locator('#workflow-rename').fill('문서 자동화 이름 변경');let patchLost=false;
+ await page.route('**/api/workflow-links/'+workflow.workflow_link_id,async route=>{if(route.request().method()==='PATCH'&&!patchLost){patchLost=true;await route.fetch();await route.abort();}else await route.continue();});
+ await page.locator('#workflow-rename-save').click();await page.waitForFunction(()=>document.querySelector('#workflow-rename-save').textContent==='이 변경 요청 확인'&&!document.querySelector('#workflow-rename-save').disabled);
+ await page.locator('#workflow-rename-save').click();await page.waitForFunction(()=>document.querySelector('#workflow-name').textContent==='문서 자동화 이름 변경'&&!document.querySelector('#workflow-toggle').disabled);await page.unroute('**/api/workflow-links/'+workflow.workflow_link_id);
+ assert.equal(writes.filter(x=>x.method==='PATCH').length,1,'lost PATCH recovery must only read the committed change');
+ await page.locator('#workflow-toggle').click();await page.waitForFunction(()=>document.querySelector('#workflow-badge').textContent==='연결 숨김'&&!document.querySelector('#workflow-toggle').disabled);assert.equal(await page.locator('#workflow-ask').isDisabled(),true);
+ await page.locator('#workflow-toggle').click();await page.waitForFunction(()=>document.querySelector('#workflow-badge').textContent==='연결 등록됨'&&!document.querySelector('#workflow-ask').disabled);
+ assert.equal(writes.filter(x=>x.url.endsWith('/api/agent-runs')).length,0,'management must not invoke Agent');
+ const shots=process.env.AGENT_TEST_SCREENSHOT_DIR;
+ if(shots)await page.screenshot({path:path.join(shots,'workflow-desktop.png'),fullPage:true});
+ await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'workflow mobile overflow');if(shots)await page.screenshot({path:path.join(shots,'workflow-mobile.png'),fullPage:true});await page.setViewportSize({width:1365,height:1000});
+ await page.locator('#workflow-ask').click();await page.locator('#agent-question').fill('  자연어 질문  ');await page.locator('#agent-ask').click();await page.waitForFunction(()=>document.querySelector('#agent-run-badge').textContent==='성공'&&!document.querySelector('#agent-ask').disabled);
+ const direct=JSON.parse(await page.locator('#agent-run-json').textContent());assert.equal(direct.agent_version_id,definition.agent_version_id);assert.equal(direct.mode,'run');assert.notEqual(direct.caller_context?.system,'n8n');
+ // Stored failed n8n-origin Agent run: browsing never repeats inference or changes failure.
+ const postCount=writes.filter(x=>x.url.endsWith('/api/agent-runs')).length;
+ await page.locator('#nav-workflows').click();await page.locator('#workflow-search').fill('A07 fixture Flow');await page.locator('#workflow-list .tool-row button').click();await page.locator('#workflow-history-refresh').click();
+ await page.locator('#workflow-history .recent-call').filter({hasText:'ANSWER_REFERENCE_INVALID'}).locator('button').click();await page.waitForFunction(()=>document.querySelector('#agent-run-badge').textContent==='실패'&&!document.querySelector('#agent-run-refresh').disabled);
+ assert.match(await page.locator('#agent-run-message').textContent(),/인용이 없거나 인용 형식/);assert.equal(await page.locator('#agent-answer').textContent(),'');assert.match(await page.locator('#agent-steps').textContent(),/출처 확인/);
+ assert.match(await page.locator('#agent-run-origin').textContent(),/n8n/);
+ const failed=JSON.parse(await page.locator('#agent-run-json').textContent());assert.equal(failed.error.stage,'finalize');assert.equal(failed.error.code,'ANSWER_REFERENCE_INVALID');
+ await page.locator('#agent-run-refresh').click();await page.waitForFunction(()=>!document.querySelector('#agent-run-refresh').disabled);assert.equal(JSON.parse(await page.locator('#agent-run-json').textContent()).agent_run_id,failed.agent_run_id);
+ await page.locator('#question-history-refresh').click();await page.locator('#question-history-state').selectOption('failed');assert.match(await page.locator('#question-history').textContent(),/ANSWER_REFERENCE_INVALID/);
+ if(shots)await page.screenshot({path:path.join(shots,'history-desktop.png'),fullPage:true});
+ assert.equal(writes.filter(x=>x.url.endsWith('/api/agent-runs')).length,postCount);
+ await page.locator('#nav-agents').click();
+ if(shots)await page.screenshot({path:path.join(shots,'agent-desktop.png'),fullPage:true});
+ await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'mobile overflow');if(shots)await page.screenshot({path:path.join(shots,'agent-mobile.png'),fullPage:true});
+ await page.reload();await login();await page.locator('#nav-agents').click();await page.locator('#agent-history-refresh').click();await page.waitForFunction(()=>document.querySelector('#agent-history').textContent.includes('자연어 질문'));
+ await page.locator('#agent-lookup-form').locator('..').locator('summary').click();await page.locator('#agent-lookup-id').fill(test.agent_run_id);await page.locator('#agent-lookup').click();await page.waitForFunction(id=>document.querySelector('#agent-run-id').textContent.includes(id)&&document.querySelector('#agent-run-badge').textContent==='성공',test.agent_run_id);
+ assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);assert.deepEqual(errors,[]);
+ console.log(JSON.stringify({result:'passed',checks:['Agent_create_and_model_selection','lost_version_response_recovered','lost_acceptance_response_recovered','answer_and_citations','five_durable_steps','publish_and_run','reload_history_and_lookup','mobile_no_overflow','no_script_errors','no_token_storage','workflow_catalog_and_pinned_agent','lost_link_POST_reuses_key','lost_link_PATCH_reconciles_revision','safe_external_editor_link','hide_link_does_not_disable_Agent','n8n_origin_failure_history','history_refresh_never_infers','workflow_mobile_no_overflow']}));
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

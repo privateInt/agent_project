@@ -1,0 +1,24 @@
+{
+  "stage": "A09-citation-trial",
+  "result": "local_checks_passed",
+  "python_tests": 13,
+  "http_cli_check": "real loopback HTTP, separate prepare/test/test/lookup CLI processes, Agent fixture; draft/run effects each one",
+  "changed_runtime_or_server_code": false,
+  "rebuild_required": false,
+  "definition_fields_changed_by_prepare": [
+    "prompt"
+  ],
+  "server_candidate_test": "passed",
+  "automatic_publication": false,
+  "workflow_mutations": false,
+  "answer_issue_fixed": false,
+  "semantic_quality": "deferred",
+  "mvp_acceptance": "incomplete",
+  "server_candidate_lookup": "passed",
+  "server_python_tests_passed": 13,
+  "single_case_citation_check": "passed",
+  "operational_n8n_delivery": "passed_in_followup",
+  "operational_n8n_same_request_replay": "passed_in_followup",
+  "operational_quality_observation": "question echoed five times; no substantive explanation",
+  "trial_scope": "automatic_publication/workflow_mutations describe citation_trial only; follow-up operational prepare explicitly published and registered a new Flow"
+}

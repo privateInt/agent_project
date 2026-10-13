@@ -1,0 +1,29 @@
+global:
+  scrape_interval: 30s
+  scrape_timeout: 10s
+  evaluation_interval: 30s
+
+scrape_configs:
+  - job_name: prometheus
+    sample_limit: 10000
+    static_configs:
+      - targets: ['127.0.0.1:16310']
+  - job_name: host
+    sample_limit: 10000
+    static_configs:
+      - targets: ['127.0.0.1:16311']
+  - job_name: containers
+    sample_limit: 50000
+    static_configs:
+      - targets: ['127.0.0.1:16312']
+    metric_relabel_configs:
+      # Resource monitoring of named Docker containers; no raw cgroup trees.
+      - source_labels: [__name__, name]
+        regex: 'container_.*;'
+        action: drop
+      # One-shot task outcomes are owned by platform APIs, not a scrape.
+      - source_labels: [name]
+        regex: '/?(model|data|knowledge)-op-.*'
+        action: drop
+      - regex: 'container_label_.*|container_env_.*'
+        action: labeldrop
