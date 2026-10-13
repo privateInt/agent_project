@@ -1,10 +1,10 @@
 # 프로젝트 현재 상태
 
-2026-10-13 추가: 현재 개발 사본의 첫 작업은 src 구조·Ops 통합과 경로 검증이며 다음 기능 작업은 F0a다. [소스 구조](architecture/source-layout.md)를 따른다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
+2026-10-13 추가: src 구조·Ops 통합의 로컬 적용과 검증은 완료됐다. [소스 구조](architecture/source-layout.md)와 [native 검사 근거](testing/source-layout-native-20261013.json)를 따른다. QA 581개는 검증된 기존 근거를 재사용했고, 수정 관련 검사와 남은 도구·infra·화면 검사를 마쳤다. 새 회귀는 없으며 기존 Ops adapter 실패 1개와 선택 native 검사 skip은 유지한다. 현재 단계는 GitHub 반영이다. 본격적인 Codex 기능 개발 전에 사용자에게 먼저 알리고 공통 상위 규칙·에이전트 구성·프로젝트별 세부 규칙과 작업 목록 템플릿을 정한다. 기능 개발·무인 실행·scheduler 활성화는 시작하지 않았다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
 
 갱신: 2026-10-12. 첫 TXT의 실제 GPU 색인/활성화·검색 Tool 시험/발행·고정 QA Agent smoke/발행·첫 질문 head CAS revision1·인증된 question-policy의 question_ready=true를 사용자 출력으로 확인했다. PC 화면의 서버 UUID v5 호환 수정 후 질문은 접수됐으나 ANSWER_REFERENCE_INVALID/MISSING_REFERENCE로 실패했다. 인용 prompt-only 초안도 동일 실패이며 발행/활성화되지 않았다. 현재 답변 모델은 google/gemma-3-1b-it이다. 첫 PC 답변/출처·폭넓은 의미 품질 인수는 미완료다. [최신 관찰](testing/document-qa-live-observed-20261012.json)은 당시 사용자 출력/화면 근거이며 현재 호스트를 직접 재조회한 결과는 아니다.
 
-10개 확장 요구를 [플랫폼 확장 계획](plans/platform-expansion-work-plan-20261012.md)으로 채택했다. 학습데이터 Data 이전·Airflow·provider·HWP·세션/기억·문서 Tool·CI/CD는 계획이며 미구현/미인수다. n8n/Langfuse는 기존 구현/과거 인수 재사용, LightRAG/Neo4j는 별도 평가 단계다. 현재 작업은 F0a이며 개발 규칙은 [AGENTS.md](../AGENTS.md)를 따른다. Ops 보류는 유지한다.
+10개 확장 요구를 [플랫폼 확장 계획](plans/platform-expansion-work-plan-20261012.md)으로 채택했다. 학습데이터 Data 이전·Airflow·provider·HWP·세션/기억·문서 Tool·CI/CD는 계획이며 미구현/미인수다. n8n/Langfuse는 기존 구현/과거 인수 재사용, LightRAG/Neo4j는 별도 평가 단계다. 공통 규칙·구성·템플릿 준비 후 첫 Agent 기능 작업은 F0a이며 개발 규칙은 [AGENTS.md](../AGENTS.md)를 따른다. Ops 보류는 유지한다.
 
 ## 문서 QA 완료와 남은 범위
 

@@ -1,10 +1,10 @@
 # 다음 세션·Codex 인수인계
 
-2026-10-13 추가: 현재 개발 사본의 첫 작업은 src 구조·Ops 통합과 경로 검증이며 다음 기능 작업은 F0a다. [소스 구조](architecture/source-layout.md)를 따른다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
+2026-10-13 추가: src 구조·Ops 통합의 로컬 적용과 검증은 완료됐다. 구조 커밋은 `59c3da1121d3934804fb489e7794f364a0484331`이며 [native 검사 근거](testing/source-layout-native-20261013.json)에 새 회귀가 없음을 기록했다. [소스 구조](architecture/source-layout.md)를 따른다. 현재 단계는 GitHub 반영이며 원본 운영 프로젝트와 VMS는 보존한다. 사용자 추가 지시에 따라 본격적인 Codex 기능 개발 전에 사용자에게 먼저 알리고, 공통 상위 규칙·에이전트 구성 목록·프로젝트별 세부 규칙과 작업 목록 템플릿을 먼저 정한다. 이 준비 전에는 F0a/H01 기능 작업이나 무인 실행을 시작하지 않는다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
 
 갱신: 2026-10-12. 사용자 서버 출력과 PC 확인으로 첫 TXT의 GPU 색인·검색 Tool·QA Agent 시험/발행·head CAS revision 1까지 확인했다. 실제 PC 질문은 인용 누락으로 실패했고 prompt-only 초안도 같은 유형으로 실패했다. 상세 근거는 [10월 12일 관찰](testing/document-qa-live-observed-20261012.json), 완료/미완료는 [상태표](status.md)에 둔다. 현재 소스/프로세스가 이 기록과 일치하는지는 새 환경에서 조회로 확인한다.
 
-## 첫 작업: F0a 인용 누락 해결
+## 템플릿 준비 후 첫 기능 작업: F0a 인용 누락 해결
 
 1. [AGENTS.md](../AGENTS.md)와 [확장 계획](plans/platform-expansion-work-plan-20261012.md)을 읽고 실제 repository와 실행 중 QA/Agent/Model의 신원을 확인한다. 기본 설정은 기존 사용자 state에서 읽는다.
 2. 원래 질문/Run과 후보 Run의 저장 진단을 읽는다. 두 실행 모두 validate/search/context/generate 성공, finalize에서 ANSWER_REFERENCE_INVALID, MISSING_REFERENCE, finish_reason=stop이다. 최신 후보는 생성21토큰/49bytes, max_tokens512·선택 source1·인식 인용0이다. 원문 답변은 진단에 저장되지 않아 내용을 추측하지 않는다.

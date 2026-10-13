@@ -1,8 +1,8 @@
 # 앞으로의 작업 순서
 
-2026-10-13 추가: 현재 개발 사본의 첫 작업은 src 구조·Ops 통합과 경로 검증이며 다음 기능 작업은 F0a다. [소스 구조](architecture/source-layout.md)를 따른다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
+2026-10-13 추가: src 구조·Ops 통합의 로컬 적용과 검증은 완료됐다. [소스 구조](architecture/source-layout.md)와 [native 검사 근거](testing/source-layout-native-20261013.json)를 따른다. 현재 단계는 GitHub 반영이다. 이후에는 본격적인 Codex 기능 개발 전에 사용자에게 먼저 알리고 공통 상위 규칙·에이전트 구성 목록·프로젝트별 세부 규칙과 작업 목록 템플릿을 정한다. 이 준비 전에는 기능 개발이나 무인 실행을 시작하지 않는다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
 
-현재 첫 작업은 **문서 QA의 인용 누락 해결**이다. 첫 TXT의 실제 GPU 색인·검색 Tool·QA Agent smoke/발행·head revision1은 확인됐지만 PC 코드 질문과 prompt-only 초안의 답변 인용은 실패했다. 최신 근거와 한계는 [상태표](status.md), 실제 환경과 재개 위치는 [인수인계](HANDOFF_NEXT_SESSION.md)에 둔다.
+공통 규칙·구성·템플릿 준비 후 첫 Agent 기능 작업은 **문서 QA의 인용 누락 해결**이다. 첫 TXT의 실제 GPU 색인·검색 Tool·QA Agent smoke/발행·head revision1은 확인됐지만 PC 코드 질문과 prompt-only 초안의 답변 인용은 실패했다. 최신 근거와 한계는 [상태표](status.md), 실제 환경과 재개 위치는 [인수인계](HANDOFF_NEXT_SESSION.md)에 둔다.
 
 | 순서 | 작업 | 완료선 |
 |---|---|---|
