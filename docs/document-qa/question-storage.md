@@ -41,9 +41,9 @@ Q05의 `indexing_generation`은 질문 revision과 독립적이다. 기존 `/api
 패키지 코드 적용 뒤 기존 `sh_test` 환경과 자기 저장소에서 아래 관련 검사·migrate/status를 확인했다. 문서 변경 때문에 이를 반복하지 않는다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_question_store.py' -q
-python3 -B -m apps.document_qa.question_store migrate
-python3 -B -m apps.document_qa.question_store status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_question_store.py' -q
+python3 -B -m src.apps.document_qa.question_store migrate
+python3 -B -m src.apps.document_qa.question_store status
 ```
 
 최초 출력은 `question_storage_schema=1`, `upload_schema=1`, `head_revision=0`, `head_target_id=null`, `target_count=0`, `question_ready=false`다. `production_api_requests=0`, `GPU_requested=false`를 유지한다. `status`는 schema를 생성하지 않는다. 사용 가능한 Connection/Agent/실제 색인이 없어도 이 로컬 migration 인수는 가능하다.

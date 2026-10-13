@@ -4,9 +4,9 @@
 
 ## 수정 범위
 
-[defaults_checked](../../apps/document_qa/indexing_results.py)는 필수 6개 식별/한도 필드에 표시용 문자열 3개만 선택적으로 허용한다. 알려지지 않은 필드, 누락된 식별자, 잘못된 profile/space/토큰/byte 한도는 계속 거부한다. 반환하는 색인 설정은 필수 필드만 포함하므로 [실제 Model GET gate](../../apps/document_qa/indexing_runtime.py)의 정확한 비교와 불변 binding/body/hash에도 표시용 문자열이 들어가지 않는다. Q02 설정 파일은 그대로 보존한다.
+[defaults_checked](../../src/apps/document_qa/indexing_results.py)는 필수 6개 식별/한도 필드에 표시용 문자열 3개만 선택적으로 허용한다. 알려지지 않은 필드, 누락된 식별자, 잘못된 profile/space/토큰/byte 한도는 계속 거부한다. 반환하는 색인 설정은 필수 필드만 포함하므로 [실제 Model GET gate](../../src/apps/document_qa/indexing_runtime.py)의 정확한 비교와 불변 binding/body/hash에도 표시용 문자열이 들어가지 않는다. Q02 설정 파일은 그대로 보존한다.
 
-[새 회귀 검사](../../apps/document_qa/tests/test_indexing_defaults.py)는 실제 readiness configure의 임시 파일 저장/재로딩을 통해 gate를 확인한다. 별도 대역 검사는 기존 paused 세대의 receipt/키·CPU 완료를 유지하며 새 세대에서 index 생성/build/ready 조회/CAS 활성화까지 진행한다. 이런 검사는 실제 운영 색인/검색 인수를 대신하지 않는다.
+[새 회귀 검사](../../src/apps/document_qa/tests/test_indexing_defaults.py)는 실제 readiness configure의 임시 파일 저장/재로딩을 통해 gate를 확인한다. 별도 대역 검사는 기존 paused 세대의 receipt/키·CPU 완료를 유지하며 새 세대에서 index 생성/build/ready 조회/CAS 활성화까지 진행한다. 이런 검사는 실제 운영 색인/검색 인수를 대신하지 않는다.
 
 ## 현재 서버 관찰
 
@@ -32,7 +32,7 @@ python3 -B agent_project_q05c_profile_fix_20261012/apply_patch.py \
   --project-root /home/shshin/workspace/agent_project --apply
 cd /home/shshin/workspace/agent_project
 python3 -B -m unittest discover \
-  -s apps/document_qa/tests -p 'test_indexing*.py' -q
+  -s src/apps/document_qa/tests -p 'test_indexing*.py' -q
 ```
 
 QA foreground 터미널에서 Ctrl+C로 종료한 뒤, 같은 shshin 계정으로 아래 명령을 실행하고 터미널을 유지한다. `indexing_inference_enabled=true`를 확인한다. 저장된 n8n callback 주소와 LAN 주소를 함께 유지한다.
@@ -40,7 +40,7 @@ QA foreground 터미널에서 Ctrl+C로 종료한 뒤, 같은 shshin 계정으�
 ```bash
 cd /home/shshin/workspace/agent_project
 /home/shshin/miniforge3/envs/sh_test/bin/python3 -B \
-  -m apps.document_qa.api serve \
+  -m src.apps.document_qa.api serve \
   --bind 172.25.0.1 --additional-bind 192.168.0.119 --port 17110 \
   --allow-indexing-inference
 ```
@@ -50,7 +50,7 @@ cd /home/shshin/workspace/agent_project
 ```bash
 cd /home/shshin/workspace/agent_project
 /home/shshin/miniforge3/envs/sh_test/bin/python3 -B \
-  -m apps.document_qa.indexing_flow resume \
+  -m src.apps.document_qa.indexing_flow resume \
   --job-id 430b0e7b-7b4c-4ae7-9c57-6c979ca94343
 ```
 
@@ -58,7 +58,7 @@ cd /home/shshin/workspace/agent_project
 
 ```bash
 /home/shshin/miniforge3/envs/sh_test/bin/python3 -B \
-  -m apps.document_qa.api status
+  -m src.apps.document_qa.api status
 ```
 
 Flow의 indexing_activated와 문서 indexing_active=true, 정확한 canonical/version 및 활성 readback을 확인한 뒤 검색을 검증한다. Tool/Agent 시험·발행과 질문 head CAS·질문 추론은 후속 단계이므로 이 단계의 question_ready=false는 정상이다. 추가 문서/답변·출처/의미 품질 인수는 별도로 진행한다. Ops 백업·재부팅·Kubernetes 보류는 유지한다.

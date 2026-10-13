@@ -45,7 +45,7 @@ F2a에서 schedule_id·대상/설정 버전·IANA 시간대·data interval·동�
 
 ### 3. 인프라와 그래프 검색
 
-n8n과 Langfuse는 소스 구성과 과거 서버 인수가 있으므로 신규 설치 목록에 넣지 않는다. 현재 inventory를 조회하고 기존 ID·볼륨·인증 참조·trace 연결을 재사용한다. 새 LiteLLM/LightRAG/Neo4j는 도입 당시 공식 버전·자원·포트·credential·보관/복구·실제 API 호환성을 확인한다. 영구 공용 서비스 의존성은 `infra/`에서 관리하고 도메인 코드는 adapter를 둔다.
+n8n과 Langfuse는 소스 구성과 과거 서버 인수가 있으므로 신규 설치 목록에 넣지 않는다. 현재 inventory를 조회하고 기존 ID·볼륨·인증 참조·trace 연결을 재사용한다. 새 LiteLLM/LightRAG/Neo4j는 도입 당시 공식 버전·자원·포트·credential·보관/복구·실제 API 호환성을 확인한다. 영구 공용 서비스 의존성은 `src/infra/`에서 관리하고 도메인 코드는 adapter를 둔다.
 
 LightRAG는 Knowledge 안의 격리된 검색 adapter 실험으로 둔다. Data canonical을 입력으로 사용하고 Model 공식 추론 경로를 호출한다. Agent가 최종 답변을 생성하는 기존 경계와 출처 pin을 유지하며 LightRAG의 독립 업로드/생성 기능을 플랫폼 경계 밖의 새 기준으로 삼지 않는다. 동일 고정 질문셋에서 벡터 기준선과 관계 검색의 정확도·출처·지연·추출 비용·삭제/갱신을 비교한다. Neo4j는 선택 가능한 그래프 저장소다. LightRAG 도입만으로 Neo4j가 필수라는 결정을 하지 않는다. 효과가 없는 실험은 종료 근거를 남기고 기존 검색을 유지한다.
 

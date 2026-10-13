@@ -11,7 +11,7 @@
 | Knowledge | 청커·청크·인덱스/버전·검색 | Data canonical, Model embedding/reranker, OpenSearch |
 | Agent | Connection·Tool·MCP·Agent/실행 기록 | Model/Knowledge 공식 API |
 | Ops | 통합 조회·자원/추적/경보 표시 | 4개 업무 플랫폼과 Prometheus/Langfuse/Alertmanager API |
-| infra/n8n | 인프라 기동·상위 업무 흐름 | Agent/Tool API 호출 |
+| src/infra/n8n | 인프라 기동·상위 업무 흐름 | Agent/Tool API 호출 |
 
 ## 채택한 확장의 목표 경계
 
@@ -55,16 +55,16 @@ Data·Knowledge·Agent의 상세 계약은 각 [Data 구조](data-platform/archi
 
 | 구성 | 책임 | 위치 / DB |
 |---|---|---|
-| Gateway | 외부 REST와 내부 gRPC 변환, ready 배포 채팅 전달 | [gateway](../model_platform/gateway/) |
-| Playground | 모델 관리·데이터셋·학습·배포·별도 채팅 UI, 선택적 profile | [playground](../model_platform/playground/) |
-| Management | 모델, 버전, import credential, 결과물 검증 | [management](../model_platform/management/) / `model_management` |
-| Training | 학습 요청·결과·MLflow 연결, 로컬 학습 취소·로그 조회 | [training](../model_platform/training/) / `model_training` |
-| Deployment | 배포 요청, demo 결과, 실제 서빙 생성·관찰·중지 | [deployment](../model_platform/deployment/) / `model_deployment` |
-| Operation | 실행 상태, Outbox, Claim·실행 승인·복구 | [operation](../model_platform/operation/) / `model_operations` |
-| Dispatcher | Kafka 소비, DB 기준 routing, Executor 호출 | [dispatcher](../model_platform/dispatcher/) |
-| Reconciler | 도메인·Docker 관찰과 실행 전 lease 복구 요청 | [reconciler](../model_platform/reconciler/) |
-| GC | 종료 Job 로그 보존·검증과 보존 기간 후 컨테이너 제거 | [gc](../model_platform/gc/) / 별도 `model-job-logs` 버킷 |
-| Job | 시작 승인 후 도메인 정보 조회와 실제 작업 | [jobs](../model_platform/jobs/) |
+| Gateway | 외부 REST와 내부 gRPC 변환, ready 배포 채팅 전달 | [gateway](../src/platform/model/gateway) |
+| Playground | 모델 관리·데이터셋·학습·배포·별도 채팅 UI, 선택적 profile | [playground](../src/platform/model/playground) |
+| Management | 모델, 버전, import credential, 결과물 검증 | [management](../src/platform/model/management) / `model_management` |
+| Training | 학습 요청·결과·MLflow 연결, 로컬 학습 취소·로그 조회 | [training](../src/platform/model/training) / `model_training` |
+| Deployment | 배포 요청, demo 결과, 실제 서빙 생성·관찰·중지 | [deployment](../src/platform/model/deployment) / `model_deployment` |
+| Operation | 실행 상태, Outbox, Claim·실행 승인·복구 | [operation](../src/platform/model/operation) / `model_operations` |
+| Dispatcher | Kafka 소비, DB 기준 routing, Executor 호출 | [dispatcher](../src/platform/model/dispatcher) |
+| Reconciler | 도메인·Docker 관찰과 실행 전 lease 복구 요청 | [reconciler](../src/platform/model/reconciler) |
+| GC | 종료 Job 로그 보존·검증과 보존 기간 후 컨테이너 제거 | [gc](../src/platform/model/gc) / 별도 `model-job-logs` 버킷 |
+| Job | 시작 승인 후 도메인 정보 조회와 실제 작업 | [jobs](../src/platform/model/jobs) |
 
 각 서비스가 자기 DB의 메타데이터를 소유한다. 정상 애플리케이션 경로는 다른 서비스 DB를 직접 변경하지 않고 gRPC를 사용한다. Reconciler도 Operation에 관찰 결과를 전달하며 상태 쓰기는 Operation이 수행한다.
 
@@ -99,7 +99,7 @@ Dispatcher는 Job 이미지와 실행 위치를 결정한다. DatasetSpec, Train
 
 ## 외부 REST
 
-현재 로컬 설치의 기본 예시는 `http://127.0.0.1:13000`이며 실제 경로는 [routes.go](../model_platform/gateway/app/routes.go)에 있다.
+현재 로컬 설치의 기본 예시는 `http://127.0.0.1:13000`이며 실제 경로는 [routes.go](../src/platform/model/gateway/app/routes.go)에 있다.
 
 | Method | 경로 | 용도 |
 |---|---|---|

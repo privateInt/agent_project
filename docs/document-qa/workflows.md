@@ -15,9 +15,9 @@ Q03b의 전달 의도·receipt·중복/응답 유실 처리와 새 검사 36개�
 프로젝트 루트에서 Q03b 검사와 명시 초기화만 실행한다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_workflows.py' -q
-python3 -B -m apps.document_qa.workflows init
-python3 -B -m apps.document_qa.workflows status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_workflows.py' -q
+python3 -B -m src.apps.document_qa.workflows init
+python3 -B -m src.apps.document_qa.workflows status
 ```
 
 Q03a의 기존 자료함/DB가 필요하다. `init`은 동일 uploads.sqlite3에 workflow 전용
@@ -35,7 +35,7 @@ Node가 없는 호스트에서는 JavaScript 실행 검사 3개가 건너뛰어�
 ## 명시 연결 준비 — 실제 연결 인수 때만
 
 기존 n8n 2.40.5와 API key JSON `url`/`api_key` 참조를 읽는다. 기본 파일은
-`infra/n8n/.secrets/agent-integration-api-key.json`이며 기존 키를 생성/회전/출력하지 않는다.
+`src/infra/n8n/.secrets/agent-integration-api-key.json`이며 기존 키를 생성/회전/출력하지 않는다.
 현재 infra는 Code node의 crypto builtin을 허용한다. 다른 엔진/설정으로 옮기면 별도 검증한다.
 
 QA API는 기본 127.0.0.1:17110이다. n8n 컨테이너가 같은 호스트의 loopback에 접근한다고
@@ -49,13 +49,13 @@ API를 띄우고 등록한다. 다음은 실제 연결 검증 절차이며 패�
 
 ```bash
 # DOC_QA_BIND: 검증한 private host IPv4, DOC_QA_ORIGIN: n8n에서 도달 가능한 origin
-python3 -B -m apps.document_qa.api serve --bind "$DOC_QA_BIND" --port 17110
+python3 -B -m src.apps.document_qa.api serve --bind "$DOC_QA_BIND" --port 17110
 # 위 API가 실행 중인 상태에서 다른 터미널
-python3 -B -m apps.document_qa.workflows prepare --qa-origin "$DOC_QA_ORIGIN"
+python3 -B -m src.apps.document_qa.workflows prepare --qa-origin "$DOC_QA_ORIGIN"
 ```
 
 현재 서버 settings/Flow 목록 GET은 모두 200이지만 settings.data에는 versionCli가 없었다.
-[버전 확인 코드](../../apps/document_qa/engine_identity.py)는 이 필드가 있을 때 기존 2.40.5 검사를 유지한다.
+[버전 확인 코드](../../src/apps/document_qa/engine_identity.py)는 이 필드가 있을 때 기존 2.40.5 검사를 유지한다.
 필드가 없는 경우에만 local Docker 배포 adapter가 API port와 연결된 infrastructure/n8n owned
 실행 컨테이너·image ID·고정 repo digest를 조회한다. tag만으로 확인하지 않고 다른 이미지/포트·
 remote Docker·불명확한 소유권을 거부한다. 값이 있는데 다르면 fallback하지 않는다.
@@ -135,9 +135,9 @@ unpublish/delete나 자기 저장 삭제는 rollback이 자동 수행하지 않�
 workflow 소유권은 유지할 수 있지만 단일 replica/PV 또는 분산 저장/실행권 전환과 네트워크/
 credential 공급은 별도 인수다. Docker ID·systemd·Ops recovery 코드 의존은 추가하지 않았다.
 
-코드: [workflows.py](../../apps/document_qa/workflows.py),
-[고정 Flow](../../apps/document_qa/workflow_template.py),
-[API 계약/source pins](../../apps/document_qa/workflow-contract.json).
+코드: [workflows.py](../../src/apps/document_qa/workflows.py),
+[고정 Flow](../../src/apps/document_qa/workflow_template.py),
+[API 계약/source pins](../../src/apps/document_qa/workflow-contract.json).
 전체 순서는 [작업계획서](../plans/document-qa-work-plan-20261002.md)를 따른다.
 외부 참고는 [n8n Webhook](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/),
 [Respond to Webhook](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.respondtowebhook/),

@@ -1,6 +1,6 @@
 # K06 Model reranker 적용·검증
 
-2026-09-21. `Dongjin-kr/ko-reranker`의 배포 profile, 후보별 점수 API와 화면을 구현했다. **Python 42개, profile 수정 후 Deployment/Gateway Go·PostgreSQL 두 통합 검사·세 서비스 교체를 사용자 서버에서 확인했다. 후속 실제 점수 화면과 `live_reranking.py` 통과도 확인해 K06 Model 인수를 완료했다.** Go 문법 검사는 컴파일 검증과 구분한다. [로컬 확인 요약](../../model_platform/tests/results/reranking-k06-20260921.json), [API 계약](../reference/reranking.md), [작업 목록](../knowledge-platform/work-plan.md)을 함께 따른다.
+2026-09-21. `Dongjin-kr/ko-reranker`의 배포 profile, 후보별 점수 API와 화면을 구현했다. **Python 42개, profile 수정 후 Deployment/Gateway Go·PostgreSQL 두 통합 검사·세 서비스 교체를 사용자 서버에서 확인했다. 후속 실제 점수 화면과 `live_reranking.py` 통과도 확인해 K06 Model 인수를 완료했다.** Go 문법 검사는 컴파일 검증과 구분한다. [로컬 확인 요약](../../src/platform/model/tests/results/reranking-k06-20260921.json), [API 계약](../reference/reranking.md), [작업 목록](../knowledge-platform/work-plan.md)을 함께 따른다.
 
 현재 서버의 [K06 실제 확인](../knowledge-platform/acceptance.md#k06)을 보존한다. 최신 통합 소스에는 profile·Playground import 수정이 포함된다. 아래 빌드/추론 명령은 새 설치나 관련 코드 변경 후에만 사용하며 과거 증분 패치를 순서대로 다시 적용하지 않는다.
 
@@ -18,13 +18,13 @@ Python은 표준 라이브러리만 사용한다. 새 검사 8개와 기존 관�
 cd ~/workspace/agent_project
 (
   set -euo pipefail
-  python3 -m unittest discover -s model_platform/tests -p 'test_live_reranking.py' -v
-  python3 -m unittest discover -s model_platform/tests -p 'test_playground.py' -v
-  python3 -m unittest discover -s model_platform/tests -p 'test_model_management_ui.py' -v
-  python3 -m unittest discover -s model_platform/tests -p 'test_live_embedding.py' -v
+  python3 -m unittest discover -s src/platform/model/tests -p 'test_live_reranking.py' -v
+  python3 -m unittest discover -s src/platform/model/tests -p 'test_playground.py' -v
+  python3 -m unittest discover -s src/platform/model/tests -p 'test_model_management_ui.py' -v
+  python3 -m unittest discover -s src/platform/model/tests -p 'test_live_embedding.py' -v
   docker build --target build-deployment \
     -t model-platform-reranker-tests:check ./model_platform
-  python3 model_platform/tests/run_reranking_db_checks.py
+  python3 src/platform/model/tests/run_reranking_db_checks.py
 )
 ```
 
@@ -61,7 +61,7 @@ Model 화면 `http://192.168.0.119:13100`에서 모델 목록을 새로 조회�
 ```bash
 cd ~/workspace/agent_project
 RERANKER_DEPLOYMENT_ID='여기에-재정렬-배포-UUID'
-python3 model_platform/tests/live_reranking.py \
+python3 src/platform/model/tests/live_reranking.py \
   --deployment-id "$RERANKER_DEPLOYMENT_ID" \
   --summary-file "$HOME/workspace/reranking_check_20260921.json"
 ```

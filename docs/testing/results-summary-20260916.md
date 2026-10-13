@@ -8,13 +8,13 @@
 
 | 대상 | 삭제한 파일 수 | 삭제한 크기 |
 |---|---:|---:|
-| `data_platform/tests/results/`의 과거 결과 | 129 | 3,648,655 bytes |
-| `model_platform/tests/results/`의 과거 결과 | 41 | 580,198 bytes |
+| `src/platform/data/tests/results/`의 과거 결과 | 129 | 3,648,655 bytes |
+| `src/platform/model/tests/results/`의 과거 결과 | 41 | 580,198 bytes |
 | 합계 | **170** | **4,228,853 bytes, 약 4.03 MiB** |
 
 로그 51개, Go 테스트 JSONL 10개, 보고서·결과 사본 JSON 105개, HTML 보고서 4개를 삭제했다. 성공·실패 기록을 모두 포함한다. 상세 출력이나 결과 JSON을 다른 폴더로 옮겨 보관하지 않는다.
 
-테스트 코드와 `tests/fixtures/`의 샘플·정답·폰트는 유지했다. `model_platform/tests/results/operations/reset.lock`은 테스트 출력이 아니라 동시 초기화를 막는 운영 잠금 파일이므로 유지했다. DB, MinIO의 원본·정제 결과, 모델, Docker 볼륨, UI의 요청 보관 데이터에는 접근하지 않았다.
+테스트 코드와 `tests/fixtures/`의 샘플·정답·폰트는 유지했다. `src/platform/model/tests/results/operations/reset.lock`은 테스트 출력이 아니라 동시 초기화를 막는 운영 잠금 파일이므로 유지했다. DB, MinIO의 원본·정제 결과, 모델, Docker 볼륨, UI의 요청 보관 데이터에는 접근하지 않았다.
 
 ## 데이터 플랫폼에서 확인된 범위
 

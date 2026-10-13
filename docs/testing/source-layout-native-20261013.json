@@ -1,0 +1,335 @@
+{
+  "schema": 2,
+  "unit": "src_layout_and_ops_consolidation",
+  "checked_utc": "2026-10-13T05:00:08.395579+00:00",
+  "base_commit_oid": "b5b790f0a445285c27104bf30c4763a257c82c0f",
+  "original_layout_plan_sha256": "9af7a072b28d60ae71d23d424693c217ebe203f17fc843164abcd4d87745de8f",
+  "target_source_manifest_sha256": "42178f3e5aa1eb32832f03536ec2091dfb17d130222a2a6256076b0e706d3959",
+  "input_report_sha256": {
+    "codex_public_clone_prepare_result_20261013.json": "91d94d66d6022998894036be5d23230b1ae20726c11e86942b3dc25218238866",
+    "codex_agent_source_layout_result_20261013.json": "bafc0217b3c86a507511bdcc17dbf90b8b66fbd185458aaa45997b0079c28b58",
+    "codex_agent_ops_diagnostic_result_20261013.json": "717517857526717e16257610a84c4916db2678b0767f69818343cb280829fe6a"
+  },
+  "reused_evidence_source_delta_paths": [
+    "src/ops/platform/tests/test_lifecycle_systemd_compat.py"
+  ],
+  "fixture_before_sha256": "3db8b90e2bb79fbec48797fb87c0a7e0933927fe0196693433562aa358ed66ef",
+  "fixture_after_sha256": "2adea28ff4426c07c0c3ea2290e463838d7c5314151ae5cfcb05ebbce9487b4b",
+  "reused_qa_fixture_lane": {
+    "lane": "qa",
+    "python_version": "3.12.13",
+    "tests_run": 581,
+    "passed": 581,
+    "failure_count": 0,
+    "error_count": 0,
+    "skip_count": 0,
+    "failures": [],
+    "skipped_tests": [],
+    "new_regression_count": 0,
+    "raw_output_saved_or_printed": false,
+    "live_acceptance_completed": false
+  },
+  "reused_ops_diagnostic": {
+    "lane": "ops",
+    "python_version": "3.12.13",
+    "tests_run": 516,
+    "passed": 499,
+    "failure_count": 1,
+    "error_count": 1,
+    "skip_count": 15,
+    "failures": [
+      {
+        "test": "src.ops.platform.tests.test_service_lifecycle.ServiceTests.test_boot_links_owned_only_and_stop_disables",
+        "known_baseline_adapter_failure": true,
+        "trace_sha256": "666c3f1d4a473bd28290087608b664906873b4703f1f1b3a3b13787eca7673a8"
+      },
+      {
+        "test": "src.ops.platform.tests.test_lifecycle_systemd_compat.CompatibilityTests.test_invalid_runtime_does_not_read_outside_owned_directory",
+        "known_baseline_adapter_failure": false,
+        "trace_sha256": "0dda56921cd46fbc7a242a706620ad7d207b33b56dde74e1288ff11b16b7535b"
+      }
+    ],
+    "skipped_tests": [
+      "src.ops.platform.tests.test_discovery_kubernetes.KubernetesDiscoveryTests.test_generated_kubernetes_profile_with_native_prometheus_engine",
+      "src.ops.platform.tests.test_discovery_native.NativeDiscoveryQueryTests.test_signatures_fresh_stale_and_changed_job_names",
+      "src.ops.platform.tests.test_discovery_native.NativeDockerDiscoveryTests.test_projected_labels_ports_and_listen_flag_execute_without_secret_output",
+      "src.ops.platform.tests.test_docker_acceptance.NativeProjectionTests.test_ownership_projection_executes_with_native_docker_without_environment",
+      "src.ops.platform.tests.test_kubernetes_client.NativeKubectlTests.test_actual_kubectl_tls_authentication_and_full_read_only_discovery",
+      "src.ops.platform.tests.test_kubernetes_client.NativeKubectlTests.test_native_rbac_denial_and_tls_failure_remain_errors",
+      "src.ops.platform.tests.test_lifecycle_native_cli.NativeLifecycleTests.test_native_current_context_resolution_uses_no_context_mutations",
+      "src.ops.platform.tests.test_lifecycle_native_cli.NativeLifecycleTests.test_native_pinned_info_list_inspect_without_environment_or_writes",
+      "src.ops.platform.tests.test_lifecycle_systemd_compat.NativeLoginctlTests.test_comma_selector_does_not_return_properties",
+      "src.ops.platform.tests.test_lifecycle_systemd_compat.NativeLoginctlTests.test_empty_runtime_and_true_linger_are_preserved",
+      "src.ops.platform.tests.test_lifecycle_systemd_compat.NativeLoginctlTests.test_initial_selection_reaches_native_systemctl_without_error_text_gate",
+      "src.ops.platform.tests.test_lifecycle_systemd_compat.NativeLoginctlTests.test_repeated_selector_returns_exact_fields_and_boolean",
+      "src.ops.platform.tests.test_resource_promql.NativeResourceQueryTests.test_two_profiles_fresh_down_stale_and_cluster_isolation",
+      "src.ops.platform.tests.test_service_resume_fix.NativeResetTests.test_native_cli_nosuchunit_is_attributed_to_reset_failed",
+      "src.ops.platform.tests.test_service_resume_fix.NativeResetTests.test_native_cli_successful_reset_still_accepted"
+    ],
+    "new_regression_count": 1,
+    "raw_output_saved_or_printed": false,
+    "live_acceptance_completed": false,
+    "diagnostic_completed": true,
+    "diagnostic_failures": [
+      {
+        "test": "src.ops.platform.tests.test_service_lifecycle.ServiceTests.test_boot_links_owned_only_and_stop_disables",
+        "known_baseline_adapter_failure": true,
+        "exception_type": null,
+        "failure_code": null,
+        "numeric_comparison": null,
+        "permission_error_seen": false,
+        "errno_values": [],
+        "source_frames": [
+          {
+            "path": "src/ops/platform/tests/test_service_lifecycle.py",
+            "line": 109
+          },
+          {
+            "path": "src/ops/platform/tests/test_service_lifecycle.py",
+            "line": 82
+          }
+        ],
+        "trace_sha256": "666c3f1d4a473bd28290087608b664906873b4703f1f1b3a3b13787eca7673a8",
+        "raw_trace_saved_or_printed": false
+      },
+      {
+        "test": "src.ops.platform.tests.test_lifecycle_systemd_compat.CompatibilityTests.test_invalid_runtime_does_not_read_outside_owned_directory",
+        "known_baseline_adapter_failure": false,
+        "exception_type": "KeyError",
+        "failure_code": null,
+        "numeric_comparison": null,
+        "permission_error_seen": false,
+        "errno_values": [],
+        "source_frames": [
+          {
+            "path": "src/ops/platform/tests/test_lifecycle_systemd_compat.py",
+            "line": 83
+          }
+        ],
+        "trace_sha256": "0dda56921cd46fbc7a242a706620ad7d207b33b56dde74e1288ff11b16b7535b",
+        "raw_trace_saved_or_printed": false
+      }
+    ],
+    "source_stage_and_worktrees_verified_before_and_after": true,
+    "existing_environment_reused": true,
+    "qa_tests_repeated": false,
+    "packages_installed": false,
+    "layout_applied": false,
+    "commit_created": false,
+    "github_push_performed": false,
+    "scheduler_modified_or_started": false,
+    "automation_activation_authorized": false,
+    "failed_layout_report_sha256": "bafc0217b3c86a507511bdcc17dbf90b8b66fbd185458aaa45997b0079c28b58"
+  },
+  "replacement_compatibility_tests": 8,
+  "new_checks": [
+    {
+      "check": "cause",
+      "tests_run": 1,
+      "passed": 0,
+      "failure_count": 0,
+      "error_count": 1,
+      "skip_count": 0,
+      "failures": [
+        {
+          "test": "src.ops.platform.tests.test_lifecycle_systemd_compat.CompatibilityTests.test_invalid_runtime_does_not_read_outside_owned_directory",
+          "trace_sha256": "56440b67def04e9fd65593d541bb9149774e2a983f00d2e00ad31fd00565d080"
+        }
+      ],
+      "expected_umask_fixture_failure_reproduced": true,
+      "successful": true,
+      "raw_output_saved_or_printed": false,
+      "action": "unchanged_fixture_private_umask",
+      "umask": "077",
+      "returncode": 0
+    },
+    {
+      "check": "fixed",
+      "tests_run": 8,
+      "passed": 8,
+      "failure_count": 0,
+      "error_count": 0,
+      "skip_count": 0,
+      "failures": [],
+      "expected_umask_fixture_failure_reproduced": false,
+      "successful": true,
+      "raw_output_saved_or_printed": false,
+      "action": "fixed_compatibility_umask_077",
+      "umask": "077",
+      "returncode": 0
+    },
+    {
+      "check": "fixed",
+      "tests_run": 8,
+      "passed": 8,
+      "failure_count": 0,
+      "error_count": 0,
+      "skip_count": 0,
+      "failures": [],
+      "expected_umask_fixture_failure_reproduced": false,
+      "successful": true,
+      "raw_output_saved_or_printed": false,
+      "action": "fixed_compatibility_umask_022",
+      "umask": "022",
+      "returncode": 0
+    },
+    {
+      "lane": "baseline",
+      "python_version": "3.12.13",
+      "tests_run": 1,
+      "passed": 0,
+      "failure_count": 1,
+      "error_count": 0,
+      "skip_count": 0,
+      "failures": [
+        {
+          "test": "ops_platform.tests.test_service_lifecycle.ServiceTests.test_boot_links_owned_only_and_stop_disables",
+          "known_baseline_adapter_failure": true,
+          "trace_sha256": "35522f5601a4aebbeff9273e133771159dc7640208db44af7a26b358855742a9"
+        }
+      ],
+      "skipped_tests": [],
+      "new_regression_count": 0,
+      "raw_output_saved_or_printed": false,
+      "live_acceptance_completed": false,
+      "action": "baseline_adapter",
+      "umask": "077",
+      "returncode": 0
+    },
+    {
+      "source_layout_check_passed": true,
+      "python310_source_files_checked": 471,
+      "compose_include_paths_checked": 29,
+      "failure_codes": [],
+      "runtime_state_read": false,
+      "services_started": false,
+      "live_acceptance_completed": false,
+      "action": "source_layout",
+      "umask": "077",
+      "returncode": 0
+    },
+    {
+      "lane": "ops_tools",
+      "python_version": "3.12.13",
+      "tests_run": 113,
+      "passed": 113,
+      "failure_count": 0,
+      "error_count": 0,
+      "skip_count": 0,
+      "failures": [],
+      "skipped_tests": [],
+      "new_regression_count": 0,
+      "raw_output_saved_or_printed": false,
+      "live_acceptance_completed": false,
+      "action": "ops_tools",
+      "umask": "077",
+      "returncode": 0
+    },
+    {
+      "lane": "infra_n8n",
+      "python_version": "3.12.13",
+      "tests_run": 26,
+      "passed": 26,
+      "failure_count": 0,
+      "error_count": 0,
+      "skip_count": 0,
+      "failures": [],
+      "skipped_tests": [],
+      "new_regression_count": 0,
+      "raw_output_saved_or_printed": false,
+      "live_acceptance_completed": false,
+      "action": "infra_n8n",
+      "umask": "077",
+      "returncode": 0
+    },
+    {
+      "lane": "infra_langfuse",
+      "python_version": "3.12.13",
+      "tests_run": 56,
+      "passed": 56,
+      "failure_count": 0,
+      "error_count": 0,
+      "skip_count": 0,
+      "failures": [],
+      "skipped_tests": [],
+      "new_regression_count": 0,
+      "raw_output_saved_or_printed": false,
+      "live_acceptance_completed": false,
+      "action": "infra_langfuse",
+      "umask": "077",
+      "returncode": 0
+    },
+    {
+      "lane": "infra_observability",
+      "python_version": "3.12.13",
+      "tests_run": 134,
+      "passed": 130,
+      "failure_count": 0,
+      "error_count": 0,
+      "skip_count": 4,
+      "failures": [],
+      "skipped_tests": [
+        "src.infra.observability.tests.test_backup_docker_template.NativeTemplateTests.test_all_component_formats_execute_without_secret_output",
+        "src.infra.observability.tests.test_backup_docker_template.NativeTemplateTests.test_original_unparenthesized_expression_reproduces_failure",
+        "src.infra.observability.tests.test_gpu.ComposeTests.test_actual_compose_gpu_permissions_and_optional_prometheus_mount",
+        "src.infra.observability.tests.test_manage.ComposeRegressionTests.test_checked_in_yaml_has_one_tmpfs_and_original_yaml_fails_preflight"
+      ],
+      "new_regression_count": 0,
+      "raw_output_saved_or_printed": false,
+      "live_acceptance_completed": false,
+      "action": "infra_observability",
+      "umask": "077",
+      "returncode": 0
+    },
+    {
+      "schema": 1,
+      "result": "passed",
+      "checks": 25,
+      "scope": "DOM_and_fetch_model_not_browser",
+      "production_API_requests": 0,
+      "inference_requested": false,
+      "GPU_requested": false,
+      "action": "screen_ui_test.cjs",
+      "umask": "077",
+      "returncode": 0
+    },
+    {
+      "schema": 1,
+      "result": "passed",
+      "checks": 24,
+      "scope": "Q07b_DOM_and_fetch_model_not_browser",
+      "production_API_requests": 0,
+      "inference_requested": false,
+      "GPU_requested": false,
+      "action": "screen_actions_ui_test.cjs",
+      "umask": "077",
+      "returncode": 0
+    },
+    {
+      "schema": 1,
+      "result": "passed",
+      "checks": 36,
+      "scope": "Q08_DOM_and_fetch_model_not_browser",
+      "production_API_requests": 0,
+      "inference_requested": false,
+      "GPU_requested": false,
+      "action": "screen_questions_ui_test.cjs",
+      "umask": "077",
+      "returncode": 0
+    }
+  ],
+  "final_ops_source_bound_outcome": {
+    "passed": 500,
+    "known_baseline_failures": 1,
+    "skipped": 15,
+    "new_regressions": 0,
+    "evidence_method": "pinned diagnostic plus replacement CompatibilityTests; full suite not repeated"
+  },
+  "new_regression_count": 0,
+  "held_ops_candidate_manifests_preserved": true,
+  "go_proto_sql_source_bytes_unchanged": true,
+  "live_acceptance_completed": false,
+  "production_receipts_rebound": false,
+  "services_started": false,
+  "scheduler_modified_or_started": false
+}

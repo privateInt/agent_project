@@ -1,6 +1,6 @@
 # 종료 작업 컨테이너 정리
 
-Model GC는 로컬 Docker의 종료 Job을 관찰하는 별도 서비스다. [서비스 설정](../../model_platform/gc/docker-compose.yml), [구현](../../model_platform/gc/), [검증 절차](../testing/gc.md)를 기준으로 관리한다. 2026-09-16 자동 정리 요청에 따라 이 프로젝트의 Compose 기본값은 `apply`, 성공 보존 기간은 `1h`다. Data는 기존 Reconciler에서 정리하며 아래 Data 절을 따른다. 후속 대화에서 사용자가 자동 정리 동작을 확인했다.
+Model GC는 로컬 Docker의 종료 Job을 관찰하는 별도 서비스다. [서비스 설정](../../src/platform/model/gc/docker-compose.yml), [구현](../../src/platform/model/gc), [검증 절차](../testing/gc.md)를 기준으로 관리한다. 2026-09-16 자동 정리 요청에 따라 이 프로젝트의 Compose 기본값은 `apply`, 성공 보존 기간은 `1h`다. Data는 기존 Reconciler에서 정리하며 아래 Data 절을 따른다. 후속 대화에서 사용자가 자동 정리 동작을 확인했다.
 
 ## 2026-09-18 실제 로그 확인
 
@@ -70,7 +70,7 @@ s3://model-job-logs/operations/<operation_id>/<dispatch_token>/<container_id>/<m
 
 ## 환경 변수
 
-호스트 설정은 `model_platform/.env`에서 아래 `MODEL_` 변수를 사용한다. MinIO 연결 정보는 기존 `MODEL_MINIO_*`, 네트워크는 `AGENT_PROJECT_NETWORK`, 노드는 `MODEL_DISPATCHER_NODE_NAME`을 사용한다.
+호스트 설정은 `src/platform/model/.env`에서 아래 `MODEL_` 변수를 사용한다. MinIO 연결 정보는 기존 `MODEL_MINIO_*`, 네트워크는 `AGENT_PROJECT_NETWORK`, 노드는 `MODEL_DISPATCHER_NODE_NAME`을 사용한다.
 
 | 호스트 변수 | 기본값 |
 |---|---|
@@ -106,7 +106,7 @@ docker compose run --rm --no-deps -e GC_MODE=dry-run gc \
 
 ## Data 자동 정리
 
-[Data Reconciler](../../data_platform/reconciler/app/job_cleanup.go)가 상태 보정과 별도 루프에서 종료 작업을 정리한다. 새 상시 서비스는 추가하지 않았다. 자동화 테스트와 Streamlit 직접 실행 모두 같은 정책을 적용한다.
+[Data Reconciler](../../src/platform/data/reconciler/app/job_cleanup.go)가 상태 보정과 별도 루프에서 종료 작업을 정리한다. 새 상시 서비스는 추가하지 않았다. 자동화 테스트와 Streamlit 직접 실행 모두 같은 정책을 적용한다.
 
 | 호스트 변수 | 기본값 |
 |---|---|
@@ -125,12 +125,12 @@ Data는 삭제 시 작업 번호·최종 상태·종료 코드를 Reconciler 로
 
 ## 이미 쌓인 컨테이너의 수동 정리
 
-[cleanup_jobs.py](../../data_platform/ops/cleanup_jobs.py)는 종료 후 1시간 이상 지난 로컬 Data 수집/정제와 Model import/deployment Job을 대상으로 Docker·Operation을 두 번 확인한다. 기본은 목록 확인이며, 실패·취소는 명시적으로 포함한다. 학습 Job은 로그/출력 보존 정책을 가진 Model GC에 맡긴다.
+[cleanup_jobs.py](../../src/platform/data/ops/cleanup_jobs.py)는 종료 후 1시간 이상 지난 로컬 Data 수집/정제와 Model import/deployment Job을 대상으로 Docker·Operation을 두 번 확인한다. 기본은 목록 확인이며, 실패·취소는 명시적으로 포함한다. 학습 Job은 로그/출력 보존 정책을 가진 Model GC에 맡긴다.
 
 ```bash
 cd ~/workspace/agent_project
-python data_platform/ops/cleanup_jobs.py --include-failed
-python data_platform/ops/cleanup_jobs.py --include-failed --apply
+python src/platform/data/ops/cleanup_jobs.py --include-failed
+python src/platform/data/ops/cleanup_jobs.py --include-failed --apply
 ```
 
 첫 줄은 조회, 둘째 줄은 실제 삭제다. 수동 삭제는 개별 컨테이너 로그를 따로 아카이브하지 않는다. `--platform data` 또는 `model`로 좁힐 수 있다. Data/Model Gateway 주소는 `--data-api`, `--model-api`로 지정한다. API에서 완료를 확인하지 못한 컨테이너는 `retained`로 남으며 `Exited (0)`만으로 삭제를 승인하지 않는다. 이 수동 도구는 공개 API만 사용하므로 현재 dispatch token 검증은 상시 GC의 내부 gRPC 검증과 구분한다. Model 단건 API에 완료 시각이 없으면 수동 보존 기간은 Docker 종료 시각으로 계산한다.

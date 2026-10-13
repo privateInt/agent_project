@@ -40,9 +40,9 @@ selection은 adapter 호출자가 공급하는 고정 참조다. `agent_origin`,
 Q05a/Q05b까지 초기화된 기존 자기 저장소를 사용한다. CLI는 로컬 `init`, `status`, `candidate`만 제공한다. 아래 관련 검사·init/status는 사용자 서버에서 확인했으며 문서 변경 때문에 반복하지 않는다. 운영 Tool 인수는 별도 단계다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_search_tool.py' -q
-python3 -B -m apps.document_qa.search_tool init
-python3 -B -m apps.document_qa.search_tool status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_search_tool.py' -q
+python3 -B -m src.apps.document_qa.search_tool init
+python3 -B -m src.apps.document_qa.search_tool status
 ```
 
 초기 `plan_count=0`, `question_ready=false`가 정상이다. 현재 보류 색인의 `candidate`는 `SEARCH_TOOL_ACTIVE_INDEX_REQUIRED`로 종료하며 이를 색인 재실행 사유로 취급하지 않는다. 운영 selection 생성·Tool 등록/시험/발행·추론·QA 프로세스 재실행은 위 명령에 없다. 기존 QA API와 Flow에 이번 모듈을 자동 연결하지 않았으므로 서비스 재시작이 필요하지 않다.

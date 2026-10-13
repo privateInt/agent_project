@@ -123,7 +123,7 @@ protocol 1의 실행 승인을 Docker running 관찰로 대체할 수 없다. �
 
 이번 실행의 합성 Operation을 cancelled로 바꾸고 소유 smoke label을 확인한 sleep 컨테이너를 제거한다. 실제 demo Deployment·Operation·Outbox와 완료 demo Job 컨테이너는 진단 자료로 남는다. 모델 파일은 만들지 않는다. 이 smoke는 Idempotency-Key를 생략하는 호환성 클라이언트이므로 POST를 자동 재전송하지 않는다. 202 뒤에는 domain의 전달 ACK를 먼저 기다리고 Operation 완료를 조회한다.
 
-최종 PASS와 fixture cleanup 완료를 확인한다. `docker compose ps`에서 Up만 확인하는 것보다 넓은 경로를 검증하지만, 이를 학습·추론 E2E 성공으로 해석하지 않는다. 구현은 [live_control_smoke.py](../../model_platform/tests/live_control_smoke.py)에 있다.
+최종 PASS와 fixture cleanup 완료를 확인한다. `docker compose ps`에서 Up만 확인하는 것보다 넓은 경로를 검증하지만, 이를 학습·추론 E2E 성공으로 해석하지 않는다. 구현은 [live_control_smoke.py](../../src/platform/model/tests/live_control_smoke.py)에 있다.
 
 
 <a id="dispatch-fault"></a>
@@ -188,4 +188,4 @@ CPU demo를 사용한다. GPU 학습, vLLM, 브로커 중단, BeginExecution 승
 }
 ```
 
-테스트 Operation은 종료 후 전용 schema와 함께 제거된다. 정상 Gateway의 Operation 조회 대신 이 보고서를 사용한다. 실패하면 같은 폴더의 `fault.log`, `reconciler.log`, `recovery.log`, `stale.log` 등 생성된 로그를 확인한다. [실행기](../../model_platform/tests/live_dispatch_fault.py), [Python 모의 테스트](../../model_platform/tests/test_live_dispatch_fault.py), [Go helper](../../model_platform/tests/dispatch_fault/)가 구현 원본이다.
+테스트 Operation은 종료 후 전용 schema와 함께 제거된다. 정상 Gateway의 Operation 조회 대신 이 보고서를 사용한다. 실패하면 같은 폴더의 `fault.log`, `reconciler.log`, `recovery.log`, `stale.log` 등 생성된 로그를 확인한다. [실행기](../../src/platform/model/tests/live_dispatch_fault.py), [Python 모의 테스트](../../src/platform/model/tests/test_live_dispatch_fault.py), [Go helper](../../src/platform/model/tests/dispatch_fault)가 구현 원본이다.

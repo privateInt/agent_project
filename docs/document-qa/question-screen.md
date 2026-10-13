@@ -28,8 +28,8 @@
 Q07b 구현과 결과 문서9개까지 적용한 프로젝트에서 Q08 checksum OK·applied/written=20을 확인했다. 아래 검사는 이미 서버에서 42개(5.166초) OK·status passed로 완료한 기록이다. 이번 결과 문서 패치 적용 때문에 검사/init/status를 반복하지 않는다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_screen*.py' -q
-python3 -B -m apps.document_qa.api status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_screen*.py' -q
+python3 -B -m src.apps.document_qa.api status
 ```
 
 개발 검사는 관련 화면42개(기존32+새10), 전체QA550개, JS DOM/fetch 대역25+24+36=85개다. 임시 SQLite·독립 Agent 대역·loopback HTTP/DOM 모델이며 실제 서버/브라우저 질문을 실행한 근거가 아니다. 서버 CLI status는 screen_questions_implemented=true·q08.1·/console·screen_question_policy_source=/api/question-policy를 보고했다. 이 경로 metadata는 실행 중 API의 실제 GET 근거가 아니다. 기존 문서1개·CPU canonical_verified·색인 not_requested/Flow GPU_VERIFICATION_DEFERRED, head revision0·대상 없음·전환0·Agent plan0·질문0·question_ready=false를 조회했다. 운영 API 요청0·추론 요청false다. 새 init/migration·fixture SQL·추론/전환 옵션 변경을 하지 않는다.

@@ -46,7 +46,7 @@ JSON의 source 해시는 원본 PDF와 일치한다. 비교에 사용한 프로�
 
 수정 전 `enrich_visual_regions()`는 crop 응답에 미인식 그림이 하나라도 남으면 영역 전체를 실패로 처리한다. 따라서 v3의 `Register now!`와 v4의 그림 제목도 최종 본문에 합쳐지지 않고 raw 응답에만 남았다. 부분 글자 보존은 보완할 수 있으나, 제목만 넣는 것으로 흐름도 내부 OCR 성공을 선언해서는 안 된다.
 
-당시 `data_platform/console/data_results.py`의 `markdown_document()`로 첨부 JSON을 변환한 문자열은 첨부 Markdown과 **완전히 일치**했다. Markdown 저장 과정의 별도 누락이 아니라 최종 JSON에 읽힌 그림 내용이 없는 문제다. 성공한 그림 글자가 Markdown에 들어가는 경로의 과거 합성 검사는 있으나, 이번 실제 결과에는 성공 영역이 없어 실제 성공 사례를 검증할 수 없다.
+당시 `src/platform/data/console/data_results.py`의 `markdown_document()`로 첨부 JSON을 변환한 문자열은 첨부 Markdown과 **완전히 일치**했다. Markdown 저장 과정의 별도 누락이 아니라 최종 JSON에 읽힌 그림 내용이 없는 문제다. 성공한 그림 글자가 Markdown에 들어가는 경로의 과거 합성 검사는 있으나, 이번 실제 결과에는 성공 영역이 없어 실제 성공 사례를 검증할 수 없다.
 
 ## 검사 2: 표·읽기 순서·중복
 
@@ -117,7 +117,7 @@ OCR 단계 직후에는 266블록, 표 비교/병합 이후에는 267블록이�
 
 ### 원본 기준 자동 검사 결과
 
-정답은 렌더링한 원본의 물리 3·4·6페이지를 대조해 작성했다. 현재 OCR 결과에서 정답을 자동 생성하지 않았다. `data_platform/tests/fixtures/document-quality/ai-engineer-sample.json`이 이 샘플의 고정 정답이다. 원본 SHA를 고정해 다른 PDF를 같은 정답으로 채점하지 못하게 한다.
+정답은 렌더링한 원본의 물리 3·4·6페이지를 대조해 작성했다. 현재 OCR 결과에서 정답을 자동 생성하지 않았다. `src/platform/data/tests/fixtures/document-quality/ai-engineer-sample.json`이 이 샘플의 고정 정답이다. 원본 SHA를 고정해 다른 PDF를 같은 정답으로 채점하지 못하게 한다.
 
 | 검사 | 결과 | 정확히 측정한 것 |
 |---|---|---|
@@ -143,7 +143,7 @@ Table 2는 셀 단위 완전 대조지만 4페이지의 2/11은 **선택한 관�
 
 ### 재실행 방법
 
-검사 도구는 `data_platform/tests/audit_document_quality.py`, 도구 회귀는 `test_document_quality_audit.py`다. 도구 회귀 **12개 통과**를 확인했다. 열 이동·지수 부호 변경·병합 오류·다른 영역의 같은 단어·raw 응답만 존재하는 경우·중복 문단·다른 원본을 거절하는 검사가 포함된다. 이것이 실제 샘플의 품질 PASS를 의미하지 않는다.
+검사 도구는 `src/platform/data/tests/audit_document_quality.py`, 도구 회귀는 `test_document_quality_audit.py`다. 도구 회귀 **12개 통과**를 확인했다. 열 이동·지수 부호 변경·병합 오류·다른 영역의 같은 단어·raw 응답만 존재하는 경우·중복 문단·다른 원본을 거절하는 검사가 포함된다. 이것이 실제 샘플의 품질 PASS를 의미하지 않는다.
 
 서비스 이미지를 다시 빌드하지 않고, 원본 PDF와 내려받은 JSON/Markdown의 실제 경로를 지정한다. 아래 `/실제/경로`는 사용자가 보관한 경로로 바꾼다.
 
@@ -158,7 +158,7 @@ python -B tests/audit_document_quality.py \
 
 기본 검사는 Python 표준 라이브러리로 실행하며 파일을 읽고 판정 JSON을 stdout에 출력한다. 새 작업·모델 배포·파일 수정·Docker 컨테이너 생성은 없다. 종료 코드 0은 이 고정 검사 항목 통과, **1은 품질 실패**, 2는 입력/실행 조건 오류다. 여기서 기록한 미통과 첨부 결과는 1로 종료하는 것이 맞다. 새 결과는 그 결과의 실제 판정을 따른다. `set -e` 안에 넣으면 품질 실패에서 멈춘다.
 
-동일 OCR 응답을 전체 파이프라인에서 재생하려면 마지막 명령에 `--replay`를 붙인다. 이때 프로젝트 파서의 의존성 `data_platform/jobs/refinement/parse/requirements.txt`가 필요하다. 이번 로컬 환경의 pdfplumber 0.11.8, Pillow 12.3.0, pypdfium2 5.3.0, lxml 6.1.1은 해당 파일과 일치했다. 재생은 서버 접속을 차단하고 결과의 모델 식별자를 증거로만 사용한다. 버전/코드 변경으로 전송 이미지나 결과가 달라지면 일치를 실패로 표시한다. 그것만으로 새 결과의 품질이 나빠졌다고 단정하지 않고 개별 정답 검사를 함께 본다.
+동일 OCR 응답을 전체 파이프라인에서 재생하려면 마지막 명령에 `--replay`를 붙인다. 이때 프로젝트 파서의 의존성 `src/platform/data/jobs/refinement/parse/requirements.txt`가 필요하다. 이번 로컬 환경의 pdfplumber 0.11.8, Pillow 12.3.0, pypdfium2 5.3.0, lxml 6.1.1은 해당 파일과 일치했다. 재생은 서버 접속을 차단하고 결과의 모델 식별자를 증거로만 사용한다. 버전/코드 변경으로 전송 이미지나 결과가 달라지면 일치를 실패로 표시한다. 그것만으로 새 결과의 품질이 나빠졌다고 단정하지 않고 개별 정답 검사를 함께 본다.
 
 이 정답은 현재 하나의 합쳐진 10열 Table 1 표현을 기준으로 한다. 앞으로 좌우 표를 분리하는 계약으로 바꾼다면, 출력에 맞춰 정답을 자동 생성하지 말고 원본의 논리적 열 관계를 보존하도록 검사기를 확장해야 한다.
 
@@ -264,6 +264,6 @@ python -B tests/audit_document_quality.py \
 
 ## 현재 전달본에 남은 근거
 
-2026-09-18 파일 정리 후에는 [보존 요약](../../data_platform/tests/results/retained-summary-20260918.json)과 대표 canonical·화면 로그만 남는다. 본문의 첨부 파일명·보고서 해시·전체 report 경로는 당시 기록이며 현재 프로젝트에 그 원본이 존재한다는 뜻이 아니다. 요약 JSON의 수동 실험 평가는 초기 부분 검사이므로 후속 공정 연결 좌7/20·우2/21 판정과 구분한다.
+2026-09-18 파일 정리 후에는 [보존 요약](../../src/platform/data/tests/results/retained-summary-20260918.json)과 대표 canonical·화면 로그만 남는다. 본문의 첨부 파일명·보고서 해시·전체 report 경로는 당시 기록이며 현재 프로젝트에 그 원본이 존재한다는 뜻이 아니다. 요약 JSON의 수동 실험 평가는 초기 부분 검사이므로 후속 공정 연결 좌7/20·우2/21 판정과 구분한다.
 
 문서 점검에서 보존된 수동 canonical 3개로 그림 24/24·좌7/20·우2/21을 다시 확인했다. API/GPU 요청이나 원본 수정은 하지 않았다. 전체 report·baseline·파생 PNG를 제거한 전달본만으로 과거 실행을 resume하거나 전체 재생할 수 없다. [자료·결과 보관 정책](../testing/artifact-retention.md)을 따른다.

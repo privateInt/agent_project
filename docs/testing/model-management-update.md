@@ -111,7 +111,7 @@ cd ~/workspace/agent_project/model_platform
 docker compose logs --tail=80 deployment gateway
 ```
 
-후속 확인: 사용자가 삭제 성공을 보고했다. 새 Go/빌드의 개별 로그와 cache 파일시스템 상세를 추가로 받은 것은 아니므로 그 검사를 별도 PASS로 표시하지 않는다. 기존 Go/DB/UI 로그, 후속 사용자 기능 확인, GC 보존 상태를 구분해 `model_platform/tests/results/model-management-update-20260918.json`에 요약했다.
+후속 확인: 사용자가 삭제 성공을 보고했다. 새 Go/빌드의 개별 로그와 cache 파일시스템 상세를 추가로 받은 것은 아니므로 그 검사를 별도 PASS로 표시하지 않는다. 기존 Go/DB/UI 로그, 후속 사용자 기능 확인, GC 보존 상태를 구분해 `src/platform/model/tests/results/model-management-update-20260918.json`에 요약했다.
 
 
 <a id="redeploy"></a>
@@ -132,7 +132,7 @@ docker compose logs --tail=80 deployment gateway
 
 선택·확인 시 상세를 재조회해 상태·설정 변경을 검사한다. 표시 이름이나 화면에서 선택한 다른 모델 버전을 요청에 사용하지 않는다. 응답 유실 시 기존 요청 키·본문을 보존하고 사용자의 `같은 요청 다시 확인`으로 결과를 조회한다. 자동 재전송은 없다. 브라우저 세션이 바뀌면 같은 중지 배포를 다시 선택하고 동일한 설정으로 확인해 URL에 보존된 요청 키를 재사용한다. 결과 확인 전 요청 기록을 닫고 새 요청을 만들면 중복 배포가 생길 수 있다.
 
-실제 Streamlit 1.63.0 AppTest **52개**, 관리 경계 **7개**, 요청·상태 로직 **27개**, 합계 **86개**가 로컬에서 통과했다. 새 재배포 검사는 OCR·reranker·embedding·adapter/blank profile 설정 보존, 취소, 상태 변경·삭제·설정 변경 거절, 응답 유실·URL 복원 시 같은 키 사용, 서버 변경 거절을 포함한다. AppTest의 Gateway 응답은 대역이며 실제 Docker 이미지·GPU 재배포는 아직 확인하지 않았다. [검증 요약](../../model_platform/tests/results/model-redeploy-20260921.json).
+실제 Streamlit 1.63.0 AppTest **52개**, 관리 경계 **7개**, 요청·상태 로직 **27개**, 합계 **86개**가 로컬에서 통과했다. 새 재배포 검사는 OCR·reranker·embedding·adapter/blank profile 설정 보존, 취소, 상태 변경·삭제·설정 변경 거절, 응답 유실·URL 복원 시 같은 키 사용, 서버 변경 거절을 포함한다. AppTest의 Gateway 응답은 대역이며 실제 Docker 이미지·GPU 재배포는 아직 확인하지 않았다. [검증 요약](../../src/platform/model/tests/results/model-redeploy-20260921.json).
 
 화면에서 `배포 조회 → 중지된 배포의 재배포 → 같은 설정으로 새 배포`를 선택하면 새 배포 상세로 이동하고 기존 행은 중지 상태로 남는다. 실패하면 새 배포 오류를 확인한다. 현재 정상 embedding/reranker를 시험 목적으로 중지하지 않는다. 실제 재배포가 필요한 경우에 확인하고 결과를 별도로 기록한다.
 

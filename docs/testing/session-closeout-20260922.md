@@ -18,7 +18,7 @@
 | 완료 상태·다음 작업 불일치 | reranker/HNSW/청커 비교가 완료 기록과 달리 대기로 표시되고 같은 이력이 여러 문서에 반복 | 현재 상태와 월간 이력 분리. 최신 test1·실패/복구 근거·남은 한계·Agent 후속 작업을 인수인계에 정리 |
 | 오래된 UI 테스트 | 기존 문구와 `run-a` 같은 잘못된 UUID 때문에 현재 UI 규칙에서 실패. 브라우저 fixture에 추가 스크립트와 단계 이동 누락 | 현재 문구·유효 UUID·전체 UI 자산·자료 선택/미리보기 진입 흐름으로 갱신. Node 회귀 통과, Chromium 렌더링 검사는 아래 환경 제약 유지 |
 
-실행 코드 변경은 `knowledge_platform/gateway/web/app.js`, `indexing.js`와 자산 버전 문자열을 갱신한 `index.html`이다. API·DB·청킹/색인/검색·Model/Data 실행 코드와 설정은 변경하지 않았다. 기존 지식 생성의 두 단계 저장 규칙은 그대로 유지한다.
+실행 코드 변경은 `src/platform/knowledge/gateway/web/app.js`, `indexing.js`와 자산 버전 문자열을 갱신한 `index.html`이다. API·DB·청킹/색인/검색·Model/Data 실행 코드와 설정은 변경하지 않았다. 기존 지식 생성의 두 단계 저장 규칙은 그대로 유지한다.
 
 ## 이번 환경에서 실행한 검증
 
@@ -35,7 +35,7 @@
 
 로컬에는 Docker/protoc/PostgreSQL이 없어 전체 Go/DB/실제 모델 검사를 새로 실행하지 않았다. 앞선 사용자 서버의 전체 Go 15개 테스트 패키지·PostgreSQL service/app 최상위 17개 통과 근거는 [실패·복구 기록](../knowledge-platform/testing-failure-recovery-20260922.md)에 유지한다. 이번 로컬 검사와 과거 서버 검사를 합산하지 않는다.
 
-작은 판정 요약은 [JSON](../../knowledge_platform/tests/results/session-closeout-20260922.json)에 보존한다. 결과 파일 총량은 기존 합계 1 MB 미만 정책을 따른다.
+작은 판정 요약은 [JSON](../../src/platform/knowledge/tests/results/session-closeout-20260922.json)에 보존한다. 결과 파일 총량은 기존 합계 1 MB 미만 정책을 따른다.
 
 ## 앞선 코드 수정 패치의 적용 범위
 

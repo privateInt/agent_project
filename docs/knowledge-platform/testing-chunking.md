@@ -70,7 +70,7 @@ K04 핵심 빌드·저장·활성화를 사용자 서버에서 확인했다. 컴
 )
 ```
 
-DB 통합 검사는 별도 접속 환경 변수가 없으면 skip된다. unit 통과를 DB 통합 통과로 표시하지 않는다. `knowledge_platform/internal/testsupport`는 `KNOWLEDGE_TEST_POSTGRES_URL`이 주어진 테스트 DB에서 임시 schema를 생성하고 해당 schema만 정리한다.
+DB 통합 검사는 별도 접속 환경 변수가 없으면 skip된다. unit 통과를 DB 통합 통과로 표시하지 않는다. `src/platform/knowledge/internal/testsupport`는 `KNOWLEDGE_TEST_POSTGRES_URL`이 주어진 테스트 DB에서 임시 schema를 생성하고 해당 schema만 정리한다.
 
 DB 검사까지 수행하려면 테스트 전용 PostgreSQL URL을 환경에 준비하고 다음을 실행한다. 명령 자체가 접속 값을 출력하지 않는다.
 

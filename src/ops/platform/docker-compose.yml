@@ -1,0 +1,55 @@
+name: agent-project-ops
+services:
+  ops-web:
+    image: agent-project-ops:o04.3
+    build: {context: .}
+    pull_policy: never
+    user: '${OPS_UID:?Run ops/manage.py prepare}:${OPS_GID:?}'
+    labels:
+      org.agent-project.ops.owner: '${OPS_OWNER:?}'
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      OPS_CONFIG: /run/ops/config.json
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    cpus: 1.0
+    mem_limit: 384m
+    memswap_limit: 384m
+    pids_limit: 128
+    tmpfs: ['/tmp:size=16777216,mode=1777']
+    volumes:
+      - type: bind
+        source: '${OPS_CONFIG_FILE:?}'
+        target: /run/ops/config.json
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: '${OPS_ACCESS_FILE:?}'
+        target: /run/ops/access-key
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: '${OPS_AGENT_TOKEN_FILE:?}'
+        target: /run/ops/agent-token
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: '${OPS_LANGFUSE_FILE:?}'
+        target: /run/ops/langfuse.json
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: '${OPS_CACHE_DIR:?}'
+        target: /var/lib/ops
+        bind: {create_host_path: false}
+    healthcheck:
+      test: [CMD, python3, -B, /app/src/ops/platform/healthcheck.py]
+      interval: 15s
+      timeout: 5s
+      retries: 4
+      start_period: 15s
+    logging:
+      driver: json-file
+      options: {max-size: 5m, max-file: '2'}

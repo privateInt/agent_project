@@ -57,7 +57,7 @@ flowchart TD
 
 그림의 검색·청킹·관리 노드는 책임 구분이다. 처음부터 각각 별도 서비스로 배포하지 않는다. 외부 REST Gateway, 하나의 Knowledge 도메인 서비스, Operation·Dispatcher·Reconciler와 CPU Job으로 구성한다. Job의 임베딩 배치는 도메인 서비스가 검증·기록하고 OpenSearch에 저장한다. Job에 OpenSearch 연결 비밀을 전달하지 않는다. 검색은 상시 요청 경로이며 매 요청마다 Operation이나 Job을 만들지 않는다.
 
-| 실제 코드 영역 (`knowledge_platform/` 기준) | 책임 |
+| 실제 코드 영역 (`src/platform/knowledge/` 기준) | 책임 |
 |---|---|
 | `contracts/`, `gateway/app/` | REST/gRPC 계약·입력 제한·공식 API 전달 |
 | `service/app/` | 청킹·빌드·활성화·삭제·검색 유스케이스, PostgreSQL 트랜잭션·receipt |

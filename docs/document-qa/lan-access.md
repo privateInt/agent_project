@@ -10,7 +10,7 @@ Q08 코드와 결과 문서9개 적용까지 완료한 프로젝트에 패치를
 
 ```bash
 cd /home/shshin/workspace/agent_project
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_screen_hosts.py' -q
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_screen_hosts.py' -q
 ```
 
 현재 실행 중인 QA API의 터미널에서 Ctrl+C로 정상 종료한다. 다른 플랫폼/서비스/모델을 재시작하지 않는다. `shshin` 계정 터미널에서 아래처럼 명시 실행하고 유지한다. root의 기본 상태 경로로 실행하거나 새 init/migration을 수행하지 않는다.
@@ -18,7 +18,7 @@ python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_screen_hosts.
 ```bash
 cd /home/shshin/workspace/agent_project
 /home/shshin/miniforge3/envs/sh_test/bin/python3 -B \
-  -m apps.document_qa.api serve \
+  -m src.apps.document_qa.api serve \
   --bind 172.25.0.1 --additional-bind 192.168.0.119 --port 17110
 ```
 

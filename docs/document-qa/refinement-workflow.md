@@ -13,7 +13,7 @@ may_execute_next_stage=false도 그대로다. Q04b는 별도 owned 9-node CPU Fl
 등록한다. 업로드 API가 Data 원본을 확인하고 Q03b receipt를 받은 뒤 Q04b handoff를 전달한다.
 Q03b/정제 Flow의 등록은 각각 명시 prepare로 수행한다. 적용/init/status로 원격 Flow를 등록하지 않는다.
 
-[코드](../../apps/document_qa/refinement_flow.py)는 원본/자료함/job/sequence를 자기 저장에서
+[코드](../../src/apps/document_qa/refinement_flow.py)는 원본/자료함/job/sequence를 자기 저장에서
 고정하고 정제는 [Q04a adapter](refinement.md)에 위임한다. Data/Knowledge/Agent DB·저장소에
 직접 접근하지 않는다. 본문과 플랫폼 credential을 Flow JSON에 담지 않는다. n8n에는 참조와
 QA 단계 API credential, 현재 실행에만 유효한 grant가 전달된다. 새 모델 선택/추론/색인은 없다.
@@ -51,10 +51,10 @@ partial/OCR/needs_review/빈 본문·해시/ID 불일치는 검색 준비 성공
 ## 적용과 로컬 상태
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_refinement_flow.py' -q
-python3 -B -m apps.document_qa.refinement_flow init
-python3 -B -m apps.document_qa.refinement_flow status
-python3 -B -m apps.document_qa.api status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_refinement_flow.py' -q
+python3 -B -m src.apps.document_qa.refinement_flow init
+python3 -B -m src.apps.document_qa.refinement_flow status
+python3 -B -m src.apps.document_qa.api status
 ```
 
 init은 자기 uploads.sqlite3에 별도 metadata/setup/run/current/execution 테이블 5개를 추가하고
@@ -91,8 +91,8 @@ prepare를 재개하며, 정의와 현재 버전 확인이 통과하면 기존 F
 
 ```bash
 # 기존 QA API를 유지한 별도 터미널, 프로젝트 루트에서 수행한다.
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_wait_webhook_metadata.py' -q
-python3 -B -m apps.document_qa.refinement_flow prepare --qa-origin http://172.25.0.1:17110
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_wait_webhook_metadata.py' -q
+python3 -B -m src.apps.document_qa.refinement_flow prepare --qa-origin http://172.25.0.1:17110
 # 패키지 verify_registration.py는 두 Flow의 활성 정의/버전만 GET으로 확인한다.
 ```
 
@@ -111,13 +111,13 @@ python3 -B -m apps.document_qa.refinement_flow prepare --qa-origin http://172.25
 
 ```bash
 # qa_origin은 실제로 확인한 QA private 주소다. 같은 주소/엔진의 Q03b Flow를 먼저 등록한다.
-python3 -B -m apps.document_qa.workflows prepare --qa-origin "$qa_origin"
-python3 -B -m apps.document_qa.refinement_flow prepare --qa-origin "$qa_origin"
+python3 -B -m src.apps.document_qa.workflows prepare --qa-origin "$qa_origin"
+python3 -B -m src.apps.document_qa.refinement_flow prepare --qa-origin "$qa_origin"
 
 # 이후 업로드 API는 Data 원본 확인 -> 기존 진입 receipt -> CPU Flow 전달을 수행한다.
 # 이미 업로드되고 Q03b receipt가 있는 job은 아래 명시 dispatch로 연결한다.
-python3 -B -m apps.document_qa.refinement_flow dispatch --job-id "$qa_job_id"
-python3 -B -m apps.document_qa.refinement_flow status
+python3 -B -m src.apps.document_qa.refinement_flow dispatch --job-id "$qa_job_id"
+python3 -B -m src.apps.document_qa.refinement_flow status
 ```
 
 prepare는 [버전 확인 정책](workflows.md)에 따라 현재 n8n 2.40.5와 원래 Q03b owned active version을 검증한다.

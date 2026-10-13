@@ -24,7 +24,7 @@ A09 최초 작성 당시 서버는 [A08 적용·읽기 검사](../history/agent-
 
 ## 2. 점검 도구
 
-`agent_platform/ops/acceptance.py`는 기존 Agent/n8n API에 **GET만** 보낸다. 실행·재시도·등록·게시·재시작·키 발급을 수행하지 않는다. 원래 운영 settings.json/request.json과 API 키를 읽지만 수정하거나 내용을 출력하지 않는다.
+`src/platform/agent/ops/acceptance.py`는 기존 Agent/n8n API에 **GET만** 보낸다. 실행·재시도·등록·게시·재시작·키 발급을 수행하지 않는다. 원래 운영 settings.json/request.json과 API 키를 읽지만 수정하거나 내용을 출력하지 않는다.
 
 | 명령 | 동작 |
 |---|---|
@@ -34,8 +34,8 @@ A09 최초 작성 당시 서버는 [A08 적용·읽기 검사](../history/agent-
 
 기본 경로:
 
-- Agent: 서버 내부 `http://127.0.0.1:16100`, 토큰 `agent_platform/.secrets/api-token`.
-- n8n: 기존 `infra/n8n/.secrets/agent-integration-api-key.json`에 기록된 origin/키.
+- Agent: 서버 내부 `http://127.0.0.1:16100`, 토큰 `src/platform/agent/.secrets/api-token`.
+- n8n: 기존 `src/infra/n8n/.secrets/agent-integration-api-key.json`에 기록된 origin/키.
 - 운영 세션: `~/workspace/agent_n8n_workflow`, 원래 `request.json`.
 - 비교 기준: `~/workspace/agent_acceptance_a09.json` — 프로젝트 밖의 새 파일이며 설정/요청 세션과 별개다.
 
@@ -125,7 +125,7 @@ python3 -B ops/acceptance.py audit \
 - Go 테스트가 임베딩·검색·채팅 호출 수를 검사했다. 새 A09 조회는 호출을 늘리지 않았고 운영 n8n의 두 run은 합계 각 1회만 실행했다.
 - 사용자 Docker/PostgreSQL 16·GPU를 여기서 실행하지 않았다. 화면 코드는 바뀌지 않아 A08 브라우저 인수 근거를 재사용한다.
 
-작은 요약은 `agent_platform/tests/results/a09-acceptance-summary.json`에 저장한다. 원문 자료·모델 답변·대용량 로그·테스트 폰트는 패키지에 추가하지 않는다. 운영 절차는 [운영 안내](operations-a09-20260924.md)를 따른다.
+작은 요약은 `src/platform/agent/tests/results/a09-acceptance-summary.json`에 저장한다. 원문 자료·모델 답변·대용량 로그·테스트 폰트는 패키지에 추가하지 않는다. 운영 절차는 [운영 안내](operations-a09-20260924.md)를 따른다.
 
 ## 2026-09-25 서버 확인과 비교 범위
 

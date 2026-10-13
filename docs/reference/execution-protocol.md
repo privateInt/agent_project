@@ -1,6 +1,6 @@
 # 실행·전달·복구 계약
 
-구현 위치는 [Operation](../../model_platform/operation/app/), [Dispatcher](../../model_platform/dispatcher/), [Reconciler](../../model_platform/reconciler/), [Job 보고 클라이언트](../../model_platform/internal/operationreport/client.go)다.
+구현 위치는 [Operation](../../src/platform/model/operation/app), [Dispatcher](../../src/platform/model/dispatcher), [Reconciler](../../src/platform/model/reconciler), [Job 보고 클라이언트](../../src/platform/model/internal/operationreport/client.go)다.
 
 ## 저장과 전달
 

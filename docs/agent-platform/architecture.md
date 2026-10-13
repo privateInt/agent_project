@@ -48,15 +48,15 @@ A02에서 gateway/service/runtime/contracts와 전용 postgres 구성을 생성�
 
 | 구성 | 책임 |
 |---|---|
-| agent_platform/gateway | 외부 REST·관리 UI 정적 자산·서비스 연결. 기존 Go Gateway 패턴 사용 |
-| agent_platform/service | Go 관리 서비스. Tool/Agent 등록·버전·실행 접수·상태의 기준 저장소 |
-| agent_platform/mcp | 고정 SDK의 MCP HTTP 서버·Tool 호출 어댑터. 관리/실행 서비스 계약 이용 |
-| agent_platform/runtime | Python LangGraph 실행기·HTTP/검색 Tool 어댑터. 승인된 실행을 처리하고 결과 보고 |
-| agent_platform/contracts | Agent 내부 gRPC 계약. Model/Data/Knowledge에 Agent 계약 의존성 추가 금지 |
-| infra/n8n | n8n Compose·전용 PostgreSQL·비밀·볼륨·기동·진단. infra 상위 include |
-| agent_platform/n8n | Agent 연동 Flow 템플릿·생성기·WorkflowLink 등록·격리 연동 검사 |
-| agent_platform/postgres | A02 전용 PostgreSQL DB/계정 초기화·별도 볼륨. 관리 서비스가 Agent migration 적용 |
-| agent_platform/docker-compose.yml | 서비스별 Compose include. 전용 private network, Gateway/runtime만 기존 ops-infra 연결 |
+| src/platform/agent/gateway | 외부 REST·관리 UI 정적 자산·서비스 연결. 기존 Go Gateway 패턴 사용 |
+| src/platform/agent/service | Go 관리 서비스. Tool/Agent 등록·버전·실행 접수·상태의 기준 저장소 |
+| src/platform/agent/mcp | 고정 SDK의 MCP HTTP 서버·Tool 호출 어댑터. 관리/실행 서비스 계약 이용 |
+| src/platform/agent/runtime | Python LangGraph 실행기·HTTP/검색 Tool 어댑터. 승인된 실행을 처리하고 결과 보고 |
+| src/platform/agent/contracts | Agent 내부 gRPC 계약. Model/Data/Knowledge에 Agent 계약 의존성 추가 금지 |
+| src/infra/n8n | n8n Compose·전용 PostgreSQL·비밀·볼륨·기동·진단. infra 상위 include |
+| src/platform/agent/n8n | Agent 연동 Flow 템플릿·생성기·WorkflowLink 등록·격리 연동 검사 |
+| src/platform/agent/postgres | A02 전용 PostgreSQL DB/계정 초기화·별도 볼륨. 관리 서비스가 Agent migration 적용 |
+| src/platform/agent/docker-compose.yml | 서비스별 Compose include. 전용 private network, Gateway/runtime만 기존 ops-infra 연결 |
 
 관리와 실행 제어는 내부 gRPC, 외부 UI/n8n은 REST, MCP 클라이언트는 MCP를 사용한다. 기존 플랫폼은 공식 Gateway REST를 소비하며 DB나 runtime 포트로 우회하지 않는다. A02 내부 gRPC는 전용 Docker network의 TCP로 고정했다. 공개 기본 포트는 16100이고 이미지 digest/SDK pin을 추가했다. 실제 서버 충돌 여부는 preflight로 확인한다. MCP는 A03에서 공식 Go SDK 1.8.0·프로토콜 2025-11-25·stateless Streamable HTTP로 고정했다. LAN 접속이 필요한 기존 사용 방식을 유지한다.
 
@@ -99,7 +99,7 @@ Agent 추가를 위해 Model/Data/Knowledge의 도메인 코드·DB·원본·인
 
 ## 9. 근거
 
-- 프로젝트: [전체 경계](../architecture.md), [Knowledge 검색](../knowledge-platform/api-search.md), [Model 임베딩](../reference/embedding.md), [Model 채팅 코드](../../model_platform/gateway/app/chat.go).
+- 프로젝트: [전체 경계](../architecture.md), [Knowledge 검색](../knowledge-platform/api-search.md), [Model 임베딩](../reference/embedding.md), [Model 채팅 코드](../../src/platform/model/gateway/app/chat.go).
 - LangGraph: [실행 프레임워크](https://docs.langchain.com/oss/python/langgraph/overview), [상태 보존](https://docs.langchain.com/oss/python/langgraph/persistence).
 - n8n: [OEM](https://docs.n8n.io/deploy/host-n8n/deploy-as-an-oem-integration), [Token Exchange 원문](https://github.com/n8n-io/n8n-docs/blob/main/docs/deploy/host-n8n/deploy-as-an-oem-integration/set-up-token-exchange.md), [라이선스](https://github.com/n8n-io/n8n/blob/master/LICENSE.md).
 
@@ -115,4 +115,4 @@ A05 진행: [자연어 검색 어댑터 구현·인수 범위](knowledge-search-
 
 ## n8n 운영 배치 결정 — 2026-09-24
 
-사용자 결정에 따라 n8n의 운영 수명주기는 infra가 소유한다. `infra/ops/up.py`로 초기 infra 실행에 포함하며 Agent에는 활용 코드만 둔다. n8n과 전용 DB는 `infrastructure` Compose 프로젝트로 관리하고 기존 A07 키·외부 볼륨을 보존한다. Agent의 기동/health에 n8n을 필수 의존성으로 추가하지 않는다. [이전·검증·현재 서버 제한](n8n-infra-20260924.md)을 따른다.
+사용자 결정에 따라 n8n의 운영 수명주기는 infra가 소유한다. `src/infra/ops/up.py`로 초기 infra 실행에 포함하며 Agent에는 활용 코드만 둔다. n8n과 전용 DB는 `infrastructure` Compose 프로젝트로 관리하고 기존 A07 키·외부 볼륨을 보존한다. Agent의 기동/health에 n8n을 필수 의존성으로 추가하지 않는다. [이전·검증·현재 서버 제한](n8n-infra-20260924.md)을 따른다.

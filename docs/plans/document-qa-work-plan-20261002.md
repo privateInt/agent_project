@@ -34,7 +34,7 @@ Q06/Q07/Q08 adapter/화면 구현·로컬 인수와 첫 운영 Tool/Agent/head�
 
 ## Q06에서 먼저 해결할 저장·버전 계약
 
-현재 [uploads.py](../../apps/document_qa/uploads.py)는 `PRAGMA user_version=1`과 `CHECK(question_revision=0)`을 유지하고 질문 가능 상태를 false로 투영한다. Q06b-1의 [question_store.py](../../apps/document_qa/question_store.py)는 별도 `question_head.revision`을 새 질문 코드의 기준으로 저장한다. 기존 library 컬럼은 구버전의 호환 값이다. [contracts.switch_head](../../apps/document_qa/contracts.py)는 순수 CAS 계약이며 [question_head.py](../../apps/document_qa/question_head.py)가 Q06b-3의 전체 재검증과 자기 DB 원자 전환/receipt를 구현한다. 따라서 flag만 true로 바꾸는 패치로 Q06을 완료할 수 없다.
+현재 [uploads.py](../../src/apps/document_qa/uploads.py)는 `PRAGMA user_version=1`과 `CHECK(question_revision=0)`을 유지하고 질문 가능 상태를 false로 투영한다. Q06b-1의 [question_store.py](../../src/apps/document_qa/question_store.py)는 별도 `question_head.revision`을 새 질문 코드의 기준으로 저장한다. 기존 library 컬럼은 구버전의 호환 값이다. [contracts.switch_head](../../src/apps/document_qa/contracts.py)는 순수 CAS 계약이며 [question_head.py](../../src/apps/document_qa/question_head.py)가 Q06b-3의 전체 재검증과 자기 DB 원자 전환/receipt를 구현한다. 따라서 flag만 true로 바꾸는 패치로 Q06을 완료할 수 없다.
 
 Q06b-1은 기존 table/데이터를 재작성하지 않는 atomic additive migration과 불변 대상 참조를 구현했다. migration/후보 저장 직렬화·프로세스 중단 복구·재실행·기존 업로드/HTTP API·구버전 호환/복귀를 개발 환경에서 검사했고 서버 확장 schema·빈 head/revision을 확인했다. 기존 table·intent/key·receipt·원본 작업 이력·키를 삭제해 초기화하지 않는다. **Q05의 indexing_generation과 question_head.revision은 별도 값**이다. Q06b-2 Agent/질문 adapter와 Q06b-3 CAS/receipt는 구현했으며 첫 실제 전환/head1과 PC 질문 접수까지 확인했으며 답변/품질·두 문서 이후 전환은 후속 인수다.
 
@@ -55,4 +55,4 @@ Q06b-1은 기존 table/데이터를 재작성하지 않는 atomic additive migra
 
 현재 SQLite/file lock은 단일 Linux 호스트·전용 볼륨 adapter다. Kubernetes는 API/자산 소유권을 유지하되 단일 replica/PV 또는 분산 저장/실행권, 네트워크·credential 공급을 별도 인수한다. 실제 이식·재부팅·Ops 운영 백업/복원과 추가 자동화는 기존 보류다. Docker 백업 완료를 Kubernetes 계획 논의의 선행 조건으로 두지 않는다.
 
-10월 12일 채택한 Dataset 이전·Airflow·HWP·provider/LiteLLM·MCP·세션/기억·문서 Tool·그래프 평가·CI/CD는 [확장 계획](platform-expansion-work-plan-20261012.md)의 별도 완료선으로 진행한다. BM25/RRF·ZenML·다중 GPU/노드·범용 자율 그래프·API 카탈로그 자동완성 등은 별도 검토다. 문서 QA 첫 인수의 선행 조건으로 추가하지 않는다. 현재 API와 명령은 [앱 안내](../../apps/document_qa/README.md), [연결 계약](../document-qa/contracts.md), 환경 재개는 [인수인계](../HANDOFF_NEXT_SESSION.md)를 따른다.
+10월 12일 채택한 Dataset 이전·Airflow·HWP·provider/LiteLLM·MCP·세션/기억·문서 Tool·그래프 평가·CI/CD는 [확장 계획](platform-expansion-work-plan-20261012.md)의 별도 완료선으로 진행한다. BM25/RRF·ZenML·다중 GPU/노드·범용 자율 그래프·API 카탈로그 자동완성 등은 별도 검토다. 문서 QA 첫 인수의 선행 조건으로 추가하지 않는다. 현재 API와 명령은 [앱 안내](../../src/apps/document_qa/README.md), [연결 계약](../document-qa/contracts.md), 환경 재개는 [인수인계](../HANDOFF_NEXT_SESSION.md)를 따른다.

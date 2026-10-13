@@ -46,8 +46,8 @@ revision 변경은 현재 상태가 달라졌다는 뜻이다. 이전 요청 자
 Q07a 서버 결과 문서8개까지 적용한 기존 프로젝트에서 Q07b 패치 written=21과 아래 검사/status 통과를 확인했다. 관련32개(1.980초) OK다. 결과 문서 적용 때문에 아래 검사/status·이전 init/migration·성공 업로드·Flow callback을 반복하지 않는다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_screen*.py' -q
-python3 -B -m apps.document_qa.api status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_screen*.py' -q
+python3 -B -m src.apps.document_qa.api status
 ```
 
 서버에서 통과한 관련 검사는 기존 화면12개와 새 재개20개, 총32개(1.980초)다. 전체 QA540개와 JS 화면 대역25+24개는 개발 환경의 임시 SQLite·독립 플랫폼 대역·loopback HTTP·DOM/fetch 모델 검사다. 실제 서버/브라우저에서 재개 동작을 실행한 근거는 아니다. CLI status는 q07b.1·screen_recovery_implemented=true·upload_and_CPU_only를 보고하며 CLI job 조회에는 recovery 동작 목록이 없다. 실제 UI의 동작 목록은 설정을 읽은 실행 중인 API에서 제공한다. 기존 문서1개는 canonical_verified·색인 not_requested·색인 Flow blocked/GPU_VERIFICATION_DEFERRED이며 head revision=0·대상 없음·전환0·question_ready=false를 유지했다. 운영 API 요청0·추론 요청false인 로컬 조회이며 실제 재개 POST를 실행한 근거가 아니다.

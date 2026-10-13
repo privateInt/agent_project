@@ -39,7 +39,7 @@
 | Data 참조 상태 | `held` |
 | 실행 journal | `~/workspace/indexing_check_bulk_fix_20260921.json` |
 
-ChunkSet/policy hash와 두 canonical ID를 포함한 최종 응답은 [검증 요약 JSON](../../knowledge_platform/tests/results/indexing-k04-20260918.json)의 `live_receipt`에 보존한다. 현재 상태와 과거 실패 시도를 별도 필드로 기록한다.
+ChunkSet/policy hash와 두 canonical ID를 포함한 최종 응답은 [검증 요약 JSON](../../src/platform/knowledge/tests/results/indexing-k04-20260918.json)의 `live_receipt`에 보존한다. 현재 상태와 과거 실패 시도를 별도 필드로 기록한다.
 
 ### 수정과 재검증 경위
 
@@ -80,7 +80,7 @@ ChunkSet/policy hash와 두 canonical ID를 포함한 최종 응답은 [검증 �
 
 인덱스·버전·임베딩 배포·공간·차원·runtime은 [K04 기준](#k04)과 같다. 반환 canonical은 `157c335f-5436-4338-8078-edb040ebe1ca`이며 원본 품질 `needs_ocr`를 유지했다.
 
-간결한 전체 receipt와 빌드 식별자는 [검증 요약 JSON](../../knowledge_platform/tests/results/search-k05-20260921.json)에 보존한다. 사용자 서버의 `~/workspace/search_check_20260921.json`과 K04 journal `~/workspace/indexing_check_bulk_fix_20260921.json`을 유지한다. 원본 빌드 로그·벡터·본문·이미지를 프로젝트 테스트 결과에 추가 복제하지 않는다. 기존 [1 MB 미만 보관 정책](../testing/artifact-retention.md)을 따른다.
+간결한 전체 receipt와 빌드 식별자는 [검증 요약 JSON](../../src/platform/knowledge/tests/results/search-k05-20260921.json)에 보존한다. 사용자 서버의 `~/workspace/search_check_20260921.json`과 K04 journal `~/workspace/indexing_check_bulk_fix_20260921.json`을 유지한다. 원본 빌드 로그·벡터·본문·이미지를 프로젝트 테스트 결과에 추가 복제하지 않는다. 기존 [1 MB 미만 보관 정책](../testing/artifact-retention.md)을 따른다.
 
 ### 검증의 한계
 
@@ -99,17 +99,17 @@ K06 Model 점수 API와 K07 Knowledge 선택적 재정렬은 아래 후속 기�
 
 ## K06 Model 재정렬 API
 
-사용자가 제공한 Playground 점수 화면과 `model_platform/tests/live_reranking.py` 결과를 근거로 **Model reranker API와 짧은 관련성 예제의 실제 추론을 확인했다.** 검색 품질 평가와 Knowledge 검색의 rerank 연결은 포함하지 않는다.
+사용자가 제공한 Playground 점수 화면과 `src/platform/model/tests/live_reranking.py` 결과를 근거로 **Model reranker API와 짧은 관련성 예제의 실제 추론을 확인했다.** 검색 품질 평가와 Knowledge 검색의 rerank 연결은 포함하지 않는다.
 
 ### 실행 근거
 
 ```bash
-python3 model_platform/tests/live_reranking.py \
+python3 src/platform/model/tests/live_reranking.py \
   --deployment-id cc64a683-a69f-48a5-836e-9f52f0255cc6 \
   --summary-file "$HOME/workspace/reranking_check_20260921.json"
 ```
 
-출력은 `status: passed`, 유효 점수 요청 2회, 수명주기 변경 0회다. 원본 요약은 사용자 서버 경로에 있으며, 전달된 결과의 사본은 [live 요약](../../model_platform/tests/results/reranking-live-20260921.json)에 보존한다.
+출력은 `status: passed`, 유효 점수 요청 2회, 수명주기 변경 0회다. 원본 요약은 사용자 서버 경로에 있으며, 전달된 결과의 사본은 [live 요약](../../src/platform/model/tests/results/reranking-live-20260921.json)에 보존한다.
 
 | 항목 | 확인 값 |
 |---|---|
@@ -134,7 +134,7 @@ python3 model_platform/tests/live_reranking.py \
 
 ### 완료와 남은 범위
 
-K06 Model capability는 실제 API·화면 확인까지 완료했다. 앞서 profile 수정 후 Deployment/Gateway Go 빌드·PostgreSQL 두 통합 검사·서비스 교체를 확인한 기록은 [누적 요약](../../model_platform/tests/results/reranking-k06-20260921.json)에 보존한다. DB의 중지 경합 검사는 runtime 대역을 사용했고, live 도구는 공유 모델을 실제 중지하지 않았다.
+K06 Model capability는 실제 API·화면 확인까지 완료했다. 앞서 profile 수정 후 Deployment/Gateway Go 빌드·PostgreSQL 두 통합 검사·서비스 교체를 확인한 기록은 [누적 요약](../../src/platform/model/tests/results/reranking-k06-20260921.json)에 보존한다. DB의 중지 경합 검사는 runtime 대역을 사용했고, live 도구는 공유 모델을 실제 중지하지 않았다.
 
 후속 Knowledge 연결은 [K07](#k07)에서 확인했다. [중지 배포 재배포 UI](../testing/model-management-update.md#redeploy)는 로컬 검사까지 확인했으며 실제 서버 재배포 성공은 별도 미확인이다.
 
@@ -159,7 +159,7 @@ K06 Model capability는 실제 API·화면 확인까지 완료했다. 앞서 pro
 | 실제 API | `live_rerank_search.py`의 `status: passed`; 기존 인덱스와 준비된 두 모델 배포 사용 |
 | 호출·변경 | 질문 임베딩 1회, 정상 rerank on 검색 1회, 인덱스·배포 수명주기 변경 0회 |
 
-원본 첨부는 `붙여넣은 텍스트 (1)(20260921-035918).txt`, 27,245 bytes, SHA-256 `2444be51f41ce19b5e3b47806621dbcbad931c56ba11bdba16e86eef1a3b83da`다. 전체 빌드 로그를 중복 보관하지 않고 [검증 요약](../../knowledge_platform/tests/results/rerank-k07-20260921.json)에 근거와 서비스 이미지 ID를 보존한다. 로그의 최종 JSON은 [실제 API 결과](../../knowledge_platform/tests/results/rerank-search-live-20260921.json)에 그대로 추출했다. 서버 원본 요약 경로는 `~/workspace/knowledge_rerank_check_20260921.json`이다.
+원본 첨부는 `붙여넣은 텍스트 (1)(20260921-035918).txt`, 27,245 bytes, SHA-256 `2444be51f41ce19b5e3b47806621dbcbad931c56ba11bdba16e86eef1a3b83da`다. 전체 빌드 로그를 중복 보관하지 않고 [검증 요약](../../src/platform/knowledge/tests/results/rerank-k07-20260921.json)에 근거와 서비스 이미지 ID를 보존한다. 로그의 최종 JSON은 [실제 API 결과](../../src/platform/knowledge/tests/results/rerank-search-live-20260921.json)에 그대로 추출했다. 서버 원본 요약 경로는 `~/workspace/knowledge_rerank_check_20260921.json`이다.
 
 Go tests target과 별도 PostgreSQL 검사를 구분한다. DB 검사의 장애·빈 후보·timeout·동시 삭제 검사는 대역을 사용한다. 실제 모델의 중지·장애를 이번 서버에서 유발했다는 뜻이 아니다. 이번 문서 갱신에서는 완료한 코드·DB·GPU 검사를 반복하지 않았다.
 
@@ -204,7 +204,7 @@ Go tests target과 별도 PostgreSQL 검사를 구분한다. DB 검사의 장애
 
 ## K08 청커 비교
 
-2026-09-21. 사용자 실행 로그와 첨부 JSON을 근거로 기록했다. 서버에 직접 접속해 수행한 검사는 아니다. 원본 보고서는 외부 평가 폴더에 보존하고 프로젝트에는 [작은 결과 요약](../../knowledge_platform/tests/results/evaluation-candidate-diagnostics-20260921.json)만 남긴다.
+2026-09-21. 사용자 실행 로그와 첨부 JSON을 근거로 기록했다. 서버에 직접 접속해 수행한 검사는 아니다. 원본 보고서는 외부 평가 폴더에 보존하고 프로젝트에는 [작은 결과 요약](../../src/platform/knowledge/tests/results/evaluation-candidate-diagnostics-20260921.json)만 남긴다.
 
 ### 입력과 색인
 

@@ -17,6 +17,10 @@ Model·Data·Knowledge·Agent·Ops를 독립 플랫폼으로 구성한 AI 개발
 | 설계와 개발 기준 | [아키텍처](docs/architecture.md), [설계 원칙](docs/design-principles.md), [개발 안내](docs/development.md) |
 | API와 운영 절차 | [문서 목차](docs/README.md) |
 
+## 소스 구조
+
+소스는 `src/platform/{agent,data,knowledge,model}`, `src/ops/{platform,tools,candidates}`, `src/apps`, `src/infra`에 모았다. 문서는 `docs`에 둔다. [경로·실행 안내](docs/architecture/source-layout.md)를 따른다.
+
 ## 플랫폼 역할
 
 | 플랫폼 | 소유 기능 | 안내 |
@@ -34,4 +38,4 @@ Model·Data·Knowledge·Agent·Ops를 독립 플랫폼으로 구성한 AI 개발
 
 문서 QA 첫 TXT의 실제 GPU 색인·검색 Tool·QA Agent smoke/발행·head revision1과 LAN 화면/질문 접수를 확인했다. 현재 PC 코드 질문과 인용 강화 초안은 MISSING_REFERENCE로 실패했으며 첫 답변/출처·품질 인수는 남았다. 최신 범위와 근거는 [상태표](docs/status.md), 실제 환경/첫 작업은 [인수인계](docs/HANDOFF_NEXT_SESSION.md)를 따른다.
 
-학습데이터 Data 이전·Data 일정/Airflow·infra·기본 MCP·학습 형식/RAFT·HWP·상용 API·세션/기억·문서 Tool·CI/CD의 10개 확장을 [계획](docs/plans/platform-expansion-work-plan-20261012.md)에 반영했다. Codex는 [AGENTS.md](AGENTS.md)에 따라 F0a부터 작은 단계로 진행한다. n8n/Langfuse는 기존 구성을 재사용하고 LightRAG/Neo4j는 평가 실험으로 분리한다. 계획 문서 적용은 신규 infra 설치나 기능 구현 완료를 뜻하지 않는다. Ops 운영 백업/복원·재부팅·Kubernetes 보류는 유지한다.
+학습데이터 Data 이전·Data 일정/Airflow·infra·기본 MCP·학습 형식/RAFT·HWP·상용 API·세션/기억·문서 Tool·CI/CD의 10개 확장을 [계획](docs/plans/platform-expansion-work-plan-20261012.md)에 반영했다. Codex는 [AGENTS.md](AGENTS.md)에 따라 소스 구조 정리의 검증을 완료한 뒤 F0a부터 작은 단계로 진행한다. n8n/Langfuse는 기존 구성을 재사용하고 LightRAG/Neo4j는 평가 실험으로 분리한다. 계획 문서 적용은 신규 infra 설치나 기능 구현 완료를 뜻하지 않는다. Ops 운영 백업/복원·재부팅·Kubernetes 보류는 유지한다.

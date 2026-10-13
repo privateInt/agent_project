@@ -34,4 +34,4 @@ Tool/Connection/Agent는 버전과 실행 입력을 고정하고 재전송은 �
 3. 내부 서비스 API 카탈로그와 schema/연결 자동완성은 현재 Connection·OpenAPI와 Knowledge 전용 흐름을 바탕으로 별도 구현한다.
 4. 임의 그래프·다중 Agent·다중 사용자 권한은 실제 요구가 생긴 뒤 추가한다.
 
-[상세 인수표](acceptance-a09-20260924.md), [서버 결과 JSON](../../agent_platform/tests/results/a09-server-20260925.json), [Tool API](api-tools.md), [Agent API](api-agents.md), [구조](architecture.md), [서비스 관리 방향](tool-composition-and-service-catalog-20260923.md)를 근거로 사용한다.
+[상세 인수표](acceptance-a09-20260924.md), [서버 결과 JSON](../../src/platform/agent/tests/results/a09-server-20260925.json), [Tool API](api-tools.md), [Agent API](api-agents.md), [구조](architecture.md), [서비스 관리 방향](tool-composition-and-service-catalog-20260923.md)를 근거로 사용한다.

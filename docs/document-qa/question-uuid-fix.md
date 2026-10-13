@@ -38,7 +38,7 @@ static production_verified/next_step 필드는 이번 외부 운영 관찰로 �
 3. 질문 가능을 확인하고 `연결 검증 코드는 무엇인가요?`와 `점검 담당 부서는 어디인가요?`를 각각 질문한다. 기대 값은 `QA-CPU-20261007`, `플랫폼 개발팀`이며 `[S1]`의 실제 원문도 확인한다.
 4. 답변 준비 중이면 답변 진행 확인을 선택해 기존 Run 결과만 조회한다. 자동 5초 갱신은 로컬 GET만 수행한다. 응답 유실/새로고침에서도 같은 질문과 키/참조를 유지한다.
 
-명령 검사는 `python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_screen*.py' -q`다. 새 HTTP→실제 JS 검사 5개는 Node 18 이상과 fetch·structuredClone·Web Crypto 등 필수 기능을 확인한 뒤 실행한다. Node가 없거나 호환되지 않으면 JS 파일을 읽기 전에 해당 검사 클래스만 이유를 표시하고 skip한다. 개발 환경의 Node 24.19.0에서는 5개를 모두 실행했다. 구형 Node 경로의 skip을 JS 검사의 통과로 기록하지 않는다. QA 서버·브라우저 화면은 서버 Node를 사용하지 않는다. 브라우저 렌더나 실제 GPU 호출을 이 대역 검사로 대체하지 않는다.
+명령 검사는 `python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_screen*.py' -q`다. 새 HTTP→실제 JS 검사 5개는 Node 18 이상과 fetch·structuredClone·Web Crypto 등 필수 기능을 확인한 뒤 실행한다. Node가 없거나 호환되지 않으면 JS 파일을 읽기 전에 해당 검사 클래스만 이유를 표시하고 skip한다. 개발 환경의 Node 24.19.0에서는 5개를 모두 실행했다. 구형 Node 경로의 skip을 JS 검사의 통과로 기록하지 않는다. QA 서버·브라우저 화면은 서버 Node를 사용하지 않는다. 브라우저 렌더나 실제 GPU 호출을 이 대역 검사로 대체하지 않는다.
 
 사용자 서버의 UUID 패치는 checksum OK·applied/written=8로 적용됐다. 화면 관련 56개 검사는 신규 JS 5개가 optional chaining 구문에서 SyntaxError로 실패했고, 나머지 51개는 실패가 없었다. 기존 게이트가 Node 실행 파일의 존재만 확인한 것이 원인이다. 실제 Node 버전은 사용자 출력에 없으므로 추정해 기록하지 않는다. [검사 실행 환경 보완 근거](../testing/document-qa-question-node-gate-20261012.json)를 따른다. 화면 코드·기존 head는 이 보완 패치에서 다시 변경하지 않으며 변경 후 PC 질문 결과는 아직 미확인이다.
 

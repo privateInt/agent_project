@@ -4,7 +4,7 @@
 
 ## 기존 환경 설정
 
-`model_platform`과 `infra`의 기존 환경 파일·인증 자산을 사용한다. 새 샘플 파일로 덮어쓰지 않는다. 공통 설정의 의미는 아래와 같다.
+`src/platform/model`과 `src/infra`의 기존 환경 파일·인증 자산을 사용한다. 새 샘플 파일로 덮어쓰지 않는다. 공통 설정의 의미는 아래와 같다.
 
 | 설정 | 용도 / 기본 연결 |
 |---|---|
@@ -21,15 +21,15 @@
 | MODEL_VLLM_IMAGE | 기본 `vllm/vllm-openai:v0.15.0`. 서빙 전에 명시적 pull 필요 |
 | MODEL_SERVING_CACHE_VOLUME | 기본 `model-serving-cache`. Deployment와 vLLM이 공유하는 named volume |
 
-[platformdb](../../model_platform/internal/platformdb/postgres.go)는 각 서비스 DB명을 사용해 연결하고 최초 실행 시 없으면 생성한다. 최초 생성 role에는 CREATEDB 권한이 필요하다. 스키마 초기화는 각 서비스 시작 시 수행한다. 기존 암호화 키를 교체하면 저장한 임시 credential을 읽지 못할 수 있으므로 이유 없이 재생성하지 않는다.
+[platformdb](../../src/platform/model/internal/platformdb/postgres.go)는 각 서비스 DB명을 사용해 연결하고 최초 실행 시 없으면 생성한다. 최초 생성 role에는 CREATEDB 권한이 필요하다. 스키마 초기화는 각 서비스 시작 시 수행한다. 기존 암호화 키를 교체하면 저장한 임시 credential을 읽지 못할 수 있으므로 이유 없이 재생성하지 않는다.
 
 ## 공통 인프라
 
-[infra Compose](../../infra/docker-compose.yml)는 PostgreSQL, MinIO, Redis, Kafka KRaft, OpenSearch, MLflow와 n8n/전용 DB를 실행한다. 최초 준비와 A07 n8n 이전은 아래 기동기를 사용한다. [n8n 보존·진단 안내](../agent-platform/n8n-infra-20260924.md)를 따른다.
+[infra Compose](../../src/infra/docker-compose.yml)는 PostgreSQL, MinIO, Redis, Kafka KRaft, OpenSearch, MLflow와 n8n/전용 DB를 실행한다. 최초 준비와 A07 n8n 이전은 아래 기동기를 사용한다. [n8n 보존·진단 안내](../agent-platform/n8n-infra-20260924.md)를 따른다.
 
 ```bash
 cd ~/workspace/agent_project
-python3 infra/ops/up.py
+python3 src/infra/ops/up.py
 cd infra
 docker compose ps
 ```

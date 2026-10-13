@@ -6,15 +6,15 @@
 
 | 위치 | 책임 |
 |---|---|
-| [상위 Compose](../../model_platform/docker-compose.yml) | project 이름, 8개 제어 서비스와 선택적 Playground include, 공통 환경 파일 기준과 네트워크 |
+| [상위 Compose](../../src/platform/model/docker-compose.yml) | project 이름, 8개 제어 서비스와 선택적 Playground include, 공통 환경 파일 기준과 네트워크 |
 | 각 서비스의 `docker-compose.yml` | 해당 서비스 image/build, 환경 변수, 포트, 볼륨, 의존 관계 |
-| [공통 Dockerfile](../../model_platform/Dockerfile) | Go 의존성·protobuf·공통 코드와 서비스별 컴파일/최종 이미지 |
-| [Playground Dockerfile](../../model_platform/playground/Dockerfile) | Streamlit 체험 UI, 별도 Python 이미지 |
-| [Axolotl Dockerfile](../../model_platform/jobs/training/axolotl/Dockerfile) | CUDA·Python·Axolotl·MLflow 런타임 |
-| [docker-bake.hcl](../../model_platform/docker-bake.hcl) | Job 이미지와 테스트 이미지의 빌드 의존 관계 |
-| [장애 테스트 Dockerfile](../../model_platform/tests/dispatch_fault/Dockerfile) | 격리 테스트용 실제 제어 바이너리와 helper 묶음 |
+| [공통 Dockerfile](../../src/platform/model/Dockerfile) | Go 의존성·protobuf·공통 코드와 서비스별 컴파일/최종 이미지 |
+| [Playground Dockerfile](../../src/platform/model/playground/Dockerfile) | Streamlit 체험 UI, 별도 Python 이미지 |
+| [Axolotl Dockerfile](../../src/platform/model/jobs/training/axolotl/Dockerfile) | CUDA·Python·Axolotl·MLflow 런타임 |
+| [docker-bake.hcl](../../src/platform/model/docker-bake.hcl) | Job 이미지와 테스트 이미지의 빌드 의존 관계 |
+| [장애 테스트 Dockerfile](../../src/platform/model/tests/dispatch_fault/Dockerfile) | 격리 테스트용 실제 제어 바이너리와 helper 묶음 |
 
-`include`마다 `project_directory: .`, `env_file: ./.env`를 명시했다. 하위 Compose의 `build.context: .`는 `model_platform`을 가리킨다. 환경 파일을 서비스 폴더마다 복사하지 않는다. 공통 네트워크는 상위에서 한 번 선언하고 자식들이 참조한다. 하위 Compose는 상위 파일을 통해 사용하는 구성 조각이며, 각 폴더에서 독립 프로젝트로 실행하는 용도가 아니다. [Docker include 규칙](https://docs.docker.com/reference/compose-file/include/)
+`include`마다 `project_directory: .`, `env_file: ./.env`를 명시했다. 하위 Compose의 `build.context: .`는 `src/platform/model`을 가리킨다. 환경 파일을 서비스 폴더마다 복사하지 않는다. 공통 네트워크는 상위에서 한 번 선언하고 자식들이 참조한다. 하위 Compose는 상위 파일을 통해 사용하는 구성 조각이며, 각 폴더에서 독립 프로젝트로 실행하는 용도가 아니다. [Docker include 규칙](https://docs.docker.com/reference/compose-file/include/)
 
 Compose project 이름 `model-platform-e2e`, 서비스 이름, container_name, 주소·포트·소켓 연결은 기존과 같다. 이미지 이름만 서비스별로 구분한다. 로컬 소스로 빌드하므로 `pull_policy: never`를 사용하고 기동 전에 명시적으로 빌드한다.
 

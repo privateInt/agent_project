@@ -8,7 +8,7 @@
 | 청킹 | [API](api-chunking.md), [검증](testing-chunking.md) |
 | 색인/버전 | [API](api-indexing.md), [검증](testing-indexing.md), [수명주기](testing-lifecycle-20260921.md) |
 | 검색/rerank | [API](api-search.md), [검증](testing-search.md) |
-| 평가 | [설계](evaluation.md), [실행/근거](testing-evaluation.md), [CLI](../../knowledge_platform/evaluation/README.md) |
+| 평가 | [설계](evaluation.md), [실행/근거](testing-evaluation.md), [CLI](../../src/platform/knowledge/evaluation/README.md) |
 | 서버 인수 | [인수 기록](acceptance.md), [실패/복구](testing-failure-recovery-20260922.md) |
 | 화면 | [UI 범위](console-ux-20260922.md), [마지막 수정/검증 한계](../testing/session-closeout-20260922.md) |
 

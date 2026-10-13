@@ -140,7 +140,7 @@ python tests/live_training_control_smoke.py \
 
 관찰 대기 기본값은 단계별 600초다. 이미지/모델 첫 준비가 오래 걸리면 `--timeout 1800`을 지정한다. 이 값은 테스트 관찰 시간이며 Job 실행 제한이나 강제 삭제 타이머가 아니다. smoke 실패 시 자신이 만든 fixture에 취소를 요청하고 해당 결과를 기록한다. 실패 출력만으로 중지 완료라고 판단하지 않는다.
 
-각 실행은 `model_platform/tests/results/training-control/<UUID>.json`에 요청 키·ID·결과를 저장한다. 응답 유실이나 대기 만료 후 새 fixture를 만들기 전에 같은 보고서로 이어 확인한다.
+각 실행은 `src/platform/model/tests/results/training-control/<UUID>.json`에 요청 키·ID·결과를 저장한다. 응답 유실이나 대기 만료 후 새 fixture를 만들기 전에 같은 보고서로 이어 확인한다.
 
 ```bash
 python tests/live_training_control_smoke.py \

@@ -18,7 +18,7 @@
 
 Job gRPC 7개, Bulk HTTP 2개, Reconciler 5개 시나리오를 추가했다. 새 DB 테스트는 4개 함수이며 재정렬의 profile/점수 실패 2개 하위 경우를 포함한다. 이후 전체 Go 검사와 아래 PostgreSQL 실행 결과로 해당 추가 검사의 통과를 확인했다. 시나리오 수와 최상위 테스트 함수 수는 구분한다.
 
-소스: [Job](../../knowledge_platform/jobs/indexing/main_test.go), [HTTP bulk](../../knowledge_platform/internal/searchstore/recovery_test.go), [Reconciler](../../knowledge_platform/reconciler/app/index_recovery_test.go), [DB 복구·경쟁](../../knowledge_platform/service/app/failure_recovery_integration_test.go).
+소스: [Job](../../src/platform/knowledge/jobs/indexing/main_test.go), [HTTP bulk](../../src/platform/knowledge/internal/searchstore/recovery_test.go), [Reconciler](../../src/platform/knowledge/reconciler/app/index_recovery_test.go), [DB 복구·경쟁](../../src/platform/knowledge/service/app/failure_recovery_integration_test.go).
 
 ## 격리와 복구의 의미
 
@@ -33,14 +33,14 @@ Reconciler 대역 테스트는 요청의 관찰 조건 보존을 검사하며 Op
 ## 실행 상태
 
 - 로컬 확인: 변경 Go 테스트 6개 파일의 파싱/gofmt, Python 실행 도구 문법·대역 호출 인자, 합성 청킹 입력 12/14개가 여러 배치 조건을 충족함을 확인했다.
-- 당시 로컬에는 Docker·protoc·PostgreSQL이 없어 새 전체 Go/DB 검사는 미실행이었다. [사전 확인 기록](../../knowledge_platform/tests/results/failure-recovery-preflight-20260922.json)은 그 시점의 기록으로 보존한다. 이후 사용자 서버 로그로 실행 완료를 확인했다.
-- 서버 절차: `docker build --target tests -t knowledge-platform-tests:failure-recovery ./knowledge_platform` 다음 `python3 knowledge_platform/tests/run_failure_recovery_checks.py`. 첫 명령은 DB를 제외한 Go 테스트를 실행하고, 두 번째는 Compose에서 DB 연결을 읽어 임시 schema의 service/app 테스트를 실행한다. 비밀 연결 값은 출력하지 않는다.
-- 사용자 서버의 두 명령이 모두 완료됐다. tests 이미지의 `go test -count=1 ./...`에서 테스트가 있는 15개 패키지가 ok이며, 별도 PostgreSQL 연결 실행에서 service/app 최상위 17개와 재정렬 profile/scores 하위 경우가 통과했다. DB 실행 로그에 skip/실패는 없고 runner의 최종 PASS를 확인했다. [서버 결과 요약](../../knowledge_platform/tests/results/failure-recovery-server-20260922.json). 일반 tests target의 DB skip만으로 판정하지 않았다.
+- 당시 로컬에는 Docker·protoc·PostgreSQL이 없어 새 전체 Go/DB 검사는 미실행이었다. [사전 확인 기록](../../src/platform/knowledge/tests/results/failure-recovery-preflight-20260922.json)은 그 시점의 기록으로 보존한다. 이후 사용자 서버 로그로 실행 완료를 확인했다.
+- 서버 절차: `docker build --target tests -t knowledge-platform-tests:failure-recovery ./knowledge_platform` 다음 `python3 src/platform/knowledge/tests/run_failure_recovery_checks.py`. 첫 명령은 DB를 제외한 Go 테스트를 실행하고, 두 번째는 Compose에서 DB 연결을 읽어 임시 schema의 service/app 테스트를 실행한다. 비밀 연결 값은 출력하지 않는다.
+- 사용자 서버의 두 명령이 모두 완료됐다. tests 이미지의 `go test -count=1 ./...`에서 테스트가 있는 15개 패키지가 ok이며, 별도 PostgreSQL 연결 실행에서 service/app 최상위 17개와 재정렬 profile/scores 하위 경우가 통과했다. DB 실행 로그에 skip/실패는 없고 runner의 최종 PASS를 확인했다. [서버 결과 요약](../../src/platform/knowledge/tests/results/failure-recovery-server-20260922.json). 일반 tests target의 DB skip만으로 판정하지 않았다.
 - 새 Job/HTTP/Reconciler 및 DB 복구 경로는 이번 격리 검증 범위에서 완료다. Gateway/app도 전체 검사에 포함되어 새 콘솔 전달 경로의 Go 검사 통과를 확인했다. 운영 서비스 이미지는 교체하지 않았으며 테스트 이미지 빌드만 수행했다.
 
 ## 새 사용자 화면 확인
 
-사용자 제공 버전 JSON에서 test1의 42/42 ready·참조 held·HNSW m=32/ef_construction=256을 확인했다. 이어진 화면에서는 같은 버전을 기본 검색 버전으로 선택했고, 이름으로 선택한 reranker를 사용해 후보 20개→결과 5개·검색 처리 295ms·원문/출처 표시를 확인했다. [정확한 식별자·확인 한계](../../knowledge_platform/tests/results/console-ui-server-20260922.json).
+사용자 제공 버전 JSON에서 test1의 42/42 ready·참조 held·HNSW m=32/ef_construction=256을 확인했다. 이어진 화면에서는 같은 버전을 기본 검색 버전으로 선택했고, 이름으로 선택한 reranker를 사용해 후보 20개→결과 5개·검색 처리 295ms·원문/출처 표시를 확인했다. [정확한 식별자·확인 한계](../../src/platform/knowledge/tests/results/console-ui-server-20260922.json).
 
 이는 custom 설정의 버전 저장·빌드·활성화·검색을 확인한 근거다. OpenSearch 원시 매핑을 따로 조회한 결과, 새 콘솔 OFF 화면, 전체 결과의 정답 여부를 뜻하지 않는다. 전체 Go 검사 로그는 이번 실패·복구 실행에서 추가 확인했다. 기존 API·이전 화면 OFF 인수는 유지한다.
 

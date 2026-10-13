@@ -1,5 +1,7 @@
 # 다음 세션·Codex 인수인계
 
+2026-10-13 추가: 현재 개발 사본의 첫 작업은 src 구조·Ops 통합과 경로 검증이며 다음 기능 작업은 F0a다. [소스 구조](architecture/source-layout.md)를 따른다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
+
 갱신: 2026-10-12. 사용자 서버 출력과 PC 확인으로 첫 TXT의 GPU 색인·검색 Tool·QA Agent 시험/발행·head CAS revision 1까지 확인했다. 실제 PC 질문은 인용 누락으로 실패했고 prompt-only 초안도 같은 유형으로 실패했다. 상세 근거는 [10월 12일 관찰](testing/document-qa-live-observed-20261012.json), 완료/미완료는 [상태표](status.md)에 둔다. 현재 소스/프로세스가 이 기록과 일치하는지는 새 환경에서 조회로 확인한다.
 
 ## 첫 작업: F0a 인용 누락 해결
@@ -31,7 +33,7 @@
 
 ```bash
 /home/shshin/miniforge3/envs/sh_test/bin/python3 -B \
-  -m apps.document_qa.api serve \
+  -m src.apps.document_qa.api serve \
   --bind 172.25.0.1 --additional-bind 192.168.0.119 --port 17110 \
   --allow-indexing-inference \
   --allow-question-head-activation \
@@ -58,10 +60,10 @@
 
 ## 코드와 진단 시작점
 
-- [질문 화면](../apps/document_qa/web/questions.js), [UUID 수정](document-qa/question-uuid-fix.md): canonical 서버 UUID v5 허용, browser client key v4 계약 유지. 실제 접수까지 후속 확인했으며 현재 막힘은 답변 인용 누락.
-- [QA adapter](../apps/document_qa/qa_agent.py), [head](../apps/document_qa/question_head.py): 불변 plan/intent/receipt·시험/발행·CAS·질문 당시 target.
-- [native 진단](../agent_platform/ops/diagnose_answer.py): 기존 Run과 /steps GET만으로 저장된 인용 진단 조회. 자격은 저장된 settings의 agent token_file 참조를 사용.
-- [Agent runtime](../agent_platform/runtime/agent_runtime/agents.py), [Model chat](../model_platform/gateway/app/chat.go): system+prompt/user sources 구성, 전달과 인용 검증.
+- [질문 화면](../src/apps/document_qa/web/questions.js), [UUID 수정](document-qa/question-uuid-fix.md): canonical 서버 UUID v5 허용, browser client key v4 계약 유지. 실제 접수까지 후속 확인했으며 현재 막힘은 답변 인용 누락.
+- [QA adapter](../src/apps/document_qa/qa_agent.py), [head](../src/apps/document_qa/question_head.py): 불변 plan/intent/receipt·시험/발행·CAS·질문 당시 target.
+- [native 진단](../src/platform/agent/ops/diagnose_answer.py): 기존 Run과 /steps GET만으로 저장된 인용 진단 조회. 자격은 저장된 settings의 agent token_file 참조를 사용.
+- [Agent runtime](../src/platform/agent/runtime/agent_runtime/agents.py), [Model chat](../src/platform/model/gateway/app/chat.go): system+prompt/user sources 구성, 전달과 인용 검증.
 - 서버 workspace에 전달한 document_qa_citation_agent_trial_20261012.py는 실패한 후보의 기존 계획/키를 보존하는 보조 도구다. 소스 저장소 필수 파일이라고 가정하거나 --execute를 새로운 비교 생성 수단으로 반복하지 않는다.
 
 ## 인계 후 진행

@@ -165,7 +165,7 @@ tar -czvf ocr-quality-results.tar.gz \
 
 응답 유실·대기 만료 후에는 원래 호스트 디렉터리를 다시 같은 `/results`에 마운트하고, 실행 명령의 source/deployment/baseline/output 옵션을 `--resume /results/<ID>/report.json`으로 바꾼다. 새 임시 폴더나 새 요청 키로 대체하지 않는다. `--evaluate`는 저장 파일만 평가한다. 코드·입력·요청·모델/런타임 identity 변경, 파일 누락/손상이 있으면 거절한다.
 
-2026-09-18 전달본에는 과거 전체 report와 입력 PNG를 남기지 않았다. [요약 JSON](../../data_platform/tests/results/retained-summary-20260918.json)과 대표 canonical은 기존 실행의 재개 입력이 아니다. 서버에 완전한 실행 폴더가 따로 있는 경우에만 재개할 수 있다. `raster_quality.py --report` 역시 온전한 수동 실험 report가 필요하므로 삭제된 경로를 기본 예제로 사용하지 않는다.
+2026-09-18 전달본에는 과거 전체 report와 입력 PNG를 남기지 않았다. [요약 JSON](../../src/platform/data/tests/results/retained-summary-20260918.json)과 대표 canonical은 기존 실행의 재개 입력이 아니다. 서버에 완전한 실행 폴더가 따로 있는 경우에만 재개할 수 있다. `raster_quality.py --report` 역시 온전한 수동 실험 report가 필요하므로 삭제된 경로를 기본 예제로 사용하지 않는다.
 
 ### 구현·검증 이력
 

@@ -70,7 +70,7 @@ python3 ops/smoke_knowledge.py \
 
 ## 검증 근거와 남은 인수
 
-[작은 검증 요약](../../agent_platform/tests/results/a05-local-20260923.json)에 범위를 기록한다. 로컬에서는 실제 Go↔Python gRPC, HTTP 대역, PGlite(PostgreSQL 18.3 WASM), REST/MCP SDK와 브라우저를 사용했다. 이후 사용자 서버 UI 시험 성공 보고는 [별도 기록](../history/agent-platform-202609.md#a05-server-ui-check-20260923)과 [작은 서버 요약](../../agent_platform/tests/results/a05-server-ui-20260923.json)에 추가했다. Docker 이미지 빌드·PostgreSQL 16·실행 metadata·게시/REST/MCP·재시작 보존의 전체 확인은 남아 있다.
+[작은 검증 요약](../../src/platform/agent/tests/results/a05-local-20260923.json)에 범위를 기록한다. 로컬에서는 실제 Go↔Python gRPC, HTTP 대역, PGlite(PostgreSQL 18.3 WASM), REST/MCP SDK와 브라우저를 사용했다. 이후 사용자 서버 UI 시험 성공 보고는 [별도 기록](../history/agent-platform-202609.md#a05-server-ui-check-20260923)과 [작은 서버 요약](../../src/platform/agent/tests/results/a05-server-ui-20260923.json)에 추가했다. Docker 이미지 빌드·PostgreSQL 16·실행 metadata·게시/REST/MCP·재시작 보존의 전체 확인은 남아 있다.
 
 - 정상 자연어/빈 결과, 버전/연결 고정, profile·receipt·벡터 오류, 필터 범위, rerank 명시·실패, timeout·무재시도.
 - REST/MCP 동일 결과와 멱등 재조회, 게시 시험 조건, 실패 단계 저장, 기존 진단/OpenAPI 회귀.

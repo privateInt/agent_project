@@ -6,8 +6,8 @@
 
 | 범위 | 코드/대상 | 현재 판정 |
 |---|---|---|
-| Model 기존 도구 | `model_platform/ops/backup.py`, `restore_drill.py`: Model 4개 DB·모델/데이터셋/로그 버킷·training/admission/MLflow 볼륨·설정 | 구현과 대역 검사 근거. 실제 운영 백업/격리 복원 인수는 미확인 |
-| Ops 관측 백업 | `ops_tools/backup_plan.py`, `ops_candidates/backup_*`: Prometheus·Alertmanager·Langfuse·Ops 상태/설정·관련 이미지/worker 기록 | 격리 생성/파일시스템 복원 PASS. 운영 plan PASS, 실행기 구현/오프라인 검사 완료. 운영 측정/수집/DB/image/application 복원은 보류 |
+| Model 기존 도구 | `src/platform/model/ops/backup.py`, `restore_drill.py`: Model 4개 DB·모델/데이터셋/로그 버킷·training/admission/MLflow 볼륨·설정 | 구현과 대역 검사 근거. 실제 운영 백업/격리 복원 인수는 미확인 |
+| Ops 관측 백업 | `src/ops/tools/backup_plan.py`, `src/ops/candidates/backup_*`: Prometheus·Alertmanager·Langfuse·Ops 상태/설정·관련 이미지/worker 기록 | 격리 생성/파일시스템 복원 PASS. 운영 plan PASS, 실행기 구현/오프라인 검사 완료. 운영 측정/수집/DB/image/application 복원은 보류 |
 | 전체 플랫폼 복구 | Data 원본/canonical·Knowledge 카탈로그/색인/참조·Agent DB/키·n8n DB/키·공용 infra 등 | 단일 일관된 백업/복구 흐름과 전체 인수 근거 없음. 별도 후속 설계 |
 
 ## Ops에서 완료한 범위
@@ -35,7 +35,7 @@
 
 ## 절차 문서
 
-- 현재 결정과 후속 논의: [로드맵](../roadmap.md), [Ops host 도구](../../ops_tools/README.md).
+- 현재 결정과 후속 논의: [로드맵](../roadmap.md), [Ops host 도구](../../src/ops/tools/README.md).
 - Ops 계약: [운영 준비/계획](../history/ops-evidence-catalog.md#backup-production-plan-20261001), [snapshot 비교 보완](../history/ops-evidence-catalog.md#backup-plan-snapshot-fix-20261001), [세대 생성](../history/ops-evidence-catalog.md#backup-generation-20261001), [격리 복원](../history/ops-evidence-catalog.md#backup-restore-isolated-20261001).
 - 기존 Model 절차: [Model 백업과 복원](model-backup-restore.md). 도구의 범위와 인수 한계를 보존해 별도 문서로 분리했다.
 

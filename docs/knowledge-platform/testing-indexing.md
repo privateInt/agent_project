@@ -19,8 +19,8 @@ cd ~/workspace/agent_project
   docker build --target tests -t knowledge-platform-tests:indexing ./knowledge_platform
   docker build --target builder -t data-platform-builder:indexing ./data_platform
   docker run --rm data-platform-builder:indexing go test -count=1 ./refinement/app
-  python3 knowledge_platform/tests/run_indexing_db_checks.py
-  python3 -m unittest discover -s knowledge_platform/tests -p test_indexing_tools.py -v
+  python3 src/platform/knowledge/tests/run_indexing_db_checks.py
+  python3 -m unittest discover -s src/platform/knowledge/tests -p test_indexing_tools.py -v
   cd knowledge_platform
   docker compose --profile jobs build knowledge-operation knowledge-service knowledge-gateway knowledge-dispatcher knowledge-reconciler chunking-job indexing-job
   cd ../data_platform
@@ -30,7 +30,7 @@ cd ~/workspace/agent_project
 
 `run_indexing_db_checks.py`는 렌더링된 각 Compose에서 DB 연결/네트워크를 읽고 값을 출력하지 않는다. 기존 PostgreSQL에 **임시 test schema**를 만들어 Knowledge catalog와 Data reference 통합 검사를 실행하고 해당 schema만 정리한다. 실제 원본·인덱스를 테스트 대상으로 지우지 않는다. 별도 test DB 사용 시 각 builder에서 `KNOWLEDGE_TEST_POSTGRES_URL`/`DATA_TEST_POSTGRES_URL`을 지정해 동일 패키지를 실행할 수 있다. 환경 변수 없이 이미지 build의 unit만 통과하면 DB 통합 통과가 아니다.
 
-추가 Node 환경이 있다면 `node knowledge_platform/tests/request_state_test.cjs`와 `node knowledge_platform/tests/indexing_ui_test.cjs`로 화면의 요청 상태를 검사할 수 있다. Node는 서버 런타임 필수 의존성이 아니다.
+추가 Node 환경이 있다면 `node src/platform/knowledge/tests/request_state_test.cjs`와 `node src/platform/knowledge/tests/indexing_ui_test.cjs`로 화면의 요청 상태를 검사할 수 있다. Node는 서버 런타임 필수 의존성이 아니다.
 
 새 Go 검사는 벡터/profile 불일치·비유한값·부분 bulk·소유권·최종 count·TLS 설정 거절, DB에서는 같은 생성 요청·같은 배치 재전송·벡터 교체 거절·stale writer·미완료 seal 차단·동시 활성화·실패 빌드 독립·삭제/참조 해제 유실·공유 ChunkSet 보존·Data purge 경쟁을 다룬다.
 
@@ -38,12 +38,12 @@ cd ~/workspace/agent_project
 
 ```bash
 cd ~/workspace/agent_project/knowledge_platform
-python3 ops/configure_indexing.py --opensearch ../infra/opensearch
+python3 ops/configure_indexing.py --opensearch ../src/infra/opensearch
 ```
 
 이 도구는 OpenSearch Compose의 기존 접속 암호·공개 root CA·네트워크를 읽고 별도 private 설정 파일을 0600으로 생성한다. CA 개인키는 읽지 않는다. 기존 설정 파일이 있으면 덮어쓰지 않는다. 다른 사용자/암호를 운영하는 환경이면 이 연결 값을 해당 계정으로 맞춘다. 설정 출력 전체를 대화에 붙여넣지 않는다.
 
-infra/OpenSearch 노드·볼륨을 생성하거나 다시 시작하지 않는다. 기존 `opensearch-net`, 두 노드, `rootCA.pem`이 준비되어 있어야 한다. 노드 이름에 대한 TLS 검증을 끄지 않는다. 설정 도구가 마지막에 실제 Compose 해석을 확인하므로 오류가 나면 서비스 교체 단계로 넘어가지 않는다.
+src/infra/OpenSearch 노드·볼륨을 생성하거나 다시 시작하지 않는다. 기존 `opensearch-net`, 두 노드, `rootCA.pem`이 준비되어 있어야 한다. 노드 이름에 대한 TLS 검증을 끄지 않는다. 설정 도구가 마지막에 실제 Compose 해석을 확인하므로 오류가 나면 서비스 교체 단계로 넘어가지 않는다.
 
 Compose include 뒤의 전역 override를 사용한다. [Docker 공식 include/override 설명](https://docs.docker.com/compose/how-tos/multiple-compose-files/include/). 이후 Knowledge 기동에는 아래 두 Compose 파일과 두 env 파일을 함께 사용한다. 기본 파일만으로 재생성하면 인덱싱 연결 설정이 빠질 수 있다.
 
@@ -74,7 +74,7 @@ cd ~/workspace/agent_project
 
 ```bash
 cd ~/workspace/agent_project
-python3 knowledge_platform/tests/live_indexing.py \
+python3 src/platform/knowledge/tests/live_indexing.py \
   --chunking-run-id 6e3eaf24-c2dc-4756-87bb-83468a96c827 \
   --deployment-id 44247297-5184-4a36-9225-7791c80d3add \
   --state-file "$HOME/workspace/indexing_check_20260918.json"
@@ -129,7 +129,7 @@ HTTP 오류에는 제한된 오류 type과 unknown parameter 이름을 추가한
 
 ```bash
 cd ~/workspace/agent_project
-python3 knowledge_platform/tests/live_indexing.py \
+python3 src/platform/knowledge/tests/live_indexing.py \
   --chunking-run-id 6e3eaf24-c2dc-4756-87bb-83468a96c827 \
   --deployment-id 44247297-5184-4a36-9225-7791c80d3add \
   --retry-failed-from "$HOME/workspace/indexing_check_20260918.json" \
@@ -151,7 +151,7 @@ python3 knowledge_platform/tests/live_indexing.py \
 
 ## HNSW 검증 범위
 
-새 인덱스 버전의 빌드 입력으로 m과 ef_construction을 받는다. 현재 상태는 소스 구현·로컬 순수 Go 2개·평가 Python 40개·Node UI 스크립트 3개 통과다. 이후 사용자 서버에서 32개 파일 적용, Python 40개, 전체 Go/gRPC 빌드·PostgreSQL 통합, service/Gateway 기동과 고급 옵션 표시를 확인했다. [서버 요약](../../knowledge_platform/tests/results/hnsw-server-20260922.json). 이후 사용자 제공 버전 JSON과 새 화면에서 custom 32/256 설정의 42/42 ready·기본 버전 지정·검색을 확인했다. [확인 기록](../../knowledge_platform/tests/results/console-ui-server-20260922.json). OpenSearch 원시 매핑을 따로 조회한 결과는 아니다. 기존 검색 UI의 ON/OFF·잘못된 후보 수 안내·관리 선택 전환은 사용자 확인을 받았다.
+새 인덱스 버전의 빌드 입력으로 m과 ef_construction을 받는다. 현재 상태는 소스 구현·로컬 순수 Go 2개·평가 Python 40개·Node UI 스크립트 3개 통과다. 이후 사용자 서버에서 32개 파일 적용, Python 40개, 전체 Go/gRPC 빌드·PostgreSQL 통합, service/Gateway 기동과 고급 옵션 표시를 확인했다. [서버 요약](../../src/platform/knowledge/tests/results/hnsw-server-20260922.json). 이후 사용자 제공 버전 JSON과 새 화면에서 custom 32/256 설정의 42/42 ready·기본 버전 지정·검색을 확인했다. [확인 기록](../../src/platform/knowledge/tests/results/console-ui-server-20260922.json). OpenSearch 원시 매핑을 따로 조회한 결과는 아니다. 기존 검색 UI의 ON/OFF·잘못된 후보 수 안내·관리 선택 전환은 사용자 확인을 받았다.
 
 
 - 로컬 Go 2개: 실제 config.go와 기존 chunking JSON 검증 소스를 독립 임시 module에서 실행했다. 기본/부분 입력, 경계, 잘못된 형식, 저장 설정 검증이다. 임시 module을 프로젝트에 추가하지 않았다.
@@ -162,4 +162,4 @@ python3 knowledge_platform/tests/live_indexing.py \
 
 구형 service는 custom 설정을 이해하지 못한다. 관련 코드 반영 시 service를 먼저, gateway를 다음에 교체하며 전환 중 새 빌드 요청을 보내지 않는다. custom 버전 생성 뒤 service만 구형으로 되돌리면 검색/관리 호환성을 보장하지 않는다. OpenSearch 설정을 적용하는 주체는 service이고 Job은 임베딩·배치 등록을 맡는다.
 
-기존 활성 버전을 자동 전환하지 않는다. 42개/48개 자료의 성공은 HNSW 튜닝의 품질·성능 개선 근거가 아니다. [로컬 요약](../../knowledge_platform/tests/results/hnsw-local-20260922.json)과 서버 기록을 구분한다.
+기존 활성 버전을 자동 전환하지 않는다. 42개/48개 자료의 성공은 HNSW 튜닝의 품질·성능 개선 근거가 아니다. [로컬 요약](../../src/platform/knowledge/tests/results/hnsw-local-20260922.json)과 서버 기록을 구분한다.

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "stage": "O04-isolated-native-generation-filesystem-restore",
+  "active_code_sha256": "2bf14042a6aa15e4e12b46aa7be494eef2b8834c9b44c4a5587610d5d3a3bb1f",
+  "production_backup_available": false,
+  "image_import_available": false,
+  "files": {
+    "src/ops/candidates/backup_restore_uid_20261001/manifest.json": "5f439a060731c59d13fb4599e08a560bff641b88f8d6ef2ad883c82a440e3870",
+    "src/ops/candidates/backup_restore_uid_20261001/writer.py": "eaf303ad0d9540538fec9424e95e93f74f7859d031fcfa86aa59d81db21cf027",
+    "src/ops/candidates/backup_restore_uid_20261001/restore_uid.py": "dfd6ce04b91335679a1c36fe2bd0d464773f50e7a54429020245c1c1030a7879",
+    "src/ops/candidates/backup_generation_20261001/generation.py": "e00b1755a28a6b2f7acffbe7261bf66418bc1a0134d60b86f1588400659136b3",
+    "src/ops/candidates/backup_generation_20261001/manifest.json": "721ca3407ce302f772776fd2d5c7d9dd1018968ed68ff67847039fa3640dea4a",
+    "src/ops/candidates/backup_restore_20261001/restore.py": "b1614c6e81f90fa9d0db190df22bfab3a2ef0bd8a385c833d93e6b79a0d680da",
+    "src/ops/candidates/backup_restore_20261001/image_archive.py": "925d1a06f3247f41f39d475fd9ff74b0322495257b310b9cf62e26bbc718c37e",
+    "src/ops/candidates/backup_restore_20261001/manifest.json": "d077c69861d2d5f868768f768acea0fc8cf86e1aa803708b316ede236b52f0ed"
+  }
+}

@@ -49,7 +49,7 @@ docker compose --profile playground up -d --no-deps deployment gateway playgroun
 
 ```bash
 cd ~/workspace/agent_project
-python3 model_platform/tests/live_embedding.py \
+python3 src/platform/model/tests/live_embedding.py \
   --deployment-id 44247297-5184-4a36-9225-7791c80d3add
 ```
 
@@ -80,7 +80,7 @@ UI에서는 배포 목록의 `임베딩` → 상세의 `임베딩 실행`을 누
 
 ```bash
 cd ~/workspace/agent_project
-python3 knowledge_platform/tests/inspect_chunking.py \
+python3 src/platform/knowledge/tests/inspect_chunking.py \
   --run-id 6e3eaf24-c2dc-4756-87bb-83468a96c827
 ```
 

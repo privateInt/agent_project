@@ -30,7 +30,7 @@ flowchart TD
 
 `endpoint`의 `127.0.0.1:<포트>`는 배포 호스트에서 접근하는 주소다. `internal_endpoint`의 `model-serving-<배포ID>:8000`은 같은 Docker 네트워크에서 사용하는 이름이며 Docker DNS로 연결된다. 추론 JSON의 `model`에는 `served_model_name`을 사용한다. 배포 ID, 모델 버전 ID, 추론 모델 이름, 임베딩 공간 ID는 서로 다른 식별자다.
 
-근거: [채팅 호출](../../model_platform/gateway/app/chat.go), [배포 정보](../../model_platform/deployment/app/serving.go), [OCR 조회](../../data_platform/internal/ocr/identity.go), [OCR 추론](../../data_platform/jobs/refinement/parse/ocr.py), [서빙 계약](serving.md).
+근거: [채팅 호출](../../src/platform/model/gateway/app/chat.go), [배포 정보](../../src/platform/model/deployment/app/serving.go), [OCR 조회](../../src/platform/data/internal/ocr/identity.go), [OCR 추론](../../src/platform/data/jobs/refinement/parse/ocr.py), [서빙 계약](serving.md).
 
 ## 2. 도입 대상과 이득
 

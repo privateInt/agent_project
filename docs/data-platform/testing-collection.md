@@ -1,6 +1,6 @@
 # 단일 URL 수집 적용·검증
 
-이번 패키지는 `agent_project/data_platform`과 `agent_project/docs/data-platform`에 새 파일을 추가한다. `model_platform`을 중지하거나 이미지를 교체할 필요가 없다. 기존 PostgreSQL·Kafka·MinIO·ops-infra 네트워크는 정상 실행 중이어야 한다.
+이번 패키지는 `agent_project/data_platform`과 `agent_project/docs/data-platform`에 새 파일을 추가한다. `src/platform/model`을 중지하거나 이미지를 교체할 필요가 없다. 기존 PostgreSQL·Kafka·MinIO·ops-infra 네트워크는 정상 실행 중이어야 한다.
 
 ## 1. 적용과 접속 설정
 

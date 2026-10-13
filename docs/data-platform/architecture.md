@@ -101,7 +101,7 @@ Collection은 전체 manifest의 범위·부모·깊이·바이트 상한과 저
 
 ## 기존 코드 재사용과 독립 범위
 
-모델 플랫폼 v1 소스에서 다음 부분을 골라 가져왔다. 원본 경로와 읽은 시점의 SHA-256은 `data_platform/reuse-manifest.json`에 있다. 수정 후 파일의 해시라는 뜻이 아니다.
+모델 플랫폼 v1 소스에서 다음 부분을 골라 가져왔다. 원본 경로와 읽은 시점의 SHA-256은 `src/platform/data/reuse-manifest.json`에 있다. 수정 후 파일의 해시라는 뜻이 아니다.
 
 - Operation 생성·시작 승인·lifecycle·Outbox·재조정 CAS와 관련 테스트
 - 요청 멱등 처리, 도메인 전달 worker, 페이지네이션, DB bootstrap, gRPC serve, Job 상태 보고

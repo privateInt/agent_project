@@ -4,11 +4,11 @@
 
 ## 저장과 전환
 
-[question_head.py](../../apps/document_qa/question_head.py)는 Q06b-1 question_head/불변 target과 Q06b-2 Agent plan을 재사용한다. [schema](../../apps/document_qa/question_head_schema.py)는 qa_head_metadata/qa_head_activations 두 table과 receipt 변경/삭제 금지 trigger 두 개를 한 트랜잭션으로 추가한다. 기존 schema·upload user_version=1·library.question_revision=0·job/key/receipt/Flow는 유지한다. init는 head를 만들거나 바꾸지 않고 이미 있는 미검증 양수 head·부분/다른 schema를 초기화로 덮어쓰지 않는다.
+[question_head.py](../../src/apps/document_qa/question_head.py)는 Q06b-1 question_head/불변 target과 Q06b-2 Agent plan을 재사용한다. [schema](../../src/apps/document_qa/question_head_schema.py)는 qa_head_metadata/qa_head_activations 두 table과 receipt 변경/삭제 금지 trigger 두 개를 한 트랜잭션으로 추가한다. 기존 schema·upload user_version=1·library.question_revision=0·job/key/receipt/Flow는 유지한다. init는 head를 만들거나 바꾸지 않고 이미 있는 미검증 양수 head·부분/다른 schema를 초기화로 덮어쓰지 않는다.
 
-전환 입력은 client key, plan_id, expected_revision뿐이다. caller가 제공한 target/verified/ready flag는 받지 않는다. [재검증](../../apps/document_qa/question_head_results.py)은 현재 자기 색인 세대·전체 문서 snapshot·완료/활성화 receipt와 운영 index/version·입력/청커/embedding profile을 대조한다. 이어 고정 Connection/인증 참조 revision·Tool/Agent 정의·발행 revision·ToolCall/AgentRun과 자식 검색/원문 인용을 다시 읽는다. chat model inspect는 신원 조회이며 추론이 아니다. 이미 검증한 시험 결과 hash가 바뀌면 거절한다. 마지막 index/Tool/Agent 조회로 검사 중 변경도 확인한다.
+전환 입력은 client key, plan_id, expected_revision뿐이다. caller가 제공한 target/verified/ready flag는 받지 않는다. [재검증](../../src/apps/document_qa/question_head_results.py)은 현재 자기 색인 세대·전체 문서 snapshot·완료/활성화 receipt와 운영 index/version·입력/청커/embedding profile을 대조한다. 이어 고정 Connection/인증 참조 revision·Tool/Agent 정의·발행 revision·ToolCall/AgentRun과 자식 검색/원문 인용을 다시 읽는다. chat model inspect는 신원 조회이며 추론이 아니다. 이미 검증한 시험 결과 hash가 바뀌면 거절한다. 마지막 index/Tool/Agent 조회로 검사 중 변경도 확인한다.
 
-전환은 Agent/Tool/색인/질문 lane을 잠근다. 원격 검증 중에는 DB write transaction을 열지 않는다. 검증 전 로컬 근거 snapshot을 기록하고 commit transaction에서 재대조한다. 순수 [switch_head](../../apps/document_qa/contracts.py) 계약과 조건부 UPDATE로 expected_revision+1을 확인하면서 target 삽입·head 갱신·불변 전환 receipt를 한 번에 commit한다. 실패나 commit 전 프로세스 종료는 세 변경을 모두 취소하고 기존 정상 head를 유지한다.
+전환은 Agent/Tool/색인/질문 lane을 잠근다. 원격 검증 중에는 DB write transaction을 열지 않는다. 검증 전 로컬 근거 snapshot을 기록하고 commit transaction에서 재대조한다. 순수 [switch_head](../../src/apps/document_qa/contracts.py) 계약과 조건부 UPDATE로 expected_revision+1을 확인하면서 target 삽입·head 갱신·불변 전환 receipt를 한 번에 commit한다. 실패나 commit 전 프로세스 종료는 세 변경을 모두 취소하고 기존 정상 head를 유지한다.
 
 같은 key/plan/revision은 원래 receipt를 반환하고 다른 요청으로 key를 재사용하면 충돌한다. 이후 head가 바뀌어도 원래 요청의 receipt를 유지한다. 응답 유실 후 GET으로 조회하거나 같은 입력/키를 재접수하면 원격 재검증/중복 전환 없이 복구한다. 다른 key로 같은 현재 대상의 revision만 올리는 요청도 거절한다. 전환은 최대 100개, target 저장의 기존 최대 100개 한도를 공유한다. 오래된 이력은 자동 삭제하지 않는다.
 
@@ -34,9 +34,9 @@ serve의 --allow-question-head-activation은 자기 head의 운영 CAS만 허용
 기존 sh_test와 자기 상태에서 아래 명령의 통과를 확인했다. 문서 패치 적용 때문에 검사/init/status나 이전 init/migrate·성공 업로드·Flow callback·API/서비스 시작을 반복하지 않는다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_question_head.py' -q
-python3 -B -m apps.document_qa.question_head init
-python3 -B -m apps.document_qa.question_head status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_question_head.py' -q
+python3 -B -m src.apps.document_qa.question_head init
+python3 -B -m src.apps.document_qa.question_head status
 ```
 
 서버 init/status는 question_head_schema=1·head_activation_implemented=true를 확인했으며 head revision=0·대상 없음·target/activation/plan/question=0, head_active=false·question_ready=false다. 운영 API 요청=0·추론/GPU 요청=false를 보고했다. 실제 head 전환을 수행했다는 뜻은 아니다. next_step은 GPU 사용 가능 시 Q05c_1_first_document_live_indexing_when_GPU_available이며 자동 실행 지시가 아니다. 전환/추론 옵션을 추가해 서버를 실행하거나 fixture SQL로 head를 바꾸는 명령은 이번 로컬 확인에 없다.

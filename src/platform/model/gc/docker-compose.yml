@@ -1,0 +1,36 @@
+# Included from src/platform/model/docker-compose.yml with the root environment.
+services:
+  gc:
+    image: model-platform-gc:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: gc
+    pull_policy: never
+    restart: unless-stopped
+    networks:
+    - ops-infra
+    container_name: model-job-gc
+    command:
+    - /app/gc
+    environment:
+      OPERATION_GRPC_ADDRESS: operation:9000
+      DISPATCHER_NODE_NAME: ${MODEL_DISPATCHER_NODE_NAME:-}
+      JOB_NETWORK: ${AGENT_PROJECT_NETWORK:-ops-infra}
+      GC_MODE: ${MODEL_GC_MODE:-apply}
+      GC_SUCCESS_RETENTION: ${MODEL_GC_SUCCESS_RETENTION:-1h}
+      GC_FAILURE_RETENTION: ${MODEL_GC_FAILURE_RETENTION:-168h}
+      GC_INTERVAL: ${MODEL_GC_INTERVAL:-5m}
+      GC_ITEM_TIMEOUT: ${MODEL_GC_ITEM_TIMEOUT:-2m}
+      GC_MAX_LOG_BYTES: ${MODEL_GC_MAX_LOG_BYTES:-134217728}
+      GC_BATCH_SIZE: ${MODEL_GC_BATCH_SIZE:-20}
+      GC_LOG_BUCKET: ${MODEL_GC_LOG_BUCKET:-model-job-logs}
+      MINIO_ENDPOINT: ${MODEL_MINIO_ENDPOINT:-ops-minio1:9000}
+      MINIO_ACCESS_KEY: ${MODEL_MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MODEL_MINIO_SECRET_KEY}
+      MINIO_BUCKET: ${MODEL_MINIO_BUCKET:-model-artifacts}
+      MINIO_USE_SSL: ${MODEL_MINIO_USE_SSL:-false}
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+    - operation

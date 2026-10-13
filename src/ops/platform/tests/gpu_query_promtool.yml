@@ -1,0 +1,187 @@
+# Native PromQL regression. Run: promtool test rules src/ops/platform/tests/gpu_query_promtool.yml
+rule_files: []
+evaluation_interval: 1m
+tests:
+- name: 'two GPUs: six distinct fields each, including valid zero utilization'
+  interval: 1m
+  input_series:
+  - series: up{job="gpu",instance="localhost:16313"}
+    values: 1+0x3
+  - series: DCGM_FI_DEV_GPU_UTIL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 0+0x3
+  - series: DCGM_FI_DEV_FB_TOTAL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 24576+0x3
+  - series: DCGM_FI_DEV_FB_USED{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 4096+0x3
+  - series: DCGM_FI_DEV_FB_FREE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 20480+0x3
+  - series: DCGM_FI_DEV_GPU_TEMP{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 46+0x3
+  - series: DCGM_FI_DEV_POWER_USAGE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 72.5+0x3
+  - series: DCGM_FI_DEV_GPU_UTIL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+      4090"}
+    values: 0+0x3
+  - series: DCGM_FI_DEV_FB_TOTAL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+      4090"}
+    values: 24576+0x3
+  - series: DCGM_FI_DEV_FB_USED{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+      4090"}
+    values: 4096+0x3
+  - series: DCGM_FI_DEV_FB_FREE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+      4090"}
+    values: 20480+0x3
+  - series: DCGM_FI_DEV_GPU_TEMP{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+      4090"}
+    values: 46+0x3
+  - series: DCGM_FI_DEV_POWER_USAGE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+      4090"}
+    values: 72.5+0x3
+  promql_expr_test:
+  - expr: ((DCGM_FI_DEV_GPU_UTIL{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_GPU_UTIL{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_FB_TOTAL{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_FB_TOTAL{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_FB_USED{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_FB_USED{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_FB_FREE{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_FB_FREE{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_GPU_TEMP{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_GPU_TEMP{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_POWER_USAGE{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_POWER_USAGE{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1))
+    eval_time: 2m
+    exp_samples:
+    - labels: DCGM_FI_DEV_GPU_UTIL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 0
+    - labels: DCGM_FI_DEV_FB_TOTAL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 24576
+    - labels: DCGM_FI_DEV_FB_USED{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 4096
+    - labels: DCGM_FI_DEV_FB_FREE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 20480
+    - labels: DCGM_FI_DEV_GPU_TEMP{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 46
+    - labels: DCGM_FI_DEV_POWER_USAGE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 72.5
+    - labels: DCGM_FI_DEV_GPU_UTIL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+        4090"}
+      value: 0
+    - labels: DCGM_FI_DEV_FB_TOTAL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+        4090"}
+      value: 24576
+    - labels: DCGM_FI_DEV_FB_USED{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+        4090"}
+      value: 4096
+    - labels: DCGM_FI_DEV_FB_FREE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+        4090"}
+      value: 20480
+    - labels: DCGM_FI_DEV_GPU_TEMP{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+        4090"}
+      value: 46
+    - labels: DCGM_FI_DEV_POWER_USAGE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-1",gpu="1",device="nvidia1",modelName="RTX
+        4090"}
+      value: 72.5
+- name: one stale field is excluded without hiding the other five
+  interval: 1m
+  input_series:
+  - series: up{job="gpu",instance="localhost:16313"}
+    values: 1+0x3
+  - series: DCGM_FI_DEV_GPU_UTIL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 0+0x3
+  - series: DCGM_FI_DEV_FB_TOTAL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 24576+0x3
+  - series: DCGM_FI_DEV_FB_USED{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 4096+0x3
+  - series: DCGM_FI_DEV_FB_FREE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 20480+0x3
+  - series: DCGM_FI_DEV_GPU_TEMP{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 46+0x3
+  - series: DCGM_FI_DEV_POWER_USAGE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: '72.5'
+  promql_expr_test:
+  - expr: ((DCGM_FI_DEV_GPU_UTIL{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_GPU_UTIL{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_FB_TOTAL{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_FB_TOTAL{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_FB_USED{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_FB_USED{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_FB_FREE{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_FB_FREE{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_GPU_TEMP{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_GPU_TEMP{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_POWER_USAGE{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_POWER_USAGE{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1))
+    eval_time: 2m
+    exp_samples:
+    - labels: DCGM_FI_DEV_GPU_UTIL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 0
+    - labels: DCGM_FI_DEV_FB_TOTAL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 24576
+    - labels: DCGM_FI_DEV_FB_USED{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 4096
+    - labels: DCGM_FI_DEV_FB_FREE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 20480
+    - labels: DCGM_FI_DEV_GPU_TEMP{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+        4090"}
+      value: 46
+- name: exporter down hides all GPU fields
+  interval: 1m
+  input_series:
+  - series: up{job="gpu",instance="localhost:16313"}
+    values: 0+0x3
+  - series: DCGM_FI_DEV_GPU_UTIL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 0+0x3
+  - series: DCGM_FI_DEV_FB_TOTAL{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 24576+0x3
+  - series: DCGM_FI_DEV_FB_USED{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 4096+0x3
+  - series: DCGM_FI_DEV_FB_FREE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 20480+0x3
+  - series: DCGM_FI_DEV_GPU_TEMP{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 46+0x3
+  - series: DCGM_FI_DEV_POWER_USAGE{job="gpu",instance="localhost:16313",UUID="GPU-synthetic-0",gpu="0",device="nvidia0",modelName="RTX
+      4090"}
+    values: 72.5+0x3
+  promql_expr_test:
+  - expr: ((DCGM_FI_DEV_GPU_UTIL{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_GPU_UTIL{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_FB_TOTAL{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_FB_TOTAL{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_FB_USED{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_FB_USED{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_FB_FREE{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_FB_FREE{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_GPU_TEMP{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_GPU_TEMP{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1)) or on(__name__,job,instance,UUID,gpu,device,modelName)
+      ((DCGM_FI_DEV_POWER_USAGE{job="gpu"}) and (time() - timestamp(DCGM_FI_DEV_POWER_USAGE{job="gpu"})
+      < 90) and on(instance) (up{job="gpu"} == 1))
+    eval_time: 2m
+    exp_samples: []

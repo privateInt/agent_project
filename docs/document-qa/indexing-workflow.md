@@ -6,7 +6,7 @@
 
 기존 n8n 2.40.5의 진입/CPU 정제 Flow 정의·resource ID·키를 보존한다. 원래 CPU 전용 단계가 canonical_verified를 확정하면 QA API가 별도의 색인 Flow로 handoff를 전달한다. **새 Flow는 등록 후에만 자동 전달**하며 기존 성공 TXT는 별도 명시 전달로 확인한다. 업로드·Data 정제와 원본/canonical을 다시 생성하지 않는다.
 
-[색인 Flow 저장/실행권](../../apps/document_qa/indexing_flow.py), [9-node 고정 정의](../../apps/document_qa/indexing_flow_template.py), [모델 준비/추론 gate](../../apps/document_qa/indexing_runtime.py), [보류 연결 확인](../../apps/document_qa/indexing_connection.py)를 추가했다. [QA API](../../apps/document_qa/api.py)에 전용 callback·조회/전달 route와 완료 단계 연결을 추가했다. 문서·모델·Knowledge DB 직접 접근은 없고 Knowledge 동작은 [Q05a adapter](indexing.md)에 위임한다.
+[색인 Flow 저장/실행권](../../src/apps/document_qa/indexing_flow.py), [9-node 고정 정의](../../src/apps/document_qa/indexing_flow_template.py), [모델 준비/추론 gate](../../src/apps/document_qa/indexing_runtime.py), [보류 연결 확인](../../src/apps/document_qa/indexing_connection.py)를 추가했다. [QA API](../../src/apps/document_qa/api.py)에 전용 callback·조회/전달 route와 완료 단계 연결을 추가했다. 문서·모델·Knowledge DB 직접 접근은 없고 Knowledge 동작은 [Q05a adapter](indexing.md)에 위임한다.
 
 등록은 명시 prepare에서만 수행한다. 진입/CPU Flow의 활성 정의·게시 버전과 같은 QA/n8n origin을 먼저 검증한다. 새 전용 credential2개와 workflow/게시 버전을 자기 setup에 저장한다. prepare 반복은 기존 자산을 검증/재사용하며 응답이 유실된 생성은 고유 소유 이름으로 확인한다. 기존 자산을 수정/삭제하거나 설정/secret을 회전하지 않는다.
 
@@ -62,10 +62,10 @@ retry는 불확실 n8n handoff를 같은 body로 명시 확인한다. resume은 
 Q05a까지 초기화한 프로젝트 루트에서 원래 shshin 사용자로 실행한다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_indexing_flow.py' -q
-python3 -B -m apps.document_qa.indexing_flow init
-python3 -B -m apps.document_qa.indexing_flow status
-python3 -B -m apps.document_qa.api status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_indexing_flow.py' -q
+python3 -B -m src.apps.document_qa.indexing_flow init
+python3 -B -m src.apps.document_qa.indexing_flow status
+python3 -B -m src.apps.document_qa.api status
 ```
 
 이 구간의 운영 API/추론/GPU 요청은0이다. 첫 상태의 workflow_configured=false, flow_counts={}, question_ready=false는 정상이다. Q05a 후보 plan과 CPU 정제를 다시 실행할 필요가 없다. 이후 아래 수동 QA API 재실행을 한 번 수행해야 새 route와 키를 읽는다.
@@ -77,7 +77,7 @@ python3 -B -m apps.document_qa.api status
 ```bash
 runuser -l shshin -c '
   cd /home/shshin/workspace/agent_project || exit 1
-  exec /home/shshin/miniforge3/envs/sh_test/bin/python3 -B     -m apps.document_qa.api serve --bind 172.25.0.1 --port 17110
+  exec /home/shshin/miniforge3/envs/sh_test/bin/python3 -B     -m src.apps.document_qa.api serve --bind 172.25.0.1 --port 17110
 '
 ```
 
@@ -88,9 +88,9 @@ runuser -l shshin -c '
 별도 터미널에서 shshin 사용자·프로젝트 루트로 아래 명령을 실행한다. root에서는 위와 동일하게 runuser를 사용한다. **기존 진입/CPU prepare를 반복하지 않는다.**
 
 ```bash
-python3 -B -m apps.document_qa.indexing_connection prepare-paused \
+python3 -B -m src.apps.document_qa.indexing_connection prepare-paused \
   --qa-origin http://172.25.0.1:17110
-python3 -B -m apps.document_qa.indexing_connection accept-paused \
+python3 -B -m src.apps.document_qa.indexing_connection accept-paused \
   --qa-origin http://172.25.0.1:17110 \
   --job-id 430b0e7b-7b4c-4ae7-9c57-6c979ca94343
 ```

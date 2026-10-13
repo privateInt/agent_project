@@ -9,8 +9,8 @@
 프로젝트 루트에서 실행한다. Python 3.10 이상/표준 라이브러리만 사용한다.
 
 ```bash
-python3 -B -m apps.document_qa.readiness inspect
-python3 -B -m apps.document_qa.readiness configure
+python3 -B -m src.apps.document_qa.readiness inspect
+python3 -B -m src.apps.document_qa.readiness configure
 ```
 
 | 명령 | 조회 | 쓰기 |
@@ -24,7 +24,7 @@ API 주소·enabled·token_file 참조만 가져온다. Ops 설정을 import/수
 systemd를 호출하지 않는다. Ops의 access-key, Langfuse 비밀, DB 자격은 읽지 않는다.
 
 기존 참조가 없거나 다른 배포에서는 `--settings`와 `--connections-from`으로 명시 파일을
-지정한다. [설정 예시](../../apps/document_qa/settings.example.json)의 주소는 프로젝트 기본
+지정한다. [설정 예시](../../src/apps/document_qa/settings.example.json)의 주소는 프로젝트 기본
 host 주소이며 현재 접속 성공을 보장하지 않는다. token_file은 해당 설정 파일의 위치를
 기준으로 해석한다. 키 값을 JSON에 넣지 않는다. 실제 저장 대상 파일명은 settings.json이며
 부모 디렉터리는 0700, 저장 파일은 0600을 사용한다. 기존 외부 키 파일은 읽고 재사용하며
@@ -55,7 +55,7 @@ Docker ID를 넣지 않는다. 설정에는 deployment/model version/embedding s
 또는 label로 한 번 선택한다. 이름이 같으면 전체 label을 사용한다.
 
 ```bash
-python3 -B -m apps.document_qa.readiness configure \
+python3 -B -m src.apps.document_qa.readiness configure \
   --chat '출력에 나온 답변 모델 이름 또는 label'
 ```
 
@@ -94,13 +94,13 @@ HTTP에는 GET 경로 allowlist, redirect 거부, 환경 proxy 미사용, 응답
 10페이지/총 100요청, 공유 50초 budget·요청 socket timeout 8초를 적용한다. 재시도·모델 기동은
 없다. 이 제한은 애플리케이션 조회 budget이며 OS DNS 처리까지 강제 중단하는 실행기가 아니다.
 
-준비 상태의 재사용 함수는 [readiness.py](../../apps/document_qa/readiness.py)의 inspect(settings, reader, choices)다. [Q03a API](uploads.md)의 `/api/readiness`에서 재사용한다. GET 경로를 실제 호출할 때만 조회하며 패치 설치/init/status는 운영 API를 호출하지 않는다. configure 재실행과 모델 기동은 현재 GPU 보류 기간의 다음 명령이 아니다.
+준비 상태의 재사용 함수는 [readiness.py](../../src/apps/document_qa/readiness.py)의 inspect(settings, reader, choices)다. [Q03a API](uploads.md)의 `/api/readiness`에서 재사용한다. GET 경로를 실제 호출할 때만 조회하며 패치 설치/init/status는 운영 API를 호출하지 않는다. configure 재실행과 모델 기동은 현재 GPU 보류 기간의 다음 명령이 아니다.
 
 ## 관련 검증
 
 ```bash
 python3 -B -m unittest discover \
-  -s apps/document_qa/tests -p 'test_readiness.py' -q
+  -s src/apps/document_qa/tests -p 'test_readiness.py' -q
 ```
 
 29개 검사는 fake API와 임시 설정, loopback HTTP server 하나에서 실행한다. 정상 후보,
@@ -108,4 +108,4 @@ python3 -B -m unittest discover \
 chunker version/byte 한도, 설정 재사용/동시 수정, 비밀 비노출, redirect/GET 한도, 잘못된
 응답을 확인한다. 운영 Gateway·DB·모델을 호출하지 않는다. Q01/전체 플랫폼 검사를 반복할
 필요는 없다. [검증 결과](../testing/document-qa-q02-offline-20261002.json)와
-[조회 계약/코드 근거](../../apps/document_qa/readiness-contract.json)를 참고한다.
+[조회 계약/코드 근거](../../src/apps/document_qa/readiness-contract.json)를 참고한다.

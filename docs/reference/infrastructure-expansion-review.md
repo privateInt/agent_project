@@ -4,7 +4,7 @@
 
 ## 현재 구성과 채택 범위
 
-[infra Compose](../../infra/docker-compose.yml)에는 PostgreSQL·MinIO·Redis·Kafka·OpenSearch·MLflow·n8n 구성이 있다. 별도 [Langfuse 구성](../../infra/langfuse/docker-compose.yml)과 [관측 구성](../../infra/observability/docker-compose.yml)도 소스에 있고 O01~O04/Agent trace·Ops 연결의 과거 서버 인수 근거가 있다. 따라서 n8n/Langfuse를 미설치로 안내하거나 같은 환경에 새 DB/볼륨을 만들어 다시 설치하지 않는다. 현재 실행 상태/실제 버전은 도입 작업 전에 기존 inventory/공식 API로 확인한다.
+[infra Compose](../../src/infra/docker-compose.yml)에는 PostgreSQL·MinIO·Redis·Kafka·OpenSearch·MLflow·n8n 구성이 있다. 별도 [Langfuse 구성](../../src/infra/langfuse/docker-compose.yml)과 [관측 구성](../../src/infra/observability/docker-compose.yml)도 소스에 있고 O01~O04/Agent trace·Ops 연결의 과거 서버 인수 근거가 있다. 따라서 n8n/Langfuse를 미설치로 안내하거나 같은 환경에 새 DB/볼륨을 만들어 다시 설치하지 않는다. 현재 실행 상태/실제 버전은 도입 작업 전에 기존 inventory/공식 API로 확인한다.
 
 | 제품 | 역할과 판단 | 도입/확장 조건 |
 |---|---|---|

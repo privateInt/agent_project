@@ -71,7 +71,7 @@ Training은 요청 키 재현을 먼저 확인한다. 최초 요청이면 같은
 
 Job은 실행 승인 후 고정 URI에서 파일을 읽고 모든 메타데이터가 맞을 때만 로컬 학습 파일을 확정한다. 값이 다르거나 파일이 없으면 `DATASET_RESOLVE_FAILED`로 종료한다. 다른 버전이나 synthetic 데이터로 대체하지 않는다.
 
-학습 결과에는 `dataset_version_id`, `dataset_sha256`, `dataset_bytes`, `dataset_record_count`, `dataset_source_type`, `dataset_source_uri`, `dataset_format`을 남긴다. Training의 완료 커밋도 저장된 pin과 이 값을 대조한다. MLflow에는 `model_platform.dataset_version_id`, `model_platform.dataset_sha256` 태그를 추가한다. 모델 결과에서 `training_run_id` → TrainingRun의 dataset pin을 통해 데이터 계보를 조회할 수 있다.
+학습 결과에는 `dataset_version_id`, `dataset_sha256`, `dataset_bytes`, `dataset_record_count`, `dataset_source_type`, `dataset_source_uri`, `dataset_format`을 남긴다. Training의 완료 커밋도 저장된 pin과 이 값을 대조한다. MLflow에는 `src.platform.model.dataset_version_id`, `src.platform.model.dataset_sha256` 태그를 추가한다. 모델 결과에서 `training_run_id` → TrainingRun의 dataset pin을 통해 데이터 계보를 조회할 수 있다.
 
 기존 `synthetic`·`s3` 요청과 기존 요청 키 fingerprint는 유지한다. 기존 S3 직접 지정은 파일 내용 고정을 보장하지 않으며, 버전이 필요한 학습에는 등록 경로를 사용한다. 이전 Job 이미지는 `source_type=version`을 지원하지 않아 실패하므로 새 등록 버전의 학습 전에 Training·Gateway와 Axolotl Job 이미지를 함께 빌드해야 한다. [적용·검증 절차](../testing/datasets.md)를 따른다.
 

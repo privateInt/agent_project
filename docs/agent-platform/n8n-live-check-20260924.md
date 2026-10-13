@@ -76,7 +76,7 @@ python3 n8n/ops/live_check.py run --session-dir ~/workspace/agent_n8n_live_check
 
 ## 로컬 개발 검증과 남은 작업
 
-검증 요약은 `agent_platform/tests/results/a07-live-summary.json`에 보관한다. 실제 n8n CLI → 실제 Go Gateway/Service → Python Runtime → SQL 호환 PGlite를 연결하고, Model/Knowledge는 HTTP 테스트 대역을 쓴다. 서버의 Docker/PostgreSQL 16/GPU 검증과 구분한다.
+검증 요약은 `src/platform/agent/tests/results/a07-live-summary.json`에 보관한다. 실제 n8n CLI → 실제 Go Gateway/Service → Python Runtime → SQL 호환 PGlite를 연결하고, Model/Knowledge는 HTTP 테스트 대역을 쓴다. 서버의 Docker/PostgreSQL 16/GPU 검증과 구분한다.
 
 로컬 Python 12개·Node 8개·기존 워크플로 계약 6개, 실제 n8n/Agent 연결 검사(45.22초)가 통과했다. 로컬 Python 12개·Node 8개·기존 워크플로 계약 6개, 실제 n8n/Agent 연결 검사(45.22초)가 통과했다. 준비 요청의 응답 유실·재개, 잘못된 자원 선택 차단, 발행 동의, 고정 식별자·출처 훼손 차단을 단위 검사한다. 실제 연결 검사에서는 Agent 접수 응답 3개를 모두 유실시킨 뒤 다음 프로세스에서 복구하고, 반복 실행·조회에서도 임베딩/검색/답변이 각각 1회인지 확인한다.
 

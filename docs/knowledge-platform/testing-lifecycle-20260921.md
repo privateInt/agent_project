@@ -29,8 +29,8 @@ cd ~/workspace/agent_project
   set -euo pipefail
 
   cd "$HOME/workspace/agent_project"
-  python3 -m unittest discover -s knowledge_platform/tests -p 'test_index_lifecycle.py' -v
-  docker build -f knowledge_platform/Dockerfile --target cleanup-verifier \
+  python3 -m unittest discover -s src/platform/knowledge/tests -p 'test_index_lifecycle.py' -v
+  docker build -f src/platform/knowledge/Dockerfile --target cleanup-verifier \
     -t knowledge-platform-cleanup-verifier:20260921 knowledge_platform
 
   cd knowledge_platform
@@ -49,7 +49,7 @@ cd ~/workspace/agent_project
 
 ```bash
 cd ~/workspace/agent_project
-python3 knowledge_platform/tests/live_index_lifecycle.py \
+python3 src/platform/knowledge/tests/live_index_lifecycle.py \
   --baseline-index-version-id a1334595-583e-490c-8ad9-7ec279f188b3 \
   --canonical-id acd8d804-ff15-484e-8cfb-0dd13d339eb2 \
   --state-file "$HOME/workspace/knowledge_eval_20260921/records/index_lifecycle_20260921.json"
@@ -96,7 +96,7 @@ Gateway 교체 후 브라우저를 새로고침한다. 기존 개선 structure �
 
 검색 관련 버튼은 오류·진행 안내를 검색 버튼 아래 searchStatus에 표시한다. 오류는 색상과 배경으로 구분하고 기존 aria-live를 사용한다. 검색/조회/준비 중 버튼 문구를 바꾸고 중복 클릭을 막으며 완료·실패 후 복구한다. 모델 프로필 조회의 진행·성공·실패도 같은 영역에 표시한다. 입력 변경 뒤 늦게 도착한 안내는 새 선택을 덮지 않는다. 검색 API·모델 정책·점수·PDF 처리는 변경하지 않는다.
 
-로컬 Node의 search_ui_test.cjs에서 실제 등록된 클릭 핸들러로 미조회 profile, 후보 수 2<5, 빈 질문, 잘못된 결과 수, 준비 오류와 profile 조회 실패를 검사했다. 잘못된 입력의 추론 요청 0회·이전 결과 제거, 실행 중 버튼 복구·중복 클릭 차단·늦은 응답 안내 억제를 확인했다. 기존 관리 관련 두 스크립트도 통과했다. DOM/fetch 대역이며 실제 렌더링 검사는 아니다. [작은 검증 요약](../../knowledge_platform/tests/results/search-feedback-acceptance-20260922.json)에 근거를 보존한다.
+로컬 Node의 search_ui_test.cjs에서 실제 등록된 클릭 핸들러로 미조회 profile, 후보 수 2<5, 빈 질문, 잘못된 결과 수, 준비 오류와 profile 조회 실패를 검사했다. 잘못된 입력의 추론 요청 0회·이전 결과 제거, 실행 중 버튼 복구·중복 클릭 차단·늦은 응답 안내 억제를 확인했다. 기존 관리 관련 두 스크립트도 통과했다. DOM/fetch 대역이며 실제 렌더링 검사는 아니다. [작은 검증 요약](../../src/platform/knowledge/tests/results/search-feedback-acceptance-20260922.json)에 근거를 보존한다.
 
 이번 knowledge_search_feedback_fix_20260922 패치는 직전 수명주기 적용본이 기준이며 Gateway만 빌드·교체한다. 서버 적용과 수정 후 실제 오류 표시는 아직 대기다. 다음 실제 화면 확인은 후보 2·결과 5의 입력 오류와 이전 결과 제거(추론 없음), OFF 검색, 관리 인덱스 선택 전환이다. 완료한 삭제 검증·전체 평가를 반복할 필요는 없다. 기존 lifecycle 진행 파일은 records/에 보관한다.
 

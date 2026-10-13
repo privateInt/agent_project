@@ -38,8 +38,8 @@ Data 파싱·OCR·PDF 제목 판별은 이번 변경에 포함하지 않는다. 
 
 ## 확인 근거와 남은 확인
 
-- 이전 HNSW 패치는 사용자 서버에서 32개 적용, Python 40개, Go 전체, PostgreSQL service/app 통과, service/Gateway 기동과 고급 옵션 표시를 확인했다. [서버 요약](../../knowledge_platform/tests/results/hnsw-server-20260922.json). 이후 사용자 제공 JSON에서 custom 32/256 버전의 ready 결과를 확인했다. OpenSearch 원시 매핑 별도 조회는 미확인이다.
-- 이번 로컬 Node 4개: 실제 HTML ID에 연결한 단계별 생성·모델 선택·읽기 전용 진입, 저장/응답 유실 복구, 중복 클릭, 잘못된 UUID/HNSW 거절, 저장된 결과/부분 자료, 기존 지식 빌드, 검색 자동 준비·프로필 선택과 기존 회귀. 질문 입력 중에도 선택 조회가 완료되며, 검색 버튼을 누른 후 준비 중 질문을 바꾸면 그 요청은 추론 전에 취소된다. [로컬 요약](../../knowledge_platform/tests/results/console-ui-local-20260922.json).
-- 추가 Go 검사: 제한된 모델 목록/이름 GET 전달, query·UUID·쓰기 요청 거절, redirect·invalid/oversize 응답. 로컬에는 Docker/protoc가 없었으며, 이후 사용자 서버의 전체 tests target에서 Gateway/app 통과를 확인했다. [서버 요약](../../knowledge_platform/tests/results/failure-recovery-server-20260922.json).
-- 사용자 확인: test1 버전 0464117d의 42/42 ready·참조 held·custom 32/256, 기본 버전 지정, 이름 기반 재정렬 모델 선택, 20→5 검색·295ms·원문/출처 표시. [확인 기록](../../knowledge_platform/tests/results/console-ui-server-20260922.json).
+- 이전 HNSW 패치는 사용자 서버에서 32개 적용, Python 40개, Go 전체, PostgreSQL service/app 통과, service/Gateway 기동과 고급 옵션 표시를 확인했다. [서버 요약](../../src/platform/knowledge/tests/results/hnsw-server-20260922.json). 이후 사용자 제공 JSON에서 custom 32/256 버전의 ready 결과를 확인했다. OpenSearch 원시 매핑 별도 조회는 미확인이다.
+- 이번 로컬 Node 4개: 실제 HTML ID에 연결한 단계별 생성·모델 선택·읽기 전용 진입, 저장/응답 유실 복구, 중복 클릭, 잘못된 UUID/HNSW 거절, 저장된 결과/부분 자료, 기존 지식 빌드, 검색 자동 준비·프로필 선택과 기존 회귀. 질문 입력 중에도 선택 조회가 완료되며, 검색 버튼을 누른 후 준비 중 질문을 바꾸면 그 요청은 추론 전에 취소된다. [로컬 요약](../../src/platform/knowledge/tests/results/console-ui-local-20260922.json).
+- 추가 Go 검사: 제한된 모델 목록/이름 GET 전달, query·UUID·쓰기 요청 거절, redirect·invalid/oversize 응답. 로컬에는 Docker/protoc가 없었으며, 이후 사용자 서버의 전체 tests target에서 Gateway/app 통과를 확인했다. [서버 요약](../../src/platform/knowledge/tests/results/failure-recovery-server-20260922.json).
+- 사용자 확인: test1 버전 0464117d의 42/42 ready·참조 held·custom 32/256, 기본 버전 지정, 이름 기반 재정렬 모델 선택, 20→5 검색·295ms·원문/출처 표시. [확인 기록](../../src/platform/knowledge/tests/results/console-ui-server-20260922.json).
 - 화면의 모델 선택과 검색 연동은 위 범위에서 사용자 확인했다. 전체 레이아웃/접근성 감사와 새 콘솔 OFF 결과는 별도 미확인이다. [격리 실패·복구 검사](testing-failure-recovery-20260922.md)의 서버 통과도 확인했다. 다음은 Agent 소유 MCP 검색 Tool 계약 설계이며 기존 전체 평가·기준 인덱스·정답셋은 다시 만들지 않는다.

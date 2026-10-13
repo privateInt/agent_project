@@ -89,4 +89,4 @@ Dispatcher와 Deployment controller는 같은 로컬 Docker named volume `model-
 
 플랫폼 밖에서 Docker 컨테이너를 직접 시작하거나 호스트에서 CUDA 프로그램을 실행하는 작업까지 잠금으로 통제하지 않는다. 다른 Docker daemon·Kubernetes·다른 호스트와도 예약을 공유하지 않는다. 외부 작업은 시작 전에 별도로 확인한다. 이 볼륨을 NFS/JuiceFS로 바꾸거나 pending/running 요청이 있는 동안 삭제하지 않는다.
 
-관련 구현은 [admission](../../model_platform/internal/gpuadmission/admission.go), [Dispatcher](../../model_platform/dispatcher/executor/docker.go), [controller](../../model_platform/deployment/app/serving_controller.go), [worker](../../model_platform/jobs/training/axolotl/distributed_train.py), [결과 검증](../../model_platform/internal/trainingparallel/evidence.go)에 둔다.
+관련 구현은 [admission](../../src/platform/model/internal/gpuadmission/admission.go), [Dispatcher](../../src/platform/model/dispatcher/executor/docker.go), [controller](../../src/platform/model/deployment/app/serving_controller.go), [worker](../../src/platform/model/jobs/training/axolotl/distributed_train.py), [결과 검증](../../src/platform/model/internal/trainingparallel/evidence.go)에 둔다.

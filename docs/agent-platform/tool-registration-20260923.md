@@ -13,7 +13,7 @@
 사용자 서버 터미널에서 다음 명령으로 토큰을 확인한다.
 
 ```bash
-cat ~/workspace/agent_project/agent_platform/.secrets/api-token
+cat ~/workspace/agent_project/src/platform/agent/.secrets/api-token
 ```
 
 출력된 한 줄을 화면의 `접속 토큰`에 붙여 넣고 `연결하기`를 누른다. `Bearer ` 접두어는 넣지 않는다. 토큰 값은 대화나 검증 기록에 보내지 않는다. 페이지를 닫거나 새로고침하면 다시 입력한다. 토큰 파일이 없으면 configure를 다시 실행해 비밀을 재생성하지 말고 실제 Compose의 agent-api-token 파일 위치를 확인한다.
@@ -91,7 +91,7 @@ Schema JSON의 숫자 token은 원문을 사용하며 큰 정수를 float64로 �
 
 ### 1. 새 시험 입력이 필요한 경우에만 준비
 
-사용자 서버의 `agent_platform`에서 실행한다. 현재 사용자 로그에서는 아래 작업이 이미 성공했으므로 재실행할 필요가 없다. 다른 질문으로 새 입력을 준비한다면 `--out`을 아직 없는 새 디렉터리로 바꾼다. 기존 폴더는 자동으로 덮어쓰지 않는다.
+사용자 서버의 `src/platform/agent`에서 실행한다. 현재 사용자 로그에서는 아래 작업이 이미 성공했으므로 재실행할 필요가 없다. 다른 질문으로 새 입력을 준비한다면 `--out`을 아직 없는 새 디렉터리로 바꾼다. 기존 폴더는 자동으로 덮어쓰지 않는다.
 
 ```bash
 cd ~/workspace/agent_project/agent_platform

@@ -5,7 +5,7 @@
 
 최신 화면: 최초 A04 화면 접속은 사용자 확인을 받았다. 이후 [화면 간소화](console-ux-20260923.md)와 새 로컬 DOM/API 대역 검사를 수행했다. 아래의 기존 브라우저 결과는 최초 화면 기록이다. 개선 화면 표시·후속 패치 Gateway 빌드/Healthy는 사용자 근거로 확인했으며, 검색 Tool 시험 성공 화면을 받았으며 게시·발행 후 실행은 아직 미확인이다.
 
-판정: **구현·로컬 검증 완료, 실제 사용자 서버 인수 대기**. A03 서버 인수 완료를 A04 인수로 확대하지 않는다. [현재 적용 절차](openapi-foundation.md), [작업 순서](work-plan.md), [작은 결과 요약](../../agent_platform/tests/results/openapi-local-20260923.json)을 따른다.
+판정: **구현·로컬 검증 완료, 실제 사용자 서버 인수 대기**. A03 서버 인수 완료를 A04 인수로 확대하지 않는다. [현재 적용 절차](openapi-foundation.md), [작업 순서](work-plan.md), [작은 결과 요약](../../src/platform/agent/tests/results/openapi-local-20260923.json)을 따른다.
 
 ## 실행한 검사
 
@@ -15,7 +15,7 @@
 
 같은 로그에서 `prepare_knowledge_tool_test.py --index-name test1 --check-search`가 prepared로 끝났다. Model 질문 임베딩 1회, lifecycle_writes 0, rerank false, 검색 API 직접 호출 passed/5개 결과다. `agent_tool_execution: not_run`을 그대로 유지한다. 준비 폴더는 `/home/shshin/workspace/knowledge_tool_test_20260923`이며 [화면 시험](tool-registration-20260923.md)에서 기존 파일을 사용한다. 질문·벡터·원문 검색 결과를 추가 검증 기록에 보관하지 않는다.
 
-작은 기록은 [서버 확인 요약](../../agent_platform/tests/results/tool-registration-server-20260923.json)에 있다. 이후 `Cap 2026-09-23 11-38-57-376.png`와 사용자의 성공 확인에서 `mode: test`, `state: succeeded`를 확인했다. 이는 Agent를 통한 실제 검색 시험의 성공 근거다. 게시·발행 후 실행은 아직 미확인이다. 이 근거를 A04 전체 기능/DB·REST/MCP·재기동 인수나 A05 완료로 확대하지 않는다. 이번 문서 갱신으로 기존 Go/Python/GPU 검사를 재실행하지 않았다.
+작은 기록은 [서버 확인 요약](../../src/platform/agent/tests/results/tool-registration-server-20260923.json)에 있다. 이후 `Cap 2026-09-23 11-38-57-376.png`와 사용자의 성공 확인에서 `mode: test`, `state: succeeded`를 확인했다. 이는 Agent를 통한 실제 검색 시험의 성공 근거다. 게시·발행 후 실행은 아직 미확인이다. 이 근거를 A04 전체 기능/DB·REST/MCP·재기동 인수나 A05 완료로 확대하지 않는다. 이번 문서 갱신으로 기존 Go/Python/GPU 검사를 재실행하지 않았다.
 
 ### 최초 A04 로컬 검사
 

@@ -26,8 +26,8 @@ POST 전에 원래 client key·자료함 ID·문서 이름·파일명·크기·S
 기존 Q06b-3 초기화와 결과 문서 적용을 재사용하고 아래 명령의 통과를 확인했다. 서버 적용은 written=17, 관련12개 검사(0.583초) OK다. 이번 결과 문서 적용 때문에 검사/status·init/migration·성공한 업로드/Flow를 반복하지 않는다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_screen.py' -q
-python3 -B -m apps.document_qa.api status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_screen.py' -q
+python3 -B -m src.apps.document_qa.api status
 ```
 
 status는 screen_implemented=true·screen_version=q07a.1·screen_path=/console을 보고했다. 기존 문서1개는 canonical_verified, 색인은 not_requested이고 색인 Flow는 GPU_VERIFICATION_DEFERRED로 blocked다. 질문 head revision=0·대상 없음·전환0·question_ready=false이며 운영 API 요청0·추론 요청false다. 이 화면 값은 코드 준비 여부다. 실행 중인 API의 새 화면 노출이나 실제 브라우저 인수를 뜻하지 않는다. 기존 DB/head·job/키/receipt/Flow를 유지하고 추론 요청 없이 조회한다. 패치 자체는 어떠한 서버도 재시작하지 않는다.
@@ -38,7 +38,7 @@ status는 screen_implemented=true·screen_version=q07a.1·screen_path=/console�
 
 ```bash
 cd /home/shshin/workspace/agent_project
-python3 -B -m apps.document_qa.api serve --bind 172.25.0.1 --port 17110
+python3 -B -m src.apps.document_qa.api serve --bind 172.25.0.1 --port 17110
 ```
 
 이 명령은 색인 추론·질문 head 전환·질문 추론 허용 옵션을 추가하지 않는다. 직접 접속 가능한 bind 주소와 포트만 Host로 허용하고 loopback bind에는 localhost도 허용한다. 브라우저 Origin이 있으면 같은 허용 주소만 받는다. 기존 비브라우저 HTTP/1.0 callback의 Host 생략은 유지한다. 다른 hostname/프록시/tunnel 경로의 Host 계약은 이번 단계에서 추가하지 않는다. 알려진 주소가 다른 환경에서 곧바로 접속 가능함을 보장하지 않는다.

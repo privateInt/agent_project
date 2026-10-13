@@ -61,7 +61,7 @@ JSONL의 한 줄 예:
 | checkpoint_steps | 0 (사용 안 함) | 양수는 save_steps. 로컬 단일 GPU·고정 데이터·unpacked 학습에서 [checkpoint 보존·재개](training-checkpoints.md) 사용 |
 | strategy | GPU 1개는 single, 2개 이상은 ddp | [로컬 DDP 실행](multi-gpu.md). 단일 GPU의 정규화 저장 값은 빈 문자열 |
 
-숫자 0은 일부 필드에서 생략한 값으로 처리해 기본값을 적용한다. seq는 1..131072, step·batch·accumulation·rank·alpha는 양수, LR은 유한 양수, dropout은 유한 0 이상 1 미만이다. 정확한 정규화·검증은 [spec.go](../../model_platform/training/app/spec.go), 변환은 [config_adapter.py](../../model_platform/jobs/training/axolotl/config_adapter.py)를 기준으로 한다. 요청은 정규화 후 DB에 저장한다.
+숫자 0은 일부 필드에서 생략한 값으로 처리해 기본값을 적용한다. seq는 1..131072, step·batch·accumulation·rank·alpha는 양수, LR은 유한 양수, dropout은 유한 0 이상 1 미만이다. 정확한 정규화·검증은 [spec.go](../../src/platform/model/training/app/spec.go), 변환은 [config_adapter.py](../../src/platform/model/jobs/training/axolotl/config_adapter.py)를 기준으로 한다. 요청은 정규화 후 DB에 저장한다.
 
 ## Resources
 
@@ -73,7 +73,7 @@ Training·Deployment는 공통 `node_name`, `gpu_count`, `gpu_ids`를 받는다.
 
 학습 취소와 현재/보관 로그 조회는 [학습 제어 계약](training-control.md)을 따른다. 로컬 취소는 `cancelling`을 거쳐 실제 중지 확인 후 `cancelled`로 전환하며, 완료 결과를 덮어쓰지 않는다.
 
-[학습 Dockerfile](../../model_platform/jobs/training/axolotl/Dockerfile)의 training-job은 Axolotl 0.18.0 이미지, Go lifecycle binary, config adapter, MLflow client를 묶는다. 공통 Go 바이너리는 [Bake 빌드 연결](../operations/build.md)로 현재 소스에서 받는다. 상시 학습 서비스가 아니라 요청별 one-shot Job이다.
+[학습 Dockerfile](../../src/platform/model/jobs/training/axolotl/Dockerfile)의 training-job은 Axolotl 0.18.0 이미지, Go lifecycle binary, config adapter, MLflow client를 묶는다. 공통 Go 바이너리는 [Bake 빌드 연결](../operations/build.md)로 현재 소스에서 받는다. 상시 학습 서비스가 아니라 요청별 one-shot Job이다.
 
 Job은 승인 후 명세와 base snapshot을 조회하고 MinIO에서 임시 작업 디렉터리로 내려받는다. HF offline 설정으로 preprocess와 train을 수행한다. 런타임의 base model을 Hugging Face에서 다시 받는 흐름은 아니다.
 

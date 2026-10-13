@@ -17,10 +17,10 @@ Q04는 두 단위로 나눴다. **Q04a**는 운영자용 정제 접수/조회/�
 Q03b까지 적용하고 자기 자료함을 초기화한 프로젝트에서 실행한다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_refinement.py' -q
-python3 -B -m apps.document_qa.refinement init
-python3 -B -m apps.document_qa.refinement status
-python3 -B -m apps.document_qa.api status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_refinement.py' -q
+python3 -B -m src.apps.document_qa.refinement init
+python3 -B -m src.apps.document_qa.refinement status
+python3 -B -m src.apps.document_qa.api status
 ```
 
 패치/검사/init/status는 운영 API·GPU·모델·HTTP 서버를 실행하지 않는다. init은 기존
@@ -43,10 +43,10 @@ Data receipt가 검증된 preparation_pending job을 대상으로만 다음 동�
 
 ```bash
 # DOC_QA_JOB_ID: 해당 자료함의 확정된 업로드 job ID
-python3 -B -m apps.document_qa.refinement dispatch --job-id "$DOC_QA_JOB_ID"
-python3 -B -m apps.document_qa.refinement observe --job-id "$DOC_QA_JOB_ID"
+python3 -B -m src.apps.document_qa.refinement dispatch --job-id "$DOC_QA_JOB_ID"
+python3 -B -m src.apps.document_qa.refinement observe --job-id "$DOC_QA_JOB_ID"
 # 접수 응답이 불확실하고 운영자가 재확인하기로 한 경우에만:
-python3 -B -m apps.document_qa.refinement retry --job-id "$DOC_QA_JOB_ID"
+python3 -B -m src.apps.document_qa.refinement retry --job-id "$DOC_QA_JOB_ID"
 ```
 
 모든 POST 입력은 서버가 보존한 job에서 만든다. 고정 name=document-qa-{job_id},
@@ -132,6 +132,6 @@ lane, REFINEMENT_REVIEW_REQUIRED는 시도 한도다. 조회 실패 후 새 key/
 단일 replica/PV 또는 분산 저장/실행권 전환은 별도 인수다. Docker ID/systemd/Ops 의존을
 추가하지 않는다. 실제 TXT n8n/정제 연결은 통과했다. 신규 업로드 전체 경로·Markdown/PDF/OCR와 검색/답변/UI/품질은 미완료로 유지한다.
 
-[코드](../../apps/document_qa/refinement.py), [결과 검증](../../apps/document_qa/canonical_results.py),
-[계약/source pins](../../apps/document_qa/refinement-contract.json),
+[코드](../../src/apps/document_qa/refinement.py), [결과 검증](../../src/apps/document_qa/canonical_results.py),
+[계약/source pins](../../src/apps/document_qa/refinement-contract.json),
 [전체 계획](../plans/document-qa-work-plan-20261002.md)을 따른다.

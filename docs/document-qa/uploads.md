@@ -16,9 +16,9 @@ GPU가 없어도 업로드를 접수할 수 있고, 모델 준비 확인·실제
 Python 3.10 이상/표준 라이브러리를 사용한다. 패치 설치와 검사만으로 서버가 기동하지 않는다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_uploads.py' -q
-python3 -B -m apps.document_qa.api init
-python3 -B -m apps.document_qa.api status
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_uploads.py' -q
+python3 -B -m src.apps.document_qa.api init
+python3 -B -m src.apps.document_qa.api status
 ```
 
 init은 자기 저장만 만든다. 기본 위치는
@@ -31,7 +31,7 @@ status는 로컬 조회만 수행하며, 저장이 없으면 임의로 새 자�
 내부 API를 수동으로 확인할 때만 다음 명령을 별도 터미널에서 실행한다.
 
 ```bash
-python3 -B -m apps.document_qa.api serve
+python3 -B -m src.apps.document_qa.api serve
 ```
 
 기본 bind는 127.0.0.1:17110이다. 기존 Ops의 17100 포트와 분리했다. `--port`로 포트, `--state-dir`로 자기 저장 위치를
@@ -120,5 +120,5 @@ receipt 64KiB로 제한한다. 이 한도는 OS DNS까지 강제로 중단하는
 여러 replica의 동시 사용은 지원으로 표시하지 않으며 필요할 때 저장/실행권 adapter를
 교체한다. Data/Knowledge/Agent DB와 MinIO/OpenSearch 직접 접근은 없다.
 
-[코드](../../apps/document_qa/README.md), [API 계약과 코드 hash](../../apps/document_qa/upload-contract.json),
+[코드](../../src/apps/document_qa/README.md), [API 계약과 코드 hash](../../src/apps/document_qa/upload-contract.json),
 [전체 작업계획서](../plans/document-qa-work-plan-20261002.md)를 따른다.

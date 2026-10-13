@@ -2,8 +2,8 @@
 
 Q01 최초 범위(2026-10-02)는 순수 계약·합성 fixture이며 서버 API/workflow/모델 호출·HTTP/DB/화면 구현이 없었다. 이후 업로드 저장/API와 n8n·CPU·색인 adapter를 구현하고 TXT 실제 CPU 인수·Q05b 보류 callback을 확인했다. 최신 범위는 [상태표](../status.md)에 두며 문서 QA 제품은 아직 미완료다. 진행 범위는 [전체 계획](../plans/document-qa-work-plan-20261002.md)을 따른다.
 
-구현은 [contracts.py](../../apps/document_qa/contracts.py), API별 입력/receipt/조회 경로와
-코드 해시는 [API 계약 목록](../../apps/document_qa/api-contract.json), 결과는
+구현은 [contracts.py](../../src/apps/document_qa/contracts.py), API별 입력/receipt/조회 경로와
+코드 해시는 [API 계약 목록](../../src/apps/document_qa/api-contract.json), 결과는
 [오프라인 검증](../testing/document-qa-q01-offline-20261002.json)에 둔다. 합성 fixture의 ID·
 본문·시간은 검사용이며 운영 리소스나 실제 모델 실행 결과가 아니다.
 
@@ -117,7 +117,7 @@ Knowledge 입력 canonical JSON의 합계는 32MiB 이하, 청크는 20,000개 �
 정제 뒤 build 전에 확인한다. 초과를 잘라내거나 미완료 자료를 질문 가능으로 표시하지 않는다.
 확장자만으로 PDF의 실제 처리 가능/품질을 보장하지 않는다.
 
-Q02가 조회할 연결/기본값은 [API 계약의 q02_inputs](../../apps/document_qa/api-contract.json)에
+Q02가 조회할 연결/기본값은 [API 계약의 q02_inputs](../../src/apps/document_qa/api-contract.json)에
 둔다. Data/Knowledge/Agent/Model Gateway와 n8n 시작점의 연결·인증 참조, 자료함 이름,
 embedding/chat 배포, 청커와 options가 필요하다. OCR/reranker는 지원 범위의 선택 항목이다.
 기존 설정과 배포 목록을 재사용해 0/1/여러 호환 후보·중지·미지원·권한 부족을 구분한다.
@@ -133,7 +133,7 @@ embedding/chat 배포, 청커와 options가 필요하다. OCR/reranker는 지원
 
 ```bash
 python3 -B -m unittest discover \
-  -s apps/document_qa/tests -p 'test_*.py' -q
+  -s src/apps/document_qa/tests -p 'test_*.py' -q
 ```
 
 동기/비동기 접수, 미완료/부분/빈 본문, 결과 유실·동일 키, 전체 자료 snapshot, 색인/Agent

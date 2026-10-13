@@ -189,6 +189,6 @@ OCR 실패 시 완료 페이지 수와 읽기 실패/미처리 페이지 수가 
 
 **이 로컬 검사만으로 실제 서버 업로드·Docker Job·GPU 품질을 검증한 것은 아니다.** 후속 사용자 확인은 아래 별도 기록을 따른다. 테스트 대역의 완료 응답을 실제 OCR 성공으로 취급하지 않는다. 파서 의존성은 프로젝트 핀과 같은 lxml 6.1.1, pdfplumber 0.11.8, Pillow 12.3.0, pypdfium2 5.3.0을 사용했다.
 
-기록: `data_platform/tests/results/pdf-ocr-fallback/local-summary.json`, `sample2-original.json`, 각 검사 로그. [구현 이력](../history/data-platform-202609.md#2026-09-15-20-pdf-ocr-fallback).
+기록: `src/platform/data/tests/results/pdf-ocr-fallback/local-summary.json`, `sample2-original.json`, 각 검사 로그. [구현 이력](../history/data-platform-202609.md#2026-09-15-20-pdf-ocr-fallback).
 
 서버 후속 기록에서는 Go 원본 검사 4개/하위43개, 당시 Python 123개(파서46+UI77), runtime 자체 검사·이미지 빌드·Collection/UI 재생성을 확인했다. 2026-09-16 후속 대화에서 사용자가 sample2 원본의 실제 OCR 동작을 확인했다. 새로 첨부한 `AI_Engineer_sample.pdf`는 다른 9페이지 문서이며, 그 문서의 표·그림 품질 문제와 구분한다. 과거 원본 로그는 [검증 요약](../testing/results-summary-20260916.md)으로 정리했다.

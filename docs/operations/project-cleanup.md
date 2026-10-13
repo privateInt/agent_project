@@ -11,7 +11,7 @@
 ## 유지할 파일
 
 - 실행 코드·설정·키·DB·운영 데이터·lock과 테스트/fixtures는 삭제/수정하지 않는다.
-- `ops_candidates` 코드·manifest/source pins는 실제 import/해시 검증 대상이다. 같은 코드 사본이라는 이유로 없애거나 symlink로 대체하지 않는다.
+- `src/ops/candidates` 코드·manifest/source pins는 실제 import/해시 검증 대상이다. 같은 코드 사본이라는 이유로 없애거나 symlink로 대체하지 않는다.
 - 플랫폼별 공통 Go 코드·module 경계는 독립 빌드/소유권을 유지한다. 문서 용량 정리에서 공용 코드 의존성을 도입하지 않는다.
 - 기능별 API/설치/개발 계약은 각각 소유 문서에 유지한다. 완료 이력과 기능 계약을 구분한다.
 

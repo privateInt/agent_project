@@ -1,5 +1,7 @@
 # 프로젝트 현재 상태
 
+2026-10-13 추가: 현재 개발 사본의 첫 작업은 src 구조·Ops 통합과 경로 검증이며 다음 기능 작업은 F0a다. [소스 구조](architecture/source-layout.md)를 따른다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
+
 갱신: 2026-10-12. 첫 TXT의 실제 GPU 색인/활성화·검색 Tool 시험/발행·고정 QA Agent smoke/발행·첫 질문 head CAS revision1·인증된 question-policy의 question_ready=true를 사용자 출력으로 확인했다. PC 화면의 서버 UUID v5 호환 수정 후 질문은 접수됐으나 ANSWER_REFERENCE_INVALID/MISSING_REFERENCE로 실패했다. 인용 prompt-only 초안도 동일 실패이며 발행/활성화되지 않았다. 현재 답변 모델은 google/gemma-3-1b-it이다. 첫 PC 답변/출처·폭넓은 의미 품질 인수는 미완료다. [최신 관찰](testing/document-qa-live-observed-20261012.json)은 당시 사용자 출력/화면 근거이며 현재 호스트를 직접 재조회한 결과는 아니다.
 
 10개 확장 요구를 [플랫폼 확장 계획](plans/platform-expansion-work-plan-20261012.md)으로 채택했다. 학습데이터 Data 이전·Airflow·provider·HWP·세션/기억·문서 Tool·CI/CD는 계획이며 미구현/미인수다. n8n/Langfuse는 기존 구현/과거 인수 재사용, LightRAG/Neo4j는 별도 평가 단계다. 현재 작업은 F0a이며 개발 규칙은 [AGENTS.md](../AGENTS.md)를 따른다. Ops 보류는 유지한다.
@@ -96,6 +98,6 @@
 - Knowledge의 12문항·한정 자료 비교는 실행됐다. 평가가 전혀 없다는 과거 안내는 더 이상 현재 상태가 아니다. 최초 recursive ON 후보 불일치 실패 1건은 재조회 성공으로 해소 처리하지 않는다.
 - Data의 최종 자동 영역 실험은 9개 완료·품질 통과 0/9·timeout 2건이다. 다른 합성 OCR 성공 기록과 별개다. 사용자가 일부 오류를 허용하고 다음 단계로 진행한 결정을 유지한다.
 
-상세 근거는 [Agent 결과](../agent_platform/tests/results/a09-server-20260925.json), [추적 실패 결과](../agent_platform/tests/results/o02-tracing-server-20260927.json), [Knowledge 평가](../knowledge_platform/tests/results/evaluation-candidate-diagnostics-20260921.json), [Data 상태](data-platform/status.md)에 있다.
+상세 근거는 [Agent 결과](../src/platform/agent/tests/results/a09-server-20260925.json), [추적 실패 결과](../src/platform/agent/tests/results/o02-tracing-server-20260927.json), [Knowledge 평가](../src/platform/knowledge/tests/results/evaluation-candidate-diagnostics-20260921.json), [Data 상태](data-platform/status.md)에 있다.
 
 현재 우선순위는 [로드맵](roadmap.md), 과거 단계 이력은 [이력 목차](history/README.md)에서 관리한다.

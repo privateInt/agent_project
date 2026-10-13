@@ -37,7 +37,7 @@ python3 n8n/ops/operational.py status
 python3 n8n/ops/operational.py lookup
 ```
 
-현재 인수 범위: 계정 연결·운영 Flow 등록/게시·Agent 실행 접수·검색·모델 응답 수신·실패 기록 조회는 확인했다. 운영 Flow의 검증된 답변/출처 전달·동일 요청 재실행·서버 재시작 보존·페이지 확인은 미완료다. 실행 코드 변경 없이 문서·요약만 갱신했다. 근거: `agent_platform/tests/results/a07-operational-server-20260924.json`.
+현재 인수 범위: 계정 연결·운영 Flow 등록/게시·Agent 실행 접수·검색·모델 응답 수신·실패 기록 조회는 확인했다. 운영 Flow의 검증된 답변/출처 전달·동일 요청 재실행·서버 재시작 보존·페이지 확인은 미완료다. 실행 코드 변경 없이 문서·요약만 갱신했다. 근거: `src/platform/agent/tests/results/a07-operational-server-20260924.json`.
 
 ## 이전 이력 — 계정 연결 HTTP 400 후속 (최신 시도에서 해소)
 
@@ -53,8 +53,8 @@ tar -xzf agent_platform_n8n_accessfix_20260924.tar.gz
 python3 agent_platform_n8n_accessfix_20260924/apply_patch.py \
   --project-root ~/workspace/agent_project --apply
 cd ~/workspace/agent_project
-python3 infra/n8n/ops/api_access.py --diagnose
-python3 infra/n8n/ops/api_access.py
+python3 src/infra/n8n/ops/api_access.py --diagnose
+python3 src/infra/n8n/ops/api_access.py
 )
 ```
 
@@ -66,7 +66,7 @@ python3 infra/n8n/ops/api_access.py
 
 연결 결과가 `connected`이면 아래 3~4절의 prepare/run/lookup을 이어서 실행한다. 새 `FAIL:` 줄은 공유할 수 있지만 비밀번호·API 키·비밀 파일 내용은 공유하지 않는다.
 
-후속 로컬 검증: infra 단위 검사 26개(신규 연결 검사 10개 포함)와 Agent n8n 운영 도구 검사 3개가 통과했다. 실제 n8n 2.40.5 HTTP/새 격리 SQLite에서 최소 길이 16, 비밀번호 오류 3종, 한글 이름, 등록 성공 후 키 발급 HTTP 400, 기존 계정 로그인 복구, 제한된 키 발급·재사용을 확인했다. Model/Knowledge 호출과 사용자 운영 DB 접근은 없었다. Docker/PostgreSQL 환경의 사용자 재시도는 아직 미확인이다. 근거: `agent_platform/tests/results/a07-n8n-accessfix-summary.json`.
+후속 로컬 검증: infra 단위 검사 26개(신규 연결 검사 10개 포함)와 Agent n8n 운영 도구 검사 3개가 통과했다. 실제 n8n 2.40.5 HTTP/새 격리 SQLite에서 최소 길이 16, 비밀번호 오류 3종, 한글 이름, 등록 성공 후 키 발급 HTTP 400, 기존 계정 로그인 복구, 제한된 키 발급·재사용을 확인했다. Model/Knowledge 호출과 사용자 운영 DB 접근은 없었다. Docker/PostgreSQL 환경의 사용자 재시도는 아직 미확인이다. 근거: `src/platform/agent/tests/results/a07-n8n-accessfix-summary.json`.
 
 2026-09-24. 운영 n8n HTTP API로 문서 질의응답 워크플로를 저장·게시하고 질문을 실행하는 호스트 CLI를 추가했다. 로컬 실제 n8n 서버 검사와 실제 Agent Go/Python/SQL 연결 검사는 통과했다. 사용자 서버의 계정 연결·운영 등록·첫 실행을 확인했으며 인용 검증 실패로 실제 답변 전달 인수는 남아 있다.
 
@@ -108,7 +108,7 @@ python3 agent_platform_n8n_operational_20260924/apply_patch.py \
 
 ```bash
 cd ~/workspace/agent_project
-python3 infra/n8n/ops/api_access.py
+python3 src/infra/n8n/ops/api_access.py
 ```
 
 기본 주소는 서버의 `http://127.0.0.1:16200`이다. 포트를 바꿨다면 `--url`로 지정한다. 원격 n8n에 연결할 때는 HTTPS를 사용한다.

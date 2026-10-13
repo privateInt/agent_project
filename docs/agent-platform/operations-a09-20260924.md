@@ -7,7 +7,7 @@
 | 주체 | 소유하는 것 | 호출 경계 |
 |---|---|---|
 | Agent Platform | Tool/Agent/고정 버전/WorkflowLink/ToolCall/AgentRun/단계 | Gateway REST/MCP, 내부 Service↔Runtime gRPC |
-| infra/n8n | n8n 런타임·PostgreSQL·계정·키·Flow·n8n 실행 | Agent Gateway 공개 API로 질문 접수/조회 |
+| src/infra/n8n | n8n 런타임·PostgreSQL·계정·키·Flow·n8n 실행 | Agent Gateway 공개 API로 질문 접수/조회 |
 | Model Platform | 모델 버전·배포·임베딩·채팅 | Agent가 Model 공개 API 사용 |
 | Knowledge Platform | 지식·인덱스 버전·공간·검색 결과/출처 | 검색 Tool이 Knowledge 공개 API 사용 |
 | Data Platform | 수집·정제·원문/canonical | 지식 생성 파이프라인의 입력 소유 |
@@ -32,7 +32,7 @@ Agent 컨테이너에 다른 플랫폼의 DB 계정·Docker socket·GPU 제어 �
 | n8n 기존 요청 결과 | `python3 n8n/ops/operational.py lookup` | 추론 없음; 기존 CLI는 로컬 조회/결과 캐시 갱신 |
 | n8n 실제 질문/재전달 | `python3 n8n/ops/operational.py run` | 웹훅 호출; 아래 요청 재사용 규칙 적용 |
 
-명령의 작업 폴더는 `~/workspace/agent_project/agent_platform`이다. n8n 계정/키 설정 도구는 프로젝트 루트에서 `python3 infra/n8n/ops/api_access.py`로 실행한다. 이미 연결된 서버에서 불필요하게 계정/키를 다시 만들지 않는다.
+명령의 작업 폴더는 `~/workspace/agent_project/agent_platform`이다. n8n 계정/키 설정 도구는 프로젝트 루트에서 `python3 src/infra/n8n/ops/api_access.py`로 실행한다. 이미 연결된 서버에서 불필요하게 계정/키를 다시 만들지 않는다.
 
 ### 새 질문과 기존 요청의 차이
 
@@ -62,13 +62,13 @@ python3 n8n/ops/operational.py run \
 | A09 changed | 변경된 runs/n8n/접속 origin 구분, 의도한 설정 변경과 데이터 소실 구분 | 비교 기준을 삭제해 통과로 만들지 않음 |
 | 오래된 n8n 실행 조회 실패 | n8n 실행 보관/prune 정책·권한 | Agent 결과와 n8n 전달 증거의 차이를 명시 |
 
-Agent 로그 확인은 `docker compose logs --tail=100 agent-service agent-runtime agent-gateway`로 시작한다. n8n 인프라 진단은 프로젝트 루트의 `python3 infra/n8n/ops/diagnose.py`를 사용한다. 원문 로그에 질문·문서·답변·인증값이 포함될 수 있으므로 공유용으로는 A09의 ID/상태/오류 요약을 우선 사용한다.
+Agent 로그 확인은 `docker compose logs --tail=100 agent-service agent-runtime agent-gateway`로 시작한다. n8n 인프라 진단은 프로젝트 루트의 `python3 src/infra/n8n/ops/diagnose.py`를 사용한다. 원문 로그에 질문·문서·답변·인증값이 포함될 수 있으므로 공유용으로는 A09의 ID/상태/오류 요약을 우선 사용한다.
 
 ## 설치·갱신·재시작
 
 - 신규 환경은 [A04 기본 실행](openapi-foundation.md)과 [A06](knowledge-qa-a06-20260924.md), [n8n infra](n8n-infra-20260924.md)의 역할/설정을 따른다. 현재 전체 소스의 Compose/설정 생성기를 사용하고 과거 a02/a03 이미지로 되돌리지 않는다.
 - 기존 서버는 전달 패치의 README를 따른다. 설정/비밀/DB 보존 및 전체 사전 hash 검사 뒤 적용한다. A09는 호스트 도구이므로 재빌드·재시작이 없다.
-- n8n 기동/복구 주체는 infra다. 기존 루트 명령 `python3 infra/ops/up.py --n8n-only`를 사용하며 Agent Compose에 n8n을 다시 편입하지 않는다.
+- n8n 기동/복구 주체는 infra다. 기존 루트 명령 `python3 src/infra/ops/up.py --n8n-only`를 사용하며 Agent Compose에 n8n을 다시 편입하지 않는다.
 - 서비스 교체는 실행 요청 유입을 통제하고 Agent/Tool/n8n 작업 완료를 확인한 유지보수 창에서 한다. 진행 중 worker 중단은 interrupted가 될 수 있다. 큐의 자동 재실행/보상 처리로 간주하지 않는다.
 - 재시작 보존 확인은 A09 capture → 실제 수행한 재시작 로그 → compare를 함께 사용한다. compare만으로 실제 재시작을 증명할 수 없다.
 

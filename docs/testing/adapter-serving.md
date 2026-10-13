@@ -73,7 +73,7 @@ python tests/live_serving_smoke.py \
 5. adapter 이름으로 채팅 요청, 응답 모델 이름과 비어 있지 않은 답변 확인.
 6. Stop → stopped 확인, 기존 Operation succeeded 보존 확인.
 
-결과는 `model_platform/tests/results/serving/<UUID>.json`에 남는다. 기본으로 성공·실패 모두 중지를 시도하며, 성공한 서버만 유지하려면 최초 실행에 `--keep-running`을 붙인다. 캐시·종료 컨테이너·원본 학습 결과는 남는다. base와 같은 답변이어도 정상일 수 있고, 이 검증은 품질 평가가 아니다.
+결과는 `src/platform/model/tests/results/serving/<UUID>.json`에 남는다. 기본으로 성공·실패 모두 중지를 시도하며, 성공한 서버만 유지하려면 최초 실행에 `--keep-running`을 붙인다. 캐시·종료 컨테이너·원본 학습 결과는 남는다. base와 같은 답변이어도 정상일 수 있고, 이 검증은 품질 평가가 아니다.
 
 다운로드·모델 준비가 오래 걸리는 환경은 `--timeout 2700`을 사용한다. controller의 준비 제한 30분과 시작 후 readiness 제한 15분은 별도다. 응답 유실이나 중단 후에는 새 키로 중복 실행하기 전에 기존 보고서를 재개한다.
 

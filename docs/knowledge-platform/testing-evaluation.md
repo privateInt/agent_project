@@ -10,7 +10,7 @@
 
 ```bash
 cd ~/workspace/agent_project
-python3 -m unittest discover -s knowledge_platform/tests -p 'test_evaluation*.py' -v
+python3 -m unittest discover -s src/platform/knowledge/tests -p 'test_evaluation*.py' -v
 ```
 
 기존 Go/DB/실제 검색을 문서 정리 때문에 반복하지 않는다.
@@ -19,7 +19,7 @@ python3 -m unittest discover -s knowledge_platform/tests -p 'test_evaluation*.py
 
 ```bash
 cd ~/workspace/agent_project
-python3 -m knowledge_platform.evaluation prepare \
+python3 -m src.platform.knowledge.evaluation prepare \
   --index-id aafe22b7-852b-424e-afaa-58fa8c1d739f \
   --index-version-id 150826c2-1f4c-495c-8e07-54aacaa1a245 \
   --reranker-deployment-id cc64a683-a69f-48a5-836e-9f52f0255cc6 \
@@ -48,7 +48,7 @@ sources의 `documents[].blocks[]`를 읽고 질문과 답을 뒷받침하는 짧
 
 ```bash
 cd ~/workspace/agent_project
-python3 -m knowledge_platform.evaluation add-case \
+python3 -m src.platform.knowledge.evaluation add-case \
   --sources "$HOME/workspace/knowledge_eval_20260921/sources.json" \
   --dataset "$HOME/workspace/knowledge_eval_20260921/dataset.json" \
   --case-id body-01 \
@@ -63,11 +63,11 @@ python3 -m knowledge_platform.evaluation add-case \
 
 ```bash
 cd ~/workspace/agent_project
-python3 -m knowledge_platform.evaluation review \
+python3 -m src.platform.knowledge.evaluation review \
   --sources "$HOME/workspace/knowledge_eval_20260921/sources.json" \
   --dataset "$HOME/workspace/knowledge_eval_20260921/dataset.json" \
   --reviewer shshin
-python3 -m knowledge_platform.evaluation validate \
+python3 -m src.platform.knowledge.evaluation validate \
   --sources "$HOME/workspace/knowledge_eval_20260921/sources.json" \
   --dataset "$HOME/workspace/knowledge_eval_20260921/dataset.json"
 ```
@@ -80,7 +80,7 @@ python3 -m knowledge_platform.evaluation validate \
 
 ```bash
 cd ~/workspace/agent_project
-python3 -m knowledge_platform.evaluation run \
+python3 -m src.platform.knowledge.evaluation run \
   --sources "$HOME/workspace/knowledge_eval_20260921/sources.json" \
   --dataset "$HOME/workspace/knowledge_eval_20260921/dataset.json" \
   --variants "$HOME/workspace/knowledge_eval_20260921/variants.json" \
@@ -95,7 +95,7 @@ N문항·현재 off/on 두 설정이면 질문 임베딩 N회, 검색 기본 2N�
 
 ```bash
 cd ~/workspace/agent_project
-python3 -m knowledge_platform.evaluation compare \
+python3 -m src.platform.knowledge.evaluation compare \
   --left "$HOME/workspace/knowledge_eval_20260921/report.json" \
   --left-variant baseline-off \
   --right "$HOME/workspace/knowledge_eval_20260921/report.json" \
@@ -121,7 +121,7 @@ python3 -m knowledge_platform.evaluation compare \
 
 ## 검증·보관·남은 범위
 
-[로컬 확인 기록](../../knowledge_platform/tests/results/evaluation-k08-20260921.json)에 실제 실행한 25개 검사 범위를 기록한다. 한글/emoji code point·구절 hash·중복/겹침 거절·범위 합집합·손계산 지표·중복 점수 방지·실패 분모·전체 후보 변동·runtime 변경·두 청커 임베딩 공유·중단 기록·호환 비교를 확인했다. 실제 서버 Go/DB/GPU 테스트는 이번 변경에서 수행하지 않았다.
+[로컬 확인 기록](../../src/platform/knowledge/tests/results/evaluation-k08-20260921.json)에 실제 실행한 25개 검사 범위를 기록한다. 한글/emoji code point·구절 hash·중복/겹침 거절·범위 합집합·손계산 지표·중복 점수 방지·실패 분모·전체 후보 변동·runtime 변경·두 청커 임베딩 공유·중단 기록·호환 비교를 확인했다. 실제 서버 Go/DB/GPU 테스트는 이번 변경에서 수행하지 않았다.
 
 정답셋 최대 100문항·문항당 근거 20개·variant 4개이며 저장 상세량을 제한한다: `문항 수 × variant 수 × (top_k + 5) <= 1000`. 예를 들어 4개 variant·top_k 5이면 최대 25문항이다. 자료 패킷 512 KiB, dataset 256 KiB, 보고서 384 KiB의 상한을 넘으면 자르지 않고 오류로 종료한다. 운영 원본·완전한 청크 응답·벡터·큰 로그를 프로젝트의 테스트 결과로 추가하지 않는다. 기존 1 MB 미만 기록 정책을 유지한다.
 

@@ -123,4 +123,4 @@ python3 ops/smoke_agents.py \
 
 전체 SQL 회귀 검사에서 테스트 종료 시 DB 정리 timeout이 한 번 발생했다. 취소된 요청 context와 분리한 3초 rollback으로 보강한 뒤 같은 전체 SQL/Service 검사가 통과했다. 첫 실패는 검증 요약에 남겼다. 브라우저에서 발견한 모델 선택 후 저장 버튼 활성화와 응답 유실 복구도 수정·재검증했다.
 
-압축된 기계 판독 요약은 [a06-local-20260924.json](../../agent_platform/tests/results/a06-local-20260924.json)이다. A05의 사용자 UI 시험 성공은 [별도 근거](../history/agent-platform-202609.md#a05-server-ui-check-20260923)로 유지하며 A04/A05 전체 서버 인수로 확대하지 않는다. 이번 전달물은 소스이며 운영 DB/볼륨 백업이 아니다.
+압축된 기계 판독 요약은 [a06-local-20260924.json](../../src/platform/agent/tests/results/a06-local-20260924.json)이다. A05의 사용자 UI 시험 성공은 [별도 근거](../history/agent-platform-202609.md#a05-server-ui-check-20260923)로 유지하며 A04/A05 전체 서버 인수로 확대하지 않는다. 이번 전달물은 소스이며 운영 DB/볼륨 백업이 아니다.

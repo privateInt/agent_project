@@ -25,4 +25,4 @@ Knowledge 검색 API는 `query_embedding`과 `embedding_space_id`, `index_versio
 - 한 문서 12문항의 결과를 일반 검색 품질 보증으로 확대하지 않는다. 새 자료/사용자 요구가 생기면 기존 평가 도구로 대표 범위를 확장한다.
 - BM25/RRF, 실제 OpenSearch 노드 장애/부하, 전체 백업/복구는 별도 후속이다. Data OCR 개선·PDF 제목 추정·LiteLLM 도입을 현 기능의 선행 조건으로 추가하지 않는다.
 
-[구조](architecture.md), [청킹](api-chunking.md), [색인](api-indexing.md), [검색](api-search.md), [평가](evaluation.md), [서버 인수](acceptance.md), [후보 진단 결과](../../knowledge_platform/tests/results/evaluation-candidate-diagnostics-20260921.json), [실패/복구](testing-failure-recovery-20260922.md), [세션 검토](../testing/session-closeout-20260922.md)를 참고한다.
+[구조](architecture.md), [청킹](api-chunking.md), [색인](api-indexing.md), [검색](api-search.md), [평가](evaluation.md), [서버 인수](acceptance.md), [후보 진단 결과](../../src/platform/knowledge/tests/results/evaluation-candidate-diagnostics-20260921.json), [실패/복구](testing-failure-recovery-20260922.md), [세션 검토](../testing/session-closeout-20260922.md)를 참고한다.

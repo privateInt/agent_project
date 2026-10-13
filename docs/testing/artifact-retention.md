@@ -11,21 +11,21 @@
 - 테스트 코드와 `tests/fixtures/`는 실행 결과 예산과 별도다. 생성용 TTF와 중복 미리보기 2개를 제외한 실제 입력·정답·라이선스는 약 1.11 MB다. 입력자료+결과는 약 1.23 MB이며 전체 테스트가 1 MB 미만이라는 뜻은 아니다.
 - 소스·설정, 운영 DB·MinIO·모델·볼륨·원본·정제 결과에는 변경이 없다.
 
-Knowledge 첫 구현에서는 [검사 요약](../../knowledge_platform/tests/results/implementation-checks-20260918.json)만 추가했다. 그 당시 세 플랫폼의 보관 결과 합계는 120,733 bytes이며 기존 예산을 유지한다. 새 요약은 Go/Docker/실서버 검사 미실행을 명시한다.
+Knowledge 첫 구현에서는 [검사 요약](../../src/platform/knowledge/tests/results/implementation-checks-20260918.json)만 추가했다. 그 당시 세 플랫폼의 보관 결과 합계는 120,733 bytes이며 기존 예산을 유지한다. 새 요약은 Go/Docker/실서버 검사 미실행을 명시한다.
 
 ## 대표 원본
 
 | 파일 | 선정 이유 | bytes |
 |---|---|---:|
-| `data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/figure-labels.json` | 지정한 그림 영역의 라벨 전사 성공 사례 | 12,885 |
-| `data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/table-right.json` | 초기 부분 검사 성공·후속 공정 연결 검사 실패 사례 | 16,009 |
-| `data_platform/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/table-left.json` | 표 행·열 검사 실패 사례 | 16,747 |
-| `data_platform/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/figure-labels.json` | OCR 시간 초과와 needs_ocr 사례 | 2,298 |
-| `data_platform/tests/results/console/server-flow-tests.log` | 서버 화면 테스트의 원본 실행 로그 | 29,209 |
+| `src/platform/data/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/figure-labels.json` | 지정한 그림 영역의 라벨 전사 성공 사례 | 12,885 |
+| `src/platform/data/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/table-right.json` | 초기 부분 검사 성공·후속 공정 연결 검사 실패 사례 | 16,009 |
+| `src/platform/data/tests/results/document-regions/771c8aba-3d83-49b4-be76-c7052873617c/table-left.json` | 표 행·열 검사 실패 사례 | 16,747 |
+| `src/platform/data/tests/results/raster-regions/e5d805e6-11aa-4f0b-8f1f-5dc3a5f25240/figure-labels.json` | OCR 시간 초과와 needs_ocr 사례 | 2,298 |
+| `src/platform/data/tests/results/console/server-flow-tests.log` | 서버 화면 테스트의 원본 실행 로그 | 29,209 |
 
 ## 전체 실험 판정 보존
 
-원래 report.json에 저장돼 있던 12개 사례의 판정·누락·구조 오류·시간·이미지/소스 해시와 삭제 파일 명세는 [요약 JSON](../../data_platform/tests/results/retained-summary-20260918.json)에 보존한다. 결과 파일 정리 때 원본의 평가 필드를 그대로 옮겼다. 이후 문서 검토에서 대표 canonical만 아래 엄격한 기준으로 읽기 전용 재채점했다. GPU OCR은 다시 실행하지 않았다.
+원래 report.json에 저장돼 있던 12개 사례의 판정·누락·구조 오류·시간·이미지/소스 해시와 삭제 파일 명세는 [요약 JSON](../../src/platform/data/tests/results/retained-summary-20260918.json)에 보존한다. 결과 파일 정리 때 원본의 평가 필드를 그대로 옮겼다. 이후 문서 검토에서 대표 canonical만 아래 엄격한 기준으로 읽기 전용 재채점했다. GPU OCR은 다시 실행하지 않았다.
 
 - 지정 영역 실험의 **초기 부분 검사**: 3개 완료, 부분 검사 2/3 통과. 그림 라벨 24/24, 왼쪽 표 값 0/3, 오른쪽 표 값 11/11·공정명 2/2. 합산 파서 시간 약 31.147초.
 - 이후 **공정 연결을 포함한 엄격한 검사**: 같은 보존 원본에서 그림 24/24, 왼쪽 표 관계 7/20·오른쪽 2/21로 두 표 모두 실패다. 2026-09-18 문서 점검에서도 보존된 원본 3개를 읽기 전용으로 재채점해 같은 수치를 확인했다. 초기 report 평가를 최신 표 품질 통과로 해석하지 않는다. 정제 결과와 요약 JSON 자체는 바꾸지 않았다.

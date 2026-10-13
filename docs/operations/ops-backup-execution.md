@@ -31,7 +31,7 @@ running 목록과 후속 inspect의 행 수·ID·Running·StartedAt 검사, 현�
 
 ## 복구 도구의 제어 계약
 
-[recover_changed_worker.py](../../ops_tools/recover_changed_worker.py)는 기존 [recover_boot_worker.py](../../ops_tools/recover_boot_worker.py)의 one-shot receipt·journal·lease·기동 관찰을 재사용하되 `OTHER_CONTAINER_CHANGED`만 지원한다. 기존 boot 복구·maintenance·활성 worker 61파일과 보호 검사는 수정하지 않았다. 아래는 도구의 계약이며 이미 완료한 복구를 다시 수행할 지시가 아니다.
+[recover_changed_worker.py](../../src/ops/tools/recover_changed_worker.py)는 기존 [recover_boot_worker.py](../../src/ops/tools/recover_boot_worker.py)의 one-shot receipt·journal·lease·기동 관찰을 재사용하되 `OTHER_CONTAINER_CHANGED`만 지원한다. 기존 boot 복구·maintenance·활성 worker 61파일과 보호 검사는 수정하지 않았다. 아래는 도구의 계약이며 이미 완료한 복구를 다시 수행할 지시가 아니다.
 
 | 단계 | 동작과 조건 |
 |---|---|
@@ -102,4 +102,4 @@ capture의 확인 flag는 사용자의 별도 보관/쓰기 중단 확인을 **a
 - 기존 [격리 native 생성/파일 복원 16/16](../testing/ops-backup-generation-native-server-20261001.json)은 코어 인수 근거로 유지한다. 새 운영 어댑터의 native 연결 인수로 표시하지 않는다.
 - 실제 age 인증 복호 EOF, 실제 DB 복원·image import·서비스 기동·지표/trace/설정 비교는 최초 운영 세대 이후 별도 작업이다. 전 플랫폼 복원 완료도 아니다.
 
-코드: [실행기](../../ops_tools/backup_execute.py), [크기 조사](../../ops_tools/backup_measure.py), [검사](../../ops_tools/tests/test_backup_execute.py). 최신 worker 관측: [명시 복구/새 평가 확인](../testing/ops-worker-recovery-closure-observed-20261002.json). 이전 상태: [실패/paused와 Docker 정상](../testing/ops-changed-worker-observed-20261002.json). 과거 관측: [서버 plan PASS](../testing/ops-backup-plan-passed-server-20261002.json). 전체 진행은 [상태](../status.md)와 [로드맵](../roadmap.md)을 따른다.
+코드: [실행기](../../src/ops/tools/backup_execute.py), [크기 조사](../../src/ops/tools/backup_measure.py), [검사](../../src/ops/tools/tests/test_backup_execute.py). 최신 worker 관측: [명시 복구/새 평가 확인](../testing/ops-worker-recovery-closure-observed-20261002.json). 이전 상태: [실패/paused와 Docker 정상](../testing/ops-changed-worker-observed-20261002.json). 과거 관측: [서버 plan PASS](../testing/ops-backup-plan-passed-server-20261002.json). 전체 진행은 [상태](../status.md)와 [로드맵](../roadmap.md)을 따른다.

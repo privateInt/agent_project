@@ -19,18 +19,18 @@ Ops는 Model·Data·Knowledge·Agent의 공식 API와 관측 백엔드를 조회
 
 | 책임 | 코드 |
 |---|---|
-| 조회 API·세션·웹 UI | [server](../../ops_platform/server.py), [web](../../ops_platform/web/) |
-| 플랫폼 조회·자원·관측·경보 | [client](../../ops_platform/client.py), [service](../../ops_platform/service.py), [resource profiles](../../ops_platform/resource_profiles.py), [observations](../../ops_platform/observations.py), [alerts](../../ops_platform/alerts.py) |
-| 발견과 설정 반영 | [Compose](../../ops_platform/ops/discovery_compose.py), [Kubernetes](../../ops_platform/ops/discovery_kubernetes.py), [refresh](../../ops_platform/ops/refresh_discovery.py) |
-| worker/서비스 수명주기 | [worker](../../ops_platform/ops/refresh_worker.py), [boot](../../ops_platform/ops/boot_lifecycle.py), [systemd](../../ops_platform/ops/service_systemd.py) |
-| host 백업 도구 | [ops_tools 안내](../../ops_tools/README.md) |
+| 조회 API·세션·웹 UI | [server](../../src/ops/platform/server.py), [web](../../src/ops/platform/web) |
+| 플랫폼 조회·자원·관측·경보 | [client](../../src/ops/platform/client.py), [service](../../src/ops/platform/service.py), [resource profiles](../../src/ops/platform/resource_profiles.py), [observations](../../src/ops/platform/observations.py), [alerts](../../src/ops/platform/alerts.py) |
+| 발견과 설정 반영 | [Compose](../../src/ops/platform/ops/discovery_compose.py), [Kubernetes](../../src/ops/platform/ops/discovery_kubernetes.py), [refresh](../../src/ops/platform/ops/refresh_discovery.py) |
+| worker/서비스 수명주기 | [worker](../../src/ops/platform/ops/refresh_worker.py), [boot](../../src/ops/platform/ops/boot_lifecycle.py), [systemd](../../src/ops/platform/ops/service_systemd.py) |
+| host 백업 도구 | [ops_tools 안내](../../src/ops/tools/README.md) |
 
 Ops web은 Docker socket을 마운트하지 않는다. 환경 발견/유지보수 도구의 host 권한을 조회 web의 권한과 혼동하지 않는다. 관측 장애가 원래 Agent 실패를 성공으로 바꾸거나 업무 실행을 재호출해서는 안 된다.
 
 ## 운영과 근거
 
 - 현재 계약: [관측/발견](observability-discovery.md), [worker 수명주기](worker-lifecycle.md), [백업 범위](../operations/backup-restore.md), [실행기](../operations/ops-backup-execution.md).
-- 실행/설치 참조: [Ops 앱](../../ops_platform/README.md), [관측 infra](../../infra/observability/README.md), [Langfuse](langfuse.md), [host 도구](../../ops_tools/README.md).
+- 실행/설치 참조: [Ops 앱](../../src/ops/platform/README.md), [관측 infra](../../src/infra/observability/README.md), [Langfuse](langfuse.md), [host 도구](../../src/ops/tools/README.md).
 - 과거 결과: [초기 통합 이력](../history/ops-platform-202609-20261001.md), [후속 날짜별 원문 목차](../history/ops-evidence-catalog.md), [마지막 worker 복구](../testing/ops-worker-recovery-closure-observed-20261002.json).
 
 오래된 실행 명령·그때의 pending/다음 단계는 현재 실행 지시가 아니다. 압축 이력에서 원문을 조회하며 소스/fixtures/candidate/source pins는 유지한다.

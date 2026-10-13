@@ -29,7 +29,7 @@
 
 운영 DB의 Healthy/키·볼륨 보존은 앞선 기동 로그 근거다. 이번 CLI 검사는 운영 PostgreSQL이 아닌 격리 SQLite·Agent HTTP 대역을 사용한다. 따라서 실제 서버 Agent API 연결, GPU/Knowledge 응답 품질, 사용자 Flow 편집·저장·재시작을 추가로 검증했다고 표시하지 않는다.
 
-근거 요약: `agent_platform/tests/results/a07-n8n-server-verified-20260924.json`. 이번 문서 반영은 재빌드·재시작·검사 재실행이 필요 없다.
+근거 요약: `src/platform/agent/tests/results/a07-n8n-server-verified-20260924.json`. 이번 문서 반영은 재빌드·재시작·검사 재실행이 필요 없다.
 
 ## 검사 수정
 
@@ -41,7 +41,7 @@
 
 BuildKit의 부모 디렉터리 권한 적용 근거: [moby/buildkit #6801](https://github.com/moby/buildkit/issues/6801). 이 원인 확인은 이번 COPY 기반 이미지 빌드 실패에 대한 것이다. 앞선 호스트 bind mount 실패의 정확한 파일/권한 상태까지 확인한 것은 아니다.
 
-`tests/Dockerfile.dockerignore`는 이 파일들만 빌드 컨텍스트에 포함한다. 기존 A07 설정·키가 `agent_platform/n8n`에 남아 있어도 빌드에 전달하지 않는다. 컨테이너는 `network_mode: none`, 임시 SQLite/임시 자격·로컬 HTTP 대역만 사용한다. 운영 DB·키·볼륨·실제 Agent/Model/Knowledge 호출과 의존성이 없다.
+`tests/Dockerfile.dockerignore`는 이 파일들만 빌드 컨텍스트에 포함한다. 기존 A07 설정·키가 `src/platform/agent/n8n`에 남아 있어도 빌드에 전달하지 않는다. 컨테이너는 `network_mode: none`, 임시 SQLite/임시 자격·로컬 HTTP 대역만 사용한다. 운영 DB·키·볼륨·실제 Agent/Model/Knowledge 호출과 의존성이 없다.
 
 이번 후속 패치는 Dockerfile·검사 이미지 태그와 문서/검증 기록을 갱신한다. 기존 검사 코드·워크플로 입력은 그대로다. 사용자가 수정한 대상 파일은 전체 쓰기 전에 충돌로 중단한다.
 
@@ -68,6 +68,6 @@ docker compose -f n8n/tests/docker-compose.yml run --build --rm n8n-checks
 
 로컬에서 원래 디렉터리 0444 권한으로 동일 MODULE_NOT_FOUND를 재현했다. 실제 Dockerfile의 chmod 명령을 복사한 검사 폴더에 실행해 디렉터리 0555·파일 0444를 확인하고 Node 구문·Code node 계약 6개·실제 n8n CLI 검사 7개가 통과했다. 이 실행기는 uid 0이지만 DAC 권한 우회 capability가 없어 탐색 권한 실패를 재현할 수 있다. 실제 컨테이너의 비루트 검사를 실행했다는 의미는 아니며, Dockerfile에서 USER node 이후 해당 검사를 필수화했다.
 
-로컬에는 Docker daemon이 없었지만 최종 이미지 빌드·컨테이너 실행은 이번 사용자 서버 로그로 통과를 확인했다. 로컬 Node 24.19.0과 서버 이미지 Node 26.7.0의 차이도 유지한다. 이전 검증은 `agent_platform/tests/results/a07-n8n-checksfix-20260924.json`, 이번 권한 재현·수정 검증은 `agent_platform/tests/results/a07-n8n-permissions-20260924.json`에 기록한다.
+로컬에는 Docker daemon이 없었지만 최종 이미지 빌드·컨테이너 실행은 이번 사용자 서버 로그로 통과를 확인했다. 로컬 Node 24.19.0과 서버 이미지 Node 26.7.0의 차이도 유지한다. 이전 검증은 `src/platform/agent/tests/results/a07-n8n-checksfix-20260924.json`, 이번 권한 재현·수정 검증은 `src/platform/agent/tests/results/a07-n8n-permissions-20260924.json`에 기록한다.
 
 사용자가 외부 작업 중이므로 페이지 확인은 계속 보류한다. 실제 LLM·Knowledge 답변 품질, 사용자 Flow 편집·실행, 사용자 AgentRun 재시작 조회는 별도 인수 항목으로 남긴다.

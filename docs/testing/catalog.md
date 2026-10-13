@@ -8,7 +8,7 @@
 
 ## 실제 REST 검증 완료 결과
 
-2026-09-10 공유된 실행 로그에서 다음 결과와 최종 PASS를 확인했다. 보고서 경로는 `model_platform/tests/results/catalog/d9c2f3ea-5dd9-42de-bb79-e12b909e763b.json`이다.
+2026-09-10 공유된 실행 로그에서 다음 결과와 최종 PASS를 확인했다. 보고서 경로는 `src/platform/model/tests/results/catalog/d9c2f3ea-5dd9-42de-bb79-e12b909e763b.json`이다.
 
 | 목록 | 첫 페이지 | 다음 페이지 | 실제 페이지 이동 |
 |---|---:|---:|---|
@@ -91,7 +91,7 @@ python tests/live_catalog_smoke.py \
 
 각 목록에서 최대 두 페이지의 형식·순서·ID 중복, 필터 변경 커서 거절, 잘못된 입력 400, 빈 검색 결과와 공개 필드를 검사한다. 데이터가 적어 다음 페이지가 없으면 해당 컬렉션은 `pagination_observed=false`로 기록한다. 이 경우 페이지 경계의 근거는 1단계 DB 통합 테스트이며 live에서 확인했다고 표시하지 않는다. 실행 중 상태 변경에 따라 조회 결과는 달라질 수 있다.
 
-보고서는 `model_platform/tests/results/catalog/<UUID>.json`에 저장한다. `passed=true`와 선택한 버전의 `target_version_verified=true`를 확인한다. 실패 시 같은 명령을 재실행해도 생성되는 플랫폼 리소스는 없다.
+보고서는 `src/platform/model/tests/results/catalog/<UUID>.json`에 저장한다. `passed=true`와 선택한 버전의 `target_version_verified=true`를 확인한다. 실패 시 같은 명령을 재실행해도 생성되는 플랫폼 리소스는 없다.
 
 ## 직접 검색 예시
 

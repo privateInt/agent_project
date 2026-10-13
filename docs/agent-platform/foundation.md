@@ -39,7 +39,7 @@ POST 입력은 비어 있거나 `{}`이며 최대 1024 bytes다. 진단은 `chec
 
 ## 3. 저장소와 버전
 
-- DB `agent_platform`, 서비스 사용자 `agent_service`, schema `agent`.
+- DB `src/platform/agent`, 서비스 사용자 `agent_service`, schema `agent`.
 - 부트스트랩 전용 `agent_admin`은 DB 컨테이너에만 있다. 서비스는 superuser/createdb/createrole/replication/bypassrls 권한 또는 역할 멤버십을 가진 계정으로 시작하지 않는다.
 - 서비스 계정은 DB CONNECT와 자기 schema를 갖는다. public schema 접근·DB CREATE 권한을 부여하지 않는다.
 - `agent.schema_migrations`: 순서와 SQL SHA-256을 검증하고 transaction/advisory lock 안에서 적용. 기존 migration 변경·새 버전 DB에 대한 구버전 기동은 거부한다.

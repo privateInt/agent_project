@@ -6,7 +6,7 @@
 
 ## 구현 경계
 
-[색인 저장/adapter](../../apps/document_qa/indexing.py), [결과 검증](../../apps/document_qa/indexing_results.py), [Knowledge 전용 HTTP](../../apps/document_qa/indexing_transport.py)를 추가했다. Q05a 단독 패치는 API와 Flow 자동 연결이 없다. 후속 [Q05b 색인 workflow](indexing-workflow.md)가 정제 완료 뒤 별도 전달/실행권을 연결하며 실제 embedding/build/활성화·두 문서 검색은 Q05c다. Q06의 Tool/Agent 연결 전까지 question_ready=false다.
+[색인 저장/adapter](../../src/apps/document_qa/indexing.py), [결과 검증](../../src/apps/document_qa/indexing_results.py), [Knowledge 전용 HTTP](../../src/apps/document_qa/indexing_transport.py)를 추가했다. Q05a 단독 패치는 API와 Flow 자동 연결이 없다. 후속 [Q05b 색인 workflow](indexing-workflow.md)가 정제 완료 뒤 별도 전달/실행권을 연결하며 실제 embedding/build/활성화·두 문서 검색은 Q05c다. Q06의 Tool/Agent 연결 전까지 question_ready=false다.
 
 Data는 원본/canonical, Knowledge는 청킹·embedding·index/version, Model은 모델 실행을 소유한다. 연결 계층에는 문서/모델/색인 식별자·hash·intent·receipt와 판정 요약을 저장한다. 청크/벡터·본문은 저장하지 않는다. 플랫폼 DB·MinIO·OpenSearch 직접 접근은 없다. 이번 모듈에는 systemd/Docker ID/컨테이너 경로가 업무 계약으로 들어가지 않는다.
 
@@ -38,10 +38,10 @@ Data는 원본/canonical, Knowledge는 청킹·embedding·index/version, Model�
 프로젝트 루트와 원래 shshin 사용자로 실행한다. root의 HOME에 별도 상태를 초기화하지 않는다.
 
 ```bash
-python3 -B -m unittest discover -s apps/document_qa/tests -p 'test_indexing.py' -q
-python3 -B -m apps.document_qa.indexing init
-python3 -B -m apps.document_qa.indexing status
-python3 -B -m apps.document_qa.indexing plan   --job-id 430b0e7b-7b4c-4ae7-9c57-6c979ca94343
+python3 -B -m unittest discover -s src/apps/document_qa/tests -p 'test_indexing.py' -q
+python3 -B -m src.apps.document_qa.indexing init
+python3 -B -m src.apps.document_qa.indexing status
+python3 -B -m src.apps.document_qa.indexing plan   --job-id 430b0e7b-7b4c-4ae7-9c57-6c979ca94343
 ```
 
 plan은 인수한 기존 TXT job의 저장된 canonical 참조로 후보 snapshot을 계산한다. 논리 index/build intent를 만들거나 API/credential 내용을 읽지 않는다. plan/state 조회용 lock 외에는 저장 내용을 변경하지 않는다. 처음에는 index_configured=false, indexing_counts={}, indexing_generation=0, question_ready=false가 정상이다. 기존 TXT 후보는 document_count=1이며 base_generation=0/base_version_id=""다. 기존 upload_state=preparation_pending도 Q06 전까지 실패를 뜻하지 않는다.

@@ -16,7 +16,7 @@
 
 **재시작 검증 구현 이력:** 원래 trace/설정/컨테이너 기준을 보존하는 run/compare와 읽기 전용 diagnose를 구현했고 후속 보완까지 로컬 56개 검사를 통과했다. 위 서버 compare PASS로 재시작 보존 인수도 완료했다. 최초 비교 오류와 보완 과정은 [진단 기록](../history/ops-evidence-catalog.md#langfuse-restart-compare-20260926)에 유지한다.
 
-결정일: 2026-09-26. 사용자가 Agent 추적 저장소로 **Langfuse를 선택**하고 `infra` 기동·`ops_platform` 관리 구조를 제안했다. 이 결정을 기존 플랫폼 경계에 반영한다. **후속 O01 infra 코드를 구현하고 로컬 검사를 마쳤다. 실제 서버 기동·합성 추적 수집/재조회·고정 trace 재시작 보존까지 통과했으며 Agent 계측은 위 O02 DB 재검사·10개 span 수집/재사용/재조회까지 서버에서 확인했다. 업무 성공·O02 전체 인수는 별도다. ops 조회 연동은 O03 서버 기동과 원본에 연결된 10개 span 조회까지 통과했다. 사용자 Ops 화면에서도 2026-09-28 고정 실행의 10개 span과 부모·상태·소요 시간·토큰 표시를 확인했다.** [실행·인수 안내](../../infra/langfuse/README.md). 기존 MLflow는 모델 학습/실험 기록 용도로 유지한다.
+결정일: 2026-09-26. 사용자가 Agent 추적 저장소로 **Langfuse를 선택**하고 `src/infra` 기동·`src/ops/platform` 관리 구조를 제안했다. 이 결정을 기존 플랫폼 경계에 반영한다. **후속 O01 infra 코드를 구현하고 로컬 검사를 마쳤다. 실제 서버 기동·합성 추적 수집/재조회·고정 trace 재시작 보존까지 통과했으며 Agent 계측은 위 O02 DB 재검사·10개 span 수집/재사용/재조회까지 서버에서 확인했다. 업무 성공·O02 전체 인수는 별도다. ops 조회 연동은 O03 서버 기동과 원본에 연결된 10개 span 조회까지 통과했다. 사용자 Ops 화면에서도 2026-09-28 고정 실행의 10개 span과 부모·상태·소요 시간·토큰 표시를 확인했다.** [실행·인수 안내](../../src/infra/langfuse/README.md). 기존 MLflow는 모델 학습/실험 기록 용도로 유지한다.
 
 **2026-09-26 Langfuse 기동·합성 추적 서버 인수 PASS:** Web/Worker의 loopback 연결 거절·컨테이너 주소 HTTP 200으로 바인딩 불일치를 확인하고 두 앱만 수정했다. Langfuse 4.46.0 서비스 6개 Healthy, 저장소 4개·설정·키 보존을 확인했다. 합성 OTLP trace 1개/3개 span의 부모·자식·상태·시간 검사와 같은 ID/hash의 읽기 전용 재조회가 모두 passed다. 실제 모델 추론·업무 서비스 재시작은 없었다. 고정 추적 재시작 보존은 위 후속 서버 인수까지 완료했다. **당시 후속이던 O02 계측 수집/재사용 결과는 상단 최신 기록을 따른다. 당시 미구현이던 ops API/화면의 후속 상태는 상단 O03 기록을 따른다**. [서버 기록](../history/ops-platform-202609-20261001.md#langfuse-verified-20260926).
 
@@ -24,10 +24,10 @@
 
 | 위치 | 맡을 책임 | 제공할 경계 |
 |---|---|---|
-| `infra/langfuse/` — 기동·합성 수집·재시작 보존 서버 PASS | Langfuse Web/Worker와 의존 저장소의 Compose, 선택 기동/중지/점검, 버전·계정·키·볼륨·보관·복구 | Langfuse 인증 API와 UI 주소 |
-| `agent_platform/` | 실행 단계·Tool·모델 호출을 계측해 Langfuse로 전송, 원래 실행 ID와 연결 | AgentRun·ToolCall·버전·결과는 Agent가 계속 소유 |
-| `ops_platform/` — 구현 예정 | Langfuse API 연동, 실행별 추적 조회·요약·원본 화면 링크, 연결 상태·수집 지연/누락 표시, 운영 설정 | 인증된 운영 조회 API/화면. 조회 호출의 키는 서버에 보관 |
-| `infra/mlflow/` + Model | 기존 학습/실험 기록과 연동 | Agent 추적은 Langfuse, 학습 기록은 MLflow로 역할 분리 |
+| `src/infra/langfuse/` — 기동·합성 수집·재시작 보존 서버 PASS | Langfuse Web/Worker와 의존 저장소의 Compose, 선택 기동/중지/점검, 버전·계정·키·볼륨·보관·복구 | Langfuse 인증 API와 UI 주소 |
+| `src/platform/agent/` | 실행 단계·Tool·모델 호출을 계측해 Langfuse로 전송, 원래 실행 ID와 연결 | AgentRun·ToolCall·버전·결과는 Agent가 계속 소유 |
+| `src/ops/platform/` — 구현 예정 | Langfuse API 연동, 실행별 추적 조회·요약·원본 화면 링크, 연결 상태·수집 지연/누락 표시, 운영 설정 | 인증된 운영 조회 API/화면. 조회 호출의 키는 서버에 보관 |
+| `src/infra/mlflow/` + Model | 기존 학습/실험 기록과 연동 | Agent 추적은 Langfuse, 학습 기록은 MLflow로 역할 분리 |
 
 운영 플랫폼에 들어갈 “관리 코드”는 Langfuse를 **사용하는 API 연동·조회·운영 설정 코드**다. 컨테이너 생성/중지·DB migration·volume 관리 코드는 infra에 둔다. ops에 Docker socket을 연결하거나 Langfuse의 ClickHouse/PostgreSQL을 직접 조회하는 구조로 만들지 않는다. 프로젝트/계정/보관 정책 변경이 필요하면 선택 버전·에디션에서 지원하는 공식 API와 인증·감사 범위를 확인한 뒤 추가한다. 모든 관리 API가 OSS에서 제공된다고 가정하지 않는다.
 
@@ -37,7 +37,7 @@
 
 공식 자체 호스팅 구성에는 Web·Worker와 PostgreSQL·ClickHouse·Redis/Valkey·S3 호환 저장소가 필요하다. 전용 S3 서비스까지 컨테이너로 둘 경우 기본 계획은 6개 상시 서비스다. 일회성 초기화 작업은 별도다. 공식 Compose는 단일 서버 설치 방법이며 고가용성·백업을 자동으로 제공하는 구성이 아니다.
 
-`infra/langfuse/`를 별도 Compose 프로젝트의 선택 기동 그룹으로 구현했고 `infra/ops/up.py --langfuse-only` 진입점을 추가했다. Web/Worker 버전·호환 저장소 버전과 이미지 digest를 고정하고 재실행 시 기존 비밀/볼륨/프로젝트를 재사용한다. 처음 부팅하는 infra 구성에 포함할 방법도 같은 전용 수명주기 코드를 통해 제공한다. 기존 infra를 올릴 때 아직 준비되지 않은 새 저장소가 자동 생성되지는 않게 한다.
+`src/infra/langfuse/`를 별도 Compose 프로젝트의 선택 기동 그룹으로 구현했고 `src/infra/ops/up.py --langfuse-only` 진입점을 추가했다. Web/Worker 버전·호환 저장소 버전과 이미지 digest를 고정하고 재실행 시 기존 비밀/볼륨/프로젝트를 재사용한다. 처음 부팅하는 infra 구성에 포함할 방법도 같은 전용 수명주기 코드를 통해 제공한다. 기존 infra를 올릴 때 아직 준비되지 않은 새 저장소가 자동 생성되지는 않게 한다.
 
 첫 구현의 기본안은 전용 DB/큐/객체 저장소다. 기존 PostgreSQL·Redis·MinIO와 물리 공유가 필요하면 호환성·용량·장애 영향을 확인하고 전용 계정/DB/버킷/큐 경계를 명시한다. 기존 도메인 DB·n8n DB·비밀을 그대로 복사해 연결하지 않는다. 이는 이 프로젝트의 배치 결정이며 제품 자체가 항상 전용 물리 인스턴스를 요구한다는 뜻은 아니다.
 
@@ -89,4 +89,4 @@ Langfuse가 제공하는 프롬프트/평가 기능 도입은 별도다. 발행 
 - [Langfuse 구조](https://langfuse.com/handbook/product-engineering/architecture): SDK 계측·API 수신과 비동기 처리.
 - [Public API](https://langfuse.com/docs/api-and-data-platform/features/public-api): 프로젝트 API와 인증, 조회 연동. 조직/인스턴스 관리 API와 구분.
 - [전송 전 마스킹](https://langfuse.com/docs/observability/features/masking): 앱에서 입력/출력/메타데이터를 제외하거나 변환하는 방법.
-- 소스 확인: `infra/mlflow/docker-compose.yml`, `agent_platform/runtime/requirements.in`, `agent_platform/runtime/agent_runtime/agents.py`, `agent_platform/runtime/agent_runtime/knowledge_tools.py`. MLflow 선언과 기존 Agent 단계는 확인했으며 Langfuse 연동은 미구현이다.
+- 소스 확인: `src/infra/mlflow/docker-compose.yml`, `src/platform/agent/runtime/requirements.in`, `src/platform/agent/runtime/agent_runtime/agents.py`, `src/platform/agent/runtime/agent_runtime/knowledge_tools.py`. MLflow 선언과 기존 Agent 단계는 확인했으며 Langfuse 연동은 미구현이다.

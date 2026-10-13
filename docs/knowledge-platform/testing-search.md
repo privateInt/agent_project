@@ -10,9 +10,9 @@
 cd ~/workspace/agent_project
 (
   set -euo pipefail
-  python3 -m unittest discover -s knowledge_platform/tests -p 'test_*search_tools.py' -v
+  python3 -m unittest discover -s src/platform/knowledge/tests -p 'test_*search_tools.py' -v
   docker build --target tests -t knowledge-platform-tests:search ./knowledge_platform
-  python3 knowledge_platform/tests/run_rerank_db_checks.py
+  python3 src/platform/knowledge/tests/run_rerank_db_checks.py
   cd knowledge_platform
   docker compose --env-file .env --env-file .env.indexing \
     -f docker-compose.yml -f indexing.compose.yml build knowledge-service knowledge-gateway
@@ -29,7 +29,7 @@ Go tests target만 실행하면 DB 설정이 없는 검사가 skip될 수 있다
 
 ```bash
 cd ~/workspace/agent_project
-python3 knowledge_platform/tests/live_search.py \
+python3 src/platform/knowledge/tests/live_search.py \
   --index-id aafe22b7-852b-424e-afaa-58fa8c1d739f \
   --index-version-id 150826c2-1f4c-495c-8e07-54aacaa1a245 \
   --question '이 연구에서 가죽 제품의 생애주기 환경 영향을 어떻게 평가했나요?' \
@@ -71,7 +71,7 @@ Knowledge 기본 주소는 `http://127.0.0.1:15100`, Model 기본 주소는 `htt
 
 ```bash
 cd ~/workspace/agent_project
-python3 knowledge_platform/tests/live_rerank_search.py \
+python3 src/platform/knowledge/tests/live_rerank_search.py \
   --index-id aafe22b7-852b-424e-afaa-58fa8c1d739f \
   --index-version-id 150826c2-1f4c-495c-8e07-54aacaa1a245 \
   --reranker-deployment-id cc64a683-a69f-48a5-836e-9f52f0255cc6 \
@@ -120,4 +120,4 @@ Knowledge service가 Model Deployment의 공식 `RerankingService` gRPC를 호�
 | 정적 확인 | Knowledge Go 87개 tree-sitter 문법 확인, Python AST·JS 문법·Compose 구조·Model 원본 protobuf와 메시지 일치 확인 |
 | Go·DB·GPU | 로컬에는 Go/Docker가 없어 미실행. 이후 사용자 서버의 Go·PostgreSQL 통합과 별도 실제 API 검증 통과를 확인 |
 
-Go 검사 소스에는 입력/바이트/profile 제한, 결정적 동점 처리, 원본 출처 보존, 누락/중복/index/NaN/Inf/token/runtime 변경 거절, off 호출 0회, empty 추론 생략, 오류 시 fallback 금지, 취소/deadline 전파와 rerank 중 삭제 잠금 검사를 추가했다. 작성된 검사와 실제 통과 기록은 구분한다. [로컬·서버 요약](../../knowledge_platform/tests/results/rerank-k07-20260921.json), [실제 API 결과](../../knowledge_platform/tests/results/rerank-search-live-20260921.json).
+Go 검사 소스에는 입력/바이트/profile 제한, 결정적 동점 처리, 원본 출처 보존, 누락/중복/index/NaN/Inf/token/runtime 변경 거절, off 호출 0회, empty 추론 생략, 오류 시 fallback 금지, 취소/deadline 전파와 rerank 중 삭제 잠금 검사를 추가했다. 작성된 검사와 실제 통과 기록은 구분한다. [로컬·서버 요약](../../src/platform/knowledge/tests/results/rerank-k07-20260921.json), [실제 API 결과](../../src/platform/knowledge/tests/results/rerank-search-live-20260921.json).
