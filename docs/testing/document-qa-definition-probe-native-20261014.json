@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "date": "2026-10-14",
+  "source": "user_supplied_terminal_output",
+  "scope": "definition_probe_delivery_bootstrap_failure",
+  "direct_server_access_from_development_workspace": false,
+  "probe_commit": "b0ad32f28e8c4ccabb34dacd51a80c2b881409a5",
+  "helper_sha256": "96e2ca4c84988ca6eb023b40db040bb479afe8fd9610907e1287f4917f23e33e",
+  "native_attempt": {
+    "count": 1,
+    "python_version_observed": "3.10.19",
+    "downloaded_helper_checksum": "PASS",
+    "helper_import": "FAIL",
+    "exception_type": "ModuleNotFoundError",
+    "missing_namespace": "src",
+    "failure_stage": "top_level_import_before_main",
+    "operator_project_layout_verified": false,
+    "settings_read_by_helper": false,
+    "Agent_GET_requests": 0,
+    "inference_requests": 0,
+    "write_requests": 0,
+    "repository_source_hashes_observed": false,
+    "raw_traceback_or_private_paths_retained": false
+  },
+  "delivery_correction": {
+    "product_helper_or_tests_changed": false,
+    "method": "temporary_pinned_full_snapshot_with_explicit_existing_settings",
+    "operator_project_checkout_or_namespace_alias_created": false,
+    "snapshot_sources_are_active_runtime_evidence": false,
+    "isolated_regression_python_version": "3.12.14",
+    "isolated_regression_cases_passed": 2,
+    "isolated_regression_seconds": 0.63,
+    "cases": [
+      "standalone_helper_help_imports_from_snapshot_when_working_directory_has_no_src",
+      "missing_settings_returns_code_only_BLOCKED_with_zero_requests"
+    ],
+    "original_sources_and_legacy_working_directory_unchanged": true,
+    "prior_19_tests_repeated": false,
+    "native_retry": "AWAITING_OPERATOR_EXECUTION"
+  },
+  "python310_full_helper_acceptance": "NOT_COMPLETED",
+  "active_runtime_template_payload_verified": false,
+  "head_readback_verified": false,
+  "answer_quality_verified": false,
+  "f0a_accepted": false
+}
