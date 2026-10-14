@@ -38,3 +38,5 @@ python3 -B -m src.apps.document_qa.definition_probe
 첫 사용자 실행의 import 실패, 전달 경로의 격리 확인과 두 번째 native 실행은 [native 실행 기록](../testing/document-qa-definition-probe-native-20261014.json)을 따른다. 두 번째 실행은 Python 3.10.19에서 checksum 확인 후 네 GET으로 `OBSERVED`를 반환했다. 두 정의는 prompt만 다르고 같은 Agent·입력·모델 pin과 generation/budget을 유지했으며, 기존 두 Run은 계속 `ANSWER_REFERENCE_INVALID`/finalize 실패였다. 쓰기·추론은 각각 0건이다. 이는 이 native 조회 경로의 관찰 성공이며 전체 3.10 검사 실행은 아니다. 활성 runtime/template·실제 payload·head·답변 품질 인수는 계속 미완료다.
 
 후속 제한 Docker metadata 조회는 같은 native 기록의 `serving_container_metadata`에 분리했다. 고정 배포 이름과 owner/deployment label이 일치하고 컨테이너는 running·비paused·비restarting이었다. 이미지 ID를 관찰했으나 현재 Model API의 routing·실행 옵션·실효 template은 아직 확인하지 않았다. 이 조회는 전체 inspect/env/argv/log 출력과 컨테이너 내부 실행을 포함하지 않는다.
+
+후속 argv 관찰 명령은 사용자 출력에서 `SERVING_ARGV_UNCONFIRMED`로 중단됐다. 전달된 명령의 동일성과 내부 실패 단계는 확인되지 않았으며, entrypoint·옵션·모델/template 오류 중 어느 하나로 원인을 확정하지 않는다. 기존 컨테이너 metadata 성공과 argv 미확인을 분리하고 허용된 분류값만 읽는 짧은 후속 조회로 실패 범위를 좁힌다.

@@ -128,5 +128,39 @@
     "answer_quality_verified": false,
     "f0a_accepted": false,
     "limitation": "named_container_matches_baseline_deployment_labels_and_is_running_only; live_Model_routing_and_effective_runtime_template_not_verified"
+  },
+  "serving_argv_attempt": {
+    "source": "user_supplied_terminal_output",
+    "status": "BLOCKED",
+    "scope": "configured_argv_only",
+    "reason": "SERVING_ARGV_UNCONFIRMED",
+    "intended_command_sha256": "727191d8cd1797881488ee1dc24d24e33ef6496ab4182c91b913f693e1bf5dbe",
+    "intended_source_sha256": "15c9f92940935bfb7b545f1f12938d3bf9077645058416bddf21522dd1167752",
+    "delivered_command_integrity_verified": false,
+    "actual_docker_inspect_count_verified": false,
+    "failure_stage": "NOT_IDENTIFIED",
+    "cause": "NOT_IDENTIFIED",
+    "configured_argv_verified": false,
+    "active_runtime_verified": false,
+    "template_verified": false,
+    "payload_verified": false,
+    "head_readback_verified": false,
+    "answer_quality_verified": false,
+    "f0a_accepted": false,
+    "isolated_preparation": {
+      "python_version": "3.12.14",
+      "final_tests_passed": 12,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.066,
+      "native_python310_execution_verified": false,
+      "initial_fixture_expected_keys_outdated_after_head_unknown_flag_added": true,
+      "fixture_updated_to_assert_required_head_unknown_flag_without_weakening": true,
+      "image_guard_mutation_detected_by_assertion": true,
+      "independent_final_review": "PASS"
+    },
+    "raw_argv_exception_or_terminal_fragment_retained": false,
+    "does_not_establish_model_or_template_failure": true
   }
 }
