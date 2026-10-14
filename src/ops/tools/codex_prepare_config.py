@@ -91,7 +91,8 @@ def user_layer(response, target):
     if len(found) != 1:
         raise PrepareError("USER_LAYER_NOT_UNIQUE")
     layer = found[0]
-    if "disabledReason" not in layer or layer["disabledReason"] is not None or not isinstance(layer.get("config"), dict):
+    # CLI 0.162.1 omits disabledReason when its Rust Option<String> is None.
+    if layer.get("disabledReason") is not None or not isinstance(layer.get("config"), dict):
         raise PrepareError("USER_LAYER_UNUSABLE")
     version = layer.get("version")
     if not isinstance(version, str) or not version or len(version) > 4096:

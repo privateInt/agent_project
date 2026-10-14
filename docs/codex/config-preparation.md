@@ -30,6 +30,14 @@ python3 -I -B src/ops/tools/codex_prepare_config.py --expected-uid VERIFIED_UID 
 
 `configuration_prepared=true`는 이 비활성 기본값의 readback 성공이다. 무인 실행 승인이 아니며 역할·비용·합산 상한·병합 강제의 검증을 대체하지 않는다. `write_attempted=true`이지만 확인이 실패한 경우 실제 적용 여부는 미확인으로 남기고, 다음 실행은 먼저 다시 읽는다. 파일 직접 rewrite, CAS 생략, single-write 반복으로 우회하지 않는다. 합성 fixture는 upstream CAS/원자성의 native 인수가 아니다.
 
-[사전 계획 공개판](config-preparation-test-plan.md)은 비공개 실행 UID/경로 한 문장만 일반화했다. 구현 전 원본 계획 v3 해시는 `735683d70ddcab7106458328271d66e72d55f8f73b75ff1701cca0cce3b7beba`이며 독립 reviewer가 사전 PASS를 부여했다. 기존 sandbox 보존, UID·HOME 고정 및 대상 소유권 확인, 계정/카탈로그 미확인 시 쓰기 0건을 사전 해석으로 확정했다. 최종 검토·focused 검사 근거는 `docs/testing/codex-config-preparation-20261014.json`에서 별도로 확인한다.
+[사전 계획 공개판](config-preparation-test-plan.md)은 비공개 실행 UID/경로 한 문장만 일반화했다. 구현 전 원본 계획 v3 해시는 `735683d70ddcab7106458328271d66e72d55f8f73b75ff1701cca0cce3b7beba`이며 독립 reviewer가 사전 PASS를 부여했다. 기존 sandbox 보존, UID·HOME 고정 및 대상 소유권 확인, 계정/카탈로그 미확인 시 쓰기 0건을 사전 해석으로 확정했다. 초기 최종 검토·focused 검사 근거는 `docs/testing/codex-config-preparation-20261014.json`에서 보존한다. CLI 응답 형식 보정의 최신 근거는 `docs/testing/codex-config-wire-20261014.json`에서 확인한다.
 
 공식 계약: [app-server](https://learn.chatgpt.com/docs/app-server), [설정 참조](https://learn.chatgpt.com/docs/config-file/config-reference), [사용량과 요금](https://learn.chatgpt.com/docs/pricing). 확인일 2026-10-14. 실제 서버에서 도구의 정상 적용과 CAS 충돌 인수는 별도 단계다.
+
+## CLI 응답 형식 보정
+
+CLI 0.162.1의 공식 Rust `ConfigLayer`는 `disabled_reason: Option<String>`에 `skip_serializing_if=Option::is_none`을 적용한다. 활성 user layer는 JSON의 `disabledReason`이 생략되는 것이 정상이다. 초기 구현은 생성된 TypeScript의 nullable/필수 선언만 기준으로 그 생략을 거부했고, 사용자 실행에서 `USER_LAYER_UNUSABLE`로 설정 쓰기 전에 중단됐다.
+
+[추가 계획](config-layer-wire-addendum.md)에 따라 생략 또는 명시적 null을 같은 활성 상태로 처리한다. 문자열·false·0·빈 문자열·배열·객체 등 모든 non-null 비활성 사유와 잘못된 config 형식은 계속 차단한다. 계정·경로·필수 version/profile·origins·CAS·비대상 값 보존 기준은 그대로다. D06의 사소한 동등 표현 보정으로 독립 reviewer가 분류했고, 추가 계획 해시 `a7ed90be9dfc0e206a675f5879a7cb04e9c84a901d2b2a74e850ab7a18538748`를 D29에 따라 수정 전에 승인했다.
+
+출처는 [고정 CLI 0.162.1의 Rust 응답 코드](https://github.com/openai/codex/blob/rust-v0.162.1/codex-rs/app-server-protocol/src/protocol/v2/config.rs)다. `ConfigWriteResponse.overridden_metadata`에는 해당 생략 속성이 없으므로 쓰기 receipt는 여전히 명시적 null을 요구한다. 다른 누락 필드를 임의로 정상화하지 않는다. 원래 조회 도구의 해시와 전체 BLOCKED 판정은 바꾸지 않는다. 이 보정 자체는 native 설정 적용이나 CAS/원자성 인수 완료가 아니다.

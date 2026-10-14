@@ -133,7 +133,8 @@ class FakeNative:
         result = {"config": effective, "origins": origins}
         if layers:
             layer = {"name": {"type": "user", "file": str(self.target), "profile": None},
-                     "version": self.version, "config": copy.deepcopy(self.config), "disabledReason": None}
+                     "version": self.version, "config": copy.deepcopy(self.config)}
+            # Rust 0.162.1의 Option::None은 skip_serializing_if로 wire에서 생략된다.
             result["layers"] = [layer]
             mutate = self.options.get("layer_mutator")
             if mutate:
@@ -338,7 +339,6 @@ class PreparationTests(unittest.TestCase):
             lambda r: r["layers"][0].update(disabledReason="managed"),
             lambda r: r["layers"][0].update(version=""),
             lambda r: r["layers"][0].update(version=None),
-            lambda r: r["layers"][0].pop("disabledReason"),
             lambda r: r["layers"][0]["name"].pop("profile"),
             lambda r: r["layers"][0]["name"].update(profile="other-profile"),
             lambda r: r["layers"][0]["name"].update(file=str(self.home / "other-config"))]
@@ -346,6 +346,44 @@ class PreparationTests(unittest.TestCase):
             native = FakeNative(self.target, layer_mutator=mutation)
             with self.subTest(index=index), self.assertRaises(m.PrepareError):
                 self.invoke(native, apply=True)
+            self.assertEqual(native.writes(), [])
+
+    def test_w01_w02_enabled_omission_and_explicit_null_have_equal_results(self):
+        # 승인된 wire 보정: 필드 생략은 실제 비활성 reason이 아니라 활성 None 표현이다.
+        normal = FakeNative(self.target)
+        self.assertNotIn("disabledReason", normal.read(True)["layers"][0])
+        omitted_result = self.invoke(normal, apply=True)
+        compatible = FakeNative(self.target, layer_mutator=
+            lambda response: response["layers"][0].update(disabledReason=None))
+        self.assertIsNone(compatible.read(True)["layers"][0]["disabledReason"])
+        explicit_null_result = self.invoke(compatible, apply=True)
+        self.assertEqual(omitted_result, explicit_null_result)
+        self.assertTrue(omitted_result["configuration_prepared"])
+        self.assertEqual(omitted_result["configuration_check"], "PASS")
+        self.assertEqual(len(normal.writes()), 1)
+        self.assertEqual(len(compatible.writes()), 1)
+        self.assert_inactive_and_public(omitted_result)
+        self.assert_inactive_and_public(explicit_null_result)
+
+    def test_w03_every_present_nonnull_disabled_reason_blocks_write(self):
+        for reason in ("managed", False, 0, "", [], {}):
+            native = FakeNative(self.target, layer_mutator=
+                lambda response, reason=reason: response["layers"][0].update(disabledReason=reason))
+            with self.subTest(reason=reason), self.assertRaises(m.PrepareError) as caught:
+                self.invoke(native, apply=True)
+            self.assertEqual(caught.exception.code, "USER_LAYER_UNUSABLE")
+            self.assertEqual(native.writes(), [])
+
+    def test_w04_missing_or_malformed_layer_config_still_blocks_write(self):
+        mutations = [lambda response: response["layers"][0].pop("config")]
+        for invalid in (None, [], "invalid-layer-config"):
+            mutations.append(lambda response, invalid=invalid:
+                             response["layers"][0].update(config=invalid))
+        for index, mutation in enumerate(mutations):
+            native = FakeNative(self.target, layer_mutator=mutation)
+            with self.subTest(index=index), self.assertRaises(m.PrepareError) as caught:
+                self.invoke(native, apply=True)
+            self.assertEqual(caught.exception.code, "USER_LAYER_UNUSABLE")
             self.assertEqual(native.writes(), [])
 
     def test_c02_account_model_and_legacy_cap_block_before_write(self):
