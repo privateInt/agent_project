@@ -96,3 +96,74 @@ runtime 검사는 [runtime Dockerfile](../../src/platform/agent/runtime/Dockerfi
 실패 횟수/시간은 D17~D18의 같은 문제 누적 기록을 이어받는다. 과거 prompt-only 실패를 새로운 성공 기회로 지우지 않고, 과거 자동 수정 누적 횟수·활성 분석 시간이 기록되지 않은 경우 미확인으로 남긴다. 기존 실패를 고치는 한도를 임의로 초기화하거나 이번 문서 작업으로 제품 실패를 해소했다고 세지 않는다.
 
 실행 근거에는 계획 버전·소스/입력 hash·환경·명령·검사 수·PASS/FAIL/SKIP/BLOCKED·확인 데이터·실제 연동/추론 여부를 남긴다. 새 요약은 [보관 정책](../testing/artifact-retention.md)을 따르며 과거 관찰 JSON을 덮어쓰지 않는다. reviewer는 이 계획의 정확한 버전/SHA-256과 사전 판정, 후속 구현이 있으면 그 diff와 최종 검사 근거를 별도로 기록한다. 필수 native/품질 인수가 BLOCKED인 동안 F0a 사용 가능·완료·병합 가능으로 판정하지 않는다.
+
+## 정의조회 도구 사전계획 v1
+
+2026-10-14 추가. 기준 부모 `55c714728806443463e8bb946c2621407071d4f6`, branch `codex/f0a-definition-probe-20261014`. 새 격리 clone의 시작 clean만 확인했으며 사용자 서버 working tree는 미조회다. 위 기준을 변경하지 않고 다음 작은 구현 단위의 범위와 검사를 구체화한다. **이 추가 계획의 reviewer 사전 PASS 전에는 제품/검사 코드를 작성하지 않는다.**
+
+root의 구현 경로는 `src/apps/document_qa/definition_probe.py`, test_agent는 `src/apps/document_qa/tests/test_definition_probe.py`다. 기존 settings·pure 정의 검증·AgentQAGateway를 재사용한다. 공유 transport/runtime/prompt/model/search·DB/서비스/head·기존 Run/plan/key/receipt는 변경하지 않는다. 예정 API는 `ProbeError(code)`, `load_baseline(path)`, `probe(reader, baseline)`, `FixedReader(row, allowed_paths)`, `main(argv=None)`이며 구현 전 검토에서 구체화한다.
+
+| 계약 | 고정 조건 |
+|---|---|
+| 설정/입력 | 기존 settings 파일 필수. 없으면 `load_settings` 호출·Ops fallback·네트워크 모두 0건. `read_file` 보안 기준 재사용 후 `load_settings(settings, settings)`로 다른 config fallback 차단. baseline의 기존 두 Run/Version ID와 `models.chat`의 deployment/model_version pin을 내부 검증; 실제 ID 일반 코드 하드코딩 금지 |
+| 읽기 범위 | `FixedReader`가 baseline의 Run GET 2개+Version GET 2개만 exact allowlist로 강제. broad AgentQAGateway가 허용하는 parent Agent GET/inspect POST도 금지. body/key/query·steps/목록/resolve·다른 플랫폼/Docker·POST·추론·발행·head·retry/redirect/환경 proxy 사용 없음 |
+| 한도/보존 | total60초·per-request최대8초·최대4 HTTP 시도, monotonic clock. 실패 즉시 중단·재시도 없음. 기존 2MiB/strict JSON 한도 재사용. init/mkdir/chmod/DB/new key·state/receipt 파일 쓰기 없음; 설정/token/baseline/전체 fixture와 파일 mode/목록 불변 |
+| 신원/정의 | 응답 ID와 Run↔Version pin·유효 digest 일치, Run failed+result없음+error code=ANSWER_REFERENCE_INVALID/stage=finalize. original published/candidate draft, 같은 agent·model/tool/template·입력(question/filters), baseline chat pin 비교. pure `definition_checked` 재사용, input/output schema의 필수 shape·두 Version schema 동일성 검사 유지. 서비스 hash는 schema를 포함한 Go hash이므로 재계산했다고 주장하지 않음 |
+| 차이/출력 | prompt-only 여부를 판정하고 다른 정의 차이는 BLOCKED. 공개 출력은 고정 label/code·boolean/count·generation/budget·prompt UTF8 bytes/digest·허용 차이필드명/boolean만. UUID/URL/path/token/credential/invocation_key/definition·input hash·비공개 원문·생성본문/예외문구/미지 필드 출력 금지. source hash는 agents.py/chat.go/qa_agent_transport.py 3개만 repository snapshot으로 명명 |
+| 한계/CLI | steps 미조회이므로 live MISSING_REFERENCE 재검증 아님(code/stage만 대조). active container/template·실행 Model payload·head/DB·추론·품질 미검증 표시. CLI는 --project-root(기본cwd), --baseline(project-root 상대 기본 관찰 JSON), --settings(기존 표준 state) 지원. absolute import로 저장소 설치 없이 별도 임시 파일 실행 가능. 실패는 고정 허용 code의 JSON stderr+nonzero, traceback/원격 body/부분 성공 없음 |
+
+필수 검사는 아래처럼 기대 데이터와 통과 기준을 연결한다. fixture는 합성 ID·비공개 sentinel만 사용하며 별도 두 ID 세트로 실제 ID 하드코딩을 잡는다. 기존 전체 QA/runtime·Ops/GPU/브라우저 검사는 공유 코드가 그대로면 반복하지 않는다. 한 번 확인한 정상 결과는 새 변경/실패 없이 반복하지 않는다.
+
+| ID | 상황/입력 | 기대 결과와 근거 | 환경 |
+|---|---|---|---|
+| DP01 | 정상 settings/baseline·두 Run/Version, prompt만 다름 | exact4 GET·body/key 없음, state/pin/입력 동일·차이 prompt-only, 정확한 generation/byte/digest, sourcehash3개와 unknown flag. fixture deep-copy 불변 | stdlib fixture; 필수 |
+| DP02 | missing/invalid/duplicate baseline ID·다른 model pin·잘못된 JSON/shape | preflight 오류는 network0/new ID0, 응답 불일치 즉시 종료·추가 조회0. 실제 코드에 실제 IDs 없음 | fixture; 필수 |
+| DP03 | missing settings+유효 Ops config, symlink/oversized/invalid settings·disabled Agent·missing/invalid credential | Ops/다른 config 읽기·fallback0, missing settings에서 load_settings0/network0. 기존 파일 bytes/mode/목록 불변, empty HOME에서도 새 state/DB/key 파일0 | tempfile·read_file·patch; 필수 |
+| DP04 | Run/Version ID·hash·state·agent·입력/filters·code/stage/result·chat/model/tool pin 불일치 | 불일치 거부·4GET 이하·원본 실패/객체 불변. 동일한 임의 valid Run/Version digest는 수용하여 Python hash 재계산을 요구하지 않음 | fixture subtests; 필수 |
+| DP05 | generation/budget/template 차이·prompt 동일, 누락/잘못된 정의필드·boolean정수·NaN·invalid Unicode, malformed/missing input/output schema·두 schema 차이 | 유효 비prompt 차이는 BLOCKED 고정 code; 차이필드명/boolean은 허용 출력 상한이며 실패 출력의 필수가 아님. malformed/schema 부정합도 고정 오류. flattened API 미지 metadata는 무시하되 출력 금지. 다른 후보/모델/키 생성0, 성공/품질 주장0 | fixture subtests·pure validator; 필수 |
+| DP06 | prompt/question/filter/error/미지필드/URL/path/token/UUID/invocation_key/금지hash에 고유 sentinel | 성공·BLOCKED·오류와 CLI stdout/stderr 모두 allowlist만, private/금지 digest/예외텍스트0. prompt bytes/digest만 정확하고 active/native/semantic 미인수 유지 | fixture+CLI capture; 필수·M2 |
+| DP07 | parent Agent GET/inspect POST/steps/query/body/key·다른 ID·다섯 번째 시도 | underlying transport 위임 전에 거부, HTTP 추가0. generic gateway 허용 경로도 거부되는 실제 wrapper 경계 확인 | adapter fixture; 필수·M1 |
+| DP08 | deadline 이전/동일/이후·남은8초 미만·중간 HTTP/timeout 실패 | budget60/timeout8 전달, opener timeout≤min(8,remaining), expired network0·오류 후 retry0·시도≤4. 긴 sleep 없이 주입 clock 사용 | fake clock/opener; 필수 |
+| DP09 | 정상 loopback HTTP+별도 CLI 프로세스, 임시 standalone helper 실행 | 실제 GET4/POST0·올바른 임시 bearer·body/key없음, valid JSON·비노출·파일불변. --project-root/상대baseline/--settings 및 PYTHONPATH로 설치 없이 실행 | stdlib HTTP/CLI; 필수·native 아님 |
+| DP10 | loopback redirect→trap, 401/403/404/500·malformed/duplicate JSON·잘못된 content-type·2MiB 초과·timeout | redirect/proxy trap0·추가시도0, 원격 body/예외 private 출력0, 파일불변. timeout/size는 bounded fixture 병용 | HTTP+fixture; 필수 |
+| DP11 | stdlib/Python3.10·import side effect | 외부 설치0·새 import가 state/서비스 읽기/쓰기0. AST3.10 검사와 실제 이용 가능한 Python 실행을 구분; 실제3.10 없으면 해당 실행 BLOCKED | 소스+실행환경; 필수 |
+| DP12 | 실제 서버의 기존 settings와 native4GET | latest 정의/실패 pin의 허용 요약만 인수. fixture/loopback으로 대신하지 않음; payload/template/head/품질은 별도 | **현재 BLOCKED: native 접근 없음** |
+
+실행 시작점은 `python3 -B -m unittest src.apps.document_qa.tests.test_definition_probe`. 실제 버전·source/plan hash·명령·검사수/PASS/FAIL/SKIP/BLOCKED·네트워크/쓰기 범위를 소형 근거에 남긴다. source/layout·문서 링크·`git diff --check`도 확인한다. 공유 코드 수정이 필요하면 먼저 계획/관련 회귀를 추가하고 다시 사전 검토한다.
+
+D38 핵심은 reviewer가 아래 2개를 선정한다. 정상 검사 통과와 격리 복사본의 목표 오류에 의한 검사 실패를 쌍으로 기록한다. syntax/import/환경 실패는 검증력 성공이 아니며 변이 코드는 원본/PR/운영 산출물에 남기지 않는다.
+
+| 변이 | 주입 오류 | 실패해야 하는 검사/근거 |
+|---|---|---|
+| M1 | exact GET allowlist를 우회해 generic gateway가 허용하는 parent Agent GET 통과 | DP07이 실제 예상 밖 transport 위임 때문에 실패. generic gateway가 자체 거부하는 경로만 쓰지 않음 |
+| M2 | 요약에 raw prompt/remote private 필드 복사 | DP06이 private sentinel 노출/허용 key 위반 때문에 실패 |
+
+사전 검토는 이 추가 계획의 정확한 hash에, 최종 독립 검토는 실제 helper/test diff·실행/변이 근거에 각각 연결한다. 통과해도 **read-only 도구의 격리 검증 완료**이며 native4GET·active runtime/template/Model payload·F0a 품질/세 고정 질문은 계속 미인수다. D17~D18의 기존 누적 미확인·시간/시도 기록을 그대로 이어받고 새 branch로 초기화하지 않는다.
+
+## Serving 메타데이터 조회 도구 사전계획 v1
+
+2026-10-14 추가. 기준 HEAD `b74076f994f2eb77a78b1043c1e6780205f50dd7`. root가 `src/apps/document_qa/serving_metadata_probe.py`, test_agent가 해당 `tests/test_serving_metadata_probe.py`를 담당하고 reviewer가 사전·최종 독립 검토한다. **이 추가 계획 사전 PASS 전에는 제품/검사 코드 작성 없음.** 새 도구는 stdlib·Python 3.10 호환·독립 파일 실행을 지원하며 실제 deployment/image를 코드에 고정하지 않는다.
+
+사용자 최신 scalar 관찰은 신원/image/state 일치, Path=`vllm`, Args 수 18이다. 기존 scratch `15c9f92940935bfb7b545f1f12938d3bf9077645058416bddf21522dd1167752`의 Python-only guard가 이 형식을 거부하는 사실과 과거 BLOCKED의 실제 실패 stage·전달 무결성 미확인은 구분한다. 해당 scratch의 capture/parse를 재사용하되 이번 범위 밖으로 확장하지 않는다.
+
+| 계약 | 필수 조건 |
+|---|---|
+| 입력/관찰 | CLI `--deployment` canonical nonzero UUID, `--image` lower-case `sha256:`+64hex 필수. 두 값을 내부 비교에만 사용. exact `model-serving-<deployment>`에 inspect 1회, 같은 응답의 name/owner/deployment/image/running=true/paused=false/restarting=false를 필수 대조 |
+| capture | timeout 8초·stdout 64KiB 제한을 캡처 중 강제(초과 검출용 최대 1byte만 추가 수신), stderr DEVNULL, 종료/실패 시 kill-wait·pipe close. retry·다른 컨테이너 조회·전체 inspect/Env/전체 labels 읽기 없음 |
+| argv | 기존 허용 Python 경로+`-m vllm.entrypoints.openai.api_server`, 또는 `vllm`/`/usr/local/bin/vllm`+`serve`만 지원. shell/미지 entrypoint BLOCKED. `--flag value`/`--flag=value` 지원, model=`/models/<deployment>/model`, served alias=`deployment-<deployment>`, ASCII 정수 max-model-len 128..32768 필수. 선택 chat-template/tokenizer는 중복·빈값·누락값 거부, 다른 정상 vLLM 옵션은 출력하지 않음 |
+| 출력/한계 | 고정 label·허용 boolean·max-model-len 정수만 공개; argv·Path/model/template/tokenizer 경로·UUID·image·private/예외/원문 stderr 출력 없음. 성공은 `configured_argv_only`; active runtime/template·payload·head·답변 품질·F0a 인수 false 유지. 실패는 정의한 고정 stage/reason의 JSON stderr+nonzero, 부분 성공/원문 traceback 없음 |
+| 실행 경계 | standalone 임시 파일에서 저장소 설치/PYTHONPATH 없이 실행. Docker exec·모델/설정/template 파일 읽기·추론·DB/서비스/키/head 변경 없음. 필요한 다운로드는 검증된 공개 commit+파일 hash로 root가 별도 전달하며 도구가 자동 설치/다운로드하지 않음 |
+
+| ID | 상황/입력 | 기대 결과·검증 환경 |
+|---|---|---|
+| SM01 | Python module·vllm 두 허용 경로, 두 flag 표기·optional 조합·128/4096/32768 | 정상 결과 exact allowlist·scalar 값·미검증 flags 확인. 합성 deployment/image 2세트로 하드코딩 배제, 입력 불변. `vllm`+`serve` 1개와 나머지 옵션 17개로 Args=18인 fixture 포함; 실제 사용자 argv를 복사하지 않음 |
+| SM02 | name/owner/deployment/image/state 부정합, malformed/누락 응답 | 같은 inspect의 필수 대조 실패로 고정 stage/reason BLOCKED, 재조회/완화/추론 없음. image는 다른 **유효한** sha256 값도 거부 |
+| SM03 | 필수 옵션 누락·모든 선택 옵션 중복/빈값·잘못된 model/alias·범위 밖/Unicode maxlen, shell/미지 entrypoint | 조용한 기본값·임의 옵션 선택 없이 BLOCKED. 선택 옵션 부재는 정상 false이며 실제 template/tokenizer 기본 선택으로 해석하지 않음 |
+| SM04 | 누락/invalid/private CLI 인자, private argv/미지옵션/경로/예외/잘못된 JSON | 성공·각 실패 stdout/stderr의 exact 공개 필드와 비노출 확인, argparse도 고정 오류. 입력 오류에서 Docker 0회, 정상 독립 CLI는 fake Docker inspect 정확히 1회·파일/상태 변경 없음 |
+| SM05 | fake Docker nonzero·timeout·64KiB 초과·부분 stdout/private stderr | 캡처 중 최대65537bytes·timeout8초·kill/wait/close·추가 시도0을 확인. 실제 8초 sleep 대신 주입 clock/selector로 timeout 분리, 실제 fake process로 정상/실패 경계 확인. Docker daemon/추론은 사용하지 않음 |
+| SM06 | stdlib·Python3.10 문법/실행·standalone·문서/diff | 새 helper/test만 실행, import 부수효과/저장소 의존 없음. AST3.10과 실제3.10 실행을 구분하고 환경이 없으면 해당 실행 미검증. 기존 정의조회19개·scratch12개·wide GPU/QA 전체 재실행 없음 |
+| SM07 | 새 도구의 사용자 서버 실제 실행 | 현재 개발 환경에서는 BLOCKED/미실행. 격리 PASS는 실제 argv/template/품질 인수를 대체하지 않으며 native 결과는 별도 source/hash·관찰 범위에 연결 |
+
+D38은 reviewer가 **vllm entrypoint guard** 1개를 선정한다. 정상 `vllm`+`serve`/Args18 fixture 검사는 PASS해야 하고, 격리 복사본에서 vllm 지원 분기를 제거한 변이는 그 동일 검사에서 예상 OBSERVED 대신 BLOCKED가 되어 assertion FAIL해야 한다. syntax/import/환경 오류는 검출로 세지 않으며 원본 불변·변이 삭제를 확인한다. image guard의 유효 다른 sha256 거부는 SM02에서 유지한다.
+
+실행 시작점은 `python3 -B -m unittest src.apps.document_qa.tests.test_serving_metadata_probe`다. 최종 source/test/계획 hash·환경·명령·검사 수/시간·PASS/FAIL/ERROR/SKIP·변이 원인과 native 미실행을 소형 근거에 남긴다. 기존 기준·실패 이력을 보존하고 D17/D18 과거 누적 횟수·시간은 미확인 상태를 유지한다. 새 PR/도구 추가를 누적 초기화나 기존 BLOCKED 해결·F0a 완료로 기록하지 않는다.
