@@ -2,6 +2,8 @@
 
 갱신: 2026-10-12. 사용자가 제안한 10개 확장을 아래 범위와 순서로 채택한다. 이 문서는 설계·개발 계획이며 설치·이전·운영 검증 완료를 뜻하지 않는다. 현재 상태는 [상태표](../status.md), 첫 작업과 실제 환경은 [인수인계](../HANDOFF_NEXT_SESSION.md), 매 작업의 규칙은 [AGENTS.md](../../AGENTS.md)를 따른다. 기존 [자동화·적응성·플랫폼 독립성](../design-principles.md)을 유지한다.
 
+2026-10-14 후속: [Experiment Advisor 조사·설계](../agent-platform/experiment-advisor-design-20261014.md)를 요구 11/F11의 비긴급 계획 후보로 추가했다. 이번 승인은 조사·문서 추가 범위이며 F11 구현·실험 실행·운영 적용은 각각 별도 사용자 검토/승인 후 진행한다. F0a의 첫 우선순위와 기존 운영 보류는 유지한다.
+
 ## 사용자 제안과 채택 범위
 
 사용자 번호는 요구사항 식별자다. 구현 우선순위는 뒤의 실행 순서로 관리한다.
@@ -18,6 +20,7 @@
 | 8 | 대화 세션·기억·ChatGPT 참고 UI | 채택. Agent가 세션/turn/기억·실행 연결을 소유. 대화 이력과 장기 기억은 별도 기능 | 세션 목록/제목/재접속·중복 turn 방지부터, 이후 사용자가 확인·수정·삭제 가능한 명시 기억 |
 | 9 | 문서 생성·수정·서식 채우기 Tool | 채택. Agent가 Tool/실행, Data가 문서·서식·결과 artifact/버전·계보를 소유 | DOCX 서식 한 종류의 필드 확인→채우기→렌더/검증→다운로드, 원본과 이전 결과 보존 |
 | 10 | CI/CD | 채택. CPU/계약/화면 검증 CI를 먼저 구축하고 운영 CD는 단계별 인수 후 연결 | 실제 사용 가능한 runner에서 필수 검사를 실행. CD는 고정 image/artifact·staging·readback·복귀 검증 |
+| 11 | Experiment Advisor·비교 제안/이력 | 비긴급 계획 후보. Agent가 제안/결정을 소유하고 기존 Model·Data·Knowledge 평가/관측을 참조한다. [최소 설계](../agent-platform/experiment-advisor-design-20261014.md) | 사용자 승인 후 F11a에서 후보 하나의 읽기 전용 제안 미리보기. 자동 탐색·Benchmark·배포는 초기 범위 밖 |
 
 ## 책임 이동과 유지할 경계
 
@@ -116,6 +119,9 @@ F10b는 immutable source/image digest·migration 호환성·staging 인수·heal
 | 10 / F9a→F9b | DOCX 서식 채우기, 이후 수정 | Data artifact/version·Agent Tool 계약, 렌더 인수·미입력·충돌·원본 보존 |
 | 11 / F3b→F3c | LightRAG 비교, 필요 시 Neo4j | 관계 검색용 고정 평가 자료·Model 호출 준비. 이득·출처·비용·삭제 정책 검증 후 채택/종료 |
 | 12 / F10b | staging에서 검증한 CD | 위 단계마다 CI를 확대. 환경/서비스·image pin·migration/readback·복귀를 검증하고 배포 automation 범위 기록 |
+| 후속 후보 / F11a→F11b→F11c→F11d | Advisor 제안 → 자기 이력 → 승인한 수동 비교 → 자동화 검토 | 비긴급·구현 미승인. [단계별 범위/완료선](../agent-platform/experiment-advisor-design-20261014.md)을 따른다. 큐 끝의 후속 후보이며 CD 완료가 기술적 필수 의존성은 아니다 |
+
+F11은 위 연속 실행의 자동 착수 대상이 아니다. 조사 결과를 먼저 보고하고 구현 승인·우선순위를 확인한다. 실제 실험과 운영 적용은 분리해서 승인받으며, 이번 계획 추가로 모델 다운로드·새 배포·색인/추론·운영 설정 변경을 수행하지 않는다.
 
 ## Codex가 이어서 수행할 방법
 
