@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "date": "2026-10-14",
+  "scope": "OFFLINE_ONLY",
+  "summary_ko": "고정 check-run 비교의 offline 구조 검사다. 실제 GitHub 출처·trusted 발행기·병합 조건의 인수가 아니다.",
+  "source_sha256": "3a5f8b6a42b0fae6e93118e66accd8e5bd94eb2cbb3451f9db9fd72cd3c2c69e",
+  "test_sha256": "fcc0b85600114a578f55b8e075bc2519d4b71d900e5ddcd73faaf81b7e5539c5",
+  "prereview_plan_sha256": "5e1c50d59fa0efdd64ac5d2acffad6e6e32c401dc09453871e856cdba9af5511",
+  "historical_runs": [
+    {
+      "phase_ko": "stdout 경계 보완 전 초기 검사",
+      "tests_run": 28,
+      "passed": 28,
+      "failure_count": 0,
+      "error_count": 0,
+      "skip_count": 0,
+      "seconds": 0.042,
+      "source_sha256": "UNRECORDED",
+      "test_sha256": "UNRECORDED",
+      "completion_evidence": false
+    },
+    {
+      "phase_ko": "출력 I/O 회귀 보완 후, 최종 CLI 위조 입력 추가 전 검사",
+      "tests_run": 28,
+      "passed": 28,
+      "failure_count": 0,
+      "error_count": 0,
+      "skip_count": 0,
+      "seconds": 0.064,
+      "source_sha256": "UNRECORDED",
+      "test_sha256": "UNRECORDED",
+      "completion_evidence": false
+    }
+  ],
+  "final_source_bound_run": {
+    "command": "python3 -B -m unittest src.ops.tools.tests.test_github_check_audit",
+    "python_version": "3.12.14",
+    "tests_run": 28,
+    "passed": 28,
+    "failure_count": 0,
+    "error_count": 0,
+    "skip_count": 0,
+    "seconds": 0.068,
+    "process_wall_seconds": 0.159224,
+    "source_and_test_hashes_before": {
+      "source": "3a5f8b6a42b0fae6e93118e66accd8e5bd94eb2cbb3451f9db9fd72cd3c2c69e",
+      "test": "fcc0b85600114a578f55b8e075bc2519d4b71d900e5ddcd73faaf81b7e5539c5"
+    },
+    "source_and_test_hashes_after": {
+      "source": "3a5f8b6a42b0fae6e93118e66accd8e5bd94eb2cbb3451f9db9fd72cd3c2c69e",
+      "test": "fcc0b85600114a578f55b8e075bc2519d4b71d900e5ddcd73faaf81b7e5539c5"
+    },
+    "source_and_test_unchanged": true,
+    "completion_evidence": true
+  },
+  "coverage_ko": [
+    "C01~24: 고정 context·양의 App/run ID·완전한 count·중복/누락·stale head·status/conclusion·위조 입력·다섯 false invariant·비노출·입력 불변을 확인했다.",
+    "C25~26: 구조 일치/불일치/위조/입력 오류 모두 CLI exit 2. write/flush의 OSError·ValueError와 실제 닫힌 stdout pipe도 원문 stderr 없이 exit 2로 종료했다.",
+    "C27: 중복 키·NaN/Infinity·손상 UTF-8/JSON·20자 정수 token·중첩·정확한 1MiB 및 1MiB+1 경계·stdin read 상한을 확인했다.",
+    "C28: stdlib·AST3.10·함수의 파일/network/subprocess 호출 0건과 계획 링크를 확인했다. 테스트 harness의 CLI subprocess는 제품 도구 호출과 구분했다."
+  ],
+  "mutation_checks": [
+    {
+      "mutation": "M1",
+      "target": "AuditorTests.test_14_wrong_app_with_exact_context_is_blocked",
+      "normal_tests_run": 1,
+      "normal_passed": true,
+      "mutant_tests_run": 1,
+      "mutant_failure_count": 1,
+      "mutant_error_count": 0,
+      "failure_cause": "expected_BLOCKED_but_wrong_app_became_STRUCTURAL_MATCH",
+      "mutant_sha256": "1435f6e4c307f9b792e47ecde8a6406fdb45ee9045e4540538a5f0c6380a62fd",
+      "original_source_unchanged": true,
+      "isolated_copy_removed": true,
+      "raw_failure_output_saved": false
+    },
+    {
+      "mutation": "M2",
+      "target": "AuditorTests.test_21_well_formed_forgery_never_authenticates_a_gate",
+      "normal_tests_run": 1,
+      "normal_passed": true,
+      "mutant_tests_run": 1,
+      "mutant_failure_count": 1,
+      "mutant_error_count": 0,
+      "failure_cause": "expected_trusted_gate_verified_false_but_well_formed_forgery_promoted_true",
+      "mutant_sha256": "9a537b6d195ef7565850109b75517a35601798890672acabf0454374fd429859",
+      "original_source_unchanged": true,
+      "isolated_copy_removed": true,
+      "raw_failure_output_saved": false
+    }
+  ],
+  "document_checks": {
+    "plan_relative_links_checked": 3,
+    "missing_targets": 0
+  },
+  "limits": {
+    "python310_syntax": "PASS",
+    "python310_actual_execution": "NOT_RUN",
+    "input_origin_verified": false,
+    "trusted_gate_verified": false,
+    "binding_verified": false,
+    "native_ready": false,
+    "merge_authorized": false,
+    "full_G04_G05_G06_acceptance": false,
+    "output_unavailable_ko": "출력 스트림이 닫혔거나 쓰기/flush가 불가능하면 JSON 전달을 보장하지 않으며 원문 없이 exit 2를 유지한다.",
+    "timing_ko": "CLI 자체 wall-clock 제한은 없다. 완성된 입력과 외부 timeout 5s를 사용하며 테스트 실행 시간과 구분한다."
+  },
+  "effects": {
+    "github_network_requests": 0,
+    "auditor_credential_reads": 0,
+    "auditor_subprocess_calls": 0,
+    "status_or_admin_or_merge_or_workflow_changes": 0,
+    "sandbox_or_codex_or_bwrap_executions": 0,
+    "existing_F0a_or_wide_suites_repeated": false,
+    "product_source_changed_by_test_agent": false
+  },
+  "preservation_ko": "기존 sandbox EACCES 보류와 누적/연장 소진을 초기화하거나 해제하지 않았다. 과거 검사에 최종 hash를 소급 연결하지 않았다."
+}
