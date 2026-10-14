@@ -4,13 +4,14 @@
 
 | 준비 항목 | 현재 판정 |
 |---|---|
-| 공통 정책·프로젝트 규칙·템플릿 | 저장소 문서 준비 |
-| 이번 문서의 GitHub 전달 | 2026-10-14 privateInt 연결·두 저장소 쓰기 권한 확인. [문서 PR](https://github.com/privateInt/agent_project/pulls)에서 게시·검토 결과 확인. main 반영은 독립 검토 후 |
+| 공통 정책·프로젝트 규칙·템플릿 | 1.2-preparation 배포판 준비 |
+| 이번 문서의 GitHub 전달 | 2026-10-14 privateInt 연결·두 저장소 쓰기 권한 확인. [준비 PR #1](https://github.com/privateInt/agent_project/pull/1)에서 게시·검토 결과 확인. main 반영은 독립 검토 후 |
 | GitHub 필수 검사·독립 승인 강제 | 현재 main 보호 없음·ruleset 없음·필수 검사 목록 비어 있음. 자동 개발 전 적용 필요 |
 | GitHub 자동 병합 | 현재 꺼짐. PR 게시와 별개이며 아직 활성화하지 않음 |
 | 서버 CLI·ChatGPT 계정·모델·동시 실행 | 실제 확인 전 |
 | 크레딧 미사용 제어 | 확인 전·무인 실행 보류 |
-| 독립 reviewer 경로 | 실제 적용 전·자체 확인을 독립 승인으로 세지 않음 |
+| 독립 reviewer 경로 | 별도 reviewer의 문서 검토·도구 사전 계획 검토 수행. GitHub 필수 검사 발행/강제는 미구현 |
+| 모델 호출 없는 조회 도구 | [사용 범위](codex/common/READINESS.md)와 [합성 검사 근거](testing/codex-readiness-20261014.json). 실제 서버 조회·크레딧 강제는 미확인 |
 | 기능 개발·worker·scheduler | 미시작 |
 
 2026-10-13 추가: src 구조·Ops 통합의 로컬 적용과 검증은 완료됐다. [소스 구조](architecture/source-layout.md)와 [native 검사 근거](testing/source-layout-native-20261013.json)를 따른다. QA 581개는 검증된 기존 근거를 재사용했고, 수정 관련 검사와 남은 도구·infra·화면 검사를 마쳤다. 새 회귀는 없으며 기존 Ops adapter 실패 1개와 선택 native 검사 skip은 유지한다. 구조의 GitHub main 반영은 `6dd46d069079fc20df5b3d4bac71fe3450550bf8`에서 확인했다. 현재는 [Codex 문서·실행 준비](codex/README.md) 단계다. 본격적인 Codex 기능 개발 전에 사용자에게 먼저 알리고 정리한 공통 규칙·구성·프로젝트 문서를 기준으로 실제 서버 실행 준비를 확인한다. 기능 개발·무인 실행·scheduler 활성화는 시작하지 않았다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.

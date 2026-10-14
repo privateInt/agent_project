@@ -1,8 +1,8 @@
 # 공통 에이전트 구성표
 
 상태: 역할 구성의 공통 선택 완료 / 프로젝트 담당 경로 연결 / 실제 권한 확인 전 / 미실행
-구성표 ID·문서판: codex-agent-roster / 1.1-docs
-공통 규칙: RULES.md / 1.1-docs
+구성표 ID·문서판: codex-agent-roster / 1.2-preparation
+공통 규칙: RULES.md / 1.2-preparation
 
 ## 역할 구성
 
