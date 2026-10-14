@@ -1,6 +1,6 @@
 # Agent 프로젝트 세부 규칙
 
-공통 배포판: [1.2-preparation](common/release.json). 공통 정책은 [RULES.md](common/RULES.md), 검사 기준은 [TESTING.md](common/TESTING.md)를 참조한다.
+공통 배포판: [1.3-preparation](common/release.json). 공통 정책은 [RULES.md](common/RULES.md), 검사 기준은 [TESTING.md](common/TESTING.md)를 참조한다.
 
 ## 목표와 기준 위치
 

@@ -9,7 +9,7 @@
 | [에이전트 구성표](common/AGENT_ROSTER.md) | 역할·모델·협업 경계 |
 | [프로젝트 세부 규칙](project.md) | 이 프로젝트의 경로·보호 대상·기존 계약과 검사 연결 |
 | [준비와 첫 작업](work-plan.md) | 실행 전 조건과 기존 backlog의 첫 기능 작업 |
-| [실행 환경 준비](common/EXECUTION_SETUP.md) | 서버 CLI·계정·권한·크레딧 미사용 확인 순서 |
+| [실행 환경 준비](common/EXECUTION_SETUP.md) | 서버 CLI·계정·권한·결제 정책·사용량 확인 순서 |
 | [조회 도구](common/READINESS.md) · [병합 명세](common/GITHUB_GATES.md) | 모델 호출 없는 점검과 독립 reviewer 필수 검사 연결 |
 | [비활성 설정 적용](config-preparation.md) | 기존 설정을 보존하는 CAS batch와 관련 검사·native 미인수 범위 |
 | [사전 검사 계획](common/PREPARATION_TEST_PLAN.md) | 이번 도구 구현 범위와 후속 native·관리 인수의 경계 |

@@ -4,14 +4,14 @@
 
 | 준비 항목 | 현재 판정 |
 |---|---|
-| 공통 정책·프로젝트 규칙·템플릿 | 1.2-preparation 배포판 준비 |
+| 공통 정책·프로젝트 규칙·템플릿 | 1.3-preparation 배포판 준비 |
 | 이번 문서의 GitHub 전달 | 2026-10-14 privateInt 연결·두 저장소 쓰기 권한 확인. [준비 PR #1](https://github.com/privateInt/agent_project/pull/1)에서 게시·검토 결과 확인. main 반영은 독립 검토 후 |
 | GitHub 필수 검사·독립 승인 강제 | 현재 main 보호 없음·ruleset 없음·필수 검사 목록 비어 있음. 자동 개발 전 적용 필요 |
 | GitHub 자동 병합 | 현재 꺼짐. PR 게시와 별개이며 아직 활성화하지 않음 |
 | 서버 CLI·ChatGPT 계정·모델·동시 실행 | 사용자 제공 조회 출력으로 CLI 0.162.1·ChatGPT 인증 방식·목표 모델/effort 카탈로그 확인. 비활성 기본값과 출처 확인 PASS. 실제 추론·역할별 설정·합산 상한은 미확인 |
-| 크레딧 미사용 제어 | 확인 전·무인 실행 보류 |
+| 결제·사용량 정책 | 사용자 변경 D24에 따라 미사용 강제 입증은 선행조건에서 제외. 에이전트의 자동 충전·추가 구매·API 전환 금지. 계정 자동 충전 설정을 조회/변경한 것은 아님 |
 | 독립 reviewer 경로 | 별도 reviewer의 문서 검토·도구 사전 계획 검토 수행. GitHub 필수 검사 발행/강제는 미구현 |
-| 모델 호출 없는 조회 도구 | [사용 범위](codex/common/READINESS.md)와 [합성 검사 근거](testing/codex-readiness-20261014.json). 사용자 제공 native 조회에서 CLI·인증 방식·카탈로그·현재 quota 확인. 준비 전체와 크레딧 강제는 미완료 |
+| 모델 호출 없는 조회 도구 | [사용 범위](codex/common/READINESS.md)와 [합성 검사 근거](testing/codex-readiness-20261014.json). 사용자 제공 native 조회에서 CLI·인증 방식·카탈로그·현재 quota 확인. 구 credit 진단은 현재 D24의 독립 차단조건이 아니며 다른 준비 조건은 미완료 |
 | 비활성 기본 설정 적용 도구 | [CAS 준비 범위](codex/config-preparation.md). 승인 기본값 9개 쓰기 ACK 후 no-apply 조회에서 configuration_prepared=true·출처 확인 PASS·추가 쓰기 0건. [사용자 출력 근거](testing/codex-config-native-20261014.json). CAS 충돌/원자성 인수는 미완료 |
 | 기능 개발·worker·scheduler | 미시작 |
 

@@ -1,6 +1,6 @@
 # 모델 호출 없는 실행 준비 점검
 
-공통 배포판: 1.2-preparation. CLI 메타데이터를 확인하는 도구의 사용 범위다. 기능 개발·무인 실행·설치·로그인·사용량 초기화·구매를 수행하지 않는다.
+공통 배포판: 1.3-preparation. CLI 메타데이터를 확인하는 도구의 사용 범위다. 기능 개발·무인 실행·설치·로그인·사용량 초기화·구매를 수행하지 않는다.
 
 ## 도구 원본과 검증
 
@@ -32,10 +32,12 @@ python3 -I -B src/ops/tools/codex_readiness.py --expected-uid VERIFIED_UID --cod
 |---|---|---|
 | 계정·설정 | 지정 UID, 조회한 ChatGPT 인증 방식, 유효 기본 설정 | 인증 부수 효과와 전문 역할별 실제 설정 |
 | 모델·사용량 | 카탈로그의 목표 모델/effort, 그 시점의 반환된 한도 | 실제 모델 실행·사용량 초기화와 재개 정책 |
-| 크레딧 | 잔액·reset 횟수로 미사용 제어를 추정하지 않음 | 계정에 적용되는 차감 금지의 강제 제어 |
+| 크레딧의 구 정책 진단 | 잔액·reset 횟수로 미사용 제어를 추정하지 않음 | 최신 D24에서는 미사용 강제 입증을 선행조건으로 요구하지 않음. 계정 결제 설정의 확인·변경 근거는 아님 |
 | 프로세스 | 요청·출력·페이지 상한, 같은 process group 종료 | 별도 세션으로 이탈하는 신뢰할 수 없는 실행 파일은 대상 제외 |
 
 전체 판정은 준비 미확인 항목 때문에 항상 `BLOCKED`, 확인한 정책 충돌이 있으면 `FAIL`이다. 개별 `PASS`를 worker 시작 승인으로 해석하지 않는다. `native_environment=unverified`는 호스트·운영 상태·인증 부수 효과를 이 도구만으로 인수하지 않았다는 뜻이다.
+
+이 고정 도구와 기존 사전 계획·검사·receipt는 작성 당시의 D24를 검증한 근거로 보존한다. 2026-10-14 사용자 변경 뒤에는 `credit_enforcement=UNVERIFIED`나 `CREDIT_ENFORCEMENT_UNVERIFIED`만으로 현재 준비를 차단하지 않는다. 이를 강제 제어 PASS로 바꾸는 것이 아니라 해당 선행조건을 제거한 것이다. 실제 모델/역할·합산 상한·인수·GitHub 조건은 각각 확인하며, 전체 준비 완료를 이 도구의 기존 출력만으로 판정하지 않는다. 현재 D24와 [변경 근거](policy-amendment-20261014.json)를 기준으로 구 진단을 해석한다.
 
 `auth.json`은 내부 해시 비교만 하고 복사·출력하지 않는다. 파일이 같아도 keyring·cache 등의 전체 무변경 증거로 취급하지 않는다. app-server의 `refreshToken:false`는 강제 refresh를 요청하지 않는 조건이며 모든 내부 인증 변경을 막는 보증이 아니다.
 
@@ -43,6 +45,6 @@ python3 -I -B src/ops/tools/codex_readiness.py --expected-uid VERIFIED_UID --cod
 
 전체 60초 안에서 version 3초, 요청 5초, 종료 1+1초를 사용한다. stdout 512 KiB·한 줄 128 KiB·stderr 64 KiB·notification 32개·모델 5페이지를 제한한다. 쓰기 대기도 deadline을 적용하고 stderr 원문은 버린다. 지원하지 않는 응답·필수 필드 누락/형식 오류·timeout은 차단하고 추가 미사용 필드는 폐기한다. 이 한계의 계약과 검사는 [사전 검사 계획](PREPARATION_TEST_PLAN.md)에 있다.
 
-크레딧 미사용·역할별 설정·총 동시 실행·신뢰된 reviewer 검사 발행·GitHub 보호 인수는 [실행 준비](EXECUTION_SETUP.md)와 [병합 명세](GITHUB_GATES.md)의 별도 완료 조건이다. 이 도구는 worker, status emitter, 관리 설정 적용기를 포함하지 않는다.
+역할별 설정·총 동시 실행·신뢰된 reviewer 검사 발행·GitHub 보호 인수는 [실행 준비](EXECUTION_SETUP.md)와 [병합 명세](GITHUB_GATES.md)의 별도 완료 조건이다. 자동 충전·추가 구매·API 전환 금지와 실제 한도 확인은 최신 D24를 따른다. 이 도구는 worker, status emitter, 관리 설정 적용기를 포함하지 않는다.
 
 공식 계약 확인: [app-server](https://learn.chatgpt.com/docs/app-server), [설정](https://learn.chatgpt.com/docs/config-file/config-reference), [사용량](https://learn.chatgpt.com/docs/pricing), 2026-10-14.

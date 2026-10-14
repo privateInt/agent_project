@@ -1,12 +1,12 @@
 # Codex 비활성 준비 설정 적용
 
-설정 준비 단계이며 기능 개발·모델 실행·worker 설치가 아니다. 단일 구현은 `src/ops/tools/codex_prepare_config.py`에 둔다. VMS는 별도 코드를 복제하지 않는다. 공통 1.2-preparation 정책은 그대로 사용한다.
+설정 준비 단계이며 기능 개발·모델 실행·worker 설치가 아니다. 단일 구현은 `src/ops/tools/codex_prepare_config.py`에 둔다. VMS는 별도 코드를 복제하지 않는다. 현재 공통 정책은 1.3-preparation이며 기존 사전 계획과 검사 근거는 당시 기준으로 보존한다.
 
 ## 확인된 입력과 남은 조건
 
 2026-10-14 사용자가 제공한 서버 조회 결과에서 CLI 0.162.1, 실행 계정 일치, ChatGPT 인증 방식, `gpt-6.1-sol`/`xhigh` 카탈로그, 관찰 시점의 quota를 확인했다. CLI 0.139.0에는 준비 설정 key가 부족했고 모델 카탈로그에도 목표 모델이 없었다. 업데이트 뒤 모델 항목은 PASS, 전체는 BLOCKED였다. 이는 계정별 실제 추론 성공이나 서버 전체 인수가 아니다. 개인 인증·절대 경로·사용량 원문은 공개 문서에 저장하지 않는다.
 
-사용자 제공 후속 native 조회에서 비활성 기본값과 정확한 user layer 출처 확인이 PASS였다. `configuration_prepared=true`, `reason=CONFIGURATION_ALREADY_PREPARED`, `changed_keys=[]`이며 추가 쓰기와 모델 호출은 0건이다. 최신 확인 근거는 [native 조회 기록](../testing/codex-config-native-20261014.json)에 둔다. 크레딧 차감 금지·실제 역할 설정·전체 동시 실행 상한·GitHub 필수 검사/독립 검토 강제는 별도 미완료이며 전체 판정은 BLOCKED다.
+사용자 제공 후속 native 조회에서 비활성 기본값과 정확한 user layer 출처 확인이 PASS였다. `configuration_prepared=true`, `reason=CONFIGURATION_ALREADY_PREPARED`, `changed_keys=[]`이며 추가 쓰기와 모델 호출은 0건이다. 최신 확인 근거는 [native 조회 기록](../testing/codex-config-native-20261014.json)에 둔다. 실제 역할 설정·전체 동시 실행 상한·GitHub 필수 검사/독립 검토 강제는 별도 미완료다. 기존 도구의 credit 진단과 전체 BLOCKED는 당시 기준의 출력이며 현재 D24 해석은 [조회 범위](common/READINESS.md)를 따른다.
 
 ## 적용 범위
 
@@ -50,4 +50,4 @@ CLI 0.162.1의 공식 Rust `ConfigLayer`는 `disabled_reason: Option<String>`에
 
 [추가 계획](structured-feature-origin-addendum.md)에 따라 이 한 key에만 canonical child를 필수로 적용한다. 원래 scalar key나 상위 parent에 유효한 metadata가 있어도 child가 없으면 차단한다. exact user file·profile null·현재 layer version 및 같은 값의 다른 layer 거부 기준은 그대로다. 다른 key의 prefix 규칙은 변경하지 않는다. 독립 reviewer는 D06의 동등 출처 표현 보정으로 분류했고 추가 계획 해시 `b5eac6cd2c1c893a750c882f09f022009d8c643232296a0e4aed42bfa1733d68`를 D29에 따라 구현 전에 승인했다.
 
-이미 ACK된 설정에 대한 후속 native 확인은 `--apply` 없이 수행했고 출처 확인까지 통과했다. 이 확인은 사용자 제출 출력에 근거하며 이 문서 작업 환경에서 서버를 직접 조회한 결과는 아니다. 설정을 다시 쓰거나 출처 확인을 생략하지 않았으며 코드와 기존 fixture 검사를 반복할 필요는 없다. CAS 충돌/원자성 인수와 크레딧·역할·합산 상한·GitHub gate는 각각 실제 근거가 필요하다.
+이미 ACK된 설정에 대한 후속 native 확인은 `--apply` 없이 수행했고 출처 확인까지 통과했다. 이 확인은 사용자 제출 출력에 근거하며 이 문서 작업 환경에서 서버를 직접 조회한 결과는 아니다. 설정을 다시 쓰거나 출처 확인을 생략하지 않았으며 코드와 기존 fixture 검사를 반복할 필요는 없다. CAS 충돌/원자성 인수와 역할·합산 상한·GitHub gate는 각각 실제 근거가 필요하다. 자동 충전·추가 구매·API 전환 금지는 최신 D24를 따른다.

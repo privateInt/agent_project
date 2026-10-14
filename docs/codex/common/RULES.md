@@ -1,7 +1,7 @@
 # 공통 개발 규칙
 
 상태: 정책 선택 완료 / 저장소 문서 배포판 / 실행 환경 적용 전
-규칙 ID·문서판: codex-common-rules / 1.2-preparation
+규칙 ID·문서판: codex-common-rules / 1.3-preparation
 적용 대상: 이 배포판을 포함하는 모든 프로젝트. 서버 실행 구성의 확인 절차는 [EXECUTION_SETUP.md](EXECUTION_SETUP.md)를 따른다.
 
 ## 확정된 공통 기준과 적용할 값
@@ -10,11 +10,11 @@
 |---|---|
 | 운영 방식 | DECISIONS.md D22의 서버 Codex CLI 중심 무인개발 구성 참조; 실제 활성화는 준비 후 진행 |
 | Codex 인증 방식 | DECISIONS.md D23의 ChatGPT 계정 로그인 참조; 실제 로그인·이용권·사용 한도 확인은 설정 단계에서 진행 |
-| 사용량·대기·재개 정책 | DECISIONS.md D24 참조; 기본 제공 한도만 사용하고 크레딧 차감·구매·API 전환은 허용하지 않음. 실제 제어 방식 확인 후 적용 |
+| 사용량·대기·재개 정책 | DECISIONS.md D24 참조; 기본 제공 한도 우선, 자동 충전·추가 구매·API 전환 금지. 크레딧 미사용 강제 입증은 실행 선행조건에서 제외 |
 | 한 작업의 시간·사용량 한도 | 작업별 예상 시간·자원 범위는 프로젝트 계획에서 연결. 같은 문제의 수정 상한 D17~D18과 사용 정책 D24를 별도 적용 |
 | 같은 테스트·빌드 실패의 자동 수정 상한 | DECISIONS.md D17 참조; 운영 재실행 기준과 구분 |
 | 같은 미해결 문제의 시간 상한 | DECISIONS.md D18 참조; 한 작업 전체의 총 시간·사용량 한도와 구분 |
-| 에이전트 역할 구성표 | AGENT_ROSTER.md / 1.2-preparation; 역할 경계는 DECISIONS.md D09~D14 참조 |
+| 에이전트 역할 구성표 | AGENT_ROSTER.md / 1.3-preparation; 역할 경계는 DECISIONS.md D09~D14 참조 |
 | 모델·추론 강도 | DECISIONS.md D15의 공통 기본값 참조; 실제 실행 환경에서 확인 후 적용 |
 | 동시 실행 수 | DECISIONS.md D16의 공통 상한 참조; 실제 실행 설정은 확인 후 적용 |
 | 자동 진행 가능한 범위 | DECISIONS.md D02~D03과 D20 참조; 각 프로젝트의 실제 대상과 작업별 범위는 프로젝트·작업 기록에 연결 |
