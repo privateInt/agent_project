@@ -2,7 +2,7 @@
   "schema_version": 1,
   "scope": "native_preparation_observations_and_sandbox_issue_checkpoint",
   "source": "user_provided_native_terminal_outputs",
-  "latest_user_output_received_at": "2026-10-14T14:27:52+09:00",
+  "latest_user_output_received_at": "2026-10-14T14:52:11+09:00",
   "server_directly_accessed_from_document_workspace": false,
   "cli_version_observed": "0.162.1",
   "previous_configuration_evidence": "codex-config-native-20261014.json",
@@ -68,22 +68,51 @@
     "codex_cli_and_sandbox_invocations_in_host_control": 0
   },
   "issue_checkpoint": {
-    "status": "HELD_AT_D18_TIME_LIMIT",
+    "status": "HELD_AFTER_APPROVED_SINGLE_LOG_QUERY",
     "first_unresolved_failure_received_at": "2026-10-14T13:34:16+09:00",
     "time_limit_seconds": 3600,
     "time_limit_reached_at": "2026-10-14T14:34:16+09:00",
     "same_issue_counters_are_not_reset": true,
     "automatic_fourth_sandbox_invocation_prepared": false,
-    "next_kernel_log_reader": {
+    "one_time_extension": {
+      "user_approved_at": "2026-10-14T14:50:51+09:00",
+      "scope": "one_read_only_kernel_log_query_and_interpretation_only",
+      "additional_time_limit_seconds": 600,
+      "approved_native_log_queries": 1,
+      "observed_native_log_queries": 1,
+      "same_issue_cumulative_record_preserved": true,
+      "additional_query_or_sandbox_retry_authorized": false
+    },
+    "kernel_log_reader": {
       "scope": "one_bounded_read_only_kernel_exec_denial_log_query",
       "static_independent_review": "PASS",
       "command_sha256": "5330527b458ceb3362047a77527929fbf2298e3bff1229df57e554864fb9b6bd",
       "max_query_seconds": 5,
       "max_stdout_bytes": 262144,
       "max_log_records": 200,
-      "native_invocations": 0,
-      "delivered_after_time_limit": false,
-      "held_pending_resume_scope_decision": true,
+      "native_invocations": 1,
+      "delivered_after_time_limit": true,
+      "delivery_authorized_by_one_time_extension": true,
+      "user_output_received_at": "2026-10-14T14:52:11+09:00",
+      "reported_result": {
+        "configuration_write_requests": 0,
+        "filesystem_acceptance": "UNVERIFIED",
+        "journal_returncode": 1,
+        "model_invocations": 0,
+        "reason": "LOG_QUERY_NOT_COMPLETED",
+        "sandbox_invocations_this_diagnostic": 0,
+        "scope": "BOUNDED_KERNEL_EXEC_DENIAL_LOG_READ",
+        "status": "BLOCKED",
+        "worker_started": false
+      },
+      "interpretation": {
+        "journal_exit_1": "NO_MATCH_OR_QUERY_ERROR_UNDISTINGUISHED",
+        "stderr_was_discarded_by_reader": true,
+        "matching_record_count_observed": false,
+        "journal_version_observed": false,
+        "root_cause_established": false,
+        "exit_status_reference": "https://github.com/systemd/systemd/issues/32422"
+      },
       "raw_log_or_profile_output": false,
       "zero_events_would_not_exclude_a_security_policy": true
     }
