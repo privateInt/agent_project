@@ -143,8 +143,9 @@ def verify_origins(response, layer, target, defaults):
     for key in defaults:
         parts = key.split(".")
         origin = None
-        for length in range(len(parts), 0, -1):
-            prefix = ".".join(parts[:length])
+        # CLI 0.162.1 records a structured Boolean feature at its enabled leaf.
+        prefixes = [key + ".enabled"] if key == "features.multi_agent_v2" else [".".join(parts[:length]) for length in range(len(parts), 0, -1)]
+        for prefix in prefixes:
             if prefix in origins:
                 origin = origins[prefix]
                 break

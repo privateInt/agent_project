@@ -30,7 +30,7 @@ python3 -I -B src/ops/tools/codex_prepare_config.py --expected-uid VERIFIED_UID 
 
 `configuration_prepared=true`는 이 비활성 기본값의 readback 성공이다. 무인 실행 승인이 아니며 역할·비용·합산 상한·병합 강제의 검증을 대체하지 않는다. `write_attempted=true`이지만 확인이 실패한 경우 실제 적용 여부는 미확인으로 남기고, 다음 실행은 먼저 다시 읽는다. 파일 직접 rewrite, CAS 생략, single-write 반복으로 우회하지 않는다. 합성 fixture는 upstream CAS/원자성의 native 인수가 아니다.
 
-[사전 계획 공개판](config-preparation-test-plan.md)은 비공개 실행 UID/경로 한 문장만 일반화했다. 구현 전 원본 계획 v3 해시는 `735683d70ddcab7106458328271d66e72d55f8f73b75ff1701cca0cce3b7beba`이며 독립 reviewer가 사전 PASS를 부여했다. 기존 sandbox 보존, UID·HOME 고정 및 대상 소유권 확인, 계정/카탈로그 미확인 시 쓰기 0건을 사전 해석으로 확정했다. 초기 최종 검토·focused 검사 근거는 `docs/testing/codex-config-preparation-20261014.json`에서 보존한다. CLI 응답 형식 보정의 최신 근거는 `docs/testing/codex-config-wire-20261014.json`에서 확인한다.
+[사전 계획 공개판](config-preparation-test-plan.md)은 비공개 실행 UID/경로 한 문장만 일반화했다. 구현 전 원본 계획 v3 해시는 `735683d70ddcab7106458328271d66e72d55f8f73b75ff1701cca0cce3b7beba`이며 독립 reviewer가 사전 PASS를 부여했다. 기존 sandbox 보존, UID·HOME 고정 및 대상 소유권 확인, 계정/카탈로그 미확인 시 쓰기 0건을 사전 해석으로 확정했다. 초기 최종 검토·focused 검사 근거는 `docs/testing/codex-config-preparation-20261014.json`에서 보존한다. 응답 형식 보정 근거는 `docs/testing/codex-config-wire-20261014.json`에서 보존하고, 현재 출처 경로 보정의 근거는 `docs/testing/codex-config-origins-20261014.json`에서 확인한다.
 
 공식 계약: [app-server](https://learn.chatgpt.com/docs/app-server), [설정 참조](https://learn.chatgpt.com/docs/config-file/config-reference), [사용량과 요금](https://learn.chatgpt.com/docs/pricing). 확인일 2026-10-14. 실제 서버에서 도구의 정상 적용과 CAS 충돌 인수는 별도 단계다.
 
@@ -41,3 +41,13 @@ CLI 0.162.1의 공식 Rust `ConfigLayer`는 `disabled_reason: Option<String>`에
 [추가 계획](config-layer-wire-addendum.md)에 따라 생략 또는 명시적 null을 같은 활성 상태로 처리한다. 문자열·false·0·빈 문자열·배열·객체 등 모든 non-null 비활성 사유와 잘못된 config 형식은 계속 차단한다. 계정·경로·필수 version/profile·origins·CAS·비대상 값 보존 기준은 그대로다. D06의 사소한 동등 표현 보정으로 독립 reviewer가 분류했고, 추가 계획 해시 `a7ed90be9dfc0e206a675f5879a7cb04e9c84a901d2b2a74e850ab7a18538748`를 D29에 따라 수정 전에 승인했다.
 
 출처는 [고정 CLI 0.162.1의 Rust 응답 코드](https://github.com/openai/codex/blob/rust-v0.162.1/codex-rs/app-server-protocol/src/protocol/v2/config.rs)다. `ConfigWriteResponse.overridden_metadata`에는 해당 생략 속성이 없으므로 쓰기 receipt는 여전히 명시적 null을 요구한다. 다른 누락 필드를 임의로 정상화하지 않는다. 원래 조회 도구의 해시와 전체 BLOCKED 판정은 바꾸지 않는다. 이 보정 자체는 native 설정 적용이나 CAS/원자성 인수 완료가 아니다.
+
+## 구조화된 feature의 출처 경로
+
+2026-10-14 사용자 출력에서 승인 기본값 9개의 native batch 쓰기는 ACK됐고 별도 조회 도구의 configuration도 PASS였다. 준비 도구는 추가 출처 확인에서 `CONFIGURATION_ORIGINS_UNKNOWN`으로 중단됐다. 이는 적용 완료와 검증 완료를 구분해야 하는 부분 결과다.
+
+고정 CLI 0.162.1의 [fingerprint.rs](https://github.com/openai/codex/blob/rust-v0.162.1/codex-rs/config/src/fingerprint.rs)는 구조화된 boolean feature의 출처를 enabled leaf에 기록한다. [merge.rs](https://github.com/openai/codex/blob/rust-v0.162.1/codex-rs/config/src/merge.rs)는 multi_agent_v2를 이 구조화된 feature로 분류한다. 따라서 `features.multi_agent_v2=false` 값의 출처는 `features.multi_agent_v2.enabled`에서 확인한다.
+
+[추가 계획](structured-feature-origin-addendum.md)에 따라 이 한 key에만 canonical child를 필수로 적용한다. 원래 scalar key나 상위 parent에 유효한 metadata가 있어도 child가 없으면 차단한다. exact user file·profile null·현재 layer version 및 같은 값의 다른 layer 거부 기준은 그대로다. 다른 key의 prefix 규칙은 변경하지 않는다. 독립 reviewer는 D06의 동등 출처 표현 보정으로 분류했고 추가 계획 해시 `b5eac6cd2c1c893a750c882f09f022009d8c643232296a0e4aed42bfa1733d68`를 D29에 따라 구현 전에 승인했다.
+
+이미 ACK된 설정에 대한 다음 native 확인은 `--apply` 없이 수행한다. 현재 기본값이 일치하면 쓰기 0건으로 출처를 확인하고, 변경이 관찰되면 적용 대기로 남긴다. 설정을 다시 쓰거나 출처 확인을 생략해 통과시키지 않는다. 수정판의 출처 조회·CAS 충돌/원자성 인수와 크레딧·역할·합산 상한·GitHub gate의 완료는 각각 실제 근거가 필요하다.

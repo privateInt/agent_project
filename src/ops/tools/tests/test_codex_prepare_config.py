@@ -127,6 +127,9 @@ class FakeNative:
         metadata = {"name": {"type": "user", "file": str(self.target), "profile": None},
                     "version": self.version}
         origins = {key: copy.deepcopy(metadata) for key in POLICY}
+        # Rust 0.162.1 fingerprint는 structured v2 bool을 canonical child에 기록한다.
+        del origins["features.multi_agent_v2"]
+        origins["features.multi_agent_v2.enabled"] = copy.deepcopy(metadata)
         if "sandbox_mode" in self.config:
             origins["sandbox_mode"] = copy.deepcopy(metadata)
         origins["private"] = SECRET
@@ -515,7 +518,7 @@ class PreparationTests(unittest.TestCase):
             origins["agents"] = copy.deepcopy(origins["agents.enabled"])
             origins["features"] = copy.deepcopy(origins["features.multi_agent"])
             for key in list(origins):
-                if key.startswith("agents.") or key.startswith("features."):
+                if (key.startswith("agents.") or key.startswith("features.")) and key != "features.multi_agent_v2.enabled":
                     del origins[key]
 
         native = FakeNative(self.target, origin_mutator=grouped_origins)
@@ -533,6 +536,93 @@ class PreparationTests(unittest.TestCase):
         with self.assertRaises(m.PrepareError) as caught:
             self.invoke(native, apply=True)
         self.assertEqual(caught.exception.code, "EFFECTIVE_CONFIGURATION_OVERRIDE")
+
+    def prepared_config(self):
+        config = prior_config()
+        for key, value in POLICY.items():
+            set_key(config, key, value)
+        return config
+
+    def test_s01_canonical_v2_origin_confirms_prepared_without_apply_or_write(self):
+        native = FakeNative(self.target, config=self.prepared_config())
+        origins = native.read(True)["origins"]
+        self.assertIn("features.multi_agent_v2.enabled", origins)
+        self.assertNotIn("features.multi_agent_v2", origins)
+        result = self.invoke(native)
+        self.assertTrue(result["configuration_prepared"])
+        self.assertEqual(result["configuration_check"], "PASS")
+        self.assertEqual(result["reason"], "CONFIGURATION_ALREADY_PREPARED")
+        self.assertEqual(native.writes(), [])
+        self.assert_inactive_and_public(result)
+
+    def test_s02_canonical_child_higher_layer_blocks_even_when_value_is_false(self):
+        def higher_layer(response):
+            metadata = response["origins"]["features.multi_agent_v2.enabled"]
+            metadata["name"] = {"type": "project", "file": str(self.home / "project/.codex/config.toml"),
+                                "profile": None}
+            metadata["version"] = "higher-layer-version"
+
+        native = FakeNative(self.target, config=self.prepared_config(), origin_mutator=higher_layer)
+        self.assertIs(native.config["features"]["multi_agent_v2"], False)
+        with self.assertRaises(m.PrepareError) as caught:
+            self.invoke(native)
+        self.assertEqual(caught.exception.code, "EFFECTIVE_CONFIGURATION_OVERRIDE")
+        self.assertEqual(native.writes(), [])
+
+    def test_s03_missing_canonical_child_cannot_fall_back_to_valid_key_or_parent(self):
+        def missing_child(response):
+            metadata = response["origins"].pop("features.multi_agent_v2.enabled")
+            response["origins"]["features.multi_agent_v2"] = copy.deepcopy(metadata)
+            response["origins"]["features"] = copy.deepcopy(metadata)
+
+        native = FakeNative(self.target, config=self.prepared_config(), origin_mutator=missing_child)
+        with self.assertRaises(m.PrepareError) as caught:
+            self.invoke(native)
+        self.assertEqual(caught.exception.code, "CONFIGURATION_ORIGINS_UNKNOWN")
+        self.assertEqual(native.writes(), [])
+
+    def test_s04_canonical_child_takes_precedence_over_misleading_parents(self):
+        def valid_child_wrong_parent(response):
+            metadata = copy.deepcopy(response["origins"]["features.multi_agent_v2.enabled"])
+            metadata["name"]["type"] = "project"
+            metadata["version"] = "parent-version"
+            response["origins"]["features.multi_agent_v2"] = copy.deepcopy(metadata)
+            response["origins"]["features"] = copy.deepcopy(metadata)
+
+        native = FakeNative(self.target, config=self.prepared_config(), origin_mutator=valid_child_wrong_parent)
+        result = self.invoke(native)
+        self.assertTrue(result["configuration_prepared"])
+        self.assertEqual(native.writes(), [])
+        self.assert_inactive_and_public(result)
+
+        def wrong_child_valid_parent(response):
+            metadata = response["origins"]["features.multi_agent_v2.enabled"]
+            response["origins"]["features.multi_agent_v2"] = copy.deepcopy(metadata)
+            response["origins"]["features"] = copy.deepcopy(metadata)
+            metadata["name"]["type"] = "project"
+
+        native = FakeNative(self.target, config=self.prepared_config(), origin_mutator=wrong_child_valid_parent)
+        with self.assertRaises(m.PrepareError) as caught:
+            self.invoke(native)
+        self.assertEqual(caught.exception.code, "EFFECTIVE_CONFIGURATION_OVERRIDE")
+        self.assertEqual(native.writes(), [])
+
+    def test_s05_canonical_child_requires_exact_version_target_type_and_profile(self):
+        mutations = (
+            lambda metadata: metadata.update(version="stale-version"),
+            lambda metadata: metadata["name"].update(file=str(self.home / "other-config")),
+            lambda metadata: metadata["name"].update(type="system"),
+            lambda metadata: metadata["name"].update(profile="another-profile"),
+        )
+        for index, mutation in enumerate(mutations):
+            def wrong_metadata(response, mutation=mutation):
+                mutation(response["origins"]["features.multi_agent_v2.enabled"])
+
+            native = FakeNative(self.target, config=self.prepared_config(), origin_mutator=wrong_metadata)
+            with self.subTest(index=index), self.assertRaises(m.PrepareError) as caught:
+                self.invoke(native)
+            self.assertEqual(caught.exception.code, "EFFECTIVE_CONFIGURATION_OVERRIDE")
+            self.assertEqual(native.writes(), [])
 
     def test_c05_private_transport_extends_only_batch_and_keeps_source_pinned(self):
         path = SOURCE.with_name("codex_readiness.py")

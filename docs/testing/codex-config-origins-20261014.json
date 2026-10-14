@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "scope": "structured_feature_origin_path_correction_and_read_only_confirmation",
+  "source_sha256": "1068adfde6d882434da7d697759ec9693452614aacd9f8f3467334b298e6cfc1",
+  "test_sha256": "3d313f80473dabb4161845932c46cc060da0635b06815da7ea570d904bd2a3f6",
+  "addendum_sha256": "b5eac6cd2c1c893a750c882f09f022009d8c643232296a0e4aed42bfa1733d68",
+  "plan_independent_preapproval": "PASS",
+  "plan_preapproval_before_implementation": true,
+  "reviewer_change_classification": "D06_MINOR_EQUIVALENT_ORIGIN_PATH",
+  "upstream_cli_version": "0.162.1",
+  "upstream_contract_sources": [
+    "https://github.com/openai/codex/blob/rust-v0.162.1/codex-rs/config/src/fingerprint.rs",
+    "https://github.com/openai/codex/blob/rust-v0.162.1/codex-rs/config/src/merge.rs"
+  ],
+  "wire_contract": {
+    "scalar_key": "features.multi_agent_v2",
+    "required_origin_key": "features.multi_agent_v2.enabled",
+    "ordinary_scalar_or_parent_fallback": "FORBIDDEN",
+    "metadata_requirement": "exact_user_target_profile_null_current_layer_version"
+  },
+  "fixture_checks": {
+    "tests_run": 31,
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 0.351,
+    "python_3_10_syntax": "PASS"
+  },
+  "final_independent_review": "PASS",
+  "readonly_transport_sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+  "readonly_transport_file_unchanged": true,
+  "previous_evidence_retained": [
+    "codex-config-preparation-20261014.json",
+    "codex-config-wire-20261014.json"
+  ],
+  "native_observation": {
+    "source": "user_provided_metadata_output",
+    "observed_at_unix": 1791942220,
+    "configuration_apply_reason": "CONFIGURATION_ORIGINS_UNKNOWN",
+    "write_attempted": true,
+    "write_acknowledged": true,
+    "acknowledged_default_key_count": 9,
+    "independent_readonly_configuration": "PASS",
+    "cli_version": "0.162.1",
+    "authentication_method": "CHATGPT_OBSERVED",
+    "model_catalog_option": "gpt-6.1-sol/xhigh",
+    "quota": "AVAILABLE_AT_OBSERVATION"
+  },
+  "followup_native_mode": "READ_ONLY_NO_APPLY",
+  "fixed_native_origin_confirmation": "NOT_PERFORMED",
+  "native_cas_and_atomicity_acceptance": "UNVERIFIED",
+  "credit_enforcement": "UNVERIFIED",
+  "role_overrides": "UNVERIFIED",
+  "aggregate_concurrency": "UNVERIFIED",
+  "model_invocations": 0,
+  "functional_development_started": false,
+  "worker_started": false,
+  "github_main_or_gates_changed": false,
+  "vms_modified": false,
+  "common_release_unchanged": true,
+  "original_39_fixture_tests_repeated": false,
+  "full_product_tests_repeated": false
+}
