@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "scope": "native_preparation_observations_and_sandbox_issue_checkpoint",
+  "source": "user_provided_native_terminal_outputs",
+  "latest_user_output_received_at": "2026-10-14T17:25:03+09:00",
+  "server_directly_accessed_from_document_workspace": false,
+  "cli_version_observed": "0.162.1",
+  "previous_configuration_evidence": "codex-config-native-20261014.json",
+  "development_snapshots_at_observation": {
+    "agent_project": "5899f2fa975c22f08f7ac7318dfd7e49ee82855f",
+    "vms_project": "a59b0b22b923dc57ef4c81681a7d1f9cf6076c7e",
+    "both_clean": true,
+    "both_detached": true,
+    "branch_refs_unchanged": true
+  },
+  "shared_role_file_installation": {
+    "installed": true,
+    "file_count": 7,
+    "new_files_created": 7,
+    "manifest_sha256_at_installation": "a2ba46841bb99240e146d5497882a2d2e0801dd94d770ad5202c2afe94cb9745",
+    "role_loading": "UNVERIFIED",
+    "role_effective_permissions": "UNVERIFIED"
+  },
+  "permission_profile_metadata": {
+    "scopes": ["home", "agent_project", "vms_project"],
+    "query_status_in_all_scopes": "COMPLETE",
+    "allowed_builtin_profiles_in_all_scopes": [":read-only", ":workspace", ":danger-full-access"],
+    "availability_is_not_activation_or_enforcement": true,
+    "custom_profile_count_in_each_scope": 0,
+    "configured_default_profile_in_each_scope": null,
+    "configured_approval_policy_in_each_scope": null,
+    "configured_legacy_sandbox_in_each_scope": null,
+    "disabled_defaults_check_in_all_scopes": "PASS",
+    "multi_agent_and_multi_agent_v2_remain_disabled": true
+  },
+  "sandbox_probe": {
+    "filesystem_acceptance": "UNVERIFIED",
+    "native_sandbox_invocation_count": 3,
+    "host_filesystem_positive_control": "PASS",
+    "workspace_inside_write": "UNVERIFIED",
+    "workspace_outside_write_denied": "UNVERIFIED",
+    "readonly_inside_write_denied": "UNVERIFIED",
+    "last_command_returncode": 101,
+    "last_command_timed_out": false,
+    "last_command_stdout_bytes": 0,
+    "last_command_stderr_bytes": 209,
+    "panic_location": {"module": "LINUX_RUN_MAIN", "line": 1602, "column": 5},
+    "panic_operation": "payload_exec",
+    "errno_class": "EACCES",
+    "exact_root_cause": "UNKNOWN",
+    "all_probe_directories_removed": true,
+    "observed_user_config_auth_file_and_role_stamps_unchanged": true,
+    "auth_stamp_observation_does_not_cover_entire_auth_store": true
+  },
+  "host_execution_control_and_metadata": {
+    "user_output_received_at": "2026-10-14T14:27:52+09:00",
+    "host_true_returncode": 0,
+    "host_true_succeeded": true,
+    "host_true_timed_out": false,
+    "loader_path_matched_public_whitelist": true,
+    "all_eight_reported_system_entries_mode": "0755",
+    "all_eight_reported_system_entries_execute_or_search_access": true,
+    "all_eight_reported_system_entries_mount_noexec": false,
+    "all_eight_reported_system_entries_mount_nosuid": false,
+    "apparmor_observation_scope": "HOST_DIAGNOSTIC_PYTHON_PROCESS",
+    "apparmor_unconfined_in_that_scope": true,
+    "host_observation_does_not_prove_sandbox_view_or_codex_security_policy": true,
+    "codex_cli_and_sandbox_invocations_in_host_control": 0
+  },
+  "issue_checkpoint": {
+    "status": "HELD_AFTER_APPROVED_HOST_PREREQUISITES_QUERY",
+    "first_unresolved_failure_received_at": "2026-10-14T13:34:16+09:00",
+    "time_limit_seconds": 3600,
+    "time_limit_reached_at": "2026-10-14T14:34:16+09:00",
+    "same_issue_counters_are_not_reset": true,
+    "automatic_fourth_sandbox_invocation_prepared": false,
+    "one_time_extension": {
+      "user_approved_at": "2026-10-14T14:50:51+09:00",
+      "scope": "one_read_only_kernel_log_query_and_interpretation_only",
+      "additional_time_limit_seconds": 600,
+      "approved_native_log_queries": 1,
+      "observed_native_log_queries": 1,
+      "same_issue_cumulative_record_preserved": true,
+      "additional_query_or_sandbox_retry_authorized": false
+    },
+    "host_prerequisites_extension": {
+      "consent_confirmed_by": "user_executed_the_explicitly_scoped_command_and_submitted_output",
+      "user_output_and_consent_confirmation_received_at": "2026-10-14T17:25:03+09:00",
+      "scope": "one_read_only_host_prerequisites_query_batch_and_interpretation_only",
+      "additional_time_limit_seconds": 600,
+      "approved_query_batches": 1,
+      "observed_query_batches": 1,
+      "query_batch_allowance_consumed": true,
+      "execution_start_time_and_elapsed_duration_observed": false,
+      "same_issue_cumulative_record_preserved": true,
+      "additional_query_or_sandbox_retry_authorized": false
+    },
+    "kernel_log_reader": {
+      "scope": "one_bounded_read_only_kernel_exec_denial_log_query",
+      "static_independent_review": "PASS",
+      "command_sha256": "5330527b458ceb3362047a77527929fbf2298e3bff1229df57e554864fb9b6bd",
+      "max_query_seconds": 5,
+      "max_stdout_bytes": 262144,
+      "max_log_records": 200,
+      "native_invocations": 1,
+      "delivered_after_time_limit": true,
+      "delivery_authorized_by_one_time_extension": true,
+      "user_output_received_at": "2026-10-14T14:52:11+09:00",
+      "reported_result": {
+        "configuration_write_requests": 0,
+        "filesystem_acceptance": "UNVERIFIED",
+        "journal_returncode": 1,
+        "model_invocations": 0,
+        "reason": "LOG_QUERY_NOT_COMPLETED",
+        "sandbox_invocations_this_diagnostic": 0,
+        "scope": "BOUNDED_KERNEL_EXEC_DENIAL_LOG_READ",
+        "status": "BLOCKED",
+        "worker_started": false
+      },
+      "interpretation": {
+        "journal_exit_1": "NO_MATCH_OR_QUERY_ERROR_UNDISTINGUISHED",
+        "stderr_was_discarded_by_reader": true,
+        "matching_record_count_observed": false,
+        "journal_version_observed": false,
+        "root_cause_established": false,
+        "exit_status_reference": "https://github.com/systemd/systemd/issues/32422"
+      },
+      "raw_log_or_profile_output": false,
+      "zero_events_would_not_exclude_a_security_policy": true
+    }
+  },
+  "host_prerequisites_observation": {
+    "source": "user_provided_native_terminal_output",
+    "user_output_received_at": "2026-10-14T17:25:03+09:00",
+    "command_sha256": "5e6d28c91657a71a8e216b6ddf5cb1de799a72fba5336155cec3c74c591c0e29",
+    "reported_scope": "codex_host_prerequisites_only",
+    "os_release": {"id": "ubuntu", "version_id": "22.04"},
+    "bwrap_on_path": true,
+    "bwrap_path_matches_installed_package_binary": "UNVERIFIED",
+    "package_query": {
+      "status": "UNCONFIRMED",
+      "exit_code": 1,
+      "packages": {
+        "apparmor": {"status": "install ok installed", "version": "3.0.4-2ubuntu2.3"},
+        "apparmor-utils": {"status": "unknown ok not-installed", "version": null},
+        "apparmor-profiles": {"row_reported": false, "installation_state": "UNCONFIRMED"},
+        "bubblewrap": {"status": "install ok installed", "version": "0.6.1-1"}
+      }
+    },
+    "reported_kernel_values": {
+      "apparmor_restrict_unprivileged_userns": 0,
+      "unprivileged_userns_clone": 1
+    },
+    "installed_profile_file_visible": false,
+    "extra_profile_file_visible": false,
+    "profile_loading": "UNVERIFIED",
+    "sandbox_acceptance": "UNVERIFIED",
+    "interpretation": {
+      "package_query_exit_1_does_not_negate_reported_installed_rows": true,
+      "profile_file_visibility_does_not_establish_loaded_or_enforced_policy": true,
+      "ubuntu_24_04_specific_profile_guidance_not_applied_to_this_22_04_observation": true,
+      "root_cause_established": false,
+      "installation_or_security_policy_change_selected": false
+    },
+    "codex_or_bwrap_executions_in_this_command": 0,
+    "configuration_write_requests": 0,
+    "worker_started_by_this_step": false,
+    "current_worker_process_state_requeried": false
+  },
+  "remaining_acceptance": [
+    "actual_workspace_allow_and_outside_readonly_denial",
+    "role_loading_and_effective_model_effort_permissions",
+    "aggregate_concurrency_enforcement",
+    "native_configuration_cas_conflict_and_atomicity",
+    "trusted_github_checks_and_protection_enforcement"
+  ],
+  "model_invocations_in_reported_preparation_checks": 0,
+  "functional_development_started": false,
+  "worker_started": false,
+  "automation_activated": false,
+  "product_code_or_tests_changed_in_this_checkpoint": false,
+  "product_or_fixture_tests_repeated": false,
+  "common_release_or_policy_changed": false,
+  "vms_repository_modified": false,
+  "unattended_execution_ready": false
+}

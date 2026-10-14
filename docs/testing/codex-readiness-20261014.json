@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "scope": "read_only_metadata_probe_and_merge_specification",
+  "source_sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+  "test_sha256": "d627b31c149d33e4179cdbe0fedc41224fe36a3d42ba994c883ab66838b688d6",
+  "plan_sha256": "5694a71ad680355c357454e2c84f081d7ebcaddd2e362129fe3295ea9ec5506b",
+  "plan_independent_preapproval": "PASS",
+  "plan_preapproval_before_implementation": true,
+  "fixture_checks": {
+    "tests_run": 39,
+    "passed": 39,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 2.944,
+    "python_3_10_syntax": "PASS"
+  },
+  "independent_review_fixes": [
+    "bounded_stdin_write",
+    "process_group_descendant_cleanup",
+    "version_suffix_secret_discard"
+  ],
+  "mutation_checks": [
+    {
+      "mutation": "unknown_credit_pass",
+      "target_test": "ContractTests.test_credit_enforcement_always_remains_unverified",
+      "syntax_valid": true,
+      "detected_as_assertion_failure": true,
+      "environment_errors": 0
+    },
+    {
+      "mutation": "raw_account_leak",
+      "target_test": "ReportContractTests.test_known_metadata_still_cannot_enable_worker_or_credit_gate",
+      "syntax_valid": true,
+      "detected_as_assertion_failure": true,
+      "environment_errors": 0
+    }
+  ],
+  "native_environment": "UNVERIFIED",
+  "local_work_environment_cli": "MISSING",
+  "credit_enforcement": "UNVERIFIED",
+  "trusted_reviewer_check_emitter": "NOT_IMPLEMENTED",
+  "github_admin_apply": "NOT_PERFORMED",
+  "github_auto_merge": "DISABLED",
+  "model_invocations": 0,
+  "functional_development_started": false,
+  "worker_started": false,
+  "full_product_tests_repeated": false,
+  "source_layout_check": {
+    "status": "PASS",
+    "python310_source_files_checked": 473,
+    "compose_include_paths_checked": 29,
+    "runtime_state_read": false,
+    "services_started": false
+  },
+  "remaining_acceptance": [
+    "native_CLI_account_role_and_environment",
+    "enforced_no_paid_credit_use",
+    "trusted_emitter_and_actual_GitHub_rejection_checks"
+  ]
+}

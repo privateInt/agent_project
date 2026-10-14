@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "scope": "disabled_preparation_defaults_only",
+  "source_sha256": "b9717cb0749832f8353deb65abe3ee1e8c7731e90935399e023af4810c2ca010",
+  "test_sha256": "7f4e324644981e799d908b0ea74a4c9ee0f8733fe1469074711a3e8ab6abbd5c",
+  "private_original_plan_sha256": "735683d70ddcab7106458328271d66e72d55f8f73b75ff1701cca0cce3b7beba",
+  "public_redacted_plan_sha256": "0cd71bc82f7a5d5b150eaf1f83f96db70384f5d5853bb92b1b2194235502b453",
+  "plan_independent_preapproval": "PASS",
+  "plan_preapproval_before_implementation": true,
+  "public_plan_difference": "one_private_execution_identity_sentence_generalized",
+  "readonly_transport_sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+  "readonly_transport_file_unchanged": true,
+  "fixture_checks": {
+    "tests_run": 23,
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 0.228,
+    "python_3_10_syntax": "PASS"
+  },
+  "independent_review_fixes": [
+    "same_value_higher_layer_origin_rejected",
+    "interrupt_revokes_partial_success"
+  ],
+  "final_independent_review": "PASS",
+  "native_observation": {
+    "source": "user_provided_metadata_output",
+    "observed_at_unix": 1791940371,
+    "cli_version": "0.162.1",
+    "execution_account_matches": "USER_REPORTED_PASS",
+    "authentication_method": "CHATGPT_OBSERVED",
+    "model_catalog_option": "gpt-6.1-sol/xhigh",
+    "quota": "AVAILABLE_AT_OBSERVATION",
+    "configuration": "FIELDS_UNKNOWN",
+    "overall_status": "BLOCKED"
+  },
+  "native_configuration_apply": "NOT_PERFORMED",
+  "native_cas_and_atomicity_acceptance": "UNVERIFIED",
+  "credit_enforcement": "UNVERIFIED",
+  "role_overrides": "UNVERIFIED",
+  "aggregate_concurrency": "UNVERIFIED",
+  "model_invocations": 0,
+  "functional_development_started": false,
+  "worker_started": false,
+  "github_main_or_gates_changed": false,
+  "vms_modified": false,
+  "common_release_unchanged": true,
+  "original_39_fixture_tests_repeated": false,
+  "full_product_tests_repeated": false,
+  "remaining_acceptance": [
+    "native_disabled_defaults_readback",
+    "native_cas_atomicity_and_unrelated_value_preservation",
+    "enforced_no_paid_credit_use",
+    "role_environment_and_aggregate_cap",
+    "trusted_emitter_and_GitHub_gates"
+  ]
+}

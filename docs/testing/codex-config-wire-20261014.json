@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "scope": "config_layer_optional_disabled_reason_wire_correction",
+  "source_sha256": "f4e50ad287fc624ceb67ef82ccf08c061b01be7698b38e08b8eea33c76ec20f3",
+  "test_sha256": "d0b531f968e52407ab27919c0521b7dbc410ec686adbcafd0c64f3f20044b5df",
+  "addendum_sha256": "a7ed90be9dfc0e206a675f5879a7cb04e9c84a901d2b2a74e850ab7a18538748",
+  "plan_independent_preapproval": "PASS",
+  "plan_preapproval_before_implementation": true,
+  "reviewer_change_classification": "D06_MINOR_EQUIVALENT_WIRE_REPRESENTATION",
+  "upstream_cli_version": "0.162.1",
+  "upstream_contract_source": "https://github.com/openai/codex/blob/rust-v0.162.1/codex-rs/app-server-protocol/src/protocol/v2/config.rs",
+  "upstream_contract_blob_sha": "29539116025c9e76e63842a54b00ddfe95bcaec0",
+  "wire_contract": {
+    "field": "disabledReason",
+    "rust_type": "Option<String>",
+    "serialization": "skip_serializing_if=Option::is_none",
+    "active_layer_forms": [
+      "omitted",
+      "explicit_null"
+    ],
+    "nonnull_values": "REJECTED"
+  },
+  "corrected_test_expectation": "omission_is_equivalent_to_explicit_null_per_pinned_upstream_serializer",
+  "unchanged_requirements": [
+    "account_and_HOME",
+    "exact_user_layer_target_and_profile",
+    "nonempty_version",
+    "CAS",
+    "origins",
+    "unrelated_typed_values",
+    "secret_redaction",
+    "BLOCKED_overall"
+  ],
+  "fixture_checks": {
+    "tests_run": 26,
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 0.307,
+    "python_3_10_syntax": "PASS"
+  },
+  "final_independent_review": "PASS",
+  "readonly_transport_sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+  "readonly_transport_file_unchanged": true,
+  "previous_evidence_retained": "codex-config-preparation-20261014.json",
+  "native_observation": {
+    "source": "user_provided_metadata_output",
+    "observed_at_unix": 1791941707,
+    "configuration_apply_reason": "USER_LAYER_UNUSABLE",
+    "write_attempted": false,
+    "write_acknowledged": false,
+    "native_directory_permission_gate_passed": true,
+    "cli_version": "0.162.1",
+    "authentication_method": "CHATGPT_OBSERVED",
+    "model_catalog_option": "gpt-6.1-sol/xhigh",
+    "quota": "AVAILABLE_AT_OBSERVATION"
+  },
+  "fixed_native_configuration_apply": "NOT_PERFORMED",
+  "native_cas_and_atomicity_acceptance": "UNVERIFIED",
+  "credit_enforcement": "UNVERIFIED",
+  "role_overrides": "UNVERIFIED",
+  "aggregate_concurrency": "UNVERIFIED",
+  "model_invocations": 0,
+  "functional_development_started": false,
+  "worker_started": false,
+  "github_main_or_gates_changed": false,
+  "vms_modified": false,
+  "common_release_unchanged": true,
+  "original_39_fixture_tests_repeated": false,
+  "full_product_tests_repeated": false
+}

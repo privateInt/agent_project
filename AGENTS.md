@@ -1,8 +1,12 @@
 # Agent Project 작업 규칙
 
+## 공통 규칙과 프로젝트 진입점
+
+[Codex 문서](docs/codex/README.md)에서 공통 배포판·테스트 기준·에이전트 구성·프로젝트 규칙을 읽는다. 확정 공통 정책은 동일 버전으로 모든 프로젝트에 포함한다. 기존 플랫폼/운영 보류와 보호 대상은 유지한다. 실행 설정 미확인 상태에서 기능 개발이나 무인 실행을 시작하지 않는다.
+
 ## 시작점과 현재 우선순위
 
-먼저 `docs/HANDOFF_NEXT_SESSION.md`, `docs/status.md`, `docs/roadmap.md`를 읽고 실제 소스/runtime을 조회로 대조한다. 확장 순서·작은 단위·완료선은 `docs/plans/platform-expansion-work-plan-20261012.md`를 따른다. src 구조·Ops 통합의 로컬 적용과 검증은 완료됐으며 [구조 안내](docs/architecture/source-layout.md)와 `docs/testing/source-layout-native-20261013.json`을 따른다. 현재 단계는 이 구조 변경의 GitHub 반영이다. 2026-10-13 사용자 추가 지시에 따라, 본격적인 Codex 기능 개발을 시작하기 전에 사용자에게 먼저 알리고 공통 상위 규칙·에이전트 구성 목록·프로젝트별 세부 규칙과 작업 목록 템플릿을 정하는 준비 단계를 진행한다. 이 준비를 마치기 전에는 F0a/H01 등의 기능 개발이나 무인 실행을 시작하지 않는다. 준비 후 첫 Agent 기능 작업은 F0a: 문서 QA의 `MISSING_REFERENCE` 해결이다. 과거 부팅 후보/승인 hash 재결합은 보류이며 이 구조 작업 때문에 자동 활성화하지 않는다. 최초 smoke 성공을 일반 질문 품질 통과로 해석하지 않는다.
+먼저 `docs/HANDOFF_NEXT_SESSION.md`, `docs/status.md`, `docs/roadmap.md`를 읽고 실제 소스/runtime을 조회로 대조한다. 확장 순서·작은 단위·완료선은 `docs/plans/platform-expansion-work-plan-20261012.md`를 따른다. src 구조·Ops 통합의 로컬 적용과 검증은 완료됐으며 [구조 안내](docs/architecture/source-layout.md)와 `docs/testing/source-layout-native-20261013.json`을 따른다. 이 구조의 GitHub main 반영은 `6dd46d069079fc20df5b3d4bac71fe3450550bf8`에서 확인했다. 현재 단계는 공통 규칙·프로젝트 문서와 실행 환경 준비다. 2026-10-13 사용자 추가 지시에 따라, 공통 규칙·에이전트 구성·프로젝트별 세부 규칙과 템플릿은 문서로 정리했다. 현재는 실제 서버 실행 구성을 확인하는 준비 단계이며 본격적인 Codex 기능 개발 시작 전에 사용자에게 알린다. 이 준비를 마치기 전에는 F0a/H01 등의 기능 개발이나 무인 실행을 시작하지 않는다. 준비 후 첫 Agent 기능 작업은 F0a: 문서 QA의 `MISSING_REFERENCE` 해결이다. 과거 부팅 후보/승인 hash 재결합은 보류이며 이 구조 작업 때문에 자동 활성화하지 않는다. 최초 smoke 성공을 일반 질문 품질 통과로 해석하지 않는다.
 
 사용자가 연속 작업을 요청하면 의존성이 만족된 첫 미완료 단위를 코드→관련 검사→필요한 실제 인수→문서 기록까지 끝내고 다음 단위로 진행한다. 매번 계속 여부를 묻지 않는다. 한 번에 여러 플랫폼을 대규모로 바꾸지 않는다. 진행 중 범위/판단/남은 검증을 한국어로 간결하게 보고한다. 실행 지침만으로 상시 실행 worker가 설치됐다고 말하지 않는다.
 
