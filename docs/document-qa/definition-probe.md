@@ -46,3 +46,5 @@ python3 -B -m src.apps.document_qa.definition_probe
 [serving_metadata_probe.py](../../src/apps/document_qa/serving_metadata_probe.py)는 별도의 단독 실행 도구다. 필수 `--deployment`/`--image` 값을 내부 pin으로 받아 같은 inspect 한 번의 신원·상태를 대조하고, Python module 또는 `vllm serve`의 선택된 argv 필드를 확인한다. 8초·64KiB 캡처 한도와 stage별 고정 오류를 사용하며 이미지·실제 식별자·경로·argv·오류 원문은 출력하지 않는다. 이 파일은 stdlib만 사용하므로 저장소 clone/PYTHONPATH 없이 고정 commit과 파일 hash를 검증한 임시 파일에서 실행할 수 있다. 기존 정의조회 도구와 달리 Agent GET/settings를 사용하지 않으며 Docker exec·모델/template 파일 읽기·추론은 없다.
 
 성공 결과의 template/tokenizer option 여부는 CLI에 명시됐는지만 나타낸다. 해당 옵션이 없을 때의 기본 파일 선택과 실효 template, Model API routing·payload·head·답변 품질은 계속 미검증이다. 새 도구의 사전 기준은 검사 계획의 Serving 메타데이터 조회 도구 v1이며, 격리 결과는 [별도 근거](../testing/document-qa-serving-metadata-probe-offline-20261014.json)에 둔다.
+
+새 standalone 도구의 사용자 실행은 checksum PASS 뒤 `OBSERVED`를 반환했다. 같은 inspect 한 번에서 `vllm_cli`·image/model 경로/alias pin 일치·max_model_len=4096을 확인했고, 명시 chat-template/tokenizer 옵션은 없었다. 기본 template/tokenizer 선택·실효 동작과 전체 Python 3.10 검사·품질 인수는 계속 미완료다. 이 serving 조회는 서버 Codex worker·샌드박스·무인개발 준비 인수를 대신하지 않는다.

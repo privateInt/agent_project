@@ -198,5 +198,33 @@
       "does_not_verify_prior_delivery_integrity_or_all_other_argv_conditions": true
     },
     "raw_path_argv_env_or_logs_output": false
+  },
+  "standalone_serving_metadata_observation": {
+    "source": "user_supplied_terminal_output",
+    "received_at": "2026-10-14T17:04:14+09:00",
+    "probe_commit": "422d7a1dcf749292a2608d23f148867d44874b27",
+    "helper_sha256": "0c2ee234363baa905f13159ed5251ba61311a9f6fa494c3857c5d8ecf9402d02",
+    "helper_checksum": "PASS",
+    "delivery_command_sha256": "4545b6db1f10ed2e15bdb71746731e94121b3ddd5da735c335d25da668eac709",
+    "status": "OBSERVED",
+    "scope": "configured_argv_only",
+    "docker_inspect_calls": 1,
+    "entrypoint_family": "vllm_cli",
+    "image_matches_pin": true,
+    "model_path_matches_pin": true,
+    "served_alias_matches_pin": true,
+    "max_model_len": 4096,
+    "explicit_chat_template_option": false,
+    "explicit_tokenizer_option": false,
+    "active_runtime_verified": false,
+    "template_verified": false,
+    "payload_verified": false,
+    "head_readback_verified": false,
+    "answer_quality_verified": false,
+    "f0a_accepted": false,
+    "python310_full_test_suite": "NOT_RUN",
+    "native_interpreter_version_reprinted": false,
+    "raw_argv_paths_or_terminal_fragment_retained": false,
+    "does_not_verify_server_Codex_worker_or_unattended_readiness": true
   }
 }
