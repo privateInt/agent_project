@@ -2,7 +2,7 @@
   "schema": 1,
   "date": "2026-10-14",
   "source": "user_supplied_terminal_output",
-  "scope": "definition_probe_delivery_bootstrap_failure",
+  "scope": "definition_probe_delivery_and_native_metadata_observation",
   "direct_server_access_from_development_workspace": false,
   "probe_commit": "b0ad32f28e8c4ccabb34dacd51a80c2b881409a5",
   "helper_sha256": "96e2ca4c84988ca6eb023b40db040bb479afe8fd9610907e1287f4917f23e33e",
@@ -36,11 +36,71 @@
     ],
     "original_sources_and_legacy_working_directory_unchanged": true,
     "prior_19_tests_repeated": false,
-    "native_retry": "AWAITING_OPERATOR_EXECUTION"
+    "native_retry": "OBSERVED"
   },
-  "python310_full_helper_acceptance": "NOT_COMPLETED",
+  "python310_full_helper_acceptance": "NOT_COMPLETED_FULL_TEST_SUITE_NOT_RUN",
   "active_runtime_template_payload_verified": false,
   "head_readback_verified": false,
   "answer_quality_verified": false,
-  "f0a_accepted": false
+  "f0a_accepted": false,
+  "native_retry": {
+    "attempt": 2,
+    "source": "user_supplied_terminal_output",
+    "python_version_observed": "3.10.19",
+    "delivery": "temporary_pinned_full_snapshot_with_explicit_existing_settings",
+    "helper_checksum": "PASS",
+    "status": "OBSERVED",
+    "scope": "pinned_agent_definition_metadata_only",
+    "get_requests": 4,
+    "write_requests": 0,
+    "inference_requests": 0,
+    "both_runs_still_failed": true,
+    "run_error_code": "ANSWER_REFERENCE_INVALID",
+    "run_error_stage": "finalize",
+    "same_agent": true,
+    "same_input": true,
+    "model_pin_matches_baseline": true,
+    "run_version_hashes_match": true,
+    "definition_hash_recomputed": false,
+    "changed_definition_fields": [
+      "prompt"
+    ],
+    "definitions": {
+      "original": {
+        "state": "published",
+        "prompt_bytes": 130,
+        "prompt_sha256": "769ca1d4fdd64f55bf2883a0eaf67472874a57d2cfe4eb6fcd4da72147a6eadd",
+        "context_max_chars": 8000,
+        "max_tokens": 512,
+        "temperature": 0,
+        "timeout_ms": 300000
+      },
+      "candidate": {
+        "state": "draft",
+        "prompt_bytes": 1206,
+        "prompt_sha256": "1393ad3cfd0d2e8f46a2b429085ee564f3f8d24a745c68d6d615ebb645c4b24b",
+        "context_max_chars": 8000,
+        "max_tokens": 512,
+        "temperature": 0,
+        "timeout_ms": 300000
+      }
+    },
+    "steps_rechecked": false,
+    "reference_diagnostics_rechecked": false,
+    "repository_source_sha256": {
+      "src/apps/document_qa/qa_agent_transport.py": "6e21829c04f88ff10771a3fb21bb9b5e338e2984543b50e8011ae1a89474887b",
+      "src/platform/agent/runtime/agent_runtime/agents.py": "4b2763a06e875878dde936c80b9fd9af31943dba33388038f01cf575b78cc122",
+      "src/platform/model/gateway/app/chat.go": "e85d1a9a2399dd9f205da52740ce6f77c73aa34eb6ea820cf6264c4b94739263"
+    },
+    "repository_sources_are_active_runtime_evidence": false,
+    "active_runtime_verified": false,
+    "payload_verified": false,
+    "template_verified": false,
+    "head_readback_verified": false,
+    "answer_quality_verified": false,
+    "f0a_accepted": false,
+    "native_python310_probe_path": "OBSERVED",
+    "native_python310_full_test_suite": "NOT_RUN",
+    "raw_private_paths_or_output_retained": false
+  }
 }

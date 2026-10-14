@@ -31,8 +31,8 @@ python3 -B -m src.apps.document_qa.definition_probe
 
 `repository_source_sha256`은 프로젝트 사본의 Agent runtime, Model chat gateway, QA transport 소스 세 파일이다. 활성 컨테이너가 그 파일을 실행한다는 증거는 아니다. 실제 payload·tokenizer/chat template·head·답변 품질은 계속 미검증이며 `f0a_accepted=false`를 유지한다.
 
-검사는 [test_definition_probe.py](../../src/apps/document_qa/tests/test_definition_probe.py)에서 fixture와 실제 loopback HTTP/CLI를 구분한다. 실제 서버 실행 전에는 native 조회 인수나 Python 3.10 실제 실행을 통과로 표시하지 않는다.
+검사는 [test_definition_probe.py](../../src/apps/document_qa/tests/test_definition_probe.py)에서 fixture와 실제 loopback HTTP/CLI를 구분한다. fixture·loopback 검사와 실제 서버 조회를 구분하며, native 조회 성공을 전체 Python 3.10 검사나 F0a 품질 통과로 표시하지 않는다.
 
 격리 검사·오류 주입·호환성의 실행 근거는 [오프라인 결과](../testing/document-qa-definition-probe-offline-20261014.json)에 둔다.
 
-첫 사용자 실행의 import 실패와 수정한 전달 경로의 격리 확인은 [native 실행 기록](../testing/document-qa-definition-probe-native-20261014.json)을 따른다. 실제 정의 조회는 아직 미완료다.
+첫 사용자 실행의 import 실패, 전달 경로의 격리 확인과 두 번째 native 실행은 [native 실행 기록](../testing/document-qa-definition-probe-native-20261014.json)을 따른다. 두 번째 실행은 Python 3.10.19에서 checksum 확인 후 네 GET으로 `OBSERVED`를 반환했다. 두 정의는 prompt만 다르고 같은 Agent·입력·모델 pin과 generation/budget을 유지했으며, 기존 두 Run은 계속 `ANSWER_REFERENCE_INVALID`/finalize 실패였다. 쓰기·추론은 각각 0건이다. 이는 이 native 조회 경로의 관찰 성공이며 전체 3.10 검사 실행은 아니다. 활성 runtime/template·실제 payload·head·답변 품질 인수는 계속 미완료다.
