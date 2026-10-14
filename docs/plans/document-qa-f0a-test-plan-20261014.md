@@ -139,3 +139,31 @@ D38 핵심은 reviewer가 아래 2개를 선정한다. 정상 검사 통과와 �
 | M2 | 요약에 raw prompt/remote private 필드 복사 | DP06이 private sentinel 노출/허용 key 위반 때문에 실패 |
 
 사전 검토는 이 추가 계획의 정확한 hash에, 최종 독립 검토는 실제 helper/test diff·실행/변이 근거에 각각 연결한다. 통과해도 **read-only 도구의 격리 검증 완료**이며 native4GET·active runtime/template/Model payload·F0a 품질/세 고정 질문은 계속 미인수다. D17~D18의 기존 누적 미확인·시간/시도 기록을 그대로 이어받고 새 branch로 초기화하지 않는다.
+
+## Serving 메타데이터 조회 도구 사전계획 v1
+
+2026-10-14 추가. 기준 HEAD `b74076f994f2eb77a78b1043c1e6780205f50dd7`. root가 `src/apps/document_qa/serving_metadata_probe.py`, test_agent가 해당 `tests/test_serving_metadata_probe.py`를 담당하고 reviewer가 사전·최종 독립 검토한다. **이 추가 계획 사전 PASS 전에는 제품/검사 코드 작성 없음.** 새 도구는 stdlib·Python 3.10 호환·독립 파일 실행을 지원하며 실제 deployment/image를 코드에 고정하지 않는다.
+
+사용자 최신 scalar 관찰은 신원/image/state 일치, Path=`vllm`, Args 수 18이다. 기존 scratch `15c9f92940935bfb7b545f1f12938d3bf9077645058416bddf21522dd1167752`의 Python-only guard가 이 형식을 거부하는 사실과 과거 BLOCKED의 실제 실패 stage·전달 무결성 미확인은 구분한다. 해당 scratch의 capture/parse를 재사용하되 이번 범위 밖으로 확장하지 않는다.
+
+| 계약 | 필수 조건 |
+|---|---|
+| 입력/관찰 | CLI `--deployment` canonical nonzero UUID, `--image` lower-case `sha256:`+64hex 필수. 두 값을 내부 비교에만 사용. exact `model-serving-<deployment>`에 inspect 1회, 같은 응답의 name/owner/deployment/image/running=true/paused=false/restarting=false를 필수 대조 |
+| capture | timeout 8초·stdout 64KiB 제한을 캡처 중 강제(초과 검출용 최대 1byte만 추가 수신), stderr DEVNULL, 종료/실패 시 kill-wait·pipe close. retry·다른 컨테이너 조회·전체 inspect/Env/전체 labels 읽기 없음 |
+| argv | 기존 허용 Python 경로+`-m vllm.entrypoints.openai.api_server`, 또는 `vllm`/`/usr/local/bin/vllm`+`serve`만 지원. shell/미지 entrypoint BLOCKED. `--flag value`/`--flag=value` 지원, model=`/models/<deployment>/model`, served alias=`deployment-<deployment>`, ASCII 정수 max-model-len 128..32768 필수. 선택 chat-template/tokenizer는 중복·빈값·누락값 거부, 다른 정상 vLLM 옵션은 출력하지 않음 |
+| 출력/한계 | 고정 label·허용 boolean·max-model-len 정수만 공개; argv·Path/model/template/tokenizer 경로·UUID·image·private/예외/원문 stderr 출력 없음. 성공은 `configured_argv_only`; active runtime/template·payload·head·답변 품질·F0a 인수 false 유지. 실패는 정의한 고정 stage/reason의 JSON stderr+nonzero, 부분 성공/원문 traceback 없음 |
+| 실행 경계 | standalone 임시 파일에서 저장소 설치/PYTHONPATH 없이 실행. Docker exec·모델/설정/template 파일 읽기·추론·DB/서비스/키/head 변경 없음. 필요한 다운로드는 검증된 공개 commit+파일 hash로 root가 별도 전달하며 도구가 자동 설치/다운로드하지 않음 |
+
+| ID | 상황/입력 | 기대 결과·검증 환경 |
+|---|---|---|
+| SM01 | Python module·vllm 두 허용 경로, 두 flag 표기·optional 조합·128/4096/32768 | 정상 결과 exact allowlist·scalar 값·미검증 flags 확인. 합성 deployment/image 2세트로 하드코딩 배제, 입력 불변. `vllm`+`serve` 1개와 나머지 옵션 17개로 Args=18인 fixture 포함; 실제 사용자 argv를 복사하지 않음 |
+| SM02 | name/owner/deployment/image/state 부정합, malformed/누락 응답 | 같은 inspect의 필수 대조 실패로 고정 stage/reason BLOCKED, 재조회/완화/추론 없음. image는 다른 **유효한** sha256 값도 거부 |
+| SM03 | 필수 옵션 누락·모든 선택 옵션 중복/빈값·잘못된 model/alias·범위 밖/Unicode maxlen, shell/미지 entrypoint | 조용한 기본값·임의 옵션 선택 없이 BLOCKED. 선택 옵션 부재는 정상 false이며 실제 template/tokenizer 기본 선택으로 해석하지 않음 |
+| SM04 | 누락/invalid/private CLI 인자, private argv/미지옵션/경로/예외/잘못된 JSON | 성공·각 실패 stdout/stderr의 exact 공개 필드와 비노출 확인, argparse도 고정 오류. 입력 오류에서 Docker 0회, 정상 독립 CLI는 fake Docker inspect 정확히 1회·파일/상태 변경 없음 |
+| SM05 | fake Docker nonzero·timeout·64KiB 초과·부분 stdout/private stderr | 캡처 중 최대65537bytes·timeout8초·kill/wait/close·추가 시도0을 확인. 실제 8초 sleep 대신 주입 clock/selector로 timeout 분리, 실제 fake process로 정상/실패 경계 확인. Docker daemon/추론은 사용하지 않음 |
+| SM06 | stdlib·Python3.10 문법/실행·standalone·문서/diff | 새 helper/test만 실행, import 부수효과/저장소 의존 없음. AST3.10과 실제3.10 실행을 구분하고 환경이 없으면 해당 실행 미검증. 기존 정의조회19개·scratch12개·wide GPU/QA 전체 재실행 없음 |
+| SM07 | 새 도구의 사용자 서버 실제 실행 | 현재 개발 환경에서는 BLOCKED/미실행. 격리 PASS는 실제 argv/template/품질 인수를 대체하지 않으며 native 결과는 별도 source/hash·관찰 범위에 연결 |
+
+D38은 reviewer가 **vllm entrypoint guard** 1개를 선정한다. 정상 `vllm`+`serve`/Args18 fixture 검사는 PASS해야 하고, 격리 복사본에서 vllm 지원 분기를 제거한 변이는 그 동일 검사에서 예상 OBSERVED 대신 BLOCKED가 되어 assertion FAIL해야 한다. syntax/import/환경 오류는 검출로 세지 않으며 원본 불변·변이 삭제를 확인한다. image guard의 유효 다른 sha256 거부는 SM02에서 유지한다.
+
+실행 시작점은 `python3 -B -m unittest src.apps.document_qa.tests.test_serving_metadata_probe`다. 최종 source/test/계획 hash·환경·명령·검사 수/시간·PASS/FAIL/ERROR/SKIP·변이 원인과 native 미실행을 소형 근거에 남긴다. 기존 기준·실패 이력을 보존하고 D17/D18 과거 누적 횟수·시간은 미확인 상태를 유지한다. 새 PR/도구 추가를 누적 초기화나 기존 BLOCKED 해결·F0a 완료로 기록하지 않는다.

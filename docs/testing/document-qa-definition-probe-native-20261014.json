@@ -162,5 +162,41 @@
     },
     "raw_argv_exception_or_terminal_fragment_retained": false,
     "does_not_establish_model_or_template_failure": true
+  },
+  "entrypoint_metadata_shape": {
+    "source": "user_supplied_terminal_output",
+    "status": "OBSERVED",
+    "scope": "entrypoint_metadata_shape_only",
+    "command_sha256": "d06551fb7577f7464b653050689d72e4e6d37dd198f4dbcd21676c1ba4bf6e0d",
+    "docker_container_inspect_calls": 1,
+    "name_matches": true,
+    "owner_matches": true,
+    "deployment_matches": true,
+    "image_matches": true,
+    "running": true,
+    "paused": false,
+    "restarting": false,
+    "path_is_python": false,
+    "path_is_python3": false,
+    "path_is_usr_bin_python3": false,
+    "path_is_usr_local_python3": false,
+    "path_is_vllm": true,
+    "path_is_usr_local_vllm": false,
+    "path_is_bin_sh": false,
+    "path_is_bin_bash": false,
+    "args_count": 18,
+    "configured_argv_verified": false,
+    "active_runtime_verified": false,
+    "template_verified": false,
+    "payload_verified": false,
+    "head_readback_verified": false,
+    "answer_quality_verified": false,
+    "f0a_accepted": false,
+    "static_probe_comparison": {
+      "intended_previous_probe_supports_only_python_module_entrypoint": true,
+      "intended_previous_probe_would_reject_current_vllm_entrypoint": true,
+      "does_not_verify_prior_delivery_integrity_or_all_other_argv_conditions": true
+    },
+    "raw_path_argv_env_or_logs_output": false
   }
 }

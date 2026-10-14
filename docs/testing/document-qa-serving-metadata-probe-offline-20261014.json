@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "date": "2026-10-14",
+  "scope": "serving_metadata_probe_isolated_checks",
+  "summary_ko": "새 stdlib 조회 도구의 합성 입력·독립 CLI·fake Docker 검사만 수행했다. 실제 Docker daemon이나 모델은 호출하지 않았다.",
+  "source_sha256": "0c2ee234363baa905f13159ed5251ba61311a9f6fa494c3857c5d8ecf9402d02",
+  "test_sha256": "b3d6c07bb4d26b28d6e6b786fbac652b2f0b4363b217976419f05330ca1cfe68",
+  "plan_sha256": "02a4658600c5faf62342618da864e00b7dfa6d5b386e0861287c53d6f8227331",
+  "execution": {
+    "command": "python3 -B -m unittest src.apps.document_qa.tests.test_serving_metadata_probe",
+    "python_version": "3.12.14",
+    "tests_run": 12,
+    "passed": 12,
+    "failure_count": 0,
+    "error_count": 0,
+    "skip_count": 0,
+    "seconds": 0.189,
+    "first_run_passed": true,
+    "automatic_fix_cycles": 0,
+    "python310_source_and_test_syntax": "PASS",
+    "python310_actual_execution": "NOT_RUN",
+    "python310_limit_ko": "실제 Python 3.10 실행 환경이 없어 AST 문법 검사와 구분했다."
+  },
+  "coverage": {
+    "SM01": "Python module·vllm·/usr/local/bin/vllm, 두 옵션 표기, 선택 옵션 조합, 정수 경계, 독립 합성 pin 두 세트를 확인했다.",
+    "SM02": "동일 응답의 신원·유효한 다른 image·state·누락 필드 부정합을 고정 오류로 거부했다.",
+    "SM03": "필수/선택 옵션 중복·누락·빈 값, model/alias 부정합, 범위 밖·Unicode maxlen, shell·미지 entrypoint를 거부했다.",
+    "SM04": "정상/오류 출력의 허용 필드와 미검증 flags, private CLI/argv/경로/UUID/image/예외 비노출을 확인했다. 독립 복사본을 -I -B로 실행해 저장소 import 없이 동작했다.",
+    "SM05": "fake Docker의 exact inspect 1회·stderr 폐기·nonzero/잘못된 JSON·65536bytes 정상 및 65537번째 byte 초과 검출·kill/wait/close를 확인했다. timeout은 주입 clock/selector로 검사했으며 실제 8초를 대기하지 않았다.",
+    "SM06": "새 검사만 실행하고 기존 정의조회 19개·scratch 12개·wide GPU/QA 검사는 반복하지 않았다.",
+    "SM07": "실제 사용자 서버에서 새 도구를 실행하지 않았으며 native 인수는 미완료다."
+  },
+  "synthetic_18_args_fixture": {
+    "origin_ko": "소스 CreateArgs의 옵션 17개 토큰과 serve 1개로 재구성한 합성 fixture다. 실제 사용자 argv를 확보하거나 복사한 것이 아니다.",
+    "entrypoint_family": "vllm_cli",
+    "argument_count": 18,
+    "main_result": "OBSERVED"
+  },
+  "mutation_check": {
+    "target": "SummaryTests.test_vllm_serve_eighteen_arguments_main_is_observed",
+    "normal_tests_run": 1,
+    "normal_passed": true,
+    "mutation_ko": "격리 복사본에서 vllm 지원 elif 분기만 제거했다.",
+    "mutant_sha256": "2329094b8b54bd8fd65225349c20dca1436c75bf1ea5c9c62191b0ae069fcb96",
+    "mutant_tests_run": 1,
+    "mutant_failure_count": 1,
+    "mutant_error_count": 0,
+    "mutant_status": "BLOCKED",
+    "mutant_reason": "ENTRYPOINT_UNSUPPORTED",
+    "failure_cause_ko": "main이 정상 반환값 0 대신 2를 반환해 목표 assertion이 실패했다. uncaught 예외나 문법/import 실패가 아니다.",
+    "original_source_unchanged": true,
+    "isolated_copy_removed": true,
+    "raw_failure_output_saved": false
+  },
+  "effects": {
+    "native_docker_requests": 0,
+    "inference_requests": 0,
+    "model_or_template_file_reads": 0,
+    "service_or_DB_or_head_changes": 0,
+    "product_helper_changed_by_test_agent": false,
+    "prior_19_or_12_suites_repeated": false
+  },
+  "limits": {
+    "observed_scope": "configured_argv_only",
+    "active_runtime_verified": false,
+    "template_verified": false,
+    "payload_verified": false,
+    "head_readback_verified": false,
+    "answer_quality_verified": false,
+    "f0a_accepted": false,
+    "historical_D17_attempt_count": "UNKNOWN",
+    "historical_D18_analysis_seconds": "UNKNOWN",
+    "preservation_ko": "기존 terminal 실패와 누적 미확인을 보존한다. 새 도구의 격리 검사 성공을 이전 BLOCKED 해결이나 실제 template/품질 인수로 해석하지 않는다."
+  }
+}

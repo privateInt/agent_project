@@ -40,3 +40,9 @@ python3 -B -m src.apps.document_qa.definition_probe
 후속 제한 Docker metadata 조회는 같은 native 기록의 `serving_container_metadata`에 분리했다. 고정 배포 이름과 owner/deployment label이 일치하고 컨테이너는 running·비paused·비restarting이었다. 이미지 ID를 관찰했으나 현재 Model API의 routing·실행 옵션·실효 template은 아직 확인하지 않았다. 이 조회는 전체 inspect/env/argv/log 출력과 컨테이너 내부 실행을 포함하지 않는다.
 
 후속 argv 관찰 명령은 사용자 출력에서 `SERVING_ARGV_UNCONFIRMED`로 중단됐다. 전달된 명령의 동일성과 내부 실패 단계는 확인되지 않았으며, entrypoint·옵션·모델/template 오류 중 어느 하나로 원인을 확정하지 않는다. 기존 컨테이너 metadata 성공과 argv 미확인을 분리하고 허용된 분류값만 읽는 짧은 후속 조회로 실패 범위를 좁힌다.
+
+후속 형태 조회에서 이름·label·이미지와 상태가 같은 컨테이너의 실행 프로그램은 정확히 `vllm`, 인자는 18개로 관찰됐다. 앞선 의도된 argv 도구는 Python module 형식만 허용하므로 이 현재 형식을 거부한다. 이 대조가 앞선 명령 전달의 무결성이나 다른 argv 조건까지 검증하는 것은 아니며, Model/template 실패 원인을 확정하지 않는다.
+
+[serving_metadata_probe.py](../../src/apps/document_qa/serving_metadata_probe.py)는 별도의 단독 실행 도구다. 필수 `--deployment`/`--image` 값을 내부 pin으로 받아 같은 inspect 한 번의 신원·상태를 대조하고, Python module 또는 `vllm serve`의 선택된 argv 필드를 확인한다. 8초·64KiB 캡처 한도와 stage별 고정 오류를 사용하며 이미지·실제 식별자·경로·argv·오류 원문은 출력하지 않는다. 이 파일은 stdlib만 사용하므로 저장소 clone/PYTHONPATH 없이 고정 commit과 파일 hash를 검증한 임시 파일에서 실행할 수 있다. 기존 정의조회 도구와 달리 Agent GET/settings를 사용하지 않으며 Docker exec·모델/template 파일 읽기·추론은 없다.
+
+성공 결과의 template/tokenizer option 여부는 CLI에 명시됐는지만 나타낸다. 해당 옵션이 없을 때의 기본 파일 선택과 실효 template, Model API routing·payload·head·답변 품질은 계속 미검증이다. 새 도구의 사전 기준은 검사 계획의 Serving 메타데이터 조회 도구 v1이며, 격리 결과는 [별도 근거](../testing/document-qa-serving-metadata-probe-offline-20261014.json)에 둔다.
