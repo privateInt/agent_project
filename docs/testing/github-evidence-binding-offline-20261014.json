@@ -1,0 +1,140 @@
+{
+  "schema": "github-evidence-binding-offline-v1",
+  "date": "2026-10-14",
+  "scope": "OFFLINE_ONLY",
+  "summary": "7개 binding 필드와 claimed digest를 비교하는 순수 API의 격리 검사. 출처 인증·trusted gate·병합 인수가 아니다.",
+  "baseline_commit": "66b3f4fb1e054862e2b3a94e167982f0c5173a5f",
+  "pre_review_plan": {
+    "path": "docs/codex/github-evidence-binding-test-plan.md",
+    "sha256": "ebffc9408cf34d09823800ea0c1df344ce622740594564fb20bad01d71f0d3cc",
+    "result": "PASS",
+    "test_topics": "B01..B18",
+    "selected_mutations": [
+      "M1",
+      "M2"
+    ]
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "python310_ast_syntax": "PASS",
+    "actual_python310": "NOT_RUN",
+    "limitation": "Python 3.10 실행 환경이 없어 실제 3.10 실행은 하지 않았다."
+  },
+  "suite": {
+    "command": "python3 -B -m unittest src.ops.tools.tests.test_github_check_audit src.ops.tools.tests.test_github_evidence_binding",
+    "runs": 1,
+    "legacy_methods": 28,
+    "new_methods": 18,
+    "total": 46,
+    "PASS": 46,
+    "FAIL": 0,
+    "ERROR": 0,
+    "SKIP": 0,
+    "unittest_seconds": 0.09,
+    "process_seconds": 0.186018,
+    "returncode": 0,
+    "stdout_bytes": 0,
+    "pre_sha256": {
+      "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+      "src/ops/tools/tests/test_github_check_audit.py": "fcc0b85600114a578f55b8e075bc2519d4b71d900e5ddcd73faaf81b7e5539c5",
+      "src/ops/tools/tests/test_github_evidence_binding.py": "9bb7a99002451f3422e3db7fe130bafacac39d294d1facc371b340535ca01f41",
+      "docs/codex/github-evidence-binding-test-plan.md": "ebffc9408cf34d09823800ea0c1df344ce622740594564fb20bad01d71f0d3cc"
+    },
+    "post_sha256": {
+      "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+      "src/ops/tools/tests/test_github_check_audit.py": "fcc0b85600114a578f55b8e075bc2519d4b71d900e5ddcd73faaf81b7e5539c5",
+      "src/ops/tools/tests/test_github_evidence_binding.py": "9bb7a99002451f3422e3db7fe130bafacac39d294d1facc371b340535ca01f41",
+      "docs/codex/github-evidence-binding-test-plan.md": "ebffc9408cf34d09823800ea0c1df344ce622740594564fb20bad01d71f0d3cc"
+    },
+    "hashes_unchanged": true
+  },
+  "preservation": {
+    "legacy_functions": 9,
+    "legacy_functions_ast_and_source": "PASS",
+    "legacy_constants_ast_and_source": "PASS",
+    "legacy_cli_entrypoint_ast_and_source": "PASS",
+    "old_test_unchanged": "PASS",
+    "only_new_import": "hashlib",
+    "pure_api_file_network_subprocess_calls": 0,
+    "note": "로컬 git show로 부모 원문을 대조했다. 검사 harness의 로컬 Git 조회·격리 subprocess는 제품 API의 부수효과와 구분한다."
+  },
+  "new_api_assertions": {
+    "golden_vector": "고정 literal digest와 입력 key 순서 불변 확인",
+    "binding_shape_and_values": "expected/observed 양쪽의 정확한 7키·repo/PR/SHA 경계 거부 확인",
+    "report": "exact 11키, OFFLINE_ONLY, STRUCTURAL_MATCH/BLOCKED, 다섯 신뢰 flag 항상 false",
+    "binding_fields_satisfied": "binding 단계 실패 false, binding 성립 뒤 기존 App/head/status 검사 실패 true",
+    "privacy_and_immutability": "정상·실패 report의 private/원문/hash 비출력, stdout/stderr 0, 입력 불변·반복 호출 상태 분리",
+    "forgery_limit": "양쪽 pin·binding·snapshot·digest의 동시 위조는 구조적으로 일치할 수 있지만 신뢰 flag는 false",
+    "artifact_limit": "evidence_sha256는 별도 artifact의 주장된 해시이며 bytes나 현재 envelope/snapshot을 검증하지 않음"
+  },
+  "d38": [
+    {
+      "mutation": "M1",
+      "target": "test_10_each_observed_field_mismatch_with_valid_observed_claim_is_blocked",
+      "fault": "expected/observed digest 비교 제거",
+      "normal": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "error": 0,
+        "skip": 0,
+        "elapsed_seconds": 0.001258
+      },
+      "mutant": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "error": 0,
+        "skip": 0,
+        "elapsed_seconds": 0.000958,
+        "assertion_failure": true
+      },
+      "detected_cause": "BLOCKED를 기대한 입력이 STRUCTURAL_MATCH로 잘못 수용되어 status assertion 실패",
+      "mutant_sha256": "98f89cecb0a353497dbc252fed04cca39106615ab30e3160292490bd300550b6",
+      "temporary_copy_removed": true,
+      "source_and_tests_unchanged": true
+    },
+    {
+      "mutation": "M2",
+      "target": "test_11_valid_wrong_claim_and_malformed_claims_are_blocked",
+      "fault": "claimed/observed digest 비교 제거",
+      "normal": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "error": 0,
+        "skip": 0,
+        "elapsed_seconds": 0.000737
+      },
+      "mutant": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "error": 0,
+        "skip": 0,
+        "elapsed_seconds": 0.000382,
+        "assertion_failure": true
+      },
+      "detected_cause": "BLOCKED를 기대한 입력이 STRUCTURAL_MATCH로 잘못 수용되어 status assertion 실패",
+      "mutant_sha256": "880f12f833d6d84ea83f61db29e1ad745a165e23b71a321f844d892d724d9adc",
+      "temporary_copy_removed": true,
+      "source_and_tests_unchanged": true
+    }
+  ],
+  "execution_boundary": {
+    "native_github_requests": 0,
+    "network_requests": 0,
+    "credential_reads": 0,
+    "emitter_admin_merge_actions": 0,
+    "inference_requests": 0,
+    "sandbox_runs": 0,
+    "existing_d38_reruns": 0,
+    "wide_suites": 0
+  },
+  "limitations": [
+    "expected pin·입력 출처·실제 최신 base/head·artifact bytes·독립 reviewer를 인증하지 않았다.",
+    "실제 GitHub gate, full G05/G06, native 준비 및 병합 허가는 미검증이다.",
+    "기존 CLI 계약과 항상 exit2를 보존했으며 새 binding CLI 모드는 없다.",
+    "기존 sandbox EACCES 보류·누적·연장 소진 및 D17/D18 미확인 이력을 이 단위로 초기화하거나 해제하지 않았다."
+  ]
+}

@@ -6,6 +6,7 @@ a complete input file: timeout 5s python3 -B github_check_audit.py < input.json
 The CLI always exits 2, including when the supplied structures match.
 """
 
+import hashlib
 import json
 import math
 import re
@@ -20,6 +21,13 @@ REQUIRED_CONTEXTS = (
 MAX_RUNS = 1000
 MAX_INPUT_BYTES = 1024 * 1024
 _SHA = re.compile(r"[0-9a-f]{40}")
+BINDING_DOMAIN = b"agent-project:github-evidence-binding:v1\n"
+_BINDING_KEYS = frozenset({
+    "repository", "pr_number", "base_sha", "head_sha",
+    "release_sha256", "plan_sha256", "evidence_sha256",
+})
+_BINDING_REPOSITORY = re.compile(r"[A-Za-z0-9_.-]{1,100}/[A-Za-z0-9_.-]{1,100}")
+_SHA256 = re.compile(r"[0-9a-f]{64}")
 
 
 def _result(reason, context=None, structural_satisfied=False):
@@ -117,6 +125,81 @@ def audit_check_runs(expected_head_sha, expected_apps, snapshot):
             return _result("REQUIRED_CHECK_NOT_SUCCESS", context)
 
     return _result("REQUIRED_CHECKS_STRUCTURALLY_MATCH", structural_satisfied=True)
+
+
+def canonical_binding_digest(binding):
+    """Hash seven validated scalar claims using this protocol's v1 encoding.
+
+    This is an unkeyed digest, not a signature or an authenticated GitHub claim.
+    evidence_sha256 names a separate claimed artifact hash; artifact bytes are
+    neither supplied to nor read by this function. Invalid input returns None.
+    """
+    if (
+        type(binding) is not dict
+        or len(binding) != len(_BINDING_KEYS)
+        or any(type(key) is not str for key in binding)
+        or set(binding) != _BINDING_KEYS
+    ):
+        return None
+    repository = binding["repository"]
+    if (
+        type(repository) is not str
+        or len(repository) > 201
+        or _BINDING_REPOSITORY.fullmatch(repository) is None
+        or any(token in {".", ".."} for token in repository.split("/"))
+    ):
+        return None
+    pr_number = binding["pr_number"]
+    if type(pr_number) is not int or not 1 <= pr_number <= 2**63 - 1:
+        return None
+    if not all(_canonical_sha(binding[key]) for key in ("base_sha", "head_sha")):
+        return None
+    for key in ("release_sha256", "plan_sha256", "evidence_sha256"):
+        value = binding[key]
+        if type(value) is not str or _SHA256.fullmatch(value) is None:
+            return None
+    encoded = json.dumps(
+        binding, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+    ).encode("ascii")
+    return hashlib.sha256(BINDING_DOMAIN + encoded).hexdigest()
+
+
+def _bound_result(reason):
+    report = _result(reason)
+    report["binding_fields_satisfied"] = False
+    return report
+
+
+def audit_bound_checks(expected_binding, expected_apps, evidence):
+    """Compare binding claims, then reuse the offline required-check audit.
+
+    The expected pins, observed claims, digest and snapshot are unauthenticated.
+    Matching fields do not establish live freshness, artifact integrity, reviewer
+    independence or merge permission. All five trust flags remain false.
+    """
+    expected_digest = canonical_binding_digest(expected_binding)
+    if expected_digest is None:
+        return _bound_result("EXPECTED_BINDING_INVALID")
+    if (
+        type(evidence) is not dict
+        or len(evidence) != 3
+        or any(type(key) is not str for key in evidence)
+        or set(evidence) != {"binding", "binding_digest", "snapshot"}
+    ):
+        return _bound_result("BINDING_EVIDENCE_INVALID")
+    observed_digest = canonical_binding_digest(evidence["binding"])
+    if observed_digest is None:
+        return _bound_result("OBSERVED_BINDING_INVALID")
+    claimed_digest = evidence["binding_digest"]
+    if type(claimed_digest) is not str or _SHA256.fullmatch(claimed_digest) is None:
+        return _bound_result("CLAIMED_BINDING_DIGEST_INVALID")
+    if claimed_digest != observed_digest:
+        return _bound_result("CLAIMED_BINDING_DIGEST_MISMATCH")
+    if expected_digest != observed_digest:
+        return _bound_result("BINDING_FIELDS_MISMATCH")
+    report = audit_check_runs(expected_binding["head_sha"], expected_apps, evidence["snapshot"])
+    report["binding_fields_satisfied"] = True
+    return report
 
 
 def _unique_object(pairs):
