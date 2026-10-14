@@ -1,6 +1,19 @@
 # 프로젝트 현재 상태
 
-2026-10-13 추가: src 구조·Ops 통합의 로컬 적용과 검증은 완료됐다. [소스 구조](architecture/source-layout.md)와 [native 검사 근거](testing/source-layout-native-20261013.json)를 따른다. QA 581개는 검증된 기존 근거를 재사용했고, 수정 관련 검사와 남은 도구·infra·화면 검사를 마쳤다. 새 회귀는 없으며 기존 Ops adapter 실패 1개와 선택 native 검사 skip은 유지한다. 현재 단계는 GitHub 반영이다. 본격적인 Codex 기능 개발 전에 사용자에게 먼저 알리고 공통 상위 규칙·에이전트 구성·프로젝트별 세부 규칙과 작업 목록 템플릿을 정한다. 기능 개발·무인 실행·scheduler 활성화는 시작하지 않았다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
+2026-10-13 규칙 준비: 공통 정책과 템플릿·프로젝트별 책임·첫 작업 연결을 [Codex 문서](codex/README.md)에 정리했다. 문서의 GitHub main 반영과 서버 실행 환경 적용은 아직 완료되지 않았다. 현재 준비 상태는 아래 표에서 관리한다.
+
+| 준비 항목 | 현재 판정 |
+|---|---|
+| 공통 정책·프로젝트 규칙·템플릿 | 저장소 문서 준비 |
+| 이번 문서의 GitHub 전달 | 2026-10-14 privateInt 연결·두 저장소 쓰기 권한 확인. [문서 PR](https://github.com/privateInt/agent_project/pulls)에서 게시·검토 결과 확인. main 반영은 독립 검토 후 |
+| GitHub 필수 검사·독립 승인 강제 | 현재 main 보호 없음·ruleset 없음·필수 검사 목록 비어 있음. 자동 개발 전 적용 필요 |
+| GitHub 자동 병합 | 현재 꺼짐. PR 게시와 별개이며 아직 활성화하지 않음 |
+| 서버 CLI·ChatGPT 계정·모델·동시 실행 | 실제 확인 전 |
+| 크레딧 미사용 제어 | 확인 전·무인 실행 보류 |
+| 독립 reviewer 경로 | 실제 적용 전·자체 확인을 독립 승인으로 세지 않음 |
+| 기능 개발·worker·scheduler | 미시작 |
+
+2026-10-13 추가: src 구조·Ops 통합의 로컬 적용과 검증은 완료됐다. [소스 구조](architecture/source-layout.md)와 [native 검사 근거](testing/source-layout-native-20261013.json)를 따른다. QA 581개는 검증된 기존 근거를 재사용했고, 수정 관련 검사와 남은 도구·infra·화면 검사를 마쳤다. 새 회귀는 없으며 기존 Ops adapter 실패 1개와 선택 native 검사 skip은 유지한다. 구조의 GitHub main 반영은 `6dd46d069079fc20df5b3d4bac71fe3450550bf8`에서 확인했다. 현재는 [Codex 문서·실행 준비](codex/README.md) 단계다. 본격적인 Codex 기능 개발 전에 사용자에게 먼저 알리고 정리한 공통 규칙·구성·프로젝트 문서를 기준으로 실제 서버 실행 준비를 확인한다. 기능 개발·무인 실행·scheduler 활성화는 시작하지 않았다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
 
 갱신: 2026-10-12. 첫 TXT의 실제 GPU 색인/활성화·검색 Tool 시험/발행·고정 QA Agent smoke/발행·첫 질문 head CAS revision1·인증된 question-policy의 question_ready=true를 사용자 출력으로 확인했다. PC 화면의 서버 UUID v5 호환 수정 후 질문은 접수됐으나 ANSWER_REFERENCE_INVALID/MISSING_REFERENCE로 실패했다. 인용 prompt-only 초안도 동일 실패이며 발행/활성화되지 않았다. 현재 답변 모델은 google/gemma-3-1b-it이다. 첫 PC 답변/출처·폭넓은 의미 품질 인수는 미완료다. [최신 관찰](testing/document-qa-live-observed-20261012.json)은 당시 사용자 출력/화면 근거이며 현재 호스트를 직접 재조회한 결과는 아니다.
 

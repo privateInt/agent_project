@@ -1,0 +1,24 @@
+{
+  "ruleset_id": "codex-common-rules",
+  "version": "1.1-docs",
+  "date": "2026-10-13",
+  "decisions": "D01-D40",
+  "state": "DOCUMENTATION_PREPARED_RUNTIME_NOT_APPLIED",
+  "files": {
+    "docs/codex/common/AGENT_ROSTER.md": "4af335a24edef8cbef3d16b3127e09489d47886e0dc4b47bd69776fb3b2509c8",
+    "docs/codex/common/DECISIONS.md": "ca7bdee7e27d91b46c873fbaeb0658e0223524129733cb7e6489b14cd3b04c5d",
+    "docs/codex/common/EXECUTION_SETUP.md": "cd992d77041750d5bce2e01f081b6ba0eb03dc6c3dec2131c0e71b658211c78d",
+    "docs/codex/common/RULES.md": "7630d0d238baa785dc8b1c77b8e67fff995ffd8149150d3e4db494928304fa49",
+    "docs/codex/common/TESTING.md": "ae55f247a26f5f975abfc0f199c0f82fdae46ba0a04c506bb1f019628613ed42",
+    "docs/codex/templates/agents/backend_agent.toml.template": "ca2e78c60ff0bf1729f8f8056af012b1546776edfd55c3e8c00730e83572feae",
+    "docs/codex/templates/agents/code_module_agent.toml.template": "c14083dca464e1632524940974fcd25c011155222136f37141be0c008aa891f8",
+    "docs/codex/templates/agents/front_agent.toml.template": "1f0b47f6d8699893803e837639c8c9d6e5c81ea1ee26944a08274109c53c3058",
+    "docs/codex/templates/agents/infra_agent.toml.template": "f49ffac2cb2a2f545a2c844c323c031accd14985429f8e343f10917206697aa1",
+    "docs/codex/templates/agents/reviewer.toml.template": "1c0965dcb41bb903395ddb9b559898b159bb0f0ca0a7bc7b1e91f368ec36c097",
+    "docs/codex/templates/agents/test_agent.toml.template": "ab511d42a9ed60576eafb64017ea65b825c5effa3449502a821d09d11d505561",
+    "docs/codex/templates/agents/ui_design_agent.toml.template": "106f95d07dae11380dfa2e244b464d52acad75c69e1bb76b80c0787f57bac918",
+    "docs/codex/templates/config.toml.template": "5d00f3e49dc5b197fdf2f3f81ec31b9bdcbaec56e4c49ed61fc838ea5f6ee1f5",
+    "docs/codex/templates/project-rules.template.md": "2e270dcac50f76ee6d891824d009f7f18ede2b9c80778cdcd75afb52a6dbb1df",
+    "docs/codex/templates/task.template.md": "3e7fc3d7b439df230e968917a224e425409fffafd85a2b4ef9b77eeff4344225"
+  }
+}
