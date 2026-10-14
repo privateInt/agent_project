@@ -8,7 +8,9 @@
 | 이번 문서의 GitHub 전달 | 2026-10-14 privateInt 연결·두 저장소 쓰기 권한 확인. [준비 PR #1](https://github.com/privateInt/agent_project/pull/1)에서 게시·검토 결과 확인. main 반영은 독립 검토 후 |
 | GitHub 필수 검사·독립 승인 강제 | 현재 main 보호 없음·ruleset 없음·필수 검사 목록 비어 있음. 자동 개발 전 적용 필요 |
 | GitHub 자동 병합 | 현재 꺼짐. PR 게시와 별개이며 아직 활성화하지 않음 |
-| 서버 CLI·ChatGPT 계정·모델·동시 실행 | 사용자 제공 조회 출력으로 CLI 0.162.1·ChatGPT 인증 방식·목표 모델/effort 카탈로그 확인. 비활성 기본값과 출처 확인 PASS. 실제 추론·역할별 설정·합산 상한은 미확인 |
+| 서버 CLI·ChatGPT 계정·모델 | 사용자 제공 조회 출력으로 CLI 0.162.1·ChatGPT 인증 방식·목표 모델/effort 카탈로그 확인. 비활성 기본값과 출처 확인 PASS. 실제 추론은 미확인 |
+| 개발 snapshot·공유 역할 파일 | 두 프로젝트의 검토 snapshot이 clean/detached이며 기존 branch ref 보존을 확인했다. 공유 역할 파일 7개 설치와 조회 중 파일 해시 불변을 관찰했다. 실제 역할 로딩·역할별 권한·합산 동시 실행 강제는 미확인. [native 준비 근거](testing/codex-runtime-native-20261014.json) |
+| 실제 파일 권한 강제 | 권한 profile 목록 조회 완료. 호스트의 고정 실행 대조는 성공했으나 샌드박스의 payload execvp가 EACCES로 거부됐다. 허용·거부 인수는 미완료이며 D18의 60분 상한에서 조사 보류. 다음 커널 로그 읽기 1회는 정적 독립 검토 완료·미실행·전달 보류 상태. 같은 문제의 누적 기록을 유지하고 재개 전에 범위를 결정한다 |
 | 결제·사용량 정책 | 사용자 변경 D24에 따라 미사용 강제 입증은 선행조건에서 제외. 에이전트의 자동 충전·추가 구매·API 전환 금지. 계정 자동 충전 설정을 조회/변경한 것은 아님 |
 | 독립 reviewer 경로 | 별도 reviewer의 문서 검토·도구 사전 계획 검토 수행. GitHub 필수 검사 발행/강제는 미구현 |
 | 모델 호출 없는 조회 도구 | [사용 범위](codex/common/READINESS.md)와 [합성 검사 근거](testing/codex-readiness-20261014.json). 사용자 제공 native 조회에서 CLI·인증 방식·카탈로그·현재 quota 확인. 구 credit 진단은 현재 D24의 독립 차단조건이 아니며 다른 준비 조건은 미완료 |

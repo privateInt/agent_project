@@ -1,6 +1,6 @@
 # agent_project Codex 문서 안내
 
-공통 규칙·구성표·템플릿을 포함하는 준비 단계다. 기능 개발·무인 실행·자동화 활성화는 아직 시작하지 않았다. 실제 실행 설정은 검증 후 적용한다.
+공통 규칙·구성표·템플릿을 포함하는 준비 단계다. 기능 개발·무인 실행·자동화 활성화는 아직 시작하지 않았다. 실제 서버의 준비 판정과 재개 지점은 [현재 상태](../status.md)에서 관리한다.
 
 | 읽을 문서 | 책임 |
 |---|---|
@@ -16,4 +16,4 @@
 | [프로젝트 템플릿](templates/project-rules.template.md) · [작업 템플릿](templates/task.template.md) | 새 프로젝트와 작은 작업을 기록할 틀 |
 | [공통 배포판](common/release.json) | 두 저장소에 포함하는 동일 본문·버전의 파일 해시 |
 
-설정 후보는 [config.toml.template](templates/config.toml.template)과 `templates/agents`에 둔다. 실제 `.codex` 설정으로 설치하거나 실행하지 않았다. 공통 배포 파일은 저장소별 독립 변형을 만들지 않는다. 현재 상태는 프로젝트 세부 규칙에서 연결한 상태 문서 한 곳에 기록하고 PR에는 작업 상세·검토·근거를 남긴다.
+설정 후보는 [config.toml.template](templates/config.toml.template)과 `templates/agents`에 둔다. 사용자 제출 서버 출력에서 비활성 기본값 적용과 공유 역할 파일 7개 설치를 확인했다. 파일 설치·설정 조회와 실제 역할 로딩·권한 강제 인수를 구분하며, 최신 근거는 [native 준비 기록](../testing/codex-runtime-native-20261014.json)을 따른다. 공통 배포 파일은 저장소별 독립 변형을 만들지 않는다. 현재 상태는 프로젝트 세부 규칙에서 연결한 상태 문서 한 곳에 기록하고 PR에는 작업 상세·검토·근거를 남긴다.
