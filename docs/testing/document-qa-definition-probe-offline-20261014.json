@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "date": "2026-10-14",
+  "scope": "read_only_definition_probe_isolated_verification",
+  "source_parent": "55c714728806443463e8bb946c2621407071d4f6",
+  "plan": {
+    "path": "docs/plans/document-qa-f0a-test-plan-20261014.md",
+    "section": "definition_probe_preimplementation_plan_v1",
+    "initial_independent_preimplementation_review_sha256": "239cf7971a9fe885bb27f68e01a6143aaaa76f6f3bf378b7ca0693e0129a4365",
+    "current_reviewed_sha256": "db543e584129cd62baf824b609ceb6c6d643ed5430aa59df3fd96e2fb52b2ac5",
+    "required_schema_checks_preserved_after_condensation": true,
+    "independent_revalidation": "PASS"
+  },
+  "source_sha256": {
+    "src/apps/document_qa/definition_probe.py": "96e2ca4c84988ca6eb023b40db040bb479afe8fd9610907e1287f4917f23e33e",
+    "src/apps/document_qa/tests/test_definition_probe.py": "47ba8dde7e7704c6a7c807944bb44d2feebcff7232630d6727d684113378f440"
+  },
+  "tests": {
+    "command": "python3 -B -m unittest src.apps.document_qa.tests.test_definition_probe",
+    "python_version": "3.12.14",
+    "passed": 19,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 5.286,
+    "scope": "synthetic_fixtures_and_authenticated_loopback_HTTP_CLI",
+    "functional_automatic_fix_cycles": 0,
+    "assertion_coverage_completed_before_final_run": true,
+    "full_QA_or_runtime_GPU_suite_repeated": false
+  },
+  "d38": [
+    {
+      "id": "M1",
+      "test": "ReaderTests.test_exact_get_guard_rejects_broad_gateway_paths_before_delegating",
+      "normal_passed": 1,
+      "mutation": "remove_exact_path_membership_guard",
+      "mutant_sha256": "668d0ac8e4ff5616f7cde16b10f0dc322a6c8f49625a9adc80d622bd081cd370",
+      "target_assertion_failures": 5,
+      "errors": 0,
+      "detected": true,
+      "failure_cause": "unexpected_underlying_transport_delegation_and_missing_guard_rejection"
+    },
+    {
+      "id": "M2",
+      "test": "ProbeTests.test_two_independent_identity_sets_compare_without_mutating_inputs",
+      "normal_passed": 1,
+      "mutation": "copy_raw_prompt_into_summary",
+      "mutant_sha256": "92bf1d9e46c5a028ec47fa4d38ba0b39262612cb6a15120508db1947171ad58b",
+      "target_assertion_failures": 2,
+      "errors": 0,
+      "detected": true,
+      "failure_cause": "exact_output_allowlist_rejects_private_raw_prompt_field"
+    }
+  ],
+  "mutation_isolation": {
+    "original_helper_unchanged": true,
+    "temporary_copies_removed": true,
+    "raw_mutation_failure_output_retained": false
+  },
+  "compatibility": {
+    "python_3_10_syntax": "PASS",
+    "python_3_10_actual_execution": "NOT_RUN",
+    "python_3_10_execution_reason": "interpreter_not_available_in_this_workspace"
+  },
+  "static_validation": {
+    "source_layout_check": "PASS",
+    "python310_source_files_checked": 477,
+    "compose_include_paths_checked": 29,
+    "runtime_state_read": false,
+    "services_started": false,
+    "markdown_missing_local_links": 0,
+    "git_diff_check": "PASS"
+  },
+  "native_Agent_requests": 0,
+  "inference_requests": 0,
+  "production_write_requests": 0,
+  "active_runtime_template_payload_verified": false,
+  "head_readback_verified": false,
+  "answer_quality_verified": false,
+  "f0a_accepted": false,
+  "native_definition_observation": "AWAITING_OPERATOR_EXECUTION",
+  "independent_final_review_location": "work_pull_request"
+}
