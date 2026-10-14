@@ -16,8 +16,11 @@
 | 5 | F7 상용 API/F3a LiteLLM → F4 기본 MCP | Model backend/capability·비용/credential 경계, 날짜/시간대 Tool |
 | 6 | F8 세션/기억 → F9 문서 Tool | turn·권한/자료 pin, 명시 기억, 서식 채우기·수정·원본 보존/렌더 |
 | 7 | F3b/c LightRAG/Neo4j 평가 → F10b CD | 고정 검색 비교/출처/비용, 선택 저장소, staging·image pin·readback·복귀 |
+| 후속 후보 | F11 Experiment Advisor | 비긴급 조사/설계. 사용자 승인 후 읽기 전용 제안부터 시작하며 실험·운영 적용은 별도 승인. [설계/재사용 범위](agent-platform/experiment-advisor-design-20261014.md) |
 
 10개 사용자 요구의 책임·의존성·첫 작은 단위·단계별 검증과 Codex 연속 작업 규칙은 [플랫폼 확장 계획](plans/platform-expansion-work-plan-20261012.md)에서 관리한다. 이 순서는 범위를 채택한 설계 결정이며 모든 infra를 바로 설치하거나 운영 서비스를 자동 재시작하는 지시가 아니다. 기존 n8n/Langfuse를 재사용하고 LightRAG/Neo4j는 평가 결과에 따라 채택/종료한다. CI는 초기부터 확대하고 운영 CD는 후속 인수한다.
+
+2026-10-14의 F11은 위 10개에 더한 계획 후보다. 기존 우선순위를 바꾸지 않으며 연속 개발에서 자동 착수하지 않는다. CD 전체 완료를 Advisor 미리보기의 필수 의존성으로 두지는 않고, 실제 착수와 우선순위는 조사 보고 후 사용자 승인으로 정한다.
 
 문서 QA의 상세 계약/Q05c-2·Q09~Q11은 [기존 계획](plans/document-qa-work-plan-20261002.md)을 유지한다. 실제 question-policy의 질문 가능과 답변/의미 품질 인수는 구분한다. static production_* flag나 과거 보류 실행권을 바꿔 완료로 대체하지 않는다.
 
