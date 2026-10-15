@@ -1,8 +1,14 @@
 # GitHub App 진단 검사 발행·재조회
 
-2026-10-15. [App 인증 조회](github-app-readback.md)와 [worker의 키 경로 거부 관찰](github-app-key-boundary.md) 다음의 작은 준비 단계다. [도구](../../src/ops/tools/github_app_check_smoke.py)는 지정 Draft PR의 고정 head에 `codex/emitter-smoke` 진단 검사를 만들거나 기존 항목을 찾아 재조회한다. [사전 검사 계획](github-app-check-smoke-test-plan.md)과 [개발 검사 근거](../testing/github-app-check-smoke-offline-20261015.json)를 따르며 실제 GitHub 발행 인수는 **NOT_RUN**이다. 현재 준비 판정은 [상태표](../status.md)에서 관리한다.
+2026-10-15. [App 인증 조회](github-app-readback.md)와 [worker의 키 경로 거부 관찰](github-app-key-boundary.md) 다음의 작은 준비 단계다. [도구](../../src/ops/tools/github_app_check_smoke.py)는 지정 Draft PR의 고정 head에 `codex/emitter-smoke` 진단 검사를 만들거나 기존 항목을 찾아 재조회한다. [사전 검사 계획](github-app-check-smoke-test-plan.md)과 [개발 검사 근거](../testing/github-app-check-smoke-offline-20261015.json)를 따른다. 사용자 실행 보고와 별도 GitHub 저장 record 조회는 [발행 관찰](../testing/github-app-check-smoke-native-observed-20261015.json)로 구분한다. 현재 준비 판정은 [상태표](../status.md)에서 관리한다.
 
 검사 결과는 항상 **completed/failure**다. GitHub의 실패 표시는 의도한 진단 결과이며 제품 검사를 실행한 결과가 아니다. 필수 검사 3개의 이름·성공 결과·자유 본문을 입력받지 않는다. 이 도구로 발행 경로를 확인해도 trusted emitter·독립 reviewer·G05 전체 binding·필수 검사/보호·무인개발/병합은 인수되지 않는다.
+
+## 사용자 실행과 저장 기록 관찰
+
+2026-10-15 13:28:17 KST 제출 출력은 Python3.10.12·SOURCE_SHA256_OK·COMPLETE/OBSERVED·smoke_exit2다. metadata3 GET·신규6 GET, token POST1·check POST1·폐기 DELETE1과 record 조회·PR 재확인·token 폐기 확인이 보고됐고 일곱 신뢰 flag는 false다. 출처는 사용자 터미널 출력이며 실제 실행 시각과 독립된 실행 source attestation은 미확인이다. 직전 검토 명령의 commit/source/auth SHA는 기대 pin이고 최신 출력 자체에는 commit이 인쇄되지 않았다. 이 실행 보고를 실제 Python3.10 전체 suite 통과로 합산하지 않는다.
+
+별도 connector GET1회에서 같은 검사 id `116247156813`의 App·head·external_id·completed/failure·고정 output이 일치했다. 이는 저장 record의 보강 근거이며 사용자 명령의 실행 source·키/runtime 격리·token 폐기까지 독립 증명하지 않는다. 조회 시각 자체는 제공되지 않았다. 관찰 target은 당시 `a6d7351519cf0599a6f319500cc1b07176a02988` head로 보존한다. 이후 문서 commit의 새 PR head에 재결합하거나 최신 gate로 재사용·재발행하지 않는다. 기존 개발 검사와 실패/보류 근거는 그대로 유지한다.
 
 ## 실행과 권한 경계
 
