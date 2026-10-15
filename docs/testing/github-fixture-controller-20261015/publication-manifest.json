@@ -1,0 +1,228 @@
+{
+  "parent_commit": "e1eff75b47cdf3fae1088d51d35aaea701f81477",
+  "parent_branch": "codex/github-fixture-ledger-20261015",
+  "branch": "codex/github-fixture-controller-20261015",
+  "fixture_only": true,
+  "head_code_executed": false,
+  "reviewed_sha256": {
+    "src/ops/tools/github_fixture_controller.py": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7",
+    "src/ops/tools/tests/test_github_fixture_controller.py": "b765ec07ff8fd4b68b88dd8e4d41aa40680c578844135ceb97518c8a99a2d15a",
+    "docs/codex/github-fixture-controller.md": "4121e22850a4537089f4555b93d30256c0a8ae7a2ad3f98cb930f2ffb9fde2ee"
+  },
+  "evidence_root": "docs/testing/github-fixture-controller-20261015",
+  "historical_path_policy": "All copied evidence bytes are unchanged. Absolute /tmp paths describe historical executions; resolve source paths through this manifest. No rerun or relocation of historical executions is claimed.",
+  "initial_13": {
+    "status": "PASS",
+    "source_sha256": "e96e97fa47c190b5340b3989694f41ee29804d3cf60790e54af2aa13bdcac5be",
+    "evidence": "evidence/run-1/result.json",
+    "reused": true,
+    "repeated": false
+  },
+  "correction_reproduction": {
+    "methods": 2,
+    "failures": 2,
+    "errors": 0,
+    "evidence": "evidence/p2-before/result.json"
+  },
+  "corrected_focused_3": {
+    "status": "PASS",
+    "evidence": "evidence/p2-after/result.json",
+    "two_failed_targets_rerun": true,
+    "uncertainty_target_first_execution": true
+  },
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "review/final-review-after-fix.md",
+    "sha256": "d4cef77fbe49bff607e2ea8fb55173c2009ea7a10ae599004dc59e7d4a8ce770"
+  },
+  "all_16_on_final_source_run": false,
+  "previously_passed_tests_repeated": false,
+  "R03_R04_R15_repeated": false,
+  "whole_suite_run": false,
+  "server_environment": {
+    "python": "3.10.12",
+    "sqlite": "3.37.2"
+  },
+  "previous_development_environment": {
+    "python": "3.12.14",
+    "sqlite": "3.53.1",
+    "counted_as_server_execution": false
+  },
+  "durable_development_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project-controller-20261015",
+  "files": {
+    "src/ops/tools/github_fixture_controller.py": {
+      "source": "/tmp/agent-controller-dev-ur5octch/workspace/src/ops/tools/github_fixture_controller.py",
+      "sha256": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7",
+      "bytes": 20436,
+      "git_blob_sha1": "1f91fa44920fd4a4790d6cb4b76904db7d17d893"
+    },
+    "src/ops/tools/tests/test_github_fixture_controller.py": {
+      "source": "/tmp/agent-controller-dev-ur5octch/workspace/src/ops/tools/tests/test_github_fixture_controller.py",
+      "sha256": "b765ec07ff8fd4b68b88dd8e4d41aa40680c578844135ceb97518c8a99a2d15a",
+      "bytes": 37383,
+      "git_blob_sha1": "783a90bd55534face1c13cd0956a44f47f95ac59"
+    },
+    "docs/codex/github-fixture-controller.md": {
+      "source": "/tmp/agent-controller-dev-ur5octch/workspace/docs/codex/github-fixture-controller.md",
+      "sha256": "4121e22850a4537089f4555b93d30256c0a8ae7a2ad3f98cb930f2ffb9fde2ee",
+      "bytes": 3301,
+      "git_blob_sha1": "89b676b8b2c6c1c7c8daae6af535b3183b8c5756"
+    },
+    "docs/testing/github-fixture-controller-observed-20261015.json": {
+      "source": "/tmp/agent-controller-dev-ur5octch/workspace/docs/testing/github-fixture-controller-observed-20261015.json",
+      "sha256": "071dcef089567f414f1e5bc60f4ff9e4f58f89a1bddd177d30e32a39a6b7d7ab",
+      "bytes": 9274,
+      "git_blob_sha1": "3aa78976667d4daf7277abcd76052530b24e42e4"
+    },
+    "docs/testing/github-fixture-controller-20261015/review/final-review-after-fix.md": {
+      "source": "/tmp/agent-controller-dev-ur5octch/review/final-review-after-fix.md",
+      "sha256": "d4cef77fbe49bff607e2ea8fb55173c2009ea7a10ae599004dc59e7d4a8ce770",
+      "bytes": 7021,
+      "git_blob_sha1": "36bb54bd881ad7b4457a5ccc91ff208e4097d33c"
+    },
+    "docs/testing/github-fixture-controller-20261015/review/final-review.md": {
+      "source": "/tmp/agent-controller-dev-ur5octch/review/final-review.md",
+      "sha256": "a5e81fd8dd524a32b01f44172d43122082265d12e3e67bf65a853e19475ea8f6",
+      "bytes": 7253,
+      "git_blob_sha1": "6fac56c3681cd9cceb99ce3cde39835219518f2d"
+    },
+    "docs/testing/github-fixture-controller-20261015/review/fix-plan-review.md": {
+      "source": "/tmp/agent-controller-dev-ur5octch/review/fix-plan-review.md",
+      "sha256": "af4cde36ed10b0bd3324406dadbf23ab568ecd6750bebdee0da672eb33371da2",
+      "bytes": 3284,
+      "git_blob_sha1": "ae37801808e9e9c9e0d872363066567634458e02"
+    },
+    "docs/testing/github-fixture-controller-20261015/review/fix-plan-v1.md": {
+      "source": "/tmp/agent-controller-dev-ur5octch/review/fix-plan-v1.md",
+      "sha256": "498c6eabc3be27a37b7e693d55976ba80f10900e8db1ee593b36b648510aa279",
+      "bytes": 2431,
+      "git_blob_sha1": "538b3adc356ee6f4bc66d4519955d2a7a30fd77d"
+    },
+    "docs/testing/github-fixture-controller-20261015/review/fix-plan-v2-review.md": {
+      "source": "/tmp/agent-controller-dev-ur5octch/review/fix-plan-v2-review.md",
+      "sha256": "beeaf3e69b9f98bccd3c9d4f59335c5d3fdb446c6973e4061f0b117cdf6be069",
+      "bytes": 2762,
+      "git_blob_sha1": "fb0fb14ec56dbda8dd15eab36ed18bdad948db83"
+    },
+    "docs/testing/github-fixture-controller-20261015/review/fix-plan.md": {
+      "source": "/tmp/agent-controller-dev-ur5octch/review/fix-plan.md",
+      "sha256": "68831d156cf633d4aacf1d77a4d54d54fc7a138ada19d06dbac547b4b5c4208b",
+      "bytes": 2588,
+      "git_blob_sha1": "26dab797a076ee653b09c36074496a0a5896084a"
+    },
+    "docs/testing/github-fixture-controller-20261015/review/plan-review.md": {
+      "source": "/tmp/agent-controller-dev-ur5octch/review/plan-review.md",
+      "sha256": "9caf0395f33563d9fc7fc88247b58b2d3d18dc34df6b9756cba37c6a94d1aa53",
+      "bytes": 10109,
+      "git_blob_sha1": "6bc69c9c6fb9a37dc306253b6741368d1e3cb4cb"
+    },
+    "docs/testing/github-fixture-controller-20261015/review/requirements.md": {
+      "source": "/tmp/agent-controller-dev-ur5octch/review/requirements.md",
+      "sha256": "0c10da556e6ee01f689d6c74f5a8d1fe7d2736c2e74cf115bc82fdf38219778f",
+      "bytes": 4561,
+      "git_blob_sha1": "56bab8d33095a8aefb88cfe04fa8531d961f93c4"
+    },
+    "docs/testing/github-fixture-controller-20261015/review/test-plan.md": {
+      "source": "/tmp/agent-controller-dev-ur5octch/review/test-plan.md",
+      "sha256": "227df66ea111e1d29e5982290630deac9b3b40b9e034e064a08283540142962e",
+      "bytes": 19621,
+      "git_blob_sha1": "78aaa97f2801ce52f68d95eeec20c877f3ac77d7"
+    },
+    "docs/testing/github-fixture-controller-20261015/source-provenance.json": {
+      "source": "/tmp/agent-controller-dev-ur5octch/source-provenance.json",
+      "sha256": "ca816024a84c63f0b4375e98d52d63d4d786acf00bbc363983201bad3225fde7",
+      "bytes": 620,
+      "git_blob_sha1": "b2a6b86d5d67137f31fc95595865bdc4ea828cf2"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/run-1/result.json": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/run-1/result.json",
+      "sha256": "b59aacf7fc931fdc325c61664ff931723507e15e2355836462b9f12bf5d4a7ef",
+      "bytes": 11664,
+      "git_blob_sha1": "0b1f18c2fae864d5de1a66306311ff590b4382b4"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/run-1/unittest.log": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/run-1/unittest.log",
+      "sha256": "a35135119d0cfe5accece064a5b1cdf57e763ad6db0cd2a1459b8f5dd7b1619f",
+      "bytes": 1733,
+      "git_blob_sha1": "148306c9c511f3f259983c9a45c3b0d871283824"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/p2-before/result.json": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/p2-before/result.json",
+      "sha256": "d6d82cf334ff16a86b03debe8c8b5aebeb252e3dc7c2fe9489218e5a6b30a206",
+      "bytes": 1246,
+      "git_blob_sha1": "81f46c3f713a8647cbb24c1a23ac9e575a43c209"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/p2-before/unittest.log": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/p2-before/unittest.log",
+      "sha256": "750b2df431e995f897961d4de00e993ba0ff08f5cedf149a9868f2bc947b47a1",
+      "bytes": 2097,
+      "git_blob_sha1": "6a9ba1981947c90b5c93474efcca6c81e974a73a"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/p2-after/result.json": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/p2-after/result.json",
+      "sha256": "85259d4ad58958230411a4b70e0d12ff334dde03b91270095b8c1390847be20a",
+      "bytes": 2535,
+      "git_blob_sha1": "dff3df09847c57a5fd82acf0692c5a83c69e4939"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/p2-after/unittest.log": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/p2-after/unittest.log",
+      "sha256": "bac7fc5e8e31f587611b4f4a1c79bc61b07d7a71b6270967e718735b1aa3c747",
+      "bytes": 506,
+      "git_blob_sha1": "af3cc006be674735d369aa0ff5844c7397befe29"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/mutations.json": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/mutations.json",
+      "sha256": "e8b463b3e3e029df09779a6d8010986e8def1507cd97fb74e12f525fea3c274a",
+      "bytes": 1434,
+      "git_blob_sha1": "03be83fc6836f1f1da7375e3ed283f5867928718"
+    },
+    "docs/testing/github-fixture-controller-20261015/mutants/M1/unittest.log": {
+      "source": "/tmp/agent-controller-dev-ur5octch/mutants/M1/unittest.log",
+      "sha256": "7b5ff05022d370ec57cb9a4637065997e8a5966572f0646b498fa93bf9a6d819",
+      "bytes": 835,
+      "git_blob_sha1": "739968bbf48c041f75c3ba335b21cca4ebfd7f55"
+    },
+    "docs/testing/github-fixture-controller-20261015/mutants/M2/unittest.log": {
+      "source": "/tmp/agent-controller-dev-ur5octch/mutants/M2/unittest.log",
+      "sha256": "82067d86ced1ab35d6f68b65c6f6ca7ee28091139a3bb17ab45a4de9ec2264ec",
+      "bytes": 1641,
+      "git_blob_sha1": "f2ebbecca1501e371e901f081a32ace44747423a"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/p2-source.patch": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/p2-source.patch",
+      "sha256": "150151fc77e63a7b998482b88eeae227d578e998ff73f97a6abba2d882995ec4",
+      "bytes": 1525,
+      "git_blob_sha1": "7ff717aa4618e0c9e829084998c9979a00d59e8b"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/p2-diff-audit.json": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/p2-diff-audit.json",
+      "sha256": "9351c8816f464a4e519cfbf4ada19995ce891f028b508c6ef003bceb8db1f5f5",
+      "bytes": 770,
+      "git_blob_sha1": "10b0c7939c00b124b6597dcbf611db1fb921850f"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/before-p2/github_fixture_controller.py": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/before-p2/github_fixture_controller.py",
+      "sha256": "e96e97fa47c190b5340b3989694f41ee29804d3cf60790e54af2aa13bdcac5be",
+      "bytes": 20320,
+      "git_blob_sha1": "dd4241504b9eb3ad63e08edd66fea84928a4a7ed"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/before-p2/test_github_fixture_controller.py": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/before-p2/test_github_fixture_controller.py",
+      "sha256": "fa293ea0686d4dd14b70c73b7c580b61f42d02c0746c65aa28af930fb529d818",
+      "bytes": 34138,
+      "git_blob_sha1": "275860f1f7a41aa52a6d4c7226a6d05052c84931"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/preservation.json": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/preservation.json",
+      "sha256": "595b7c05e639795871b59137886667b05961fe7298d7493952acf4e69d7fe10f",
+      "bytes": 428,
+      "git_blob_sha1": "887df3d3ebad6de88acb6836264cb2b49712c488"
+    },
+    "docs/testing/github-fixture-controller-20261015/evidence/final-acceptance.json": {
+      "source": "/tmp/agent-controller-dev-ur5octch/evidence/final-acceptance.json",
+      "sha256": "071dcef089567f414f1e5bc60f4ff9e4f58f89a1bddd177d30e32a39a6b7d7ab",
+      "bytes": 9274,
+      "git_blob_sha1": "3aa78976667d4daf7277abcd76052530b24e42e4"
+    }
+  }
+}

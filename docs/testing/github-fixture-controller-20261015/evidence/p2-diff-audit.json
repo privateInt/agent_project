@@ -1,0 +1,16 @@
+{
+  "all_original_class_method_source_segments_byte_identical": true,
+  "original_method_definitions": 25,
+  "new_test_methods": 3,
+  "new_fixture_helpers": 1,
+  "source_before_sha256": "e96e97fa47c190b5340b3989694f41ee29804d3cf60790e54af2aa13bdcac5be",
+  "source_after_sha256": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7",
+  "test_after_sha256": "b765ec07ff8fd4b68b88dd8e4d41aa40680c578844135ceb97518c8a99a2d15a",
+  "metadata_audit_initial_error": {
+    "type": "AssertionError",
+    "step": "remove inserted text and compare entire file",
+    "cause": "blank-line boundary reconstruction mismatch",
+    "resolution": "every original method source segment compared byte-for-byte using AST positions",
+    "behavioral_tests_repeated": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "commit": "e1eff75b47cdf3fae1088d51d35aaea701f81477",
+  "sha256": {
+    "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+    "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+    "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+    "src/ops/tools/tests/test_github_fixture_ledger.py": "9dc968aef2ae7e8ae5f281b41d853a0d8d370d63b67b654aeabe9fd179087bbe"
+  },
+  "files_verified": 4,
+  "package_initializers": "empty_local_scaffolding"
+}

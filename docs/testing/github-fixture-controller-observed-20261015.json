@@ -1,0 +1,288 @@
+{
+  "task": "C01_minimal_fixture_controller_and_preparation_failure_persistence",
+  "source_parent": "e1eff75b47cdf3fae1088d51d35aaea701f81477",
+  "environment": {
+    "python": "3.10.12",
+    "sqlite": "3.37.2",
+    "uid": 1011,
+    "fixed_child_python": "/usr/bin/python3"
+  },
+  "workspace": "/tmp/agent-controller-dev-ur5octch/workspace",
+  "changed_files_sha256": {
+    "src/ops/tools/github_fixture_controller.py": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7",
+    "src/ops/tools/tests/test_github_fixture_controller.py": "b765ec07ff8fd4b68b88dd8e4d41aa40680c578844135ceb97518c8a99a2d15a",
+    "docs/codex/github-fixture-controller.md": "4121e22850a4537089f4555b93d30256c0a8ae7a2ad3f98cb930f2ffb9fde2ee"
+  },
+  "plan": {
+    "file": "review/test-plan.md",
+    "sha256": "227df66ea111e1d29e5982290630deac9b3b40b9e034e064a08283540142962e",
+    "author": "separate_test_agent_task"
+  },
+  "pre_implementation_review": {
+    "verdict": "PASS",
+    "file": "review/plan-review.md",
+    "sha256": "9caf0395f33563d9fc7fc88247b58b2d3d18dc34df6b9756cba37c6a94d1aa53",
+    "independent": true
+  },
+  "new_test_authorship": "coordinator_after_test_task_waited_on_approval",
+  "new_tests": {
+    "methods": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": true,
+    "initial_execution": "evidence/run-1/result.json",
+    "initial_log": "evidence/run-1/unittest.log",
+    "focused_reruns": [],
+    "source_sha256": "e96e97fa47c190b5340b3989694f41ee29804d3cf60790e54af2aa13bdcac5be",
+    "test_sha256": "fa293ea0686d4dd14b70c73b7c580b61f42d02c0746c65aa28af930fb529d818",
+    "reused_without_rerun": true,
+    "executed_on_final_source": false
+  },
+  "actual_observations": [
+    {
+      "case": "C02",
+      "profile": "ok",
+      "actual_returncode": 0,
+      "collector_calls": 1,
+      "artifact_sha256": "e8cfb2b1bbef1667e8235410464b8d427aeb67b5733431b69a592a13361d8093",
+      "reopen_matches": true
+    },
+    {
+      "case": "C02",
+      "profile": "nonzero",
+      "actual_returncode": 7,
+      "collector_calls": 1,
+      "artifact_sha256": "7c050060b909d6e1dabd8ff144e6e2eb2c26aa4edddc898aaadadf09ab253d68",
+      "reopen_matches": true
+    },
+    {
+      "case": "C03",
+      "actual_missing_file": true,
+      "collector_calls": 1,
+      "child_spawns": 0,
+      "terminal_after_repair": true
+    },
+    {
+      "case": "C05",
+      "actual_process_exit": 70,
+      "durable_claim": true,
+      "repeat_collector_calls": 0
+    },
+    {
+      "case": "C06",
+      "actual_processes": 2,
+      "collector_entries": 1,
+      "reasons": [
+        "OUTCOME_UNKNOWN",
+        "ARTIFACT_STORED"
+      ],
+      "artifact_sha256": "e8cfb2b1bbef1667e8235410464b8d427aeb67b5733431b69a592a13361d8093"
+    },
+    {
+      "case": "C07",
+      "injected": true,
+      "after_commit": false,
+      "rollback_fail": false,
+      "collector_calls": 0,
+      "initial": "DATABASE_UNCONFIRMED",
+      "observed_state": null
+    },
+    {
+      "case": "C07",
+      "injected": true,
+      "after_commit": true,
+      "rollback_fail": false,
+      "collector_calls": 0,
+      "initial": "DATABASE_UNCONFIRMED",
+      "observed_state": "CLAIMED"
+    },
+    {
+      "case": "C07",
+      "injected": true,
+      "after_commit": false,
+      "rollback_fail": true,
+      "collector_calls": 0,
+      "initial": "DATABASE_UNCONFIRMED",
+      "observed_state": null
+    },
+    {
+      "case": "C08",
+      "injected_commit_loss": true,
+      "after_commit": false,
+      "initial": "DATABASE_UNCONFIRMED",
+      "observed": "OUTCOME_UNKNOWN"
+    },
+    {
+      "case": "C08",
+      "injected_commit_loss": true,
+      "after_commit": true,
+      "initial": "DATABASE_UNCONFIRMED",
+      "observed": "PREPARATION_FAILED"
+    },
+    {
+      "case": "C09",
+      "injected_commit_loss": true,
+      "after_commit": false,
+      "initial": "DATABASE_UNCONFIRMED",
+      "observed": "OUTCOME_UNKNOWN",
+      "original_bytes_retained": true,
+      "artifact_sha256": "e8cfb2b1bbef1667e8235410464b8d427aeb67b5733431b69a592a13361d8093"
+    },
+    {
+      "case": "C09",
+      "injected_commit_loss": true,
+      "after_commit": true,
+      "initial": "DATABASE_UNCONFIRMED",
+      "observed": "ARTIFACT_STORED",
+      "original_bytes_retained": true,
+      "artifact_sha256": "e8cfb2b1bbef1667e8235410464b8d427aeb67b5733431b69a592a13361d8093"
+    },
+    {
+      "case": "C11",
+      "actual_busy_timeout_ms": 100,
+      "elapsed_seconds": 0.10206188261508942,
+      "collector_calls": 0
+    }
+  ],
+  "d38": {
+    "selected": 2,
+    "semantic_detection": [
+      {
+        "run": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "run": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "evidence": "evidence/mutations.json",
+    "original_unchanged": true
+  },
+  "preservation": {
+    "original_repository_unchanged": true,
+    "original_local_change_count": 11,
+    "previous_runs": {
+      "/tmp/agent-pr13-r15-3yj0nl91": {
+        "unchanged": true,
+        "file_count": 19
+      },
+      "/tmp/agent-pr13-r03-5yc_ibkz": {
+        "unchanged": true,
+        "file_count": 16
+      },
+      "/tmp/agent-pr13-r04-a8bb0yax": {
+        "unchanged": true,
+        "file_count": 15
+      }
+    },
+    "existing_pinned_sources_unchanged": true,
+    "tested_source_unchanged": true,
+    "tested_tests_unchanged": true
+  },
+  "final_independent_review": {
+    "status": "PASS",
+    "complete": true,
+    "file": "review/final-review-after-fix.md",
+    "sha256": "d4cef77fbe49bff607e2ea8fb55173c2009ea7a10ae599004dc59e7d4a8ce770",
+    "thread_id": "01a13f92-6da0-7b91-8c6d-f71bc4957287",
+    "previous_pending_notification_thread_id": "01a13f78-7629-7613-9af8-38e1d3ed156c",
+    "previous_status_snapshot": "evidence/controller-observed-before-final-review.json"
+  },
+  "implementation_and_scoped_tests_complete": true,
+  "task_acceptance_complete": true,
+  "R03_R04_R15_repeated": false,
+  "existing_whole_suite_run": false,
+  "out_of_scope": [
+    "head_execution",
+    "worker_scheduler_activation",
+    "credentials",
+    "operational_settings",
+    "GitHub_protection",
+    "trusted_issuer_emitter",
+    "native_sandbox_investigation"
+  ],
+  "next_connection_conditions": [
+    "Owner-reviewed installation pin and protected state/config/DB connection loader",
+    "Separate tests/reviewer supervisors and issuer/signature-verifier integration",
+    "Latest expected binding evaluation and required-check emission outside this fixture component"
+  ],
+  "evidence_base_directory": "/tmp/agent-controller-dev-ur5octch",
+  "correction": {
+    "finding": "post-record artifact restoration bypassed conflict redaction",
+    "first_independent_review": {
+      "file": "review/final-review.md",
+      "status": "REQUEST_CHANGES",
+      "sha256": "a5e81fd8dd524a32b01f44172d43122082265d12e3e67bf65a853e19475ea8f6"
+    },
+    "approved_delta": {
+      "file": "review/fix-plan.md",
+      "sha256": "68831d156cf633d4aacf1d77a4d54d54fc7a138ada19d06dbac547b4b5c4208b",
+      "review": "review/fix-plan-v2-review.md"
+    },
+    "reproduction": {
+      "file": "evidence/p2-before/result.json",
+      "methods": 2,
+      "semantic_failures": 2,
+      "errors": 0
+    },
+    "focused_validation": {
+      "file": "evidence/p2-after/result.json",
+      "methods": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "source_sha256": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7",
+      "test_sha256": "b765ec07ff8fd4b68b88dd8e4d41aa40680c578844135ceb97518c8a99a2d15a",
+      "observations": [
+        {
+          "case": "P2",
+          "kind": "pin_conflict",
+          "actual_record_succeeded": true,
+          "test_injected_after_record": true,
+          "reason": "STATE_CONFLICT",
+          "artifact_retained": false,
+          "db_rows_preserved": true,
+          "artifact_sha256": "e8cfb2b1bbef1667e8235410464b8d427aeb67b5733431b69a592a13361d8093",
+          "collector_calls": 1
+        },
+        {
+          "case": "P2",
+          "kind": "terminal_conflict",
+          "actual_record_succeeded": true,
+          "test_injected_after_record": true,
+          "reason": "STATE_CONFLICT",
+          "artifact_retained": false,
+          "db_rows_preserved": true,
+          "artifact_sha256": "e8cfb2b1bbef1667e8235410464b8d427aeb67b5733431b69a592a13361d8093",
+          "collector_calls": 1
+        },
+        {
+          "case": "P2",
+          "kind": "read_uncertainty",
+          "actual_record_succeeded": true,
+          "test_injected_after_record": true,
+          "reason": "DATABASE_UNCONFIRMED",
+          "artifact_retained": true,
+          "db_rows_preserved": true,
+          "artifact_sha256": "e8cfb2b1bbef1667e8235410464b8d427aeb67b5733431b69a592a13361d8093",
+          "collector_calls": 1
+        }
+      ]
+    },
+    "diff": "evidence/p2-source.patch",
+    "diff_audit": "evidence/p2-diff-audit.json",
+    "original_methods_unchanged": true,
+    "passed_targets_repeated": false,
+    "existing_mutation_evidence_reused": true
+  },
+  "approval_diagnosis": "evidence/approval-inspection-20261015.json",
+  "additional_privileges_granted": false,
+  "previously_passed_tests_repeated": false,
+  "reviewer_executed_tests": false
+}

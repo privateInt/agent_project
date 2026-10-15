@@ -1,0 +1,29 @@
+--- before-p2/github_fixture_controller.py
++++ workspace/src/ops/tools/github_fixture_controller.py
+@@ -33,6 +33,7 @@
+     "ASSIGNMENT_HASH_MISMATCH", "ASSIGNMENT_INVALID", "ASSIGNMENT_CONFLICT",
+     "ASSIGNMENT_PIN_MISMATCH", "REAL_EXECUTION_BLOCKED", "JOB_NOT_FOUND", "STATE_CONFLICT",
+ })
++_NO_DISCLOSURE = frozenset({"ASSIGNMENT_PIN_MISMATCH", "ASSIGNMENT_CONFLICT", "STATE_CONFLICT"})
+ _TRUST = (
+     "input_origin_verified", "signer_roster_origin_verified", "issuer_environment_verified",
+     "runtime_isolation_verified", "independent_review_verified", "trusted_gate_verified",
+@@ -250,7 +251,7 @@
+         "fixture_only": True, "head_code_executed": False,
+         **{key: False for key in _TRUST},
+     }
+-    if reason in ("ASSIGNMENT_PIN_MISMATCH", "ASSIGNMENT_CONFLICT", "STATE_CONFLICT"):
++    if reason in _NO_DISCLOSURE:
+         record, artifact = None, None
+     return {"report": report, "record": record, "artifact": artifact}
+ 
+@@ -408,7 +409,8 @@
+                            artifact=artifact, collection_reason=collection_reason)
+         observed = read_fixture_controller_job(ledger_connection, control_connection, job,
+                                                expected_assignment_sha256)
+-        if observed["report"]["reason"] != "ARTIFACT_STORED":
++        if (observed["report"]["reason"] != "ARTIFACT_STORED"
++                and observed["report"]["reason"] not in _NO_DISCLOSURE):
+             observed["artifact"] = artifact
+         return observed
+     except _Failure as error:

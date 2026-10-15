@@ -1,0 +1,27 @@
+test_p2_post_record_pin_conflict_redacts_artifact (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... FAIL
+test_p2_post_record_terminal_conflict_redacts_artifact (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... FAIL
+
+======================================================================
+FAIL: test_p2_post_record_pin_conflict_redacts_artifact (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-controller-dev-ur5octch/workspace/src/ops/tools/tests/test_github_fixture_controller.py", line 681, in test_p2_post_record_pin_conflict_redacts_artifact
+    self.post_record_case("pin_conflict")
+  File "/tmp/agent-controller-dev-ur5octch/workspace/src/ops/tools/tests/test_github_fixture_controller.py", line 674, in post_record_case
+    self.assertTrue(result["artifact"] is None, "post-record conflict must not disclose artifact")
+AssertionError: False is not true : post-record conflict must not disclose artifact
+
+======================================================================
+FAIL: test_p2_post_record_terminal_conflict_redacts_artifact (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-controller-dev-ur5octch/workspace/src/ops/tools/tests/test_github_fixture_controller.py", line 684, in test_p2_post_record_terminal_conflict_redacts_artifact
+    self.post_record_case("terminal_conflict")
+  File "/tmp/agent-controller-dev-ur5octch/workspace/src/ops/tools/tests/test_github_fixture_controller.py", line 674, in post_record_case
+    self.assertTrue(result["artifact"] is None, "post-record conflict must not disclose artifact")
+AssertionError: False is not true : post-record conflict must not disclose artifact
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.046s
+
+FAILED (failures=2)

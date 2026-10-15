@@ -1,0 +1,19 @@
+{
+  "original_repository_unchanged": true,
+  "original_local_change_count": 11,
+  "previous_runs": {
+    "/tmp/agent-pr13-r15-3yj0nl91": {
+      "unchanged": true,
+      "file_count": 19
+    },
+    "/tmp/agent-pr13-r03-5yc_ibkz": {
+      "unchanged": true,
+      "file_count": 16
+    },
+    "/tmp/agent-pr13-r04-a8bb0yax": {
+      "unchanged": true,
+      "file_count": 15
+    }
+  },
+  "pinned_existing_files_unchanged": true
+}

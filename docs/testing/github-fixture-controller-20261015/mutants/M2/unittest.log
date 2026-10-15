@@ -1,0 +1,27 @@
+{"run": 1, "failures": 1, "errors": 0, "skipped": 0}
+test_c04_spawn_failed_is_unknown (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... FAIL
+
+======================================================================
+FAIL: test_c04_spawn_failed_is_unknown (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-controller-dev-ur5octch/mutants/M2/src/ops/tools/tests/test_github_fixture_controller.py", line 302, in test_c04_spawn_failed_is_unknown
+    self.unknown_case(no_artifact("SPAWN_FAILED"))
+  File "/tmp/agent-controller-dev-ur5octch/mutants/M2/src/ops/tools/tests/test_github_fixture_controller.py", line 291, in unknown_case
+    result = self.run_job(pair, "OUTCOME_UNKNOWN")
+  File "/tmp/agent-controller-dev-ur5octch/mutants/M2/src/ops/tools/tests/test_github_fixture_controller.py", line 162, in run_job
+    return self.call("run_fixture_job", **values, reason=reason)
+  File "/tmp/agent-controller-dev-ur5octch/mutants/M2/src/ops/tools/tests/test_github_fixture_controller.py", line 170, in call
+    return self._checked_call(name, args, kwargs, reason)
+  File "/tmp/agent-controller-dev-ur5octch/mutants/M2/src/ops/tools/tests/test_github_fixture_controller.py", line 198, in _checked_call
+    self.assertEqual(report["reason"], reason)
+AssertionError: 'DATABASE_UNCONFIRMED' != 'OUTCOME_UNKNOWN'
+- DATABASE_UNCONFIRMED
++ OUTCOME_UNKNOWN
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (failures=1)
+
