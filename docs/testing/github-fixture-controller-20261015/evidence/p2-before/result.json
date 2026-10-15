@@ -1,0 +1,35 @@
+{
+  "label": "p2-before",
+  "started_utc": "2026-10-15T12:48:18.847043+00:00",
+  "elapsed_seconds": 0.046079425141215324,
+  "environment": {
+    "python": "3.10.12",
+    "sqlite": "3.37.2",
+    "uid": 1011,
+    "fixed_child_python": "/usr/bin/python3"
+  },
+  "parent_commit": "e1eff75b47cdf3fae1088d51d35aaea701f81477",
+  "plan_sha256": "227df66ea111e1d29e5982290630deac9b3b40b9e034e064a08283540142962e",
+  "review_sha256": "9caf0395f33563d9fc7fc88247b58b2d3d18dc34df6b9756cba37c6a94d1aa53",
+  "source_sha256": "e96e97fa47c190b5340b3989694f41ee29804d3cf60790e54af2aa13bdcac5be",
+  "test_sha256": "b765ec07ff8fd4b68b88dd8e4d41aa40680c578844135ceb97518c8a99a2d15a",
+  "methods_run": 2,
+  "failures": 2,
+  "errors": 0,
+  "skipped": 0,
+  "case_results": [
+    {
+      "test": "src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests.test_p2_post_record_pin_conflict_redacts_artifact",
+      "status": "FAIL"
+    },
+    {
+      "test": "src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests.test_p2_post_record_terminal_conflict_redacts_artifact",
+      "status": "FAIL"
+    }
+  ],
+  "subcase_results": [],
+  "observations": [],
+  "passed": false,
+  "R03_R04_R15_repeated": false,
+  "existing_suite_run": false
+}

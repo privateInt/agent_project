@@ -1,0 +1,73 @@
+{
+  "label": "p2-after",
+  "started_utc": "2026-10-15T12:48:39.109957+00:00",
+  "elapsed_seconds": 0.08086027391254902,
+  "environment": {
+    "python": "3.10.12",
+    "sqlite": "3.37.2",
+    "uid": 1011,
+    "fixed_child_python": "/usr/bin/python3"
+  },
+  "parent_commit": "e1eff75b47cdf3fae1088d51d35aaea701f81477",
+  "plan_sha256": "227df66ea111e1d29e5982290630deac9b3b40b9e034e064a08283540142962e",
+  "review_sha256": "9caf0395f33563d9fc7fc88247b58b2d3d18dc34df6b9756cba37c6a94d1aa53",
+  "source_sha256": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7",
+  "test_sha256": "b765ec07ff8fd4b68b88dd8e4d41aa40680c578844135ceb97518c8a99a2d15a",
+  "methods_run": 3,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "case_results": [
+    {
+      "test": "src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests.test_p2_post_record_pin_conflict_redacts_artifact",
+      "status": "PASS"
+    },
+    {
+      "test": "src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests.test_p2_post_record_terminal_conflict_redacts_artifact",
+      "status": "PASS"
+    },
+    {
+      "test": "src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests.test_p2_post_record_read_uncertainty_retains_artifact",
+      "status": "PASS"
+    }
+  ],
+  "subcase_results": [],
+  "observations": [
+    {
+      "case": "P2",
+      "kind": "pin_conflict",
+      "actual_record_succeeded": true,
+      "test_injected_after_record": true,
+      "reason": "STATE_CONFLICT",
+      "artifact_retained": false,
+      "db_rows_preserved": true,
+      "artifact_sha256": "e8cfb2b1bbef1667e8235410464b8d427aeb67b5733431b69a592a13361d8093",
+      "collector_calls": 1
+    },
+    {
+      "case": "P2",
+      "kind": "terminal_conflict",
+      "actual_record_succeeded": true,
+      "test_injected_after_record": true,
+      "reason": "STATE_CONFLICT",
+      "artifact_retained": false,
+      "db_rows_preserved": true,
+      "artifact_sha256": "e8cfb2b1bbef1667e8235410464b8d427aeb67b5733431b69a592a13361d8093",
+      "collector_calls": 1
+    },
+    {
+      "case": "P2",
+      "kind": "read_uncertainty",
+      "actual_record_succeeded": true,
+      "test_injected_after_record": true,
+      "reason": "DATABASE_UNCONFIRMED",
+      "artifact_retained": true,
+      "db_rows_preserved": true,
+      "artifact_sha256": "e8cfb2b1bbef1667e8235410464b8d427aeb67b5733431b69a592a13361d8093",
+      "collector_calls": 1
+    }
+  ],
+  "passed": true,
+  "R03_R04_R15_repeated": false,
+  "existing_suite_run": false
+}

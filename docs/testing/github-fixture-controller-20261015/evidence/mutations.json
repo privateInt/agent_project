@@ -1,0 +1,43 @@
+{
+  "selected_by": "review/plan-review.md",
+  "normal_evidence": "evidence/run-1/result.json",
+  "results": [
+    {
+      "mutant": "M1",
+      "target": "test_c05_crash_after_claim_never_recollects",
+      "normal_source_sha256": "e96e97fa47c190b5340b3989694f41ee29804d3cf60790e54af2aa13bdcac5be",
+      "mutant_source_sha256": "c5fcddf7d67aa1cee9e925517f1888e9e661b866f47a8a740c78eefb12936f0d",
+      "change": {
+        "old": "if not fresh:\n",
+        "new": "if False:\n"
+      },
+      "counts": {
+        "run": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "semantically_detected": true,
+      "log": "mutants/M1/unittest.log"
+    },
+    {
+      "mutant": "M2",
+      "target": "test_c04_spawn_failed_is_unknown",
+      "normal_source_sha256": "e96e97fa47c190b5340b3989694f41ee29804d3cf60790e54af2aa13bdcac5be",
+      "mutant_source_sha256": "be360496b23e9d908b6c8dbed6486a3ebd8ca571b0258a9897b27a1f065ca074",
+      "change": {
+        "old": "\"ASSIGNMENT_HASH_MISMATCH\", \"ASSIGNMENT_INVALID\", \"REAL_EXECUTION_BLOCKED\",\n}",
+        "new": "\"ASSIGNMENT_HASH_MISMATCH\", \"ASSIGNMENT_INVALID\", \"REAL_EXECUTION_BLOCKED\", \"SPAWN_FAILED\",\n}"
+      },
+      "counts": {
+        "run": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "semantically_detected": true,
+      "log": "mutants/M2/unittest.log"
+    }
+  ],
+  "original_unchanged": true
+}

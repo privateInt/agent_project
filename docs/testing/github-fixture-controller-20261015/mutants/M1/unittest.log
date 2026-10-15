@@ -1,0 +1,16 @@
+{"run": 1, "failures": 1, "errors": 0, "skipped": 0}
+test_c05_crash_after_claim_never_recollects (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... FAIL
+
+======================================================================
+FAIL: test_c05_crash_after_claim_never_recollects (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-controller-dev-ur5octch/mutants/M1/src/ops/tools/tests/test_github_fixture_controller.py", line 334, in test_c05_crash_after_claim_never_recollects
+    self.assertEqual(collect.call_count, 0)
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 1 test in 0.028s
+
+FAILED (failures=1)
+

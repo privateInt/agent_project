@@ -1,0 +1,18 @@
+test_c01_schema_and_explicit_initialization (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c02_real_collection_and_cached_readback (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c03_real_preparation_failure_is_terminal (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c04_other_unknowns (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c04_spawn_failed_is_unknown (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c05_crash_after_claim_never_recollects (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c06_real_process_claim_race (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c07_claim_commit_uncertainty (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c08_preparation_commit_uncertainty (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c09_artifact_commit_uncertainty_retains_original_bytes (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c10_conflicting_and_orphan_states_preserve_data (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c11_connections_schema_busy_and_corruption (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_c12_input_readonly_output_and_static_boundary (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.500s
+
+OK

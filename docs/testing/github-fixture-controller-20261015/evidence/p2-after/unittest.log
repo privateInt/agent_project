@@ -1,0 +1,8 @@
+test_p2_post_record_pin_conflict_redacts_artifact (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_p2_post_record_terminal_conflict_redacts_artifact (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+test_p2_post_record_read_uncertainty_retains_artifact (src.ops.tools.tests.test_github_fixture_controller.FixtureControllerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.081s
+
+OK
