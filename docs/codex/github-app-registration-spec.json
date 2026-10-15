@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "kind": "manual_registration_self_review",
+  "not_for": ["github_app_manifest", "github_api", "import"],
+  "proposal": {
+    "owner": {"login": "privateInt", "type": "User"},
+    "name": "privateint-codex-checks",
+    "homepage_url": "https://github.com/privateInt/agent_project",
+    "registration_url": "https://github.com/settings/apps/new",
+    "registration_scope": "only_this_account",
+    "permissions": {
+      "repository": {
+        "checks": "write",
+        "contents": "read",
+        "pull_requests": "read",
+        "metadata": "read"
+      },
+      "account": {},
+      "organization": {}
+    },
+    "webhook": {"active": false, "events": []},
+    "auth": {
+      "callback_urls": [],
+      "setup_url": "",
+      "request_oauth_on_install": false,
+      "device_flow": false
+    },
+    "installation": {
+      "repository_selection": "selected",
+      "repositories": ["privateInt/agent_project"]
+    }
+  },
+  "actual": {
+    "app_id": null,
+    "installation_id": null,
+    "suggested_name_availability": "UNKNOWN",
+    "existing_dedicated_app": "UNKNOWN",
+    "registration_verified": false,
+    "installation_verified": false,
+    "approved_permissions": null,
+    "approved_repository_selection": null,
+    "ids_authenticated": false,
+    "trusted_emitter_verified": false
+  },
+  "scope": {
+    "final_target_repositories": ["privateInt/agent_project", "privateInt/vms_project"],
+    "secrets_requested": false,
+    "performed_by_this_step": {
+      "registration": false,
+      "installation": false,
+      "key_token_creation": false,
+      "check_emission": false,
+      "protection_change": false,
+      "auto_merge_activation": false,
+      "worker_activation": false
+    }
+  }
+}
