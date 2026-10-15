@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "scope": "USER_REPORTED_NATIVE_OBSERVATION",
+  "status": "OBSERVED",
+  "evidence_origin": "사용자가 붙여넣은 고정 fixture 전달문 실행 출력. root가 서버를 직접 조회하거나 원래 artifact bytes를 받은 결과가 아니다.",
+  "message_received_at": "2026-10-15T14:41:31+09:00",
+  "execution_timestamp_observed": false,
+  "independently_attested": false,
+  "preceding_reviewed_command": {
+    "file_name": "agent_fixture_collect_native_20261015.sh",
+    "sha256": "a8a5a39765c4233aa5c685d99b9f13ac52700489f2490f8b6c322bd38ffeb96c",
+    "source_commit": "8a1a0a07d354cb0b964f8c96320c92174d6c6796",
+    "expected_source_sha256": {
+      "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+      "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0"
+    },
+    "fixture_profile": "ok",
+    "fixture_target": "ExampleOrg/example_repo, PR17, synthetic target only",
+    "pin_provenance": "전달문의 검토된 기대 pin이며 출력의 파일 OK·SOURCE_SHA256_OK 보고와 연결한다. active runtime/설치 출처의 독립 attestation은 아니다."
+  },
+  "execution_metadata": {
+    "script_sha256_check_reported": "agent_fixture_collect_native_20261015.sh: OK",
+    "interpreter_version_reported": "Python 3.10.12",
+    "child_version_separately_reported": false,
+    "source_sha256_check_reported": "SOURCE_SHA256_OK",
+    "fixture_probe_exit": 2,
+    "expected_probe_exit": 2,
+    "user_reported_fixed_fixture_invocations": 1,
+    "additional_root_native_invocations": 0
+  },
+  "latest_report": {
+    "artifact_hash_recomputed": true,
+    "caller_fd_preserved": true,
+    "collector": {
+      "assignment_bytes_verified": true,
+      "binding_verified": false,
+      "child_reaped": true,
+      "collection_complete": true,
+      "exit_zero_observed": true,
+      "fixture_only": true,
+      "head_code_executed": false,
+      "independent_review_verified": false,
+      "input_origin_verified": false,
+      "issuer_environment_verified": false,
+      "merge_authorized": false,
+      "native_ready": false,
+      "output_complete": true,
+      "output_limit_exceeded": false,
+      "reason": "EXIT_ZERO",
+      "returncode": 0,
+      "runtime_isolation_verified": false,
+      "scope": "FIXTURE_ASSIGNMENT_COLLECTION_ONLY",
+      "signer_roster_origin_verified": false,
+      "status": "OBSERVED",
+      "stderr_captured_bytes": 15,
+      "stderr_eof": true,
+      "stdout_captured_bytes": 11,
+      "stdout_eof": true,
+      "timed_out": false,
+      "trusted_gate_verified": false
+    },
+    "fixture_target_only": true,
+    "merge_authorized": false,
+    "native_ready": false,
+    "schema": 1,
+    "scope": "NATIVE_FIXED_FIXTURE_ONLY",
+    "status": "OBSERVED"
+  },
+  "interpretation": {
+    "fixed_fixture_collection": "사용자 출력에서 assignment bytes 검증·직접 child exit0/reap·두 EOF·출력/수집 완전성·caller FD 보존을 관찰했다. marker 예상 stdout11/stderr15bytes와 일치한다.",
+    "artifact_hash": "wrapper의 artifact_hash_recomputed=true 보고다. 원래 artifact bytes는 제공되지 않아 root가 별도로 다시 계산한 값은 아니다.",
+    "exit_status": "wrapper는 진단 scope의 미인수 상태를 유지하도록 exit2를 사용한다. JSON의 OBSERVED/EXIT_ZERO와 함께 해석하며 CLI exit0 또는 required tests PASS로 바꾸지 않는다.",
+    "history": "기존 offline JSON의 NOT_RUN과 user_server_executions=0은 당시 개발 검사 범위의 이력으로 보존한다. 이번 별도 관찰만 현재 status 행과 PR 본문에 연결한다."
+  },
+  "limitations": {
+    "fixture_only": true,
+    "head_code_executed": false,
+    "input_origin_verified": false,
+    "signer_roster_origin_verified": false,
+    "issuer_environment_verified": false,
+    "runtime_isolation_verified": false,
+    "independent_review_verified": false,
+    "trusted_gate_verified": false,
+    "binding_verified": false,
+    "native_ready": false,
+    "merge_authorized": false,
+    "python_3_10_full_suite_run": false,
+    "artifact_bytes_received": false,
+    "required_check_issued": false,
+    "note": "한 고정 ok profile의 사용자 보고다. 실제 PR/head·tests/reviewer 실행·보호된 controller/assignment ledger·roster/issuer 출처·native worker 격리·병합 인수는 미완료. 기존 sandbox 세 실패·D17/D18 상한·연장 소진에 따른 보류를 유지하며 재실행하지 않았다."
+  }
+}
