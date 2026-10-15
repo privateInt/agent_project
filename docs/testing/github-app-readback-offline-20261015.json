@@ -1,0 +1,236 @@
+{
+  "schema": "github-app-readback-offline-v1",
+  "date": "2026-10-15",
+  "scope": "OFFLINE_ONLY",
+  "summary": "임시 RSA와 실제 TLS loopback의 격리 검사. 실제 App 키/GitHub 인증 조회·trusted gate 인수는 아니다.",
+  "baseline_commit": "5e91e4bff2460e33fff95ec99ea32899d911a973",
+  "pre_review_plan": {
+    "path": "docs/codex/github-app-readback-test-plan.md",
+    "sha256": "03e95cbc819d822809a1f2c644f2ab9f9a6acea8348175603989ef60bb4c0232",
+    "result": "PASS",
+    "topics": "A01..A20",
+    "selected_mutations": [
+      "M1",
+      "M2"
+    ]
+  },
+  "environment": {
+    "python": "3.12.14",
+    "openssl": "OpenSSL 3.0.13 30 Jan 2024",
+    "platform": "Linux",
+    "python310_ast": "PASS",
+    "actual_python310": "NOT_RUN"
+  },
+  "common_artifact_sha256": {
+    "src/ops/tools/github_app_readback.py": "97e8fdd2675a6d08c14d9f70da06dfb360165002bf99ec93f92ebac2c1f7f1b3",
+    "docs/codex/github-app-readback-test-plan.md": "03e95cbc819d822809a1f2c644f2ab9f9a6acea8348175603989ef60bb4c0232",
+    "docs/codex/github-app-readback.md": "dbe3550f1a05da47eef59afa6f1d2cba0d8765efe7e8aaeacef31c1da225c10d"
+  },
+  "common_artifacts_match_every_recorded_pre_and_post": true,
+  "run_history": [
+    {
+      "stage": "초기 실행",
+      "command": "-B -m unittest src.ops.tools.tests.test_github_app_readback",
+      "total": 20,
+      "PASS": 17,
+      "FAIL": 3,
+      "ERROR": 0,
+      "SKIP": 0,
+      "unittest_seconds": 0.529,
+      "process_seconds": 0.637123,
+      "returncode": 1,
+      "pre_test_sha256": "a7ff18442a11b5fe9183780dabbc7e201d206a36dddfb37fb50c81c5fc52476c",
+      "post_test_sha256": "a7ff18442a11b5fe9183780dabbc7e201d206a36dddfb37fb50c81c5fc52476c",
+      "hashes_unchanged": true,
+      "common_artifacts_match_reference": true,
+      "stdout_bytes": 0
+    },
+    {
+      "stage": "TLS 대역 보정 뒤 전체 실행",
+      "command": "-B -m unittest src.ops.tools.tests.test_github_app_readback",
+      "total": 20,
+      "PASS": 20,
+      "FAIL": 0,
+      "ERROR": 0,
+      "SKIP": 0,
+      "unittest_seconds": 0.909,
+      "process_seconds": 1.01877,
+      "returncode": 0,
+      "pre_test_sha256": "8a777e0e2239c5bb7c60e72fd92325c04b9da64415d8b00885747bc6eb3facd5",
+      "post_test_sha256": "8a777e0e2239c5bb7c60e72fd92325c04b9da64415d8b00885747bc6eb3facd5",
+      "hashes_unchanged": true,
+      "common_artifacts_match_reference": true,
+      "stdout_bytes": 0
+    },
+    {
+      "stage": "A11 fixture 보정 뒤 전체 실행",
+      "command": "-B -m unittest src.ops.tools.tests.test_github_app_readback",
+      "total": 20,
+      "PASS": 20,
+      "FAIL": 0,
+      "ERROR": 0,
+      "SKIP": 0,
+      "unittest_seconds": 0.548,
+      "process_seconds": 0.661572,
+      "returncode": 0,
+      "pre_test_sha256": "293b12d6dd16c0dfcae1338dfaddd1b329ea4d1c4d6aba47d3c8089bbf3fc9c4",
+      "post_test_sha256": "293b12d6dd16c0dfcae1338dfaddd1b329ea4d1c4d6aba47d3c8089bbf3fc9c4",
+      "hashes_unchanged": true,
+      "common_artifacts_match_reference": true,
+      "stdout_bytes": 0
+    },
+    {
+      "stage": "A20 배치 변경 뒤 대상만 실행",
+      "command": "-B -m unittest src.ops.tools.tests.test_github_app_readback.ReadbackTests.test_20_python310_syntax_stdlib_source_pins_and_old_tests_unchanged",
+      "total": 1,
+      "PASS": 1,
+      "FAIL": 0,
+      "ERROR": 0,
+      "SKIP": 0,
+      "unittest_seconds": 0.281,
+      "process_seconds": 0.401175,
+      "returncode": 0,
+      "pre_test_sha256": "c2ac4580c6b9dc0d5ecdeceb44a6e138795b0e920811236270d736ac4b23551b",
+      "post_test_sha256": "c2ac4580c6b9dc0d5ecdeceb44a6e138795b0e920811236270d736ac4b23551b",
+      "hashes_unchanged": true,
+      "common_artifacts_match_reference": true,
+      "stdout_bytes": 0
+    }
+  ],
+  "corrections": [
+    {
+      "kind": "harness",
+      "cause": "초기 A08/A09/A18에서 stdlib HTTPSConnection 전역 patch가 저장한 실제 클래스의 super 초기화를 MagicMock으로 오염시켰다. 제품 원인 아님.",
+      "fix": "q.http만 SimpleNamespace proxy로 교체해 stdlib 전역을 보존했다.",
+      "product_source_changed": false,
+      "constructor_diagnostic_not_counted_as_suite_pass": true
+    },
+    {
+      "kind": "fixture",
+      "change": "A11 cap 초과 body를 정상 JSON+trailing space 128KiB+1로 정합화",
+      "before_test_sha256": "8a777e0e2239c5bb7c60e72fd92325c04b9da64415d8b00885747bc6eb3facd5",
+      "after_test_sha256": "293b12d6dd16c0dfcae1338dfaddd1b329ea4d1c4d6aba47d3c8089bbf3fc9c4",
+      "module_ast_except_A11_unchanged": true
+    },
+    {
+      "kind": "placement",
+      "change": "A20 Git hygiene 검사를 reusable unittest에서 일회성 workflow audit/receipt로 이동",
+      "before_test_sha256": "293b12d6dd16c0dfcae1338dfaddd1b329ea4d1c4d6aba47d3c8089bbf3fc9c4",
+      "after_test_sha256": "c2ac4580c6b9dc0d5ecdeceb44a6e138795b0e920811236270d736ac4b23551b",
+      "module_ast_except_A20_unchanged": true
+    }
+  ],
+  "final_attribution": {
+    "full_20_pass_test_sha256": "293b12d6dd16c0dfcae1338dfaddd1b329ea4d1c4d6aba47d3c8089bbf3fc9c4",
+    "final_test_sha256": "c2ac4580c6b9dc0d5ecdeceb44a6e138795b0e920811236270d736ac4b23551b",
+    "final_file_executed_target": "A20만 1 PASS",
+    "A01_A19_byte_and_ast_unchanged_from_full20": true,
+    "mutation_executed_test_sha256": "8a777e0e2239c5bb7c60e72fd92325c04b9da64415d8b00885747bc6eb3facd5",
+    "M1_M2_targets_and_helpers_byte_and_ast_unchanged": true,
+    "proof": "두 검사전용 수정만 역구성한 이전 전체 SHA가 실제 실행 기록과 일치함을 먼저 확인하고 대상/도우미 본문·AST를 대조했다. 이전 전체 suite나 변이 실행을 최종 전체파일 SHA에 소급귀속하지 않는다."
+  },
+  "verified_boundaries": {
+    "real_crypto": "임시 2048-bit RSA의 실제 서명/독립 openssl verify·JWT claims PASS. 비어 있지 않은 암호로 보호한 RSA/EC/malformed key는 실제 OpenSSL에서 거부했다.",
+    "fd_safety": "readonly/NOFOLLOW/NONBLOCK/CLOEXEC·mode/owner/link/size/FIFO·FD leak 검사 PASS. 실제 closed-stdin subprocess에서 fd>=3 예약 후 sign/verify. 경로 교체에도 원래 열린 FD 사용·HTTP 전에 close.",
+    "real_tls": "실제 TLS loopback 정상3 GET·신뢰하지 않는 인증서 handshake 거부 PASS. 두 TLS 서버302에서 redirect target 요청/Authorization 전달0. fixture factory만 loopback으로 연결하고 제품 host/cert context 확인.",
+    "timeout_precision": "TimeoutExpired는 mock 주입이며 실제5초 지연 child kill/reap 실측이 아니다. timeout=5·subprocess.run·고정 argv/env/pass_fds·stderr 폐기를 static/mock로 확인했다. 실제 crypto child는 정상 종료/회수했다.",
+    "transport": "정확3경로/GET·중복/cap·proxy 미사용·non200 body 미읽기·128KiB 제한 읽기·strict JSON/20자 정수/depth64·실패 뒤 GET0 PASS. cap 초과는 정상 JSON을128KiB+1로 padding해 parser 오류로 가려지지 않게 했다.",
+    "report": "exact14키/enum/attempt, 여덟 범위·신뢰flag false. raw/argv/응답/예외/ProbeError/broken pipe 비노출·--help 포함 항상exit2 PASS.",
+    "guide_A19": "최종 guide 수동 대조 PASS.9장 UI의 설치 전 확인과 saved grant 구분, 최신 Edit→Credentials→Key pairs→New key 및 UI 다르면 중단, 키/JWT 업로드 금지·claim/readback·selected 전체목록/신뢰/45초 외곽timeout 한계 유지."
+  },
+  "workflow_audit": {
+    "placement": "재사용 unit 밖의 일회성 검사",
+    "exact_new_files": 5,
+    "existing_tracked_files_unchanged": true,
+    "old_test_hashes": {
+      "test_github_check_audit.py": "fcc0b85600114a578f55b8e075bc2519d4b71d900e5ddcd73faaf81b7e5539c5",
+      "test_github_evidence_binding.py": "9bb7a99002451f3422e3db7fe130bafacac39d294d1facc371b340535ca01f41"
+    },
+    "links_whitespace_json": "PASS",
+    "relative_links_checked": 9,
+    "missing_relative_links": 0,
+    "temporary_fixture_directories_remaining": 0,
+    "commands": [
+      "git diff --no-ext-diff --name-status HEAD -- .",
+      "git ls-files --others --exclude-standard",
+      "git diff --no-index --check /dev/null <each-five-file>",
+      "python3 -B stdin JSON/hash/relative-link/manual-guide audit"
+    ]
+  },
+  "d38": [
+    {
+      "mutation": "M1",
+      "target": "test_14_same_extra_installation_grants_and_permission_map_errors_are_blocked",
+      "executed_test_sha256": "8a777e0e2239c5bb7c60e72fd92325c04b9da64415d8b00885747bc6eb3facd5",
+      "fault": "installation permissions exact-map 차단 제거",
+      "normal": {
+        "tests": 1,
+        "PASS": 1,
+        "FAIL": 0,
+        "ERROR": 0,
+        "SKIP": 0,
+        "seconds": 0.127947
+      },
+      "mutant": {
+        "tests": 1,
+        "PASS": 0,
+        "FAIL": 1,
+        "ERROR": 0,
+        "SKIP": 0,
+        "seconds": 0.151995,
+        "assertion_failure": true
+      },
+      "detected_cause": "차단할 입력을 OBSERVED로 오수용하여 status assertion 실패",
+      "interpretation": "App 요청은 정상·두 installation만 같은 추가 grant",
+      "mutant_sha256": "d821af789856c94a4441c1a1620a21de1860a6aadc6d7f95767e78c97cc724be",
+      "temporary_copy_removed": true,
+      "mutation_pre_post_original_hashes_unchanged": true
+    },
+    {
+      "mutation": "M2",
+      "target": "test_09_redirect_302_valid_metadata_is_blocked_without_target_authorization",
+      "executed_test_sha256": "8a777e0e2239c5bb7c60e72fd92325c04b9da64415d8b00885747bc6eb3facd5",
+      "fault": "HTTP200 status 차단 제거",
+      "normal": {
+        "tests": 1,
+        "PASS": 1,
+        "FAIL": 0,
+        "ERROR": 0,
+        "SKIP": 0,
+        "seconds": 0.206849
+      },
+      "mutant": {
+        "tests": 1,
+        "PASS": 0,
+        "FAIL": 1,
+        "ERROR": 0,
+        "SKIP": 0,
+        "seconds": 0.353392,
+        "assertion_failure": true
+      },
+      "detected_cause": "차단할 입력을 OBSERVED로 오수용하여 status assertion 실패",
+      "interpretation": "302 비200 수용 검출이다. 정상 두 서버 nofollow/Auth 전달0과 구분하며 유출 변이라고 주장하지 않는다.",
+      "mutant_sha256": "960d7acf95eaca2407b8524ae7a1379bc8ebd38787f37ae3a220eceaaa49cfa1",
+      "temporary_copy_removed": true,
+      "mutation_pre_post_original_hashes_unchanged": true
+    }
+  ],
+  "execution_boundary": {
+    "full_new_suite_runs": 3,
+    "final_A20_target_runs": 1,
+    "existing_46_suite_runs": 0,
+    "native_app_requests": 0,
+    "production_key_creation_or_use": 0,
+    "installation_token_creation": 0,
+    "check_emission": 0,
+    "protection_or_merge_actions": 0,
+    "worker_or_sandbox_runs": 0,
+    "inference_requests": 0
+  },
+  "limitations": [
+    "실제 Python3.10·사용자 App 키/GitHub 인증 GET은 NOT_RUN이다. fixture 응답은 실제 grant 증거가 아니다.",
+    "전체 selected repo 목록·추가 repo 부재·실제 권한 행사·독립성/신뢰·binding·G03/G05/G06·보호/병합은 미검증이다.",
+    "10초는 idle timeout이며 전체 제한은 외곽 timeout --kill-after=2s 45s다. 내부35초 hardwall은 주장하지 않는다.",
+    "같은 UID의 미검토 코드로부터 키를 격리하는 worker credential store와 기존 sandbox EACCES/D17/D18 보류·누적/소진은 해결/초기화하지 않았다."
+  ]
+}
