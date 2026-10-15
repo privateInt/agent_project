@@ -1,0 +1,7 @@
+{
+  "source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+  "ready_utc": "2026-10-15T13:33:09.701292+00:00",
+  "reason": "Pre-execution code inspection: pinned preflight may expose empty temp schema in database_list; validate the unique main inode and defer temp-object rejection to original schema checks.",
+  "previous_ready": "implementation-ready-1.json",
+  "existing_tests_repeated": false
+}

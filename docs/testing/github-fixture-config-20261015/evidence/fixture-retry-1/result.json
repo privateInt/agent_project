@@ -1,0 +1,251 @@
+{
+  "started_utc": "2026-10-15T13:52:53.465102+00:00",
+  "elapsed_seconds": 0.17089025676250458,
+  "methods_run": 2,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "passed": true,
+  "source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+  "test_sha256": "a2e3b571b4995ed039f395241a4d2daccfe4826838b070a64ef5abc3d7ed1b6c",
+  "plan_sha256": "cbebfff754409a0fa32767b88d706ed672ad3c2973a7d31d491e1b4443055ddb",
+  "review_sha256": "f1382dacf6521398d8c64f40d1fe9e8a556e7a5f74b3b11609f0f9daf6442aa3",
+  "runner_sha256": "73ec7b4bf7717b9f2d042abdf3fea445a2017e9c0383b284fa47b395723dccde",
+  "actual_fixed_children": 0,
+  "selected_checks": 30,
+  "results": [
+    {
+      "group": "sidecars",
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/agent-fixture-loader-jxwlfj39/retry_l01_fixture.py",
+        "--child",
+        "/tmp/agent-fixture-loader-jxwlfj39/l01-focused-h90xdrtf/spec.json"
+      ],
+      "checks": [
+        {
+          "label": "ledger.sqlite-wal-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-wal-link",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-shm-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-shm-link",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-mjL01-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-mjL01-link",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-journal-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-journal-link",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-wal-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-wal-link",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-shm-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-shm-link",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-mjL01-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-mjL01-link",
+          "status": "PASS"
+        }
+      ],
+      "observations": [],
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "executed": [
+        "ledger.sqlite-wal-empty",
+        "ledger.sqlite-wal-link",
+        "ledger.sqlite-shm-empty",
+        "ledger.sqlite-shm-link",
+        "ledger.sqlite-mjL01-empty",
+        "ledger.sqlite-mjL01-link",
+        "control.sqlite-journal-empty",
+        "control.sqlite-journal-link",
+        "control.sqlite-wal-empty",
+        "control.sqlite-wal-link",
+        "control.sqlite-shm-empty",
+        "control.sqlite-shm-link",
+        "control.sqlite-mjL01-empty",
+        "control.sqlite-mjL01-link"
+      ],
+      "ignored_without_execution": [
+        "ledger.sqlite-journal-empty",
+        "ledger.sqlite-journal-link"
+      ],
+      "unselected_callable_executions": 0
+    },
+    {
+      "group": "live_changes",
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "/tmp/agent-fixture-loader-jxwlfj39/retry_l01_fixture.py",
+        "--child",
+        "/tmp/agent-fixture-loader-jxwlfj39/l01-focused-wtz1m_0x/spec.json"
+      ],
+      "checks": [
+        {
+          "label": "read-src/__init__.py",
+          "status": "PASS"
+        },
+        {
+          "label": "read-src/ops/__init__.py",
+          "status": "PASS"
+        },
+        {
+          "label": "read-src/ops/tools/github_check_audit.py",
+          "status": "PASS"
+        },
+        {
+          "label": "read-src/ops/tools/github_fixture_collector.py",
+          "status": "PASS"
+        },
+        {
+          "label": "read-src/ops/tools/github_fixture_ledger.py",
+          "status": "PASS"
+        },
+        {
+          "label": "read-src/ops/tools/github_fixture_controller.py",
+          "status": "PASS"
+        },
+        {
+          "label": "read-src/ops/tools/github_fixture_config.py",
+          "status": "PASS"
+        },
+        {
+          "label": "read-marker",
+          "status": "PASS"
+        },
+        {
+          "label": "read-state",
+          "status": "PASS"
+        },
+        {
+          "label": "read-ledger-mode",
+          "status": "PASS"
+        },
+        {
+          "label": "read-ledger-inode",
+          "status": "PASS"
+        },
+        {
+          "label": "read-control-inode",
+          "status": "PASS"
+        },
+        {
+          "label": "read-state-inode",
+          "status": "PASS"
+        },
+        {
+          "label": "read-install-inode",
+          "status": "PASS"
+        },
+        {
+          "label": "read-header",
+          "status": "PASS"
+        },
+        {
+          "label": "read-sidecar",
+          "status": "PASS"
+        }
+      ],
+      "observations": [],
+      "calls": {
+        "connect": 32,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "executed": [
+        "read-src/__init__.py",
+        "read-src/ops/__init__.py",
+        "read-src/ops/tools/github_check_audit.py",
+        "read-src/ops/tools/github_fixture_collector.py",
+        "read-src/ops/tools/github_fixture_ledger.py",
+        "read-src/ops/tools/github_fixture_controller.py",
+        "read-src/ops/tools/github_fixture_config.py",
+        "read-marker",
+        "read-state",
+        "read-ledger-mode",
+        "read-ledger-inode",
+        "read-control-inode",
+        "read-state-inode",
+        "read-install-inode",
+        "read-header",
+        "read-sidecar"
+      ],
+      "ignored_without_execution": [
+        "run-src/__init__.py",
+        "run-src/ops/__init__.py",
+        "run-src/ops/tools/github_check_audit.py",
+        "run-src/ops/tools/github_fixture_collector.py",
+        "run-src/ops/tools/github_fixture_ledger.py",
+        "run-src/ops/tools/github_fixture_controller.py",
+        "run-src/ops/tools/github_fixture_config.py",
+        "run-marker",
+        "run-state",
+        "run-ledger-mode",
+        "run-ledger-inode",
+        "run-control-inode",
+        "run-state-inode",
+        "run-install-inode",
+        "run-header",
+        "run-sidecar"
+      ],
+      "unselected_callable_executions": 0
+    }
+  ],
+  "fixture_root": "/tmp/agent-fixture-loader-jxwlfj39",
+  "first_records_preserved": {
+    "evidence/run-1/result.json": "faadf72d664a4756d292e4cd80df3335caeef64bfaa8b608d9f4a0bb1d706cdb",
+    "evidence/run-1/unittest.log": "2b61a92d1dfaee24380c337cfee8c000138f708aecf68ba30420e1e1dbd69531",
+    "evidence/mutations.json": "774a10a2f29cc53216b2ee500e669430c05ccbcd68f6c8a88da6dd351eeebe6b",
+    "evidence/test-agent-result.json": "9338c159230ffb19e90d9f47f0ede058053fa5c5372b3bef3c5e9ce495f26772",
+    "evidence/first-error-analysis.json": "f3ba99dfbbf6be406742687df5eac6de04f7f698fceec811f468fcb81054a294"
+  },
+  "passed_unaffected_cases_repeated": false,
+  "mutations_repeated": false,
+  "old_suites_run": false
+}

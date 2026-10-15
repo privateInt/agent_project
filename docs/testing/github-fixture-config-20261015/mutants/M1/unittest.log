@@ -1,0 +1,23 @@
+test_l04_external_audit_pin (l01_new_tests.FixtureConfigurationTests) ... 
+======================================================================
+FAIL: test_l04_external_audit_pin (l01_new_tests.FixtureConfigurationTests) (case='hash-audit', check='wrong-external-pin-src/ops/tools/github_check_audit.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 780, in case
+    if row['status']=='FAIL':self.fail(row['traceback'])
+AssertionError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 293, in case
+    self.reject(lambda:self.load(expected_source_sha256=mapping),'SOURCE_HASH_MISMATCH',no_connect=True)
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 152, in reject
+    self.a.fail('expected '+reason+' rejection')
+  File "/usr/lib/python3.10/unittest/case.py", line 675, in fail
+    raise self.failureException(msg)
+AssertionError: expected SOURCE_HASH_MISMATCH rejection
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.054s
+
+FAILED (failures=1)

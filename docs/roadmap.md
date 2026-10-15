@@ -1,5 +1,7 @@
 # 앞으로의 작업 순서
 
+2026-10-15 fixture 연결: [설정 로더](codex/github-fixture-config.md)의 개발 인수 범위와 남은 조건은 [상태](status.md)·[근거](testing/github-fixture-config-observed-20261015.json)를 따른다. 다음 연결에는 소유자가 승인한 실제 version/hash·UID·설치/상태/DB 경로의 보호된 입력과 설치 인수가 필요하다. 그 뒤 tests/reviewer supervisor·issuer/서명·최신 binding/검사 발행을 별도 범위로 연결한다. 기존 sandbox 조사·운영·worker/scheduler 보류를 유지한다.
+
 2026-10-13 규칙 준비: 공통 정책과 템플릿·프로젝트별 책임·첫 작업 연결을 [Codex 문서](codex/README.md)에 정리했다. 문서의 GitHub main 반영과 서버 실행 환경 적용은 아직 완료되지 않았다. [현재 상태](status.md)를 기준으로 읽고 본문에 보존한 과거 근거와 구분한다.
 
 2026-10-13 추가: src 구조·Ops 통합의 로컬 적용과 검증은 완료됐다. [소스 구조](architecture/source-layout.md)와 [native 검사 근거](testing/source-layout-native-20261013.json)를 따른다. 구조의 GitHub main 반영은 `6dd46d069079fc20df5b3d4bac71fe3450550bf8`에서 확인했다. 현재는 [Codex 문서·실행 준비](codex/README.md) 단계다. 이후에는 본격적인 Codex 기능 개발 전에 사용자에게 먼저 알리고 정리한 공통 규칙·구성·프로젝트 문서를 기준으로 실제 서버 실행 준비를 확인한다. 이 준비 전에는 기능 개발이나 무인 실행을 시작하지 않는다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.

@@ -1,0 +1,295 @@
+{
+  "parent_commit": "c91e9e628402fcc89c2daa4301d54c3c321221ed",
+  "base_branch": "codex/github-fixture-controller-20261015",
+  "branch": "codex/github-fixture-config-loader-20261015",
+  "fixture_only": true,
+  "head_code_executed": false,
+  "owner_approval": "NOT_PROVIDED",
+  "operational_installation": "NOT_RUN",
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "review/final-review.md",
+    "sha256": "7886135cc04e4c6b2ee5781172f707867c6705aec4cf4e205d4e8c2265545c2a"
+  },
+  "historical_path_policy": "Copied records retain historical execution paths and original bytes. Resolve each source using files below; source snapshots and runners receive .txt suffixes to avoid accidental discovery/execution.",
+  "legacy_suites_repeated": false,
+  "final_whole_module_run": false,
+  "files": {
+    "src/ops/tools/github_fixture_config.py": {
+      "source": "workspace/src/ops/tools/github_fixture_config.py",
+      "sha256": "63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88"
+    },
+    "src/ops/tools/tests/test_github_fixture_config.py": {
+      "source": "workspace/src/ops/tools/tests/test_github_fixture_config.py",
+      "sha256": "bc446cb5f19d76dbe83c8900b430baa453ee6ff757c7bc21c9e7143be479d87f"
+    },
+    "docs/codex/github-fixture-config.md": {
+      "source": "workspace/docs/codex/github-fixture-config.md",
+      "sha256": "b8a98e1de0623606afc5a2d0dc09b4b9f389a8c2a76db9a128417e543225e76e"
+    },
+    "docs/testing/github-fixture-config-observed-20261015.json": {
+      "source": "workspace/docs/testing/github-fixture-config-observed-20261015.json",
+      "sha256": "c575e7cf99ccea3af63eba51462e2103e8aef4f5e2c0817a18af620edfc83294"
+    },
+    "docs/development.md": {
+      "source": "workspace/docs/development.md",
+      "sha256": "47f74ca4a4d14f13e225da7522309fa629f2a090a2baa0a348e0b7e88cdbbc31"
+    },
+    "docs/status.md": {
+      "source": "workspace/docs/status.md",
+      "sha256": "54b7caad4b7ebb32072a70008c91299fa49a1b670020f131a8644c7e11b82bfb"
+    },
+    "docs/roadmap.md": {
+      "source": "workspace/docs/roadmap.md",
+      "sha256": "e72d9420c299cf6558cc03feb3b0f3d8e7c3fc1336ae46ba7644907e5cb06f86"
+    },
+    "docs/HANDOFF_NEXT_SESSION.md": {
+      "source": "workspace/docs/HANDOFF_NEXT_SESSION.md",
+      "sha256": "fb9a156aeb6ee198eceef707cdd4e54142f3dbadbed446597e051d56509b598b"
+    },
+    "docs/testing/github-fixture-config-20261015/review/exception-context-plan.md": {
+      "source": "review/exception-context-plan.md",
+      "sha256": "e5da95d45633fbd0b6961bd50e7455bc7dbf4ca746c19ba879eada13572cfaae"
+    },
+    "docs/testing/github-fixture-config-20261015/review/exception-context-review.md": {
+      "source": "review/exception-context-review.md",
+      "sha256": "4db1ef5b1ccf623e5906fa50956d8838d69696344be1af7f040173c82a4b0ac8"
+    },
+    "docs/testing/github-fixture-config-20261015/review/final-review.md": {
+      "source": "review/final-review.md",
+      "sha256": "7886135cc04e4c6b2ee5781172f707867c6705aec4cf4e205d4e8c2265545c2a"
+    },
+    "docs/testing/github-fixture-config-20261015/review/fixture-fix-plan-v1.md": {
+      "source": "review/fixture-fix-plan-v1.md",
+      "sha256": "3afab3b7cb7c55247198fd00f7eb1c76a260e33f09e8baa992110b99dfa906fb"
+    },
+    "docs/testing/github-fixture-config-20261015/review/fixture-fix-plan.md": {
+      "source": "review/fixture-fix-plan.md",
+      "sha256": "cbebfff754409a0fa32767b88d706ed672ad3c2973a7d31d491e1b4443055ddb"
+    },
+    "docs/testing/github-fixture-config-20261015/review/fixture-fix-review-v1.md": {
+      "source": "review/fixture-fix-review-v1.md",
+      "sha256": "e1df7efcfa250191133f01a04e820179d8a8d35033f6231fea02384f609630c8"
+    },
+    "docs/testing/github-fixture-config-20261015/review/fixture-fix-review.md": {
+      "source": "review/fixture-fix-review.md",
+      "sha256": "f1382dacf6521398d8c64f40d1fe9e8a556e7a5f74b3b11609f0f9daf6442aa3"
+    },
+    "docs/testing/github-fixture-config-20261015/review/fixture-fix-v2-review.md": {
+      "source": "review/fixture-fix-v2-review.md",
+      "sha256": "dc29aeb314d2942b4e29e49697bdce16beeba66a3f5e14abd6e6e4b4c0119660"
+    },
+    "docs/testing/github-fixture-config-20261015/review/implementation-review-first.md": {
+      "source": "review/implementation-review-first.md",
+      "sha256": "1e2b4dc80c8cf02bb6ab60c72bdbcf4a480fabb457aa14c3130c20f143e375e9"
+    },
+    "docs/testing/github-fixture-config-20261015/review/implementation-review.md": {
+      "source": "review/implementation-review.md",
+      "sha256": "909dc86a203322d817a13868538fd1b034faf2d7c6df866f74218913e59fb636"
+    },
+    "docs/testing/github-fixture-config-20261015/review/plan-review-first.md": {
+      "source": "review/plan-review-first.md",
+      "sha256": "830b948f114c798271c95f3421f24e96318a34b1320e8ee008622533716ffc63"
+    },
+    "docs/testing/github-fixture-config-20261015/review/plan-review.md": {
+      "source": "review/plan-review.md",
+      "sha256": "1deb9bb9673684848bf3843d79628e02cf9d42c994445c7c78829ba89ac856e4"
+    },
+    "docs/testing/github-fixture-config-20261015/review/requirements.md": {
+      "source": "review/requirements.md",
+      "sha256": "02339d17c4f07d2d9a156503cd9f977019f3dbd21418738467b0480061780c75"
+    },
+    "docs/testing/github-fixture-config-20261015/review/test-plan.md": {
+      "source": "review/test-plan.md",
+      "sha256": "b350192d28825de5761c448ddff6f73f00dcf778fceec164c2f2134eda353d50"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-after/github_fixture_config.py.txt": {
+      "source": "evidence/exception-context-after/github_fixture_config.py",
+      "sha256": "63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-after/result.json": {
+      "source": "evidence/exception-context-after/result.json",
+      "sha256": "74a7fe67486597f846c619d7c12311c4fac726a0d4514d648d7036091bcf47ec"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-after/test-addition.patch": {
+      "source": "evidence/exception-context-after/test-addition.patch",
+      "sha256": "5ec2875a2c943bc5860f63db74326af87d2484bc9273c723a6911770db4a2581"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-after/test-diff-audit.json": {
+      "source": "evidence/exception-context-after/test-diff-audit.json",
+      "sha256": "500e1b602f6ee7a1e782ff1a3e593ec25cad077d01fd2478455d10180bd373cf"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-after/test_github_fixture_config.py.txt": {
+      "source": "evidence/exception-context-after/test_github_fixture_config.py",
+      "sha256": "bc446cb5f19d76dbe83c8900b430baa453ee6ff757c7bc21c9e7143be479d87f"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-after/unittest.log": {
+      "source": "evidence/exception-context-after/unittest.log",
+      "sha256": "5a5e81e8dfd65896d56e0b1386c60f5fb81fc65e2390dbfd7d3115c929061b45"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-before/github_fixture_config.py.txt": {
+      "source": "evidence/exception-context-before/github_fixture_config.py",
+      "sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-before/result.json": {
+      "source": "evidence/exception-context-before/result.json",
+      "sha256": "23e70058616f493635f3cd635dfb96e5de899dc3574a78616bd46bb32b195c9f"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-before/test-addition.patch": {
+      "source": "evidence/exception-context-before/test-addition.patch",
+      "sha256": "5ec2875a2c943bc5860f63db74326af87d2484bc9273c723a6911770db4a2581"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-before/test-diff-audit.json": {
+      "source": "evidence/exception-context-before/test-diff-audit.json",
+      "sha256": "500e1b602f6ee7a1e782ff1a3e593ec25cad077d01fd2478455d10180bd373cf"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-before/test_github_fixture_config.py.txt": {
+      "source": "evidence/exception-context-before/test_github_fixture_config.py",
+      "sha256": "bc446cb5f19d76dbe83c8900b430baa453ee6ff757c7bc21c9e7143be479d87f"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-before/unittest.log": {
+      "source": "evidence/exception-context-before/unittest.log",
+      "sha256": "8f4650cd7f484b48022e4015da87fb24c251982886772108724ae34c7c6d518f"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-observation.json": {
+      "source": "evidence/exception-context-observation.json",
+      "sha256": "18f54d7ec398707c75977aec2b8f543f8090e7827321966572ee43f4086ca26d"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-context-test-baseline.py.txt": {
+      "source": "evidence/exception-context-test-baseline.py",
+      "sha256": "a2e3b571b4995ed039f395241a4d2daccfe4826838b070a64ef5abc3d7ed1b6c"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-source-fix-audit.json": {
+      "source": "evidence/exception-source-fix-audit.json",
+      "sha256": "1143908b3b275773748f638757aa8d3346d44c7e3708482e4c2f2b4e71aa4dfe"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/exception-source-fix.patch": {
+      "source": "evidence/exception-source-fix.patch",
+      "sha256": "674f92f560ea1a8d917e2410fa73ff00e7d3a9de6fb8172998bc0a5922dd96ee"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/first-error-analysis.json": {
+      "source": "evidence/first-error-analysis.json",
+      "sha256": "f3ba99dfbbf6be406742687df5eac6de04f7f698fceec811f468fcb81054a294"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/fixture-retry-1/result.json": {
+      "source": "evidence/fixture-retry-1/result.json",
+      "sha256": "2cd3b3f54d3b702359b71d033e2c35b7c8bbe4c37cb794803ea15322d379c7f6"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/fixture-retry-1/test-diff-audit.json": {
+      "source": "evidence/fixture-retry-1/test-diff-audit.json",
+      "sha256": "bc6837f30af15838cf3d4641fe89e8ab96e328bfd01f5da00874c90c86a7f7c1"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/fixture-retry-1/test-helper.patch": {
+      "source": "evidence/fixture-retry-1/test-helper.patch",
+      "sha256": "2dbcb60419dd60fe62f427f507ba31342ebb69193feae30aaea2802e17c6bcf8"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/fixture-retry-1/unittest.log": {
+      "source": "evidence/fixture-retry-1/unittest.log",
+      "sha256": "7918cb4d9872a7ca36c4c33f6259b14e4eceaf16da8bcdbf14ece9202339c467"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/implementation-ready-1.json": {
+      "source": "evidence/implementation-ready-1.json",
+      "sha256": "01a767805fdf6c934eb0e2066049a327065390d49f91c57b8cdcf0bada6c456b"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/implementation-ready.json": {
+      "source": "evidence/implementation-ready.json",
+      "sha256": "955b67be2fbb81cb65928ca1573ee9d0ec73846399546885eadaf2a4ebf6084a"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/implementation-start.json": {
+      "source": "evidence/implementation-start.json",
+      "sha256": "7c85dc02af2fddef383f3b74e4fea794622fae4fd4f9db5862c28dc32ff751fe"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/mutations.json": {
+      "source": "evidence/mutations.json",
+      "sha256": "774a10a2f29cc53216b2ee500e669430c05ccbcd68f6c8a88da6dd351eeebe6b"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/observed-before-final-review.json": {
+      "source": "evidence/observed-before-final-review.json",
+      "sha256": "0e98d5fc9338824bc6ead54a8fb70e38742d6a5e280d3833ee76de9205a4a04c"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/preservation.json": {
+      "source": "evidence/preservation.json",
+      "sha256": "828b4ce6fffc0645b51f6cfd4e51a8d738406e4312ff821c1df29c395eb0a039"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/publication-first-error.json": {
+      "source": "evidence/publication-first-error.json",
+      "sha256": "c1a64e9fbe3e6131d954a25624d15219728bc4899b9d85881242698efc5776ac"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/run-1/result.json": {
+      "source": "evidence/run-1/result.json",
+      "sha256": "faadf72d664a4756d292e4cd80df3335caeef64bfaa8b608d9f4a0bb1d706cdb"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/run-1/source-and-tests/github_fixture_config.py.txt": {
+      "source": "evidence/run-1/source-and-tests/github_fixture_config.py",
+      "sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/run-1/source-and-tests/test_github_fixture_config.py.txt": {
+      "source": "evidence/run-1/source-and-tests/test_github_fixture_config.py",
+      "sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/run-1/start.json": {
+      "source": "evidence/run-1/start.json",
+      "sha256": "741a3c09370f4d2fcf44f89a1a841d5285b8abcd440773860067263fcdfeae9c"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/run-1/unittest.log": {
+      "source": "evidence/run-1/unittest.log",
+      "sha256": "2b61a92d1dfaee24380c337cfee8c000138f708aecf68ba30420e1e1dbd69531"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/source-before-temp-fix.py.txt": {
+      "source": "evidence/source-before-temp-fix.py",
+      "sha256": "06c1ad502c1bfeac63bd7a3cc600277115923cccbb47ff7d020f0770a465910d"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/temp-schema-fix.patch": {
+      "source": "evidence/temp-schema-fix.patch",
+      "sha256": "2bb4a77dfed64d7c44bcae2262ce7879e3aeb1e0a1a318a1e3ebb0f631f395d0"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/test-agent-final.json": {
+      "source": "evidence/test-agent-final.json",
+      "sha256": "c66c356fb71a8a7185bb363b6c892be74f1e17ab36497943fc185ce7ce5bdc14"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/test-agent-preservation.json": {
+      "source": "evidence/test-agent-preservation.json",
+      "sha256": "3f55c46065c84513d70b88a3abfee85e88c579d8a3850d7e28b79d64bd86c913"
+    },
+    "docs/testing/github-fixture-config-20261015/evidence/test-agent-result.json": {
+      "source": "evidence/test-agent-result.json",
+      "sha256": "9338c159230ffb19e90d9f47f0ede058053fa5c5372b3bef3c5e9ce495f26772"
+    },
+    "docs/testing/github-fixture-config-20261015/mutants/M1/github_fixture_config.py.txt": {
+      "source": "mutants/M1/github_fixture_config.py",
+      "sha256": "b3887faf2678359def35e3bd9039b0acafa49b3f31aa8413eab5b953d9b9187a"
+    },
+    "docs/testing/github-fixture-config-20261015/mutants/M1/result.json": {
+      "source": "mutants/M1/result.json",
+      "sha256": "64bd62adfe79f0f4335d50616e5a5adf4ff0660ba7ea05e19d6a34a110f48bac"
+    },
+    "docs/testing/github-fixture-config-20261015/mutants/M1/unittest.log": {
+      "source": "mutants/M1/unittest.log",
+      "sha256": "874142789500463f8016b1b5497f319c85ad337d98eade2a4b1cb2d4dac51f8c"
+    },
+    "docs/testing/github-fixture-config-20261015/mutants/M2/github_fixture_config.py.txt": {
+      "source": "mutants/M2/github_fixture_config.py",
+      "sha256": "d2e2d16307e5f0fd08bbd3e8bc226d31d463563eb4e9737bc28389311a05f39b"
+    },
+    "docs/testing/github-fixture-config-20261015/mutants/M2/result.json": {
+      "source": "mutants/M2/result.json",
+      "sha256": "f7a996cbac8140419c3cb9b32f76ab22138ba3e3aa426484ad1d3cc143f7eff2"
+    },
+    "docs/testing/github-fixture-config-20261015/mutants/M2/unittest.log": {
+      "source": "mutants/M2/unittest.log",
+      "sha256": "48f686676af31e1d8398bfe385020065788ac97ed9f94ec190ea86b628d058d8"
+    },
+    "docs/testing/github-fixture-config-20261015/runners/retry_l01_fixture.py.txt": {
+      "source": "retry_l01_fixture.py",
+      "sha256": "73ec7b4bf7717b9f2d042abdf3fea445a2017e9c0383b284fa47b395723dccde"
+    },
+    "docs/testing/github-fixture-config-20261015/runners/run_l01_exception_context.py.txt": {
+      "source": "run_l01_exception_context.py",
+      "sha256": "31f9473e0464118b90622030dba86d51a02da38c9dcdae66b1ff570e85b1e110"
+    },
+    "docs/testing/github-fixture-config-20261015/runners/run_l01_tests.py.txt": {
+      "source": "run_l01_tests.py",
+      "sha256": "ba53a6dd943420711bf3f7a0d840e810ede355a3f8a63ab5372631a0757155e8"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+--- fixture-corrected-test.py
++++ exception-context-test.py
+@@ -712,6 +712,48 @@
+                     actual_temp_rename=True,unchanged_db_inodes=True,controller_calls=0))
+             self.check('state-connect-window-'+when,state_case)
+ 
++    def caller_exception_context(self):
++        before=tree(self.base)
++        observed=None;read_error_reason=None;identities=[];connections_live=False
++        try:
++            raise RuntimeError('L01_CALLER_EXCEPTION_CONTEXT')
++        except RuntimeError as caller_error:
++            identities.append(sys.exc_info()[1] is caller_error)
++            handle=self.load()
++            identities.append(sys.exc_info()[1] is caller_error)
++            try:
++                try:
++                    observed=handle.read('exception-context:absent','a'*64)
++                except self.q.FixtureConfigurationError as read_error:
++                    read_error_reason=read_error.reason
++                identities.append(sys.exc_info()[1] is caller_error)
++                if observed is not None:
++                    for connection in self.connections:
++                        self.a.assertEqual(connection.execute('SELECT 1').fetchone(),(1,))
++                    connections_live=True
++            finally:
++                handle.close()
++        self.assert_closed()
++        self.a.assertEqual(tree(self.base),before)
++        self.a.assertEqual(self.calls['connect'],2)
++        for key in ('collect','child','initialize'):
++            self.a.assertEqual(self.calls[key],0)
++        self.observations.append(dict(case='L12_EXCEPTION_CONTEXT',caller_exception='RuntimeError',
++            caller_exception_identity_preserved=all(identities),identity_checks=identities,
++            public_read_attempts_inside_except=1,read_error_reason=read_error_reason,
++            read_reason=observed['report']['reason'] if observed is not None else None,
++            actual_builtin_connections=2,connections_live_after_read=connections_live,
++            owned_resources_closed=True,fixture_tree_unchanged=True,actual_child_count=0))
++        self.a.assertTrue(all(identities))
++        self.a.assertIsNone(read_error_reason,
++            'load/read inside caller except must remain usable: '+str(read_error_reason))
++        self.a.assertEqual(observed['report']['reason'],'JOB_NOT_FOUND')
++        self.a.assertIsNone(observed['record']);self.a.assertIsNone(observed['artifact'])
++        self.a.assertIs(observed['report']['fixture_only'],True)
++        for key in ('head_code_executed',*TRUST):
++            self.a.assertIs(observed['report'][key],False)
++        self.a.assertTrue(connections_live)
++
+     def reports_static(self):
+         with self.load() as h:
+             report=h.report
+@@ -744,7 +786,8 @@
+                  'schemas':self.schemas,'connection':self.connection_policy,'resources':self.resources,
+                  'ok':lambda:self.real_collection('ok'),'exit7':lambda:self.real_collection('nonzero'),
+                  'preparation':self.preparation,'unknown-spawn':self.unknown_spawn,'unknown-commit':self.unknown_commit,
+-                 'forwarding':self.forwarding,'live':self.live_changes,'races':self.races,'reports':self.reports_static}
++                 'forwarding':self.forwarding,'live':self.live_changes,'races':self.races,'reports':self.reports_static,
++                 'exception-context':self.caller_exception_context}
+         with self.observed():
+             self.check(case,targets[case])
+         self.observations.append(dict(case=case,calls=self.calls,fixture_only=True,
+@@ -793,6 +836,7 @@
+     ('test_l07_state_0755','state755'),('test_l07_other_state_guards','state-other'),
+     ('test_l08_database_paths','dbpaths'),('test_l09_sidecars','sidecars'),('test_l10_headers_schemas','schemas'),
+     ('test_l11_connection_policy','connection'),('test_l12_resource_lifecycle','resources'),
++    ('test_l12_load_read_inside_caller_except','exception-context'),
+     ('test_l13_real_ok','ok'),('test_l13_real_exit7','exit7'),('test_l14_preparation_failure','preparation'),
+     ('test_l15_spawn_uncertainty','unknown-spawn'),('test_l15_commit_response_loss','unknown-commit'),
+     ('test_l16_forwarding_isolation','forwarding'),('test_l17_postload_changes','live'),

@@ -1,0 +1,487 @@
+"""Validate explicit fixture installation/configuration pins; open existing DBs.
+
+Linux/Python 3.10+, stdlib only. Supplied expectations are not owner approval.
+The launcher, loaded Python process/bytecode and stdlib remain trusted inputs.
+No initialization, migration, retry, arbitrary execution, signing or network.
+"""
+
+import hashlib
+import json
+import os
+import posixpath
+import re
+import sqlite3
+import stat
+import sys
+from urllib.parse import quote
+
+import src
+import src.ops
+import src.ops.tools
+from src.ops.tools import github_check_audit as audit
+from src.ops.tools import github_fixture_collector as collector
+from src.ops.tools import github_fixture_controller as controller
+from src.ops.tools import github_fixture_ledger as ledger
+
+
+_SOURCE_FILES = (
+    "src/__init__.py", "src/ops/__init__.py",
+    "src/ops/tools/github_check_audit.py", "src/ops/tools/github_fixture_collector.py",
+    "src/ops/tools/github_fixture_ledger.py", "src/ops/tools/github_fixture_controller.py",
+    "src/ops/tools/github_fixture_config.py",
+)
+_CONFIG_KEYS = {"schema", "installation_root", "state_dir", "ledger_db", "control_db"}
+_MARKER = "fixture-controller-installation.json"
+_VERSION = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}")
+_SHA256 = re.compile(r"[0-9a-f]{64}")
+_DIR_FLAGS = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | os.O_CLOEXEC
+_FILE_FLAGS = os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK | os.O_CLOEXEC
+
+
+class FixtureConfigurationError(Exception):
+    """Only a fixed public reason; never include paths, SQL or original errors."""
+
+    def __init__(self, reason):
+        self.reason = reason
+        super().__init__(reason)
+
+
+def _deny(reason):
+    raise FixtureConfigurationError(reason) from None
+
+
+def _release(fds=(), connections=()):
+    ok = True
+    for connection in reversed(connections):
+        try:
+            connection.close()
+        except Exception:
+            ok = False
+    for fd in reversed(fds):
+        try:
+            os.close(fd)
+        except Exception:
+            ok = False
+    return ok
+
+
+def _unique(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError()
+        result[key] = value
+    return result
+
+
+def _integer(value):
+    if len(value) > 20:
+        raise ValueError()
+    return int(value)
+
+
+def _nonfinite(value):
+    raise ValueError()
+
+
+def _json(raw, limit, keys, reason):
+    try:
+        if (type(raw) is not bytes or not 1 <= len(raw) <= limit
+                or raw.startswith(b"\xef\xbb\xbf")):
+            raise ValueError()
+        value = json.loads(raw.decode("utf-8"), object_pairs_hook=_unique,
+                           parse_int=_integer, parse_constant=_nonfinite)
+        if (type(value) is not dict or set(value) != keys
+                or type(value["schema"]) is not int or value["schema"] != 1):
+            raise ValueError()
+        return value
+    except Exception:
+        _deny(reason)
+
+
+def _path(value):
+    try:
+        return (type(value) is str and 1 <= len(value.encode("utf-8")) <= 4096
+                and value.startswith("/") and "\0" not in value and "//" not in value
+                and posixpath.normpath(value) == value)
+    except Exception:
+        return False
+
+
+def _expectations(version, pins, uid):
+    if (type(version) is not str or _VERSION.fullmatch(version) is None
+            or type(uid) is not int or uid < 0 or uid != os.geteuid()
+            or type(pins) is not dict or set(pins) != set(_SOURCE_FILES)
+            or any(type(key) is not str for key in pins)
+            or any(type(value) is not str or _SHA256.fullmatch(value) is None
+                   for value in pins.values())):
+        _deny("EXPECTATION_INVALID")
+    return dict(pins)
+
+
+def _directory_metadata(info, uid, root_uid, reason):
+    mode = stat.S_IMODE(info.st_mode)
+    if (not stat.S_ISDIR(info.st_mode) or info.st_uid not in (uid, root_uid)
+            or (mode & 0o022 and not (info.st_uid == root_uid and mode & stat.S_ISVTX))):
+        _deny(reason)
+
+
+def _directory(path, uid, reason, *, private=False):
+    owned = []
+    result = None
+    try:
+        fd = os.open("/", _DIR_FLAGS)
+        owned.append(fd)
+        root_uid = os.fstat(fd).st_uid
+        _directory_metadata(os.fstat(fd), uid, root_uid, reason)
+        for name in path.split("/")[1:]:
+            if not name:
+                continue
+            fd = os.open(name, _DIR_FLAGS, dir_fd=fd)
+            owned.append(fd)
+            _directory_metadata(os.fstat(fd), uid, root_uid, reason)
+        info = os.fstat(fd)
+        if info.st_uid != uid or stat.S_IMODE(info.st_mode) & 0o022:
+            _deny(reason)
+        if private and stat.S_IMODE(info.st_mode) != 0o700:
+            _deny(reason)
+        result = fd
+        return fd, root_uid
+    except FixtureConfigurationError:
+        raise
+    except Exception:
+        _deny(reason)
+    finally:
+        if not _release([fd for fd in owned if fd != result]):
+            # If an ancestor close failed, the return value must not escape.
+            if result is not None:
+                _release([result])
+            _deny("DATABASE_UNAVAILABLE")
+
+
+def _parent(root_fd, relative, uid, root_uid, reason):
+    owned = []
+    result = None
+    try:
+        fd = os.dup(root_fd)
+        owned.append(fd)
+        parts = relative.split("/")
+        for name in parts[:-1]:
+            fd = os.open(name, _DIR_FLAGS, dir_fd=fd)
+            owned.append(fd)
+            _directory_metadata(os.fstat(fd), uid, root_uid, reason)
+        result = fd
+        return fd, parts[-1]
+    except FixtureConfigurationError:
+        raise
+    except Exception:
+        _deny(reason)
+    finally:
+        if not _release([fd for fd in owned if fd != result]):
+            if result is not None:
+                _release([result])
+            _deny("DATABASE_UNAVAILABLE")
+
+
+def _identity(info):
+    return info.st_dev, info.st_ino
+
+
+def _source_bytes(root_fd, relative, uid, root_uid, limit):
+    reason = "INSTALLATION_INVALID"
+    owned = []
+    try:
+        parent, name = _parent(root_fd, relative, uid, root_uid, reason)
+        owned.append(parent)
+        fd = os.open(name, _FILE_FLAGS, dir_fd=parent)
+        owned.append(fd)
+        info = os.fstat(fd)
+        if (not stat.S_ISREG(info.st_mode) or info.st_uid != uid or info.st_nlink != 1
+                or stat.S_IMODE(info.st_mode) & 0o022 or not 1 <= info.st_size <= limit):
+            _deny(reason)
+        raw = b""
+        while len(raw) <= limit:
+            chunk = os.read(fd, min(65536, limit + 1 - len(raw)))
+            if not chunk:
+                break
+            raw += chunk
+        after = os.fstat(fd)
+        named = os.stat(name, dir_fd=parent, follow_symlinks=False)
+        if (len(raw) != info.st_size or _identity(named) != _identity(info)
+                or (after.st_size, after.st_mtime_ns, after.st_ctime_ns)
+                != (info.st_size, info.st_mtime_ns, info.st_ctime_ns)):
+            _deny(reason)
+        return raw
+    except FixtureConfigurationError:
+        raise
+    except Exception:
+        _deny(reason)
+    finally:
+        if not _release(owned):
+            _deny("DATABASE_UNAVAILABLE")
+
+
+def _runtime_paths(root):
+    modules = (src, src.ops, audit, collector, ledger, controller, sys.modules[__name__])
+    for name, module in zip(_SOURCE_FILES, modules):
+        expected = root + "/" + name
+        if (getattr(module, "__file__", None) != expected
+                or getattr(getattr(module, "__spec__", None), "origin", None) != expected):
+            _deny("INSTALLATION_MISMATCH")
+    for package, expected in ((src, root + "/src"), (src.ops, root + "/src/ops"),
+                              (src.ops.tools, root + "/src/ops/tools")):
+        spec = getattr(package, "__spec__", None)
+        if (list(getattr(package, "__path__", ())) != [expected]
+                or list(getattr(spec, "submodule_search_locations", ()) or ()) != [expected]):
+            _deny("INSTALLATION_MISMATCH")
+    if (getattr(src.ops.tools, "__file__", None) is not None
+            or src.ops.tools.__spec__.origin is not None
+            or controller.collector is not collector or controller.ledger is not ledger
+            or ledger.collector is not collector
+            or collector.canonical_binding_digest is not audit.canonical_binding_digest):
+        _deny("INSTALLATION_MISMATCH")
+
+
+def _installation(root_fd, root, uid, root_uid, version, pins):
+    _runtime_paths(root)
+    parent, name = _parent(root_fd, "src/ops/tools/__init__.py", uid, root_uid,
+                           "INSTALLATION_INVALID")
+    try:
+        try:
+            os.stat(name, dir_fd=parent, follow_symlinks=False)
+        except FileNotFoundError:
+            pass
+        else:
+            _deny("INSTALLATION_MISMATCH")
+    except FixtureConfigurationError:
+        raise
+    except Exception:
+        _deny("INSTALLATION_INVALID")
+    finally:
+        if not _release([parent]):
+            _deny("DATABASE_UNAVAILABLE")
+    marker = _json(_source_bytes(root_fd, _MARKER, uid, root_uid, 2048), 2048,
+                   {"schema", "code_version"}, "INSTALLATION_INVALID")
+    if type(marker["code_version"]) is not str or _VERSION.fullmatch(marker["code_version"]) is None:
+        _deny("INSTALLATION_INVALID")
+    if marker["code_version"] != version:
+        _deny("VERSION_MISMATCH")
+    for name in _SOURCE_FILES:
+        raw = _source_bytes(root_fd, name, uid, root_uid, 262144)
+        if hashlib.sha256(raw).hexdigest() != pins[name]:
+            _deny("SOURCE_HASH_MISMATCH")
+
+
+def _sidecars(state_fd, names):
+    try:
+        with os.scandir(state_fd) as entries:
+            for entry in entries:
+                if any(entry.name in (name + "-journal", name + "-wal", name + "-shm")
+                       or entry.name.startswith(name + "-mj") for name in names):
+                    _deny("DATABASE_PATH_INVALID")
+    except FixtureConfigurationError:
+        raise
+    except Exception:
+        _deny("DATABASE_PATH_INVALID")
+
+
+def _database_metadata(info, uid):
+    if (not stat.S_ISREG(info.st_mode) or info.st_uid != uid or info.st_nlink != 1
+            or stat.S_IMODE(info.st_mode) != 0o600):
+        _deny("DATABASE_PATH_INVALID")
+
+
+def _database_paths(state_fd, names, database_fds, uid):
+    _sidecars(state_fd, names)
+    identities = []
+    for name, fd in zip(names, database_fds):
+        try:
+            info = os.fstat(fd)
+            named = os.stat(name, dir_fd=state_fd, follow_symlinks=False)
+            _database_metadata(info, uid)
+            _database_metadata(named, uid)
+            if _identity(info) != _identity(named):
+                _deny("DATABASE_PATH_INVALID")
+            header = os.pread(fd, 100, 0)
+            if (len(header) != 100 or header[:16] != b"SQLite format 3\0"
+                    or header[18:20] != b"\x01\x01"):
+                _deny("DATABASE_SCHEMA_INVALID")
+            identities.append(_identity(info))
+        except FixtureConfigurationError:
+            raise
+        except Exception:
+            _deny("DATABASE_PATH_INVALID")
+    if len(set(identities)) != 2:
+        _deny("DATABASE_PATH_INVALID")
+
+
+def _sql(connection, sql):
+    cursor = connection.execute(sql)
+    try:
+        return cursor.fetchmany(3)
+    finally:
+        cursor.close()
+
+
+def _connected_inode(connection, fd):
+    try:
+        databases = _sql(connection, "PRAGMA database_list")
+        if (len(databases) != 1 or databases[0][1] != "main"
+                or _identity(os.stat(databases[0][2], follow_symlinks=False)) != _identity(os.fstat(fd))):
+            _deny("DATABASE_PATH_INVALID")
+    except FixtureConfigurationError:
+        raise
+    except Exception:
+        _deny("DATABASE_UNAVAILABLE")
+
+
+def _schemas(connections):
+    try:
+        controller._preflight(*connections)
+        for connection, module in zip(connections, (ledger, controller)):
+            _sql(connection, "BEGIN")
+            try:
+                module._schema(connection, False)
+                _sql(connection, "COMMIT")
+            finally:
+                if connection.in_transaction:
+                    _sql(connection, "ROLLBACK")
+    except (ledger._Failure, controller._Failure) as error:
+        _deny("DATABASE_SCHEMA_INVALID" if error.reason == "SCHEMA_INVALID"
+              else "DATABASE_UNAVAILABLE")
+    except Exception:
+        _deny("DATABASE_UNAVAILABLE")
+
+
+class _FixtureController:
+    def __init__(self, config, uid, root_uid, version, pins, fds, connections):
+        self._config = config
+        self._uid, self._root_uid = uid, root_uid
+        self._version, self._pins = version, pins
+        self._fds, self._connections = fds, connections
+        self._names = tuple(posixpath.basename(config[key]) for key in ("ledger_db", "control_db"))
+        self._closed = False
+
+    @property
+    def report(self):
+        return {"scope": "FIXTURE_CONFIGURATION_ONLY", "reason": "CONFIGURATION_VERIFIED",
+                "fixture_only": True, "head_code_executed": False,
+                "owner_approval_verified": False, **{key: False for key in controller._TRUST}}
+
+    def _check(self, *, schemas=True):
+        if self._closed:
+            _deny("HANDLE_CLOSED")
+        if os.geteuid() != self._uid:
+            _deny("EXPECTATION_INVALID")
+        temporary = []
+        try:
+            for key, original, reason, private in (
+                    ("installation_root", self._fds[0], "INSTALLATION_INVALID", False),
+                    ("state_dir", self._fds[1], "STATE_DIRECTORY_INVALID", True)):
+                current, root_uid = _directory(self._config[key], self._uid, reason, private=private)
+                temporary.append(current)
+                if root_uid != self._root_uid or _identity(os.fstat(current)) != _identity(os.fstat(original)):
+                    _deny("INSTALLATION_MISMATCH" if key == "installation_root" else reason)
+            _installation(self._fds[0], self._config["installation_root"], self._uid,
+                          self._root_uid, self._version, self._pins)
+            _database_paths(self._fds[1], self._names, self._fds[2:], self._uid)
+            for connection, fd in zip(self._connections, self._fds[2:]):
+                _connected_inode(connection, fd)
+            if schemas:
+                _schemas(self._connections)
+            # The read-only checks also end at the same pinned entries.
+            _database_paths(self._fds[1], self._names, self._fds[2:], self._uid)
+        except FixtureConfigurationError:
+            raise
+        except Exception:
+            _deny("DATABASE_UNAVAILABLE")
+        finally:
+            if not _release(temporary):
+                _deny("DATABASE_UNAVAILABLE")
+
+    def run(self, expected_assignment_sha256, assignment_bytes):
+        self._check()
+        return controller.run_fixture_job(*self._connections, self._fds[1],
+                                          expected_assignment_sha256, assignment_bytes)
+
+    def read(self, job_id, expected_assignment_sha256):
+        self._check()
+        return controller.read_fixture_controller_job(*self._connections, job_id,
+                                                      expected_assignment_sha256)
+
+    def close(self):
+        if not self._closed:
+            self._closed = True
+            fds, connections = self._fds, self._connections
+            self._fds, self._connections = [], []
+            if not _release(fds, connections):
+                _deny("DATABASE_UNAVAILABLE")
+
+    def __enter__(self):
+        if self._closed:
+            _deny("HANDLE_CLOSED")
+        return self
+
+    def __exit__(self, exception_type, exception, traceback):
+        self.close()
+
+
+def load_fixture_controller(config_bytes, *, expected_code_version=None,
+                            expected_source_sha256=None, expected_uid=None):
+    """Validate supplied pins and existing files; caller must close the handle.
+
+    No expectation is inferred from the installation. Defaults only make missing
+    inputs a fixed EXPECTATION_INVALID rejection, never an implicit approval.
+    """
+    pins = _expectations(expected_code_version, expected_source_sha256, expected_uid)
+    config = _json(config_bytes, 16384, _CONFIG_KEYS, "CONFIGURATION_INVALID")
+    if not all(_path(config[key]) for key in _CONFIG_KEYS - {"schema"}):
+        _deny("CONFIGURATION_INVALID")
+    names = tuple(posixpath.basename(config[key]) for key in ("ledger_db", "control_db"))
+    if (any(posixpath.dirname(config[key]) != config["state_dir"]
+            for key in ("ledger_db", "control_db")) or names[0] == names[1]):
+        _deny("DATABASE_PATH_INVALID")
+    fds, connections = [], []
+    handle = None
+    try:
+        root, root_uid = _directory(config["installation_root"], expected_uid, "INSTALLATION_INVALID")
+        fds.append(root)
+        _installation(root, config["installation_root"], expected_uid, root_uid,
+                      expected_code_version, pins)
+        state, state_root_uid = _directory(config["state_dir"], expected_uid,
+                                           "STATE_DIRECTORY_INVALID", private=True)
+        fds.append(state)
+        if state_root_uid != root_uid:
+            _deny("STATE_DIRECTORY_INVALID")
+        _sidecars(state, names)
+        for name in names:
+            try:
+                fd = os.open(name, _FILE_FLAGS, dir_fd=state)
+                fds.append(fd)
+            except Exception:
+                _deny("DATABASE_PATH_INVALID")
+        _database_paths(state, names, fds[2:], expected_uid)
+        handle = _FixtureController(config, expected_uid, root_uid, expected_code_version,
+                                    pins, fds, connections)
+        for name, fd in zip(names, fds[2:]):
+            handle._check(schemas=False)
+            uri = "file:" + quote("/proc/self/fd/" + str(state) + "/" + name, safe="/") + "?mode=rw"
+            connection = sqlite3.connect(uri, uri=True, isolation_level=None, timeout=0.1)
+            connections.append(connection)
+            # Compare immediately after connect, before configuration/schema SQL.
+            handle._check(schemas=False)
+            _sql(connection, "PRAGMA busy_timeout=100")
+            _sql(connection, "PRAGMA synchronous=FULL")
+            _connected_inode(connection, fd)
+        handle._check()
+        return handle
+    except FixtureConfigurationError:
+        raise
+    except Exception:
+        _deny("DATABASE_UNAVAILABLE")
+    finally:
+        if handle is None or len(connections) != 2 or sys.exc_info()[0] is not None:
+            if handle is not None:
+                handle._closed = True
+            if not _release(fds, connections):
+                _deny("DATABASE_UNAVAILABLE")

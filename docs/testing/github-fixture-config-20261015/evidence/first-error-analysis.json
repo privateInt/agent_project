@@ -1,0 +1,125 @@
+{
+  "classification": "TEST_HARNESS_CLEANUP_ERROR_NOT_PRODUCT_REGRESSION",
+  "first_result": "evidence/run-1/result.json",
+  "first_log": "evidence/run-1/unittest.log",
+  "source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+  "test_sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02",
+  "methods_run": 23,
+  "passed_methods": 22,
+  "failures": 0,
+  "error_subcases": 16,
+  "skipped": 0,
+  "cause": "altered(path, raw=...) does not remove newly-created files on exit when path did not previously exist. The successful run-sidecar subcase leaves ledger.sqlite-wal; all following 16 read-* subcases fail during initial load before target injection.",
+  "affected": [
+    {
+      "case": "live",
+      "label": "read-src/__init__.py",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-src/ops/__init__.py",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-src/ops/tools/github_check_audit.py",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-src/ops/tools/github_fixture_collector.py",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-src/ops/tools/github_fixture_ledger.py",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-src/ops/tools/github_fixture_controller.py",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-src/ops/tools/github_fixture_config.py",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-marker",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-state",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-ledger-mode",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-ledger-inode",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-control-inode",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-state-inode",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-install-inode",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-header",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    },
+    {
+      "case": "live",
+      "label": "read-sidecar",
+      "status": "ERROR",
+      "error": "FixtureConfigurationError: DATABASE_PATH_INVALID"
+    }
+  ],
+  "first_records_unchanged": true,
+  "product_modified": false,
+  "tests_modified_after_first_run": false,
+  "any_reruns": false,
+  "passed_targets_repeated": false,
+  "old_suites_run": false,
+  "proposed_minimal_next_step": "Reviewer inspects cleanup-only harness correction; remove newly-created raw fixture files on context exit. Then execute only previously unreached read-* L17 subcases using a focused filter, without repeating successful run-* subcases, 22 passed methods, or mutations.",
+  "actual_fixed_children": 3,
+  "actual_child_profiles": [
+    "ok",
+    "nonzero",
+    "ok_with_injected_final_read_commit_response_loss"
+  ],
+  "D38": "Exactly M1/M2 each assertion FAIL1 ERROR0 SKIP0; normal target initial PASS reused"
+}

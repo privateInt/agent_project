@@ -1,0 +1,26 @@
+--- a/src/ops/tools/github_fixture_config.py
++++ b/src/ops/tools/github_fixture_config.py
+@@ -446,6 +446,7 @@
+         _deny("DATABASE_PATH_INVALID")
+     fds, connections = [], []
+     handle = None
++    succeeded = False
+     try:
+         root, root_uid = _directory(config["installation_root"], expected_uid, "INSTALLATION_INVALID")
+         fds.append(root)
+@@ -477,13 +478,14 @@
+             _sql(connection, "PRAGMA synchronous=FULL")
+             _connected_inode(connection, fd)
+         handle._check()
++        succeeded = True
+         return handle
+     except FixtureConfigurationError:
+         raise
+     except Exception:
+         _deny("DATABASE_UNAVAILABLE")
+     finally:
+-        if handle is None or len(connections) != 2 or sys.exc_info()[0] is not None:
++        if not succeeded:
+             if handle is not None:
+                 handle._closed = True
+             if not _release(fds, connections):

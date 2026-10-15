@@ -23,6 +23,10 @@ Codex 작업은 [AGENTS.md](../AGENTS.md), [최신 인수인계](HANDOFF_NEXT_SE
 
 한 번에 한 단계의 산출물과 완료선을 정한다. 새 문서 상태는 `docs/status.md`와 `docs/roadmap.md`에 반영하고 진행 문단을 여러 README에 복제하지 않는다. 아래 Model 세부 지침과 각 플랫폼 계약은 유지한다.
 
+고정 fixture의 설치 pin·전용 상태/기존 SQLite 경로 검증은
+[fixture 설정 로더](codex/github-fixture-config.md)를 따른다. 실제 소유자 승인값과
+운영 설치 인수는 별도이며 기존 DB를 자동 초기화하거나 migration하지 않는다.
+
 ## 코드 읽기 순서
 
 | 순서 | 파일 / 디렉터리 | 확인할 내용 |

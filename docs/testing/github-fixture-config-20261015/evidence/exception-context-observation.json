@@ -1,0 +1,7 @@
+{
+  "exception_visible_during_successful_return": "RuntimeError",
+  "return_value": "normal return",
+  "scope": "stdlib exception context demonstration; product/tests not executed",
+  "risk": "loader finally can close a successful handle inside caller except",
+  "tests_repeated": false
+}

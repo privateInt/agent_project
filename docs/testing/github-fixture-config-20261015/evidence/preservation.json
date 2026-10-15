@@ -1,0 +1,23 @@
+{
+  "original_checkout_unchanged": true,
+  "original_local_changes": 11,
+  "previous_evidence": {
+    "archive": {
+      "unchanged": true,
+      "files": 174
+    },
+    "delivery": {
+      "unchanged": true,
+      "files": 30
+    },
+    "publication": {
+      "unchanged": true,
+      "files": 35
+    },
+    "publication-result.json": {
+      "unchanged": true,
+      "files": 1
+    }
+  },
+  "tests_repeated": false
+}

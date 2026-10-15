@@ -1,0 +1,3484 @@
+{
+  "parent_commit": "c91e9e628402fcc89c2daa4301d54c3c321221ed",
+  "source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+  "test_sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02",
+  "fixture_root": "/tmp/agent-fixture-loader-jxwlfj39",
+  "plan_sha256": "b350192d28825de5761c448ddff6f73f00dcf778fceec164c2f2134eda353d50",
+  "review_sha256": "1deb9bb9673684848bf3843d79628e02cf9d42c994445c7c78829ba89ac856e4",
+  "python": "3.10.12",
+  "sqlite": "3.37.2",
+  "uid": 1011,
+  "root_uid": 65534,
+  "tmp_uid": 65534,
+  "actual_builtin_sqlite": true,
+  "existing_13_plus_3_repeated": false,
+  "R03_R04_R15_repeated": false,
+  "old_suites_run": false,
+  "owner_approval": "NOT_PROVIDED",
+  "operational_installation": "NOT_RUN",
+  "started_utc": "2026-10-15T13:35:35.462194+00:00",
+  "elapsed_seconds": 1.5759879630059004,
+  "methods_run": 23,
+  "passed_methods": [
+    "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+    "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+    "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+    "l01_new_tests.FixtureConfigurationTests.test_l04_external_audit_pin",
+    "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+    "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+    "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+    "l01_new_tests.FixtureConfigurationTests.test_l07_other_state_guards",
+    "l01_new_tests.FixtureConfigurationTests.test_l07_state_0755",
+    "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+    "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+    "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+    "l01_new_tests.FixtureConfigurationTests.test_l11_connection_policy",
+    "l01_new_tests.FixtureConfigurationTests.test_l12_resource_lifecycle",
+    "l01_new_tests.FixtureConfigurationTests.test_l13_real_exit7",
+    "l01_new_tests.FixtureConfigurationTests.test_l13_real_ok",
+    "l01_new_tests.FixtureConfigurationTests.test_l14_preparation_failure",
+    "l01_new_tests.FixtureConfigurationTests.test_l15_commit_response_loss",
+    "l01_new_tests.FixtureConfigurationTests.test_l15_spawn_uncertainty",
+    "l01_new_tests.FixtureConfigurationTests.test_l16_forwarding_isolation",
+    "l01_new_tests.FixtureConfigurationTests.test_l18_connect_races",
+    "l01_new_tests.FixtureConfigurationTests.test_l19_reports_static"
+  ],
+  "failures": 0,
+  "errors": 16,
+  "skipped": 0,
+  "failure_tests": [],
+  "error_tests": [
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/__init__.py')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/__init__.py')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_check_audit.py')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_collector.py')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_ledger.py')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_controller.py')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_config.py')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-marker')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-state')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-ledger-mode')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-ledger-inode')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-control-inode')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-state-inode')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-install-inode')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-header')",
+    "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-sidecar')"
+  ],
+  "subcases": [
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-0')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-1')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-3')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-4')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-5')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-6')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-7')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-8')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-9')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-10')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-raw-11')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-0')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-1')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-3')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-4')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-5')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-6')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-7')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-8')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-9')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-10')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-11')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-12')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-13')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-14')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-15')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-16')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-17')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-18')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-19')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-20')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-21')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-22')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config-shape-23')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='valid-config-at-limit')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l01_config",
+      "subtest": "test_l01_config (l01_new_tests.FixtureConfigurationTests) (case='config', check='config')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_uid-0')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_uid-1')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_uid-2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_uid-3')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_uid-4')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_code_version-0')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_code_version-1')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_code_version-2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_code_version-3')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_code_version-4')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_code_version-5')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_source_sha256-0')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_source_sha256-1')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_source_sha256-2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expected_source_sha256-3')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='missing-expected_code_version')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='missing-expected_source_sha256')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='missing-expected_uid')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='mapping-0')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='mapping-1')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='mapping-2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='mapping-3')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='mapping-4')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='mapping-5')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='mapping-6')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='mapping-7')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='mapping-8')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l02_expectations",
+      "subtest": "test_l02_expectations (l01_new_tests.FixtureConfigurationTests) (case='expectations', check='expectations')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-bytes-0')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-bytes-1')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-bytes-2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-bytes-3')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-bytes-4')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-bytes-5')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-bytes-6')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-missing')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-writable')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-symlink')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-fifo')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='version-mismatch')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker-owner')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l03_marker",
+      "subtest": "test_l03_marker (l01_new_tests.FixtureConfigurationTests) (case='marker', check='marker')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_external_audit_pin",
+      "subtest": "test_l04_external_audit_pin (l01_new_tests.FixtureConfigurationTests) (case='hash-audit', check='wrong-external-pin-src/ops/tools/github_check_audit.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_external_audit_pin",
+      "subtest": "test_l04_external_audit_pin (l01_new_tests.FixtureConfigurationTests) (case='hash-audit', check='hash-audit')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='wrong-external-pin-src/__init__.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='wrong-external-pin-src/ops/__init__.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='wrong-external-pin-src/ops/tools/github_fixture_collector.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='wrong-external-pin-src/ops/tools/github_fixture_ledger.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='wrong-external-pin-src/ops/tools/github_fixture_controller.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='wrong-external-pin-src/ops/tools/github_fixture_config.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='source-missing')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='source-writable')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='source-fifo')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='source-owner')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_other_source_pins",
+      "subtest": "test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) (case='hash-other', check='hash-other')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='same-bytes-other-root')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src-file')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src-origin')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops-file')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops-origin')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops.tools.github_check_audit-file')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops.tools.github_check_audit-origin')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops.tools.github_fixture_collector-file')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops.tools.github_fixture_collector-origin')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops.tools.github_fixture_ledger-file')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops.tools.github_fixture_ledger-origin')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops.tools.github_fixture_controller-file')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops.tools.github_fixture_controller-origin')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops.tools.github_fixture_config-file')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='src.ops.tools.github_fixture_config-origin')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='namespace-initializer')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='namespace-__path__')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='namespace-spec')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l05_runtime_origins",
+      "subtest": "test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) (case='origins', check='origins')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='installation_root-relative')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='installation_root-dot')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='installation_root-dotdot')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='installation_root-slash')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='installation_root-trailing')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='installation_root-nul')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='installation_root-uri')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='state_dir-relative')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='state_dir-dot')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='state_dir-dotdot')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='state_dir-slash')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='state_dir-trailing')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='state_dir-nul')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='state_dir-uri')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='ledger_db-relative')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='ledger_db-dot')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='ledger_db-dotdot')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='ledger_db-slash')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='ledger_db-trailing')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='ledger_db-nul')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='ledger_db-uri')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='control_db-relative')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='control_db-dot')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='control_db-dotdot')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='control_db-slash')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='control_db-trailing')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='control_db-nul')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='control_db-uri')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='unsafe-owned-ancestor-0o777')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='unsafe-owned-ancestor-0o1777')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='nofollow-installation_root')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='nofollow-state_dir')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='nofollow-middle-component')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='real-sticky-namespace-root')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l06_paths_ancestors",
+      "subtest": "test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) (case='paths', check='paths')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l07_other_state_guards",
+      "subtest": "test_l07_other_state_guards (l01_new_tests.FixtureConfigurationTests) (case='state-other', check='state-mode-0o770')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l07_other_state_guards",
+      "subtest": "test_l07_other_state_guards (l01_new_tests.FixtureConfigurationTests) (case='state-other', check='state-mode-0o1700')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l07_other_state_guards",
+      "subtest": "test_l07_other_state_guards (l01_new_tests.FixtureConfigurationTests) (case='state-other', check='state-mode-0o2700')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l07_other_state_guards",
+      "subtest": "test_l07_other_state_guards (l01_new_tests.FixtureConfigurationTests) (case='state-other', check='state-owner-metadata-injection')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l07_other_state_guards",
+      "subtest": "test_l07_other_state_guards (l01_new_tests.FixtureConfigurationTests) (case='state-other', check='state-type-file')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l07_other_state_guards",
+      "subtest": "test_l07_other_state_guards (l01_new_tests.FixtureConfigurationTests) (case='state-other', check='state-type-fifo')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l07_other_state_guards",
+      "subtest": "test_l07_other_state_guards (l01_new_tests.FixtureConfigurationTests) (case='state-other', check='state-type-symlink')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l07_other_state_guards",
+      "subtest": "test_l07_other_state_guards (l01_new_tests.FixtureConfigurationTests) (case='state-other', check='state-other')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l07_state_0755",
+      "subtest": "test_l07_state_0755 (l01_new_tests.FixtureConfigurationTests) (case='state755', check='state-mode-0o755')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l07_state_0755",
+      "subtest": "test_l07_state_0755 (l01_new_tests.FixtureConfigurationTests) (case='state755', check='state755')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='same-path')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='outside')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='nested')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='ledger.sqlite-missing')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='ledger.sqlite-writable')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='ledger.sqlite-readable')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='ledger.sqlite-fifo')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='ledger.sqlite-symlink')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='ledger.sqlite-nlink2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='ledger.sqlite-owner')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='control.sqlite-missing')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='control.sqlite-writable')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='control.sqlite-readable')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='control.sqlite-fifo')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='control.sqlite-symlink')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='control.sqlite-nlink2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='control.sqlite-owner')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='different-names-same-inode')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l08_database_paths",
+      "subtest": "test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) (case='dbpaths', check='dbpaths')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='ledger.sqlite-journal-empty')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='ledger.sqlite-journal-link')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='ledger.sqlite-wal-empty')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='ledger.sqlite-wal-link')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='ledger.sqlite-shm-empty')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='ledger.sqlite-shm-link')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='ledger.sqlite-mjL01-empty')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='ledger.sqlite-mjL01-link')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='control.sqlite-journal-empty')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='control.sqlite-journal-link')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='control.sqlite-wal-empty')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='control.sqlite-wal-link')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='control.sqlite-shm-empty')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='control.sqlite-shm-link')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='control.sqlite-mjL01-empty')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='control.sqlite-mjL01-link')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l09_sidecars",
+      "subtest": "test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) (case='sidecars', check='sidecars')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='ledger.sqlite-empty')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='ledger.sqlite-not-sqlite')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='ledger.sqlite-truncated')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='ledger.sqlite-write-format')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='ledger.sqlite-read-format')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='ledger.sqlite-PRAGMA application_id=1')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='ledger.sqlite-PRAGMA user_version=2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='ledger.sqlite-CREATE TABLE extra(x)')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='ledger.sqlite-ALTER TABLE fixture_jobs ADD COLUMN extra')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='ledger.sqlite-closed-WAL-without-sidecar')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='control.sqlite-empty')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='control.sqlite-not-sqlite')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='control.sqlite-truncated')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='control.sqlite-write-format')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='control.sqlite-read-format')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='control.sqlite-PRAGMA application_id=1')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='control.sqlite-PRAGMA user_version=2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='control.sqlite-CREATE TABLE extra(x)')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='control.sqlite-ALTER TABLE fixture_controller_jobs ADD COLUMN extra')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='control.sqlite-closed-WAL-without-sidecar')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='swapped-schema-roles')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l10_headers_schemas",
+      "subtest": "test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) (case='schemas', check='schemas')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l11_connection_policy",
+      "subtest": "test_l11_connection_policy (l01_new_tests.FixtureConfigurationTests) (case='connection', check='connection')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l12_resource_lifecycle",
+      "subtest": "test_l12_resource_lifecycle (l01_new_tests.FixtureConfigurationTests) (case='resources', check='connect-failure-1')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l12_resource_lifecycle",
+      "subtest": "test_l12_resource_lifecycle (l01_new_tests.FixtureConfigurationTests) (case='resources', check='connect-failure-2')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l12_resource_lifecycle",
+      "subtest": "test_l12_resource_lifecycle (l01_new_tests.FixtureConfigurationTests) (case='resources', check='resources')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l13_real_exit7",
+      "subtest": "test_l13_real_exit7 (l01_new_tests.FixtureConfigurationTests) (case='exit7', check='exit7')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l13_real_ok",
+      "subtest": "test_l13_real_ok (l01_new_tests.FixtureConfigurationTests) (case='ok', check='ok')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l14_preparation_failure",
+      "subtest": "test_l14_preparation_failure (l01_new_tests.FixtureConfigurationTests) (case='preparation', check='preparation')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l15_commit_response_loss",
+      "subtest": "test_l15_commit_response_loss (l01_new_tests.FixtureConfigurationTests) (case='unknown-commit', check='unknown-commit')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l15_spawn_uncertainty",
+      "subtest": "test_l15_spawn_uncertainty (l01_new_tests.FixtureConfigurationTests) (case='unknown-spawn', check='unknown-spawn')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l16_forwarding_isolation",
+      "subtest": "test_l16_forwarding_isolation (l01_new_tests.FixtureConfigurationTests) (case='forwarding', check='forwarding')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-src/__init__.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-src/ops/__init__.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-src/ops/tools/github_check_audit.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-src/ops/tools/github_fixture_collector.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-src/ops/tools/github_fixture_ledger.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-src/ops/tools/github_fixture_controller.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-src/ops/tools/github_fixture_config.py')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-marker')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-state')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-ledger-mode')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-ledger-inode')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-control-inode')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-state-inode')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-install-inode')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-header')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='run-sidecar')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/__init__.py')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/__init__.py')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_check_audit.py')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_collector.py')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_ledger.py')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_controller.py')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_config.py')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-marker')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-state')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-ledger-mode')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-ledger-inode')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-control-inode')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-state-inode')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-install-inode')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-header')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-sidecar')",
+      "status": "ERROR"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l17_postload_changes",
+      "subtest": "test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='live')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l18_connect_races",
+      "subtest": "test_l18_connect_races (l01_new_tests.FixtureConfigurationTests) (case='races', check='connect-window-before')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l18_connect_races",
+      "subtest": "test_l18_connect_races (l01_new_tests.FixtureConfigurationTests) (case='races', check='connect-window-after')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l18_connect_races",
+      "subtest": "test_l18_connect_races (l01_new_tests.FixtureConfigurationTests) (case='races', check='state-connect-window-before')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l18_connect_races",
+      "subtest": "test_l18_connect_races (l01_new_tests.FixtureConfigurationTests) (case='races', check='state-connect-window-after')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l18_connect_races",
+      "subtest": "test_l18_connect_races (l01_new_tests.FixtureConfigurationTests) (case='races', check='races')",
+      "status": "PASS"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l19_reports_static",
+      "subtest": "test_l19_reports_static (l01_new_tests.FixtureConfigurationTests) (case='reports', check='reports')",
+      "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "case": "config",
+      "calls": {
+        "connect": 2,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "expectations",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "ownership",
+      "target": "install/fixture-controller-installation.json",
+      "metadata_injected": true,
+      "actual_chown": false
+    },
+    {
+      "case": "marker",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "hash-audit",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "ownership",
+      "target": "install/src/ops/tools/github_check_audit.py",
+      "metadata_injected": true,
+      "actual_chown": false
+    },
+    {
+      "case": "hash-other",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "origins",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": true
+    },
+    {
+      "case": "L06",
+      "euid": 1011,
+      "root_uid": 65534,
+      "tmp_uid": 65534
+    },
+    {
+      "case": "paths",
+      "calls": {
+        "connect": 2,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "state-other",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": true
+    },
+    {
+      "case": "state755",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "ownership",
+      "target": "state/ledger.sqlite",
+      "metadata_injected": true,
+      "actual_chown": false
+    },
+    {
+      "case": "ownership",
+      "target": "state/control.sqlite",
+      "metadata_injected": true,
+      "actual_chown": false
+    },
+    {
+      "case": "dbpaths",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "sidecars",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "schemas",
+      "calls": {
+        "connect": 18,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L11",
+      "actual_builtin_sqlite": true,
+      "connection_options_observed": true
+    },
+    {
+      "case": "connection",
+      "calls": {
+        "connect": 6,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "resources",
+      "calls": {
+        "connect": 3,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L13",
+      "profile": "nonzero",
+      "actual_child_count": 1,
+      "returncode": 7,
+      "artifact_sha256": "f1a9b1cb82d461ac5f7d606edb506514a83c6aea102ebcb5427b9b63e0ef2202",
+      "exact_bytes_reopened": true,
+      "binding": {
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "plan_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "pr_number": 1,
+        "release_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "repository": "ExampleOrg/fixture",
+        "evidence_sha256": "f1a9b1cb82d461ac5f7d606edb506514a83c6aea102ebcb5427b9b63e0ef2202"
+      }
+    },
+    {
+      "case": "exit7",
+      "calls": {
+        "connect": 4,
+        "run": 1,
+        "read": 4,
+        "collect": 1,
+        "child": 1,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L13",
+      "profile": "ok",
+      "actual_child_count": 1,
+      "returncode": 0,
+      "artifact_sha256": "7dfae50d9fed32f1a525df9832690f596cf83f18ffed73a8720322fcc3a99947",
+      "exact_bytes_reopened": true,
+      "binding": {
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "plan_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "pr_number": 1,
+        "release_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "repository": "ExampleOrg/fixture",
+        "evidence_sha256": "7dfae50d9fed32f1a525df9832690f596cf83f18ffed73a8720322fcc3a99947"
+      }
+    },
+    {
+      "case": "ok",
+      "calls": {
+        "connect": 4,
+        "run": 1,
+        "read": 4,
+        "collect": 1,
+        "child": 1,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L14",
+      "actual_missing_assignment": true,
+      "child_count": 0,
+      "reason": "ASSIGNMENT_FILE_INVALID",
+      "terminal_reopened": true
+    },
+    {
+      "case": "preparation",
+      "calls": {
+        "connect": 4,
+        "run": 2,
+        "read": 4,
+        "collect": 1,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L15",
+      "injected_after_actual_record": true,
+      "actual_commit_then_response_loss": true,
+      "actual_child_count": 1,
+      "artifact_sha256": "7dfae50d9fed32f1a525df9832690f596cf83f18ffed73a8720322fcc3a99947",
+      "reopened_exact": true
+    },
+    {
+      "case": "unknown-commit",
+      "calls": {
+        "connect": 4,
+        "run": 1,
+        "read": 3,
+        "collect": 1,
+        "child": 1,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": true
+    },
+    {
+      "case": "L15",
+      "injected_collector_reason": "SPAWN_FAILED",
+      "injected_collector_calls": 1,
+      "actual_child_count": 0
+    },
+    {
+      "case": "unknown-spawn",
+      "calls": {
+        "connect": 4,
+        "run": 1,
+        "read": 2,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": true
+    },
+    {
+      "case": "L16",
+      "actual_two_state_routing": true,
+      "controller_boundary_stubs_separate": true
+    },
+    {
+      "case": "forwarding",
+      "calls": {
+        "connect": 6,
+        "run": 0,
+        "read": 2,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "live",
+      "calls": {
+        "connect": 32,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L18",
+      "rename_at_connect": "before",
+      "actual_temp_rename": true,
+      "controller_calls": 0
+    },
+    {
+      "case": "L18",
+      "rename_at_connect": "after",
+      "actual_temp_rename": true,
+      "controller_calls": 0
+    },
+    {
+      "case": "L18",
+      "state_symlink_at_connect": "before",
+      "actual_temp_rename": true,
+      "unchanged_db_inodes": true,
+      "controller_calls": 0
+    },
+    {
+      "case": "L18",
+      "state_symlink_at_connect": "after",
+      "actual_temp_rename": true,
+      "unchanged_db_inodes": true,
+      "controller_calls": 0
+    },
+    {
+      "case": "races",
+      "calls": {
+        "connect": 4,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": true
+    },
+    {
+      "case": "reports",
+      "calls": {
+        "connect": 2,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    }
+  ],
+  "fresh_harness_results": [
+    {
+      "case": "config",
+      "checks": [
+        {
+          "label": "config-raw-0",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-1",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-2",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-3",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-4",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-5",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-6",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-7",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-8",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-9",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-10",
+          "status": "PASS"
+        },
+        {
+          "label": "config-raw-11",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-0",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-1",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-2",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-3",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-4",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-5",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-6",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-7",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-8",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-9",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-10",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-11",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-12",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-13",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-14",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-15",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-16",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-17",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-18",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-19",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-20",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-21",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-22",
+          "status": "PASS"
+        },
+        {
+          "label": "config-shape-23",
+          "status": "PASS"
+        },
+        {
+          "label": "valid-config-at-limit",
+          "status": "PASS"
+        },
+        {
+          "label": "config",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "config",
+          "calls": {
+            "connect": 2,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "expectations",
+      "checks": [
+        {
+          "label": "expected_uid-0",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_uid-1",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_uid-2",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_uid-3",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_uid-4",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_code_version-0",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_code_version-1",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_code_version-2",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_code_version-3",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_code_version-4",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_code_version-5",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_source_sha256-0",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_source_sha256-1",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_source_sha256-2",
+          "status": "PASS"
+        },
+        {
+          "label": "expected_source_sha256-3",
+          "status": "PASS"
+        },
+        {
+          "label": "missing-expected_code_version",
+          "status": "PASS"
+        },
+        {
+          "label": "missing-expected_source_sha256",
+          "status": "PASS"
+        },
+        {
+          "label": "missing-expected_uid",
+          "status": "PASS"
+        },
+        {
+          "label": "mapping-0",
+          "status": "PASS"
+        },
+        {
+          "label": "mapping-1",
+          "status": "PASS"
+        },
+        {
+          "label": "mapping-2",
+          "status": "PASS"
+        },
+        {
+          "label": "mapping-3",
+          "status": "PASS"
+        },
+        {
+          "label": "mapping-4",
+          "status": "PASS"
+        },
+        {
+          "label": "mapping-5",
+          "status": "PASS"
+        },
+        {
+          "label": "mapping-6",
+          "status": "PASS"
+        },
+        {
+          "label": "mapping-7",
+          "status": "PASS"
+        },
+        {
+          "label": "mapping-8",
+          "status": "PASS"
+        },
+        {
+          "label": "expectations",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "expectations",
+          "calls": {
+            "connect": 0,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "marker",
+      "checks": [
+        {
+          "label": "marker-bytes-0",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-bytes-1",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-bytes-2",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-bytes-3",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-bytes-4",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-bytes-5",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-bytes-6",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-missing",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-writable",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-symlink",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-fifo",
+          "status": "PASS"
+        },
+        {
+          "label": "version-mismatch",
+          "status": "PASS"
+        },
+        {
+          "label": "marker-owner",
+          "status": "PASS"
+        },
+        {
+          "label": "marker",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "ownership",
+          "target": "install/fixture-controller-installation.json",
+          "metadata_injected": true,
+          "actual_chown": false
+        },
+        {
+          "case": "marker",
+          "calls": {
+            "connect": 0,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "hash-audit",
+      "checks": [
+        {
+          "label": "wrong-external-pin-src/ops/tools/github_check_audit.py",
+          "status": "PASS"
+        },
+        {
+          "label": "hash-audit",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "hash-audit",
+          "calls": {
+            "connect": 0,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "hash-other",
+      "checks": [
+        {
+          "label": "wrong-external-pin-src/__init__.py",
+          "status": "PASS"
+        },
+        {
+          "label": "wrong-external-pin-src/ops/__init__.py",
+          "status": "PASS"
+        },
+        {
+          "label": "wrong-external-pin-src/ops/tools/github_fixture_collector.py",
+          "status": "PASS"
+        },
+        {
+          "label": "wrong-external-pin-src/ops/tools/github_fixture_ledger.py",
+          "status": "PASS"
+        },
+        {
+          "label": "wrong-external-pin-src/ops/tools/github_fixture_controller.py",
+          "status": "PASS"
+        },
+        {
+          "label": "wrong-external-pin-src/ops/tools/github_fixture_config.py",
+          "status": "PASS"
+        },
+        {
+          "label": "source-missing",
+          "status": "PASS"
+        },
+        {
+          "label": "source-writable",
+          "status": "PASS"
+        },
+        {
+          "label": "source-fifo",
+          "status": "PASS"
+        },
+        {
+          "label": "source-owner",
+          "status": "PASS"
+        },
+        {
+          "label": "hash-other",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "ownership",
+          "target": "install/src/ops/tools/github_check_audit.py",
+          "metadata_injected": true,
+          "actual_chown": false
+        },
+        {
+          "case": "hash-other",
+          "calls": {
+            "connect": 0,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "origins",
+      "checks": [
+        {
+          "label": "same-bytes-other-root",
+          "status": "PASS"
+        },
+        {
+          "label": "src-file",
+          "status": "PASS"
+        },
+        {
+          "label": "src-origin",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops-file",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops-origin",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops.tools.github_check_audit-file",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops.tools.github_check_audit-origin",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops.tools.github_fixture_collector-file",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops.tools.github_fixture_collector-origin",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops.tools.github_fixture_ledger-file",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops.tools.github_fixture_ledger-origin",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops.tools.github_fixture_controller-file",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops.tools.github_fixture_controller-origin",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops.tools.github_fixture_config-file",
+          "status": "PASS"
+        },
+        {
+          "label": "src.ops.tools.github_fixture_config-origin",
+          "status": "PASS"
+        },
+        {
+          "label": "namespace-initializer",
+          "status": "PASS"
+        },
+        {
+          "label": "namespace-__path__",
+          "status": "PASS"
+        },
+        {
+          "label": "namespace-spec",
+          "status": "PASS"
+        },
+        {
+          "label": "origins",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "origins",
+          "calls": {
+            "connect": 0,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": true
+        }
+      ]
+    },
+    {
+      "case": "paths",
+      "checks": [
+        {
+          "label": "installation_root-relative",
+          "status": "PASS"
+        },
+        {
+          "label": "installation_root-dot",
+          "status": "PASS"
+        },
+        {
+          "label": "installation_root-dotdot",
+          "status": "PASS"
+        },
+        {
+          "label": "installation_root-slash",
+          "status": "PASS"
+        },
+        {
+          "label": "installation_root-trailing",
+          "status": "PASS"
+        },
+        {
+          "label": "installation_root-nul",
+          "status": "PASS"
+        },
+        {
+          "label": "installation_root-uri",
+          "status": "PASS"
+        },
+        {
+          "label": "state_dir-relative",
+          "status": "PASS"
+        },
+        {
+          "label": "state_dir-dot",
+          "status": "PASS"
+        },
+        {
+          "label": "state_dir-dotdot",
+          "status": "PASS"
+        },
+        {
+          "label": "state_dir-slash",
+          "status": "PASS"
+        },
+        {
+          "label": "state_dir-trailing",
+          "status": "PASS"
+        },
+        {
+          "label": "state_dir-nul",
+          "status": "PASS"
+        },
+        {
+          "label": "state_dir-uri",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger_db-relative",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger_db-dot",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger_db-dotdot",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger_db-slash",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger_db-trailing",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger_db-nul",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger_db-uri",
+          "status": "PASS"
+        },
+        {
+          "label": "control_db-relative",
+          "status": "PASS"
+        },
+        {
+          "label": "control_db-dot",
+          "status": "PASS"
+        },
+        {
+          "label": "control_db-dotdot",
+          "status": "PASS"
+        },
+        {
+          "label": "control_db-slash",
+          "status": "PASS"
+        },
+        {
+          "label": "control_db-trailing",
+          "status": "PASS"
+        },
+        {
+          "label": "control_db-nul",
+          "status": "PASS"
+        },
+        {
+          "label": "control_db-uri",
+          "status": "PASS"
+        },
+        {
+          "label": "unsafe-owned-ancestor-0o777",
+          "status": "PASS"
+        },
+        {
+          "label": "unsafe-owned-ancestor-0o1777",
+          "status": "PASS"
+        },
+        {
+          "label": "nofollow-installation_root",
+          "status": "PASS"
+        },
+        {
+          "label": "nofollow-state_dir",
+          "status": "PASS"
+        },
+        {
+          "label": "nofollow-middle-component",
+          "status": "PASS"
+        },
+        {
+          "label": "real-sticky-namespace-root",
+          "status": "PASS"
+        },
+        {
+          "label": "paths",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "L06",
+          "euid": 1011,
+          "root_uid": 65534,
+          "tmp_uid": 65534
+        },
+        {
+          "case": "paths",
+          "calls": {
+            "connect": 2,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "state-other",
+      "checks": [
+        {
+          "label": "state-mode-0o770",
+          "status": "PASS"
+        },
+        {
+          "label": "state-mode-0o1700",
+          "status": "PASS"
+        },
+        {
+          "label": "state-mode-0o2700",
+          "status": "PASS"
+        },
+        {
+          "label": "state-owner-metadata-injection",
+          "status": "PASS"
+        },
+        {
+          "label": "state-type-file",
+          "status": "PASS"
+        },
+        {
+          "label": "state-type-fifo",
+          "status": "PASS"
+        },
+        {
+          "label": "state-type-symlink",
+          "status": "PASS"
+        },
+        {
+          "label": "state-other",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "state-other",
+          "calls": {
+            "connect": 0,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": true
+        }
+      ]
+    },
+    {
+      "case": "state755",
+      "checks": [
+        {
+          "label": "state-mode-0o755",
+          "status": "PASS"
+        },
+        {
+          "label": "state755",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "state755",
+          "calls": {
+            "connect": 0,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "dbpaths",
+      "checks": [
+        {
+          "label": "same-path",
+          "status": "PASS"
+        },
+        {
+          "label": "outside",
+          "status": "PASS"
+        },
+        {
+          "label": "nested",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-missing",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-writable",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-readable",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-fifo",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-symlink",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-nlink2",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-owner",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-missing",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-writable",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-readable",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-fifo",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-symlink",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-nlink2",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-owner",
+          "status": "PASS"
+        },
+        {
+          "label": "different-names-same-inode",
+          "status": "PASS"
+        },
+        {
+          "label": "dbpaths",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "ownership",
+          "target": "state/ledger.sqlite",
+          "metadata_injected": true,
+          "actual_chown": false
+        },
+        {
+          "case": "ownership",
+          "target": "state/control.sqlite",
+          "metadata_injected": true,
+          "actual_chown": false
+        },
+        {
+          "case": "dbpaths",
+          "calls": {
+            "connect": 0,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "sidecars",
+      "checks": [
+        {
+          "label": "ledger.sqlite-journal-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-journal-link",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-wal-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-wal-link",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-shm-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-shm-link",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-mjL01-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-mjL01-link",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-journal-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-journal-link",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-wal-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-wal-link",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-shm-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-shm-link",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-mjL01-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-mjL01-link",
+          "status": "PASS"
+        },
+        {
+          "label": "sidecars",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "sidecars",
+          "calls": {
+            "connect": 0,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "schemas",
+      "checks": [
+        {
+          "label": "ledger.sqlite-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-not-sqlite",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-truncated",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-write-format",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-read-format",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-PRAGMA application_id=1",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-PRAGMA user_version=2",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-CREATE TABLE extra(x)",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-ALTER TABLE fixture_jobs ADD COLUMN extra",
+          "status": "PASS"
+        },
+        {
+          "label": "ledger.sqlite-closed-WAL-without-sidecar",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-empty",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-not-sqlite",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-truncated",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-write-format",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-read-format",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-PRAGMA application_id=1",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-PRAGMA user_version=2",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-CREATE TABLE extra(x)",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-ALTER TABLE fixture_controller_jobs ADD COLUMN extra",
+          "status": "PASS"
+        },
+        {
+          "label": "control.sqlite-closed-WAL-without-sidecar",
+          "status": "PASS"
+        },
+        {
+          "label": "swapped-schema-roles",
+          "status": "PASS"
+        },
+        {
+          "label": "schemas",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "schemas",
+          "calls": {
+            "connect": 18,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "connection",
+      "checks": [
+        {
+          "label": "connection",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "L11",
+          "actual_builtin_sqlite": true,
+          "connection_options_observed": true
+        },
+        {
+          "case": "connection",
+          "calls": {
+            "connect": 6,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "resources",
+      "checks": [
+        {
+          "label": "connect-failure-1",
+          "status": "PASS"
+        },
+        {
+          "label": "connect-failure-2",
+          "status": "PASS"
+        },
+        {
+          "label": "resources",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "resources",
+          "calls": {
+            "connect": 3,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "exit7",
+      "checks": [
+        {
+          "label": "exit7",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "L13",
+          "profile": "nonzero",
+          "actual_child_count": 1,
+          "returncode": 7,
+          "artifact_sha256": "f1a9b1cb82d461ac5f7d606edb506514a83c6aea102ebcb5427b9b63e0ef2202",
+          "exact_bytes_reopened": true,
+          "binding": {
+            "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "plan_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "pr_number": 1,
+            "release_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "repository": "ExampleOrg/fixture",
+            "evidence_sha256": "f1a9b1cb82d461ac5f7d606edb506514a83c6aea102ebcb5427b9b63e0ef2202"
+          }
+        },
+        {
+          "case": "exit7",
+          "calls": {
+            "connect": 4,
+            "run": 1,
+            "read": 4,
+            "collect": 1,
+            "child": 1,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "ok",
+      "checks": [
+        {
+          "label": "ok",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "L13",
+          "profile": "ok",
+          "actual_child_count": 1,
+          "returncode": 0,
+          "artifact_sha256": "7dfae50d9fed32f1a525df9832690f596cf83f18ffed73a8720322fcc3a99947",
+          "exact_bytes_reopened": true,
+          "binding": {
+            "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "plan_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "pr_number": 1,
+            "release_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "repository": "ExampleOrg/fixture",
+            "evidence_sha256": "7dfae50d9fed32f1a525df9832690f596cf83f18ffed73a8720322fcc3a99947"
+          }
+        },
+        {
+          "case": "ok",
+          "calls": {
+            "connect": 4,
+            "run": 1,
+            "read": 4,
+            "collect": 1,
+            "child": 1,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "preparation",
+      "checks": [
+        {
+          "label": "preparation",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "L14",
+          "actual_missing_assignment": true,
+          "child_count": 0,
+          "reason": "ASSIGNMENT_FILE_INVALID",
+          "terminal_reopened": true
+        },
+        {
+          "case": "preparation",
+          "calls": {
+            "connect": 4,
+            "run": 2,
+            "read": 4,
+            "collect": 1,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "unknown-commit",
+      "checks": [
+        {
+          "label": "unknown-commit",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "L15",
+          "injected_after_actual_record": true,
+          "actual_commit_then_response_loss": true,
+          "actual_child_count": 1,
+          "artifact_sha256": "7dfae50d9fed32f1a525df9832690f596cf83f18ffed73a8720322fcc3a99947",
+          "reopened_exact": true
+        },
+        {
+          "case": "unknown-commit",
+          "calls": {
+            "connect": 4,
+            "run": 1,
+            "read": 3,
+            "collect": 1,
+            "child": 1,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": true
+        }
+      ]
+    },
+    {
+      "case": "unknown-spawn",
+      "checks": [
+        {
+          "label": "unknown-spawn",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "L15",
+          "injected_collector_reason": "SPAWN_FAILED",
+          "injected_collector_calls": 1,
+          "actual_child_count": 0
+        },
+        {
+          "case": "unknown-spawn",
+          "calls": {
+            "connect": 4,
+            "run": 1,
+            "read": 2,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": true
+        }
+      ]
+    },
+    {
+      "case": "forwarding",
+      "checks": [
+        {
+          "label": "forwarding",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "L16",
+          "actual_two_state_routing": true,
+          "controller_boundary_stubs_separate": true
+        },
+        {
+          "case": "forwarding",
+          "calls": {
+            "connect": 6,
+            "run": 0,
+            "read": 2,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "live",
+      "checks": [
+        {
+          "label": "run-src/__init__.py",
+          "status": "PASS"
+        },
+        {
+          "label": "run-src/ops/__init__.py",
+          "status": "PASS"
+        },
+        {
+          "label": "run-src/ops/tools/github_check_audit.py",
+          "status": "PASS"
+        },
+        {
+          "label": "run-src/ops/tools/github_fixture_collector.py",
+          "status": "PASS"
+        },
+        {
+          "label": "run-src/ops/tools/github_fixture_ledger.py",
+          "status": "PASS"
+        },
+        {
+          "label": "run-src/ops/tools/github_fixture_controller.py",
+          "status": "PASS"
+        },
+        {
+          "label": "run-src/ops/tools/github_fixture_config.py",
+          "status": "PASS"
+        },
+        {
+          "label": "run-marker",
+          "status": "PASS"
+        },
+        {
+          "label": "run-state",
+          "status": "PASS"
+        },
+        {
+          "label": "run-ledger-mode",
+          "status": "PASS"
+        },
+        {
+          "label": "run-ledger-inode",
+          "status": "PASS"
+        },
+        {
+          "label": "run-control-inode",
+          "status": "PASS"
+        },
+        {
+          "label": "run-state-inode",
+          "status": "PASS"
+        },
+        {
+          "label": "run-install-inode",
+          "status": "PASS"
+        },
+        {
+          "label": "run-header",
+          "status": "PASS"
+        },
+        {
+          "label": "run-sidecar",
+          "status": "PASS"
+        },
+        {
+          "label": "read-src/__init__.py",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-src/ops/__init__.py",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-src/ops/tools/github_check_audit.py",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-src/ops/tools/github_fixture_collector.py",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-src/ops/tools/github_fixture_ledger.py",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-src/ops/tools/github_fixture_controller.py",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-src/ops/tools/github_fixture_config.py",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-marker",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-state",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-ledger-mode",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-ledger-inode",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-control-inode",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-state-inode",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-install-inode",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-header",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "read-sidecar",
+          "status": "ERROR",
+          "error": "FixtureConfigurationError: DATABASE_PATH_INVALID",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 641, in case\n    h=self.load()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 140, in load\n    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 459, in load_fixture_controller\n    _sidecars(state, names)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 281, in _sidecars\n    _deny(\"DATABASE_PATH_INVALID\")\n  File \"/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py\", line 50, in _deny\n    raise FixtureConfigurationError(reason) from None\nsrc.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID\n"
+        },
+        {
+          "label": "live",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "live",
+          "calls": {
+            "connect": 32,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    },
+    {
+      "case": "races",
+      "checks": [
+        {
+          "label": "connect-window-before",
+          "status": "PASS"
+        },
+        {
+          "label": "connect-window-after",
+          "status": "PASS"
+        },
+        {
+          "label": "state-connect-window-before",
+          "status": "PASS"
+        },
+        {
+          "label": "state-connect-window-after",
+          "status": "PASS"
+        },
+        {
+          "label": "races",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "L18",
+          "rename_at_connect": "before",
+          "actual_temp_rename": true,
+          "controller_calls": 0
+        },
+        {
+          "case": "L18",
+          "rename_at_connect": "after",
+          "actual_temp_rename": true,
+          "controller_calls": 0
+        },
+        {
+          "case": "L18",
+          "state_symlink_at_connect": "before",
+          "actual_temp_rename": true,
+          "unchanged_db_inodes": true,
+          "controller_calls": 0
+        },
+        {
+          "case": "L18",
+          "state_symlink_at_connect": "after",
+          "actual_temp_rename": true,
+          "unchanged_db_inodes": true,
+          "controller_calls": 0
+        },
+        {
+          "case": "races",
+          "calls": {
+            "connect": 4,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": true
+        }
+      ]
+    },
+    {
+      "case": "reports",
+      "checks": [
+        {
+          "label": "reports",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "reports",
+          "calls": {
+            "connect": 2,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    }
+  ],
+  "passed": false
+}

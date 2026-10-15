@@ -1,0 +1,23 @@
+test_l07_state_0755 (l01_new_tests.FixtureConfigurationTests) ... 
+======================================================================
+FAIL: test_l07_state_0755 (l01_new_tests.FixtureConfigurationTests) (case='state755', check='state-mode-0o755')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 780, in case
+    if row['status']=='FAIL':self.fail(row['traceback'])
+AssertionError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 363, in case
+    try:self.reject(self.load,'STATE_DIRECTORY_INVALID',no_connect=True)
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 152, in reject
+    self.a.fail('expected '+reason+' rejection')
+  File "/usr/lib/python3.10/unittest/case.py", line 675, in fail
+    raise self.failureException(msg)
+AssertionError: expected STATE_DIRECTORY_INVALID rejection
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.058s
+
+FAILED (failures=1)

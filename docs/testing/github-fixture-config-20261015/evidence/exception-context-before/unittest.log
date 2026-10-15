@@ -1,0 +1,23 @@
+test_l12_load_read_inside_caller_except (l01_new_tests.FixtureConfigurationTests) ... 
+======================================================================
+FAIL: test_l12_load_read_inside_caller_except (l01_new_tests.FixtureConfigurationTests) (case='exception-context', check='exception-context')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 823, in case
+    if row['status']=='FAIL':self.fail(row['traceback'])
+AssertionError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 748, in caller_exception_context
+    self.a.assertIsNone(read_error_reason,
+  File "/usr/lib/python3.10/unittest/case.py", line 1256, in assertIsNone
+    self.fail(self._formatMessage(msg, standardMsg))
+  File "/usr/lib/python3.10/unittest/case.py", line 675, in fail
+    raise self.failureException(msg)
+AssertionError: 'HANDLE_CLOSED' is not None : load/read inside caller except must remain usable: HANDLE_CLOSED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.063s
+
+FAILED (failures=1)

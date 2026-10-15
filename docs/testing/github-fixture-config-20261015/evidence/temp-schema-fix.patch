@@ -1,0 +1,16 @@
+--- a/src/ops/tools/github_fixture_config.py
++++ b/src/ops/tools/github_fixture_config.py
+@@ -326,8 +326,11 @@
+ def _connected_inode(connection, fd):
+     try:
+         databases = _sql(connection, "PRAGMA database_list")
+-        if (len(databases) != 1 or databases[0][1] != "main"
+-                or _identity(os.stat(databases[0][2], follow_symlinks=False)) != _identity(os.fstat(fd))):
++        main = [row for row in databases if row[1] == "main"]
++        # The pinned preflight queries temp.sqlite_master. An empty temp schema
++        # can then appear here; the schema validators reject any temp objects.
++        if (len(main) != 1 or any(row[1] not in ("main", "temp") for row in databases)
++                or _identity(os.stat(main[0][2], follow_symlinks=False)) != _identity(os.fstat(fd))):
+             _deny("DATABASE_PATH_INVALID")
+     except FixtureConfigurationError:
+         raise

@@ -1,0 +1,90 @@
+{
+  "parent_commit": "c91e9e628402fcc89c2daa4301d54c3c321221ed",
+  "source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+  "test_sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02",
+  "fixture_root": "/tmp/agent-fixture-loader-jxwlfj39",
+  "plan_sha256": "b350192d28825de5761c448ddff6f73f00dcf778fceec164c2f2134eda353d50",
+  "review_sha256": "1deb9bb9673684848bf3843d79628e02cf9d42c994445c7c78829ba89ac856e4",
+  "python": "3.10.12",
+  "sqlite": "3.37.2",
+  "uid": 1011,
+  "root_uid": 65534,
+  "tmp_uid": 65534,
+  "actual_builtin_sqlite": true,
+  "existing_13_plus_3_repeated": false,
+  "R03_R04_R15_repeated": false,
+  "old_suites_run": false,
+  "owner_approval": "NOT_PROVIDED",
+  "operational_installation": "NOT_RUN",
+  "started_utc": "2026-10-15T13:35:37.041682+00:00",
+  "elapsed_seconds": 0.05433374084532261,
+  "methods_run": 1,
+  "passed_methods": [],
+  "failures": 1,
+  "errors": 0,
+  "skipped": 0,
+  "failure_tests": [
+    "test_l04_external_audit_pin (l01_new_tests.FixtureConfigurationTests) (case='hash-audit', check='wrong-external-pin-src/ops/tools/github_check_audit.py')"
+  ],
+  "error_tests": [],
+  "subcases": [
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_external_audit_pin",
+      "subtest": "test_l04_external_audit_pin (l01_new_tests.FixtureConfigurationTests) (case='hash-audit', check='wrong-external-pin-src/ops/tools/github_check_audit.py')",
+      "status": "FAIL"
+    },
+    {
+      "test": "l01_new_tests.FixtureConfigurationTests.test_l04_external_audit_pin",
+      "subtest": "test_l04_external_audit_pin (l01_new_tests.FixtureConfigurationTests) (case='hash-audit', check='hash-audit')",
+      "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "case": "hash-audit",
+      "calls": {
+        "connect": 2,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    }
+  ],
+  "fresh_harness_results": [
+    {
+      "case": "hash-audit",
+      "checks": [
+        {
+          "label": "wrong-external-pin-src/ops/tools/github_check_audit.py",
+          "status": "FAIL",
+          "error": "expected SOURCE_HASH_MISMATCH rejection",
+          "traceback": "Traceback (most recent call last):\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 128, in check\n    fn()\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 293, in case\n    self.reject(lambda:self.load(expected_source_sha256=mapping),'SOURCE_HASH_MISMATCH',no_connect=True)\n  File \"/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py\", line 152, in reject\n    self.a.fail('expected '+reason+' rejection')\n  File \"/usr/lib/python3.10/unittest/case.py\", line 675, in fail\n    raise self.failureException(msg)\nAssertionError: expected SOURCE_HASH_MISMATCH rejection\n"
+        },
+        {
+          "label": "hash-audit",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "hash-audit",
+          "calls": {
+            "connect": 2,
+            "run": 0,
+            "read": 0,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    }
+  ],
+  "passed": false
+}

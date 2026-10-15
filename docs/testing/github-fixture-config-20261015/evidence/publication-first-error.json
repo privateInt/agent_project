@@ -1,0 +1,10 @@
+{
+  "phase": "local publication packaging",
+  "returncode": 1,
+  "cause": "git add rejected six explicit retained unittest.log files because repository .gitignore ignores *.log",
+  "product_or_test_failure": false,
+  "original_logs_changed": false,
+  "partial_stage_preserved": true,
+  "correction": "Resume only packaging: verify already copied bytes, stage the six reviewed evidence logs by exact path with -f; preserve ignore rules and all product/test bytes",
+  "tests_repeated": false
+}
