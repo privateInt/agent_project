@@ -1,0 +1,213 @@
+{
+  "schema": "github-app-key-boundary-offline-v1",
+  "date": "2026-10-15",
+  "scope": "OFFLINE_ONLY",
+  "summary": "경로 open 거부의 대역 분류 검사와 두 의미오류 검출 근거. 실제 cross-UID canary는 준비 실패로 미실행이며 실제 경계 사용가능 판정은 BLOCKED다.",
+  "baseline_commit": "414ca0654ff07f14a1224faaf463be7a0c0818bc",
+  "pre_review_plan": {
+    "path": "docs/codex/github-app-key-boundary-test-plan.md",
+    "sha256": "bc3d4803044f37bdd7575e09557d9a50ff552cbaf0e4151fa375a1405528b9e4",
+    "result": "PASS",
+    "topics": "K01..K14",
+    "selected_mutations": [
+      "M1",
+      "M2"
+    ]
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux",
+    "local_runner_uid_zero": true,
+    "python310_ast": "PASS",
+    "actual_python310": "NOT_RUN"
+  },
+  "boundary_acceptance": "BLOCKED",
+  "development_result": "MOCK_TESTS_PASS_REAL_CANARY_NOT_RUN",
+  "initial_suite": {
+    "command": "python3 -B stdin unittest.defaultTestLoader.loadTestsFromModule(src.ops.tools.tests.test_github_app_key_access_probe)",
+    "total": 13,
+    "PASS": 11,
+    "FAIL": 0,
+    "ERROR": 2,
+    "SKIP": 0,
+    "seconds": 0.054419,
+    "pre_sha256": {
+      "src/ops/tools/github_app_key_access_probe.py": "8e1aad642ac8e580470693e308d4398eecd59fd6bf5af010cf9d6ca940f95227",
+      "src/ops/tools/tests/test_github_app_key_access_probe.py": "3c4f3cf9c6b4937f604e6ec30211ca9a350ff1940f16e49ddac3fc12d83ec4c7",
+      "docs/codex/github-app-key-boundary-test-plan.md": "bc3d4803044f37bdd7575e09557d9a50ff552cbaf0e4151fa375a1405528b9e4"
+    },
+    "post_sha256": {
+      "src/ops/tools/github_app_key_access_probe.py": "8e1aad642ac8e580470693e308d4398eecd59fd6bf5af010cf9d6ca940f95227",
+      "src/ops/tools/tests/test_github_app_key_access_probe.py": "3c4f3cf9c6b4937f604e6ec30211ca9a350ff1940f16e49ddac3fc12d83ec4c7",
+      "docs/codex/github-app-key-boundary-test-plan.md": "bc3d4803044f37bdd7575e09557d9a50ff552cbaf0e4151fa375a1405528b9e4"
+    },
+    "hashes_unchanged": true,
+    "error_phase": "두 실제 canary의 임시 파일 chown 준비",
+    "errno_name": "EINVAL",
+    "actual_cross_uid_probe_executions": 0,
+    "interpretation": "제품 실패나 실제 경계 성공으로 분류하지 않았다. 원인을 추가 조사/추정하지 않았다."
+  },
+  "harness_correction": {
+    "initial_test_sha256": "3c4f3cf9c6b4937f604e6ec30211ca9a350ff1940f16e49ddac3fc12d83ec4c7",
+    "corrected_test_sha256": "f8a4dc7dcbaae09c0d95f241317eddd4dc94b8db31ffb6bf99246fb01586e414",
+    "only_change": "실제 canary tempfile chown 선행조건의 EINVAL/EPERM/EACCES/ENOSYS를 NOT_RUN으로 정확히 분류. 제품 변경/권한 fallback 없음.",
+    "mock_tests_mutation_targets_and_helpers_byte_ast_unchanged": true,
+    "cycles": 1,
+    "reviewer_accepted": true,
+    "root_or_other_account_fallback": false,
+    "full_suite_repeated": false
+  },
+  "canary_target_recheck": {
+    "command": "python3 -B stdin unittest K11/K12 targets only",
+    "targets": [
+      "K11",
+      "K12"
+    ],
+    "total": 2,
+    "PASS": 0,
+    "FAIL": 0,
+    "ERROR": 0,
+    "SKIP": 2,
+    "seconds": 0.001957,
+    "pre_sha256": {
+      "src/ops/tools/github_app_key_access_probe.py": "8e1aad642ac8e580470693e308d4398eecd59fd6bf5af010cf9d6ca940f95227",
+      "src/ops/tools/tests/test_github_app_key_access_probe.py": "f8a4dc7dcbaae09c0d95f241317eddd4dc94b8db31ffb6bf99246fb01586e414",
+      "docs/codex/github-app-key-boundary-test-plan.md": "bc3d4803044f37bdd7575e09557d9a50ff552cbaf0e4151fa375a1405528b9e4"
+    },
+    "post_sha256": {
+      "src/ops/tools/github_app_key_access_probe.py": "8e1aad642ac8e580470693e308d4398eecd59fd6bf5af010cf9d6ca940f95227",
+      "src/ops/tools/tests/test_github_app_key_access_probe.py": "f8a4dc7dcbaae09c0d95f241317eddd4dc94b8db31ffb6bf99246fb01586e414",
+      "docs/codex/github-app-key-boundary-test-plan.md": "bc3d4803044f37bdd7575e09557d9a50ff552cbaf0e4151fa375a1405528b9e4"
+    },
+    "hashes_unchanged": true,
+    "results": [
+      {
+        "case": "denied_public_canary",
+        "status": "NOT_RUN",
+        "reason": "temporary_chown_unavailable",
+        "errno_name": "EINVAL",
+        "root_fallback": false
+      },
+      {
+        "case": "allowed_public_canary",
+        "status": "NOT_RUN",
+        "reason": "temporary_chown_unavailable",
+        "errno_name": "EINVAL",
+        "root_fallback": false
+      }
+    ],
+    "actual_cross_uid_probe_executions": 0,
+    "interpretation": "두 SKIP은 실제 연동 NOT_RUN이며 PASS에 합산하지 않는다. 최초11 대역 PASS는 초기 test SHA에 귀속하고 변경 없는 본문/도우미만 최종파일에 연결한다."
+  },
+  "verified_mock_boundaries": [
+    "정확6토큰 CLI·값/계정 pin·real/effective/saved identity 검증, 오류 시 control/key0",
+    "공개 control 성공/close 후에만 key open1회, 정확flags·fd0 close·read/stat0",
+    "open EACCES만 OBSERVED, ENOENT/EPERM/ELOOP/기타 unknown 차단",
+    "open 성공 뒤 close EACCES도 FD_CLOSE_FAILED/BLOCKED로 분리",
+    "exact14키·strict bool/int·6false·key_bytes_read0, raw/예외/argv/출력오류/--help/closed pipe 비노출·항상exit2",
+    "standalone -I -B·stdlib/AST3.10·금지 IO 호출 없음"
+  ],
+  "d38": [
+    {
+      "mutation": "M1",
+      "target": "test_07_enoent_and_other_failures_are_not_key_denial_success",
+      "executed_source_sha256": "8e1aad642ac8e580470693e308d4398eecd59fd6bf5af010cf9d6ca940f95227",
+      "executed_test_sha256": "f8a4dc7dcbaae09c0d95f241317eddd4dc94b8db31ffb6bf99246fb01586e414",
+      "fault": "ENOENT를 EACCES와 같이 수용",
+      "normal": {
+        "tests": 1,
+        "PASS": 1,
+        "FAIL": 0,
+        "ERROR": 0,
+        "SKIP": 0,
+        "seconds": 0.000409
+      },
+      "mutant": {
+        "tests": 1,
+        "PASS": 0,
+        "FAIL": 1,
+        "ERROR": 0,
+        "SKIP": 0,
+        "seconds": 0.000515,
+        "assertion_failure": true
+      },
+      "detected_cause": "ENOENT 입력이 잘못 OBSERVED가 되어 status assertion 실패",
+      "mutant_sha256": "bbe7d8690083725693bcaa6c46e92047122ae8ca6b5eec93de18394b00941160",
+      "temporary_copy_removed": true,
+      "pre_post_original_hashes_unchanged": true
+    },
+    {
+      "mutation": "M2",
+      "target": "test_04_saved_root_identity_mismatch_never_reaches_any_open",
+      "executed_source_sha256": "8e1aad642ac8e580470693e308d4398eecd59fd6bf5af010cf9d6ca940f95227",
+      "executed_test_sha256": "f8a4dc7dcbaae09c0d95f241317eddd4dc94b8db31ffb6bf99246fb01586e414",
+      "fault": "actual execution identity guard 제거",
+      "normal": {
+        "tests": 1,
+        "PASS": 1,
+        "FAIL": 0,
+        "ERROR": 0,
+        "SKIP": 0,
+        "seconds": 0.000394
+      },
+      "mutant": {
+        "tests": 1,
+        "PASS": 0,
+        "FAIL": 1,
+        "ERROR": 0,
+        "SKIP": 0,
+        "seconds": 0.000276,
+        "assertion_failure": true
+      },
+      "detected_cause": "saved UID0 불일치인데 control/private open이 진행되어 open0 assertion 실패",
+      "mutant_sha256": "64f6c5dba493f774eff8c753906461af559976133ab154378c49959c9c398690",
+      "temporary_copy_removed": true,
+      "pre_post_original_hashes_unchanged": true
+    }
+  ],
+  "workflow_audit": {
+    "status": "PASS",
+    "scope_files": 6,
+    "existing_policy_and_evidence_preserved": true,
+    "status_change": "준비표 안내행1개",
+    "no_permanent_clean_worktree_unit_assertion": true,
+    "exact_new_files": 5,
+    "modified_existing_files": 1,
+    "relative_links_checked": 12,
+    "missing_relative_links": 0,
+    "whitespace_json": "PASS",
+    "status_except_added_row_byte_equal": true,
+    "guide_sha256": "08290550c3e95f4a3438f3c1de774282dd9d3ff690b340c3a3438c379dc15336",
+    "status_sha256": "c12a9b9696f55704ab21d6b07bd473baff3b8de5a740e6b6223ab8ee5a7f91c9",
+    "temporary_canary_and_mutant_directories_remaining": 0,
+    "payload_secrets_or_personal_paths": 0,
+    "commands": [
+      "python3 -B stdin strict JSON/hash/relative-link/guide audit",
+      "git diff --no-ext-diff --name-status <baseline> -- .",
+      "git ls-files --others --exclude-standard",
+      "git show <baseline>:docs/status.md",
+      "git diff --check",
+      "git diff --no-index --check /dev/null <new-file>"
+    ]
+  },
+  "execution_boundary": {
+    "new_full_suite_runs": 1,
+    "canary_target_recheck_runs": 1,
+    "existing_20_46_suite_runs": 0,
+    "existing_mutant_reruns": 0,
+    "actual_cross_uid_probe_executions": 0,
+    "operational_key_access": 0,
+    "app_api_requests": 0,
+    "key_bytes_read": 0,
+    "system_account_or_configuration_writes": 0,
+    "worker_or_service_activation": 0,
+    "sandbox_or_inference_runs": 0,
+    "protection_or_merge_actions": 0
+  },
+  "limitations": [
+    "소유 UID 변경 준비의 EINVAL 때문에 실제 다른 UID의 deny/allow control을 확인하지 못했다. root/다른 계정 fallback·계정/권한 확대·원인 추정은 하지 않았다.",
+    "실제 사용자 서버의 worker/key 경로 실행과 Python3.10 실행은 NOT_RUN이다. 대역이나 변이 검출을 실제 credential 격리 증거로 승격하지 않는다.",
+    "EACCES는 파일 존재·실제 키 소유자/신원·같은 inode·다른 경로·supplementary groups/capabilities·privilege escalation·runtime 격리를 증명하지 않는다.",
+    "trusted emitter/model 접근·독립성/binding/gate/native 준비·병합 인수는 미완료다. 기존 sandbox EACCES 및 D17/D18 보류·누적/소진은 초기화하지 않았다."
+  ]
+}
