@@ -1,0 +1,412 @@
+{
+  "schema": 1,
+  "date": "2026-10-15",
+  "scope": "OFFLINE_FIXTURE_LEDGER_COMPONENT_ONLY",
+  "baseline": {
+    "parent_commit": "da98ac811b07b27274cce326a26e3a6540754508",
+    "branch": "codex/github-fixture-ledger-20261015",
+    "independent_pre_review": "PASS",
+    "plan_path": "docs/codex/github-fixture-ledger-test-plan.md",
+    "plan_sha256": "869c274e0211e8ea22b758b16b5b7c1114c34ad22894cbc57cbd6b9ddf680cb6",
+    "guide_pre_review_sha256": "aceb29347ee8e30555a394d67f540c6a6e4913602ff54834b3ec8ffec1fc7d88"
+  },
+  "component_scope": "자체 임시 SQLite에 fixture assignment/artifact를 보존하고 실제 경합·재조회·commit 응답 유실을 복구하는 component. 실제 head 실행/보호된 controller·ledger 설치/issuer·required gate 인수는 아님.",
+  "environment": {
+    "parent_python": "3.12.14",
+    "parent_executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "sqlite_runtime": "3.53.1",
+    "sqlite_module": "2.6.0",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "euid": 0,
+    "fixed_collector_child": "/usr/bin/python3",
+    "fixed_child_python_version": "NOT_RECHECKED_THIS_UNIT",
+    "python_3_10_runtime": "NOT_RUN"
+  },
+  "compatibility": {
+    "source_and_final_test_python_3_10_ast": "PASS",
+    "python_3_10_runtime": "NOT_RUN",
+    "fixed_collector_child_version": "이번 unit에서 재조회하지 않음. 고정 실행 경로는 /usr/bin/python3이며 parent interpreter와 구분.",
+    "runner_metadata_warning": "sqlite3.version의 DeprecationWarning 1건은 환경 metadata 조회에서 발생했으며 제품 출력/검사 실패가 아님."
+  },
+  "sha256": {
+    "source": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+    "test_initial": "8496a925f2ec65bffe9fe0b10c0fd27d5e1ee164e7a76b80ff5339e545f031fd",
+    "test_current": "9dc968aef2ae7e8ae5f281b41d853a0d8d370d63b67b654aeabe9fd179087bbe",
+    "plan": "869c274e0211e8ea22b758b16b5b7c1114c34ad22894cbc57cbd6b9ddf680cb6",
+    "guide": "aceb29347ee8e30555a394d67f540c6a6e4913602ff54834b3ec8ffec1fc7d88",
+    "existing_collector_source": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+    "existing_collector_test": "f256d84be6e770b9b116500ea86450a7ab56d205f0cbfa035a9ce21091c513f0",
+    "existing_canonical_source": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e"
+  },
+  "pre_run_source_review": [
+    {
+      "sha256": "e7a92ee16221ea2d1b1750f67449a0980dfd361ac4250a03891f588a4618d15c",
+      "execution_count": 0,
+      "origin": "root 보고",
+      "note": "root 정적 보정 전 초안, 제품 검사 실패 이력이 아님."
+    },
+    {
+      "sha256": "57b9ac9a8470a58413dacc1e6c3ca5d5d7c1ccc62ebc9792f26814e18a0497e1",
+      "execution_count": 0,
+      "note": "root 정적3보정 후. reviewer가 실제 BEGIN 후 응답오류 소유와 complete+forced 모순을 지적."
+    },
+    {
+      "sha256": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "note": "reviewer 두 경계 정합화 후 최초 실행본. 최초 검사·R10 보정검사·두 변이에 같은 원본 사용."
+    }
+  ],
+  "initial_selected_suite": {
+    "tests_run": 15,
+    "pass_methods": 14,
+    "fail": 1,
+    "error": 0,
+    "skip": 0,
+    "elapsed_seconds": 0.676192,
+    "pre_sha256": {
+      "source": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "test": "8496a925f2ec65bffe9fe0b10c0fd27d5e1ee164e7a76b80ff5339e545f031fd",
+      "plan": "869c274e0211e8ea22b758b16b5b7c1114c34ad22894cbc57cbd6b9ddf680cb6"
+    },
+    "post_sha256": {
+      "source": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "test": "8496a925f2ec65bffe9fe0b10c0fd27d5e1ee164e7a76b80ff5339e545f031fd",
+      "plan": "869c274e0211e8ea22b758b16b5b7c1114c34ad22894cbc57cbd6b9ddf680cb6"
+    },
+    "hashes_unchanged": true,
+    "cases": [
+      {
+        "name": "test_01_initialize_schema_and_reopen",
+        "status": "PASS"
+      },
+      {
+        "name": "test_02_assignment_raw_replay_and_conflict",
+        "status": "PASS"
+      },
+      {
+        "name": "test_03_sealed_artifact_replay_and_conflict",
+        "status": "PASS"
+      },
+      {
+        "name": "test_04_record_pins_and_revision",
+        "status": "PASS"
+      },
+      {
+        "name": "test_05_assignment_and_job_input_rejections",
+        "status": "PASS"
+      },
+      {
+        "name": "test_06_artifact_shape_canonical_and_identity",
+        "status": "PASS"
+      },
+      {
+        "name": "test_07_artifact_outcomes_and_internal_consistency",
+        "status": "PASS"
+      },
+      {
+        "name": "test_08_stored_row_corruption_and_blob_cap",
+        "status": "PASS"
+      },
+      {
+        "name": "test_09_schema_and_namespace_denials",
+        "status": "PASS"
+      },
+      {
+        "name": "test_10_connection_flags_transaction_and_readonly",
+        "status": "FAIL"
+      },
+      {
+        "name": "test_11_real_assignment_process_races",
+        "status": "PASS"
+      },
+      {
+        "name": "test_12_real_artifact_process_races",
+        "status": "PASS"
+      },
+      {
+        "name": "test_13_real_busy_lock_is_bounded",
+        "status": "PASS"
+      },
+      {
+        "name": "test_14_commit_loss_rollback_and_recovery",
+        "status": "PASS"
+      },
+      {
+        "name": "test_15_real_collector_ok_and_nonzero_to_reopened_ledger",
+        "status": "PASS"
+      }
+    ],
+    "failure_summary": {
+      "case": "R10",
+      "expected": "DATABASE_UNCONFIRMED",
+      "actual": "LEDGER_READY",
+      "cause": "기존 valid readonly DB의 무쓰기 schema 확인까지 항상 거부해야 한다는 test 추가 가정. 원계약은 backend BEGIN이 실패할 수 있다는 것이며 무조건 거부 요구는 아님."
+    }
+  },
+  "reviewer_minor_r10_correction": {
+    "independent_review": "PASS",
+    "scope": "R10 단일 method만. 기존 valid readonly initialize는 LEDGER_READY 또는 backend거부 DATABASE_UNCONFIRMED만 허용·DBbytes/rows/flags 불변. empty readonly schema 생성과 새job INSERT는 반드시 DATABASE_UNCONFIRMED·미수정 유지.",
+    "initial_test_sha256": "8496a925f2ec65bffe9fe0b10c0fd27d5e1ee164e7a76b80ff5339e545f031fd",
+    "final_test_sha256": "9dc968aef2ae7e8ae5f281b41d853a0d8d370d63b67b654aeabe9fd179087bbe",
+    "target_only_run": {
+      "tests_run": 1,
+      "pass": 1,
+      "fail": 0,
+      "error": 0,
+      "skip": 0,
+      "elapsed_seconds": 0.00655,
+      "pre_sha256": {
+        "source": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+        "test": "9dc968aef2ae7e8ae5f281b41d853a0d8d370d63b67b654aeabe9fd179087bbe",
+        "plan": "869c274e0211e8ea22b758b16b5b7c1114c34ad22894cbc57cbd6b9ddf680cb6"
+      },
+      "post_sha256": {
+        "source": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+        "test": "9dc968aef2ae7e8ae5f281b41d853a0d8d370d63b67b654aeabe9fd179087bbe",
+        "plan": "869c274e0211e8ea22b758b16b5b7c1114c34ad22894cbc57cbd6b9ddf680cb6"
+      },
+      "hashes_unchanged": true
+    },
+    "observations": [
+      {
+        "case": "R10",
+        "existing_readonly_initialize": "LEDGER_READY",
+        "new_job_write": "DATABASE_UNCONFIRMED",
+        "bytes_rows_flags_preserved": true
+      },
+      {
+        "case": "R10",
+        "empty_readonly_initialize": "DATABASE_UNCONFIRMED",
+        "schema_application_version_unchanged": true,
+        "bytes_flags_preserved": true
+      }
+    ],
+    "other_14_methods_and_helpers_byte_identical": true,
+    "module_ast_outside_r10_identical": true,
+    "mutation_targets_byte_identical": true,
+    "full_suite_reruns": 0,
+    "collector_reruns": 0,
+    "provenance_note": "초기 test8496의 14PASS/1FAIL과 final test9dc의 R10 한 개 PASS를 분리한다. final SHA로 전체15개를 실행했다고 소급하지 않음."
+  },
+  "actual_sqlite_integration": {
+    "file_and_memory": "실제 temp file/memory 초기화·고정 schema/독립 literal DDL/table_info/CHECK·close/reopen·immutable rawbytes/replay/CAS·readonly·caller flags/기존 transaction 보존을 검증.",
+    "process_races": [
+      {
+        "case": "R11",
+        "same_bytes": true,
+        "elapsed_seconds": 0.103383,
+        "reasons": [
+          "ASSIGNED",
+          "ASSIGNMENT_REPLAYED"
+        ],
+        "rows": 1
+      },
+      {
+        "case": "R11",
+        "same_bytes": false,
+        "elapsed_seconds": 0.091067,
+        "reasons": [
+          "ASSIGNED",
+          "ASSIGNMENT_CONFLICT"
+        ],
+        "rows": 1
+      },
+      {
+        "case": "R12",
+        "same_bytes": true,
+        "elapsed_seconds": 0.093345,
+        "reasons": [
+          "ARTIFACT_RECORDED",
+          "ARTIFACT_REPLAYED"
+        ],
+        "revision": 1
+      },
+      {
+        "case": "R12",
+        "same_bytes": false,
+        "elapsed_seconds": 0.089715,
+        "reasons": [
+          "ARTIFACT_CONFLICT",
+          "ARTIFACT_RECORDED"
+        ],
+        "revision": 1
+      }
+    ],
+    "race_control": "각 child가 자기 connection을 열고 READY barrier 뒤 같은 monotonic 시각에 호출. 동일 assignment/artifact는 최초1+replay1, 다른 bytes는 최초1+conflict1·winner bytes/SHA/revision 불변. bounded communicate와 wait로 test process 정리.",
+    "busy_lock": [
+      {
+        "case": "R13",
+        "busy_timeout_ms": 100,
+        "elapsed_seconds": 0.187642,
+        "reason": "DATABASE_UNCONFIRMED"
+      }
+    ],
+    "busy_note": "parent가 실제 BEGIN IMMEDIATE lock을 유지하고 별도 child의 busy_timeout100ms write가 DATABASE_UNCONFIRMED로 종료. elapsed<2초·DB불변을 확인했으며 자동retry/전체API hardwall 주장은 없음.",
+    "collector_to_db": [
+      {
+        "case": "R15",
+        "profile": "ok",
+        "returncode": 0,
+        "artifact_bytes": 1210,
+        "collector_calls": 1,
+        "reopen_matches": true
+      },
+      {
+        "case": "R15",
+        "profile": "nonzero",
+        "returncode": 7,
+        "artifact_bytes": 1215,
+        "collector_calls": 1,
+        "reopen_matches": true
+      }
+    ],
+    "collector_note": "새 integration에 필요한 실제 ok/exit7 각1회만. 실제 bytes·SHA·final7binding을 DB에 결합한 뒤 별도 connection reopen 결과와 대조. 기존 collector suite/사용자 native 반복이 아님. 그 외 artifact는 독립 합성 metadata이며 실제 invocation 증명이 아님."
+  },
+  "fault_and_corruption_boundaries": {
+    "actual_local_mutations": "자체 temp DB의 schema/app/version/objects/attached/temp·row/blob/type/hash/revision을 의도적으로 손상하고 자동수정/덮어쓰기 없는 거부를 확인. 1MiB blob은 ROW_INVALID와 SQL length gate 정적 검토를 결합하여 확인.",
+    "injected_faults": [
+      "row query sqlite3.DatabaseError→DATABASE_UNCONFIRMED (ROW_INVALID와 구분)",
+      "BEGIN 전 오류→rollback0/원row 보존",
+      "실제 BEGIN 후 응답예외→rollback1/원row 보존",
+      "COMMIT 전 오류→실제 rollback·새connection에서 rev0 확인",
+      "실제 COMMIT 후 wrapper 응답예외→DATABASE_UNCONFIRMED지만 새connection rev1+원bytes replay 복구",
+      "rollback 오류→transaction_closedfalse·caller가 자기 temp connection을 정리"
+    ],
+    "note": "commit후 유실은 실제 COMMIT을 먼저 완료한 wrapper fault다. 전원차단/crash/디스크 fsync 내구성 실측이 아니며 반환 오류를 실제 미commit 또는 쓰기0으로 해석하지 않음."
+  },
+  "d38": {
+    "pre_sha256": {
+      "source": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "test": "9dc968aef2ae7e8ae5f281b41d853a0d8d370d63b67b654aeabe9fd179087bbe",
+      "plan": "869c274e0211e8ea22b758b16b5b7c1114c34ad22894cbc57cbd6b9ddf680cb6"
+    },
+    "post_sha256": {
+      "source": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "test": "9dc968aef2ae7e8ae5f281b41d853a0d8d370d63b67b654aeabe9fd179087bbe",
+      "plan": "869c274e0211e8ea22b758b16b5b7c1114c34ad22894cbc57cbd6b9ddf680cb6"
+    },
+    "hashes_unchanged": true,
+    "actual_working_test_sha256": "9dc968aef2ae7e8ae5f281b41d853a0d8d370d63b67b654aeabe9fd179087bbe",
+    "normal_reference_test_sha256": "8496a925f2ec65bffe9fe0b10c0fd27d5e1ee164e7a76b80ff5339e545f031fd",
+    "normal_reference": "최초 suite에서 PASS한 R04/R03을 재사용. 그 method와 shared helpers는 R10 보정 전후 byte/AST 동일. 변이 실행 입력은 실제 final working test9dc이며 initial8496 실행으로 혼동하지 않음.",
+    "normal_extra_runs": 0,
+    "mutations": [
+      {
+        "id": "M1",
+        "target": "test_04_record_pins_and_revision",
+        "tests_run": 1,
+        "pass": 0,
+        "fail": 1,
+        "error": 0,
+        "skip": 0,
+        "elapsed_seconds": 0.003578,
+        "mutant_source_sha256": "9473f4faf6ee407f4cc440765797acca0f3a4899c62bef41ccb2cee6ad0dc282",
+        "removed_guard": "if row[\"assignment_sha256\"] != expected_assignment_sha256:\n            raise _Failure(\"ASSIGNMENT_PIN_MISMATCH\")",
+        "detected_meaning": "wrong expected pin인데 ARTIFACT_RECORDED",
+        "expected_reason": "ASSIGNMENT_PIN_MISMATCH",
+        "syntax_or_environment_error": false,
+        "isolated_copy_deleted": true
+      },
+      {
+        "id": "M2",
+        "target": "test_03_sealed_artifact_replay_and_conflict",
+        "tests_run": 1,
+        "pass": 0,
+        "fail": 1,
+        "error": 0,
+        "skip": 0,
+        "elapsed_seconds": 0.002651,
+        "mutant_source_sha256": "3762ccc88c9b51eceee0ece6421d6193e366a9b054a750bf97745ef7e3a08720",
+        "removed_guard": "if row[\"artifact_bytes\"] != artifact_bytes:\n                raise _Failure(\"ARTIFACT_CONFLICT\")",
+        "detected_meaning": "sealed 다른 valid bytes인데 ARTIFACT_REPLAYED",
+        "expected_reason": "ARTIFACT_CONFLICT",
+        "syntax_or_environment_error": false,
+        "isolated_copy_deleted": true
+      }
+    ]
+  },
+  "retention": {
+    "scratch_snapshots": [
+      "fixture_ledger_initial_source.snapshot",
+      "fixture_ledger_initial_test.snapshot",
+      "fixture_ledger_initial_plan.snapshot",
+      "fixture_ledger_corrected_test.snapshot"
+    ],
+    "scratch_records": [
+      "fixture_ledger_initial_suite_record.json",
+      "fixture_ledger_target_recheck_record.json",
+      "fixture_ledger_mutation_record.json"
+    ],
+    "note": "원문 snapshot과 full log는 저장소 밖 작업 기록에 보존. 초기/최종 단일method diff·14methods/helpers·Mtargets의 독립 귀속 대조용이며 공개 문서에 전체 traceback/개인경로를 복제하지 않음.",
+    "mutants": "두 격리 source copy 삭제 확인, 원본 source/test/plan 실행 전후 SHA 불변."
+  },
+  "workflow_audit_R16": {
+    "status": "PASS",
+    "owner": "root",
+    "files": 6,
+    "new_files": 5,
+    "status_rows_changed": 1,
+    "relative_links_checked": 91,
+    "missing_links": 0,
+    "strict_json": "PASS",
+    "whitespace_errors": 0,
+    "other_tracked_bytes_preserved": true,
+    "source_test_plan_guide_hashes_match": true,
+    "initial_snapshots_match": true,
+    "only_r10_method_changed": true,
+    "other_14_methods_and_helpers_byte_ast_identical": true,
+    "mutant_hashes_independently_reconstructed": 2,
+    "source_ast310": "PASS",
+    "final_test_ast310": "PASS",
+    "safe_import_stdout_stderr_bytes": 0,
+    "safe_import_runs": 1,
+    "source_api_invocations_by_root": 0,
+    "bounded_sql_cursor_stdlib_public_api_review": "PASS",
+    "native_template_hash_verified": true,
+    "native_template_bash_n_ast310": "PASS",
+    "native_template_static_review": "PASS",
+    "native_template_executions": 0,
+    "private_material_patterns_found": 0,
+    "trust_flags_false": 9,
+    "product_tests_repeated_by_root": 0
+  },
+  "native_acceptance": {
+    "status": "NOT_RUN",
+    "template_sha256_pre_substitution": "8faec2c9dcdd2f27110ce683193cc6cb5fb282a47db9faa6fa9043116d076ca8",
+    "template_static_review": "root bash-n/AST3.10 및 reviewer 정적 PASS 보고, commit/source 두 pin 치환 후 최종 확인 필요. 실제 실행0.",
+    "scope": "사용자 서버 전체 Python3.10/보호된 state anchor·worker/issuer·App·sandbox는 미인수."
+  },
+  "execution_boundaries": {
+    "actual_fixture_collector_calls": 2,
+    "actual_fixture_profiles": [
+      "ok",
+      "nonzero"
+    ],
+    "test_harness_processes": 9,
+    "ledger_module_process_execution": 0,
+    "old_test_suite_runs": 0,
+    "old_mutant_runs": 0,
+    "normal_mutation_target_extra_runs": 0,
+    "direct_service_or_app_requests_during_tests": 0,
+    "operational_key_access": 0,
+    "receipt_signing": 0,
+    "user_server_executions": 0,
+    "head_execution": 0,
+    "host_account_or_nonfixture_permission_changes": 0,
+    "filesystem_scope": "테스트가 생성한 temp DB/state/public fixtures와 승인된 repo 산출물만. 제품 module은 DB path를 열거나 파일/계정 설정을 직접 쓰지 않음.",
+    "product_stdout_stderr": "invoke에서 모두 빈 출력·report exact19/record exact7과 raw sentinel 비노출 확인. raw assignment/artifact는 API 복구용 반환이며 출력하지 않음."
+  },
+  "limitations": {
+    "fixture_only": true,
+    "head_code_executed": false,
+    "input_origin_verified": false,
+    "signer_roster_origin_verified": false,
+    "issuer_environment_verified": false,
+    "runtime_isolation_verified": false,
+    "independent_review_verified": false,
+    "trusted_gate_verified": false,
+    "binding_verified": false,
+    "native_ready": false,
+    "merge_authorized": false,
+    "note": "신뢰된 connection/DB anchor/상위경로/설치 pin·callback 출처·DB 전체 재작성/rollback 저항·실제 invocation/정확1실행·None artifact terminal화·tests/reviewer/issuer 연결은 후속. 저장 RECORDED는 PASS/서명/required gate 승인 아님. 기존 sandbox 세 실패/D17·D18 상한·연장소진 보류 유지."
+  }
+}
