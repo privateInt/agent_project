@@ -1,0 +1,225 @@
+{
+  "schema": "github-signed-receipts-offline-v1",
+  "scope": "OFFLINE_ONLY",
+  "status": "OFFLINE_COMPONENT_CHECKS_COMPLETE",
+  "baseline_commit": "4e8eeb5db1abd847ba4d1bfe40ddbbf1f9106e17",
+  "pre_review_plan_sha256": "4e363aa576b810a180f0a125de87055bca0ade8c4cd377e7616fcf86cbaea765",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux",
+    "uid_zero": true,
+    "openssl": "OpenSSL 3.0.13 30 Jan 2024 (Library: OpenSSL 3.0.13 30 Jan 2024)"
+  },
+  "source_pre_run_review": {
+    "draft_source_sha256": "d5cfbd02ef0499b88a386ff0d2052b4ce744140148b93188e8443c7a6dc94422",
+    "tested_source_sha256": "3a62ab77cdb9e5970b56db930b444825b60266f9fe1d915caa9cc1927586e092",
+    "draft_product_runs": 0,
+    "reason": "최초 실행 전 독립 정적 검토에서 lowFD close 오류의 재close와 finally 예외 후 잔여FD 정리를 보정했다. 검사 실패 이력이 아니다."
+  },
+  "initial_suite": {
+    "command": "python3 -B stdin unittest loadTestsFromModule(new signed receipt tests only)",
+    "total": 15,
+    "PASS": 14,
+    "FAIL": 1,
+    "ERROR": 0,
+    "SKIP": 0,
+    "seconds": 0.435378,
+    "pre_sha256": {
+      "source": "3a62ab77cdb9e5970b56db930b444825b60266f9fe1d915caa9cc1927586e092",
+      "test": "d801c540c76463a21267c7b263299118cd94a5e38b9f22fc832b2906819aa0f7",
+      "plan": "4e363aa576b810a180f0a125de87055bca0ade8c4cd377e7616fcf86cbaea765"
+    },
+    "post_sha256": {
+      "source": "3a62ab77cdb9e5970b56db930b444825b60266f9fe1d915caa9cc1927586e092",
+      "test": "d801c540c76463a21267c7b263299118cd94a5e38b9f22fc832b2906819aa0f7",
+      "plan": "4e363aa576b810a180f0a125de87055bca0ade8c4cd377e7616fcf86cbaea765"
+    },
+    "hashes_unchanged": true,
+    "python310_ast": "PASS",
+    "actual_python310": "NOT_RUN",
+    "whole_suite_invocations": 1,
+    "failure": {
+      "target": "test_15_python310_api_imports_and_existing_source_test_bytes_preserved",
+      "classification": "TEST_SCANNER_FALSE_POSITIVE",
+      "product_failure": false,
+      "cause": "관리용 fds.remove(fd)를 generic remove 금지에서 영속 파일 삭제로 오탐했다."
+    },
+    "normal_mutation_targets": {
+      "test_06_tampered_full_length_signature_is_rejected_by_real_backend": "PASS",
+      "test_09_reviewer_actual_artifact_tamper_is_rejected_with_valid_signatures": "PASS"
+    },
+    "initial_source_test_plan_snapshots_retained_in_scratch": true
+  },
+  "test_only_correction": {
+    "reason": "R15 generic remove 검사에서 관리용 list.remove가 영속삭제로 오탐되어 os receiver로 구분한 사소한 동등 보정",
+    "reviewer_equivalent_minor_change_accepted": true,
+    "changed_method": "test_15_python310_api_imports_and_existing_source_test_bytes_preserved",
+    "initial_test_sha256": "d801c540c76463a21267c7b263299118cd94a5e38b9f22fc832b2906819aa0f7",
+    "other_14_methods_helpers_and_mutation_targets_byte_ast_equal": true,
+    "initial_and_corrected_test_snapshots_retained_in_scratch": true
+  },
+  "targeted_recheck": {
+    "total": 1,
+    "PASS": 1,
+    "FAIL": 0,
+    "ERROR": 0,
+    "SKIP": 0,
+    "seconds": 0.051057,
+    "target": "test_15_python310_api_imports_and_existing_source_test_bytes_preserved",
+    "pre_sha256": {
+      "source": "3a62ab77cdb9e5970b56db930b444825b60266f9fe1d915caa9cc1927586e092",
+      "test": "cc3e38cab9ae70b0cca5b4b3f791e9a9d2e1425298c382aacf35bcc70e9c7c71",
+      "plan": "4e363aa576b810a180f0a125de87055bca0ade8c4cd377e7616fcf86cbaea765"
+    },
+    "post_sha256": {
+      "source": "3a62ab77cdb9e5970b56db930b444825b60266f9fe1d915caa9cc1927586e092",
+      "test": "cc3e38cab9ae70b0cca5b4b3f791e9a9d2e1425298c382aacf35bcc70e9c7c71",
+      "plan": "4e363aa576b810a180f0a125de87055bca0ade8c4cd377e7616fcf86cbaea765"
+    },
+    "hashes_unchanged": true,
+    "python310_ast": "PASS",
+    "whole_suite_repeated": false,
+    "other_14_methods_repeated": false,
+    "mutants_repeated": false
+  },
+  "final_source_test_plan_sha256": {
+    "source": "3a62ab77cdb9e5970b56db930b444825b60266f9fe1d915caa9cc1927586e092",
+    "test": "cc3e38cab9ae70b0cca5b4b3f791e9a9d2e1425298c382aacf35bcc70e9c7c71",
+    "plan": "4e363aa576b810a180f0a125de87055bca0ade8c4cd377e7616fcf86cbaea765"
+  },
+  "real_crypto_evidence": [
+    "격리 임시 Ed25519 키 두 개와 독립 canonical 전체 payload 서명·실제 pair 검증",
+    "공개 RFC8032 Test2 vector(message72) 실제 OpenSSL 검증·DER/raw32·고정 argv/env/public-only buffers 대조",
+    "표준FD0/1/2를 닫은 별도 child에서 lowFD 예약과 실제 RFC 검증 성공·public memfd 누수0",
+    "실제 서명 1byte 조작·잘못된 domain/부분payload·다른 role key 거부",
+    "완전히 재서명한 stale 7binding 거부와 실제 artifact1byte 변조 검출",
+    "각 1byte/1MiB artifact와 opaque FAIL/nonJSON bytes의 좁은 cryptographic MATCH·9trustfalse"
+  ],
+  "mock_and_limit_precision": [
+    "partial write는 실제 memfd에 짧게 쓰도록 주입하고 실제 RFC 검증 성공으로 loop의 복구를 확인했다.",
+    "missing/nonzero/TimeoutExpired/SubprocessError와 생성/write0/seek/close 오류는 대역 주입이다. 실제5초 timer kill/reap 실측은 하지 않았다.",
+    "lowFD close 오류 회귀는 virtual os/fcntl proxy로0이 닫힌 뒤 오류를 내고 reservedFD 정리를 확인했다. 부모 stdin을 닫지 않았다.",
+    "성공·실패 subprocess/FD 정리를 검사했으나 실제 issuer/controller 설치·권한·역할 독립성은 검사하지 않았다."
+  ],
+  "d38": {
+    "pre_sha256": {
+      "source": "3a62ab77cdb9e5970b56db930b444825b60266f9fe1d915caa9cc1927586e092",
+      "test": "d801c540c76463a21267c7b263299118cd94a5e38b9f22fc832b2906819aa0f7",
+      "plan": "4e363aa576b810a180f0a125de87055bca0ade8c4cd377e7616fcf86cbaea765"
+    },
+    "post_sha256": {
+      "source": "3a62ab77cdb9e5970b56db930b444825b60266f9fe1d915caa9cc1927586e092",
+      "test": "d801c540c76463a21267c7b263299118cd94a5e38b9f22fc832b2906819aa0f7",
+      "plan": "4e363aa576b810a180f0a125de87055bca0ade8c4cd377e7616fcf86cbaea765"
+    },
+    "originals_unchanged_during_mutation_runs": true,
+    "additional_normal_target_runs": 0,
+    "mutations": [
+      {
+        "id": "M1",
+        "target": "test_06_tampered_full_length_signature_is_rejected_by_real_backend",
+        "normal_reference": {
+          "suite": "initial_new_suite",
+          "named_target_result": "PASS",
+          "source_test_plan_sha256": {
+            "source": "3a62ab77cdb9e5970b56db930b444825b60266f9fe1d915caa9cc1927586e092",
+            "test": "d801c540c76463a21267c7b263299118cd94a5e38b9f22fc832b2906819aa0f7",
+            "plan": "4e363aa576b810a180f0a125de87055bca0ade8c4cd377e7616fcf86cbaea765"
+          },
+          "additional_normal_target_runs": 0
+        },
+        "fault": "실제 invalid-signature subprocess 결과를 무시",
+        "mutant_source_sha256": "cdb0c19f9ba4d3b31c019ab723157296b58311569e9d41b3c5b64d52334c98b6",
+        "mutant": {
+          "total": 1,
+          "PASS": 0,
+          "FAIL": 1,
+          "ERROR": 0,
+          "SKIP": 0,
+          "seconds": 0.05049
+        },
+        "assertion_failure_only": true,
+        "copy_removed": true
+      },
+      {
+        "id": "M2",
+        "target": "test_09_reviewer_actual_artifact_tamper_is_rejected_with_valid_signatures",
+        "normal_reference": {
+          "suite": "initial_new_suite",
+          "named_target_result": "PASS",
+          "source_test_plan_sha256": {
+            "source": "3a62ab77cdb9e5970b56db930b444825b60266f9fe1d915caa9cc1927586e092",
+            "test": "d801c540c76463a21267c7b263299118cd94a5e38b9f22fc832b2906819aa0f7",
+            "plan": "4e363aa576b810a180f0a125de87055bca0ade8c4cd377e7616fcf86cbaea765"
+          },
+          "additional_normal_target_runs": 0
+        },
+        "fault": "reviewer 실제 artifact hash 불일치 guard 제거",
+        "mutant_source_sha256": "578e4d30f3bb13bc35197aba0bb5c248c26ede8c83ec8b48195234ee9af6645a",
+        "mutant": {
+          "total": 1,
+          "PASS": 0,
+          "FAIL": 1,
+          "ERROR": 0,
+          "SKIP": 0,
+          "seconds": 0.040996
+        },
+        "assertion_failure_only": true,
+        "copy_removed": true
+      }
+    ],
+    "copies_removed": true
+  },
+  "workflow_audit": {
+    "status": "PASS",
+    "total_files": 6,
+    "new_files": 5,
+    "status_rows_changed": 1,
+    "relative_links_checked": 87,
+    "missing_links": 0,
+    "whitespace_errors": 0,
+    "strict_json": "PASS",
+    "source_test_plan_hashes_match": true,
+    "initial_snapshot_hashes_match": true,
+    "trust_flags_false": 9,
+    "all_other_tracked_files_preserved": true,
+    "private_material_patterns_found": 0,
+    "product_tests_repeated": 0,
+    "owner": "root",
+    "scope": "R16 one-off document/scope audit; no product tests repeated"
+  },
+  "execution_boundary": {
+    "production_signing_key_accesses": 0,
+    "github_app_rsa_key_accesses": 0,
+    "github_api_requests": 0,
+    "native_controller_issuer_runs": 0,
+    "old_suites_repeated": 0,
+    "past_mutants_repeated": 0,
+    "success_check_emission": 0,
+    "worker_inference_admin_merge_or_held_sandbox_changes": 0,
+    "input_origin_verified": false,
+    "signer_roster_origin_verified": false,
+    "issuer_environment_verified": false,
+    "runtime_isolation_verified": false,
+    "independent_review_verified": false,
+    "trusted_gate_verified": false,
+    "binding_verified": false,
+    "native_ready": false,
+    "merge_authorized": false
+  },
+  "limitations": [
+    "초기15개는 testd801의14PASS/1FAIL이다. R15만 보정 뒤 finaltestcc3e에서1PASS이며 원래 결과를 최종SHA의15PASS로 소급하지 않는다.",
+    "M1/M2 정상 target은 초기 suite의 named PASS와 정확 source/test/plan SHA를 재사용했다. 추가 정상 target run 없이 각 격리 mutant만1회 실행했다.",
+    "CRYPTOGRAPHIC_MATCH는 caller가 준 roster·7binding과 실제 artifact bytes 아래 두 서명의 수학적 일치다. roster 출처·최신 GitHub 대상·실제 실행·독립 reviewer·artifact PASS 의미를 인증하지 않는다.",
+    "실제 controller 보호 config loader·assignment ledger·tests/reviewer producer·서명키 발급·실제 역할 invocation과 native 거부 인수는 후속이다.",
+    "실제 Python3.10 실행은 NOT_RUN이며 AST3.10과 Linux/Python3.12.14/OpenSSL3.0.13 검사 근거를 구분한다.",
+    "기존 sandbox EACCES 세 실패·D17/D18 조사 상한·연장 소진·보류는 유지하며 이번 검증기로 재개하지 않았다."
+  ],
+  "execution_order": [
+    "initial_suite: actual working test d801",
+    "D38 M1/M2: same actual working test d801, no additional normal target runs",
+    "R15-only scanner correction",
+    "targeted_recheck: actual working test cc3e",
+    "R16 document/scope audit"
+  ]
+}
