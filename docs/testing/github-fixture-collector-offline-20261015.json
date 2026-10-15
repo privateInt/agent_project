@@ -1,0 +1,361 @@
+{
+  "schema": 1,
+  "date": "2026-10-15",
+  "scope": "OFFLINE_FIXED_FIXTURE_COLLECTION_ONLY",
+  "baseline": {
+    "parent_commit": "859b401af70b74e9417f7c0fab8f26b2985fcee3",
+    "branch": "codex/github-fixture-collector-20261015",
+    "plan_path": "docs/codex/github-fixture-collector-test-plan.md",
+    "plan_sha256": "f0056e49a04eca4608f65eaae3872f31aca41505dc06a311043754b2104a9ea3",
+    "independent_pre_review": "PASS"
+  },
+  "component_scope": "고정 assignment FD 로드→검토 소스의 fixture child 실제 실행→pipe/exit 직접 수집→artifact bytes→최종7binding. 실제 head collector/controller/issuer 설치 인수는 아님.",
+  "environment": {
+    "parent_python": "3.12.14",
+    "parent_executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "fixed_child_python": "Python 3.12.3",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "euid": 0,
+    "python_3_10_runtime": "NOT_RUN"
+  },
+  "compatibility": {
+    "source_python_3_10_ast": "PASS",
+    "final_test_python_3_10_ast": "PASS",
+    "python_3_10_runtime": "NOT_RUN",
+    "note": "parent Python3.12.14와 고정 /usr/bin/python3 child3.12.3을 별도 기록. 사용자 서버 Python3.10 실행은 미인수."
+  },
+  "sha256": {
+    "source": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+    "test_initial_suite_and_mutants": "4e85bf06201c08d653ca02476c80c2669b858b7af24b8028f66db4f7d7fd5bcd",
+    "test_current": "f256d84be6e770b9b116500ea86450a7ab56d205f0cbfa035a9ce21091c513f0",
+    "plan": "f0056e49a04eca4608f65eaae3872f31aca41505dc06a311043754b2104a9ea3",
+    "guide": "c993d73169f30fe8a479212f2146e975d14b34322c53bf5e1da20360805f883d"
+  },
+  "pre_run_source_review": [
+    {
+      "source_prefixes": [
+        "8de",
+        "7930"
+      ],
+      "execution_count": 0,
+      "origin": "root/reviewer 선검토 보고",
+      "change": "observer 초기 예외 때 직접 child cleanup 공유와 이미 닫힌 pipe 재close 방지. 제품 검사 실패 이력이 아님."
+    },
+    {
+      "source_sha256": "2edd919115769daac9ffcb986a59b04f1744ba8197229d8ac7acedec23bd3f79",
+      "execution_count": 0,
+      "change": "설정 로드의 유일한 close 오류를 동결 CLEANUP_UNCONFIRMED와 일치화 요청."
+    },
+    {
+      "source_sha256": "748cc43076a84b733868d81bb33db0c9404239aeb013abdb7ee725a803a3a9a4",
+      "execution_count": 0,
+      "change": "output_complete에도 reap/cleanup 확인을 요구해 정리 불명은 prefix_only로 표시."
+    },
+    {
+      "source_sha256": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "role": "최초 실제 suite/선정 변이에 사용한 원본"
+    }
+  ],
+  "initial_selected_suite": {
+    "tests_run": 15,
+    "pass": 15,
+    "fail": 0,
+    "error": 0,
+    "skip": 0,
+    "elapsed_seconds": 0.549485,
+    "pre_sha256": {
+      "source": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "test": "4e85bf06201c08d653ca02476c80c2669b858b7af24b8028f66db4f7d7fd5bcd",
+      "plan": "f0056e49a04eca4608f65eaae3872f31aca41505dc06a311043754b2104a9ea3"
+    },
+    "post_sha256": {
+      "source": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "test": "4e85bf06201c08d653ca02476c80c2669b858b7af24b8028f66db4f7d7fd5bcd",
+      "plan": "f0056e49a04eca4608f65eaae3872f31aca41505dc06a311043754b2104a9ea3"
+    },
+    "hashes_unchanged": true,
+    "cases": [
+      {
+        "name": "test_01_real_ok_end_to_end",
+        "status": "PASS"
+      },
+      {
+        "name": "test_02_real_nonzero_pass_text_is_not_exit_zero",
+        "status": "PASS"
+      },
+      {
+        "name": "test_03_real_signaled_exit",
+        "status": "PASS"
+      },
+      {
+        "name": "test_04_real_dual_stream_and_exact_cap",
+        "status": "PASS"
+      },
+      {
+        "name": "test_05_real_overflow_is_not_complete_output",
+        "status": "PASS"
+      },
+      {
+        "name": "test_06_real_timeout_and_eof_before_exit",
+        "status": "PASS"
+      },
+      {
+        "name": "test_07_fd_arguments_and_directory_pins",
+        "status": "PASS"
+      },
+      {
+        "name": "test_08_real_assignment_file_denials",
+        "status": "PASS"
+      },
+      {
+        "name": "test_09_hash_strict_json_shape_and_limits",
+        "status": "PASS"
+      },
+      {
+        "name": "test_10_no_head_or_arbitrary_launcher",
+        "status": "PASS"
+      },
+      {
+        "name": "test_11_real_fixed_spawn_noninheritance_and_low_fds",
+        "status": "PASS"
+      },
+      {
+        "name": "test_12_fault_cleanup_and_no_close_retry",
+        "status": "PASS"
+      },
+      {
+        "name": "test_13_canonical_artifact_and_non_circular_binding",
+        "status": "PASS"
+      },
+      {
+        "name": "test_14_sanitized_errors_and_narrow_fixture_claims",
+        "status": "PASS"
+      },
+      {
+        "name": "test_15_syntax_import_boundaries_and_preserved_validator",
+        "status": "PASS"
+      }
+    ]
+  },
+  "reviewer_minor_test_correction": {
+    "reason": "R05의 overflow 당시 child가 이미 종료한 유효 경우까지 kill 요청=true를 요구한 추가 가정만 제거. R12 cleanup fault의 output_complete=false·두 prefix_only=true를 직접 보강. 동결 기준 유지이며 제품 변경0.",
+    "initial_test_sha256": "4e85bf06201c08d653ca02476c80c2669b858b7af24b8028f66db4f7d7fd5bcd",
+    "final_test_sha256": "f256d84be6e770b9b116500ea86450a7ab56d205f0cbfa035a9ce21091c513f0",
+    "changed_methods": [
+      "test_05_real_overflow_is_not_complete_output",
+      "test_12_fault_cleanup_and_no_close_retry"
+    ],
+    "target_only_run": {
+      "tests_run": 2,
+      "pass": 2,
+      "fail": 0,
+      "error": 0,
+      "skip": 0,
+      "elapsed_seconds": 0.037387,
+      "pre_sha256": {
+        "source": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+        "test": "f256d84be6e770b9b116500ea86450a7ab56d205f0cbfa035a9ce21091c513f0",
+        "plan": "f0056e49a04eca4608f65eaae3872f31aca41505dc06a311043754b2104a9ea3"
+      },
+      "post_sha256": {
+        "source": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+        "test": "f256d84be6e770b9b116500ea86450a7ab56d205f0cbfa035a9ce21091c513f0",
+        "plan": "f0056e49a04eca4608f65eaae3872f31aca41505dc06a311043754b2104a9ea3"
+      },
+      "hashes_unchanged": true
+    },
+    "other_13_test_methods_and_shared_helpers_byte_identical": true,
+    "other_module_ast_identical": true,
+    "m1_target_identical": true,
+    "m2_core_output_complete_assertion_identical": true,
+    "full_suite_reruns": 0,
+    "mutant_reruns": 0,
+    "provenance_note": "초기15 PASS/변이는 initial test SHA에 귀속한다. final test SHA로 전체15개를 재실행했다고 소급하지 않으며 변경2개만 후속 PASS다."
+  },
+  "real_integration": {
+    "filesystem": "임시0700 directory/0600 assignment의 실제 FD metadata·bytes/hash, missing/symlink/FIFO/link2/mode/size 거부. owner 불일치는 대역으로 별도 확인.",
+    "popen": "고정 /usr/bin/python3 -I -B -c 실제 실행. 고정 argv/env/cwd/stdinDEVNULL/PIPE/session/close_fds/pass_fds spy와 ok의 FD selfcheck를 함께 확인. inheritable caller FD/public canary FD 비상속·caller 보존, stdio닫힌 격리 child의 callerFD0 및 자체 low pipeFD 처리 실제 확인.",
+    "profiles": [
+      "ok",
+      "nonzero",
+      "dual-output",
+      "wait",
+      "closed-pipes-wait",
+      "signal"
+    ],
+    "nonzero": "실제 exit7와 stdout PASS 문구를 분리. OBSERVED는 collection 관찰이며 tests PASS가 아님.",
+    "dual_output": "stdout O32768·stderr E32768 및 exact cap32768을 실제 수집. cap64에서는 cap+1 overflow 관찰·retained prefix hash만 기록. child가 이미 종료했다면 kill 요청이 없어도 정상인 것으로 분리.",
+    "actual_timeouts": [
+      {
+        "case": "R06",
+        "profile": "wait",
+        "elapsed_seconds": 0.152062,
+        "returncode": -9,
+        "child_reaped": true,
+        "stdout_eof": false,
+        "stderr_eof": false
+      },
+      {
+        "case": "R06",
+        "profile": "closed-pipes-wait",
+        "elapsed_seconds": 0.151677,
+        "returncode": -9,
+        "child_reaped": true,
+        "stdout_eof": true,
+        "stderr_eof": true
+      }
+    ],
+    "timeout_acceptance": "각150ms deadline fixture가 elapsed>=0.1초/<3초, 실제 kill(-9)·wait/reap·pipe닫힘을 통과. closed-pipes-wait는 EOF둘true여도 TIMEOUT/collectionfalse. 실제10초 자연대기를 완료한 검사가 아님.",
+    "reap_evidence": "실제 Popen.returncode와 재waitpid의 ChildProcessError, pipe.closed를 확인. 직접 child 범위이며 process-group/descendant 전체 정리 검증 아님.",
+    "artifact": "exact canonical artifact11키/nested shape·count/hash/prefix/EOF/forced outcome·actual -c literal digest·최종7binding을 독립 SHA로 대조. artifact 안에 자기 evidence hash/binding/receipt 없음."
+  },
+  "fault_injection_boundary": {
+    "with_actual_child": [
+      "pipe read 오류",
+      "selector 생성 오류",
+      "deadline clock 오류",
+      "observer 구성 예외 후 cleanup fallback"
+    ],
+    "fake_child_or_os_proxy": [
+      "owner pin 불일치",
+      "spawn 오류",
+      "kill 실패",
+      "wait TimeoutExpired",
+      "pipe close 오류",
+      "FD duplicate 오류",
+      "실제로 own FD를 닫은 뒤 close 오류를 주어 재close0/남은FD 정리/caller보존 확인"
+    ],
+    "note": "fake kill/wait 실패는 실제 미회수 child를 남긴 실험이 아니다. 정상/timeout의 실제 directchild reap 근거와 대역 실패를 합산하지 않는다. observer 메타데이터 구성 불가 예외는 cleanup 후 UNEXPECTED_FAILURE/artifactNone, 일반 IO/timeout은 불완전 artifact로 구분."
+  },
+  "d38": {
+    "normal_reference": "최초 suite의 R02/R05 named PASS만 재사용. 정상 target 추가 실행0.",
+    "pre_sha256": {
+      "source": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "test": "4e85bf06201c08d653ca02476c80c2669b858b7af24b8028f66db4f7d7fd5bcd",
+      "plan": "f0056e49a04eca4608f65eaae3872f31aca41505dc06a311043754b2104a9ea3"
+    },
+    "post_sha256": {
+      "source": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "test": "4e85bf06201c08d653ca02476c80c2669b858b7af24b8028f66db4f7d7fd5bcd",
+      "plan": "f0056e49a04eca4608f65eaae3872f31aca41505dc06a311043754b2104a9ea3"
+    },
+    "hashes_unchanged": true,
+    "test_source_provenance": "변이 batch 당시 실제 working-tree test는 initial4e85 그대로였다. final f256 보정 전에 실행했으며 보존 snapshot에도 같은 bytes가 있다.",
+    "preparation_history": [
+      {
+        "result": "MUTATION_TARGET_NOT_UNIQUE",
+        "cause": "output_complete 조건의 소스 텍스트 순서가 locator 예상과 달라 준비 guard가 중단. 실제 소스 순서에 locator만 맞춤.",
+        "source_changes": 0,
+        "test_changes": 0,
+        "fixture_runs": 0,
+        "mutant_target_runs": 0
+      }
+    ],
+    "mutations": [
+      {
+        "id": "M1",
+        "target": "test_02_real_nonzero_pass_text_is_not_exit_zero",
+        "tests_run": 1,
+        "pass": 0,
+        "fail": 1,
+        "error": 0,
+        "skip": 0,
+        "elapsed_seconds": 0.012644,
+        "mutant_source_sha256": "61aa17d18a82a0fd27dea2393709888b3457f83eb65de6594d4f6c7b9bfb9bfb",
+        "fault": "exit_zero_observed = reaped",
+        "detected_assertion": "exit_zero_observed=False",
+        "actual_wrong_value": true,
+        "syntax_or_environment_error": false,
+        "isolated_copy_deleted": true
+      },
+      {
+        "id": "M2",
+        "target": "test_05_real_overflow_is_not_complete_output",
+        "tests_run": 1,
+        "pass": 0,
+        "fail": 1,
+        "error": 0,
+        "skip": 0,
+        "elapsed_seconds": 0.010682,
+        "mutant_source_sha256": "bb5d32a636639a0bb323f525c702ed5b37e4c5ba6dc45ff8ae222dcb3185269a",
+        "fault": "output_complete = (stop_reason is None and all(row[\"eof\"] for row in streams.values())\n                       and reaped and cleanup_ok) or stop_reason == \"OUTPUT_LIMIT_EXCEEDED\"",
+        "detected_assertion": "output_complete=False",
+        "actual_wrong_value": true,
+        "syntax_or_environment_error": false,
+        "isolated_copy_deleted": true
+      }
+    ],
+    "m2_final_test_provenance": "초기/최종 R05의 output_complete false assertion은 동일하며 mutant traceback은 바로 이 assertion의 True is not false다. 제거한 forced_termination assertion이 검출 원인이 아님."
+  },
+  "retention": {
+    "scratch_snapshots": [
+      "fixture_collector_initial_source.snapshot",
+      "fixture_collector_initial_test.snapshot",
+      "fixture_collector_initial_plan.snapshot",
+      "fixture_collector_corrected_test.snapshot"
+    ],
+    "scratch_records": [
+      "fixture_collector_initial_suite_record.json",
+      "fixture_collector_mutation_record.json",
+      "fixture_collector_target_recheck_record.json"
+    ],
+    "snapshot_note": "원문과 로그는 저장소 밖 작업 기록에 보존. 최종 독립 byte/AST 귀속 대조에 사용하며 공개 문서에 전체 실행 로그를 복제하지 않음.",
+    "mutant_copy_cleanup": "두 격리 source copy 삭제 확인. 원본 source/test/plan 전후 SHA 동일."
+  },
+  "workflow_audit_R16": {
+    "status": "PASS",
+    "files": 6,
+    "new_files": 5,
+    "status_rows_changed": 1,
+    "relative_links_checked": 86,
+    "missing_links": 0,
+    "whitespace_errors": 0,
+    "strict_json": "PASS",
+    "source_test_plan_guide_hashes_match": true,
+    "initial_snapshots_match": true,
+    "other_tracked_bytes_preserved": true,
+    "private_material_patterns_found": 0,
+    "trust_flags_false": 9,
+    "native_template_hash_match": true,
+    "native_wrapper_ast310": "PASS",
+    "native_template_executions": 0,
+    "product_tests_repeated": 0,
+    "owner": "root"
+  },
+  "native_fixed_fixture_acceptance": {
+    "status": "NOT_RUN",
+    "prepared_template_static_review": "root/reviewer 보고 PASS, commit/source pin 치환 후 최종 정적확인 필요",
+    "scope": "후속 사용자 Python3.10의 임시 state+고정 ok fixture만. key/App/sudo/head/Codexsandbox0, 현 문서/개발 결과로 native_ready를 승격하지 않음.",
+    "template_sha256": "9ba72bc9e4db8a1238ecdd5d140a7d90e4cb6221af81d41bc56725748fe9d265"
+  },
+  "execution_boundaries": {
+    "old_test_suite_runs": 0,
+    "old_mutant_runs": 0,
+    "normal_mutation_target_extra_runs": 0,
+    "github_app_or_api_requests": 0,
+    "operational_key_access": 0,
+    "receipt_signing": 0,
+    "private_key_generation": 0,
+    "user_server_executions": 0,
+    "head_code_executions": 0,
+    "filesystem_changes": "테스트 자신의 임시 public fixture와 저장소의 승인된 파일만. product는 영속 파일을 쓰지 않음.",
+    "product_stdout_stderr": "모든 invoke에서 빈 출력 확인. child 원문은 hash/count로만 artifact에 보관, raw stream 원문0.",
+    "host_account_or_nonfixture_permission_configuration_changes": 0,
+    "normal_mutation_target_extra_runs_scope": "D38 비교용 동일 정상 target 재실행만 센다. reviewer의 변경 R05/R12 재검사는 별도 2개 target-only 근거에 기록했다."
+  },
+  "limitations": {
+    "fixture_only": true,
+    "head_code_executed": false,
+    "input_origin_verified": false,
+    "signer_roster_origin_verified": false,
+    "issuer_environment_verified": false,
+    "runtime_isolation_verified": false,
+    "independent_review_verified": false,
+    "trusted_gate_verified": false,
+    "binding_verified": false,
+    "native_ready": false,
+    "merge_authorized": false,
+    "note": "실제 owner state anchor/expected digest 출처·상위경로·collector 설치 pin·필수tests/independent review 의미·native launcher·ledger/CAS·issuer 연결은 미인수. 기존 sandbox 세 실패/D17·D18 상한·연장소진 보류 유지."
+  },
+  "status": "OFFLINE_COMPONENT_CHECKS_COMPLETE"
+}
