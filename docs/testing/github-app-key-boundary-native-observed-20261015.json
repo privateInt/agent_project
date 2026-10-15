@@ -1,0 +1,82 @@
+{
+  "schema": "github-app-key-boundary-native-observed-v1",
+  "scope": "USER_REPORTED_NATIVE_OBSERVATION",
+  "status": "OBSERVED",
+  "evidence_origin": "USER_SUPPLIED_TERMINAL_TRANSCRIPT",
+  "message_received_at": "2026-10-15T11:28:51+09:00",
+  "execution_timestamp_observed": null,
+  "independently_attested": false,
+  "preceding_reviewed_command": {
+    "expected_source_commit": "d26f8ed73cabb51753df35a5441757f0e4052f22",
+    "expected_source_sha256": "8e1aad642ac8e580470693e308d4398eecd59fd6bf5af010cf9d6ca940f95227",
+    "pin_origin": "PRECEDING_REVIEWED_COMMAND",
+    "source_commit_printed_in_latest_output": false,
+    "source_hash_check": "USER_REPORTED_OK",
+    "independently_verified_execution_source": false
+  },
+  "execution_metadata": {
+    "python_version": "3.10.12",
+    "probe_exit": 2,
+    "expected_probe_exit": 2,
+    "direct_server_access_by_codex": false,
+    "additional_native_requests_by_codex": 0
+  },
+  "latest_report": {
+    "control_open_verified": true,
+    "key_bytes_read": 0,
+    "key_open_attempts": 1,
+    "key_path_open_denied": true,
+    "key_presence_verified": false,
+    "merge_authorized": false,
+    "native_ready": false,
+    "privilege_escalation_verified": false,
+    "reason": "KEY_PATH_OPEN_DENIED",
+    "runtime_isolation_verified": false,
+    "scope": "WORKER_KEY_PATH_OPEN_ONLY",
+    "status": "OBSERVED",
+    "trusted_gate_verified": false,
+    "worker_identity_verified": true
+  },
+  "prior_attempts": [
+    {
+      "message_received_at": "2026-10-15T10:57:49+09:00",
+      "execution_timestamp_observed": null,
+      "kind": "PINNED_PROBE_COMMAND_REPORTED",
+      "python_version": "3.10.12",
+      "source_hash_check": "USER_REPORTED_OK",
+      "probe_exit": 1,
+      "probe_json_received": false,
+      "worker_invocation_blocked": true,
+      "actual_probe_execution": null,
+      "key_open_attempts_observed": null,
+      "failure_cause": "UNKNOWN"
+    },
+    {
+      "message_received_at": "2026-10-15T11:23:26+09:00",
+      "execution_timestamp_observed": null,
+      "kind": "NO_KEY_ARGUMENT_PYTHON_LAUNCH_CONTROL",
+      "key_path_argument_present": false,
+      "launch_diagnostic": "AUTHENTICATION_REQUIRED",
+      "worker_launch_exit": 1
+    },
+    {
+      "message_received_at": "2026-10-15T11:27:16+09:00",
+      "execution_timestamp_observed": null,
+      "kind": "AUTHORIZATION_VALIDATION_AND_NO_KEY_ARGUMENT_PYTHON_LAUNCH_CONTROL",
+      "authorization_validation_command_shown": true,
+      "authorization_validation_exit_code": null,
+      "key_path_argument_present": false,
+      "launch_diagnostic": "WORKER_PYTHON_STARTED",
+      "worker_launch_exit": 0
+    }
+  ],
+  "limitations": [
+    "사용자 제공 터미널 출력의 관찰 기록이다. 독립된 서버 재조회나 signed receipt 검증은 아니다.",
+    "제출 메시지 시각과 실제 실행 시각을 구분한다. expected source pin과 사용자 hash 확인 보고를 독립된 실행 source 증명으로 승격하지 않는다.",
+    "한 invocation에서 지정한 한 경로의 open EACCES 관찰이다. 키 존재·실제 파일 소유자·키 신원·같은 inode·다른 경로/사본은 증명하지 않는다.",
+    "supplementary groups·capabilities·향후 권한 상승·전체 credential/runtime 격리·trusted emitter/gate·native_ready·무인개발/병합은 미인수다.",
+    "최초 exit1/noJSON 시도의 실제 probe 실행·키 접근 횟수·원인은 미확정이다. 이후 인증 진단과 성공으로 원인을 소급 확정하지 않으며 현재 인증 cache 상태도 미확정이다.",
+    "과거 개발 환경의 최초13개 결과11 PASS/2 ERROR와 harness 보정 뒤 canary2개 NOT_RUN을 보존한다. 이번 결과는 실제 Python3.10 전체 suite나 개발 canary 통과가 아니다.",
+    "기존 sandbox EACCES 조사 보류·D17/D18 누적과 연장 소진은 유지한다. 이 관찰은 해당 sandbox 실행 인수가 아니다."
+  ]
+}

@@ -1,6 +1,12 @@
 # Worker의 App 키 경로 접근 거부 확인
 
-2026-10-15. [인증 metadata 관찰](github-app-readback.md) 다음의 작은 준비 단계다. [사전 검사 계획](github-app-key-boundary-test-plan.md)에 따라 [단일 파일 probe](../../src/ops/tools/github_app_key_access_probe.py)를 준비한다. 개발 환경의 검사와 실제 서버 인수는 [격리 검사 근거](../testing/github-app-key-boundary-offline-20261015.json)에서 구분한다. 현재 사용자 서버의 이 probe 실행은 **NOT_RUN**이다. 현재 상태와 진입점은 [상태표](../status.md)에서 관리한다.
+2026-10-15. [인증 metadata 관찰](github-app-readback.md) 다음의 작은 준비 단계다. [사전 검사 계획](github-app-key-boundary-test-plan.md)에 따라 [단일 파일 probe](../../src/ops/tools/github_app_key_access_probe.py)를 준비했다. 개발 환경의 검사는 [격리 검사 근거](../testing/github-app-key-boundary-offline-20261015.json), 사용자 서버의 제출 결과는 [사용자 제공 관찰](../testing/github-app-key-boundary-native-observed-20261015.json)로 구분한다. 현재 상태와 진입점은 [상태표](../status.md)에서 관리한다.
+
+## 사용자 제공 관찰
+
+2026-10-15 제출 출력은 Python3.10.12·SOURCE_SHA256_OK·OBSERVED/KEY_PATH_OPEN_DENIED·exit2다. 보고된 worker identity와 공개 control 확인 뒤 키 경로 open1회가 거부됐고 키 본문 read0이며 여섯 신뢰 flag는 false다. 사용자 제공 터미널 출력에 근거한 한 invocation·한 경로의 관찰이며 독립 attestation은 아니다. 제출 시각과 실제 실행 시각을 구분하고, 직전 검토 명령의 commit/source SHA는 기대 pin으로 기록한다. 최신 출력 자체에는 commit이 인쇄되지 않았다.
+
+이전 exit1/noJSON 시도는 실제 probe 실행·키 접근 횟수와 원인 미확정으로 보존했다. 이어 키 경로 인자가 없는 Python 실행 대조에서 인증 필요로 exit1, 인증 검증 명령 제시 후 대조에서 시작 문구·exit0이 보고됐다. 인증 검증 명령 자체의 종료 코드는 제출되지 않았다. 최초 실패 원인이나 현재 인증 cache 상태를 소급 확정하지 않는다. 개발 환경의 최초11 PASS/2 ERROR와 실제 cross-UID canary2개 NOT_RUN은 과거 근거로 유지한다. 이번 관찰을 실제 Python3.10 전체 suite·canary 통과, 전체 credential/runtime 격리·trusted gate·무인개발/병합 인수로 합산하지 않으며 성공한 probe를 반복하지 않는다.
 
 ## 확인하는 범위
 
