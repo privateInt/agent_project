@@ -1,0 +1,203 @@
+{
+  "schema": "github-app-check-smoke-offline-v1",
+  "scope": "OFFLINE_ONLY",
+  "status": "PASS",
+  "baseline_commit": "03f4587b99526f99f47b359f232ddf3134d41eeb",
+  "pre_review_plan_sha256": "d156352ba97647e705421879a42c77663b1c63c35839f9c8662e52dec1caaee0",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux",
+    "local_runner_uid_zero": true,
+    "actual_python310": "NOT_RUN"
+  },
+  "suite": {
+    "command": "python3 -B stdin unittest loadTestsFromModule(new test only)",
+    "total": 20,
+    "PASS": 20,
+    "FAIL": 0,
+    "ERROR": 0,
+    "SKIP": 0,
+    "seconds": 3.070156,
+    "python310_ast": "PASS",
+    "pre_sha256": {
+      "source": "0ce15ba68b2855a7f29b58147543a5983ad582a5c222443c38d303d6fad66d4a",
+      "test": "5c2bfc29dd378ca61e114e12506808cd0b8626082501d93152b9dfc5614f0534",
+      "plan": "d156352ba97647e705421879a42c77663b1c63c35839f9c8662e52dec1caaee0"
+    },
+    "post_sha256": {
+      "source": "0ce15ba68b2855a7f29b58147543a5983ad582a5c222443c38d303d6fad66d4a",
+      "test": "5c2bfc29dd378ca61e114e12506808cd0b8626082501d93152b9dfc5614f0534",
+      "plan": "d156352ba97647e705421879a42c77663b1c63c35839f9c8662e52dec1caaee0"
+    },
+    "hashes_unchanged": true,
+    "whole_suite_invocations": 1,
+    "source_or_test_corrections": 0,
+    "old_suites_repeated": 0,
+    "initial_source_test_plan_snapshots_retained_in_scratch": true
+  },
+  "integration_evidence": {
+    "real_local_tls": [
+      "metadata 3GET와 새 token/repo/PR/list/create/readback/revoke 전체 HTTP 순서",
+      "실제 수신 CREATE body의 completed/failure·고정 output·head/external_id",
+      "별도 두 TLS 서버의 redirect target 요청·Authorization 전달 0",
+      "인증서 거부·proxy 환경 무시·응답 cap/strict JSON·실패 뒤 중단",
+      "생성 저장 후 응답 연결종료와 별도 lookup의 재POST 0"
+    ],
+    "temporary_tls_canary_crypto": "임시 TLS 인증서/키만 /usr/bin/openssl로 생성·정리. 실제 App 키 아님.",
+    "mock_boundaries": [
+      "App key open/sign은 기존 auth helper 호출 경계 대역; /dev/null FD close를 실제 확인",
+      "socket.timeout은 대역 주입이며 실제 5초 대기 실측 아님",
+      "70초 deadline은 clock 대역이며 실제 장시간/kill/revoke 보장 검사 아님"
+    ],
+    "reused_auth_crypto_evidence": {
+      "source_sha256": "97e8fdd2675a6d08c14d9f70da06dfb360165002bf99ec93f92ebac2c1f7f1b3",
+      "test_sha256": "c2ac4580c6b9dc0d5ecdeceb44a6e138795b0e920811236270d736ac4b23551b",
+      "receipt": "github-app-readback-offline-20261015.json",
+      "source_test_bytes_preserved": true,
+      "old_crypto_suite_repeated": 0
+    },
+    "thin_package_launcher": "검토 대상 두 source+빈 package만 복사해 python -I -B/runpy invalid CLI를 실제 실행; exit2·허용 JSON·stderr0·pycache0",
+    "fixed_diagnostic_scope_only": true
+  },
+  "d38": {
+    "pre_sha256": {
+      "source": "0ce15ba68b2855a7f29b58147543a5983ad582a5c222443c38d303d6fad66d4a",
+      "test": "5c2bfc29dd378ca61e114e12506808cd0b8626082501d93152b9dfc5614f0534",
+      "plan": "d156352ba97647e705421879a42c77663b1c63c35839f9c8662e52dec1caaee0"
+    },
+    "post_sha256": {
+      "source": "0ce15ba68b2855a7f29b58147543a5983ad582a5c222443c38d303d6fad66d4a",
+      "test": "5c2bfc29dd378ca61e114e12506808cd0b8626082501d93152b9dfc5614f0534",
+      "plan": "d156352ba97647e705421879a42c77663b1c63c35839f9c8662e52dec1caaee0"
+    },
+    "originals_unchanged": true,
+    "mutations": [
+      {
+        "id": "M1",
+        "target": "test_11_real_tls_emit_sends_exact_completed_failure_payload",
+        "target_method_sha256": "a0423c00bdd88dfa1b8531c03ff4d13344145f911369775b9d6ca5a726e94084",
+        "fault": "실제 수신 CREATE body의 고정 failure 위반",
+        "mutant_source_sha256": "3d035793d6d4e5f9ab695dfb48d7ff2d27d57ecddbde6ab7cdd88475bbc60f60",
+        "normal": {
+          "total": 1,
+          "PASS": 1,
+          "FAIL": 0,
+          "ERROR": 0,
+          "SKIP": 0,
+          "seconds": 0.267139
+        },
+        "mutant": {
+          "total": 1,
+          "PASS": 0,
+          "FAIL": 1,
+          "ERROR": 0,
+          "SKIP": 0,
+          "seconds": 0.154858
+        },
+        "assertion_failure_only": true,
+        "copy_cleanup": true
+      },
+      {
+        "id": "M2",
+        "target": "test_12_readback_wrong_app_and_other_record_pins_are_rejected",
+        "target_method_sha256": "5c7e94b45633bde1e6d799478cd20cfdaa3fccf44b08806424ee6058470dd7e9",
+        "fault": "GET record의 다른 App id 오수용",
+        "mutant_source_sha256": "a78c8854c3c1a9b1fb6ad6307fe9fc3dee05b7d3848994e78dd13bcac4fad267",
+        "normal": {
+          "total": 1,
+          "PASS": 1,
+          "FAIL": 0,
+          "ERROR": 0,
+          "SKIP": 0,
+          "seconds": 0.750513
+        },
+        "mutant": {
+          "total": 1,
+          "PASS": 0,
+          "FAIL": 1,
+          "ERROR": 0,
+          "SKIP": 0,
+          "seconds": 0.207893
+        },
+        "assertion_failure_only": true,
+        "copy_cleanup": true
+      }
+    ],
+    "copies_removed": true
+  },
+  "workflow_audit": {
+    "status": "PASS",
+    "required_files": 6,
+    "new_files": 5,
+    "modified_existing_status_rows": 1,
+    "other_tracked_bytes_preserved": true,
+    "auth_source_test_plan_receipt_byte_sha_preserved": true,
+    "status_other_lines_byte_equal": true,
+    "relative_links_checked": 86,
+    "missing_relative_links": 0,
+    "whitespace_and_public_payload": "PASS",
+    "source_test_plan_unchanged_during_audit": true,
+    "permanent_unit_git_working_state_assertions": false
+  },
+  "execution_boundary": {
+    "github_api_requests": 0,
+    "real_app_key_accesses": 0,
+    "user_server_requests": 0,
+    "native_github_emission": "NOT_RUN",
+    "existing_suites_repeated": 0,
+    "past_mutants_repeated": 0,
+    "protection_worker_merge_or_sandbox_changes": 0,
+    "input_origin_verified": false,
+    "independent_review_verified": false,
+    "binding_verified": false,
+    "trusted_gate_verified": false,
+    "runtime_isolation_verified": false,
+    "native_ready": false,
+    "merge_authorized": false
+  },
+  "limitations": [
+    "PASS는 개발 환경의 새20검사와 선정 의미오류 검출 근거다. 실제 App/GitHub 권한·저장상태·token 폐기는 NOT_RUN이다.",
+    "기본 lookup에도 token POST/DELETE가 있다. check는 failure만 발행하며 이 결과는 필수 검사나 독립 reviewer 승인·G05 전체binding·G06 신뢰환경을 대신하지 않는다.",
+    "external_id는 diagnostic scope hash이며 서버 idempotency key가 아니다. 동시 invocation/crash 사이의 중복 원자성·영속 journal은 없다.",
+    "create 응답 유실은 실제 생성 여부 미확정으로 보존하며 같은 invocation의 추가 POST를 하지 않는다. 후속은 lookup만 준비한다.",
+    "협력 deadline/idle timeout은 엄밀한 전체 wall-clock 보장이 아니다. 외곽 timeout/kill 뒤 token 폐기·메모리 zero를 보장하지 않는다.",
+    "실제 Python3.10 전체 실행은 미확인이다. 현재 AST3.10과 Linux/Python3.12.14 실행을 구분한다.",
+    "기존 sandbox EACCES 조사 보류·D17/D18 누적·연장 소진은 유지한다. 현재 키에 관한 사용자 설명 외 별도키를 추정하지 않는다.",
+    "최초20 PASS와두변이는 test5c2b... 실행에귀속된다. 기존 S16/S18의 검토 보강 뒤 해당2개만 최종test1ecc...에서 재검사했고 나머지18·shared helpers·M1/M2 target의 byte/AST 불변을 독립대조할 수 있게 보존했다. 최초20결과를 최종testSHA로 소급하지 않는다."
+  ],
+  "targeted_review_strengthening": {
+    "reason": "reviewer가 기존 S16 정상cap 수용 및 S18 flush-only 경로를 같은 기준 안에서 강화",
+    "changed_methods": [
+      "test_16_http_tls_redirect_and_strict_response_limits",
+      "test_18_output_privacy_unknown_errors_and_broken_stdout_are_sanitized"
+    ],
+    "unaffected_18_methods_helpers_and_mutation_targets_byte_ast_equal": true,
+    "initial_test_sha256": "5c2bfc29dd378ca61e114e12506808cd0b8626082501d93152b9dfc5614f0534",
+    "pre_sha256": {
+      "source": "0ce15ba68b2855a7f29b58147543a5983ad582a5c222443c38d303d6fad66d4a",
+      "test": "1eccfb318fb96248ecf05a36623c0cf691cd243b4792c62b419a4374d0fc1429",
+      "plan": "d156352ba97647e705421879a42c77663b1c63c35839f9c8662e52dec1caaee0"
+    },
+    "post_sha256": {
+      "source": "0ce15ba68b2855a7f29b58147543a5983ad582a5c222443c38d303d6fad66d4a",
+      "test": "1eccfb318fb96248ecf05a36623c0cf691cd243b4792c62b419a4374d0fc1429",
+      "plan": "d156352ba97647e705421879a42c77663b1c63c35839f9c8662e52dec1caaee0"
+    },
+    "hashes_unchanged": true,
+    "total": 2,
+    "PASS": 2,
+    "FAIL": 0,
+    "ERROR": 0,
+    "SKIP": 0,
+    "seconds": 0.890497,
+    "python310_ast": "PASS",
+    "whole_suite_repeated": false,
+    "mutants_repeated": false,
+    "initial_and_corrected_test_snapshots_retained_in_scratch": true
+  },
+  "final_source_test_plan_sha256": {
+    "source": "0ce15ba68b2855a7f29b58147543a5983ad582a5c222443c38d303d6fad66d4a",
+    "test": "1eccfb318fb96248ecf05a36623c0cf691cd243b4792c62b419a4374d0fc1429",
+    "plan": "d156352ba97647e705421879a42c77663b1c63c35839f9c8662e52dec1caaee0"
+  }
+}

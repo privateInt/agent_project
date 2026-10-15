@@ -1,0 +1,97 @@
+{
+  "schema": "github-app-check-smoke-native-observed-v1",
+  "scope": "USER_REPORTED_NATIVE_OBSERVATION",
+  "status": "OBSERVED",
+  "evidence_origin": "USER_SUPPLIED_TERMINAL_TRANSCRIPT",
+  "message_received_at": "2026-10-15T13:28:17+09:00",
+  "execution_timestamp_observed": null,
+  "independently_attested": false,
+  "preceding_reviewed_command": {
+    "expected_source_commit": "a6d7351519cf0599a6f319500cc1b07176a02988",
+    "expected_source_sha256": "0ce15ba68b2855a7f29b58147543a5983ad582a5c222443c38d303d6fad66d4a",
+    "expected_auth_source_sha256": "97e8fdd2675a6d08c14d9f70da06dfb360165002bf99ec93f92ebac2c1f7f1b3",
+    "pin_origin": "PRECEDING_REVIEWED_COMMAND",
+    "source_commit_printed_in_latest_output": false,
+    "source_hash_check": "USER_REPORTED_OK",
+    "independently_verified_execution_source": false,
+    "target": {
+      "repository": "privateInt/agent_project",
+      "pr_number": 10,
+      "base_sha": "03f4587b99526f99f47b359f232ddf3134d41eeb",
+      "head_sha": "a6d7351519cf0599a6f319500cc1b07176a02988",
+      "app_id": 5323842,
+      "installation_id": 171552314,
+      "slug": "privateint-codex-checks"
+    }
+  },
+  "execution_metadata": {
+    "python_version": "3.10.12",
+    "smoke_exit": 2,
+    "expected_exit_code": 2,
+    "direct_server_access_by_codex": false,
+    "additional_native_requests_by_codex": 0,
+    "check_record_connector_gets": 1
+  },
+  "latest_report": {
+    "api_get_attempts": 6,
+    "binding_verified": false,
+    "check_post_attempts": 1,
+    "check_record_observed": true,
+    "check_run_id": 116247156813,
+    "create_outcome_unconfirmed": false,
+    "identity_metadata_verified": true,
+    "independent_review_verified": false,
+    "input_origin_verified": false,
+    "merge_authorized": false,
+    "metadata_get_attempts": 3,
+    "native_ready": false,
+    "pr_pins_rechecked": true,
+    "reason": "OBSERVED",
+    "runtime_isolation_verified": false,
+    "scope": "APP_CHECK_SMOKE_ONLY",
+    "stage": "COMPLETE",
+    "status": "OBSERVED",
+    "token_delete_attempts": 1,
+    "token_post_attempts": 1,
+    "token_revoked_verified": true,
+    "trusted_gate_verified": false
+  },
+  "connector_record_readback": {
+    "evidence_origin": "CONNECTED_GITHUB_API_GET",
+    "requests": 1,
+    "endpoint": "https://api.github.com/repos/privateInt/agent_project/commits/a6d7351519cf0599a6f319500cc1b07176a02988/check-runs?check_name=codex%2Femitter-smoke&filter=all&per_page=100&app_id=5323842",
+    "expected_record_matches": true,
+    "check_record": {
+      "id": 116247156813,
+      "name": "codex/emitter-smoke",
+      "app_id": 5323842,
+      "app_slug": "privateint-codex-checks",
+      "head_sha": "a6d7351519cf0599a6f319500cc1b07176a02988",
+      "external_id": "agent-project-emitter-smoke-v1:91f7c39f0d5395ebb9067da3e38e60c4529ce46741d7ba1f7213f936f3b5ffce",
+      "status": "completed",
+      "conclusion": "failure",
+      "output": {
+        "title": "Diagnostic smoke only",
+        "summary": "Intentional failure. This diagnostic does not approve required checks, independent review, policy, binding, runtime isolation, or merge."
+      }
+    },
+    "user_command_origin_verified": false,
+    "token_revocation_independently_verified": false,
+    "runtime_isolation_verified": false,
+    "retrieval_timestamp_observed": null
+  },
+  "target_preservation": {
+    "observed_target_head_sha": "a6d7351519cf0599a6f319500cc1b07176a02988",
+    "rebinding_to_later_head": false,
+    "diagnostic_reemission_requested": false
+  },
+  "limitations": [
+    "사용자 제공 실행 출력과 connector의 check-record 조회를 별도 출처로 기록했다. 사용자 실행이나 전체 stdout의 signed attestation은 아니다.",
+    "제출 메시지 시각과 실제 실행 시각을 구분한다. commit/source/auth SHA와 PR/base/head는 직전 검토 명령의 기대 pin이며 최신 사용자 출력 자체에는 commit이 없다. hash 성공은 사용자 보고다.",
+    "별도 connector GET은 같은 id/App/head/external_id·completed/failure·고정 output의 저장 상태를 보강한다. 사용자 명령의 실행 source·키·runtime 격리·token 폐기를 독립 증명하지 않는다. 실제 retrieval timestamp는 제공되지 않아 null이다.",
+    "관찰 대상은 당시 a6d7351519cf0599a6f319500cc1b07176a02988 head의 intentional-failure diagnostic 한 건이다. 문서 commit 이후의 PR head에 재결합하거나 최신 gate로 재사용하지 않으며 재발행하지 않는다.",
+    "사용자의 Python3.10.12 제품 실행 보고는 실제3.10 전체 suite PASS가 아니다. 개발 최초20개와 두 변이는 initial test5c2b 실행, 검토 보강 target2개는 final test1ecc 실행에 귀속되며 과거 근거를 덮지 않는다.",
+    "일곱 신뢰 flag는 false다. full G05/G06·trusted evaluator·독립 reviewer·필수3검사·보호·worker·무인개발/병합 인수는 남는다.",
+    "기존 sandbox EACCES 조사 보류와 D17/D18 누적·연장 소진은 유지한다. 성공한 native 진단과 기존 코드 suite·변이를 반복하지 않았다."
+  ]
+}
