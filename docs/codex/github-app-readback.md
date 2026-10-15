@@ -1,6 +1,6 @@
 # GitHub App 인증 metadata 수동 조회
 
-2026-10-15. [등록 안내](github-app-registration.md) 다음의 **한 번 실행하는 읽기 도구**다. [사전 검사 계획](github-app-readback-test-plan.md), [격리 검사 근거](../testing/github-app-readback-offline-20261015.json)를 함께 읽는다. 실제 App 조회는 사용자 로컬 키와 서버 실행 결과가 필요하며 이번 개발 환경에서는 NOT_RUN이다.
+2026-10-15. [등록 안내](github-app-registration.md) 다음의 **한 번 실행하는 읽기 도구**다. [사전 검사 계획](github-app-readback-test-plan.md), [격리 검사 근거](../testing/github-app-readback-offline-20261015.json), [사용자 제공 서버 실행 관찰](../testing/github-app-readback-native-observed-20261015.json)을 함께 읽는다. 개발 환경 자체의 실제 App 조회는 NOT_RUN이며 사용자 서버 출력의 관찰과 구분한다.
 
 ## 받은 입력과 UI 관찰
 
@@ -16,6 +16,10 @@
 | 설치 설정 URL | `/settings/installations/171552314` 숫자 경로 |
 
 이는 사용자 제공 UI의 관찰이다. 저장된 설치 권한·전체 선택 저장소 목록의 인증 조회나 독립된 발행기 신뢰 근거가 아니다. 기존 [등록 spec](github-app-registration-spec.json)의 null/미확인 값은 당시 준비 snapshot으로 보존한다.
+
+후속 사용자 단말 출력에서는 고정 commit·source SHA-256 확인이 OK였고, `status=OBSERVED`, `stage=COMPLETE`, `get_attempts=3`, `identity_metadata_verified=true`가 보고됐다. 검토된 도구의 세 인증 metadata 응답 pin 대조가 끝났다는 사용자 제공 관찰이다. 원격 서버를 이 개발 환경에서 직접 재조회하거나 이 출력의 provenance를 독립 인증한 것은 아니다.
+
+원문 report의 나머지 여덟 범위/신뢰 flag는 모두 false로 보존한다. 전체 selected repository 목록·권한의 실제 행사·trusted gate·binding·독립 reviewer·worker 격리·병합 인수로 확대하지 않는다. 이번 출력에는 종료 코드와 Python/OpenSSL 버전이 없으므로 종료 코드 관찰은 null(도구의 기대값은 2), 버전은 NOT_RECHECKED다. 키 수명주기 검증 상태는 UNKNOWN이며 제출 메시지 시각을 실행 시각으로 간주하지 않는다. 이 관찰 때문에 기존 격리 검사나 서버 조회를 반복하지 않았다.
 
 ## 조회 범위
 
