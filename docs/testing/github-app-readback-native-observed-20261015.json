@@ -1,0 +1,54 @@
+{
+  "schema": "github-app-readback-native-observed-v1",
+  "scope": "USER_REPORTED_NATIVE_OBSERVATION",
+  "status": "OBSERVED",
+  "evidence_origin": "USER_SUPPLIED_TERMINAL_TRANSCRIPT",
+  "message_received_at": "2026-10-15T10:14:36+09:00",
+  "execution_timestamp_observed": null,
+  "independently_attested": false,
+  "probe": {
+    "source_commit": "fce6c42657b442b41ad4711cbca2747ae56d2405",
+    "source_sha256": "97e8fdd2675a6d08c14d9f70da06dfb360165002bf99ec93f92ebac2c1f7f1b3",
+    "source_hash_check": "USER_REPORTED_OK"
+  },
+  "expected_pins": {
+    "app_id": 5323842,
+    "installation_id": 171552314,
+    "owner": "privateInt",
+    "repository": "privateInt/agent_project",
+    "slug": "privateint-codex-checks"
+  },
+  "native_report": {
+    "binding_verified": false,
+    "get_attempts": 3,
+    "identity_metadata_verified": true,
+    "independent_review_verified": false,
+    "input_origin_verified": false,
+    "merge_authorized": false,
+    "native_ready": false,
+    "reason": "OBSERVED",
+    "scope": "AUTHENTICATED_APP_METADATA_ONLY",
+    "selected_repository_list_verified": false,
+    "stage": "COMPLETE",
+    "status": "OBSERVED",
+    "trusted_gate_verified": false,
+    "ui_observations_are_authenticated_evidence": false
+  },
+  "execution_metadata": {
+    "exit_code_observed": null,
+    "expected_exit_code": 2,
+    "python_version": "NOT_RECHECKED",
+    "openssl_version": "NOT_RECHECKED",
+    "credential_lifecycle_verification": "UNKNOWN",
+    "direct_server_access_by_codex": false,
+    "additional_native_requests_by_codex": 0
+  },
+  "limitations": [
+    "사용자 제공 출력과 명령을 기록했다. 독립된 서버 재조회나 signed receipt 검증은 아니다.",
+    "expected_pins는 명령의 비교 기준이다. 수신하지 않은 App/installation 원문 응답을 재구성하지 않았다.",
+    "관찰 범위는 세 인증 metadata 응답의 pin 대조다. 전체 selected repository 목록과 권한의 실제 행사는 미검증이다.",
+    "키 수명주기·worker 격리·trusted emitter·독립 reviewer·binding·필수 검사·보호/병합은 이 report로 인수하지 않는다.",
+    "제출 메시지 시각과 실제 실행 시각은 구분한다. 종료 코드와 버전을 실행 경로만으로 추정하지 않았다.",
+    "과거 격리 검사 근거와 기존 sandbox EACCES 보류·누적/연장 소진 기록은 유지한다."
+  ]
+}
