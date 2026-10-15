@@ -1,0 +1,39 @@
+{
+  "selected": 2,
+  "results": [
+    {
+      "id": "M1",
+      "target": "test_l04_external_audit_pin",
+      "status": "DETECTED",
+      "normal_reference": "evidence/run-1/result.json",
+      "normal_target_repeated": false,
+      "original_source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+      "mutant_source_sha256": "b3887faf2678359def35e3bd9039b0acafa49b3f31aa8413eab5b953d9b9187a",
+      "test_sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02",
+      "changed_expected_pin_only": "src/ops/tools/github_fixture_config.py",
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "injected_before": "if hashlib.sha256(raw).hexdigest() != pins[name]:",
+      "injected_after": "if name != \"src/ops/tools/github_check_audit.py\" and hashlib.sha256(raw).hexdigest() != pins[name]:",
+      "original_unchanged": true
+    },
+    {
+      "id": "M2",
+      "target": "test_l07_state_0755",
+      "status": "DETECTED",
+      "normal_reference": "evidence/run-1/result.json",
+      "normal_target_repeated": false,
+      "original_source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+      "mutant_source_sha256": "d2e2d16307e5f0fd08bbd3e8bc226d31d463563eb4e9737bc28389311a05f39b",
+      "test_sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02",
+      "changed_expected_pin_only": "src/ops/tools/github_fixture_config.py",
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "injected_before": "if private and stat.S_IMODE(info.st_mode) != 0o700:",
+      "injected_after": "if False and private and stat.S_IMODE(info.st_mode) != 0o700:",
+      "original_unchanged": true
+    }
+  ]
+}

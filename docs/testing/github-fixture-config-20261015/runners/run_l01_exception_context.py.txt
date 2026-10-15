@@ -1,0 +1,112 @@
+"""One approved exception-context target; separate before/after evidence only."""
+import ast
+from datetime import datetime, timezone
+import difflib
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import platform
+import shutil
+import sqlite3
+import sys
+import time
+import unittest
+from unittest import mock
+
+ROOT=Path(__file__).resolve().parent
+WORK=ROOT/'workspace'
+SOURCE=WORK/'src/ops/tools/github_fixture_config.py'
+TEST=WORK/'src/ops/tools/tests/test_github_fixture_config.py'
+TARGET='test_l12_load_read_inside_caller_except'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+stage=sys.argv[1]
+assert stage in ('before','after')
+expected_source={'before':'487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122',
+    'after':'63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88'}[stage]
+assert sha(SOURCE)==expected_source
+assert sha(ROOT/'review/exception-context-plan.md')=='e5da95d45633fbd0b6961bd50e7455bc7dbf4ca746c19ba879eada13572cfaae'
+assert sha(ROOT/'review/exception-context-review.md')=='4db1ef5b1ccf623e5906fa50956d8838d69696344be1af7f040173c82a4b0ac8'
+assert '판정: **PASS' in (ROOT/'review/exception-context-review.md').read_text()
+old=(ROOT/'evidence/exception-context-test-baseline.py').read_text();new=TEST.read_text()
+assert hashlib.sha256(old.encode()).hexdigest()=='a2e3b571b4995ed039f395241a4d2daccfe4826838b070a64ef5abc3d7ed1b6c'
+old_tree,new_tree=ast.parse(old,feature_version=(3,10)),ast.parse(new,feature_version=(3,10))
+def methods(tree,raw):
+    result={}
+    def walk(node,prefix=''):
+        for child in ast.iter_child_nodes(node):
+            name=prefix
+            if isinstance(child,(ast.FunctionDef,ast.ClassDef)):
+                name=prefix+child.name+'.'
+                if isinstance(child,ast.FunctionDef):result[name]=ast.get_source_segment(raw,child)
+            walk(child,name)
+    walk(tree)
+    return result
+previous,current=methods(old_tree,old),methods(new_tree,new)
+assert set(current)-set(previous)=={'Harness.caller_exception_context.'}
+assert all(current[n]==s for n,s in previous.items() if n!='Harness.run.')
+for node in ast.walk(new_tree):
+    if isinstance(node,ast.ClassDef) and node.name=='Harness':
+        node.body=[n for n in node.body if not(isinstance(n,ast.FunctionDef) and n.name=='caller_exception_context')]
+    if isinstance(node,ast.Dict):
+        pairs=[(k,v) for k,v in zip(node.keys,node.values)
+               if not(isinstance(k,ast.Constant) and k.value=='exception-context')]
+        node.keys=[k for k,v in pairs];node.values=[v for k,v in pairs]
+    if isinstance(node,ast.List):
+        node.elts=[n for n in node.elts if not(isinstance(n,ast.Tuple) and n.elts
+                   and isinstance(n.elts[0],ast.Constant) and n.elts[0].value==TARGET)]
+assert ast.dump(new_tree,include_attributes=False)==ast.dump(old_tree,include_attributes=False)
+test_pin=sha(TEST)
+if stage=='after':
+    before=json.loads((ROOT/'evidence/exception-context-before/result.json').read_text())
+    assert before['test_sha256']==test_pin
+OUT=ROOT/('evidence/exception-context-'+stage);OUT.mkdir()
+shutil.copy2(SOURCE,OUT/SOURCE.name);shutil.copy2(TEST,OUT/TEST.name)
+(OUT/'test-addition.patch').write_text(''.join(difflib.unified_diff(old.splitlines(True),new.splitlines(True),
+    fromfile='fixture-corrected-test.py',tofile='exception-context-test.py')))
+audit=dict(baseline_test_sha256=hashlib.sha256(old.encode()).hexdigest(),test_sha256=test_pin,
+    only_new_helper_dispatch_registration=True,unrelated_definitions_unchanged=True,
+    unchanged_definitions=[n for n in previous if n!='Harness.run.'],
+    original_fixture_helper_unchanged=True,existing_targets_unchanged=True)
+(OUT/'test-diff-audit.json').write_text(json.dumps(audit,indent=2)+'\n')
+paths=['evidence/run-1/result.json','evidence/run-1/unittest.log','evidence/mutations.json',
+    'evidence/first-error-analysis.json','evidence/fixture-retry-1/result.json',
+    'evidence/fixture-retry-1/unittest.log','evidence/fixture-retry-1/test-diff-audit.json']
+preservation={n:sha(ROOT/n) for n in paths}
+os.environ['FIXTURE_CONFIG_TEST_ROOT']=str(ROOT)
+spec=importlib.util.spec_from_file_location('l01_new_tests',TEST)
+module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+commands=[];original_run=module.subprocess.run
+def capture(*args,**kwargs):
+    commands.append(list(args[0]));return original_run(*args,**kwargs)
+started=datetime.now(timezone.utc).isoformat();begin=time.monotonic()
+with (OUT/'unittest.log').open('x') as stream,mock.patch.object(module.subprocess,'run',capture):
+    result=unittest.TextTestRunner(stream=stream,verbosity=2).run(
+        unittest.TestSuite([module.FixtureConfigurationTests(TARGET)]))
+observations=list(module.OBSERVATIONS)
+specific=[o for o in observations if o.get('case')=='L12_EXCEPTION_CONTEXT']
+assert len(specific)==1
+assert sha(SOURCE)==expected_source and sha(TEST)==test_pin
+assert {n:sha(ROOT/n) for n in paths}==preservation
+if stage=='before':
+    confirmed=(result.testsRun,len(result.failures),len(result.errors),len(result.skipped))==(1,1,0,0)
+    confirmed=confirmed and specific[0]['read_error_reason']=='HANDLE_CLOSED'
+    confirmed=confirmed and 'load/read inside caller except must remain usable' in (OUT/'unittest.log').read_text()
+else:
+    confirmed=result.testsRun==1 and result.wasSuccessful() and specific[0]['read_reason']=='JOB_NOT_FOUND'
+data=dict(stage=stage,started_utc=started,elapsed_seconds=time.monotonic()-begin,
+    parent_command=[sys.executable,'-B',str(Path(__file__).resolve()),stage],cwd=os.getcwd(),
+    fixture_commands=commands,fixture_root=str(ROOT),python=platform.python_version(),
+    sqlite=sqlite3.sqlite_version,uid=os.geteuid(),source_sha256=sha(SOURCE),test_sha256=test_pin,
+    plan_sha256=sha(ROOT/'review/exception-context-plan.md'),review_sha256=sha(ROOT/'review/exception-context-review.md'),
+    runner_sha256=sha(Path(__file__)),target=TARGET,methods_run=result.testsRun,
+    passed=result.wasSuccessful(),failures=len(result.failures),errors=len(result.errors),skipped=len(result.skipped),
+    expected_stage_behavior_confirmed=confirmed,observations=observations,
+    fresh_harness_results=list(module.HARNESS_RESULTS),actual_fixed_children=0,
+    first_records_preserved=preservation,product_modified_by_test_agent=False,
+    old_suites_run=False,fixture_30_repeated=False,mutations_repeated=False,
+    previously_passed_targets_repeated=False,owner_approval='NOT_PROVIDED',operational_installation='NOT_RUN')
+(OUT/'result.json').write_text(json.dumps(data,indent=2)+'\n')
+print(json.dumps({k:v for k,v in data.items() if k not in ['observations','fresh_harness_results','first_records_preserved']}))
+raise SystemExit(0 if confirmed else 1)

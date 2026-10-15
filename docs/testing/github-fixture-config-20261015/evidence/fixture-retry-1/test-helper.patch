@@ -1,0 +1,11 @@
+--- first-test.py
++++ fixture-corrected-test.py
+@@ -78,7 +78,7 @@
+     try:
+         yield
+     finally:
+-        if symlink is not None or fifo or absent:
++        if symlink is not None or fifo or absent or (raw is not None and not existed):
+             path.unlink(missing_ok=True)
+         if saved is not None:
+             path.write_bytes(saved)

@@ -1,0 +1,16 @@
+{
+  "old_test_sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02",
+  "new_test_sha256": "a2e3b571b4995ed039f395241a4d2daccfe4826838b070a64ef5abc3d7ed1b6c",
+  "only_altered_finally_condition_changed": true,
+  "other_definitions_unchanged": [
+    "canonical",
+    "digest",
+    "assignment",
+    "tree",
+    "Harness",
+    "FixtureConfigurationTests",
+    "_method"
+  ],
+  "pre_yield_condition_unchanged": true,
+  "product_unchanged": true
+}

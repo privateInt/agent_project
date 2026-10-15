@@ -1,0 +1,379 @@
+test_l01_config (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l02_expectations (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l03_marker (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l04_external_audit_pin (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l04_other_source_pins (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l05_runtime_origins (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l06_paths_ancestors (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l07_other_state_guards (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l07_state_0755 (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l08_database_paths (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l09_sidecars (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l10_headers_schemas (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l11_connection_policy (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l12_resource_lifecycle (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l13_real_exit7 (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l13_real_ok (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l14_preparation_failure (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l15_commit_response_loss (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l15_spawn_uncertainty (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l16_forwarding_isolation (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) ... test_l18_connect_races (l01_new_tests.FixtureConfigurationTests) ... ok
+test_l19_reports_static (l01_new_tests.FixtureConfigurationTests) ... ok
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/__init__.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/__init__.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_check_audit.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_collector.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_ledger.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_controller.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-src/ops/tools/github_fixture_config.py')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-marker')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-state')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-ledger-mode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-ledger-inode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-control-inode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-state-inode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-install-inode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-header')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+======================================================================
+ERROR: test_l17_postload_changes (l01_new_tests.FixtureConfigurationTests) (case='live', check='read-sidecar')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 781, in case
+    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+RuntimeError: Traceback (most recent call last):
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 128, in check
+    fn()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 641, in case
+    h=self.load()
+  File "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py", line 140, in load
+    return self.q.load_fixture_controller(canonical(self.cfg if cfg is None else cfg)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 459, in load_fixture_controller
+    _sidecars(state, names)
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 281, in _sidecars
+    _deny("DATABASE_PATH_INVALID")
+  File "/tmp/agent-fixture-loader-jxwlfj39/l01-82o41qdv/install/src/ops/tools/github_fixture_config.py", line 50, in _deny
+    raise FixtureConfigurationError(reason) from None
+src.ops.tools.github_fixture_config.FixtureConfigurationError: DATABASE_PATH_INVALID
+
+
+----------------------------------------------------------------------
+Ran 23 tests in 1.576s
+
+FAILED (errors=16)

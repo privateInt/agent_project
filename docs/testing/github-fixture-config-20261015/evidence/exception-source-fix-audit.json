@@ -1,0 +1,12 @@
+{
+  "before_source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+  "source_sha256": "63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88",
+  "test_sha256": "bc446cb5f19d76dbe83c8900b430baa453ee6ff757c7bc21c9e7143be479d87f",
+  "applied_utc": "2026-10-15T14:02:09.933897+00:00",
+  "plan_sha256": "e5da95d45633fbd0b6961bd50e7455bc7dbf4ca746c19ba879eada13572cfaae",
+  "review_sha256": "4db1ef5b1ccf623e5906fa50956d8838d69696344be1af7f040173c82a4b0ac8",
+  "exact_three_changes_only": true,
+  "all_other_definitions_and_cleanup_body_unchanged": true,
+  "applied_after_semantic_reproduction": true,
+  "passed_tests_repeated": false
+}

@@ -1,0 +1,133 @@
+{
+  "stage": "after",
+  "started_utc": "2026-10-15T14:02:24.125156+00:00",
+  "elapsed_seconds": 0.060952622443437576,
+  "parent_command": [
+    "/usr/bin/python3",
+    "-B",
+    "/tmp/agent-fixture-loader-jxwlfj39/run_l01_exception_context.py",
+    "after"
+  ],
+  "cwd": "/tmp/agent-fixture-loader-jxwlfj39/workspace",
+  "fixture_commands": [
+    [
+      "/usr/bin/python3",
+      "-I",
+      "-B",
+      "/tmp/agent-fixture-loader-jxwlfj39/workspace/src/ops/tools/tests/test_github_fixture_config.py",
+      "--case",
+      "exception-context",
+      "/tmp/agent-fixture-loader-jxwlfj39/l01-k421yum1/spec.json"
+    ]
+  ],
+  "fixture_root": "/tmp/agent-fixture-loader-jxwlfj39",
+  "python": "3.10.12",
+  "sqlite": "3.37.2",
+  "uid": 1011,
+  "source_sha256": "63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88",
+  "test_sha256": "bc446cb5f19d76dbe83c8900b430baa453ee6ff757c7bc21c9e7143be479d87f",
+  "plan_sha256": "e5da95d45633fbd0b6961bd50e7455bc7dbf4ca746c19ba879eada13572cfaae",
+  "review_sha256": "4db1ef5b1ccf623e5906fa50956d8838d69696344be1af7f040173c82a4b0ac8",
+  "runner_sha256": "31f9473e0464118b90622030dba86d51a02da38c9dcdae66b1ff570e85b1e110",
+  "target": "test_l12_load_read_inside_caller_except",
+  "methods_run": 1,
+  "passed": true,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "expected_stage_behavior_confirmed": true,
+  "observations": [
+    {
+      "case": "L12_EXCEPTION_CONTEXT",
+      "caller_exception": "RuntimeError",
+      "caller_exception_identity_preserved": true,
+      "identity_checks": [
+        true,
+        true,
+        true
+      ],
+      "public_read_attempts_inside_except": 1,
+      "read_error_reason": null,
+      "read_reason": "JOB_NOT_FOUND",
+      "actual_builtin_connections": 2,
+      "connections_live_after_read": true,
+      "owned_resources_closed": true,
+      "fixture_tree_unchanged": true,
+      "actual_child_count": 0
+    },
+    {
+      "case": "exception-context",
+      "calls": {
+        "connect": 2,
+        "run": 0,
+        "read": 1,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    }
+  ],
+  "fresh_harness_results": [
+    {
+      "case": "exception-context",
+      "checks": [
+        {
+          "label": "exception-context",
+          "status": "PASS"
+        }
+      ],
+      "observations": [
+        {
+          "case": "L12_EXCEPTION_CONTEXT",
+          "caller_exception": "RuntimeError",
+          "caller_exception_identity_preserved": true,
+          "identity_checks": [
+            true,
+            true,
+            true
+          ],
+          "public_read_attempts_inside_except": 1,
+          "read_error_reason": null,
+          "read_reason": "JOB_NOT_FOUND",
+          "actual_builtin_connections": 2,
+          "connections_live_after_read": true,
+          "owned_resources_closed": true,
+          "fixture_tree_unchanged": true,
+          "actual_child_count": 0
+        },
+        {
+          "case": "exception-context",
+          "calls": {
+            "connect": 2,
+            "run": 0,
+            "read": 1,
+            "collect": 0,
+            "child": 0,
+            "initialize": 0
+          },
+          "fixture_only": true,
+          "injected_metadata_or_fault": false
+        }
+      ]
+    }
+  ],
+  "actual_fixed_children": 0,
+  "first_records_preserved": {
+    "evidence/run-1/result.json": "faadf72d664a4756d292e4cd80df3335caeef64bfaa8b608d9f4a0bb1d706cdb",
+    "evidence/run-1/unittest.log": "2b61a92d1dfaee24380c337cfee8c000138f708aecf68ba30420e1e1dbd69531",
+    "evidence/mutations.json": "774a10a2f29cc53216b2ee500e669430c05ccbcd68f6c8a88da6dd351eeebe6b",
+    "evidence/first-error-analysis.json": "f3ba99dfbbf6be406742687df5eac6de04f7f698fceec811f468fcb81054a294",
+    "evidence/fixture-retry-1/result.json": "2cd3b3f54d3b702359b71d033e2c35b7c8bbe4c37cb794803ea15322d379c7f6",
+    "evidence/fixture-retry-1/unittest.log": "7918cb4d9872a7ca36c4c33f6259b14e4eceaf16da8bcdbf14ece9202339c467",
+    "evidence/fixture-retry-1/test-diff-audit.json": "bc6837f30af15838cf3d4641fe89e8ab96e328bfd01f5da00874c90c86a7f7c1"
+  },
+  "product_modified_by_test_agent": false,
+  "old_suites_run": false,
+  "fixture_30_repeated": false,
+  "mutations_repeated": false,
+  "previously_passed_targets_repeated": false,
+  "owner_approval": "NOT_PROVIDED",
+  "operational_installation": "NOT_RUN"
+}

@@ -1,0 +1,112 @@
+"""Run new L01 tests once, retaining first outcomes and exactly two mutants."""
+import ast
+from datetime import datetime, timezone
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import platform
+import shutil
+import sqlite3
+import sys
+import time
+import unittest
+
+ROOT=Path(__file__).resolve().parent
+WORK=ROOT/'workspace'
+SOURCE=WORK/'src/ops/tools/github_fixture_config.py'
+TEST=WORK/'src/ops/tools/tests/test_github_fixture_config.py'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+ready=json.loads((ROOT/'evidence/implementation-ready.json').read_text())
+assert sha(SOURCE)==ready['source_sha256'],'PRODUCT_CHANGED_AFTER_READY'
+assert sha(ROOT/'review/test-plan.md')=='b350192d28825de5761c448ddff6f73f00dcf778fceec164c2f2134eda353d50'
+assert sha(ROOT/'review/plan-review.md')=='1deb9bb9673684848bf3843d79628e02cf9d42c994445c7c78829ba89ac856e4'
+ast.parse(TEST.read_text(),feature_version=(3,10))
+RUN=ROOT/'evidence/run-1'
+RUN.mkdir()
+snapshot=RUN/'source-and-tests';snapshot.mkdir()
+shutil.copy2(SOURCE,snapshot/SOURCE.name);shutil.copy2(TEST,snapshot/TEST.name)
+os.environ['FIXTURE_CONFIG_TEST_ROOT']=str(ROOT)
+spec=importlib.util.spec_from_file_location('l01_new_tests',TEST)
+module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+existing_pins={name:sha(WORK/name) for name in module.FILES[:-1]}
+source_pin,test_pin=sha(SOURCE),sha(TEST)
+context=dict(parent_commit='c91e9e628402fcc89c2daa4301d54c3c321221ed',
+    source_sha256=source_pin,test_sha256=test_pin,fixture_root=str(ROOT),
+    plan_sha256=sha(ROOT/'review/test-plan.md'),review_sha256=sha(ROOT/'review/plan-review.md'),
+    python=platform.python_version(),sqlite=sqlite3.sqlite_version,uid=os.geteuid(),
+    root_uid=os.stat('/').st_uid,tmp_uid=os.stat('/tmp').st_uid,
+    actual_builtin_sqlite=True,existing_13_plus_3_repeated=False,R03_R04_R15_repeated=False,
+    old_suites_run=False,owner_approval='NOT_PROVIDED',operational_installation='NOT_RUN')
+(RUN/'start.json').write_text(json.dumps(context,indent=2)+'\n')
+
+class Result(unittest.TextTestResult):
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs);self.success_ids=[];self.subcases=[]
+    def addSuccess(self,test):
+        self.success_ids.append(test.id());super().addSuccess(test)
+    def addSubTest(self,test,subtest,error):
+        self.subcases.append(dict(test=test.id(),subtest=str(subtest),
+            status='PASS' if error is None else 'FAIL' if issubclass(error[0],test.failureException) else 'ERROR'))
+        super().addSubTest(test,subtest,error)
+
+def execute(suite,directory):
+    module.OBSERVATIONS.clear();module.HARNESS_RESULTS.clear()
+    started=datetime.now(timezone.utc).isoformat();begin=time.monotonic()
+    with (directory/'unittest.log').open('x') as stream:
+        result=unittest.TextTestRunner(stream=stream,verbosity=2,resultclass=Result).run(suite)
+    data=dict(context,started_utc=started,elapsed_seconds=time.monotonic()-begin,
+        methods_run=result.testsRun,passed_methods=result.success_ids,
+        failures=len(result.failures),errors=len(result.errors),skipped=len(result.skipped),
+        failure_tests=[str(t) for t,_ in result.failures],error_tests=[str(t) for t,_ in result.errors],
+        subcases=result.subcases,observations=list(module.OBSERVATIONS),
+        fresh_harness_results=list(module.HARNESS_RESULTS),passed=result.wasSuccessful())
+    (directory/'result.json').write_text(json.dumps(data,indent=2)+'\n')
+    return data
+
+suite=unittest.defaultTestLoader.loadTestsFromTestCase(module.FixtureConfigurationTests)
+first=execute(suite,RUN)
+assert sha(SOURCE)==source_pin and sha(TEST)==test_pin,'FIRST_RUN_SOURCE_CHANGED'
+mutations=[]
+source=SOURCE.read_text()
+definitions=[('M1','test_l04_external_audit_pin',
+    'if hashlib.sha256(raw).hexdigest() != pins[name]:',
+    'if name != "src/ops/tools/github_check_audit.py" and hashlib.sha256(raw).hexdigest() != pins[name]:'),
+    ('M2','test_l07_state_0755',
+    'if private and stat.S_IMODE(info.st_mode) != 0o700:',
+    'if False and private and stat.S_IMODE(info.st_mode) != 0o700:')]
+for name,target,before,after in definitions:
+    directory=ROOT/'mutants'/name;directory.mkdir(parents=True)
+    initial_id='l01_new_tests.FixtureConfigurationTests.'+target
+    if initial_id not in first['passed_methods']:
+        mutations.append(dict(id=name,target=target,status='BLOCKED',reason='normal_target_not_passed'))
+        continue
+    assert source.count(before)==1,'MUTATION_SITE_NOT_UNIQUE'
+    mutant=directory/'github_fixture_config.py';mutant.write_text(source.replace(before,after,1))
+    ast.parse(mutant.read_text(),feature_version=(3,10))
+    os.environ['L01_MUTANT_LOADER']=str(mutant)
+    data=execute(unittest.TestSuite([module.FixtureConfigurationTests(target)]),directory)
+    del os.environ['L01_MUTANT_LOADER']
+    expected=(data['methods_run'],data['failures'],data['errors'],data['skipped'])==(1,1,0,0)
+    item=dict(id=name,target=target,status='DETECTED' if expected else 'NOT_CONFIRMED',
+        normal_reference='evidence/run-1/result.json',normal_target_repeated=False,
+        original_source_sha256=source_pin,mutant_source_sha256=sha(mutant),
+        test_sha256=test_pin,changed_expected_pin_only='src/ops/tools/github_fixture_config.py',
+        failures=data['failures'],errors=data['errors'],skipped=data['skipped'],
+        injected_before=before,injected_after=after,original_unchanged=sha(SOURCE)==source_pin)
+    mutations.append(item)
+
+preservation=dict(source_unchanged=sha(SOURCE)==source_pin,test_unchanged=sha(TEST)==test_pin,
+    pinned_existing_files_unchanged={n:sha(WORK/n)==s for n,s in existing_pins.items()},
+    old_tests_executed=False)
+(ROOT/'evidence/mutations.json').write_text(json.dumps(dict(selected=2,results=mutations),indent=2)+'\n')
+(ROOT/'evidence/test-agent-preservation.json').write_text(json.dumps(preservation,indent=2)+'\n')
+summary=dict(source_sha256=source_pin,test_sha256=test_pin,methods_run=first['methods_run'],
+    passed_methods=len(first['passed_methods']),failures=first['failures'],errors=first['errors'],
+    skipped=first['skipped'],actual_fixed_children=sum(x.get('calls',{}).get('child',0) for x in first['observations']),
+    mutations=mutations,first_result=str(RUN/'result.json'),product_modified_by_test_agent=False,
+    passed_targets_repeated=False,preservation=preservation)
+(ROOT/'evidence/test-agent-result.json').write_text(json.dumps(summary,indent=2)+'\n')
+print(json.dumps(summary))
+raise SystemExit(0 if first['passed'] and all(x['status']=='DETECTED' for x in mutations) else 1)

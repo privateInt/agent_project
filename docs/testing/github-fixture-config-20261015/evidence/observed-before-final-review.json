@@ -1,0 +1,593 @@
+{
+  "task": "L01_fixture_configuration_loader",
+  "parent_commit": "c91e9e628402fcc89c2daa4301d54c3c321221ed",
+  "scope": "FIXTURE_CONFIGURATION_ONLY",
+  "fixture_only": true,
+  "head_code_executed": false,
+  "owner_approval_verified": false,
+  "owner_approval_values": "NOT_PROVIDED",
+  "operational_installation": "NOT_RUN",
+  "changed_files_sha256": {
+    "src/ops/tools/github_fixture_config.py": "63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88",
+    "src/ops/tools/tests/test_github_fixture_config.py": "bc446cb5f19d76dbe83c8900b430baa453ee6ff757c7bc21c9e7143be479d87f",
+    "docs/codex/github-fixture-config.md": "b8a98e1de0623606afc5a2d0dc09b4b9f389a8c2a76db9a128417e543225e76e",
+    "docs/development.md": "47f74ca4a4d14f13e225da7522309fa629f2a090a2baa0a348e0b7e88cdbbc31",
+    "docs/status.md": "54b7caad4b7ebb32072a70008c91299fa49a1b670020f131a8644c7e11b82bfb",
+    "docs/roadmap.md": "e72d9420c299cf6558cc03feb3b0f3d8e7c3fc1336ae46ba7644907e5cb06f86",
+    "docs/HANDOFF_NEXT_SESSION.md": "fb9a156aeb6ee198eceef707cdd4e54142f3dbadbed446597e051d56509b598b"
+  },
+  "actual_server_environment": {
+    "python": "3.10.12",
+    "sqlite": "3.37.2",
+    "uid": 1011,
+    "namespace_root_uid": 65534,
+    "namespace_tmp_uid": 65534
+  },
+  "prior_development_environment": {
+    "python": "3.12.14",
+    "sqlite": "3.53.1",
+    "counted_as_current_execution": false
+  },
+  "initial_new_tests": {
+    "file": "evidence/run-1/result.json",
+    "methods": 23,
+    "passed_methods": 22,
+    "failures": 0,
+    "errors": 16,
+    "skipped": 0,
+    "subcases": 264,
+    "source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+    "test_sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02",
+    "first_errors_preserved": true,
+    "sidecar14_independence_initially_unclear": true
+  },
+  "fixture_correction": {
+    "plan": "review/fixture-fix-plan.md",
+    "review": "review/fixture-fix-review.md",
+    "result": "evidence/fixture-retry-1/result.json",
+    "wrapper_methods": 2,
+    "selected_checks": 30,
+    "previously_unreached_read_checks": 16,
+    "previously_masked_sidecar_checks": 14,
+    "passed": true,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+    "test_sha256": "a2e3b571b4995ed039f395241a4d2daccfe4826838b070a64ef5abc3d7ed1b6c",
+    "unrelated_passed_targets_repeated": false
+  },
+  "exception_context_correction": {
+    "plan": "review/exception-context-plan.md",
+    "review": "review/exception-context-review.md",
+    "reproduction": "evidence/exception-context-before/result.json",
+    "before_methods": 1,
+    "before_semantic_failures": 1,
+    "before_errors": 0,
+    "validation": "evidence/exception-context-after/result.json",
+    "after_methods": 1,
+    "after_passed": true,
+    "after_failures": 0,
+    "after_errors": 0,
+    "after_skipped": 0,
+    "source_sha256": "63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88",
+    "test_sha256": "bc446cb5f19d76dbe83c8900b430baa453ee6ff757c7bc21c9e7143be479d87f",
+    "same_test_bytes_before_after": true,
+    "product_changed_only_local_success_flag": true,
+    "before_executed_by": "test_agent",
+    "after_executed_by": "coordinator_using_unchanged_test_agent_runner"
+  },
+  "actual_fixed_children": 3,
+  "actual_new_temp_sqlite": true,
+  "integration_observations": [
+    {
+      "case": "config",
+      "calls": {
+        "connect": 2,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "expectations",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "ownership",
+      "target": "install/fixture-controller-installation.json",
+      "metadata_injected": true,
+      "actual_chown": false
+    },
+    {
+      "case": "marker",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "hash-audit",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "ownership",
+      "target": "install/src/ops/tools/github_check_audit.py",
+      "metadata_injected": true,
+      "actual_chown": false
+    },
+    {
+      "case": "hash-other",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "origins",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": true
+    },
+    {
+      "case": "L06",
+      "euid": 1011,
+      "root_uid": 65534,
+      "tmp_uid": 65534
+    },
+    {
+      "case": "paths",
+      "calls": {
+        "connect": 2,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "state-other",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": true
+    },
+    {
+      "case": "state755",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "ownership",
+      "target": "state/ledger.sqlite",
+      "metadata_injected": true,
+      "actual_chown": false
+    },
+    {
+      "case": "ownership",
+      "target": "state/control.sqlite",
+      "metadata_injected": true,
+      "actual_chown": false
+    },
+    {
+      "case": "dbpaths",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "sidecars",
+      "calls": {
+        "connect": 0,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "schemas",
+      "calls": {
+        "connect": 18,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L11",
+      "actual_builtin_sqlite": true,
+      "connection_options_observed": true
+    },
+    {
+      "case": "connection",
+      "calls": {
+        "connect": 6,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "resources",
+      "calls": {
+        "connect": 3,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L13",
+      "profile": "nonzero",
+      "actual_child_count": 1,
+      "returncode": 7,
+      "artifact_sha256": "f1a9b1cb82d461ac5f7d606edb506514a83c6aea102ebcb5427b9b63e0ef2202",
+      "exact_bytes_reopened": true,
+      "binding": {
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "plan_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "pr_number": 1,
+        "release_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "repository": "ExampleOrg/fixture",
+        "evidence_sha256": "f1a9b1cb82d461ac5f7d606edb506514a83c6aea102ebcb5427b9b63e0ef2202"
+      }
+    },
+    {
+      "case": "exit7",
+      "calls": {
+        "connect": 4,
+        "run": 1,
+        "read": 4,
+        "collect": 1,
+        "child": 1,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L13",
+      "profile": "ok",
+      "actual_child_count": 1,
+      "returncode": 0,
+      "artifact_sha256": "7dfae50d9fed32f1a525df9832690f596cf83f18ffed73a8720322fcc3a99947",
+      "exact_bytes_reopened": true,
+      "binding": {
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "head_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "plan_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "pr_number": 1,
+        "release_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "repository": "ExampleOrg/fixture",
+        "evidence_sha256": "7dfae50d9fed32f1a525df9832690f596cf83f18ffed73a8720322fcc3a99947"
+      }
+    },
+    {
+      "case": "ok",
+      "calls": {
+        "connect": 4,
+        "run": 1,
+        "read": 4,
+        "collect": 1,
+        "child": 1,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L14",
+      "actual_missing_assignment": true,
+      "child_count": 0,
+      "reason": "ASSIGNMENT_FILE_INVALID",
+      "terminal_reopened": true
+    },
+    {
+      "case": "preparation",
+      "calls": {
+        "connect": 4,
+        "run": 2,
+        "read": 4,
+        "collect": 1,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L15",
+      "injected_after_actual_record": true,
+      "actual_commit_then_response_loss": true,
+      "actual_child_count": 1,
+      "artifact_sha256": "7dfae50d9fed32f1a525df9832690f596cf83f18ffed73a8720322fcc3a99947",
+      "reopened_exact": true
+    },
+    {
+      "case": "unknown-commit",
+      "calls": {
+        "connect": 4,
+        "run": 1,
+        "read": 3,
+        "collect": 1,
+        "child": 1,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": true
+    },
+    {
+      "case": "L15",
+      "injected_collector_reason": "SPAWN_FAILED",
+      "injected_collector_calls": 1,
+      "actual_child_count": 0
+    },
+    {
+      "case": "unknown-spawn",
+      "calls": {
+        "connect": 4,
+        "run": 1,
+        "read": 2,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": true
+    },
+    {
+      "case": "L16",
+      "actual_two_state_routing": true,
+      "controller_boundary_stubs_separate": true
+    },
+    {
+      "case": "forwarding",
+      "calls": {
+        "connect": 6,
+        "run": 0,
+        "read": 2,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "live",
+      "calls": {
+        "connect": 32,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    },
+    {
+      "case": "L18",
+      "rename_at_connect": "before",
+      "actual_temp_rename": true,
+      "controller_calls": 0
+    },
+    {
+      "case": "L18",
+      "rename_at_connect": "after",
+      "actual_temp_rename": true,
+      "controller_calls": 0
+    },
+    {
+      "case": "L18",
+      "state_symlink_at_connect": "before",
+      "actual_temp_rename": true,
+      "unchanged_db_inodes": true,
+      "controller_calls": 0
+    },
+    {
+      "case": "L18",
+      "state_symlink_at_connect": "after",
+      "actual_temp_rename": true,
+      "unchanged_db_inodes": true,
+      "controller_calls": 0
+    },
+    {
+      "case": "races",
+      "calls": {
+        "connect": 4,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": true
+    },
+    {
+      "case": "reports",
+      "calls": {
+        "connect": 2,
+        "run": 0,
+        "read": 0,
+        "collect": 0,
+        "child": 0,
+        "initialize": 0
+      },
+      "fixture_only": true,
+      "injected_metadata_or_fault": false
+    }
+  ],
+  "d38": {
+    "selected": 2,
+    "file": "evidence/mutations.json",
+    "results": [
+      {
+        "id": "M1",
+        "target": "test_l04_external_audit_pin",
+        "status": "DETECTED",
+        "normal_reference": "evidence/run-1/result.json",
+        "normal_target_repeated": false,
+        "original_source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+        "mutant_source_sha256": "b3887faf2678359def35e3bd9039b0acafa49b3f31aa8413eab5b953d9b9187a",
+        "test_sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02",
+        "changed_expected_pin_only": "src/ops/tools/github_fixture_config.py",
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "injected_before": "if hashlib.sha256(raw).hexdigest() != pins[name]:",
+        "injected_after": "if name != \"src/ops/tools/github_check_audit.py\" and hashlib.sha256(raw).hexdigest() != pins[name]:",
+        "original_unchanged": true
+      },
+      {
+        "id": "M2",
+        "target": "test_l07_state_0755",
+        "status": "DETECTED",
+        "normal_reference": "evidence/run-1/result.json",
+        "normal_target_repeated": false,
+        "original_source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+        "mutant_source_sha256": "d2e2d16307e5f0fd08bbd3e8bc226d31d463563eb4e9737bc28389311a05f39b",
+        "test_sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02",
+        "changed_expected_pin_only": "src/ops/tools/github_fixture_config.py",
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "injected_before": "if private and stat.S_IMODE(info.st_mode) != 0o700:",
+        "injected_after": "if False and private and stat.S_IMODE(info.st_mode) != 0o700:",
+        "original_unchanged": true
+      }
+    ],
+    "reused_after_limited_corrections": true,
+    "repeated": false
+  },
+  "existing_six_source_files_unchanged": true,
+  "legacy_13_plus_3_repeated": false,
+  "R03_R04_R15_repeated": false,
+  "old_suites_run": false,
+  "final_whole_module_run": false,
+  "final_all_24_methods_not_claimed": true,
+  "preservation": {
+    "original_checkout_unchanged": true,
+    "original_local_changes": 11,
+    "previous_evidence": {
+      "archive": {
+        "unchanged": true,
+        "files": 174
+      },
+      "delivery": {
+        "unchanged": true,
+        "files": 30
+      },
+      "publication": {
+        "unchanged": true,
+        "files": 35
+      },
+      "publication-result.json": {
+        "unchanged": true,
+        "files": 1
+      }
+    },
+    "tests_repeated": false
+  },
+  "source_scope_limitations": [
+    "caller expectations do not authenticate owner approval",
+    "trusted Python process/launcher/stdlib and loaded bytecode not attested",
+    "same-UID adversarial mutation after checkpoints not prevented",
+    "foreign-UID ownership guard uses explicit metadata injection; actual multi-UID isolation NOT_RUN",
+    "database pairing and rollback resistance not authenticated"
+  ],
+  "remaining_connections": [
+    "Owner-provided protected version/hash/UID/path inputs and actual installation acceptance",
+    "Independent tests/reviewer supervisors, issuer/signature and latest-binding/check publication integration"
+  ],
+  "final_independent_review": {
+    "status": "PENDING",
+    "file": "review/final-review.md"
+  },
+  "documentation_or_packaging_errors": [
+    "Initial documentation patch expected wrong HANDOFF heading and was rejected atomically; corrected heading, no source/test change or rerun"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "parent_commit": "c91e9e628402fcc89c2daa4301d54c3c321221ed",
+  "source_sha256": "487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122",
+  "test_sha256": "2ef178fde43ab801e03dd84448bf933457de77799c047402b89c2f8412ed2a02",
+  "fixture_root": "/tmp/agent-fixture-loader-jxwlfj39",
+  "plan_sha256": "b350192d28825de5761c448ddff6f73f00dcf778fceec164c2f2134eda353d50",
+  "review_sha256": "1deb9bb9673684848bf3843d79628e02cf9d42c994445c7c78829ba89ac856e4",
+  "python": "3.10.12",
+  "sqlite": "3.37.2",
+  "uid": 1011,
+  "root_uid": 65534,
+  "tmp_uid": 65534,
+  "actual_builtin_sqlite": true,
+  "existing_13_plus_3_repeated": false,
+  "R03_R04_R15_repeated": false,
+  "old_suites_run": false,
+  "owner_approval": "NOT_PROVIDED",
+  "operational_installation": "NOT_RUN"
+}

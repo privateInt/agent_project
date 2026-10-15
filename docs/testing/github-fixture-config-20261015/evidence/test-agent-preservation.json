@@ -1,0 +1,13 @@
+{
+  "source_unchanged": true,
+  "test_unchanged": true,
+  "pinned_existing_files_unchanged": {
+    "src/__init__.py": true,
+    "src/ops/__init__.py": true,
+    "src/ops/tools/github_check_audit.py": true,
+    "src/ops/tools/github_fixture_collector.py": true,
+    "src/ops/tools/github_fixture_ledger.py": true,
+    "src/ops/tools/github_fixture_controller.py": true
+  },
+  "old_tests_executed": false
+}

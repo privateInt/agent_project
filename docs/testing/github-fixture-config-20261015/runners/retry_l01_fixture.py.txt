@@ -1,0 +1,117 @@
+"""Approved L01 fixture-only correction: exactly 14 sidecar + 16 read checks."""
+import ast
+from datetime import datetime, timezone
+import difflib
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+import unittest
+
+ROOT=Path(__file__).resolve().parent
+WORK=ROOT/'workspace'
+SOURCE=WORK/'src/ops/tools/github_fixture_config.py'
+TEST=WORK/'src/ops/tools/tests/test_github_fixture_config.py'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+def import_tests():
+    spec=importlib.util.spec_from_file_location('l01_new_tests',TEST)
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
+
+if len(sys.argv)>1 and sys.argv[1]=='--child':
+    module=import_tests();spec=json.loads(Path(sys.argv[2]).read_text())
+    h=module.Harness(spec);selected=spec['selected'];executed=[];ignored=[];original=h.check
+    def choose(label,fn):
+        if label not in selected:ignored.append(label);return
+        if label in executed:raise AssertionError('duplicate selected callable')
+        executed.append(label);before=module.tree(h.base)
+        def checked():
+            fn()
+            h.a.assertEqual(module.tree(h.base),before,'fixture tree must return to pre-case state')
+        original(label,checked)
+    h.check=choose
+    with h.observed():
+        getattr(h,spec['group'])()
+        h.assert_closed()
+    h.a.assertEqual(set(executed),set(selected));h.a.assertEqual(len(executed),len(selected))
+    h.a.assertEqual(h.calls['child'],0);h.a.assertEqual(h.calls['initialize'],0)
+    print(json.dumps(dict(checks=h.checks,observations=h.observations,calls=h.calls,
+                         executed=executed,ignored_without_execution=ignored,
+                         unselected_callable_executions=0)))
+    raise SystemExit(0)
+
+assert sha(SOURCE)=='487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122'
+assert sha(TEST)=='a2e3b571b4995ed039f395241a4d2daccfe4826838b070a64ef5abc3d7ed1b6c'
+assert sha(ROOT/'review/fixture-fix-plan.md')=='cbebfff754409a0fa32767b88d706ed672ad3c2973a7d31d491e1b4443055ddb'
+assert sha(ROOT/'review/fixture-fix-review.md')=='f1382dacf6521398d8c64f40d1fe9e8a556e7a5f74b3b11609f0f9daf6442aa3'
+assert '판정: **PASS' in (ROOT/'review/fixture-fix-review.md').read_text()
+OUT=ROOT/'evidence/fixture-retry-1';OUT.mkdir()
+old=(ROOT/'evidence/run-1/source-and-tests'/TEST.name).read_text();new=TEST.read_text()
+assert old.replace('if symlink is not None or fifo or absent:',
+    'if symlink is not None or fifo or absent or (raw is not None and not existed):',1)==new
+def definitions(raw):
+    return {n.name:ast.get_source_segment(raw,n) for n in ast.parse(raw).body
+            if isinstance(n,(ast.FunctionDef,ast.ClassDef)) and n.name!='altered'}
+assert definitions(old)==definitions(new)
+audit=dict(old_test_sha256=hashlib.sha256(old.encode()).hexdigest(),new_test_sha256=sha(TEST),
+           only_altered_finally_condition_changed=True,other_definitions_unchanged=list(definitions(old)),
+           pre_yield_condition_unchanged=True,product_unchanged=True)
+(OUT/'test-diff-audit.json').write_text(json.dumps(audit,indent=2)+'\n')
+(OUT/'test-helper.patch').write_text(''.join(difflib.unified_diff(old.splitlines(True),new.splitlines(True),
+                                       fromfile='first-test.py',tofile='fixture-corrected-test.py')))
+preserved_paths=['evidence/run-1/result.json','evidence/run-1/unittest.log',
+                 'evidence/mutations.json','evidence/test-agent-result.json','evidence/first-error-analysis.json']
+preserved={n:sha(ROOT/n) for n in preserved_paths}
+module=import_tests()
+read_labels=['read-'+n for n in module.FILES]+['read-'+n for n in
+    ['marker','state','ledger-mode','ledger-inode','control-inode','state-inode','install-inode','header','sidecar']]
+side_labels=[p+s+t for p in ['ledger.sqlite','control.sqlite'] for s in ['-journal','-wal','-shm','-mjL01']
+             for t in ['-empty','-link'] if not (p=='ledger.sqlite' and s=='-journal')]
+assert len(read_labels)==16 and len(side_labels)==14
+RESULTS=[]
+class FocusedFixtureRetryTests(unittest.TestCase):
+    def group(self,group,selected):
+        with tempfile.TemporaryDirectory(prefix='l01-focused-',dir=ROOT) as tmp:
+            base=Path(tmp);install=base/'install';install.mkdir(mode=0o700);pins={}
+            for name in module.FILES:
+                p=install/name;p.parent.mkdir(parents=True,exist_ok=True)
+                p.write_bytes((WORK/name).read_bytes());p.chmod(0o644);pins[name]=sha(p)
+            for p in install.rglob('*'):
+                if p.is_dir():p.chmod(0o755)
+            marker=install/'fixture-controller-installation.json'
+            marker.write_bytes(module.canonical(dict(schema=1,code_version=module.VERSION)));marker.chmod(0o644)
+            (base/'state').mkdir(mode=0o700)
+            spec=base/'spec.json';spec.write_text(json.dumps(dict(base=str(base),pins=pins,group=group,selected=selected)))
+            command=[sys.executable,'-I','-B',str(Path(__file__).resolve()),'--child',str(spec)]
+            completed=subprocess.run(command,capture_output=True,text=True,timeout=45)
+            self.assertEqual(completed.returncode,0,'focused harness: '+completed.stderr)
+            data=json.loads(completed.stdout);RESULTS.append(dict(group=group,command=command,**data))
+            for row in data['checks']:
+                with self.subTest(group=group,label=row['label']):
+                    if row['status']=='FAIL':self.fail(row['traceback'])
+                    if row['status']=='ERROR':raise RuntimeError(row['traceback'])
+    def test_l09_only_masked_14(self):self.group('sidecars',side_labels)
+    def test_l17_only_unreached_read_16(self):self.group('live_changes',read_labels)
+
+start=datetime.now(timezone.utc).isoformat();begin=time.monotonic()
+with (OUT/'unittest.log').open('x') as stream:
+    result=unittest.TextTestRunner(stream=stream,verbosity=2).run(
+        unittest.defaultTestLoader.loadTestsFromTestCase(FocusedFixtureRetryTests))
+assert {n:sha(ROOT/n) for n in preserved_paths}==preserved
+assert sha(SOURCE)=='487dc146b24b302794dc650128f6aca1349e887e28946976148389dfb603e122'
+data=dict(started_utc=start,elapsed_seconds=time.monotonic()-begin,methods_run=result.testsRun,
+    failures=len(result.failures),errors=len(result.errors),skipped=len(result.skipped),passed=result.wasSuccessful(),
+    source_sha256=sha(SOURCE),test_sha256=sha(TEST),plan_sha256=sha(ROOT/'review/fixture-fix-plan.md'),
+    review_sha256=sha(ROOT/'review/fixture-fix-review.md'),runner_sha256=sha(Path(__file__)),
+    actual_fixed_children=sum(r['calls']['child'] for r in RESULTS),
+    selected_checks=sum(len(r['executed']) for r in RESULTS),results=RESULTS,
+    fixture_root=str(ROOT),first_records_preserved=preserved,
+    passed_unaffected_cases_repeated=False,mutations_repeated=False,old_suites_run=False)
+(OUT/'result.json').write_text(json.dumps(data,indent=2)+'\n')
+print(json.dumps({k:v for k,v in data.items() if k not in ['results','first_records_preserved']}))
+raise SystemExit(0 if data['passed'] and data['selected_checks']==30 else 1)

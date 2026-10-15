@@ -1,0 +1,7 @@
+{
+  "source_sha256": "06c1ad502c1bfeac63bd7a3cc600277115923cccbb47ff7d020f0770a465910d",
+  "ready_utc": "2026-10-15T13:29:17.412224+00:00",
+  "plan_sha256": "b350192d28825de5761c448ddff6f73f00dcf778fceec164c2f2134eda353d50",
+  "product_ast_python310": true,
+  "existing_tests_repeated": false
+}
