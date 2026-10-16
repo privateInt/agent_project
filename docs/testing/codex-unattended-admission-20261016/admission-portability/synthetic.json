@@ -1,0 +1,137 @@
+{
+  "provenance": "SYNTHETIC_ONLY_NO_IO_NO_DISPATCH",
+  "config": {
+    "schema": 1,
+    "batch_id": "fixture-batch-1",
+    "project": {
+      "project_id": "agent_project",
+      "repository": "fixture-owner/agent_project",
+      "dev_root": "/fixture/agent-project-clone",
+      "git_common_dir": "/fixture/shared-agent-git",
+      "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "allowed_writable_roots": [
+        "/fixture/agent-project-clone",
+        "/fixture/tmp"
+      ]
+    },
+    "freshness": {
+      "max_age_ms": 30000
+    },
+    "schedule": {
+      "version": 2,
+      "default": {
+        "enabled": true,
+        "start": "23:00",
+        "end": "07:00",
+        "max_starts": 3
+      },
+      "dates": {}
+    },
+    "tasks": [
+      {
+        "task_id": "T1",
+        "predecessor_id": null,
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "required_test_ids": [
+          "unit.T1",
+          "contract.T1"
+        ],
+        "allowed_files": [
+          "src/ops/tools/fixture_T1.py",
+          "docs/fixture_T1.txt"
+        ],
+        "timeout_sec": 600
+      },
+      {
+        "task_id": "T2",
+        "predecessor_id": "T1",
+        "plan_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "required_test_ids": [
+          "unit.T2",
+          "contract.T2"
+        ],
+        "allowed_files": [
+          "src/ops/tools/fixture_T2.py",
+          "docs/fixture_T2.txt"
+        ],
+        "timeout_sec": 600
+      },
+      {
+        "task_id": "T3",
+        "predecessor_id": "T2",
+        "plan_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+        "required_test_ids": [
+          "unit.T3",
+          "contract.T3"
+        ],
+        "allowed_files": [
+          "src/ops/tools/fixture_T3.py",
+          "docs/fixture_T3.txt"
+        ],
+        "timeout_sec": 600
+      }
+    ]
+  },
+  "snapshot": {
+    "now_ms": 1704124800000,
+    "project": {
+      "observed_at_ms": 1704124800000,
+      "value": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    "pauses": {
+      "observed_at_ms": 1704124800000,
+      "value": {
+        "root": false,
+        "user": false,
+        "state": false
+      }
+    },
+    "quota": {
+      "observed_at_ms": 1704124800000,
+      "value": {
+        "ordinaryUsageAllowed": true,
+        "exhausted": false
+      }
+    },
+    "control": {
+      "observed_at_ms": 1704124800000,
+      "value": {
+        "available": true,
+        "desired_settings_supported": true
+      }
+    },
+    "settings": {
+      "observed_at_ms": 1704124800000,
+      "value": {
+        "cwd": "/fixture/agent-project-clone",
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "sandbox": {
+          "type": "workspaceWrite",
+          "networkAccess": false,
+          "writableRoots": [
+            "/fixture/agent-project-clone",
+            "/fixture/tmp"
+          ]
+        },
+        "runtimeWorkspaceRoots": [
+          "/fixture/agent-project-clone"
+        ]
+      }
+    }
+  },
+  "state": {
+    "schema": 1,
+    "batch_id": "fixture-batch-1",
+    "clock_floor_ms": 0,
+    "admissions": [],
+    "evidence": {}
+  }
+}

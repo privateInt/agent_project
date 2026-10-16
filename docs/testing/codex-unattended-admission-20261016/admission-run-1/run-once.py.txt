@@ -1,0 +1,186 @@
+"""Single normal six-method run; only on PASS, two isolated single-target mutants."""
+import datetime
+import difflib
+import hashlib
+import importlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import types
+import unittest
+from unittest import mock
+
+OUT = Path(__file__).resolve().parent
+manifest = json.loads((OUT / "manifest-before.json").read_text())
+pins = json.loads((OUT / "test-fixture-pins.json").read_text())
+WORK = Path(manifest["workdir"])
+REPO = Path(manifest["repository"])
+
+
+def sha(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+for label, entry in manifest["files"].items():
+    assert sha(entry["path"]) == sha(OUT / label) == entry["sha256"]
+assert sha(pins["test_path"]) == pins["test_sha256"]
+assert sha(pins["fixture_path"]) == pins["fixture_sha256"]
+with (OUT / "execution-started.json").open("x") as marker:
+    json.dump({"started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               "executor": "test_agent", "cwd": str(Path.cwd()), "argv": sys.argv,
+               "normal_targets": pins["methods"], "mutants_conditional_on_normal_pass": True}, marker)
+sys.path.insert(0, str(WORK))
+tests = importlib.import_module("src.ops.tools.tests.test_codex_unattended_admission")
+original_product = tests.product
+
+
+class Results(unittest.TextTestResult):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.records = {}
+
+    def row(self, test):
+        name = getattr(test, "_testMethodName", str(test))
+        return self.records.setdefault(name, {"runs": 0, "status": "NOT_RUN", "subtests": []})
+
+    def startTest(self, test):
+        entry = self.row(test)
+        assert entry["runs"] == 0
+        entry.update(runs=1, status="RUNNING")
+        super().startTest(test)
+
+    def addSuccess(self, test):
+        super().addSuccess(test)
+        self.row(test)["status"] = "PASS"
+
+    def addFailure(self, test, err):
+        super().addFailure(test, err)
+        self.row(test).update(status="FAIL", traceback=self._exc_info_to_string(err, test))
+
+    def addError(self, test, err):
+        super().addError(test, err)
+        self.row(test).update(status="ERROR", traceback=self._exc_info_to_string(err, test))
+
+    def addSubTest(self, test, subtest, err):
+        super().addSubTest(test, subtest, err)
+        row = {"case": str(subtest), "status": "PASS" if err is None else "FAIL"}
+        if err:
+            row["traceback"] = self._exc_info_to_string(err, test)
+            self.row(test)["status"] = "FAIL"
+        self.row(test)["subtests"].append(row)
+
+    def stopTest(self, test):
+        self.row(test)["last_decision"] = getattr(test, "last_decision", None)
+        super().stopTest(test)
+
+
+def write(path, value):
+    with path.open("x") as output:
+        json.dump(value, output, ensure_ascii=False, indent=2, allow_nan=False)
+        output.write("\n")
+
+
+def execute(directory, names, product, phase):
+    with (directory / "execution.log").open("x", buffering=1) as log:
+        with mock.patch.object(tests, "product", product):
+            result = unittest.TextTestRunner(stream=log, verbosity=2, resultclass=Results,
+                                            failfast=True).run(unittest.TestSuite(
+                                                tests.AdmissionTests(name) for name in names))
+    record = {"phase": phase, "executor": "test_agent", "tests_run": result.testsRun,
+              "status": "PASS" if result.wasSuccessful() else "FAIL",
+              "failures": len(result.failures), "errors": len(result.errors),
+              "skipped": len(result.skipped), "outcomes": result.records,
+              "setup": dict(tests.SETUP), "native_queued_jobs_executed": 0,
+              "candidate_is_execution_authorization": False}
+    for name in names:
+        record["outcomes"].setdefault(name, {"runs": 0, "status": "NOT_RUN"})
+    return result, record
+
+
+normal_result, normal = execute(OUT, pins["methods"], original_product, "NORMAL_INITIAL")
+normal["observations"] = list(tests.OBSERVATIONS)
+write(OUT / "normal-result.json", normal)
+normal_immutable = {str(p): sha(p) for p in (OUT / "normal-result.json", OUT / "execution.log")}
+normal_ok = (normal_result.wasSuccessful() and normal_result.testsRun == 6
+             and not normal_result.skipped and tests.SETUP["gate_loads"] == 1)
+print(json.dumps({"phase": "NORMAL_INITIAL", "tests_run": normal_result.testsRun,
+                  "status": normal["status"], "failures": normal["failures"], "errors": normal["errors"]}))
+mutant_records = {}
+
+if normal_ok:
+    raw = (OUT / "source.py").read_text()
+    specifications = (
+        ("M1", '        _need(len(admissions) < 2, "LIFETIME_CAP_REACHED")\n',
+         "test_lifetime_cap_blocks_third_candidate", "T3", "LIFETIME_CAP_REACHED"),
+        ("M2", '        _need(review["status"] == "PASS" and readback["status"] == "PASS")\n',
+         "test_t2_pending_review_blocks", "T2", "EVIDENCE_UNVERIFIED"),
+    )
+    for name, omitted, target, unexpected_task, expected_normal_reason in specifications:
+        directory = OUT / "mutants" / name
+        directory.mkdir(parents=True, exist_ok=False)
+        assert raw.count(omitted) == 1
+        replacement = "        # " + name + ": isolated planned guard omission\n"
+        mutated = raw.replace(omitted, replacement, 1)
+        source_path = directory / "codex_unattended_admission.py"
+        source_path.write_text(mutated)
+        (directory / "source.diff").write_text("".join(difflib.unified_diff(
+            raw.splitlines(True), mutated.splitlines(True), fromfile="normal/source.py", tofile=name + "/source.py")))
+        write(directory / "mutation.json", {"mutant": name, "target": target,
+              "normal_source_sha256": pins["product_source_sha256"],
+              "mutated_source_sha256": sha(source_path), "omitted_exact_line": omitted,
+              "replacement": replacement, "expected_semantic_candidate": unexpected_task,
+              "normal_pass_reused": normal["outcomes"][target], "actual_task_dispatch": False})
+        isolated = types.ModuleType("u01a_admission_mutant_" + name)
+        exec(compile(mutated, str(source_path), "exec"), isolated.__dict__)
+        start = len(tests.OBSERVATIONS)
+        result, record = execute(directory, [target], isolated, name)
+        record["observations"] = tests.OBSERVATIONS[start:]
+        decision = record["outcomes"][target].get("last_decision") or {}
+        semantic = (result.testsRun == 1 and len(result.failures) == 1 and not result.errors
+                    and not result.skipped and decision.get("reason") == "CANDIDATE_READY"
+                    and decision.get("status") == "CANDIDATE"
+                    and (decision.get("candidate") or {}).get("task_id") == unexpected_task
+                    and normal["outcomes"][target]["last_decision"]["reason"] == expected_normal_reason)
+        record.update(semantic_FAIL1_ERROR0=semantic, original_normal_positive_reexecuted=False,
+                      gate_total_loads=tests.SETUP["gate_loads"])
+        write(directory / "result.json", record)
+        mutant_records[name] = {"target": target, "semantic_FAIL1_ERROR0": semantic,
+                                "result": str(directory / "result.json"), "last_decision": decision}
+        print(json.dumps({"phase": name, "tests_run": result.testsRun,
+                          "failures": len(result.failures), "errors": len(result.errors),
+                          "semantic_FAIL1_ERROR0": semantic}))
+        if not semantic:
+            break
+
+protected = {p: (sha(p) if Path(p).exists() else None) == before
+             for p, before in manifest["protected_files"].items()}
+normal_preserved = {p: sha(p) == value for p, value in normal_immutable.items()}
+inputs = {label: sha(entry["path"]) == sha(OUT / label) == entry["sha256"]
+          for label, entry in manifest["files"].items()}
+inputs.update(test=sha(pins["test_path"]) == pins["test_sha256"],
+              fixture=sha(pins["fixture_path"]) == pins["fixture_sha256"])
+local = []
+for entry in subprocess.check_output(["git", "status", "--porcelain=v1", "-z"], cwd=REPO).split(b"\0"):
+    if entry:
+        p = os.fsdecode(entry[3:])
+        local.append({"status": os.fsdecode(entry[:2]), "path": p, "sha256": sha(REPO / p)})
+preservation = (all(protected.values()) and all(inputs.values()) and all(normal_preserved.values())
+                and local == manifest["local_changes_before"])
+complete = normal_ok and set(mutant_records) == {"M1", "M2"} and all(
+    row["semantic_FAIL1_ERROR0"] for row in mutant_records.values())
+summary = {"completed_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+           "normal_initial_status": normal["status"], "normal_tests_run": normal["tests_run"],
+           "normal_failures": normal["failures"], "normal_errors": normal["errors"],
+           "normal_result": str(OUT / "normal-result.json"), "mutants": mutant_records,
+           "verification_complete": complete, "gate_total_loads": tests.SETUP["gate_loads"],
+           "inputs_unchanged": inputs, "prior_transport_and_first_error_unchanged": protected,
+           "initial_normal_results_preserved": normal_preserved,
+           "original_11_local_changes_unchanged": local == manifest["local_changes_before"],
+           "preservation_ok": preservation, "runtime_native_daemon_queued_jobs": "NOT_RUN",
+           "root_user_PAUSE": "UNCHANGED", "independent_final_review": "NOT_RUN"}
+write(OUT / "result.json", summary)
+print(json.dumps({"verification_complete": complete, "preservation_ok": preservation,
+                  "gate_loads": tests.SETUP["gate_loads"], "result": str(OUT / "result.json")}))
+sys.exit(0 if complete and preservation else 1)

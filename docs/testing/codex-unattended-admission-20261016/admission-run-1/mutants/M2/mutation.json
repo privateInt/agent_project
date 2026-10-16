@@ -1,0 +1,25 @@
+{
+  "mutant": "M2",
+  "target": "test_t2_pending_review_blocks",
+  "normal_source_sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+  "mutated_source_sha256": "3e6c79ec22152354978c5cb148f2444c8216f5c21ae349b2efabeef736bb5aa1",
+  "omitted_exact_line": "        _need(review[\"status\"] == \"PASS\" and readback[\"status\"] == \"PASS\")\n",
+  "replacement": "        # M2: isolated planned guard omission\n",
+  "expected_semantic_candidate": "T2",
+  "normal_pass_reused": {
+    "runs": 1,
+    "status": "PASS",
+    "subtests": [],
+    "last_decision": {
+      "schema": 1,
+      "scope": "PURE_ADMISSION_ONLY",
+      "status": "BLOCKED",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "candidate": null,
+      "desired_settings": null,
+      "runtime_io_performed": false,
+      "mutation_authorized": false
+    }
+  },
+  "actual_task_dispatch": false
+}

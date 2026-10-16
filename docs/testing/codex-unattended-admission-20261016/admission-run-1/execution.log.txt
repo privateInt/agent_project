@@ -1,0 +1,11 @@
+test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) ... ok
+test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) ... ok
+test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) ... ok
+test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) ... ok
+test_lifetime_cap_blocks_third_candidate (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) ... ok
+test_t2_pending_review_blocks (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.057s
+
+OK

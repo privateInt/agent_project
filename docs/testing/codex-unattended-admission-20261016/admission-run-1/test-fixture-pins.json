@@ -1,0 +1,21 @@
+{
+  "methods": [
+    "test_input_binding_and_purity",
+    "test_pause_and_freshness",
+    "test_schedule_quota_and_settings",
+    "test_state_and_t1_t2_evidence",
+    "test_lifetime_cap_blocks_third_candidate",
+    "test_t2_pending_review_blocks"
+  ],
+  "test_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/tools/tests/test_codex_unattended_admission.py",
+  "test_sha256": "8c525d67d236627227080b51f4605afc8b9a69daeec7c47edb2276a5ff4effc1",
+  "fixture_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json",
+  "fixture_sha256": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc",
+  "product_source_sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+  "setup": "Load exact pinned flex_gate module once, inject validate_config/windows only; no actual schedule/config loading",
+  "normal_stop_policy": "failfast; no mutations after any failure/error",
+  "mutant_targets": {
+    "M1": "test_lifetime_cap_blocks_third_candidate",
+    "M2": "test_t2_pending_review_blocks"
+  }
+}

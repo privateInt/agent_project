@@ -1,0 +1,25 @@
+{
+  "mutant": "M1",
+  "target": "test_lifetime_cap_blocks_third_candidate",
+  "normal_source_sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+  "mutated_source_sha256": "70f919a4abeae6791b6f3d8330c772bb18f0fb4b948813b174e5e60126fc0f15",
+  "omitted_exact_line": "        _need(len(admissions) < 2, \"LIFETIME_CAP_REACHED\")\n",
+  "replacement": "        # M1: isolated planned guard omission\n",
+  "expected_semantic_candidate": "T3",
+  "normal_pass_reused": {
+    "runs": 1,
+    "status": "PASS",
+    "subtests": [],
+    "last_decision": {
+      "schema": 1,
+      "scope": "PURE_ADMISSION_ONLY",
+      "status": "BLOCKED",
+      "reason": "LIFETIME_CAP_REACHED",
+      "candidate": null,
+      "desired_settings": null,
+      "runtime_io_performed": false,
+      "mutation_authorized": false
+    }
+  },
+  "actual_task_dispatch": false
+}

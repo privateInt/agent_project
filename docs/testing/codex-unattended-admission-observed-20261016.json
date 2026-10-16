@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "component": "pure admission and next task candidate selection",
+  "parent_commit": "c862bfc6951491192a9fe98b535c9a8be921ee35",
+  "branch": "codex/agent-project-unattended-admission-20261016",
+  "project_allowlist": [
+    "agent_project"
+  ],
+  "excluded_projects": [
+    "vms_project"
+  ],
+  "reviewed_files": {
+    "src/ops/tools/codex_unattended_admission.py": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+    "src/ops/tools/tests/test_codex_unattended_admission.py": "33d6ac1d164c5fa5e6c11b8e4dbce062cb9a65735e4bd95158a2f28c6af1d84b",
+    "src/ops/tools/tests/fixtures/codex_unattended_admission/flex_gate.py.txt": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+    "src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc"
+  },
+  "plan": {
+    "sha256": "321c5c9f8fa01246aeb627677505bc5581cc390174b47279b10f4760d489f410",
+    "pre_review_sha256": "60483649f5ae98246455425785f4bfb4e1442209cdadc2b7e9b44cac9e038431"
+  },
+  "shared_schedule": {
+    "source_sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+    "functions_only": [
+      "validate_config",
+      "windows"
+    ],
+    "installed_source_unchanged": true,
+    "portable_fixture_is_identical_reference_not_runtime_fork": true
+  },
+  "static_finding": {
+    "source_before": "0bbc6cb46efcef3af84d4ffeca7eeccf94af3618073cdcba413254a2fd1ef91d",
+    "correction": "Move WINDOW_TOO_SHORT guard before quota/settings, before first six tests",
+    "source_after": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51"
+  },
+  "execution": {
+    "initial_normal": {
+      "methods": 6,
+      "status": "PASS",
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "gate_setup_loads": 1,
+      "result_sha256": "d58f8e139242c6566410d108f68e7ad049af86154b74daed7a47b07664951d79"
+    },
+    "mutants": {
+      "M1": {
+        "target": "test_lifetime_cap_blocks_third_candidate",
+        "semantic_FAIL1_ERROR0": true,
+        "result_sha256": "fde3b9f5a8729520b5269ca0b7147c9e38f4e23dd194951fb940917bbcc6ecbf"
+      },
+      "M2": {
+        "target": "test_t2_pending_review_blocks",
+        "semantic_FAIL1_ERROR0": true,
+        "result_sha256": "45c3c08cff6104776474707927dafb48ee95bb248ebb0664c2870d7851b209f9"
+      }
+    },
+    "portable_dependency_path": {
+      "tests_run": 1,
+      "status": "PASS",
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "scope": "one new helper, T1 and fully evidenced T2 candidates, fresh differently named source copy; no private /opt dependency",
+      "result_sha256": "2c3d0c4f47162056a51b3a8bb240b70ee961f2e087bbc856af750d35954f86a2"
+    },
+    "initial_six_or_mutants_repeated": false,
+    "final_six_method_module_repeated": false,
+    "legacy_or_transport_tests_repeated": false,
+    "source_and_initial_results_preserved": true
+  },
+  "contract_limits": {
+    "runtime_io_performed": false,
+    "mutation_authorized": false,
+    "signature_provenance_owner_approval_or_OS_enforcement_verified": false,
+    "actual_native_two_tasks": "NOT_RUN",
+    "controller_submission_journal_CAS_fsync_or_daemon_settings_implementation": "NOT_INCLUDED",
+    "actual_owner_values_invented": false
+  },
+  "runtime_transition": {
+    "Auto_review": "NOT_APPLIED_IN_OBSERVED_TURNS",
+    "live_control_investigation": "HELD_D18",
+    "root_user_PAUSE": "PRESERVED",
+    "scheduler_activated": false,
+    "operational_source_DB_Docker_credentials_or_main_changed": false
+  },
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-unattended-admission-20261016/review/final-review.md",
+    "sha256": "f49f9bcf7c119187b74d8af0972e07c803bc3e8cad41f4cb304809a5d067058b"
+  }
+}

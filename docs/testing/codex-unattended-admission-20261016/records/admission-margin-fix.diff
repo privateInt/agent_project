@@ -1,0 +1,26 @@
+--- before
++++ after
+@@ -266,6 +266,10 @@
+         _need(started < cap, "WINDOW_CAP_REACHED")
+         # Admissions remain consumed after failure, uncertainty, or a date boundary.
+         _need(len(admissions) < 2, "LIFETIME_CAP_REACHED")
++        task = tasks[len(admissions)] if len(admissions) < len(tasks) else None
++        if task is not None:
++            remaining_ms = (end - now) // dt.timedelta(milliseconds=1)
++            _need(remaining_ms >= (task["timeout_sec"] + 120) * 1000, "WINDOW_TOO_SHORT")
+         quota = snapshot["quota"]["value"]
+         _need(quota["ordinaryUsageAllowed"] is True and quota["exhausted"] is False,
+               "USAGE_UNVERIFIED")
+@@ -281,11 +285,8 @@
+               _policy_matches(policy) and
+               sandbox["type"] == "workspaceWrite" and sandbox["networkAccess"] is False and
+               sandbox["writableRoots"] == project["allowed_writable_roots"], "SETTINGS_UNVERIFIED")
+-        if len(admissions) == len(tasks):
++        if task is None:
+             return _answer("NO_PENDING_TASK")
+-        task = tasks[len(admissions)]
+-        remaining_ms = (end - now) // dt.timedelta(milliseconds=1)
+-        _need(remaining_ms >= (task["timeout_sec"] + 120) * 1000, "WINDOW_TOO_SHORT")
+         base = project["base_sha"]
+         if admissions:
+             predecessor = admissions[-1]

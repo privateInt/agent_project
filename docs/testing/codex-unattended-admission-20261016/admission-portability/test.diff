@@ -1,0 +1,32 @@
+--- before/test_codex_unattended_admission.py
++++ after/test_codex_unattended_admission.py
+@@ -18,7 +18,7 @@
+ from src.ops.tools import codex_unattended_admission as product
+ 
+ FIXTURE = Path(__file__).resolve().parent / "fixtures/codex_unattended_admission/synthetic.json"
+-GATE_PATH = Path("/opt/codex-agent/scheduler-v2/flex_gate.py")
++GATE_PATH = FIXTURE.parent / "flex_gate.py.txt"
+ GATE_SHA = "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b"
+ SCHEDULE = None
+ SYNTHETIC = None
+@@ -211,6 +211,7 @@
+         return answer
+ 
+     def test_input_binding_and_purity(self):
++        self.case_portable_t1_t2_candidates()
+         inputs = fixture()
+         first = self.expect(inputs, "CANDIDATE_READY", "T1")
+         self.assertEqual(first, self.select(inputs))
+@@ -266,6 +267,12 @@
+         for field, value in (("plan_sha256", "e" * 64), ("project_id", "other_project")):
+             with self.subTest(admission_binding=field):
+                 self.expect(changed(("state", "admissions", 0, field), value, fixture(1)), "PROJECT_BINDING_MISMATCH")
++
++    def case_portable_t1_t2_candidates(self):
++        """The same pinned pure gate selects T1 and fully evidenced T2 anywhere."""
++        self.expect(fixture(), "CANDIDATE_READY", "T1")
++        self.expect(fixture(1), "CANDIDATE_READY", "T2", HEADS[0])
++        self.assertEqual(1, SETUP["gate_loads"])
+ 
+     def test_pause_and_freshness(self):
+         for name in ("root", "user", "state"):

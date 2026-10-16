@@ -1,0 +1,305 @@
+"""Pure, fixture-verifiable task admission. A candidate never authorizes I/O.
+
+Configuration and observations must come from a separately trusted controller.
+This module checks supplied bindings, not their provenance or OS enforcement.
+"""
+import datetime as dt
+import hashlib
+import json
+import math
+import re
+
+
+class _Rejected(Exception):
+    pass
+
+
+def _need(condition, reason="INPUT_INVALID"):
+    if not condition:
+        raise _Rejected(reason)
+
+
+def _keys(value, names):
+    _need(type(value) is dict and set(value) == set(names.split()))
+
+
+def _plain(value, ancestors=frozenset()):
+    kind = type(value)
+    _need(kind in (dict, list, str, int, float, bool, type(None)))
+    if kind is float:
+        _need(math.isfinite(value))
+    if kind in (dict, list):
+        _need(id(value) not in ancestors)
+        ancestors = ancestors | {id(value)}
+        if kind is dict:
+            _need(all(type(k) is str for k in value))
+            values = value.values()
+        else:
+            values = value
+        for item in values:
+            _plain(item, ancestors)
+
+
+def _integer(value, low=0, high=None):
+    _need(type(value) is int and value >= low and (high is None or value <= high))
+
+
+def _identifier(value):
+    _need(type(value) is str and re.fullmatch(r"[A-Za-z0-9_.:-]{1,128}", value))
+
+
+def _hash(value, size):
+    _need(type(value) is str and re.fullmatch(r"[0-9a-f]{%d}" % size, value))
+
+
+def _path(value, absolute):
+    _need(type(value) is str and bool(value) and "\x00" not in value)
+    _need(value.startswith("/") == absolute and not value.endswith("/"))
+    parts = value.split("/")[1:] if absolute else value.split("/")
+    _need(bool(parts) and all(p not in ("", ".", "..") for p in parts))
+
+
+def _unique_list(value, validate, nonempty=True):
+    _need(type(value) is list and (bool(value) or not nonempty))
+    for item in value:
+        validate(item)
+    _need(len(value) == len(set(value)))
+
+
+def _settings_proposal():
+    return {"approvalsReviewer": "auto_review", "approvalPolicy": {"granular": {
+        "sandbox_approval": False, "request_permissions": False, "rules": False,
+        "mcp_elicitations": False, "skill_approval": False}}}
+
+
+def _answer(reason, candidate=None):
+    return {"schema": 1, "scope": "PURE_ADMISSION_ONLY",
+            "status": ("CANDIDATE" if candidate else
+                       "NO_CANDIDATE" if reason == "NO_PENDING_TASK" else "BLOCKED"),
+            "reason": reason, "candidate": candidate,
+            "desired_settings": _settings_proposal() if candidate else None,
+            "runtime_io_performed": False, "mutation_authorized": False}
+
+
+def _policy_matches(policy):
+    if type(policy) is str:
+        return policy == "on-request"
+    expected = _settings_proposal()["approvalPolicy"]["granular"]
+    return (type(policy) is dict and set(policy) == {"granular"}
+            and type(policy["granular"]) is dict and set(policy["granular"]) == set(expected)
+            and all(value is False for value in policy["granular"].values()))
+
+
+def _shape(config, snapshot, state, schedule):
+    for value in (config, snapshot, state):
+        _plain(value)
+    _need(type(schedule) is tuple and len(schedule) == 2 and all(callable(f) for f in schedule))
+    _keys(config, "schema batch_id project freshness schedule tasks")
+    _need(type(config["schema"]) is int and config["schema"] == 1)
+    _identifier(config["batch_id"])
+    project = config["project"]
+    _keys(project, "project_id repository dev_root git_common_dir base_sha allowed_writable_roots")
+    _identifier(project["project_id"])
+    _need(project["project_id"] == "agent_project", "PROJECT_NOT_ALLOWED")
+    _need(type(project["repository"]) is str and
+          re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9-]{0,38}/agent_project", project["repository"]))
+    for field in ("dev_root", "git_common_dir"):
+        _path(project[field], True)
+    _hash(project["base_sha"], 40)
+    _unique_list(project["allowed_writable_roots"], lambda p: _path(p, True))
+    _need(project["dev_root"] in project["allowed_writable_roots"])
+    _keys(config["freshness"], "max_age_ms")
+    _integer(config["freshness"]["max_age_ms"], 1, 300000)
+    schedule[0](config["schedule"])
+    tasks = config["tasks"]
+    _need(type(tasks) is list and len(tasks) <= 32)
+    ids = []
+    for task in tasks:
+        _keys(task, "task_id predecessor_id plan_sha256 required_test_ids allowed_files timeout_sec")
+        _identifier(task["task_id"])
+        _need(task["task_id"] not in ids)
+        _need(task["predecessor_id"] == (ids[-1] if ids else None))
+        ids.append(task["task_id"])
+        _hash(task["plan_sha256"], 64)
+        _unique_list(task["required_test_ids"], _identifier)
+        _unique_list(task["allowed_files"], lambda p: _path(p, False))
+        _integer(task["timeout_sec"], 30, 7200)
+
+    _keys(snapshot, "now_ms project pauses quota control settings")
+    _integer(snapshot["now_ms"])
+    for field in ("project", "pauses", "quota", "control", "settings"):
+        _keys(snapshot[field], "observed_at_ms value")
+        _integer(snapshot[field]["observed_at_ms"])
+    actual = snapshot["project"]["value"]
+    _keys(actual, "project_id repository dev_root git_common_dir base_sha head_sha")
+    _identifier(actual["project_id"])
+    _need(actual["project_id"] == "agent_project", "PROJECT_NOT_ALLOWED")
+    _need(type(actual["repository"]) is str)
+    for field in ("dev_root", "git_common_dir"):
+        _path(actual[field], True)
+    for field in ("base_sha", "head_sha"):
+        _hash(actual[field], 40)
+    _need(all(actual[k] == project[k] for k in actual if k != "head_sha"),
+          "PROJECT_BINDING_MISMATCH")
+    for field, names in (("pauses", "root user state"),
+                         ("quota", "ordinaryUsageAllowed exhausted"),
+                         ("control", "available desired_settings_supported")):
+        _keys(snapshot[field]["value"], names)
+        _need(all(type(v) in (bool, type(None)) for v in snapshot[field]["value"].values()))
+    settings = snapshot["settings"]["value"]
+    _keys(settings, "cwd approvalPolicy approvalsReviewer sandbox runtimeWorkspaceRoots")
+    _keys(settings["sandbox"], "type networkAccess writableRoots")
+
+    _keys(state, "schema batch_id clock_floor_ms admissions evidence")
+    _need(type(state["schema"]) is int and state["schema"] == 1)
+    _identifier(state["batch_id"])
+    _need(state["batch_id"] == config["batch_id"], "PROJECT_BINDING_MISMATCH")
+    _integer(state["clock_floor_ms"])
+    admissions = state["admissions"]
+    _need(type(admissions) is list and len(admissions) <= len(tasks))
+    seen = []
+    statuses = {"RESERVED", "QUEUED", "ACTIVE", "COMPLETED", "FAILED", "INTERRUPTED",
+                "UNKNOWN", "SUBMISSION_UNKNOWN", "START_UNKNOWN", "CHECKPOINT_UNCONFIRMED"}
+    for admission in admissions:
+        _keys(admission, "task_id project_id base_sha head_sha plan_sha256 admitted_at_ms status")
+        _identifier(admission["task_id"])
+        _need(admission["task_id"] in ids and admission["task_id"] not in seen)
+        seen.append(admission["task_id"])
+        task = tasks[ids.index(admission["task_id"])]
+        _need(admission["project_id"] == project["project_id"] and
+              admission["plan_sha256"] == task["plan_sha256"], "PROJECT_BINDING_MISMATCH")
+        _hash(admission["base_sha"], 40)
+        _hash(admission["plan_sha256"], 64)
+        _integer(admission["admitted_at_ms"])
+        _need(admission["status"] in statuses)
+        if admission["status"] == "COMPLETED":
+            _hash(admission["head_sha"], 40)
+        else:
+            _need(admission["head_sha"] is None)
+    _need(type(state["evidence"]) is dict and set(state["evidence"]) <= set(seen))
+    return project, tasks, admissions
+
+
+def _completion(bundle, config, task, admission):
+    """Check supplied evidence binding; this does not authenticate its issuer."""
+    try:
+        _keys(bundle, "binding terminal tests review draft_pr readback")
+        project = config["project"]
+        binding = {"project_id": project["project_id"], "repository": project["repository"],
+                   "batch_id": config["batch_id"], "task_id": task["task_id"],
+                   "dev_root": project["dev_root"], "git_common_dir": project["git_common_dir"],
+                   "base_sha": admission["base_sha"], "head_sha": admission["head_sha"],
+                   "plan_sha256": task["plan_sha256"]}
+        _need(bundle["binding"] == binding)
+        digest = hashlib.sha256(json.dumps(binding, sort_keys=True, separators=(",", ":"),
+                                           ensure_ascii=True).encode()).hexdigest()
+        for field in ("terminal", "tests", "review", "draft_pr", "readback"):
+            _need(type(bundle[field]) is dict and bundle[field].get("binding_sha256") == digest)
+        terminal, tests, review, pr, readback = (bundle[k] for k in
+                                                ("terminal", "tests", "review", "draft_pr", "readback"))
+        _keys(terminal, "binding_sha256 status")
+        _need(terminal["status"] == "completed")
+        _keys(tests, "binding_sha256 results failures errors skipped")
+        _need(type(tests["results"]) is dict and
+              set(tests["results"]) == set(task["required_test_ids"]) and
+              all(value == "PASS" for value in tests["results"].values()))
+        for field in ("failures", "errors", "skipped"):
+            _integer(tests[field], 0, 0)
+        _keys(review, "binding_sha256 status independent implementer_id reviewer_id")
+        _keys(readback, "binding_sha256 status head_sha files_sha256")
+        _need(review["status"] in ("PASS", "FAIL", "PENDING", "NOT_RUN") and
+              readback["status"] in ("PASS", "FAIL", "PENDING", "NOT_RUN"))
+        # M2 targets only this completion gate, retaining every other binding check.
+        # M2: isolated planned guard omission
+        _need(review["independent"] is True)
+        _identifier(review["implementer_id"])
+        _identifier(review["reviewer_id"])
+        _need(review["implementer_id"] != review["reviewer_id"])
+        _keys(pr, "binding_sha256 url draft base_sha head_sha files_sha256")
+        prefix = "https://github.com/" + project["repository"] + "/pull/"
+        _need(type(pr["url"]) is str and pr["url"].startswith(prefix) and
+              re.fullmatch(r"[1-9][0-9]*", pr["url"][len(prefix):]))
+        _need(pr["draft"] is True and pr["base_sha"] == binding["base_sha"] and
+              pr["head_sha"] == binding["head_sha"] and readback["head_sha"] == binding["head_sha"])
+        files = pr["files_sha256"]
+        _need(type(files) is dict and bool(files) and set(files) <= set(task["allowed_files"]))
+        for value in files.values():
+            _hash(value, 64)
+        _need(readback["files_sha256"] == files)
+    except (Exception,):
+        raise _Rejected("EVIDENCE_UNVERIFIED") from None
+
+
+def select_next_task(config, snapshot, state, *, schedule):
+    """Return a non-authoritative candidate or a fixed blocking reason, without I/O."""
+    try:
+        project, tasks, admissions = _shape(config, snapshot, state, schedule)
+        for name in ("root", "user", "state"):
+            value = snapshot["pauses"]["value"][name]
+            _need(value is not True, name.upper() + "_PAUSED")
+            _need(value is not None, "PAUSE_UNVERIFIED")
+        now_ms = snapshot["now_ms"]
+        _need(now_ms >= state["clock_floor_ms"], "SNAPSHOT_TIME_INVALID")
+        for name in ("project", "pauses", "quota", "control", "settings"):
+            age = now_ms - snapshot[name]["observed_at_ms"]
+            _need(age >= 0, "SNAPSHOT_TIME_INVALID")
+            _need(age <= config["freshness"]["max_age_ms"], "SNAPSHOT_STALE")
+        _need(all(a["admitted_at_ms"] <= now_ms for a in admissions), "SNAPSHOT_TIME_INVALID")
+        _need(not any(a["status"] in ("UNKNOWN", "SUBMISSION_UNKNOWN", "START_UNKNOWN",
+                                      "CHECKPOINT_UNCONFIRMED") for a in admissions), "UNKNOWN_STATE")
+        occupied = sum(a["status"] in ("RESERVED", "QUEUED", "ACTIVE") for a in admissions)
+        _need(occupied <= 1, "STATE_CONFLICT")
+        _need(occupied == 0, "ACTIVE_TASK")
+        _need([a["task_id"] for a in admissions] ==
+              [t["task_id"] for t in tasks[:len(admissions)]], "STATE_CONFLICT")
+        for index, admission in enumerate(admissions):
+            previous_head = admissions[index - 1]["head_sha"] if index else project["base_sha"]
+            _need(admission["base_sha"] == previous_head, "PROJECT_BINDING_MISMATCH")
+
+        epoch = dt.datetime(1970, 1, 1, tzinfo=dt.timezone.utc)
+        now = epoch + dt.timedelta(milliseconds=now_ms)
+        windows = schedule[1](config["schedule"], now)
+        _need(bool(windows), "OUTSIDE_WINDOW")
+        start, end, cap, _ = windows[0]
+        started = sum(start <= epoch + dt.timedelta(milliseconds=a["admitted_at_ms"]) < end
+                      for a in admissions)
+        _need(started < cap, "WINDOW_CAP_REACHED")
+        # Admissions remain consumed after failure, uncertainty, or a date boundary.
+        _need(len(admissions) < 2, "LIFETIME_CAP_REACHED")
+        task = tasks[len(admissions)] if len(admissions) < len(tasks) else None
+        if task is not None:
+            remaining_ms = (end - now) // dt.timedelta(milliseconds=1)
+            _need(remaining_ms >= (task["timeout_sec"] + 120) * 1000, "WINDOW_TOO_SHORT")
+        quota = snapshot["quota"]["value"]
+        _need(quota["ordinaryUsageAllowed"] is True and quota["exhausted"] is False,
+              "USAGE_UNVERIFIED")
+        control = snapshot["control"]["value"]
+        _need(control["available"] is True, "CONTROL_UNAVAILABLE")
+        settings = snapshot["settings"]["value"]
+        sandbox = settings["sandbox"]
+        policy = settings["approvalPolicy"]
+        _need(control["desired_settings_supported"] is True and
+              settings["cwd"] == project["dev_root"] and
+              settings["runtimeWorkspaceRoots"] == [project["dev_root"]] and
+              settings["approvalsReviewer"] in ("user", "auto_review") and
+              _policy_matches(policy) and
+              sandbox["type"] == "workspaceWrite" and sandbox["networkAccess"] is False and
+              sandbox["writableRoots"] == project["allowed_writable_roots"], "SETTINGS_UNVERIFIED")
+        if task is None:
+            return _answer("NO_PENDING_TASK")
+        base = project["base_sha"]
+        if admissions:
+            predecessor = admissions[-1]
+            _need(predecessor["status"] == "COMPLETED", "PREDECESSOR_NOT_COMPLETED")
+            _completion(state["evidence"].get(predecessor["task_id"]), config,
+                        tasks[len(admissions) - 1], predecessor)
+            base = predecessor["head_sha"]
+        _need(snapshot["project"]["value"]["head_sha"] == base, "HEAD_BINDING_MISMATCH")
+        candidate = {key: project[key] for key in
+                     ("project_id", "repository", "dev_root", "git_common_dir")}
+        candidate.update(task_id=task["task_id"], base_sha=base, plan_sha256=task["plan_sha256"])
+        return _answer("CANDIDATE_READY", candidate)
+    except _Rejected as error:
+        return _answer(str(error))
+    except Exception:
+        return _answer("INPUT_INVALID")

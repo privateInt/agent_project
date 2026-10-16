@@ -1,0 +1,66 @@
+{
+  "copy_root": "/tmp/admission-portable-copy-vsof5ft2/renamed-minimal-source",
+  "copy_files": [
+    {
+      "relative_path": "src/ops/tools/codex_unattended_admission.py",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/tools/codex_unattended_admission.py",
+      "copy": "/tmp/admission-portable-copy-vsof5ft2/renamed-minimal-source/src/ops/tools/codex_unattended_admission.py",
+      "sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51"
+    },
+    {
+      "relative_path": "src/ops/tools/tests/test_codex_unattended_admission.py",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/tools/tests/test_codex_unattended_admission.py",
+      "copy": "/tmp/admission-portable-copy-vsof5ft2/renamed-minimal-source/src/ops/tools/tests/test_codex_unattended_admission.py",
+      "sha256": "33d6ac1d164c5fa5e6c11b8e4dbce062cb9a65735e4bd95158a2f28c6af1d84b"
+    },
+    {
+      "relative_path": "src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json",
+      "copy": "/tmp/admission-portable-copy-vsof5ft2/renamed-minimal-source/src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json",
+      "sha256": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc"
+    },
+    {
+      "relative_path": "src/ops/tools/tests/fixtures/codex_unattended_admission/flex_gate.py.txt",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/tools/tests/fixtures/codex_unattended_admission/flex_gate.py.txt",
+      "copy": "/tmp/admission-portable-copy-vsof5ft2/renamed-minimal-source/src/ops/tools/tests/fixtures/codex_unattended_admission/flex_gate.py.txt",
+      "sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b"
+    },
+    {
+      "relative_path": "src/__init__.py",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/__init__.py",
+      "copy": "/tmp/admission-portable-copy-vsof5ft2/renamed-minimal-source/src/__init__.py",
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64"
+    },
+    {
+      "relative_path": "src/ops/__init__.py",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/__init__.py",
+      "copy": "/tmp/admission-portable-copy-vsof5ft2/renamed-minimal-source/src/ops/__init__.py",
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284"
+    }
+  ],
+  "gate_fixture_reference_only": true,
+  "gate_sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+  "six_old_method_bodies": {
+    "select": "source bytes and AST unchanged",
+    "expect": "source bytes and AST unchanged",
+    "test_input_binding_and_purity": "same bytes and AST after removal of sole added helper call",
+    "test_pause_and_freshness": "source bytes and AST unchanged",
+    "test_schedule_quota_and_settings": "source bytes and AST unchanged",
+    "test_state_and_t1_t2_evidence": "source bytes and AST unchanged",
+    "test_lifetime_cap_blocks_third_candidate": "source bytes and AST unchanged",
+    "test_t2_pending_review_blocks": "source bytes and AST unchanged"
+  },
+  "all_other_helpers_and_assertions_unchanged": true,
+  "only_allowed_ast_delta": true,
+  "mutant_target_methods_unchanged": [
+    "test_lifetime_cap_blocks_third_candidate",
+    "test_t2_pending_review_blocks"
+  ],
+  "synthetic_fixture_bytes_and_values_unchanged": true,
+  "normal6_mutants2_reexecutions": 0,
+  "setup_source_unchanged": true,
+  "test_after_sha256": "33d6ac1d164c5fa5e6c11b8e4dbce062cb9a65735e4bd95158a2f28c6af1d84b",
+  "target": "case_portable_t1_t2_candidates",
+  "initial_gate_loads_preserved": 1,
+  "fresh_process_gate_loads_expected": 1
+}

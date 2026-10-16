@@ -1,0 +1,11 @@
+--- normal/source.py
++++ M2/source.py
+@@ -210,7 +210,7 @@
+         _need(review["status"] in ("PASS", "FAIL", "PENDING", "NOT_RUN") and
+               readback["status"] in ("PASS", "FAIL", "PENDING", "NOT_RUN"))
+         # M2 targets only this completion gate, retaining every other binding check.
+-        _need(review["status"] == "PASS" and readback["status"] == "PASS")
++        # M2: isolated planned guard omission
+         _need(review["independent"] is True)
+         _identifier(review["implementer_id"])
+         _identifier(review["reviewer_id"])

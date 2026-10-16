@@ -1,0 +1,267 @@
+{
+  "parent_commit": "c862bfc6951491192a9fe98b535c9a8be921ee35",
+  "fixture_only": true,
+  "actual_runtime_transition": "NOT_COMPLETE",
+  "main_merged": false,
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-unattended-admission-20261016/review/final-review.md",
+    "sha256": "f49f9bcf7c119187b74d8af0972e07c803bc3e8cad41f4cb304809a5d067058b"
+  },
+  "raw_byte_retention": "Historical code/logs receive .txt suffix only; original bytes and paths are retained in mapping.",
+  "final_whole_suite_repeated": false,
+  "files": {
+    "src/ops/tools/codex_unattended_admission.py": {
+      "sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+      "source": "src/ops/tools/codex_unattended_admission.py"
+    },
+    "src/ops/tools/tests/test_codex_unattended_admission.py": {
+      "sha256": "33d6ac1d164c5fa5e6c11b8e4dbce062cb9a65735e4bd95158a2f28c6af1d84b",
+      "source": "src/ops/tools/tests/test_codex_unattended_admission.py"
+    },
+    "docs/testing/codex-unattended-admission-observed-20261016.json": {
+      "sha256": "8061f65edc32ffb6623bf3249674a7515b6fa821c183f4320c47fcbaab69fae3",
+      "source": "docs/testing/codex-unattended-admission-observed-20261016.json"
+    },
+    "docs/development.md": {
+      "sha256": "7b7e3c08f59b0a8b697c15c31a5f2704deb72c14fed1278f660089517fb93cc4",
+      "source": "docs/development.md"
+    },
+    "docs/status.md": {
+      "sha256": "1cceca2fe4dd2585588593fab0a633bfe2c2967c7a28ee066ae29c639508c82e",
+      "source": "docs/status.md"
+    },
+    "docs/roadmap.md": {
+      "sha256": "fa262c1b6c45dce38486fe5012ee85ad4b36ae1f346dfe04fc2b9b046723859b",
+      "source": "docs/roadmap.md"
+    },
+    "docs/HANDOFF_NEXT_SESSION.md": {
+      "sha256": "fabb57bf49e262801cff9e24ce45db1bd879ea52694623c813528369fef34a65",
+      "source": "docs/HANDOFF_NEXT_SESSION.md"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_admission/flex_gate.py.txt": {
+      "sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_admission/flex_gate.py.txt"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json": {
+      "sha256": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/observed-before-final-review.json": {
+      "sha256": "88a127b096a46bc5225be086859cda56016e71e357b82019048ede85cc9da4d5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/codex-unattended-admission-20261016-observed-before-final-review.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/evidence-sha256.json": {
+      "sha256": "3eb821e1e4445b7035174a4e897ea0aeee15c08a6953ea771331e59bb9f08fe5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/evidence-sha256.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/execution-started.json": {
+      "sha256": "ae51b82014111b47dc939f8ff0f92258327f51de09d0a894fae4a611a5ee995c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/execution-started.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/execution.log.txt": {
+      "sha256": "b8105d48edecde76bbf2271b6d50113a59fc549ef5d7a9413d646e59bc39edb2",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/execution.log"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/flex_gate.py.txt": {
+      "sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/flex_gate.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/manifest-before.json": {
+      "sha256": "61129afdaddaa274180cd4bd0226aac41d16ea67edbb550493abe6bf3744faf2",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/manifest-before.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/margin-fix-audit.json": {
+      "sha256": "4c329e11b8007c4f78340ab1f9a1c2e6dbb1fc259e95502dd24c32e18474dcd3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/margin-fix-audit.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/mutants/M1/codex_unattended_admission.py.txt": {
+      "sha256": "70f919a4abeae6791b6f3d8330c772bb18f0fb4b948813b174e5e60126fc0f15",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/mutants/M1/codex_unattended_admission.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/mutants/M1/execution.log.txt": {
+      "sha256": "6375076bd2d5a55588726afbdd2a2f0a362c9ad56faa40db57649d69f8fe8ccb",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/mutants/M1/execution.log"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/mutants/M1/mutation.json": {
+      "sha256": "bc165a9052b28eb0ab2b657c87ef681b6faf8d413f9a64e3d7073bc4b0bb722b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/mutants/M1/mutation.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/mutants/M1/result.json": {
+      "sha256": "fde3b9f5a8729520b5269ca0b7147c9e38f4e23dd194951fb940917bbcc6ecbf",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/mutants/M1/result.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/mutants/M1/source.diff": {
+      "sha256": "06051113ffb35637dd9ed980d73aef1b57bba16c31ba91780ecf0006e7d36f13",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/mutants/M1/source.diff"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/mutants/M2/codex_unattended_admission.py.txt": {
+      "sha256": "3e6c79ec22152354978c5cb148f2444c8216f5c21ae349b2efabeef736bb5aa1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/mutants/M2/codex_unattended_admission.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/mutants/M2/execution.log.txt": {
+      "sha256": "3fc4230217990bea191f9bd7a49ef1e491ae90996102f80bb4e091fc1332f07e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/mutants/M2/execution.log"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/mutants/M2/mutation.json": {
+      "sha256": "412e09bc966cad7b15d6cd449ddc8e3d1b09809d98dd78712178f510ad5b2721",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/mutants/M2/mutation.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/mutants/M2/result.json": {
+      "sha256": "45c3c08cff6104776474707927dafb48ee95bb248ebb0664c2870d7851b209f9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/mutants/M2/result.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/mutants/M2/source.diff": {
+      "sha256": "9b2384975531110f3e6354b211fa45df021202de5212364c9358ed620f0e4677",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/mutants/M2/source.diff"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/normal-result.json": {
+      "sha256": "d58f8e139242c6566410d108f68e7ad049af86154b74daed7a47b07664951d79",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/normal-result.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/plan-review.md": {
+      "sha256": "60483649f5ae98246455425785f4bfb4e1442209cdadc2b7e9b44cac9e038431",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/plan-review.md"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/plan.md": {
+      "sha256": "321c5c9f8fa01246aeb627677505bc5581cc390174b47279b10f4760d489f410",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/plan.md"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/result.json": {
+      "sha256": "91253fabc1bdd89934585c8b46e18743fea67e22b5d8a27c46b8f51250a8e601",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/result.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/run-once.py.txt": {
+      "sha256": "70a328d7acb700caeff9a19154b8f07a8fce749642e337826e009d754b71a288",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/run-once.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/source.py.txt": {
+      "sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/source.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/synthetic.json": {
+      "sha256": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/synthetic.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/test-fixture-pins.json": {
+      "sha256": "3c8b27fff84e466fa55311c41f9925edb3b1d44bcf7b569224917de1c07d9e02",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/test-fixture-pins.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-run-1/test_codex_unattended_admission.py.txt": {
+      "sha256": "8c525d67d236627227080b51f4605afc8b9a69daeec7c47edb2276a5ff4effc1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-run-1/test_codex_unattended_admission.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/evidence-sha256.json": {
+      "sha256": "b9002f281359c7449d0edb4ea7685c570d024fd09ea615241509226b01cd77b8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/evidence-sha256.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/execution-started.json": {
+      "sha256": "185ecc6043e800c02b7ea36180de4d4f85642b4b990223c75d9721836af3f584",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/execution-started.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/execution.log.txt": {
+      "sha256": "be29257f044355cc4f5918d6e3f5683286b3e9c3e3b19ba77b4d9b1290634781",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/execution.log"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/manifest-before.json": {
+      "sha256": "61d78f8316838987a9f511a9f68a8376011e65f27fb63245f3d69182375ca82a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/manifest-before.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/portability-audit.json": {
+      "sha256": "bd6af613ed428ee9532f491a90aadf185c4e7acdf5b267559eb33be889112606",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/portability-audit.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/result.json": {
+      "sha256": "2c3d0c4f47162056a51b3a8bb240b70ee961f2e087bbc856af750d35954f86a2",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/result.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/retained-flex-gate.py.txt": {
+      "sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/retained-flex-gate.py.txt"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/run-portable-once.py.txt": {
+      "sha256": "70fbc283523f339806b46a67c6d3a257898dedaa73f719c841e7969ee15017f8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/run-portable-once.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/source.py.txt": {
+      "sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/source.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/sources/src/__init__.py.txt": {
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/sources/src/__init__.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/sources/src/ops/__init__.py.txt": {
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/sources/src/ops/__init__.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/sources/src/ops/tools/codex_unattended_admission.py.txt": {
+      "sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/sources/src/ops/tools/codex_unattended_admission.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/sources/src/ops/tools/tests/fixtures/codex_unattended_admission/flex_gate.py.txt": {
+      "sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/sources/src/ops/tools/tests/fixtures/codex_unattended_admission/flex_gate.py.txt"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/sources/src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json": {
+      "sha256": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/sources/src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/sources/src/ops/tools/tests/test_codex_unattended_admission.py.txt": {
+      "sha256": "33d6ac1d164c5fa5e6c11b8e4dbce062cb9a65735e4bd95158a2f28c6af1d84b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/sources/src/ops/tools/tests/test_codex_unattended_admission.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/synthetic.json": {
+      "sha256": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/synthetic.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/test-after.py.txt": {
+      "sha256": "33d6ac1d164c5fa5e6c11b8e4dbce062cb9a65735e4bd95158a2f28c6af1d84b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/test-after.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/test-before.py.txt": {
+      "sha256": "8c525d67d236627227080b51f4605afc8b9a69daeec7c47edb2276a5ff4effc1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/test-before.py"
+    },
+    "docs/testing/codex-unattended-admission-20261016/admission-portability/test.diff": {
+      "sha256": "17a148cdd265dfea55cf54b920e2a74bd0266d1f0910fead98f8fd02ca886e33",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-portability/test.diff"
+    },
+    "docs/testing/codex-unattended-admission-20261016/records/admission-implementation-start.json": {
+      "sha256": "ff664f24244ac72499c554499a1ac6de402562e9685a63bc88a726b30e2725b5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-implementation-start.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/records/admission-implementation-ready.json": {
+      "sha256": "a4647c75532ef7f28bbf3f4d3b1115d6591c9ef816f5f95e585144f2c3e6ca17",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-implementation-ready.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/records/admission-margin-fix-audit.json": {
+      "sha256": "4c329e11b8007c4f78340ab1f9a1c2e6dbb1fc259e95502dd24c32e18474dcd3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-margin-fix-audit.json"
+    },
+    "docs/testing/codex-unattended-admission-20261016/records/admission-margin-fix.diff": {
+      "sha256": "2855d0bdd0119f0dfdf1836137eb05e42c8390e55a09c2be3aa95c9e99d2025a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-margin-fix.diff"
+    },
+    "docs/testing/codex-unattended-admission-20261016/records/admission-source-before-margin-fix.py.txt": {
+      "sha256": "0bbc6cb46efcef3af84d4ffeca7eeccf94af3618073cdcba413254a2fd1ef91d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/admission-source-before-margin-fix.py.txt"
+    },
+    "docs/testing/codex-unattended-admission-20261016/review/agent-unattended-admission-plan.md": {
+      "sha256": "321c5c9f8fa01246aeb627677505bc5581cc390174b47279b10f4760d489f410",
+      "source": "/tmp/agent-unattended-admission-plan.md"
+    },
+    "docs/testing/codex-unattended-admission-20261016/review/agent-unattended-admission-plan-review.md": {
+      "sha256": "60483649f5ae98246455425785f4bfb4e1442209cdadc2b7e9b44cac9e038431",
+      "source": "/tmp/agent-unattended-admission-plan-review.md"
+    },
+    "docs/testing/codex-unattended-admission-20261016/review/agent-unattended-admission-static-review.md": {
+      "sha256": "2b1af94ae3f13ff931f21a861d6b0350ad92cd475f204a12700ea3efc0978df2",
+      "source": "/tmp/agent-unattended-admission-static-review.md"
+    },
+    "docs/testing/codex-unattended-admission-20261016/review/final-review.md": {
+      "sha256": "f49f9bcf7c119187b74d8af0972e07c803bc3e8cad41f4cb304809a5d067058b",
+      "source": "/tmp/agent-unattended-admission-final-review.md"
+    }
+  }
+}

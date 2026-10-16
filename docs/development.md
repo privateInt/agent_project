@@ -1,5 +1,7 @@
 # 개발 안내
 
+2026-10-16: [순수 admission 선택기](../src/ops/tools/codex_unattended_admission.py)는 외부 config/snapshot/state와 기존 gate의 두 순수 함수를 받아 후보만 반환한다. [합성 검사·변이·이식성 근거](testing/codex-unattended-admission-observed-20261016.json)를 실제 queue 실행과 구분한다. 후보는 실행·설정 변경 권한이 아니며 설치된 gate를 수정하지 않는다.
+
 2026-10-13 추가: 현재 개발 사본의 첫 작업은 src 구조·Ops 통합과 경로 검증이며 다음 기능 작업은 F0a다. [소스 구조](architecture/source-layout.md)를 따른다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
 
 Codex 작업은 [AGENTS.md](../AGENTS.md), [최신 인수인계](HANDOFF_NEXT_SESSION.md), [확장 계획](plans/platform-expansion-work-plan-20261012.md)의 첫 미완료 작은 단위부터 수행한다. 사용자 서버·대역 검사·품질 인수와 계획/실제 구현을 구분한다. 계획 파일만 적용한 상태를 CI/CD나 상시 Agent 실행 완료로 표시하지 않는다.

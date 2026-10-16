@@ -1,0 +1,159 @@
+#!/usr/bin/env python3
+"""Fail-closed admission gate for a flexible Codex systemd timer.
+
+Only controls *new* starts through this systemd unit. The runtime itself has
+its own single-runner flock. Not a network sandbox, a spend cap, or a guarantee
+of process termination at the schedule boundary.
+"""
+import datetime as dt
+import json
+import os
+from pathlib import Path
+import re
+import sys
+from zoneinfo import ZoneInfo
+
+STATE = Path('/home/codex_shshin/automation_mvp')
+CONFIG = Path('/etc/codex-agent/schedule.json')
+OPERATOR_PAUSE = Path('/etc/codex-agent/PAUSE')
+SEOUL = ZoneInfo('Asia/Seoul')
+MAX_JSON_BYTES = 65536
+MARGIN_SEC = 120
+CLOCK_PATTERN = re.compile(r'^(?:[01]\d|2[0-3]):[0-5]\d$')
+
+
+def default_config():
+    return {'version': 2, 'default': {
+        'enabled': True, 'start': '23:00', 'end': '07:00',
+        'max_starts': 3}, 'dates': {}}
+
+
+def validate_policy(policy):
+    if not isinstance(policy, dict) or set(policy) != {'enabled', 'start', 'end', 'max_starts'}:
+        raise ValueError('each schedule policy must have enabled,start,end,max_starts')
+    if type(policy['enabled']) is not bool:
+        raise ValueError('enabled must be boolean')
+    for key in ('start', 'end'):
+        if not isinstance(policy[key], str) or not CLOCK_PATTERN.fullmatch(policy[key]):
+            raise ValueError(f'invalid {key} time; use HH:MM')
+    if type(policy['max_starts']) is not int or not 1 <= policy['max_starts'] <= 48:
+        raise ValueError('max_starts must be 1..48')
+    return policy
+
+
+def validate_config(config):
+    if not isinstance(config, dict) or set(config) != {'version', 'default', 'dates'}:
+        raise ValueError('schedule JSON requires exactly version/default/dates')
+    if type(config['version']) is not int or config['version'] != 2:
+        raise ValueError('unsupported schedule schema version')
+    validate_policy(config['default'])
+    dates = config['dates']
+    if not isinstance(dates, dict) or len(dates) > 366:
+        raise ValueError('dates must be an object of <=366 entries')
+    for day, policy in dates.items():
+        if not isinstance(day, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', day):
+            raise ValueError('date key must be YYYY-MM-DD')
+        if dt.date.fromisoformat(day).isoformat() != day:
+            raise ValueError('invalid calendar date')
+        validate_policy(policy)
+    return config
+
+
+def safe_json_file(path):
+    if path.is_symlink() or not path.is_file():
+        raise RuntimeError(f'not a regular JSON file: {path}')
+    if path.stat().st_size > MAX_JSON_BYTES:
+        raise RuntimeError(f'JSON exceeds size limit: {path}')
+    return json.loads(path.read_text(encoding='utf-8'))
+
+
+def read_config(path=CONFIG):
+    # Unlike an optional config, a missing config MUST NOT fall back to unsafe defaults.
+    return validate_config(safe_json_file(path))
+
+
+def clock(value):
+    hour, minute = (int(x) for x in value.split(':'))
+    return dt.time(hour, minute)
+
+
+def windows(config, now):
+    """Yield (start, end, cap, source) for candidate windows anchored on dates.
+
+    The date override controls the window STARTING on that day. Windows may
+    continue into the next morning/day, when the next day's policy applies.
+    """
+    local = now.astimezone(SEOUL)
+    candidates = []
+    for delta in (1, 0, -1):
+        day = local.date() - dt.timedelta(days=delta)
+        policy = config['dates'].get(day.isoformat(), config['default'])
+        if not policy['enabled']:
+            continue
+        start = dt.datetime.combine(day, clock(policy['start']), tzinfo=SEOUL)
+        end = dt.datetime.combine(day, clock(policy['end']), tzinfo=SEOUL)
+        if end <= start:
+            end += dt.timedelta(days=1)
+        if start <= local < end:
+            candidates.append((start, end, policy['max_starts'], day.isoformat()))
+    # If two windows overlap, the most recently started schedule takes precedence.
+    return sorted(candidates, key=lambda item: item[0], reverse=True)
+
+
+def decide(state, config, now, operator_pause=OPERATOR_PAUSE):
+    """Return (admitted, reason), fail closed on malformed queue/config."""
+    validate_config(config)
+    if operator_pause.exists() or (state / 'PAUSE').exists():
+        return False, 'PAUSED_BY_OPERATOR'
+    selections = windows(config, now)
+    if not selections:
+        return False, 'OUTSIDE_CONFIGURED_WINDOW'
+    start, end, cap, source_day = selections[0]
+    jobs_dir = state / 'jobs'
+    if not jobs_dir.is_dir() or jobs_dir.is_symlink():
+        raise RuntimeError('invalid jobs directory')
+    jobs = []
+    for path in sorted(jobs_dir.glob('*.json')):
+        job = safe_json_file(path)
+        if not isinstance(job, dict):
+            raise ValueError('job data is not object')
+        jobs.append(job)
+    if any(j.get('status') in ('running', 'interrupted') for j in jobs):
+        return False, 'RUNNING_OR_INTERRUPTED_JOB_REQUIRES_REVIEW'
+    started = 0
+    for job in jobs:
+        stamp = job.get('started_at')
+        if not stamp:
+            continue
+        timestamp = dt.datetime.fromisoformat(stamp)
+        if timestamp.tzinfo is None:
+            raise RuntimeError('naive job start timestamp')
+        if start <= timestamp.astimezone(SEOUL) < end:
+            started += 1
+    if started >= cap:
+        return False, f'WINDOW_CAP_REACHED_{started}_OF_{cap}_FROM_{source_day}'
+    queued = next((job for job in jobs if job.get('status') == 'queued'), None)
+    if queued is None:
+        return False, 'NO_QUEUED_JOBS'
+    timeout = queued.get('timeout', 900)
+    if type(timeout) is not int or not 30 <= timeout <= 7200:
+        raise RuntimeError('invalid job timeout')
+    remain = (end - now.astimezone(SEOUL)).total_seconds()
+    if timeout + MARGIN_SEC > remain:
+        return False, 'INSUFFICIENT_WINDOW_FOR_JOB_TIMEOUT'
+    return True, (f'ADMITTED_{queued.get("id", "unknown")}'
+                  f'_STARTED_{started}_OF_{cap}_WINDOW_{source_day}')
+
+
+def main():
+    try:
+        allowed, reason = decide(STATE, read_config(), dt.datetime.now(dt.timezone.utc))
+    except Exception as exc:
+        print(f'GATE_ERROR: {type(exc).__name__}: {exc}', file=sys.stderr)
+        return 255
+    print(('ALLOW: ' if allowed else 'SKIP: ') + reason)
+    return 0 if allowed else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

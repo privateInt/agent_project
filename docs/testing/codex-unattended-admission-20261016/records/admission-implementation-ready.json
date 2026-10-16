@@ -1,0 +1,7 @@
+{
+  "source_sha256": "0bbc6cb46efcef3af84d4ffeca7eeccf94af3618073cdcba413254a2fd1ef91d",
+  "python310_ast": "PASS",
+  "runtime_executed": false,
+  "scope": "pure admission only",
+  "source_fields": "config/snapshot/state external, no owner values invented"
+}
