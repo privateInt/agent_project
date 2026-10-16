@@ -1,0 +1,223 @@
+"""Bounded control RPC over one caller-selected local Unix WebSocket.
+
+No thread creation, queue dispatch, credential access, reconnect or TCP fallback.
+The caller supplies the existing endpoint and the exact permitted thread IDs.
+"""
+import json
+import socket
+import time
+import uuid
+
+from . import codex_readiness as rpc
+
+MAX_MESSAGE = rpc.MAX_LINE
+MAX_WIRE = rpc.MAX_STDOUT
+MAX_HEADERS = 16384
+METHODS = frozenset({"initialize", "configRequirements/read",
+                     "account/rateLimits/read", "thread/resume",
+                     "thread/settings/update"})
+ProbeError = rpc.ProbeError
+
+
+class _DeadlineSocket(socket.socket):
+    def __init__(self, owner):
+        super().__init__(socket.AF_UNIX, socket.SOCK_STREAM)
+        self.owner = owner
+        self.handshaking = True
+        self.received = 0
+        self.header_received = 0
+
+    def _bounded(self):
+        left = min(self.owner.deadline, self.owner.request_deadline) - time.monotonic()
+        if left <= 0:
+            raise ProbeError("RPC_REQUEST_TIMEOUT")
+        self.settimeout(left)
+
+    def recv(self, size, flags=0):
+        self._bounded()
+        # Bound both library header accumulation and all frame wire input.
+        remaining = MAX_WIRE - self.received
+        if self.handshaking:
+            remaining = min(remaining, MAX_HEADERS - self.header_received)
+        if remaining <= 0:
+            raise ProbeError("RPC_WIRE_LIMIT")
+        data = super().recv(min(size, remaining), flags)
+        self.received += len(data)
+        if self.handshaking:
+            self.header_received += len(data)
+        return data
+
+    def send(self, data, flags=0):
+        self._bounded()
+        return super().send(data, flags)
+
+
+class UnixWebSocketRpc:
+    def __init__(self, endpoint, allowed_threads, *, total_timeout=60, request_timeout=5):
+        if not 0 < total_timeout <= 60 or not 0 < request_timeout <= 5:
+            raise ProbeError("TIMEOUT_ARGUMENT_INVALID")
+        if (not isinstance(endpoint, str) or not endpoint.startswith("/")
+                or "\x00" in endpoint or "/../" in endpoint):
+            raise ProbeError("RPC_ENDPOINT_INVALID")
+        try:
+            tids = frozenset(allowed_threads)
+            if not tids or len(tids) > 3 or any(str(uuid.UUID(t)) != t for t in tids):
+                raise ValueError()
+        except (TypeError, ValueError, AttributeError):
+            raise ProbeError("RPC_THREAD_SCOPE_INVALID") from None
+        self.allowed_threads = tids
+        self.deadline = time.monotonic() + total_timeout
+        self.request_timeout = request_timeout
+        self.request_deadline = min(self.deadline, time.monotonic() + request_timeout)
+        self.next_id = 1
+        self.completed_ids = set()
+        self.notifications = 0
+        self.stdout_bytes = 0
+        self.ws = None
+        self.sock = None
+        try:
+            import websocket
+            from websocket._abnf import frame_buffer
+            if websocket.__version__ != "1.9.0":
+                raise ProbeError("RPC_DEPENDENCY_UNSUPPORTED")
+
+            class BoundedFrames(frame_buffer):
+                def __init__(frames, recv_fn, skip_utf8_validation=False):
+                    super().__init__(recv_fn, skip_utf8_validation)
+                    frames.message_bytes = 0
+                    frames.payload_bytes = 0
+
+                def recv_length(frames):
+                    super().recv_length()
+                    length = frames.length
+                    if length is None or length > MAX_MESSAGE:
+                        raise ProbeError("RPC_LINE_LIMIT")
+                    frames.payload_bytes += length
+                    if frames.payload_bytes > MAX_WIRE:
+                        raise ProbeError("RPC_STDOUT_LIMIT")
+                    fin, _, _, _, opcode, _, _ = frames.header
+                    if opcode in (0, 1, 2):
+                        frames.message_bytes += length
+                        if frames.message_bytes > MAX_MESSAGE:
+                            raise ProbeError("RPC_LINE_LIMIT")
+                        if fin:
+                            frames.message_bytes = 0
+
+            self.sock = _DeadlineSocket(self)
+            self.sock._bounded()
+            self.sock.connect(endpoint)
+            self.ws = websocket.WebSocket(enable_multithread=False)
+            self.ws.frame_buffer = BoundedFrames(self.ws._recv)
+            self.ws.connect("ws://localhost/", socket=self.sock,
+                            timeout=self.request_timeout, redirect_limit=0,
+                            suppress_origin=True, http_no_proxy=["*"])
+            if self.ws.getstatus() != 101:
+                raise ProbeError("RPC_UPGRADE_REJECTED")
+            self.sock.handshaking = False
+        except ProbeError:
+            self.close()
+            raise
+        except Exception:
+            self.close()
+            raise ProbeError("RPC_CONNECT_FAILED") from None
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_):
+        self.close()
+
+    def close(self):
+        # No graceful-close wait, reconnect, daemon or process-group control.
+        if self.ws is not None:
+            try:
+                self.ws.shutdown()
+            except Exception:
+                pass
+            self.ws = None
+        if self.sock is not None:
+            try:
+                self.sock.close()
+            except Exception:
+                pass
+            self.sock = None
+
+    def _validate(self, method, params):
+        if method not in METHODS:
+            raise ProbeError("RPC_METHOD_FORBIDDEN")
+        if not isinstance(params, dict):
+            raise ProbeError("RPC_PARAMS_FORBIDDEN")
+        if method in ("thread/resume", "thread/settings/update"):
+            if params.get("threadId") not in self.allowed_threads:
+                raise ProbeError("RPC_THREAD_FORBIDDEN")
+            expected = ({"threadId", "excludeTurns"} if method == "thread/resume"
+                        else {"threadId", "approvalsReviewer"})
+            if set(params) != expected:
+                raise ProbeError("RPC_PARAMS_FORBIDDEN")
+            if (method == "thread/resume" and params["excludeTurns"] is not True
+                    or method == "thread/settings/update"
+                    and params["approvalsReviewer"] != "auto_review"):
+                raise ProbeError("RPC_PARAMS_FORBIDDEN")
+        elif method in ("configRequirements/read", "account/rateLimits/read") and params:
+            raise ProbeError("RPC_PARAMS_FORBIDDEN")
+
+    def _send(self, value):
+        if self.ws is None:
+            raise ProbeError("RPC_CLIENT_CLOSED")
+        raw = json.dumps(value, separators=(",", ":"), allow_nan=False)
+        if len(raw.encode()) > MAX_MESSAGE:
+            raise ProbeError("RPC_REQUEST_TOO_LARGE")
+        try:
+            self.sock._bounded()
+            self.ws.send(raw)
+        except ProbeError:
+            raise
+        except Exception:
+            raise ProbeError("RPC_SEND_FAILED") from None
+
+    def notify_initialized(self):
+        self.request_deadline = min(self.deadline, time.monotonic() + self.request_timeout)
+        self._send({"method": "initialized", "params": {}})
+
+    def call(self, method, params=None):
+        self._validate(method, params)
+        self.request_deadline = min(self.deadline, time.monotonic() + self.request_timeout)
+        request_id = self.next_id
+        self.next_id += 1
+        self._send({"id": request_id, "method": method, "params": params})
+        while True:
+            try:
+                self.sock._bounded()
+                opcode, raw = self.ws.recv_data()
+            except ProbeError:
+                raise
+            except Exception:
+                raise ProbeError("RPC_RECEIVE_FAILED") from None
+            if opcode != 1 or not isinstance(raw, bytes):
+                raise ProbeError("RPC_TEXT_REQUIRED")
+            self.stdout_bytes += len(raw)
+            if len(raw) > MAX_MESSAGE:
+                raise ProbeError("RPC_LINE_LIMIT")
+            if self.stdout_bytes > MAX_WIRE:
+                raise ProbeError("RPC_STDOUT_LIMIT")
+            response = rpc._parse(raw)
+            if not isinstance(response, dict):
+                raise ProbeError("RPC_RESPONSE_INVALID")
+            if "method" in response:
+                if "id" in response:
+                    raise ProbeError("RPC_SERVER_REQUEST_FORBIDDEN")
+                self.notifications += 1
+                if self.notifications > rpc.MAX_NOTIFICATIONS:
+                    raise ProbeError("RPC_NOTIFICATION_LIMIT")
+                continue
+            rid = response.get("id")
+            if type(rid) is int and rid in self.completed_ids:
+                raise ProbeError("RPC_DUPLICATE_RESPONSE")
+            if type(rid) is not int or rid != request_id:
+                raise ProbeError("RPC_RESPONSE_ID_MISMATCH")
+            if "error" in response:
+                raise ProbeError("RPC_REMOTE_ERROR")
+            if not isinstance(response.get("result"), dict):
+                raise ProbeError("RPC_RESULT_INVALID")
+            self.completed_ids.add(rid)
+            return response["result"]

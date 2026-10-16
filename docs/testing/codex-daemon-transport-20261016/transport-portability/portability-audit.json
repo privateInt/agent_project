@@ -1,0 +1,70 @@
+{
+  "copy_root": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+  "copy_files": [
+    {
+      "relative_path": "src/ops/tools/codex_daemon_websocket.py",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/codex_daemon_websocket.py",
+      "copy": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/codex_daemon_websocket.py",
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415"
+    },
+    {
+      "relative_path": "src/ops/tools/codex_readiness.py",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/codex_readiness.py",
+      "copy": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/codex_readiness.py",
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399"
+    },
+    {
+      "relative_path": "src/ops/tools/tests/test_codex_daemon_websocket.py",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/test_codex_daemon_websocket.py",
+      "copy": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/test_codex_daemon_websocket.py",
+      "sha256": "5085ce3d866a81afe7614cb6e4aeea785cf757da148395591dbc865ed0f3a9bf"
+    },
+    {
+      "relative_path": "src/ops/tools/tests/fixtures/codex_daemon_websocket/original-operation.py.txt",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/fixtures/codex_daemon_websocket/original-operation.py.txt",
+      "copy": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/fixtures/codex_daemon_websocket/original-operation.py.txt",
+      "sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98"
+    },
+    {
+      "relative_path": "src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt",
+      "copy": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt",
+      "sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a"
+    },
+    {
+      "relative_path": "src/ops/tools/tests/fixtures/codex_daemon_websocket/manifest.json",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/fixtures/codex_daemon_websocket/manifest.json",
+      "copy": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/fixtures/codex_daemon_websocket/manifest.json",
+      "sha256": "9f7a05ac526a0a6240a304df48db2b57e021742da78c1f508fb097f5e80db244"
+    },
+    {
+      "relative_path": "src/__init__.py",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/__init__.py",
+      "copy": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/__init__.py",
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64"
+    },
+    {
+      "relative_path": "src/ops/__init__.py",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/__init__.py",
+      "copy": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/__init__.py",
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284"
+    }
+  ],
+  "copy_has_git_metadata": false,
+  "test_method_count": 4,
+  "all_prior_test_assertions_preserved": true,
+  "f1_and_f2_helper_source_and_ast_unchanged": true,
+  "strict_raw_business_diff_helper_source_and_ast_unchanged": true,
+  "baseline_and_transport_fixture_source_and_ast_unchanged": true,
+  "raw_fixture_hashes_unchanged": true,
+  "adapter_transform": "Only the sole top-level REPO=pathlib.Path(...) assignment line is replaced in memory with pathlib.Path(str(WORK)); raw fixture bytes remain pinned, all other source bytes and AST are compared before guarded exec.",
+  "reuse_boundaries": {
+    "F1": "unchanged helper, same product bytes; no repeat",
+    "strict_business_diff_audit": "unchanged helper and exact same raw fixture bytes; no repeat",
+    "original_four_methods": "preserved; no repeat",
+    "affected_business_success_and_F2": "execute once each in fresh differently named source copy"
+  },
+  "test_after_sha256": "5085ce3d866a81afe7614cb6e4aeea785cf757da148395591dbc865ed0f3a9bf",
+  "fresh_copy_readonly_inputs": true,
+  "runner_mode": "isolated python -I -B; deny private checkout/operator-file access during imports and both targets; deny real writes/socket/subprocess"
+}

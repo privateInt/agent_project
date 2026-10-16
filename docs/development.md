@@ -1,5 +1,7 @@
 # 개발 안내
 
+2026-10-16: [로컬 daemon 전송 client](../src/ops/tools/codex_daemon_websocket.py)는 기존 websocket-client 1.9.0과 strict JSON 검사를 재사용한다. [범위별 검사 근거](testing/codex-daemon-transport-observed-20261016.json)는 fake socket·설치 decoder·portable fixture 결과이며 실제 설정 적용이나 worker 설치가 아니다.
+
 2026-10-13 추가: 현재 개발 사본의 첫 작업은 src 구조·Ops 통합과 경로 검증이며 다음 기능 작업은 F0a다. [소스 구조](architecture/source-layout.md)를 따른다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
 
 Codex 작업은 [AGENTS.md](../AGENTS.md), [최신 인수인계](HANDOFF_NEXT_SESSION.md), [확장 계획](plans/platform-expansion-work-plan-20261012.md)의 첫 미완료 작은 단위부터 수행한다. 사용자 서버·대역 검사·품질 인수와 계획/실제 구현을 구분한다. 계획 파일만 적용한 상태를 CI/CD나 상시 Agent 실행 완료로 표시하지 않는다.

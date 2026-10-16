@@ -1,0 +1,15 @@
+{
+  "codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+  "execution-started.json": "1b200b3f3249607a8675d98a4d10dff726543d95e4514d3561183f4190c62a60",
+  "execution.log": "f9e322628791aa62a1694b6e0a48a8433c4f0fae99fbcb6a3f3aaed696dfeb3e",
+  "manifest-before.json": "ab6b126c0be9cd2083448ff3ca8b00d36b5901237ca1abc1aed94598ff978c90",
+  "operation.py": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+  "original-operation.py": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+  "result.json": "7e8c594d5428a469916d80909a243679065d3a5180f6b708cce38108b68f1ea3",
+  "run-audit-once.py": "23cc0bd383d593b27a4c953460b69d49a39dafce6ac519a5df93280cbf8c00e9",
+  "static-audit.json": "5b543e248a8be19f1819598e3abb996ac34d2c533e3503e1d754b359bba1df61",
+  "test-after.py": "0d4c2f025778b82a5778f9eb87220add9dcc083c04364c9550a148ce9adddb85",
+  "test-before.py": "97d09ab155a8f01ca9944d34291876383d5b1684fa36614cb97d2ee6791a9bb7",
+  "test.diff": "b7dd7de0370eaa69b5eb8fec41f689ec54f79d63377f9b2547175d0112f8f2bf",
+  "transport.py": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415"
+}

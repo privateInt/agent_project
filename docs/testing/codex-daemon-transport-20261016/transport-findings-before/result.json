@@ -1,0 +1,739 @@
+{
+  "completed_utc": "2026-10-16T00:12:01.963269+00:00",
+  "phase": "BEFORE_FIX",
+  "actual_test_status": "FAIL",
+  "tests_run": 2,
+  "failures": 2,
+  "errors": 0,
+  "skipped": 0,
+  "outcomes": {
+    "case_exponent_overflow_rejected": {
+      "runs": 1,
+      "status": "FAIL",
+      "failures": 1,
+      "errors": 0,
+      "traceback": "Traceback (most recent call last):\n  File \"/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/test_codex_daemon_websocket.py\", line 443, in case_exponent_overflow_rejected\n    self.assert_code(\"RPC_NONFINITE_JSON\", receive_overflow)\n  File \"/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/test_codex_daemon_websocket.py\", line 354, in assert_code\n    with self.assertRaises(product.ProbeError) as caught:\nAssertionError: ProbeError not raised\n",
+      "observation": {
+        "finding": "F1",
+        "input_number": "1e400",
+        "expected_error": "RPC_NONFINITE_JSON",
+        "returned_result": true,
+        "returned_n_type": "float",
+        "returned_n_repr": "inf",
+        "wire_methods": [
+          "initialize"
+        ],
+        "fake_connect_count": 1,
+        "real_io_attempts": 0
+      }
+    },
+    "case_ack_then_lost_readback_retains_pending": {
+      "runs": 1,
+      "status": "FAIL",
+      "failures": 1,
+      "errors": 0,
+      "traceback": "Traceback (most recent call last):\n  File \"/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/test_codex_daemon_websocket.py\", line 735, in case_ack_then_lost_readback_retains_pending\n    self.assertEqual(THREADS[0], record.get(\"pending_setting\"),\nAssertionError: '01a13f12-328d-7342-b285-a0868ac66447' != None : ACK list must retain its unverified pending target after readback loss\n",
+      "observation": {
+        "finding": "F2",
+        "record": {
+          "created_unix": 1792109521,
+          "project": "agent_project",
+          "vms_project": "EXCLUDED",
+          "settings_changed": [
+            "01a13f12-328d-7342-b285-a0868ac66447"
+          ],
+          "threads": {
+            "01a13f12-328d-7342-b285-a0868ac66447": {
+              "before": {
+                "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                "approvalPolicy": "on-request",
+                "approvalsReviewer": "user",
+                "sandbox": {
+                  "type": "workspaceWrite",
+                  "networkAccess": false
+                },
+                "activePermissionProfile": null,
+                "runtimeWorkspaceRoots": [
+                  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                ],
+                "model": "fixture-model",
+                "modelProvider": "fixture-provider",
+                "reasoningEffort": "fixture-effort"
+              }
+            },
+            "01a13fb0-1721-7af3-82e6-747eac4de411": {
+              "before": {
+                "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                "approvalPolicy": "on-request",
+                "approvalsReviewer": "user",
+                "sandbox": {
+                  "type": "workspaceWrite",
+                  "networkAccess": false
+                },
+                "activePermissionProfile": null,
+                "runtimeWorkspaceRoots": [
+                  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                ],
+                "model": "fixture-model",
+                "modelProvider": "fixture-provider",
+                "reasoningEffort": "fixture-effort"
+              }
+            },
+            "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+              "before": {
+                "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                "approvalPolicy": "on-request",
+                "approvalsReviewer": "user",
+                "sandbox": {
+                  "type": "workspaceWrite",
+                  "networkAccess": false
+                },
+                "activePermissionProfile": null,
+                "runtimeWorkspaceRoots": [
+                  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                ],
+                "model": "fixture-model",
+                "modelProvider": "fixture-provider",
+                "reasoningEffort": "fixture-effort"
+              }
+            }
+          },
+          "sandbox_policy_changed": false,
+          "global_config_changed": false,
+          "queue_changed": false,
+          "services_changed": false,
+          "managed_requirements": {
+            "allowedApprovalPolicies": null,
+            "allowedApprovalsReviewers": [
+              "user",
+              "auto_review"
+            ],
+            "allowedSandboxModes": null,
+            "allowedPermissionProfiles": null,
+            "defaultPermissions": null
+          },
+          "usage": {
+            "ordinaryUsageAllowed": true,
+            "observed_unix": 1792109521,
+            "windows": [
+              {
+                "limit_id": "fixture",
+                "rateLimitReachedType": null,
+                "primary": null,
+                "secondary": null
+              }
+            ]
+          },
+          "status": "BLOCKED_OR_UNCERTAIN",
+          "error": "RPC_RECEIVE_FAILED"
+        },
+        "events": [
+          [
+            "initialize",
+            {
+              "clientInfo": {
+                "name": "agent_project_unattended_transition",
+                "version": "1"
+              },
+              "capabilities": {
+                "experimentalApi": true
+              }
+            }
+          ],
+          [
+            "initialized",
+            {}
+          ],
+          [
+            "configRequirements/read",
+            {}
+          ],
+          [
+            "account/rateLimits/read",
+            {}
+          ],
+          [
+            "thread/resume",
+            {
+              "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+              "excludeTurns": true
+            }
+          ],
+          [
+            "thread/resume",
+            {
+              "threadId": "01a13fb0-1721-7af3-82e6-747eac4de411",
+              "excludeTurns": true
+            }
+          ],
+          [
+            "thread/resume",
+            {
+              "threadId": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+              "excludeTurns": true
+            }
+          ],
+          [
+            "thread/settings/update",
+            {
+              "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+              "approvalsReviewer": "auto_review"
+            }
+          ],
+          [
+            "thread/resume",
+            {
+              "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+              "excludeTurns": true
+            }
+          ],
+          [
+            "close",
+            {}
+          ]
+        ],
+        "checkpoints": [
+          {
+            "created_unix": 1792109521,
+            "project": "agent_project",
+            "vms_project": "EXCLUDED",
+            "settings_changed": [],
+            "threads": {},
+            "sandbox_policy_changed": false,
+            "global_config_changed": false,
+            "queue_changed": false,
+            "services_changed": false
+          },
+          {
+            "created_unix": 1792109521,
+            "project": "agent_project",
+            "vms_project": "EXCLUDED",
+            "settings_changed": [],
+            "threads": {
+              "01a13f12-328d-7342-b285-a0868ac66447": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              }
+            },
+            "sandbox_policy_changed": false,
+            "global_config_changed": false,
+            "queue_changed": false,
+            "services_changed": false,
+            "managed_requirements": {
+              "allowedApprovalPolicies": null,
+              "allowedApprovalsReviewers": [
+                "user",
+                "auto_review"
+              ],
+              "allowedSandboxModes": null,
+              "allowedPermissionProfiles": null,
+              "defaultPermissions": null
+            },
+            "usage": {
+              "ordinaryUsageAllowed": true,
+              "observed_unix": 1792109521,
+              "windows": [
+                {
+                  "limit_id": "fixture",
+                  "rateLimitReachedType": null,
+                  "primary": null,
+                  "secondary": null
+                }
+              ]
+            }
+          },
+          {
+            "created_unix": 1792109521,
+            "project": "agent_project",
+            "vms_project": "EXCLUDED",
+            "settings_changed": [],
+            "threads": {
+              "01a13f12-328d-7342-b285-a0868ac66447": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              }
+            },
+            "sandbox_policy_changed": false,
+            "global_config_changed": false,
+            "queue_changed": false,
+            "services_changed": false,
+            "managed_requirements": {
+              "allowedApprovalPolicies": null,
+              "allowedApprovalsReviewers": [
+                "user",
+                "auto_review"
+              ],
+              "allowedSandboxModes": null,
+              "allowedPermissionProfiles": null,
+              "defaultPermissions": null
+            },
+            "usage": {
+              "ordinaryUsageAllowed": true,
+              "observed_unix": 1792109521,
+              "windows": [
+                {
+                  "limit_id": "fixture",
+                  "rateLimitReachedType": null,
+                  "primary": null,
+                  "secondary": null
+                }
+              ]
+            }
+          },
+          {
+            "created_unix": 1792109521,
+            "project": "agent_project",
+            "vms_project": "EXCLUDED",
+            "settings_changed": [],
+            "threads": {
+              "01a13f12-328d-7342-b285-a0868ac66447": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              }
+            },
+            "sandbox_policy_changed": false,
+            "global_config_changed": false,
+            "queue_changed": false,
+            "services_changed": false,
+            "managed_requirements": {
+              "allowedApprovalPolicies": null,
+              "allowedApprovalsReviewers": [
+                "user",
+                "auto_review"
+              ],
+              "allowedSandboxModes": null,
+              "allowedPermissionProfiles": null,
+              "defaultPermissions": null
+            },
+            "usage": {
+              "ordinaryUsageAllowed": true,
+              "observed_unix": 1792109521,
+              "windows": [
+                {
+                  "limit_id": "fixture",
+                  "rateLimitReachedType": null,
+                  "primary": null,
+                  "secondary": null
+                }
+              ]
+            }
+          },
+          {
+            "created_unix": 1792109521,
+            "project": "agent_project",
+            "vms_project": "EXCLUDED",
+            "settings_changed": [],
+            "threads": {
+              "01a13f12-328d-7342-b285-a0868ac66447": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              }
+            },
+            "sandbox_policy_changed": false,
+            "global_config_changed": false,
+            "queue_changed": false,
+            "services_changed": false,
+            "managed_requirements": {
+              "allowedApprovalPolicies": null,
+              "allowedApprovalsReviewers": [
+                "user",
+                "auto_review"
+              ],
+              "allowedSandboxModes": null,
+              "allowedPermissionProfiles": null,
+              "defaultPermissions": null
+            },
+            "usage": {
+              "ordinaryUsageAllowed": true,
+              "observed_unix": 1792109521,
+              "windows": [
+                {
+                  "limit_id": "fixture",
+                  "rateLimitReachedType": null,
+                  "primary": null,
+                  "secondary": null
+                }
+              ]
+            },
+            "pending_setting": "01a13f12-328d-7342-b285-a0868ac66447"
+          },
+          {
+            "created_unix": 1792109521,
+            "project": "agent_project",
+            "vms_project": "EXCLUDED",
+            "settings_changed": [
+              "01a13f12-328d-7342-b285-a0868ac66447"
+            ],
+            "threads": {
+              "01a13f12-328d-7342-b285-a0868ac66447": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              }
+            },
+            "sandbox_policy_changed": false,
+            "global_config_changed": false,
+            "queue_changed": false,
+            "services_changed": false,
+            "managed_requirements": {
+              "allowedApprovalPolicies": null,
+              "allowedApprovalsReviewers": [
+                "user",
+                "auto_review"
+              ],
+              "allowedSandboxModes": null,
+              "allowedPermissionProfiles": null,
+              "defaultPermissions": null
+            },
+            "usage": {
+              "ordinaryUsageAllowed": true,
+              "observed_unix": 1792109521,
+              "windows": [
+                {
+                  "limit_id": "fixture",
+                  "rateLimitReachedType": null,
+                  "primary": null,
+                  "secondary": null
+                }
+              ]
+            }
+          },
+          {
+            "created_unix": 1792109521,
+            "project": "agent_project",
+            "vms_project": "EXCLUDED",
+            "settings_changed": [
+              "01a13f12-328d-7342-b285-a0868ac66447"
+            ],
+            "threads": {
+              "01a13f12-328d-7342-b285-a0868ac66447": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                "before": {
+                  "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              }
+            },
+            "sandbox_policy_changed": false,
+            "global_config_changed": false,
+            "queue_changed": false,
+            "services_changed": false,
+            "managed_requirements": {
+              "allowedApprovalPolicies": null,
+              "allowedApprovalsReviewers": [
+                "user",
+                "auto_review"
+              ],
+              "allowedSandboxModes": null,
+              "allowedPermissionProfiles": null,
+              "defaultPermissions": null
+            },
+            "usage": {
+              "ordinaryUsageAllowed": true,
+              "observed_unix": 1792109521,
+              "windows": [
+                {
+                  "limit_id": "fixture",
+                  "rateLimitReachedType": null,
+                  "primary": null,
+                  "secondary": null
+                }
+              ]
+            },
+            "status": "BLOCKED_OR_UNCERTAIN",
+            "error": "RPC_RECEIVE_FAILED"
+          }
+        ],
+        "exit_code": 1,
+        "updates": [
+          "01a13f12-328d-7342-b285-a0868ac66447"
+        ],
+        "expected_pending_setting": "01a13f12-328d-7342-b285-a0868ac66447",
+        "actual_pending_setting": null,
+        "real_io_attempts": 0
+      }
+    }
+  },
+  "expected_two_meaningful_failures_observed": true,
+  "python": "3.10.12",
+  "websocket_client": "1.9.0",
+  "unchanged_files": {
+    "transport.py": true,
+    "test_codex_daemon_websocket.py": true,
+    "operation.py": true,
+    "static-review.md": true,
+    "scope-decision.json": true,
+    "plan.md": true,
+    "plan-review.md": true,
+    "codex_readiness.py": true
+  },
+  "original_four_pass_evidence_unchanged": {
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/codex_readiness.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/evidence-sha256.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/execution-started.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/execution.log": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/manifest-before.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/operation.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/original-operation.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/plan-review.md": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/plan.md": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/result.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/run-four-once.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/test_codex_daemon_websocket.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/transport.py": true
+  },
+  "protected_results_unchanged": {
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/runtime-policy-first-run.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy-websocket-attempt-2.json": true
+  },
+  "original_11_local_changes_unchanged": true,
+  "preservation_ok": true,
+  "original_four_methods_executed": 0,
+  "native_or_legacy_tests_executed": 0,
+  "product_or_operation_edits": 0,
+  "real_connections": 0,
+  "delegation_notifications_runtime_credentials_permission_investigation": "NONE"
+}

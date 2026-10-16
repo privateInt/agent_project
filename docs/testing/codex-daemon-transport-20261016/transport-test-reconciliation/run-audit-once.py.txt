@@ -1,0 +1,93 @@
+"""One execution of the extracted audit; reuse the preserved F1/F2 positives."""
+import contextlib
+import datetime
+import hashlib
+import importlib
+import json
+import os
+from pathlib import Path
+import socket
+import subprocess
+import sys
+import unittest
+from unittest import mock
+
+OUT = Path(__file__).resolve().parent
+manifest = json.loads((OUT / "manifest-before.json").read_text())
+audit = json.loads((OUT / "static-audit.json").read_text())
+WORK = Path(manifest["workdir"])
+REPO = WORK.parents[2]
+
+
+def sha(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+for label, entry in manifest["files_before"].items():
+    assert sha(OUT / label) == entry["sha256"]
+    if label != "test-before.py":
+        assert sha(entry["path"]) == entry["sha256"]
+assert sha(WORK / "src/ops/tools/tests/test_codex_daemon_websocket.py") == audit["test_after_sha256"]
+with (OUT / "execution-started.json").open("x") as marker:
+    json.dump({"started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               "target": manifest["target"], "executor": "test_agent",
+               "cwd": str(Path.cwd()), "argv": sys.argv}, marker)
+sys.path.insert(0, str(WORK))
+module = importlib.import_module("src.ops.tools.tests.test_codex_daemon_websocket")
+target = module.CodexDaemonWebSocketTests(manifest["target"])
+forbidden = []
+
+
+def no_execution(*args, **kwargs):
+    forbidden.append("UNEXPECTED_RUNTIME_OR_FIXTURE_EXECUTION")
+    raise AssertionError("Only the static business diff audit may execute")
+
+
+with (OUT / "execution.log").open("x", buffering=1) as log:
+    with contextlib.ExitStack() as stack:
+        for name in ("socket", "create_connection", "getaddrinfo", "socketpair"):
+            stack.enter_context(mock.patch.object(socket, name, no_execution))
+        stack.enter_context(mock.patch("subprocess.Popen", no_execution))
+        stack.enter_context(mock.patch.object(module, "run_business", no_execution))
+        stack.enter_context(mock.patch.object(module, "TransportFixture", no_execution))
+        result = unittest.TextTestRunner(stream=log, verbosity=2).run(unittest.TestSuite([target]))
+
+protected = {
+    path: (sha(path) if Path(path).exists() else None) == before
+    for path, before in manifest["protected_files_before"].items()
+}
+products = {
+    label: sha(entry["path"]) == entry["sha256"]
+    for label, entry in manifest["files_before"].items() if label != "test-before.py"
+}
+local = []
+for entry in subprocess.check_output(["git", "status", "--porcelain=v1", "-z"], cwd=REPO).split(b"\0"):
+    if entry:
+        path = os.fsdecode(entry[3:])
+        local.append({"status": os.fsdecode(entry[:2]), "path": path, "sha256": sha(REPO / path)})
+local_ok = local == manifest["original_local_changes_before"]
+preservation = all(protected.values()) and all(products.values()) and local_ok
+record = {
+    "completed_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    "executor": "test_agent", "target": manifest["target"],
+    "actual_test_status": "PASS" if result.wasSuccessful() else "FAIL",
+    "tests_run": result.testsRun, "failures": len(result.failures), "errors": len(result.errors),
+    "skipped": len(result.skipped), "audit": getattr(target, "reviewed_diff_audit", None),
+    "static_audit_file": str(OUT / "static-audit.json"),
+    "reused_positive_executor": manifest["reused_positive_executor"],
+    "reused_positive_result": manifest["reused_positive_result"],
+    "f1_f2_positive_reexecutions": 0, "original_four_method_executions": 0,
+    "readback_reuse_ast_equivalence": audit["reused_positive"],
+    "forbidden_execution_attempts": forbidden, "product_source_or_operation_edits": 0,
+    "products_unchanged": products, "prior_evidence_and_results_unchanged": protected,
+    "original_11_local_changes_unchanged": local_ok, "preservation_ok": preservation,
+    "test_before_sha256": sha(OUT / "test-before.py"),
+    "test_after_sha256": sha(OUT / "test-after.py"),
+}
+with (OUT / "result.json").open("x") as output:
+    json.dump(record, output, ensure_ascii=False, indent=2)
+    output.write("\n")
+print(json.dumps({"tests_run": result.testsRun, "status": record["actual_test_status"],
+                  "failures": len(result.failures), "errors": len(result.errors),
+                  "preservation_ok": preservation, "result": str(OUT / "result.json")}))
+sys.exit(0 if result.wasSuccessful() and preservation and not forbidden else 1)

@@ -1,0 +1,109 @@
+"""Run only F1/F2 helper targets once, retaining scoped passes after the reviewed corrections."""
+import datetime
+import hashlib
+import importlib
+import json
+import os
+from pathlib import Path
+import platform
+import subprocess
+import sys
+import unittest
+
+OUT = Path(__file__).resolve().parent
+manifest = json.loads((OUT / "manifest-before.json").read_text())
+WORK = Path(manifest["workdir"])
+REPO = WORK.parents[2]
+
+
+def digest(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+for label, entry in manifest["files"].items():
+    assert digest(entry["path"]) == digest(OUT / label) == entry["sha256"]
+with (OUT / "execution-started.json").open("x") as marker:
+    json.dump({"started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               "argv": sys.argv, "cwd": str(Path.cwd()), "targets": manifest["targets"]}, marker)
+sys.path.insert(0, str(WORK))
+module = importlib.import_module("src.ops.tools.tests.test_codex_daemon_websocket")
+outcomes = {name: {"runs": 0, "status": "NOT_RUN", "failures": 0, "errors": 0}
+            for name in manifest["targets"]}
+
+
+class Result(unittest.TextTestResult):
+    def startTest(self, test):
+        name = test._testMethodName
+        assert name in outcomes and outcomes[name]["runs"] == 0
+        outcomes[name]["runs"] += 1
+        super().startTest(test)
+
+    def addSuccess(self, test):
+        super().addSuccess(test)
+        outcomes[test._testMethodName]["status"] = "PASS"
+
+    def addFailure(self, test, err):
+        super().addFailure(test, err)
+        outcomes[test._testMethodName].update(
+            status="FAIL", failures=1, traceback=self._exc_info_to_string(err, test))
+
+    def addError(self, test, err):
+        super().addError(test, err)
+        outcomes[test._testMethodName].update(
+            status="ERROR", errors=1, traceback=self._exc_info_to_string(err, test))
+
+    def stopTest(self, test):
+        outcomes[test._testMethodName]["observation"] = getattr(test, "finding_observation", None)
+        super().stopTest(test)
+
+
+with (OUT / "execution.log").open("x", buffering=1) as log:
+    # No discovery/run of any of the original four methods.
+    suite = unittest.TestSuite(module.CodexDaemonWebSocketTests(name)
+                              for name in manifest["targets"])
+    result = unittest.TextTestRunner(stream=log, verbosity=2, resultclass=Result).run(suite)
+
+unchanged_files = {
+    label: digest(entry["path"]) == digest(OUT / label) == entry["sha256"]
+    for label, entry in manifest["files"].items()
+}
+prior_unchanged = {path: digest(path) == before
+                   for path, before in manifest["prior_four_pass_files"].items()}
+protected_unchanged = {
+    path: (digest(path) if Path(path).exists() else None) == before
+    for path, before in manifest["protected_results"].items()
+}
+local = []
+for entry in subprocess.check_output(["git", "status", "--porcelain=v1", "-z"], cwd=REPO).split(b"\0"):
+    if entry:
+        path = os.fsdecode(entry[3:])
+        local.append({"status": os.fsdecode(entry[:2]), "path": path, "sha256": digest(REPO / path)})
+preservation = (all(unchanged_files.values()) and all(prior_unchanged.values())
+                and all(protected_unchanged.values()) and local == manifest["local_changes_before"])
+expected = (result.testsRun == 2 and len(result.failures) == 0 and not result.errors
+            and not result.skipped
+            and all(x["runs"] == 1 and x["failures"] == 0 and x["errors"] == 0
+                    for x in outcomes.values()))
+record = {
+    "completed_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    "phase": "AFTER_FIX", "actual_test_status": "FAIL" if not result.wasSuccessful() else "PASS",
+    "tests_run": result.testsRun, "failures": len(result.failures), "errors": len(result.errors),
+    "skipped": len(result.skipped), "outcomes": outcomes,
+    "expected_two_passes_observed": expected,
+    "python": platform.python_version(), "websocket_client": module.websocket.__version__,
+    "unchanged_files": unchanged_files, "original_four_pass_evidence_unchanged": prior_unchanged,
+    "protected_results_unchanged": protected_unchanged,
+    "original_11_local_changes_unchanged": local == manifest["local_changes_before"],
+    "preservation_ok": preservation,
+    "original_four_methods_executed": 0, "native_or_legacy_tests_executed": 0,
+    "product_or_operation_edits": 0, "real_connections": 0,
+    "delegation_notifications_runtime_credentials_permission_investigation": "NONE",
+}
+with (OUT / "result.json").open("x") as target:
+    json.dump(record, target, ensure_ascii=False, indent=2, allow_nan=False)
+    target.write("\n")
+print(json.dumps({"tests_run": result.testsRun, "failures": len(result.failures),
+                  "errors": len(result.errors), "expected_passes_observed": expected,
+                  "preservation_ok": preservation, "result": str(OUT / "result.json")}))
+# Preserve the actual unittest failure exit code even when it is expected.
+sys.exit(0 if result.wasSuccessful() and preservation else 1)

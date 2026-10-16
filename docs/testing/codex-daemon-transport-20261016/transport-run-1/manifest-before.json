@@ -1,0 +1,158 @@
+{
+  "created_utc": "2026-10-16T00:00:04.376620+00:00",
+  "workdir": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development",
+  "method_names": [
+    "test_unix_ws_handshake_and_json_messages",
+    "test_absolute_deadlines_and_bounds",
+    "test_exact_methods_threads_and_reviewer_only_payload",
+    "test_uncertain_update_never_replayed"
+  ],
+  "methods_count": 4,
+  "files": {
+    "transport.py": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/codex_daemon_websocket.py",
+      "sha256": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70",
+      "bytes": 9132,
+      "mtime_ns": 1792075871737108975
+    },
+    "test_codex_daemon_websocket.py": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/test_codex_daemon_websocket.py",
+      "sha256": "51f632af70206443058cf5f68146ca4eab779e7954d95df5af5797bebe80c279",
+      "bytes": 35793,
+      "mtime_ns": 1792108753383554840
+    },
+    "operation.py": {
+      "path": "/tmp/agent-unattended-runtime-websocket.py",
+      "sha256": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+      "bytes": 4464,
+      "mtime_ns": 1792075917443948601
+    },
+    "original-operation.py": {
+      "path": "/tmp/agent-unattended-runtime-policy.py",
+      "sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+      "bytes": 4187,
+      "mtime_ns": 1792074857861007156
+    },
+    "plan.md": {
+      "path": "/tmp/agent-unattended-transport-plan.md",
+      "sha256": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+      "bytes": 9182,
+      "mtime_ns": 1792075436203702541
+    },
+    "plan-review.md": {
+      "path": "/tmp/agent-unattended-transport-plan-review.md",
+      "sha256": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+      "bytes": 7146,
+      "mtime_ns": 1792075792017629524
+    },
+    "codex_readiness.py": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/codex_readiness.py",
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "bytes": 19628,
+      "mtime_ns": 1792074940100297169
+    }
+  },
+  "local_changes_before": [
+    {
+      "status": " M",
+      "path": "docs/HANDOFF_NEXT_SESSION.md",
+      "sha256": "063c2aaf6076c9ac6e0943bdd916f42930e66dae822037434f859ced1ceb1243"
+    },
+    {
+      "status": " M",
+      "path": "docs/codex/work-plan.md",
+      "sha256": "e60f66cda0dbf64b4891e899ba67f47b0eac93fde21cf1326f2b4a9840dc2f25"
+    },
+    {
+      "status": " M",
+      "path": "docs/roadmap.md",
+      "sha256": "a11b78bae0c83136d36d14dd7713c13fcbe3dfff951657374e5ac77679e146b1"
+    },
+    {
+      "status": " M",
+      "path": "docs/status.md",
+      "sha256": "06e47755839a3e3724a8eff0f2a215f3682e9413873eb4c75d9fb662b96c66c7"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/preparation-blockers.md",
+      "sha256": "bc1f2ce493c8c31d8cd1ad3fbde50be510081505120bba8c015d1f013cce41b6"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/runtime-acceptance-cases.json",
+      "sha256": "8e8166e05bd69fe79980a353463f0b2b66a089b7e88bb1f379b523a0b38a3dcc"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/runtime-acceptance-plan.md",
+      "sha256": "6c826455f4a61db6a4785435a52d3562398a64cd6421fafcabb4867b5cf5f4bd"
+    },
+    {
+      "status": "??",
+      "path": "docs/plans/codex-preparation-verification-20261015.md",
+      "sha256": "d265642b6ace90c8e8f2e306c04de986baa848c3605e27a862bc746b3602449f"
+    },
+    {
+      "status": "??",
+      "path": "docs/plans/document-qa-f0a-validation-plan.md",
+      "sha256": "93cf5692286cdbee24530ff27ba9838bc42acad2a2a0313f535bbb6cb4cb8b51"
+    },
+    {
+      "status": "??",
+      "path": "docs/testing/codex-preparation-contract-20261015.json",
+      "sha256": "a056197c83aebd5bdef87963b6418bb949b790b09ed3050b5d464f0096bcba1f"
+    },
+    {
+      "status": "??",
+      "path": "docs/testing/codex-preparation-observed-20261015.json",
+      "sha256": "517981506b0b7d78ec722c5aad15fc5fcd34ac7f15a3f298213dc27f94d69aed"
+    }
+  ],
+  "protected_results_before": {
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy-first-run.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/runtime-policy-first-run.json": {
+      "exists": true,
+      "sha256": "da9e581f54dec7692ec65a4fe126b88dd12dab721ee193331c4adb277c98f7b0"
+    },
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy.json": {
+      "exists": true,
+      "sha256": "da9e581f54dec7692ec65a4fe126b88dd12dab721ee193331c4adb277c98f7b0"
+    },
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/runtime-policy.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy-websocket-attempt-2.json": {
+      "exists": false,
+      "sha256": null
+    },
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/runtime-policy-websocket-attempt-2.json": {
+      "exists": false,
+      "sha256": null
+    }
+  },
+  "own_thread_id": "01a13fb0-1721-7af3-82e6-747eac4de411",
+  "own_current_turn_context": [
+    {
+      "timestamp": "2026-10-15T23:55:14.650Z",
+      "own_session_file": "/home/codex_shshin/.codex/sessions/2026/10/15/rollout-2026-10-15T22-11-07-01a13fb0-1721-7af3-82e6-747eac4de411.jsonl",
+      "turn_id": "01a141fb-bd2b-79e0-91ae-6c6d1d2d7ff3",
+      "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+      "approval_policy": "on-request",
+      "approvals_reviewer": "user",
+      "sandbox_policy": {
+        "type": "workspace-write",
+        "network_access": false,
+        "exclude_tmpdir_env_var": false,
+        "exclude_slash_tmp": false
+      }
+    }
+  ],
+  "plan_and_independent_review_predate_source": true,
+  "scope": "fake-only, no source edits, no real connections, no delegation, exactly four methods once",
+  "initial_real_runtime_failure_preserved": true
+}

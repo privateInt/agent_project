@@ -1,0 +1,11 @@
+{
+  "basis": ["U01-transport-v1 approved plan f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c", "independent static findings F1 and F2"],
+  "decision": "D06 minor coverage completion within unchanged approved nonfinite and lost-readback requirements",
+  "required_targets": ["exponent overflow must be rejected by fixed nonfinite code", "ACK followed by lost readback must retain pending target ID"],
+  "test_structure": "Keep existing four methods; add only targeted subcases/helpers. Run only two new targets before and after correction; no passed methods replay.",
+  "new_plan_document_required": false,
+  "criteria_weakened": false,
+  "source_changes_allowed_after_before_failures": "Local finite guard only; pending ID cleared only after verified readback. Shared readiness and first source/results remain unchanged.",
+  "final_independent_review_required": true,
+  "live_connection_approved": false
+}

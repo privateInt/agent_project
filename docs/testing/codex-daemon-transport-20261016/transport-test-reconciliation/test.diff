@@ -1,0 +1,59 @@
+--- before/test_codex_daemon_websocket.py
++++ after/test_codex_daemon_websocket.py
+@@ -556,12 +556,23 @@
+                              "real_decoder_payload_limit": product.MAX_WIRE,
+                              "absolute_request_seconds": 5, "absolute_total_seconds": 60})
+ 
+-    def test_exact_methods_threads_and_reviewer_only_payload(self):
+-        self.assertEqual(METHODS, product.METHODS)
++    def case_reviewed_business_diff_guard(self):
++        """Audit the original business body plus only the two reviewed F2 lines."""
+         old, new = ORIGINAL_OPERATION.read_text(), OPERATION.read_text()
+         self.assertEqual("48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+                          hashlib.sha256(old.encode()).hexdigest())
+-        self.assertEqual(old.split("  client.call('initialize'", 1)[1],
++        reviewed_replacements = (
++            ("    record['settings_changed'].append(tid);record.pop('pending_setting',None);write()\n",
++             "    record['settings_changed'].append(tid);write()\n"),
++            ("   record['threads'][tid]['after']=after;write()\n",
++             "   record['threads'][tid]['after']=after;record.pop('pending_setting',None);write()\n"),
++        )
++        expected = old
++        for before, after in reviewed_replacements:
++            self.assertEqual(1, expected.count(before))
++            expected = expected.replace(before, after, 1)
++            self.assertEqual(1, new.count(after))
++        self.assertEqual(expected.split("  client.call('initialize'", 1)[1],
+                          new.split("  client.call('initialize'", 1)[1])
+ 
+         class AllowedTransportChanges(ast.NodeTransformer):
+@@ -586,8 +597,19 @@
+                     return ast.Constant(value="APPROVED_SEPARATE_OUTPUT")
+                 return node
+ 
+-        self.assertEqual(ast.dump(AllowedTransportChanges().visit(ast.parse(old))),
++        self.assertEqual(ast.dump(AllowedTransportChanges().visit(ast.parse(expected))),
+                          ast.dump(AllowedTransportChanges().visit(ast.parse(new))))
++        self.reviewed_diff_audit = {
++            "original_sha256": hashlib.sha256(old.encode()).hexdigest(),
++            "operation_sha256": hashlib.sha256(new.encode()).hexdigest(),
++            "exact_reviewed_line_replacements": reviewed_replacements,
++            "all_other_business_body_bytes_equal": True,
++            "normalized_full_ast_equal": True,
++        }
++
++    def test_exact_methods_threads_and_reviewer_only_payload(self):
++        self.assertEqual(METHODS, product.METHODS)
++        self.case_reviewed_business_diff_guard()
+         for reviewers in ({}, {THREADS[1]: "auto_review"},
+                           {tid: "auto_review" for tid in THREADS}):
+             with self.subTest(reviewers=reviewers):
+@@ -660,7 +682,7 @@
+     def test_uncertain_update_never_replayed(self):
+         cases = (("initialize", "RPC_REQUEST_TIMEOUT", [], None),
+                  ("update_ack", "RPC_REQUEST_TIMEOUT", [], THREADS[0]),
+-                 ("readback", "RPC_RECEIVE_FAILED", [THREADS[0]], None))
++                 ("readback", "RPC_RECEIVE_FAILED", [THREADS[0]], THREADS[0]))
+         for failure, code, changed, pending in cases:
+             with self.subTest(failure=failure):
+                 outcome = run_business(fail=failure)

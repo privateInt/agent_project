@@ -1,0 +1,166 @@
+--- before/test_codex_daemon_websocket.py
++++ after/test_codex_daemon_websocket.py
+@@ -2,7 +2,7 @@
+ 
+ The product is loaded unchanged with an in-memory socket superclass. Installed
+ websocket-client 1.9.0 performs the real HTTP handshake and frame decoding.
+-Business-script writes are intercepted BEFORE runpy executes its first line.
++Business-script writes are intercepted BEFORE the compiled fixture executes.
+ """
+ import ast
+ import base64
+@@ -13,7 +13,6 @@
+ import io
+ import json
+ from pathlib import Path
+-import runpy
+ import socket
+ import struct
+ import sys
+@@ -26,10 +25,11 @@
+ 
+ 
+ WORK = Path(__file__).resolve().parents[4]
+-REPO = WORK.parents[2]
++REPO = WORK
+ SOURCE = WORK / "src/ops/tools/codex_daemon_websocket.py"
+-OPERATION = Path("/tmp/agent-unattended-runtime-websocket.py")
+-ORIGINAL_OPERATION = Path("/tmp/agent-unattended-runtime-policy.py")
++FIXTURES = Path(__file__).resolve().parent / "fixtures/codex_daemon_websocket"
++OPERATION = FIXTURES / "operation.py.txt"
++ORIGINAL_OPERATION = FIXTURES / "original-operation.py.txt"
+ ENDPOINT = "/fixture/agent-project-control.sock"
+ THREADS = (
+     "01a13f12-328d-7342-b285-a0868ac66447",
+@@ -237,9 +237,56 @@
+             "reasoningEffort": "fixture-effort"}
+ 
+ 
++def compiled_business_fixture():
++    """Compile the pinned raw fixture, adapting only its REPO assignment."""
++    raw = OPERATION.read_bytes()
++    raw_sha = hashlib.sha256(raw).hexdigest()
++    expected_sha = "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a"
++    manifest = json.loads((FIXTURES / "manifest.json").read_text())
++    if raw_sha != expected_sha or manifest[OPERATION.name]["sha256"] != expected_sha:
++        raise AssertionError("Operation fixture raw pin changed")
++    text = raw.decode("utf-8")
++    tree = ast.parse(text, filename=str(OPERATION))
++    assignments = [n for n in tree.body if isinstance(n, ast.Assign)
++                   and any(isinstance(t, ast.Name) and t.id == "REPO" for t in n.targets)]
++    if len(assignments) != 1:
++        raise AssertionError("Expected exactly one top-level REPO assignment")
++    assignment = assignments[0]
++    if (len(assignment.targets) != 1 or assignment.col_offset != 0
++            or assignment.lineno != assignment.end_lineno
++            or not isinstance(assignment.value, ast.Call)
++            or ast.unparse(assignment.value.func) != "pathlib.Path"
++            or len(assignment.value.args) != 1 or assignment.value.keywords
++            or not isinstance(assignment.value.args[0], ast.Constant)
++            or not isinstance(assignment.value.args[0].value, str)):
++        raise AssertionError("Unexpected REPO assignment shape")
++    lines = text.splitlines(keepends=True)
++    index = assignment.lineno - 1
++    before = lines[index]
++    if before != ast.get_source_segment(text, assignment) + "\n":
++        raise AssertionError("REPO adapter must replace exactly one complete line")
++    after = "REPO=pathlib.Path(" + repr(str(REPO)) + ")\n"
++    adapted_lines = list(lines)
++    adapted_lines[index] = after
++    adapted = "".join(adapted_lines)
++    if lines[:index] + lines[index + 1:] != adapted_lines[:index] + adapted_lines[index + 1:]:
++        raise AssertionError("Adapter changed bytes outside REPO assignment")
++    assignment.value = ast.parse("pathlib.Path(" + repr(str(REPO)) + ")", mode="eval").body
++    if ast.dump(tree) != ast.dump(ast.parse(adapted)):
++        raise AssertionError("Adapter changed AST outside REPO assignment")
++    adapter = {"fixture": str(OPERATION), "raw_sha256": raw_sha,
++               "adapted_sha256": hashlib.sha256(adapted.encode("utf-8")).hexdigest(),
++               "assignment_line": index + 1, "before": before, "after": after,
++               "changed_line_count": int(before != after),
++               "only_REPO_assignment_adapted": True,
++               "all_other_source_bytes_and_ast_preserved": True}
++    return compile(adapted, str(OPERATION), "exec"), adapter
++
++
+ def run_business(*, fail=None, quota=True, reviewers=None, boundary=None,
+                  mismatch=None, managed_allowed=True):
+-    """Execute the unchanged real script with fake transport and memory-only IO."""
++    """Execute the actual pinned fixture with fake transport and memory-only IO."""
++    fixture_code, fixture_adapter = compiled_business_fixture()
+     events, snapshots, writes, chmods, replacements, forbidden = [], [], [], [], [], []
+     states = {tid: baseline((reviewers or {}).get(tid, "user")) for tid in THREADS}
+     if boundary:
+@@ -325,7 +372,7 @@
+     exit_code = 0
+     try:
+         with contextlib.ExitStack() as stack:
+-            # Install all guards BEFORE run_path and its top-level write().
++            # Install all guards BEFORE exec and the fixture's top-level write().
+             stack.enter_context(mock.patch.object(product, "UnixWebSocketRpc", Client))
+             stack.enter_context(mock.patch.object(Path, "write_text", write_text))
+             stack.enter_context(mock.patch.object(Path, "chmod", chmod))
+@@ -336,7 +383,8 @@
+             stack.enter_context(contextlib.redirect_stdout(output))
+             stack.enter_context(contextlib.redirect_stderr(output))
+             try:
+-                runpy.run_path(str(OPERATION), run_name="__offline_business_fixture__")
++                exec(fixture_code, {"__name__": "__offline_business_fixture__",
++                                    "__file__": str(OPERATION), "__package__": None})
+             except SystemExit as exc:
+                 exit_code = exc.code
+     finally:
+@@ -346,7 +394,8 @@
+     if not snapshots or len(writes) != len(chmods) or len(writes) != len(replacements):
+         raise AssertionError("Memory checkpoint write protocol changed")
+     return {"record": snapshots[-1], "snapshots": snapshots, "events": events,
+-            "exit_code": exit_code, "stdout": output.getvalue(), "forbidden": forbidden}
++            "exit_code": exit_code, "stdout": output.getvalue(), "forbidden": forbidden,
++            "fixture_adapter": fixture_adapter}
+ 
+ 
+ class CodexDaemonWebSocketTests(unittest.TestCase):
+@@ -610,6 +659,7 @@
+     def test_exact_methods_threads_and_reviewer_only_payload(self):
+         self.assertEqual(METHODS, product.METHODS)
+         self.case_reviewed_business_diff_guard()
++        self.case_portable_business_success()
+         for reviewers in ({}, {THREADS[1]: "auto_review"},
+                           {tid: "auto_review" for tid in THREADS}):
+             with self.subTest(reviewers=reviewers):
+@@ -679,6 +729,36 @@
+                              "normalized_ast_preserved": True, "memory_only_writes": True,
+                              "readback_fields_checked": len(FIELDS), "forbidden_wire_sends": 0})
+ 
++    def case_portable_business_success(self):
++        """The real fixture succeeds using only the current clone and memory IO."""
++        outcome = run_business()
++        record, events = outcome["record"], outcome["events"]
++        self.portability_observation = outcome
++        self.assertEqual(WORK, REPO)
++        self.assertEqual(0, outcome["exit_code"])
++        self.assertEqual("APPLIED_AND_READ_BACK_FOR_SUBSEQUENT_TURNS", record["status"])
++        self.assertEqual("NOT_RETROACTIVELY_CHANGED", record["current_already_running_turn"])
++        self.assertEqual(list(THREADS), record["settings_changed"])
++        self.assertEqual(set(THREADS), set(record["threads"]))
++        self.assertIsNone(record.get("pending_setting"))
++        expected_methods = ["initialize", "initialized", "configRequirements/read",
++                            "account/rateLimits/read"] + ["thread/resume"] * 3
++        expected_methods += ["thread/settings/update", "thread/resume"] * 3 + ["close"]
++        self.assertEqual(expected_methods, [m for m, _ in events])
++        self.assertEqual([{"threadId": tid, "approvalsReviewer": "auto_review"} for tid in THREADS],
++                         [p for m, p in events if m == "thread/settings/update"])
++        for values in record["threads"].values():
++            self.assertEqual(set(FIELDS), set(values["before"]))
++            self.assertEqual(baseline(), values["before"])
++            self.assertEqual(dict(values["before"], approvalsReviewer="auto_review"), values["after"])
++            self.assertEqual(str(WORK), values["after"]["cwd"])
++            self.assertEqual([str(WORK)], values["after"]["runtimeWorkspaceRoots"])
++        self.assertFalse(any(record[k] for k in ("queue_changed", "services_changed",
++                                                 "sandbox_policy_changed", "global_config_changed")))
++        self.assertEqual([], outcome["forbidden"])
++        self.assertTrue(outcome["fixture_adapter"]["only_REPO_assignment_adapted"])
++        self.assertTrue(outcome["fixture_adapter"]["all_other_source_bytes_and_ast_preserved"])
++
+     def test_uncertain_update_never_replayed(self):
+         cases = (("initialize", "RPC_REQUEST_TIMEOUT", [], None),
+                  ("update_ack", "RPC_REQUEST_TIMEOUT", [], THREADS[0]),

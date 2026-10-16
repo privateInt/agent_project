@@ -1,0 +1,52 @@
+{
+  "test_method_count": 4,
+  "new_audit_helper": "case_reviewed_business_diff_guard",
+  "only_changed_existing_methods": [
+    "test_exact_methods_threads_and_reviewer_only_payload",
+    "test_uncertain_update_never_replayed"
+  ],
+  "unchanged_methods": {
+    "assert_code": {
+      "ast_equal": true,
+      "source_bytes_equal": true,
+      "ast_sha256": "33a6954da546330c59d68502d4cb50cf755292cb8d4d15ce9aca888a2a6445a6"
+    },
+    "test_unix_ws_handshake_and_json_messages": {
+      "ast_equal": true,
+      "source_bytes_equal": true,
+      "ast_sha256": "fd2fb35da7130d641c2220456ec1cc689c9ed46298eecc001866431460882f9e"
+    },
+    "case_exponent_overflow_rejected": {
+      "ast_equal": true,
+      "source_bytes_equal": true,
+      "ast_sha256": "bb2081224ac19b3c795b6497d6fd7ca04d85d2e349fb4fefd0c8801ddc5fe268"
+    },
+    "test_absolute_deadlines_and_bounds": {
+      "ast_equal": true,
+      "source_bytes_equal": true,
+      "ast_sha256": "c2396d6b66d320910ab1bec7689871fcf61653c96f8f52127b5810c263a67190"
+    },
+    "case_ack_then_lost_readback_retains_pending": {
+      "ast_equal": true,
+      "source_bytes_equal": true,
+      "ast_sha256": "aea755b9467a64bdeaeb5d729dad512d8f9a3a154de3d7ac46bfdbb58abda1c8"
+    }
+  },
+  "all_fixture_dependency_ast_equal": true,
+  "method3_behavior_assertions_after_extracted_audit_unchanged": true,
+  "original484_hash_assertion_preserved": true,
+  "existing_ast_normalizer_unchanged": true,
+  "method4_ast_equal_after_only_reviewed_expected_value_change": true,
+  "reused_positive": {
+    "coordinator_executor": "coordinator using test_agent two-target runner",
+    "result_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/result.json",
+    "result_sha256": "324cc4e272269c9cc6d3d5ba1c906db598c77b2a1795cc1602dc3f58c639f567",
+    "unchanged_f1_f2_helpers": true,
+    "unchanged_run_business_and_transport_fixtures": true,
+    "method4_only_delta": "readback pending None -> THREADS[0]",
+    "corrected_row_ast": "Tuple(elts=[Constant(value='readback'), Constant(value='RPC_RECEIVE_FAILED'), List(elts=[Subscript(value=Name(id='THREADS', ctx=Load()), slice=Constant(value=0), ctx=Load())], ctx=Load()), Subscript(value=Name(id='THREADS', ctx=Load()), slice=Constant(value=0), ctx=Load())], ctx=Load())",
+    "same_readback_fixture_call_ast": "Call(func=Name(id='run_business', ctx=Load()), args=[], keywords=[keyword(arg='fail', value=Constant(value='readback'))])",
+    "new_execution_for_reused_targets": 0
+  },
+  "test_after_sha256": "0d4c2f025778b82a5778f9eb87220add9dcc083c04364c9550a148ce9adddb85"
+}

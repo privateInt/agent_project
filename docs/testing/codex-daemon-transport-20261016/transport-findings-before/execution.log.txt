@@ -1,0 +1,29 @@
+case_exponent_overflow_rejected (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests)
+F1: isolated additional nonfinite subcase of the first method. ... FAIL
+case_ack_then_lost_readback_retains_pending (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests)
+F2: ACK evidence and the unverified target must survive together. ... FAIL
+
+======================================================================
+FAIL: case_exponent_overflow_rejected (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests)
+F1: isolated additional nonfinite subcase of the first method.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/test_codex_daemon_websocket.py", line 443, in case_exponent_overflow_rejected
+    self.assert_code("RPC_NONFINITE_JSON", receive_overflow)
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/test_codex_daemon_websocket.py", line 354, in assert_code
+    with self.assertRaises(product.ProbeError) as caught:
+AssertionError: ProbeError not raised
+
+======================================================================
+FAIL: case_ack_then_lost_readback_retains_pending (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests)
+F2: ACK evidence and the unverified target must survive together.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/test_codex_daemon_websocket.py", line 735, in case_ack_then_lost_readback_retains_pending
+    self.assertEqual(THREADS[0], record.get("pending_setting"),
+AssertionError: '01a13f12-328d-7342-b285-a0868ac66447' != None : ACK list must retain its unverified pending target after readback loss
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.004s
+
+FAILED (failures=2)

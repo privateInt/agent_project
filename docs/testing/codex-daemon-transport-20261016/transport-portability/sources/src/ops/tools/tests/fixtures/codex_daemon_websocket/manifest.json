@@ -1,0 +1,14 @@
+{
+  "original-operation.py.txt": {
+    "sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+    "fixture_only": true,
+    "live_execution": "NOT_AUTHORIZED",
+    "historical_source": "/tmp/agent-unattended-runtime-policy.py"
+  },
+  "operation.py.txt": {
+    "sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+    "fixture_only": true,
+    "live_execution": "NOT_AUTHORIZED",
+    "historical_source": "/tmp/agent-unattended-runtime-websocket.py"
+  }
+}

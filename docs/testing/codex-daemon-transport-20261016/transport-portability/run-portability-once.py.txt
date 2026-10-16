@@ -1,0 +1,165 @@
+"""Run exactly two business targets from a relocated source copy, once."""
+import contextlib
+import datetime
+import hashlib
+import importlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import unittest
+from unittest import mock
+
+OUT = Path(sys.argv[1]).absolute()
+manifest = json.loads((OUT / "manifest-before.json").read_text())
+audit = json.loads((OUT / "portability-audit.json").read_text())
+COPY = Path(audit["copy_root"])
+REPOSITORY = Path(manifest["repository"])
+
+
+def sha(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+assert Path.cwd() == COPY and sys.flags.isolated and sys.dont_write_bytecode
+for entry in audit["copy_files"]:
+    assert sha(entry["copy"]) == sha(entry["source"]) == entry["sha256"]
+with (OUT / "execution-started.json").open("x") as marker:
+    json.dump({"started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               "executor": "test_agent", "argv": sys.argv, "cwd": str(COPY),
+               "isolated_python": True, "targets": manifest["targets"]}, marker)
+
+# The actual test import and both targets may read only the fresh copy and
+# installed Python libraries. Evidence IO occurs outside this guarded window.
+library_roots = [Path(p).absolute() for p in sys.path
+                 if p and Path(p).is_absolute() and p.startswith(("/usr/", "/opt/"))]
+sys.path[:] = [str(COPY)] + [str(p) for p in library_roots]
+active = [False]
+reads, denied = [], []
+forbidden_events = {"socket.__new__", "socket.connect", "socket.getaddrinfo",
+                    "subprocess.Popen", "os.system", "os.exec", "os.fork",
+                    "os.mkdir", "os.remove", "os.rmdir", "os.rename", "os.chmod",
+                    "os.symlink", "os.link", "os.truncate"}
+
+
+def access_guard(event, args):
+    if not active[0]:
+        return
+    if event in forbidden_events:
+        denied.append({"event": event})
+        raise AssertionError("Real socket/process/write operation is forbidden")
+    if event not in {"open", "os.listdir", "os.scandir"}:
+        return
+    if not args or isinstance(args[0], int):
+        return
+    path = Path(os.fsdecode(args[0])).absolute()
+    if event == "open":
+        mode, flags = args[1], args[2]
+        write = ((isinstance(mode, str) and any(c in mode for c in "wax+"))
+                 or (isinstance(flags, int) and flags & (
+                     os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_TRUNC | os.O_APPEND)))
+        if write:
+            denied.append({"event": event, "path": str(path), "kind": "write"})
+            raise AssertionError("Real file writes are forbidden during business cases")
+    if not (path.is_relative_to(COPY) or any(path.is_relative_to(p) for p in library_roots)):
+        denied.append({"event": event, "path": str(path), "kind": "outside_copy_or_libraries"})
+        raise AssertionError("Private checkout/operator/credential path access is forbidden")
+    if event == "open":
+        reads.append(str(path))
+
+
+sys.addaudithook(access_guard)
+outcomes = {name: {"runs": 0, "status": "NOT_RUN", "business_executions": []}
+            for name in manifest["targets"]}
+current_target = [None]
+
+
+class Result(unittest.TextTestResult):
+    def startTest(self, test):
+        name = test._testMethodName
+        assert name in outcomes and outcomes[name]["runs"] == 0
+        current_target[0] = name
+        outcomes[name]["runs"] += 1
+        super().startTest(test)
+
+    def addSuccess(self, test):
+        super().addSuccess(test)
+        outcomes[test._testMethodName]["status"] = "PASS"
+
+    def addFailure(self, test, err):
+        super().addFailure(test, err)
+        outcomes[test._testMethodName].update(status="FAIL", traceback=self._exc_info_to_string(err, test))
+
+    def addError(self, test, err):
+        super().addError(test, err)
+        outcomes[test._testMethodName].update(status="ERROR", traceback=self._exc_info_to_string(err, test))
+
+
+with (OUT / "execution.log").open("x", buffering=1) as log:
+    active[0] = True
+    try:
+        module = importlib.import_module("src.ops.tools.tests.test_codex_daemon_websocket")
+        assert module.REPO == module.WORK == COPY
+        assert Path(module.__file__).is_relative_to(COPY)
+        assert Path(module.product.__file__).is_relative_to(COPY)
+        assert Path(module.product.rpc.__file__).is_relative_to(COPY)
+        actual_business = module.run_business
+
+        def tracked_business(*args, **kwargs):
+            outcome = actual_business(*args, **kwargs)
+            outcomes[current_target[0]]["business_executions"].append(outcome)
+            return outcome
+
+        with mock.patch.object(module, "run_business", tracked_business):
+            suite = unittest.TestSuite(module.CodexDaemonWebSocketTests(name)
+                                      for name in manifest["targets"])
+            result = unittest.TextTestRunner(stream=log, verbosity=2, resultclass=Result).run(suite)
+    finally:
+        active[0] = False
+
+protected = {
+    p: (sha(p) if Path(p).exists() else None) == before
+    for p, before in manifest["protected_files_before"].items()
+}
+inputs = {entry["relative_path"]: sha(entry["copy"]) == sha(entry["source"]) == entry["sha256"]
+          for entry in audit["copy_files"]}
+local = []
+for entry in subprocess.check_output(["git", "status", "--porcelain=v1", "-z"], cwd=REPOSITORY).split(b"\0"):
+    if entry:
+        p = os.fsdecode(entry[3:])
+        local.append({"status": os.fsdecode(entry[:2]), "path": p, "sha256": sha(REPOSITORY / p)})
+local_ok = local == manifest["original_local_changes_before"]
+preservation = all(protected.values()) and all(inputs.values()) and local_ok
+adapters_ok = all(len(x["business_executions"]) == 1
+                  and x["business_executions"][0]["fixture_adapter"]["changed_line_count"] == 1
+                  for x in outcomes.values())
+copied_reads = sorted(set(p for p in reads if Path(p).is_relative_to(COPY)))
+runtime_output = COPY / "var/unattended-20261015/runtime-policy-websocket-attempt-2.json"
+record = {
+    "completed_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    "executor": "test_agent", "actual_test_status": "PASS" if result.wasSuccessful() else "FAIL",
+    "tests_run": result.testsRun, "failures": len(result.failures), "errors": len(result.errors),
+    "skipped": len(result.skipped), "outcomes": outcomes, "copy_root": str(COPY),
+    "test_module": module.__file__, "product_module": module.product.__file__,
+    "readiness_module": module.product.rpc.__file__,
+    "only_one_REPO_line_adapted_per_execution": adapters_ok,
+    "access_guard_scope": "test import and exactly two targets; retention IO outside guarded window",
+    "copied_source_reads": copied_reads, "library_read_count": len(reads) - sum(p in copied_reads for p in reads),
+    "denied_io_attempts": denied, "private_checkout_or_operator_file_dependency": False,
+    "copy_runtime_output_exists": runtime_output.exists(),
+    "original_four_methods_executed": 0, "F1_executions": 0, "raw_diff_audit_executions": 0,
+    "reuse_boundaries": manifest["reuse_boundaries"], "copy_and_development_inputs_unchanged": inputs,
+    "prior_evidence_and_operator_files_unchanged": protected,
+    "original_11_local_changes_unchanged": local_ok, "preservation_ok": preservation,
+    "new_Codex_processes": 0, "real_socket_connections": 0,
+}
+with (OUT / "result.json").open("x") as target:
+    json.dump(record, target, ensure_ascii=False, indent=2, allow_nan=False)
+    target.write("\n")
+print(json.dumps({"tests_run": result.testsRun, "status": record["actual_test_status"],
+                  "failures": len(result.failures), "errors": len(result.errors),
+                  "denied_io_attempts": len(denied), "preservation_ok": preservation,
+                  "result": str(OUT / "result.json")}))
+sys.exit(0 if result.wasSuccessful() and preservation and adapters_ok and not denied
+         and not runtime_output.exists() else 1)

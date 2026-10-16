@@ -1,0 +1,133 @@
+{
+  "created_utc": "2026-10-16T00:11:30.182727+00:00",
+  "workdir": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development",
+  "files": {
+    "transport.py": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/codex_daemon_websocket.py",
+      "sha256": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70",
+      "bytes": 9132
+    },
+    "test_codex_daemon_websocket.py": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/tests/test_codex_daemon_websocket.py",
+      "sha256": "97d09ab155a8f01ca9944d34291876383d5b1684fa36614cb97d2ee6791a9bb7",
+      "bytes": 39445
+    },
+    "operation.py": {
+      "path": "/tmp/agent-unattended-runtime-websocket.py",
+      "sha256": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+      "bytes": 4464
+    },
+    "static-review.md": {
+      "path": "/tmp/agent-unattended-transport-static-review.md",
+      "sha256": "2e565a98a3e2062b2817e908860ff6d3507603323f41eb0fc7048aa0797b51fe",
+      "bytes": 7441
+    },
+    "scope-decision.json": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-scope-decision.json",
+      "sha256": "10d6e544581171aa7c02976eb4182e0f905b2f894c82dd83084191e5b1417985",
+      "bytes": 924
+    },
+    "plan.md": {
+      "path": "/tmp/agent-unattended-transport-plan.md",
+      "sha256": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+      "bytes": 9182
+    },
+    "plan-review.md": {
+      "path": "/tmp/agent-unattended-transport-plan-review.md",
+      "sha256": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+      "bytes": 7146
+    },
+    "codex_readiness.py": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/codex_readiness.py",
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "bytes": 19628
+    }
+  },
+  "targets": [
+    "case_exponent_overflow_rejected",
+    "case_ack_then_lost_readback_retains_pending"
+  ],
+  "original_four_methods_unchanged": true,
+  "all_prior_assertions_unchanged_by_ast": true,
+  "isolated_targets_only": true,
+  "old_four_methods_run": false,
+  "prior_four_pass_files": {
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/evidence-sha256.json": "7afbfaa2f6a41df4debc372d25cac8bee5dbcacf538ab0da48b799a99096ed80",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/execution-started.json": "82389ae8ea7867d65715677fb641010e675b79df527b334e9f057a5e7c3f0f84",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/execution.log": "b08f882b7524d2d6e50bd476a95fb82e408b11efd888fcd91ec52d08e9537e5a",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/manifest-before.json": "59acb14193d6c6852adf797eaf76166708ba75a1fe4c52db6a2ab37302583931",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/operation.py": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/original-operation.py": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/plan-review.md": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/plan.md": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/result.json": "8615b57a0b464f0bf2fefc508c0dbef8f2e194374b33c3afe446d761db5fa45d",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/run-four-once.py": "ee1e2e5dda8a05e3ae967c9e17384ee99f900f7093e9178ee06530a6c5cdaae6",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/test_codex_daemon_websocket.py": "51f632af70206443058cf5f68146ca4eab779e7954d95df5af5797bebe80c279",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/transport.py": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70"
+  },
+  "protected_results": {
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/runtime-policy-first-run.json": "da9e581f54dec7692ec65a4fe126b88dd12dab721ee193331c4adb277c98f7b0",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy.json": "da9e581f54dec7692ec65a4fe126b88dd12dab721ee193331c4adb277c98f7b0",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy-websocket-attempt-2.json": null
+  },
+  "local_changes_before": [
+    {
+      "status": " M",
+      "path": "docs/HANDOFF_NEXT_SESSION.md",
+      "sha256": "063c2aaf6076c9ac6e0943bdd916f42930e66dae822037434f859ced1ceb1243"
+    },
+    {
+      "status": " M",
+      "path": "docs/codex/work-plan.md",
+      "sha256": "e60f66cda0dbf64b4891e899ba67f47b0eac93fde21cf1326f2b4a9840dc2f25"
+    },
+    {
+      "status": " M",
+      "path": "docs/roadmap.md",
+      "sha256": "a11b78bae0c83136d36d14dd7713c13fcbe3dfff951657374e5ac77679e146b1"
+    },
+    {
+      "status": " M",
+      "path": "docs/status.md",
+      "sha256": "06e47755839a3e3724a8eff0f2a215f3682e9413873eb4c75d9fb662b96c66c7"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/preparation-blockers.md",
+      "sha256": "bc1f2ce493c8c31d8cd1ad3fbde50be510081505120bba8c015d1f013cce41b6"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/runtime-acceptance-cases.json",
+      "sha256": "8e8166e05bd69fe79980a353463f0b2b66a089b7e88bb1f379b523a0b38a3dcc"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/runtime-acceptance-plan.md",
+      "sha256": "6c826455f4a61db6a4785435a52d3562398a64cd6421fafcabb4867b5cf5f4bd"
+    },
+    {
+      "status": "??",
+      "path": "docs/plans/codex-preparation-verification-20261015.md",
+      "sha256": "d265642b6ace90c8e8f2e306c04de986baa848c3605e27a862bc746b3602449f"
+    },
+    {
+      "status": "??",
+      "path": "docs/plans/document-qa-f0a-validation-plan.md",
+      "sha256": "93cf5692286cdbee24530ff27ba9838bc42acad2a2a0313f535bbb6cb4cb8b51"
+    },
+    {
+      "status": "??",
+      "path": "docs/testing/codex-preparation-contract-20261015.json",
+      "sha256": "a056197c83aebd5bdef87963b6418bb949b790b09ed3050b5d464f0096bcba1f"
+    },
+    {
+      "status": "??",
+      "path": "docs/testing/codex-preparation-observed-20261015.json",
+      "sha256": "517981506b0b7d78ec722c5aad15fc5fcd34ac7f15a3f298213dc27f94d69aed"
+    }
+  ],
+  "permission_investigation": false,
+  "product_fixes": false
+}
