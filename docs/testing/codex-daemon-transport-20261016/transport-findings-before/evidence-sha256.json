@@ -1,0 +1,16 @@
+{
+  "codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+  "execution-started.json": "1f9391e86584648fa8e9ab9c79b0b17f9c9520184d2269794a70ba86d53366a6",
+  "execution.log": "4d0f3a11cc730efda111723731842e34a707a6ffa23a2f8e4d8c357a6fa86fe8",
+  "manifest-before.json": "f053e19b17debc38b96608578c300a0c015a1ec2a1390640bd195ca7ccd4b785",
+  "operation.py": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+  "plan-review.md": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+  "plan.md": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+  "result.json": "f4ba1007c40a7f77ea6da702ad6c14f8a8512e603b7fb5080ab45195ab6c8c2c",
+  "run-two-once.py": "dbea4716e75540ff730d44e33afa50af75cc2e83e8d39bd0dd08755ed07eaad1",
+  "scope-decision.json": "10d6e544581171aa7c02976eb4182e0f905b2f894c82dd83084191e5b1417985",
+  "static-review.md": "2e565a98a3e2062b2817e908860ff6d3507603323f41eb0fc7048aa0797b51fe",
+  "test-extension.diff": "db0e00abda6190936a203d2b70d54436877c1817fc8f0d143ab832421a8aa6fa",
+  "test_codex_daemon_websocket.py": "97d09ab155a8f01ca9944d34291876383d5b1684fa36614cb97d2ee6791a9bb7",
+  "transport.py": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70"
+}

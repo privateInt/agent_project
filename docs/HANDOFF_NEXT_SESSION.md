@@ -1,5 +1,7 @@
 # 다음 세션·Codex 인수인계
 
+2026-10-16: PR #15 고정 commit `c862bfc6951491192a9fe98b535c9a8be921ee35` 위의 [daemon 전송 부품 근거](testing/codex-daemon-transport-observed-20261016.json)를 읽는다. 대상은 agent_project만이며 vms_project는 자동 선택·수정·실행에서 제외한다. 실제 Auto-review·무인 두 작업은 미검증이고 root/user PAUSE와 기존 D18 보류를 유지한다. 원래 checkout의 11개 변경은 별도 개발 경로 작업으로 보존했다.
+
 2026-10-15 L01 재개 기준: PR #14의 `c91e9e628402fcc89c2daa4301d54c3c321221ed`에서 분리한 fixture 설정 로더는 [계약](codex/github-fixture-config.md)과 [새 실행 근거](testing/github-fixture-config-observed-20261015.json)를 참조한다. 개발용 임시 설정만 사용했고 실제 소유자 승인값·운영 설치는 미제공/미실행이다. 기존13+3·R03/R04/R15와 전체 suite를 반복하지 않는다. 다음에는 보호된 실제 설정 입력·설치 인수를 준비하고 별도 역할/issuer 연결을 선정하며, 원래 개발 checkout의 변경11개·최초 실패·기존 sandbox 보류를 보존한다.
 
 2026-10-13 규칙 준비: 공통 정책과 템플릿·프로젝트별 책임·첫 작업 연결을 [Codex 문서](codex/README.md)에 정리했다. 문서의 GitHub main 반영과 서버 실행 환경 적용은 아직 완료되지 않았다. [현재 상태](status.md)를 기준으로 읽고 본문에 보존한 과거 근거와 구분한다.

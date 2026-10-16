@@ -1,0 +1,2434 @@
+{
+  "completed_utc": "2026-10-16T00:30:47.270215+00:00",
+  "executor": "test_agent",
+  "actual_test_status": "PASS",
+  "tests_run": 2,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "outcomes": {
+    "case_portable_business_success": {
+      "runs": 1,
+      "status": "PASS",
+      "business_executions": [
+        {
+          "record": {
+            "created_unix": 1792110647,
+            "project": "agent_project",
+            "vms_project": "EXCLUDED",
+            "settings_changed": [
+              "01a13f12-328d-7342-b285-a0868ac66447",
+              "01a13fb0-1721-7af3-82e6-747eac4de411",
+              "01a13fb0-1abe-7623-a15e-cf07071ce54a"
+            ],
+            "threads": {
+              "01a13f12-328d-7342-b285-a0868ac66447": {
+                "before": {
+                  "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                },
+                "after": {
+                  "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "auto_review",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                "before": {
+                  "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                },
+                "after": {
+                  "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "auto_review",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                "before": {
+                  "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                },
+                "after": {
+                  "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "auto_review",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              }
+            },
+            "sandbox_policy_changed": false,
+            "global_config_changed": false,
+            "queue_changed": false,
+            "services_changed": false,
+            "managed_requirements": {
+              "allowedApprovalPolicies": null,
+              "allowedApprovalsReviewers": [
+                "user",
+                "auto_review"
+              ],
+              "allowedSandboxModes": null,
+              "allowedPermissionProfiles": null,
+              "defaultPermissions": null
+            },
+            "usage": {
+              "ordinaryUsageAllowed": true,
+              "observed_unix": 1792110647,
+              "windows": [
+                {
+                  "limit_id": "fixture",
+                  "rateLimitReachedType": null,
+                  "primary": null,
+                  "secondary": null
+                }
+              ]
+            },
+            "status": "APPLIED_AND_READ_BACK_FOR_SUBSEQUENT_TURNS",
+            "current_already_running_turn": "NOT_RETROACTIVELY_CHANGED"
+          },
+          "snapshots": [
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [],
+              "threads": {},
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              }
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              }
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              }
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              },
+              "pending_setting": "01a13f12-328d-7342-b285-a0868ac66447"
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              },
+              "pending_setting": "01a13f12-328d-7342-b285-a0868ac66447"
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              }
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              },
+              "pending_setting": "01a13fb0-1721-7af3-82e6-747eac4de411"
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447",
+                "01a13fb0-1721-7af3-82e6-747eac4de411"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              },
+              "pending_setting": "01a13fb0-1721-7af3-82e6-747eac4de411"
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447",
+                "01a13fb0-1721-7af3-82e6-747eac4de411"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              }
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447",
+                "01a13fb0-1721-7af3-82e6-747eac4de411"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              },
+              "pending_setting": "01a13fb0-1abe-7623-a15e-cf07071ce54a"
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447",
+                "01a13fb0-1721-7af3-82e6-747eac4de411",
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              },
+              "pending_setting": "01a13fb0-1abe-7623-a15e-cf07071ce54a"
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447",
+                "01a13fb0-1721-7af3-82e6-747eac4de411",
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              }
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447",
+                "01a13fb0-1721-7af3-82e6-747eac4de411",
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  },
+                  "after": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "auto_review",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              },
+              "status": "APPLIED_AND_READ_BACK_FOR_SUBSEQUENT_TURNS",
+              "current_already_running_turn": "NOT_RETROACTIVELY_CHANGED"
+            }
+          ],
+          "events": [
+            [
+              "initialize",
+              {
+                "clientInfo": {
+                  "name": "agent_project_unattended_transition",
+                  "version": "1"
+                },
+                "capabilities": {
+                  "experimentalApi": true
+                }
+              }
+            ],
+            [
+              "initialized",
+              {}
+            ],
+            [
+              "configRequirements/read",
+              {}
+            ],
+            [
+              "account/rateLimits/read",
+              {}
+            ],
+            [
+              "thread/resume",
+              {
+                "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+                "excludeTurns": true
+              }
+            ],
+            [
+              "thread/resume",
+              {
+                "threadId": "01a13fb0-1721-7af3-82e6-747eac4de411",
+                "excludeTurns": true
+              }
+            ],
+            [
+              "thread/resume",
+              {
+                "threadId": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+                "excludeTurns": true
+              }
+            ],
+            [
+              "thread/settings/update",
+              {
+                "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+                "approvalsReviewer": "auto_review"
+              }
+            ],
+            [
+              "thread/resume",
+              {
+                "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+                "excludeTurns": true
+              }
+            ],
+            [
+              "thread/settings/update",
+              {
+                "threadId": "01a13fb0-1721-7af3-82e6-747eac4de411",
+                "approvalsReviewer": "auto_review"
+              }
+            ],
+            [
+              "thread/resume",
+              {
+                "threadId": "01a13fb0-1721-7af3-82e6-747eac4de411",
+                "excludeTurns": true
+              }
+            ],
+            [
+              "thread/settings/update",
+              {
+                "threadId": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+                "approvalsReviewer": "auto_review"
+              }
+            ],
+            [
+              "thread/resume",
+              {
+                "threadId": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+                "excludeTurns": true
+              }
+            ],
+            [
+              "close",
+              {}
+            ]
+          ],
+          "exit_code": 0,
+          "stdout": "{\"status\": \"APPLIED_AND_READ_BACK_FOR_SUBSEQUENT_TURNS\", \"settings_changed\": 3, \"ordinaryUsageAllowed\": true}\n",
+          "forbidden": [],
+          "fixture_adapter": {
+            "fixture": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt",
+            "raw_sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+            "adapted_sha256": "18c92160d7e8c17eaade7c09d4c2e941c7c1070c72fb7825de8b325e8630b8ba",
+            "assignment_line": 6,
+            "before": "REPO=pathlib.Path('/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project')\n",
+            "after": "REPO=pathlib.Path('/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout')\n",
+            "changed_line_count": 1,
+            "only_REPO_assignment_adapted": true,
+            "all_other_source_bytes_and_ast_preserved": true
+          }
+        }
+      ]
+    },
+    "case_ack_then_lost_readback_retains_pending": {
+      "runs": 1,
+      "status": "PASS",
+      "business_executions": [
+        {
+          "record": {
+            "created_unix": 1792110647,
+            "project": "agent_project",
+            "vms_project": "EXCLUDED",
+            "settings_changed": [
+              "01a13f12-328d-7342-b285-a0868ac66447"
+            ],
+            "threads": {
+              "01a13f12-328d-7342-b285-a0868ac66447": {
+                "before": {
+                  "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                "before": {
+                  "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              },
+              "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                "before": {
+                  "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                  "approvalPolicy": "on-request",
+                  "approvalsReviewer": "user",
+                  "sandbox": {
+                    "type": "workspaceWrite",
+                    "networkAccess": false
+                  },
+                  "activePermissionProfile": null,
+                  "runtimeWorkspaceRoots": [
+                    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                  ],
+                  "model": "fixture-model",
+                  "modelProvider": "fixture-provider",
+                  "reasoningEffort": "fixture-effort"
+                }
+              }
+            },
+            "sandbox_policy_changed": false,
+            "global_config_changed": false,
+            "queue_changed": false,
+            "services_changed": false,
+            "managed_requirements": {
+              "allowedApprovalPolicies": null,
+              "allowedApprovalsReviewers": [
+                "user",
+                "auto_review"
+              ],
+              "allowedSandboxModes": null,
+              "allowedPermissionProfiles": null,
+              "defaultPermissions": null
+            },
+            "usage": {
+              "ordinaryUsageAllowed": true,
+              "observed_unix": 1792110647,
+              "windows": [
+                {
+                  "limit_id": "fixture",
+                  "rateLimitReachedType": null,
+                  "primary": null,
+                  "secondary": null
+                }
+              ]
+            },
+            "pending_setting": "01a13f12-328d-7342-b285-a0868ac66447",
+            "status": "BLOCKED_OR_UNCERTAIN",
+            "error": "RPC_RECEIVE_FAILED"
+          },
+          "snapshots": [
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [],
+              "threads": {},
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              }
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              }
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              }
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              },
+              "pending_setting": "01a13f12-328d-7342-b285-a0868ac66447"
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              },
+              "pending_setting": "01a13f12-328d-7342-b285-a0868ac66447"
+            },
+            {
+              "created_unix": 1792110647,
+              "project": "agent_project",
+              "vms_project": "EXCLUDED",
+              "settings_changed": [
+                "01a13f12-328d-7342-b285-a0868ac66447"
+              ],
+              "threads": {
+                "01a13f12-328d-7342-b285-a0868ac66447": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1721-7af3-82e6-747eac4de411": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                },
+                "01a13fb0-1abe-7623-a15e-cf07071ce54a": {
+                  "before": {
+                    "cwd": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+                    "approvalPolicy": "on-request",
+                    "approvalsReviewer": "user",
+                    "sandbox": {
+                      "type": "workspaceWrite",
+                      "networkAccess": false
+                    },
+                    "activePermissionProfile": null,
+                    "runtimeWorkspaceRoots": [
+                      "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout"
+                    ],
+                    "model": "fixture-model",
+                    "modelProvider": "fixture-provider",
+                    "reasoningEffort": "fixture-effort"
+                  }
+                }
+              },
+              "sandbox_policy_changed": false,
+              "global_config_changed": false,
+              "queue_changed": false,
+              "services_changed": false,
+              "managed_requirements": {
+                "allowedApprovalPolicies": null,
+                "allowedApprovalsReviewers": [
+                  "user",
+                  "auto_review"
+                ],
+                "allowedSandboxModes": null,
+                "allowedPermissionProfiles": null,
+                "defaultPermissions": null
+              },
+              "usage": {
+                "ordinaryUsageAllowed": true,
+                "observed_unix": 1792110647,
+                "windows": [
+                  {
+                    "limit_id": "fixture",
+                    "rateLimitReachedType": null,
+                    "primary": null,
+                    "secondary": null
+                  }
+                ]
+              },
+              "pending_setting": "01a13f12-328d-7342-b285-a0868ac66447",
+              "status": "BLOCKED_OR_UNCERTAIN",
+              "error": "RPC_RECEIVE_FAILED"
+            }
+          ],
+          "events": [
+            [
+              "initialize",
+              {
+                "clientInfo": {
+                  "name": "agent_project_unattended_transition",
+                  "version": "1"
+                },
+                "capabilities": {
+                  "experimentalApi": true
+                }
+              }
+            ],
+            [
+              "initialized",
+              {}
+            ],
+            [
+              "configRequirements/read",
+              {}
+            ],
+            [
+              "account/rateLimits/read",
+              {}
+            ],
+            [
+              "thread/resume",
+              {
+                "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+                "excludeTurns": true
+              }
+            ],
+            [
+              "thread/resume",
+              {
+                "threadId": "01a13fb0-1721-7af3-82e6-747eac4de411",
+                "excludeTurns": true
+              }
+            ],
+            [
+              "thread/resume",
+              {
+                "threadId": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+                "excludeTurns": true
+              }
+            ],
+            [
+              "thread/settings/update",
+              {
+                "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+                "approvalsReviewer": "auto_review"
+              }
+            ],
+            [
+              "thread/resume",
+              {
+                "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+                "excludeTurns": true
+              }
+            ],
+            [
+              "close",
+              {}
+            ]
+          ],
+          "exit_code": 1,
+          "stdout": "{\"status\": \"BLOCKED_OR_UNCERTAIN\", \"error\": \"RPC_RECEIVE_FAILED\", \"settings_changed\": [\"01a13f12-328d-7342-b285-a0868ac66447\"]}\n",
+          "forbidden": [],
+          "fixture_adapter": {
+            "fixture": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt",
+            "raw_sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+            "adapted_sha256": "18c92160d7e8c17eaade7c09d4c2e941c7c1070c72fb7825de8b325e8630b8ba",
+            "assignment_line": 6,
+            "before": "REPO=pathlib.Path('/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project')\n",
+            "after": "REPO=pathlib.Path('/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout')\n",
+            "changed_line_count": 1,
+            "only_REPO_assignment_adapted": true,
+            "all_other_source_bytes_and_ast_preserved": true
+          }
+        }
+      ]
+    }
+  },
+  "copy_root": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout",
+  "test_module": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/test_codex_daemon_websocket.py",
+  "product_module": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/codex_daemon_websocket.py",
+  "readiness_module": "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/codex_readiness.py",
+  "only_one_REPO_line_adapted_per_execution": true,
+  "access_guard_scope": "test import and exactly two targets; retention IO outside guarded window",
+  "copied_source_reads": [
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/__init__.py",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/__pycache__/__init__.cpython-310.pyc",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/__init__.py",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/__pycache__/__init__.cpython-310.pyc",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/__pycache__/codex_daemon_websocket.cpython-310.pyc",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/__pycache__/codex_readiness.cpython-310.pyc",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/codex_daemon_websocket.py",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/codex_readiness.py",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/__pycache__/test_codex_daemon_websocket.cpython-310.pyc",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/fixtures/codex_daemon_websocket/manifest.json",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt",
+    "/tmp/transport-portable-source-fxbh01_o/independent-renamed-checkout/src/ops/tools/tests/test_codex_daemon_websocket.py"
+  ],
+  "library_read_count": 25,
+  "denied_io_attempts": [],
+  "private_checkout_or_operator_file_dependency": false,
+  "copy_runtime_output_exists": false,
+  "original_four_methods_executed": 0,
+  "F1_executions": 0,
+  "raw_diff_audit_executions": 0,
+  "reuse_boundaries": {
+    "F1": "unchanged helper, same product bytes; no repeat",
+    "strict_business_diff_audit": "unchanged helper and exact same raw fixture bytes; no repeat",
+    "original_four_methods": "preserved; no repeat",
+    "affected_business_success_and_F2": "execute once each in fresh differently named source copy"
+  },
+  "copy_and_development_inputs_unchanged": {
+    "src/ops/tools/codex_daemon_websocket.py": true,
+    "src/ops/tools/codex_readiness.py": true,
+    "src/ops/tools/tests/test_codex_daemon_websocket.py": true,
+    "src/ops/tools/tests/fixtures/codex_daemon_websocket/original-operation.py.txt": true,
+    "src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt": true,
+    "src/ops/tools/tests/fixtures/codex_daemon_websocket/manifest.json": true,
+    "src/__init__.py": true,
+    "src/ops/__init__.py": true
+  },
+  "prior_evidence_and_operator_files_unchanged": {
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/codex_readiness.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/evidence-sha256.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/execution-started.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/execution.log": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/manifest-before.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/operation.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/original-operation.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/plan-review.md": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/plan.md": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/result.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/run-four-once.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/test_codex_daemon_websocket.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/transport.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/codex_readiness.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/evidence-sha256.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/execution-started.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/execution.log": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/manifest-before.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/operation.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/plan-review.md": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/plan.md": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/result.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/run-two-once.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/scope-decision.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/static-review.md": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/test-extension.diff": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/test_codex_daemon_websocket.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/transport.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/codex_readiness.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/execution-started.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/execution.log": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/fix-audit.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/manifest-before.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/operation.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/operation.py.fix.diff": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/plan-review.md": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/plan.md": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/result.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/run-two-once.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/scope-decision.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/static-review.md": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/test_codex_daemon_websocket.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/transport.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/transport.py.fix.diff": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/codex_readiness.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/evidence-sha256.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/execution-started.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/execution.log": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/manifest-before.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/operation.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/original-operation.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/result.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/run-audit-once.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/static-audit.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/test-after.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/test-before.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/test.diff": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/transport.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/runtime-policy-first-run.json": true,
+    "/tmp/agent-unattended-runtime-policy.py": true,
+    "/tmp/agent-unattended-runtime-websocket.py": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy.json": true,
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy-websocket-attempt-2.json": true
+  },
+  "original_11_local_changes_unchanged": true,
+  "preservation_ok": true,
+  "new_Codex_processes": 0,
+  "real_socket_connections": 0
+}

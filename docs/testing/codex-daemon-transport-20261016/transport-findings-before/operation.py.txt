@@ -1,0 +1,52 @@
+"""Bounded official control RPC: this project's three existing threads only."""
+import hashlib,importlib.util,json,pathlib,subprocess,time
+import sys
+sys.path.insert(0, '/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development')
+from src.ops.tools.codex_daemon_websocket import UnixWebSocketRpc
+REPO=pathlib.Path('/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project')
+DEST=REPO/'var/unattended-20261015'
+THREADS=('01a13f12-328d-7342-b285-a0868ac66447','01a13fb0-1721-7af3-82e6-747eac4de411','01a13fb0-1abe-7623-a15e-cf07071ce54a')
+spec=importlib.util.spec_from_file_location('readiness',REPO/'src/ops/tools/codex_readiness.py')
+rpc=importlib.util.module_from_spec(spec);spec.loader.exec_module(rpc)
+rpc.ALLOWED_METHODS=frozenset({'initialize','configRequirements/read','account/rateLimits/read','thread/resume','thread/settings/update'})
+record={'created_unix':int(time.time()),'project':'agent_project','vms_project':'EXCLUDED','settings_changed':[],'threads':{},'sandbox_policy_changed':False,'global_config_changed':False,'queue_changed':False,'services_changed':False}
+def write():
+ p=DEST/'runtime-policy-websocket-attempt-2.json';tmp=p.with_suffix('.new');tmp.write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n');tmp.chmod(0o600);tmp.replace(p)
+def settings(x):
+ return {k:x.get(k) for k in ('cwd','approvalPolicy','approvalsReviewer','sandbox','activePermissionProfile','runtimeWorkspaceRoots','model','modelProvider','reasoningEffort')}
+write()
+try:
+ with UnixWebSocketRpc('/home/codex_shshin/.codex/app-server-control/app-server-control.sock',THREADS,total_timeout=60,request_timeout=5) as client:
+  client.call('initialize',{'clientInfo':{'name':'agent_project_unattended_transition','version':'1'},'capabilities':{'experimentalApi':True}});client.notify_initialized()
+  req=client.call('configRequirements/read',{})
+  r=req.get('requirements') or {}
+  record['managed_requirements']={k:r.get(k) for k in ('allowedApprovalPolicies','allowedApprovalsReviewers','allowedSandboxModes','allowedPermissionProfiles','defaultPermissions')}
+  allowed=r.get('allowedApprovalsReviewers')
+  if allowed is not None and 'auto_review' not in allowed:raise RuntimeError('MANAGED_REVIEWER_DISALLOWED')
+  quota=client.call('account/rateLimits/read',{})
+  record['usage']={'ordinaryUsageAllowed':quota.get('ordinaryUsageAllowed'),'observed_unix':int(time.time()),'windows':[]}
+  for key,bucket in (quota.get('rateLimitsByLimitId') or {'legacy':quota.get('rateLimits')}).items():
+   if not isinstance(bucket,dict):continue
+   record['usage']['windows'].append({'limit_id':key,'rateLimitReachedType':bucket.get('rateLimitReachedType'),'primary':bucket.get('primary'),'secondary':bucket.get('secondary')})
+  before={}
+  for tid in THREADS:
+   x=client.call('thread/resume',{'threadId':tid,'excludeTurns':True});b=settings(x)
+   if b['cwd']!=str(REPO) or b['approvalPolicy']!='on-request' or not isinstance(b['sandbox'],dict) or b['sandbox'].get('type')!='workspaceWrite' or b['sandbox'].get('networkAccess') is not False:raise RuntimeError('UNEXPECTED_THREAD_BOUNDARY')
+   roots=b['runtimeWorkspaceRoots']
+   if roots!=[str(REPO)]:raise RuntimeError('UNEXPECTED_WORKSPACE_ROOTS')
+   before[tid]=b;record['threads'][tid]={'before':b};write()
+  for tid in THREADS:
+   if before[tid]['approvalsReviewer']!='auto_review':
+    record['pending_setting']=tid;write()
+    client.call('thread/settings/update',{'threadId':tid,'approvalsReviewer':'auto_review'})
+    record['settings_changed'].append(tid);record.pop('pending_setting',None);write()
+   after=settings(client.call('thread/resume',{'threadId':tid,'excludeTurns':True}))
+   expected=dict(before[tid],approvalsReviewer='auto_review')
+   if after!=expected:raise RuntimeError('SETTING_READBACK_MISMATCH')
+   record['threads'][tid]['after']=after;write()
+  record['status']='APPLIED_AND_READ_BACK_FOR_SUBSEQUENT_TURNS'
+  record['current_already_running_turn']='NOT_RETROACTIVELY_CHANGED'
+except Exception as e:
+ record['status']='BLOCKED_OR_UNCERTAIN';record['error']=e.code if isinstance(e,rpc.ProbeError) else str(e)
+ write();print(json.dumps({'status':record['status'],'error':record['error'],'settings_changed':record['settings_changed']}));raise SystemExit(1)
+write();print(json.dumps({'status':record['status'],'settings_changed':len(record['settings_changed']),'ordinaryUsageAllowed':record['usage']['ordinaryUsageAllowed']}))

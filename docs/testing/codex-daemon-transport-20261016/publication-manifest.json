@@ -1,0 +1,411 @@
+{
+  "parent_commit": "c862bfc6951491192a9fe98b535c9a8be921ee35",
+  "fixture_only": true,
+  "actual_runtime_transition": "NOT_COMPLETE",
+  "main_merged": false,
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-daemon-transport-20261016/review/final-review.md",
+    "sha256": "4501c353f6dd540c3c8c231b473f9ddaf0ba18ee73966fa9c00ccd37735a3cac"
+  },
+  "raw_byte_retention": "Historical code/logs receive .txt suffix only; original bytes and paths are retained in mapping.",
+  "final_whole_suite_repeated": false,
+  "files": {
+    "src/ops/tools/codex_daemon_websocket.py": {
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+      "source": "src/ops/tools/codex_daemon_websocket.py"
+    },
+    "src/ops/tools/tests/test_codex_daemon_websocket.py": {
+      "sha256": "5085ce3d866a81afe7614cb6e4aeea785cf757da148395591dbc865ed0f3a9bf",
+      "source": "src/ops/tools/tests/test_codex_daemon_websocket.py"
+    },
+    "docs/testing/codex-daemon-transport-observed-20261016.json": {
+      "sha256": "50fb556f41c328d25f1415e57c6f18583c94dadd2792796e90063b287e3015fb",
+      "source": "docs/testing/codex-daemon-transport-observed-20261016.json"
+    },
+    "docs/development.md": {
+      "sha256": "8b09e5a8fbfd7e24e5196c13f7c08d2cf7d28c5ffa7fcff811f8684936c220f7",
+      "source": "docs/development.md"
+    },
+    "docs/status.md": {
+      "sha256": "71ceaf3976c7cfa85c2c6b41ab0542921e0c8fded0962ee4dde1b4b4d2bfd77a",
+      "source": "docs/status.md"
+    },
+    "docs/roadmap.md": {
+      "sha256": "9d43c5c4b96b84cddff6fb80539aae9c5b95dea00a93ad92871fe30fc8ccaf2e",
+      "source": "docs/roadmap.md"
+    },
+    "docs/HANDOFF_NEXT_SESSION.md": {
+      "sha256": "8280648297c2855ca73dadcae8bb0b7854123ed9f5516ad47e55bc9f2ae97794",
+      "source": "docs/HANDOFF_NEXT_SESSION.md"
+    },
+    "src/ops/tools/tests/fixtures/codex_daemon_websocket/manifest.json": {
+      "sha256": "9f7a05ac526a0a6240a304df48db2b57e021742da78c1f508fb097f5e80db244",
+      "source": "src/ops/tools/tests/fixtures/codex_daemon_websocket/manifest.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt": {
+      "sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+      "source": "src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt"
+    },
+    "src/ops/tools/tests/fixtures/codex_daemon_websocket/original-operation.py.txt": {
+      "sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+      "source": "src/ops/tools/tests/fixtures/codex_daemon_websocket/original-operation.py.txt"
+    },
+    "docs/testing/codex-daemon-transport-20261016/observed-before-final-review.json": {
+      "sha256": "f9d9ea1637bc170c792ab4a746049d086693b818640efa8a1575bd051c332acf",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/codex-daemon-transport-20261016-observed-before-final-review.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/codex_readiness.py.txt": {
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/codex_readiness.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/evidence-sha256.json": {
+      "sha256": "7afbfaa2f6a41df4debc372d25cac8bee5dbcacf538ab0da48b799a99096ed80",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/evidence-sha256.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/execution-started.json": {
+      "sha256": "82389ae8ea7867d65715677fb641010e675b79df527b334e9f057a5e7c3f0f84",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/execution-started.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/execution.log.txt": {
+      "sha256": "b08f882b7524d2d6e50bd476a95fb82e408b11efd888fcd91ec52d08e9537e5a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/execution.log"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/manifest-before.json": {
+      "sha256": "59acb14193d6c6852adf797eaf76166708ba75a1fe4c52db6a2ab37302583931",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/manifest-before.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/operation.py.txt": {
+      "sha256": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/operation.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/original-operation.py.txt": {
+      "sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/original-operation.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/plan-review.md": {
+      "sha256": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/plan-review.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/plan.md": {
+      "sha256": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/plan.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/result.json": {
+      "sha256": "8615b57a0b464f0bf2fefc508c0dbef8f2e194374b33c3afe446d761db5fa45d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/result.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/run-four-once.py.txt": {
+      "sha256": "ee1e2e5dda8a05e3ae967c9e17384ee99f900f7093e9178ee06530a6c5cdaae6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/run-four-once.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/test_codex_daemon_websocket.py.txt": {
+      "sha256": "51f632af70206443058cf5f68146ca4eab779e7954d95df5af5797bebe80c279",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/test_codex_daemon_websocket.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-run-1/transport.py.txt": {
+      "sha256": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-run-1/transport.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/codex_readiness.py.txt": {
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/codex_readiness.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/evidence-sha256.json": {
+      "sha256": "c5ecaf34198d91733d2f9fe933aa95db48ad4f86b3d56731f1cbe7a303004b50",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/evidence-sha256.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/execution-started.json": {
+      "sha256": "1f9391e86584648fa8e9ab9c79b0b17f9c9520184d2269794a70ba86d53366a6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/execution-started.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/execution.log.txt": {
+      "sha256": "4d0f3a11cc730efda111723731842e34a707a6ffa23a2f8e4d8c357a6fa86fe8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/execution.log"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/manifest-before.json": {
+      "sha256": "f053e19b17debc38b96608578c300a0c015a1ec2a1390640bd195ca7ccd4b785",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/manifest-before.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/operation.py.txt": {
+      "sha256": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/operation.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/plan-review.md": {
+      "sha256": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/plan-review.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/plan.md": {
+      "sha256": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/plan.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/result.json": {
+      "sha256": "f4ba1007c40a7f77ea6da702ad6c14f8a8512e603b7fb5080ab45195ab6c8c2c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/result.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/run-two-once.py.txt": {
+      "sha256": "dbea4716e75540ff730d44e33afa50af75cc2e83e8d39bd0dd08755ed07eaad1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/run-two-once.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/scope-decision.json": {
+      "sha256": "10d6e544581171aa7c02976eb4182e0f905b2f894c82dd83084191e5b1417985",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/scope-decision.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/static-review.md": {
+      "sha256": "2e565a98a3e2062b2817e908860ff6d3507603323f41eb0fc7048aa0797b51fe",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/static-review.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/test-extension.diff": {
+      "sha256": "db0e00abda6190936a203d2b70d54436877c1817fc8f0d143ab832421a8aa6fa",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/test-extension.diff"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/test_codex_daemon_websocket.py.txt": {
+      "sha256": "97d09ab155a8f01ca9944d34291876383d5b1684fa36614cb97d2ee6791a9bb7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/test_codex_daemon_websocket.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-before/transport.py.txt": {
+      "sha256": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-before/transport.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/codex_readiness.py.txt": {
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/codex_readiness.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/execution-started.json": {
+      "sha256": "2eb6696118e3a513a576ed74ca0918d4f6b80016493472beb700244cf54b04fb",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/execution-started.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/execution.log.txt": {
+      "sha256": "ac58f23b6bec0d6051a5280d181f4c4fec48f62dc146c9053c9d66e26d2fd37d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/execution.log"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/fix-audit.json": {
+      "sha256": "d3b659cb0207e13c4c143ab4b337c4d00a57adfe305ed6ddf235f9adb95c70a9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/fix-audit.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/manifest-before.json": {
+      "sha256": "65fbc25af12d391299d00a7ac830771e1d7e2d40c24af796ee00bc2f727f500e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/manifest-before.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/operation.py.txt": {
+      "sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/operation.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/operation.py.fix.diff": {
+      "sha256": "14d8cd28db31dc7f30c72af7c184cfc4ce18a5fa226813c1a3593a21ef202018",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/operation.py.fix.diff"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/plan-review.md": {
+      "sha256": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/plan-review.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/plan.md": {
+      "sha256": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/plan.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/result.json": {
+      "sha256": "324cc4e272269c9cc6d3d5ba1c906db598c77b2a1795cc1602dc3f58c639f567",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/result.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/run-two-once.py.txt": {
+      "sha256": "854c0c801c84a94c8a6341998ec9dfdd34478f4a00b1bce26ac9634b94787767",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/run-two-once.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/scope-decision.json": {
+      "sha256": "10d6e544581171aa7c02976eb4182e0f905b2f894c82dd83084191e5b1417985",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/scope-decision.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/static-review.md": {
+      "sha256": "2e565a98a3e2062b2817e908860ff6d3507603323f41eb0fc7048aa0797b51fe",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/static-review.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/test_codex_daemon_websocket.py.txt": {
+      "sha256": "97d09ab155a8f01ca9944d34291876383d5b1684fa36614cb97d2ee6791a9bb7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/test_codex_daemon_websocket.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/transport.py.txt": {
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/transport.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-findings-after/transport.py.fix.diff": {
+      "sha256": "baba96ccd88de4b05226adeb6b56cdce1b217fe8729573b8abfae7580deb237f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-after/transport.py.fix.diff"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/codex_readiness.py.txt": {
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/codex_readiness.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/evidence-sha256.json": {
+      "sha256": "e6e9d6421c7cd13d16cb701cc3de963d1d8edbe315edf5036fe188ce6c45074b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/evidence-sha256.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/execution-started.json": {
+      "sha256": "1b200b3f3249607a8675d98a4d10dff726543d95e4514d3561183f4190c62a60",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/execution-started.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/execution.log.txt": {
+      "sha256": "f9e322628791aa62a1694b6e0a48a8433c4f0fae99fbcb6a3f3aaed696dfeb3e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/execution.log"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/manifest-before.json": {
+      "sha256": "ab6b126c0be9cd2083448ff3ca8b00d36b5901237ca1abc1aed94598ff978c90",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/manifest-before.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/operation.py.txt": {
+      "sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/operation.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/original-operation.py.txt": {
+      "sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/original-operation.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/result.json": {
+      "sha256": "7e8c594d5428a469916d80909a243679065d3a5180f6b708cce38108b68f1ea3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/result.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/run-audit-once.py.txt": {
+      "sha256": "23cc0bd383d593b27a4c953460b69d49a39dafce6ac519a5df93280cbf8c00e9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/run-audit-once.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/static-audit.json": {
+      "sha256": "5b543e248a8be19f1819598e3abb996ac34d2c533e3503e1d754b359bba1df61",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/static-audit.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/test-after.py.txt": {
+      "sha256": "0d4c2f025778b82a5778f9eb87220add9dcc083c04364c9550a148ce9adddb85",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/test-after.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/test-before.py.txt": {
+      "sha256": "97d09ab155a8f01ca9944d34291876383d5b1684fa36614cb97d2ee6791a9bb7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/test-before.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/test.diff": {
+      "sha256": "b7dd7de0370eaa69b5eb8fec41f689ec54f79d63377f9b2547175d0112f8f2bf",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/test.diff"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-test-reconciliation/transport.py.txt": {
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-test-reconciliation/transport.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/codex_readiness.py.txt": {
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/codex_readiness.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/evidence-sha256.json": {
+      "sha256": "8990be3c7e2f5c92bb1b33ae9cc8d5190baebc410dffc4b3fbe59d35a4b271c5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/evidence-sha256.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/execution-started.json": {
+      "sha256": "3357b3e0de184b1816ddf407b131f5818a3c3b083a2cb5e8d6313da94e00a148",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/execution-started.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/execution.log.txt": {
+      "sha256": "8d55576a5696ecd7c905cae4b4e92a9cba5304e80e316eb7c1a2c35b08027e33",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/execution.log"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/fixture-manifest.json": {
+      "sha256": "9f7a05ac526a0a6240a304df48db2b57e021742da78c1f508fb097f5e80db244",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/fixture-manifest.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/manifest-before.json": {
+      "sha256": "f3117c1e1f3150bef2003370a160327e37f2ffa7402d9a2d925d5b8d7c5c5cce",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/manifest-before.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/operation.py.txt": {
+      "sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/operation.py.txt"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/original-operation.py.txt": {
+      "sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/original-operation.py.txt"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/portability-audit.json": {
+      "sha256": "46577141b3420e43781713c998b789c81af3db086213c431508d002383e4d830",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/portability-audit.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/result.json": {
+      "sha256": "a0199340d98f92520d0ae9801732ab46a9ad39f8af5080b568e3d5e5ebbe8aba",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/result.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/run-portability-once.py.txt": {
+      "sha256": "c5250ce03763968571da1ce0275e393ad3ce4ce3749c220dc776cd4d8c11aa18",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/run-portability-once.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/sources/src/__init__.py.txt": {
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/sources/src/__init__.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/sources/src/ops/__init__.py.txt": {
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/__init__.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/sources/src/ops/tools/codex_daemon_websocket.py.txt": {
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/codex_daemon_websocket.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/sources/src/ops/tools/codex_readiness.py.txt": {
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/codex_readiness.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/sources/src/ops/tools/tests/fixtures/codex_daemon_websocket/manifest.json": {
+      "sha256": "9f7a05ac526a0a6240a304df48db2b57e021742da78c1f508fb097f5e80db244",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/tests/fixtures/codex_daemon_websocket/manifest.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/sources/src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt": {
+      "sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/sources/src/ops/tools/tests/fixtures/codex_daemon_websocket/original-operation.py.txt": {
+      "sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/tests/fixtures/codex_daemon_websocket/original-operation.py.txt"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/sources/src/ops/tools/tests/test_codex_daemon_websocket.py.txt": {
+      "sha256": "5085ce3d866a81afe7614cb6e4aeea785cf757da148395591dbc865ed0f3a9bf",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/tests/test_codex_daemon_websocket.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/test-after.py.txt": {
+      "sha256": "5085ce3d866a81afe7614cb6e4aeea785cf757da148395591dbc865ed0f3a9bf",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/test-after.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/test-before.py.txt": {
+      "sha256": "0d4c2f025778b82a5778f9eb87220add9dcc083c04364c9550a148ce9adddb85",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/test-before.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/test.diff": {
+      "sha256": "d29c5a2e3fbf3bb2ea41d71ac4fa05ece08536f73c14921f15c6be312076ab12",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/test.diff"
+    },
+    "docs/testing/codex-daemon-transport-20261016/transport-portability/transport.py.txt": {
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-portability/transport.py"
+    },
+    "docs/testing/codex-daemon-transport-20261016/records/transport-implementation-start.json": {
+      "sha256": "68be26a92c3583a44973efbf066085e6d441856ba9e036b01b62ce7849f76926",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-implementation-start.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/records/transport-findings-scope-decision.json": {
+      "sha256": "10d6e544581171aa7c02976eb4182e0f905b2f894c82dd83084191e5b1417985",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/transport-findings-scope-decision.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/records/investigation-limit-audit.json": {
+      "sha256": "56ae8673859604faadbaba89f2a0a82db0ae71c4af11f16442a2999a82906d74",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/investigation-limit-audit.json"
+    },
+    "docs/testing/codex-daemon-transport-20261016/review/agent-unattended-transport-plan.md": {
+      "sha256": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+      "source": "/tmp/agent-unattended-transport-plan.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/review/agent-unattended-transport-plan-review.md": {
+      "sha256": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+      "source": "/tmp/agent-unattended-transport-plan-review.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/review/agent-unattended-transport-static-review.md": {
+      "sha256": "2e565a98a3e2062b2817e908860ff6d3507603323f41eb0fc7048aa0797b51fe",
+      "source": "/tmp/agent-unattended-transport-static-review.md"
+    },
+    "docs/testing/codex-daemon-transport-20261016/review/final-review.md": {
+      "sha256": "4501c353f6dd540c3c8c231b473f9ddaf0ba18ee73966fa9c00ccd37735a3cac",
+      "source": "/tmp/agent-unattended-transport-final-review.md"
+    }
+  }
+}

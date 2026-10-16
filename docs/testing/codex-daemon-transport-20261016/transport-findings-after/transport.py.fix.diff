@@ -1,0 +1,28 @@
+--- before/transport.py
++++ after/transport.py
+@@ -4,6 +4,7 @@
+ The caller supplies the existing endpoint and the exact permitted thread IDs.
+ """
+ import json
++import math
+ import socket
+ import time
+ import uuid
+@@ -201,6 +202,17 @@
+             if self.stdout_bytes > MAX_WIRE:
+                 raise ProbeError("RPC_STDOUT_LIMIT")
+             response = rpc._parse(raw)
++            # JSON exponent overflow uses parse_float, not parse_constant.
++            # Keep the shared parser unchanged and reject nonfinite values locally.
++            pending = [response]
++            while pending:
++                item = pending.pop()
++                if type(item) is float and not math.isfinite(item):
++                    raise ProbeError("RPC_NONFINITE_JSON")
++                if type(item) is dict:
++                    pending.extend(item.values())
++                elif type(item) is list:
++                    pending.extend(item)
+             if not isinstance(response, dict):
+                 raise ProbeError("RPC_RESPONSE_INVALID")
+             if "method" in response:

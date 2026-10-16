@@ -1,0 +1,75 @@
+--- original-four-pass-test
++++ extended-test-two-targets
+@@ -422,6 +422,32 @@
+                                  for _, p in fixture.rpc_messages))
+         OBSERVATIONS.append({"test": "handshake_json", "malformed_cases": len(malformed),
+                              "actual_http_and_fragment_decoder": True})
++        self.case_exponent_overflow_rejected()
++
++    def case_exponent_overflow_rejected(self):
++        """F1: isolated additional nonfinite subcase of the first method."""
++        wire = frame(b'{"id":1,"result":{"n":1e400}}')
++        self.finding_observation = {"finding": "F1", "input_number": "1e400",
++                                    "expected_error": "RPC_NONFINITE_JSON"}
++        with TransportFixture(wire) as fixture:
++            client = fixture.open()
++
++            def receive_overflow():
++                value = client.call("initialize", {})
++                self.finding_observation.update(
++                    returned_result=True, returned_n_type=type(value.get("n")).__name__,
++                    returned_n_repr=repr(value.get("n")))
++                return value
++
++            try:
++                self.assert_code("RPC_NONFINITE_JSON", receive_overflow)
++            finally:
++                self.finding_observation.update(
++                    wire_methods=[p["method"] for _, p in fixture.rpc_messages],
++                    fake_connect_count=len(fixture.connects),
++                    real_io_attempts=len(fixture.forbidden))
++            self.assertEqual(["initialize"], self.finding_observation["wire_methods"])
++            self.assertEqual(0, self.finding_observation["real_io_attempts"])
+ 
+     def test_absolute_deadlines_and_bounds(self):
+         for stage, code in (("connect", "RPC_CONNECT_FAILED"),
+@@ -672,3 +698,39 @@
+                              "ack_loss_pending_preserved": True,
+                              "readback_loss_acknowledged_change_preserved": True,
+                              "update_replays": 0, "model_or_queue_starts": 0})
++        self.case_ack_then_lost_readback_retains_pending()
++
++    def case_ack_then_lost_readback_retains_pending(self):
++        """F2: ACK evidence and the unverified target must survive together."""
++        outcome = run_business(fail="readback")
++        record, events = outcome["record"], outcome["events"]
++        updates = [p["threadId"] for m, p in events if m == "thread/settings/update"]
++        self.finding_observation = {
++            "finding": "F2", "record": record, "events": events,
++            "checkpoints": outcome["snapshots"], "exit_code": outcome["exit_code"],
++            "updates": updates, "expected_pending_setting": THREADS[0],
++            "actual_pending_setting": record.get("pending_setting"),
++            "real_io_attempts": len(outcome["forbidden"]),
++        }
++        self.assertEqual(1, outcome["exit_code"])
++        self.assertEqual("BLOCKED_OR_UNCERTAIN", record["status"])
++        self.assertEqual("RPC_RECEIVE_FAILED", record["error"])
++        self.assertEqual([THREADS[0]], record["settings_changed"])
++        self.assertEqual([THREADS[0]], updates)
++        self.assertEqual(1, sum(m == "initialize" for m, _ in events))
++        self.assertEqual(1, sum(m == "close" for m, _ in events))
++        self.assertEqual(["initialize", "initialized", "configRequirements/read",
++                          "account/rateLimits/read", "thread/resume", "thread/resume",
++                          "thread/resume", "thread/settings/update", "thread/resume", "close"],
++                         [m for m, _ in events])
++        self.assertTrue(any(x.get("pending_setting") == THREADS[0]
++                            for x in outcome["snapshots"]))
++        self.assertTrue(any(x.get("settings_changed") == [THREADS[0]]
++                            for x in outcome["snapshots"]))
++        self.assertTrue(all("after" not in record["threads"][tid] for tid in THREADS))
++        self.assertFalse(any(record[k] for k in ("queue_changed", "services_changed",
++                                                 "sandbox_policy_changed", "global_config_changed")))
++        self.assertEqual([], outcome["forbidden"])
++        self.assertNotIn(PRIVATE, outcome["stdout"])
++        self.assertEqual(THREADS[0], record.get("pending_setting"),
++                         "ACK list must retain its unverified pending target after readback loss")

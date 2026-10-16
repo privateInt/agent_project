@@ -1,0 +1,386 @@
+{
+  "completed_utc": "2026-10-16T00:00:50.494624+00:00",
+  "scope": "actual transport/installed decoder, fake socket and business IO only",
+  "tests_run": 4,
+  "method_passes": 4,
+  "failure_records": 0,
+  "errors": 0,
+  "skipped": 0,
+  "successful": true,
+  "outcomes": {
+    "test_unix_ws_handshake_and_json_messages": {
+      "status": "PASS",
+      "subtests": [
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (status=301)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (status=302)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (status=200)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (status=403)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='utf8')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='json')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='duplicate_key')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='nonfinite')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='binary')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='shape')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='string_id')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='bool_id')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='wrong_id')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='missing_id')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='result')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='error')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_unix_ws_handshake_and_json_messages (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (malformed='server_request')",
+          "status": "PASS"
+        }
+      ]
+    },
+    "test_absolute_deadlines_and_bounds": {
+      "status": "PASS",
+      "subtests": [
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (delay='connect')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (delay='upgrade_send')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (delay='upgrade_recv')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (delay='send')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (delay='recv')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (notifications=32)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (notifications=33)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (invalid_timeout={'total_timeout': 61})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (invalid_timeout={'request_timeout': 6})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (invalid_timeout={'total_timeout': 0})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_absolute_deadlines_and_bounds (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (invalid_timeout={'request_timeout': 0})",
+          "status": "PASS"
+        }
+      ]
+    },
+    "test_exact_methods_threads_and_reviewer_only_payload": {
+      "status": "PASS",
+      "subtests": [
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (reviewers={})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (reviewers={'01a13fb0-1721-7af3-82e6-747eac4de411': 'auto_review'})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (reviewers={'01a13f12-328d-7342-b285-a0868ac66447': 'auto_review', '01a13fb0-1721-7af3-82e6-747eac4de411': 'auto_review', '01a13fb0-1abe-7623-a15e-cf07071ce54a': 'auto_review'})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (method='turn/start', params={})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (method='queue/create', params={})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (method='initialize', params=None)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (method='configRequirements/read', params={'extra': True})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (method='account/rateLimits/read', params={'extra': True})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (method='thread/resume', params={'threadId': '00000000-0000-0000-0000-000000000000', 'excludeTurns': True})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (method='thread/resume', params={'threadId': '01a13f12-328d-7342-b285-a0868ac66447', 'excludeTurns': False})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (method='thread/settings/update', params={'threadId': '01a13f12-328d-7342-b285-a0868ac66447', 'approvalsReviewer': 'auto_review', 'approvalPolicy': 'never'})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (method='thread/settings/update', params={'threadId': '01a13f12-328d-7342-b285-a0868ac66447', 'approvalsReviewer': 'user'})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (method='thread/settings/update', params={'threadId': '01a13f12-328d-7342-b285-a0868ac66447', 'approvalsReviewer': 'auto_review', 'sandbox': {'networkAccess': True}})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (boundary={'approvalPolicy': 'never'})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (boundary={'runtimeWorkspaceRoots': ['/fixture/other']})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (readback_field='cwd')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (readback_field='approvalPolicy')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (readback_field='approvalsReviewer')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (readback_field='sandbox')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (readback_field='activePermissionProfile')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (readback_field='runtimeWorkspaceRoots')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (readback_field='model')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (readback_field='modelProvider')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_exact_methods_threads_and_reviewer_only_payload (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (readback_field='reasoningEffort')",
+          "status": "PASS"
+        }
+      ]
+    },
+    "test_uncertain_update_never_replayed": {
+      "status": "PASS",
+      "subtests": [
+        {
+          "case": "test_uncertain_update_never_replayed (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (failure='initialize')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_uncertain_update_never_replayed (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (failure='update_ack')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_uncertain_update_never_replayed (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (failure='readback')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_uncertain_update_never_replayed (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (quota=False)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_uncertain_update_never_replayed (src.ops.tools.tests.test_codex_daemon_websocket.CodexDaemonWebSocketTests) (quota=None)",
+          "status": "PASS"
+        }
+      ]
+    }
+  },
+  "observations": [
+    {
+      "test": "handshake_json",
+      "malformed_cases": 13,
+      "actual_http_and_fragment_decoder": true
+    },
+    {
+      "test": "deadlines_bounds",
+      "oversize_payload_read": 0,
+      "overflow_fragment_payload_read": 0,
+      "real_decoder_payload_limit": 524288,
+      "absolute_request_seconds": 5,
+      "absolute_total_seconds": 60
+    },
+    {
+      "test": "business_scope",
+      "script_body_byte_preserved": true,
+      "normalized_ast_preserved": true,
+      "memory_only_writes": true,
+      "readback_fields_checked": 9,
+      "forbidden_wire_sends": 0
+    },
+    {
+      "test": "uncertainty",
+      "initialize_failure_updates": 0,
+      "ack_loss_pending_preserved": true,
+      "readback_loss_acknowledged_change_preserved": true,
+      "update_replays": 0,
+      "model_or_queue_starts": 0
+    }
+  ],
+  "python": "3.10.12",
+  "websocket_client": "1.9.0",
+  "files_after": {
+    "transport.py": {
+      "current_sha256": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70",
+      "preserved_sha256": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70",
+      "unchanged": true
+    },
+    "test_codex_daemon_websocket.py": {
+      "current_sha256": "51f632af70206443058cf5f68146ca4eab779e7954d95df5af5797bebe80c279",
+      "preserved_sha256": "51f632af70206443058cf5f68146ca4eab779e7954d95df5af5797bebe80c279",
+      "unchanged": true
+    },
+    "operation.py": {
+      "current_sha256": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+      "preserved_sha256": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+      "unchanged": true
+    },
+    "original-operation.py": {
+      "current_sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+      "preserved_sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+      "unchanged": true
+    },
+    "plan.md": {
+      "current_sha256": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+      "preserved_sha256": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+      "unchanged": true
+    },
+    "plan-review.md": {
+      "current_sha256": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+      "preserved_sha256": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+      "unchanged": true
+    },
+    "codex_readiness.py": {
+      "current_sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "preserved_sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "unchanged": true
+    }
+  },
+  "protected_results_after": {
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy-first-run.json": {
+      "unchanged": true,
+      "exists": false,
+      "sha256": null
+    },
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/runtime-policy-first-run.json": {
+      "unchanged": true,
+      "exists": true,
+      "sha256": "da9e581f54dec7692ec65a4fe126b88dd12dab721ee193331c4adb277c98f7b0"
+    },
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy.json": {
+      "unchanged": true,
+      "exists": true,
+      "sha256": "da9e581f54dec7692ec65a4fe126b88dd12dab721ee193331c4adb277c98f7b0"
+    },
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/runtime-policy.json": {
+      "unchanged": true,
+      "exists": false,
+      "sha256": null
+    },
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-policy-websocket-attempt-2.json": {
+      "unchanged": true,
+      "exists": false,
+      "sha256": null
+    },
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/runtime-policy-websocket-attempt-2.json": {
+      "unchanged": true,
+      "exists": false,
+      "sha256": null
+    }
+  },
+  "original_11_local_changes_unchanged": true,
+  "preservation_ok": true,
+  "own_current_turn_context": [
+    {
+      "timestamp": "2026-10-15T23:55:14.650Z",
+      "own_session_file": "/home/codex_shshin/.codex/sessions/2026/10/15/rollout-2026-10-15T22-11-07-01a13fb0-1721-7af3-82e6-747eac4de411.jsonl",
+      "turn_id": "01a141fb-bd2b-79e0-91ae-6c6d1d2d7ff3",
+      "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+      "approval_policy": "on-request",
+      "approvals_reviewer": "user",
+      "sandbox_policy": {
+        "type": "workspace-write",
+        "network_access": false,
+        "exclude_tmpdir_env_var": false,
+        "exclude_slash_tmp": false
+      }
+    }
+  ],
+  "real_host_connection": "NOT_RUN",
+  "final_independent_review": "NOT_RUN",
+  "legacy_tests": "NOT_RUN",
+  "root_user_pause": "UNCHANGED",
+  "permission_probes": 0,
+  "notifications_or_delegation": 0
+}

@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "component": "bounded Unix WebSocket control client",
+  "parent_commit": "c862bfc6951491192a9fe98b535c9a8be921ee35",
+  "branch": "codex/agent-project-daemon-transport-20261016",
+  "project_allowlist": [
+    "agent_project"
+  ],
+  "excluded_projects": [
+    "vms_project"
+  ],
+  "reviewed_files": {
+    "source": {
+      "path": "src/ops/tools/codex_daemon_websocket.py",
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415"
+    },
+    "test": {
+      "path": "src/ops/tools/tests/test_codex_daemon_websocket.py",
+      "sha256": "5085ce3d866a81afe7614cb6e4aeea785cf757da148395591dbc865ed0f3a9bf"
+    },
+    "fixture_operation": {
+      "path": "src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt",
+      "sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a"
+    },
+    "fixture_original": {
+      "path": "src/ops/tools/tests/fixtures/codex_daemon_websocket/original-operation.py.txt",
+      "sha256": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98"
+    }
+  },
+  "dependency": {
+    "websocket_client": "1.9.0 existing installation",
+    "python": "3.10.12",
+    "installed_or_updated_by_task": false
+  },
+  "plan": {
+    "sha256": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+    "pre_review_sha256": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61"
+  },
+  "execution_stages": [
+    {
+      "evidence": "transport-run-1/result.json",
+      "sha256": "8615b57a0b464f0bf2fefc508c0dbef8f2e194374b33c3afe446d761db5fa45d",
+      "tests_run": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "scope": "initial four methods using fake socket and actual installed decoder; source18ee/test51f6"
+    },
+    {
+      "evidence": "transport-findings-before/result.json",
+      "sha256": "f4ba1007c40a7f77ea6da702ad6c14f8a8512e603b7fb5080ab45195ab6c8c2c",
+      "tests_run": 2,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "scope": "two new helper targets only; semantic FAIL2/ERROR0 on source18ee/operationb5af"
+    },
+    {
+      "evidence": "transport-findings-after/result.json",
+      "sha256": "324cc4e272269c9cc6d3d5ba1c906db598c77b2a1795cc1602dc3f58c639f567",
+      "tests_run": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "scope": "same helper bytes, PASS2/ERROR0 on source7f70/operation8a73; coordinator executor"
+    },
+    {
+      "evidence": "transport-test-reconciliation/result.json",
+      "sha256": "7e8c594d5428a469916d80909a243679065d3a5180f6b708cce38108b68f1ea3",
+      "tests_run": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "scope": "new business-diff audit helper only; approved pending expectation strengthened"
+    },
+    {
+      "evidence": "transport-portability/result.json",
+      "sha256": "a0199340d98f92520d0ae9801732ab46a9ad39f8af5080b568e3d5e5ebbe8aba",
+      "tests_run": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "scope": "only success and lost-readback cases in fresh differently named temporary checkout; fixture repository path adapted in memory"
+    }
+  ],
+  "test_scope": {
+    "original_four_methods_repeated": false,
+    "final_whole_four_method_module_run": false,
+    "legacy_R03_R04_R15_or_full_suites_run": false,
+    "raw_first_failures_preserved": true,
+    "readiness_shared_parser_unchanged": true,
+    "fixture_settings_success_is_actual_auto_review_application": false
+  },
+  "actual_runtime": {
+    "first_raw_proxy_initialize": "RPC_REQUEST_TIMEOUT before any settings mutation",
+    "new_WebSocket_host_attempt": "NOT_RUN_HELD_D18",
+    "auto_review_applied": false,
+    "latest_observed_parent_children_policy": "on-request / user; managed filesystem restricted; network restricted",
+    "remote_CLI_override": "UNSUPPORTED",
+    "local_CLI_routing": "writer ownership held by another app; no forced lock/fork",
+    "ordinaryUsageAllowed": "NOT_OBSERVED_IN_LIVE_API",
+    "legacy_root_and_user_PAUSE": "PRESERVED",
+    "installed_runner_activated_or_modified": false,
+    "native_two_complete_development_tasks": "NOT_VERIFIED",
+    "operational_source_DB_Docker_credentials_or_main_changed": false
+  },
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-daemon-transport-20261016/review/final-review.md",
+    "sha256": "4501c353f6dd540c3c8c231b473f9ddaf0ba18ee73966fa9c00ccd37735a3cac"
+  }
+}

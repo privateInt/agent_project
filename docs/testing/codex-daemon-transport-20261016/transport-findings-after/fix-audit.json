@@ -1,0 +1,23 @@
+{
+  "changes": {
+    "transport.py": {
+      "before_sha256": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70",
+      "after_sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415"
+    },
+    "operation.py": {
+      "before_sha256": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+      "after_sha256": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a"
+    }
+  },
+  "same_regression_test_bytes": true,
+  "targets": [
+    "case_exponent_overflow_rejected",
+    "case_ack_then_lost_readback_retains_pending"
+  ],
+  "prior_results_untouched": true,
+  "runner_delta": "Only before/after expected status metadata; same two test helpers and assertions",
+  "after_executor": "coordinator using test_agent two-target runner",
+  "live_connection": "HELD_D18_NOT_RUN",
+  "shared_parser_changed": false,
+  "old_four_methods_repeated": false
+}

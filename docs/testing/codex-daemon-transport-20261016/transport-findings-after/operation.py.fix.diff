@@ -1,0 +1,16 @@
+--- before/operation.py
++++ after/operation.py
+@@ -39,11 +39,11 @@
+    if before[tid]['approvalsReviewer']!='auto_review':
+     record['pending_setting']=tid;write()
+     client.call('thread/settings/update',{'threadId':tid,'approvalsReviewer':'auto_review'})
+-    record['settings_changed'].append(tid);record.pop('pending_setting',None);write()
++    record['settings_changed'].append(tid);write()
+    after=settings(client.call('thread/resume',{'threadId':tid,'excludeTurns':True}))
+    expected=dict(before[tid],approvalsReviewer='auto_review')
+    if after!=expected:raise RuntimeError('SETTING_READBACK_MISMATCH')
+-   record['threads'][tid]['after']=after;write()
++   record['threads'][tid]['after']=after;record.pop('pending_setting',None);write()
+   record['status']='APPLIED_AND_READ_BACK_FOR_SUBSEQUENT_TURNS'
+   record['current_already_running_turn']='NOT_RETROACTIVELY_CHANGED'
+ except Exception as e:
