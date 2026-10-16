@@ -1,0 +1,11 @@
+{
+  "finding": "independent P2 F1 preflight SQL response uncertainty collapsed to definite connection invalid",
+  "before_sha256": "74f2799bcbd218582ed567ad917188501ee139d16779e38931b90803fc63ebc4",
+  "after_sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+  "source_only_static_finding": true,
+  "execution_FAIL_before": "NOT_RUN_NOT_CLAIMED",
+  "corrected_before_first_five_tests": true,
+  "existing_ledger_controller_changed": false,
+  "affected_new_test": "test_claim_commit_boundary_reopen_and_failures; preflight SQL failures included",
+  "python310_ast": "PASS"
+}

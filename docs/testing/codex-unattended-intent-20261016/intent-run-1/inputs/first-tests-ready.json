@@ -1,0 +1,183 @@
+{
+  "status": "TESTS_WRITTEN_READY_NOT_EXECUTED",
+  "created_utc": "2026-10-16T13:14:08.134434+00:00",
+  "project": "agent_project",
+  "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development",
+  "branch": "codex/agent-project-submission-intent-20261016",
+  "parent_head": "86b8861ba5b3ea049b77937e6c00da73a4330377",
+  "plan": {
+    "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/agent-unattended-intent-plan-v1.md",
+    "sha256": "4c005dd7c2a7703f0639ef71aed968c5a1fc5cf8b6ce404364debb779097d575"
+  },
+  "independent_plan_review": {
+    "path": "/tmp/agent-unattended-intent-plan-review.md",
+    "sha256": "f1fb9dad4822a897f13239cc5fc5fdae4734b7000240a21f056f78767cd476ee",
+    "decision": "PASS"
+  },
+  "files": {
+    "test": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/test_codex_unattended_intent_journal.py",
+      "sha256": "51ac9929e2bcc7b2ed46572f8e5015e531f600130147f5b14d35be205d971c67",
+      "lines": 545
+    },
+    "synthetic_fixture": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json",
+      "sha256": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66",
+      "intent_sha256": "47e4e66a8a53983909b4b11ebb43fac381578cc10845f7432eac9e23a76b9402",
+      "intent_bytes": 726
+    }
+  },
+  "test_methods": [
+    "test_empty_initialize_and_borrowed_connection",
+    "test_immutable_reserve_roundtrip_and_conflicts",
+    "test_stale_revision_rejected",
+    "test_unknown_never_rearmed",
+    "test_claim_commit_boundary_reopen_and_failures"
+  ],
+  "method_count": 5,
+  "api_names": [
+    "claim_intent",
+    "initialize_intent_journal",
+    "read_intent",
+    "reserve_intent"
+  ],
+  "syntax_check": "AST parse only; no import/exec/compile or tests",
+  "product_observed": {
+    "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/codex_unattended_intent_journal.py",
+    "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "static_read_only": true,
+    "coordinator_owned_parallel_work": true,
+    "not_a_final_execution_pin": true
+  },
+  "narrow_fault_hooks": [
+    "_execute(connection, sql, parameters=())",
+    "_commit(connection)",
+    "_rollback(connection)"
+  ],
+  "planned_fault_stages": [
+    "begin_before",
+    "begin_after",
+    "sql_before",
+    "sql_after",
+    "commit_before",
+    "commit_after",
+    "rollback_before",
+    "rollback_after"
+  ],
+  "mutation_targets": {
+    "M1": {
+      "method": "test_stale_revision_rejected",
+      "delta": "remove revision predicate and corresponding parameter only",
+      "expected": "semantic FAIL1/ERROR0 after normal PASS"
+    },
+    "M2": {
+      "method": "test_unknown_never_rearmed",
+      "delta": "remove PREPARED state predicate only",
+      "expected": "semantic FAIL1/ERROR0 after normal PASS"
+    }
+  },
+  "executions": {
+    "product_import": "NOT_RUN",
+    "product_or_test_execution": "NOT_RUN",
+    "tests": "NOT_RUN",
+    "mutants": "NOT_RUN",
+    "SQLite_connection_or_SQL": "NOT_RUN",
+    "old_pass_reruns": 0,
+    "queue_rpc_or_start": 0,
+    "runtime_native_permission_credential_investigations": 0,
+    "notifications_or_delegation": 0
+  },
+  "child_thread_id": "01a13fb0-1721-7af3-82e6-747eac4de411",
+  "actual_child_turn_context": [
+    {
+      "timestamp": "2026-10-16T13:04:05.218Z",
+      "session_file": "/home/codex_shshin/.codex/sessions/2026/10/15/rollout-2026-10-15T22-11-07-01a13fb0-1721-7af3-82e6-747eac4de411.jsonl",
+      "turn_id": "01a144cf-fe34-7580-84db-1e393955d1bc",
+      "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+      "approval_policy": "on-request",
+      "approvals_reviewer": "user",
+      "sandbox_policy": {
+        "type": "workspace-write",
+        "network_access": false,
+        "exclude_tmpdir_env_var": false,
+        "exclude_slash_tmp": false
+      }
+    }
+  ],
+  "parent_policy_claim_from_user": "auto_review; not inferred for this child",
+  "own_policy_changed": false,
+  "original_local_changes": [
+    {
+      "status": " M",
+      "path": "docs/HANDOFF_NEXT_SESSION.md",
+      "sha256": "063c2aaf6076c9ac6e0943bdd916f42930e66dae822037434f859ced1ceb1243"
+    },
+    {
+      "status": " M",
+      "path": "docs/codex/work-plan.md",
+      "sha256": "e60f66cda0dbf64b4891e899ba67f47b0eac93fde21cf1326f2b4a9840dc2f25"
+    },
+    {
+      "status": " M",
+      "path": "docs/roadmap.md",
+      "sha256": "a11b78bae0c83136d36d14dd7713c13fcbe3dfff951657374e5ac77679e146b1"
+    },
+    {
+      "status": " M",
+      "path": "docs/status.md",
+      "sha256": "06e47755839a3e3724a8eff0f2a215f3682e9413873eb4c75d9fb662b96c66c7"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/preparation-blockers.md",
+      "sha256": "bc1f2ce493c8c31d8cd1ad3fbde50be510081505120bba8c015d1f013cce41b6"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/runtime-acceptance-cases.json",
+      "sha256": "8e8166e05bd69fe79980a353463f0b2b66a089b7e88bb1f379b523a0b38a3dcc"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/runtime-acceptance-plan.md",
+      "sha256": "6c826455f4a61db6a4785435a52d3562398a64cd6421fafcabb4867b5cf5f4bd"
+    },
+    {
+      "status": "??",
+      "path": "docs/plans/codex-preparation-verification-20261015.md",
+      "sha256": "d265642b6ace90c8e8f2e306c04de986baa848c3605e27a862bc746b3602449f"
+    },
+    {
+      "status": "??",
+      "path": "docs/plans/document-qa-f0a-validation-plan.md",
+      "sha256": "93cf5692286cdbee24530ff27ba9838bc42acad2a2a0313f535bbb6cb4cb8b51"
+    },
+    {
+      "status": "??",
+      "path": "docs/testing/codex-preparation-contract-20261015.json",
+      "sha256": "a056197c83aebd5bdef87963b6418bb949b790b09ed3050b5d464f0096bcba1f"
+    },
+    {
+      "status": "??",
+      "path": "docs/testing/codex-preparation-observed-20261015.json",
+      "sha256": "517981506b0b7d78ec722c5aad15fc5fcd34ac7f15a3f298213dc27f94d69aed"
+    }
+  ],
+  "original_local_change_count": 11,
+  "preservation": {
+    "prior_passes_and_initial_errors": "NOT_WRITTEN",
+    "product_source": "NOT_EDITED_BY_TEST_AGENT",
+    "root_user_PAUSE": "UNCHANGED",
+    "runtime_D18": "HELD; unchanged cumulative cap"
+  },
+  "active_time_accounting": {
+    "prior_journal_active_minutes_approx": 11,
+    "prior_active_time_retained": true,
+    "outage_time_excluded": true,
+    "budget_reset": false,
+    "this_turn_elapsed_wall_seconds": 602.916434,
+    "wall_counter_is_separate_from_prior_active_estimate": true
+  },
+  "next_step": "coordinator pins completed product, then authorized initial five tests once; not executed by this readiness turn",
+  "python_version": "3.10.12"
+}

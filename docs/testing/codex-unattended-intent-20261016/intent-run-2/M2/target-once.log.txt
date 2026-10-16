@@ -1,0 +1,21 @@
+test_unknown_never_rearmed (intent_journal_initial_five.IntentJournalTests) ... FAIL
+
+======================================================================
+FAIL: test_unknown_never_rearmed (intent_journal_initial_five.IntentJournalTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/test_codex_unattended_intent_journal.py", line 429, in test_unknown_never_rearmed
+    self.invoke("claim_intent", reopened, intent_key(value), sha(raw), 1, reason="UNKNOWN_NO_REPLAY")
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/test_codex_unattended_intent_journal.py", line 244, in invoke
+    return self.assert_result(result, connection, reason)
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/test_codex_unattended_intent_journal.py", line 231, in assert_result
+    self.assertEqual(reason, report["reason"])
+AssertionError: 'UNKNOWN_NO_REPLAY' != 'CLAIM_RECORDED'
+- UNKNOWN_NO_REPLAY
++ CLAIM_RECORDED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (failures=1)

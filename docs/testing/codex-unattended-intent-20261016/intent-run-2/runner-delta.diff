@@ -1,0 +1,35 @@
+--- first-runner.py
++++ targeted-runner.py
+@@ -99,10 +99,11 @@
+ 
+ def main():
+     started = time.monotonic()
++    assert datetime.datetime.now(datetime.timezone.utc) < datetime.datetime(2026, 10, 16, 13, 28, 48, tzinfo=datetime.timezone.utc), "D18_LIMIT"
+     save(RUN / "execution-started.json", {
+         "utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+         "runner_sha256": sha(Path(__file__).read_bytes()),
+-        "prior_journal_active_seconds": 720, "budget_reset": False,
++        "prior_journal_active_seconds": 1902, "budget_reset": False,
+         "runtime_D18": "HELD", "scope": "dedicated temporary file SQLite only"})
+     summary = {"status": "NOT_EXECUTED", "mutants": {}, "old_suites_run": 0,
+                "external_actions": 0, "runtime_D18": "HELD"}
+@@ -124,8 +125,8 @@
+         spec = importlib.util.spec_from_file_location("intent_journal_initial_five", TEST)
+         tests = importlib.util.module_from_spec(spec)
+         spec.loader.exec_module(tests)
+-        normal = execute(tests, PINS["methods"], RUN, "first-run.log")
+-        normal["status"] = "PASS" if (normal["passes"] == 5 and normal["tests_run"] == 5
++        normal = execute(tests, [PINS["methods"][-1]], RUN, "targeted-fifth.log")
++        normal["status"] = "PASS" if (normal["passes"] == 1 and normal["tests_run"] == 1
+                                           and not normal["failures"] and not normal["errors"]
+                                           and not normal["skips"]) else "STOPPED_AT_FIRST_ISSUE"
+         save(RUN / "normal-result.json", normal)
+@@ -205,7 +206,7 @@
+                 return 1
+         assert sha(SOURCE.read_bytes()) == PINS["source_sha256"]
+         assert sha(TEST.read_bytes()) == PINS["test_sha256"]
+-        summary["status"] = "INITIAL_FIVE_PASS_AND_TWO_SEMANTIC_MUTANTS_DETECTED"
++        summary["status"] = "FOUR_INITIAL_PASS_REUSED_TARGETED_FIFTH_PASS_TWO_MUTANTS_DETECTED"
+         return 0
+     except BaseException:
+         summary["status"] = "STOPPED_AT_HARNESS_OR_IMPORT_ERROR"

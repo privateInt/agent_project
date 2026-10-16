@@ -1,0 +1,14 @@
+--- before.py
++++ after.py
+@@ -443,9 +443,9 @@
+                         if sql == query:
+                             attempts.append(sql)
+                             if boundary == "response_after":
+-                                actual_one(target, sql, parameters)
++                                actual_one(target, sql)
+                             raise sqlite3.OperationalError(PRIVATE_ERROR)
+-                        return actual_one(target, sql, parameters)
++                        return actual_one(target, sql)
+ 
+                     with mock.patch.object(product, "_one", side_effect=preflight_read), \
+                             mock.patch.object(product, "_execute", wraps=product._execute) as execute, \

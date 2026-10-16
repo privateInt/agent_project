@@ -1,5 +1,7 @@
 # 다음 세션·Codex 인수인계
 
+2026-10-16: PR17 고정86b8861 위의 [intent 저널 실행 근거](testing/codex-unattended-intent-observed-20261016.json)를 이어받는다. source902fb39e는 유지했고 검사 helper 두 호출만 수정했다. 최초4PASS/1FAIL과 오류 원문을 보존했으며5번째만 재검증PASS, 두 변이 의미FAIL1/ERROR0이다. 기존 PASS·전체5개·R03/R04/R15를 반복하지 않는다. 실제 두 개발 작업/하위 Auto-review/native 연결은 미완료이며 보호 설정과 runtime 조사 상한을 유지한다.
+
 2026-10-16: 고정 PR #15 commit `c862bfc6951491192a9fe98b535c9a8be921ee35` 위의 [U01a 검증](testing/codex-unattended-admission-observed-20261016.json)과 [전송 Draft PR #16](https://github.com/privateInt/agent_project/pull/16)을 이어받는다. agent_project만 자동 작업 대상으로 유지하고 vms_project는 제외한다. 순수 입력 검증은 owner/서명/OS 격리 인수가 아니며 실제 queue 두 작업·Auto-review는 미완료다. source·기존 결과와 첫 오류·원본 11개 변경은 전용 개발 경로에 보존했다.
 
 2026-10-15 L01 재개 기준: PR #14의 `c91e9e628402fcc89c2daa4301d54c3c321221ed`에서 분리한 fixture 설정 로더는 [계약](codex/github-fixture-config.md)과 [새 실행 근거](testing/github-fixture-config-observed-20261015.json)를 참조한다. 개발용 임시 설정만 사용했고 실제 소유자 승인값·운영 설치는 미제공/미실행이다. 기존13+3·R03/R04/R15와 전체 suite를 반복하지 않는다. 다음에는 보호된 실제 설정 입력·설치 인수를 준비하고 별도 역할/issuer 연결을 선정하며, 원래 개발 checkout의 변경11개·최초 실패·기존 sandbox 보류를 보존한다.

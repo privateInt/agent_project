@@ -1,0 +1,13 @@
+--- initial.py
++++ typed-key.py
+@@ -94,8 +94,8 @@
+ 
+ 
+ def _key(value):
+-    return (type(value) is tuple and len(value) == 3 and value[0] == "agent_project"
+-            and all(_identifier(part) for part in value))
++    return (type(value) is tuple and len(value) == 3
++            and all(_identifier(part) for part in value) and value[0] == "agent_project")
+ 
+ 
+ def _intent(raw, expected):

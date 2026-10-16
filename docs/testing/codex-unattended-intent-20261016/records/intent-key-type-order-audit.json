@@ -1,0 +1,9 @@
+{
+  "finding": "A tuple with a non-string component could invoke custom equality before builtin string validation. Fixed error contract requires rejecting malformed key values.",
+  "correction": "Validate all exact builtin strings before project equality; same valid key behavior.",
+  "before_sha256": "c4c6f602df8c24657f1f9c7d582c15c2a7bb265bdec38352559c731962f7bfd8",
+  "after_sha256": "74f2799bcbd218582ed567ad917188501ee139d16779e38931b90803fc63ebc4",
+  "tests_executed_before_fix": false,
+  "failed_test_count": 0,
+  "test_criteria_changed": false
+}

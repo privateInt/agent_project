@@ -1,0 +1,46 @@
+--- before.py
++++ corrected.py
+@@ -8,6 +8,7 @@
+ import hashlib
+ import json
+ import re
++import sqlite3
+ 
+ from src.ops.tools import github_fixture_collector as _json
+ from src.ops.tools import github_fixture_ledger as _sqlite
+@@ -125,18 +126,25 @@
+ 
+ 
+ def _connection(connection):
+-    try:
+-        _sqlite._connection(connection)
+-        _need(_one(connection, "PRAGMA main.synchronous") in (2, 3), "CONNECTION_INVALID")
+-        _need(_one(connection, "PRAGMA main.journal_mode") == "delete", "CONNECTION_INVALID")
+-        databases = _query(connection, "PRAGMA database_list")
+-        main = [row for row in databases if row[1] == "main"]
+-        _need(len(main) == 1 and type(main[0][2]) is str and bool(main[0][2])
+-              and all(row[1] in ("main", "temp") for row in databases)
+-              and not _query(connection, "SELECT 1 FROM temp.sqlite_master LIMIT 1"),
+-              "CONNECTION_INVALID")
++    # Only structural facts can establish CONNECTION_INVALID without SQL.
++    # Do not reuse the older fixture helper's exception collapsing here:
++    # a query/cursor failure must remain CHECKPOINT_UNCONFIRMED.
++    try:
++        _need(type(connection) is sqlite3.Connection and not connection.in_transaction
++              and connection.isolation_level is None and connection.row_factory is None
++              and connection.text_factory is str, "CONNECTION_INVALID")
+     except Exception:
+         raise _Failure("CONNECTION_INVALID") from None
++    busy = _one(connection, "PRAGMA busy_timeout")
++    _need(type(busy) is int and 0 <= busy <= 1000, "CONNECTION_INVALID")
++    _need(_one(connection, "PRAGMA main.synchronous") in (2, 3), "CONNECTION_INVALID")
++    _need(_one(connection, "PRAGMA main.journal_mode") == "delete", "CONNECTION_INVALID")
++    databases = _query(connection, "PRAGMA database_list")
++    main = [row for row in databases if row[1] == "main"]
++    _need(len(main) == 1 and type(main[0][2]) is str and bool(main[0][2])
++          and all(row[1] in ("main", "temp") for row in databases)
++          and not _query(connection, "SELECT 1 FROM temp.sqlite_master LIMIT 1"),
++          "CONNECTION_INVALID")
+ 
+ 
+ def _schema(connection, initialize):

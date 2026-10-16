@@ -1,0 +1,11 @@
+{
+  "executor": "coordinator using existing test_agent runner",
+  "old4_PASS_reused": true,
+  "first_results_sha256": "b0029abfdffc47132ae99b9e23a3ff949390d9bf784cc8708fdc342f2ab56135",
+  "first_suite_not_rerun": true,
+  "target": "test_claim_commit_boundary_reopen_and_failures",
+  "expected_helper_fix_only": true,
+  "normal_mutant_targets_not_rerun": true,
+  "before_run_utc": "2026-10-16T13:23:24.839627+00:00",
+  "deadline_utc": "2026-10-16T13:28:48Z"
+}

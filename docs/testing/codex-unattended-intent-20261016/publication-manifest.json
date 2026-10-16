@@ -1,0 +1,347 @@
+{
+  "parent_commit": "86b8861ba5b3ea049b77937e6c00da73a4330377",
+  "fixture_only": true,
+  "actual_runtime_transition": "NOT_COMPLETE",
+  "main_merged": false,
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-unattended-intent-20261016/review/final-review.md",
+    "sha256": "5c88e67c3e50da6cc789a5a8f7b7212df3ec5f051a778ebf2aef1937c34c9f4d"
+  },
+  "raw_byte_retention": "Historical code/logs receive .txt suffix only; original bytes and paths are retained in mapping.",
+  "final_whole_suite_repeated": false,
+  "files": {
+    "src/ops/tools/codex_unattended_intent_journal.py": {
+      "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+      "source": "src/ops/tools/codex_unattended_intent_journal.py"
+    },
+    "src/ops/tools/tests/test_codex_unattended_intent_journal.py": {
+      "sha256": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+      "source": "src/ops/tools/tests/test_codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-unattended-intent-observed-20261016.json": {
+      "sha256": "d555be60a561b1598eee82fbeaa2235b985f1cbbbb2429a19c02621369ebfd91",
+      "source": "docs/testing/codex-unattended-intent-observed-20261016.json"
+    },
+    "docs/development.md": {
+      "sha256": "0e8a932911840b729d077d851ddb9fa30d62f0458273566c9af9b9d1f88e8b84",
+      "source": "docs/development.md"
+    },
+    "docs/status.md": {
+      "sha256": "9a7433f28be0f8ff51201d7a555a23afa062ba5a447e242353f18a314fec56b3",
+      "source": "docs/status.md"
+    },
+    "docs/roadmap.md": {
+      "sha256": "3635daa13caecbc9c4c22ffc1715032909f4082b9ca88d2ab91c1b3ebfc4a2bf",
+      "source": "docs/roadmap.md"
+    },
+    "docs/HANDOFF_NEXT_SESSION.md": {
+      "sha256": "96147f4685f131facf5c5d68ffe5b29622e34779a414d36dfbb51116a3052c8a",
+      "source": "docs/HANDOFF_NEXT_SESSION.md"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json": {
+      "sha256": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/observed-before-final-review.json": {
+      "sha256": "839e748aa5e4c670cc97096ab478b97ff3512572f09f82cdc5b615fa87a52286",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/codex-unattended-intent-20261016-observed-before-final-review.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/baseline.json": {
+      "sha256": "1f7f76b31282b8f3df758694648a163dfec4070c745649cee296c65edef4934d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/baseline.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/environment.json": {
+      "sha256": "66b7b2a428b141c1deedb1f22079133980e28e5acd6507bab6f7117596333204",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/environment.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/execution-started.json": {
+      "sha256": "8885524d128f000bbab48d09986f404d73295af41e524a817c511acdc19cfdd3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/execution-started.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/final-test-pins.json": {
+      "sha256": "01ab83f98a23cdd64ae85abb4b895ed54e171334b14990bd2ef694af1321528f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/final-test-pins.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/first-failure-observation.json": {
+      "sha256": "51f13583f1c1b7895fae76e0f8f3d2e6334083723290ca58c952d7a9f65cf34c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/first-failure-observation.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/first-run.log.txt": {
+      "sha256": "48093173a04c2f8436efd85682d646ccc83a9dfb96cc816e40bff35f1ecb6818",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/first-run.log"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/first-tests-ready.json": {
+      "sha256": "ad05962731b08c1ccb88a911e69210d6d4af1c9b809706b82d24c729e0d67bf1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/first-tests-ready.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/github_fixture_collector.py.txt": {
+      "sha256": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/github_fixture_collector.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/github_fixture_ledger.py.txt": {
+      "sha256": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/github_fixture_ledger.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/intent-key-type-order-audit.json": {
+      "sha256": "2c26b62cab06d7511a80d00e603b0ec7437b74880dbf9d7ba0d014ae461e40d9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/intent-key-type-order-audit.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/intent-key-type-order.diff": {
+      "sha256": "55eae3b8a28ad98c8e3334bc598c4773c62079d0010ee817a9517a2cde508242",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/intent-key-type-order.diff"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/intent-preflight-fix-audit.json": {
+      "sha256": "76e9e8b019790cbe9ef52dc208ab5a9b03aef0b7163378ea146b41683b25e2d5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/intent-preflight-fix-audit.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/intent-preflight-fix.diff": {
+      "sha256": "5eb93857db3f9b375850bc825428e61ac91a9fbaa3ccc58ed1236d85e9126a59",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/intent-preflight-fix.diff"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/intent-source-before-key-type-order.py.txt": {
+      "sha256": "c4c6f602df8c24657f1f9c7d582c15c2a7bb265bdec38352559c731962f7bfd8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/intent-source-before-key-type-order.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/intent-source-before-preflight-fix.py.txt": {
+      "sha256": "74f2799bcbd218582ed567ad917188501ee139d16779e38931b90803fc63ebc4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/intent-source-before-preflight-fix.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/intent-time-budget-correction.json": {
+      "sha256": "177002c4dde146679d0c12cb2e4462ed53b7162a0dbd27b8c647facf1ab0723c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/intent-time-budget-correction.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/plan-review.md": {
+      "sha256": "f1fb9dad4822a897f13239cc5fc5fdae4734b7000240a21f056f78767cd476ee",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/plan-review.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/plan.md": {
+      "sha256": "4c005dd7c2a7703f0639ef71aed968c5a1fc5cf8b6ce404364debb779097d575",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/plan.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/source.py.txt": {
+      "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/source.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/static-review.md": {
+      "sha256": "0eac007b117b8f4f4e5fca0474e6a029b3f87c027970cf8766bae74117230590",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/static-review.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/synthetic.json": {
+      "sha256": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/synthetic.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/test-before-additions.py.txt": {
+      "sha256": "51ac9929e2bcc7b2ed46572f8e5015e531f600130147f5b14d35be205d971c67",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/test-before-additions.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/inputs/test-final.py.txt": {
+      "sha256": "8ae7d027bdbd1785c9bfa5f5654746b38395d73317c60296d425e41c77612d1f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/inputs/test-final.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/normal-result.json": {
+      "sha256": "b0029abfdffc47132ae99b9e23a3ff949390d9bf784cc8708fdc342f2ab56135",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/normal-result.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/observations.json": {
+      "sha256": "7f5cdcb43450c78cb547771323ebaa51e9e8d7e3c28789a75fdb792d77b7af51",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/observations.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/preservation-manifest.json": {
+      "sha256": "f537bacd19f8622ccd8a00d243f5f2140fd57c0ef2b80abad5381f1f197ccf68",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/preservation-manifest.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/result.json": {
+      "sha256": "69aea5e79ea1330f00fdcbd951bb60d59629fc653fa05f57df2b461bc8626112",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/result.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/run-once.py.txt": {
+      "sha256": "0435e0fae4e9d779199ff9750ab7f779506376510b9e8ce23d67f0da69b106d3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/run-once.py"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/runner-pins.json": {
+      "sha256": "9d1063233723ad3b4f489a00d30dffa0db41fe099c6f13c3305e7797487b00f0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/runner-pins.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/test-additions.diff": {
+      "sha256": "c3a9f9cb8884d15e2e4fc1a2fe24e5ffbf922b890e59d9ad1128457fff9833a6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/test-additions.diff"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-1/time-accounting-correction.json": {
+      "sha256": "337786da96dc679f604ac0f1e22fc4f75c71ff40322deee1b39029460e0f07d2",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-1/time-accounting-correction.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/M1/mutated-source.py.txt": {
+      "sha256": "f7c7983bdb6adaf8bcd8a4fdd586b1796b15e2fcf9513f2aa0739bbffa4f1832",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/M1/mutated-source.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/M1/mutation.diff": {
+      "sha256": "5c3bbba248dd36dad56c42871f9c5ca17bdb87b598bcbfc09afbf41f8bd010e6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/M1/mutation.diff"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/M1/observations.json": {
+      "sha256": "6f8159d1a3934c17d10fddca49ccf11cc47c0401ee887866da3d923851c054be",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/M1/observations.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/M1/result.json": {
+      "sha256": "3c4f9db72be50dc7fd14cd148ac815a5a28d3eb1afb9fac1e82dcb341cb2fb16",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/M1/result.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/M1/target-once.log.txt": {
+      "sha256": "2defe21b23d79853cde231eef2c18bbb3be40b4c9de76c1231f36b7b57c88439",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/M1/target-once.log"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/M2/mutated-source.py.txt": {
+      "sha256": "d0fb262c67a3e4d9861e38eae098f56dc1c95273e8f108f60603e854429fd7f7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/M2/mutated-source.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/M2/mutation.diff": {
+      "sha256": "76adf17094f036673e87d35c1135c3fd805a5161f853f0434c438d1ed06dabe1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/M2/mutation.diff"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/M2/observations.json": {
+      "sha256": "4becd0b5c7ae094124db6471a9e86abf777fa1a5ed8b56b5b4362f05ecf59484",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/M2/observations.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/M2/result.json": {
+      "sha256": "484e881b663e10aa92c7fcd659f7c3d913d0b946a8d8006605d72fec5cefef15",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/M2/result.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/M2/target-once.log.txt": {
+      "sha256": "68f110dc334b98304ee192273e34265606ae08bf6da776768746c3ae261a7c5a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/M2/target-once.log"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/arity-fix-audit.json": {
+      "sha256": "80a48b803456bbad8eb0a24758725e6702284c17595de49cc7388ea21728d901",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/arity-fix-audit.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/arity-fix.diff": {
+      "sha256": "192c050c8c19db05f9b2e796e6dfdcb0c1b2e6efef0f23f33c13889b6ea4eb19",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/arity-fix.diff"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/baseline.json": {
+      "sha256": "3ed15013c5de79505fae7dc21c5bc27c6bb841ec5e1227fc7e709aee1ae65d39",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/baseline.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/environment.json": {
+      "sha256": "66b7b2a428b141c1deedb1f22079133980e28e5acd6507bab6f7117596333204",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/environment.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/execution-scope.json": {
+      "sha256": "6e19f93877696559d158ed0c577deb7bee9464717bf02836fbdf9a8d2866a05f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/execution-scope.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/execution-started.json": {
+      "sha256": "954b7a01ab65a77f63257b5df767c685733afb5fd9a8a381690bc754d8c637e4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/execution-started.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/final-test-pins.json": {
+      "sha256": "4b38fa22026be9948f81caea3f4d1e62abfabd83c34ca69b31385424dbbbb515",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/final-test-pins.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/inputs/plan-review.md": {
+      "sha256": "f1fb9dad4822a897f13239cc5fc5fdae4734b7000240a21f056f78767cd476ee",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/inputs/plan-review.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/inputs/plan.md": {
+      "sha256": "4c005dd7c2a7703f0639ef71aed968c5a1fc5cf8b6ce404364debb779097d575",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/inputs/plan.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/inputs/static-review.md": {
+      "sha256": "0eac007b117b8f4f4e5fca0474e6a029b3f87c027970cf8766bae74117230590",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/inputs/static-review.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/normal-result.json": {
+      "sha256": "864bfba028230206da0d8be41ff2c1574650723dd7afe97b4592d278b9d7c565",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/normal-result.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/observations.json": {
+      "sha256": "e1eca6fcb9021c5e2b9bb24915cdc6f447b354efb71098f82c4ca0ec91b1dbb1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/observations.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/result.json": {
+      "sha256": "4d54222162084ab4de0504b022c84ce0c3739741c0c4b6d49261b38dee544d3b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/result.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/run-affected-once.py.txt": {
+      "sha256": "a1ab6455fa49237a3783cf02991c24a7ca7a283b9258e6a6848662c512af790b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/run-affected-once.py"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/runner-delta.diff": {
+      "sha256": "c587d7a18f25695c174d1326d6f37ed93995f7c8129fc69eceeddb4e40418d02",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/runner-delta.diff"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/targeted-fifth.log.txt": {
+      "sha256": "38c02e805a286204d1328a6f95fc6731376efab477211024b685c12dff04c72e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/targeted-fifth.log"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/test-after-arity-fix.py.txt": {
+      "sha256": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/test-after-arity-fix.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/intent-run-2/test-before-arity-fix.py.txt": {
+      "sha256": "8ae7d027bdbd1785c9bfa5f5654746b38395d73317c60296d425e41c77612d1f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-run-2/test-before-arity-fix.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/records/intent-isolation.json": {
+      "sha256": "4ee7687ee40ece903108d6906252c3e61d4d17f4fb973e99ab377c75bc102536",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-isolation.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/records/intent-implementation-start.json": {
+      "sha256": "7bb7390279d2a0badd8565e56c08e64a05f7a1c8186a789b54fa79c573d145a5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-implementation-start.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/records/intent-source-before-key-type-order.py.txt": {
+      "sha256": "c4c6f602df8c24657f1f9c7d582c15c2a7bb265bdec38352559c731962f7bfd8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-source-before-key-type-order.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/records/intent-key-type-order.diff": {
+      "sha256": "55eae3b8a28ad98c8e3334bc598c4773c62079d0010ee817a9517a2cde508242",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-key-type-order.diff"
+    },
+    "docs/testing/codex-unattended-intent-20261016/records/intent-key-type-order-audit.json": {
+      "sha256": "2c26b62cab06d7511a80d00e603b0ec7437b74880dbf9d7ba0d014ae461e40d9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-key-type-order-audit.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/records/intent-source-before-preflight-fix.py.txt": {
+      "sha256": "74f2799bcbd218582ed567ad917188501ee139d16779e38931b90803fc63ebc4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-source-before-preflight-fix.py.txt"
+    },
+    "docs/testing/codex-unattended-intent-20261016/records/intent-preflight-fix.diff": {
+      "sha256": "5eb93857db3f9b375850bc825428e61ac91a9fbaa3ccc58ed1236d85e9126a59",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-preflight-fix.diff"
+    },
+    "docs/testing/codex-unattended-intent-20261016/records/intent-preflight-fix-audit.json": {
+      "sha256": "76e9e8b019790cbe9ef52dc208ab5a9b03aef0b7163378ea146b41683b25e2d5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-preflight-fix-audit.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/records/intent-time-budget-correction.json": {
+      "sha256": "177002c4dde146679d0c12cb2e4462ed53b7162a0dbd27b8c647facf1ab0723c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-time-budget-correction.json"
+    },
+    "docs/testing/codex-unattended-intent-20261016/review/agent-unattended-intent-plan.md": {
+      "sha256": "4c005dd7c2a7703f0639ef71aed968c5a1fc5cf8b6ce404364debb779097d575",
+      "source": "/tmp/agent-unattended-intent-plan.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/review/agent-unattended-intent-plan-review.md": {
+      "sha256": "f1fb9dad4822a897f13239cc5fc5fdae4734b7000240a21f056f78767cd476ee",
+      "source": "/tmp/agent-unattended-intent-plan-review.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/review/agent-unattended-intent-viability-review.md": {
+      "sha256": "9fc39eb55d1d050ae500ab40f0a07b6b689374736f9bb124b5327d193070cfd9",
+      "source": "/tmp/agent-unattended-intent-viability-review.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/review/agent-unattended-intent-static-review.md": {
+      "sha256": "0eac007b117b8f4f4e5fca0474e6a029b3f87c027970cf8766bae74117230590",
+      "source": "/tmp/agent-unattended-intent-static-review.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/review/agent-unattended-intent-postfix-static-review.md": {
+      "sha256": "9e079c40ced11a94f7a92d0c4b2328bb58d3b5c0e988ed6b9829c69fafa0af31",
+      "source": "/tmp/agent-unattended-intent-postfix-static-review.md"
+    },
+    "docs/testing/codex-unattended-intent-20261016/review/final-review.md": {
+      "sha256": "5c88e67c3e50da6cc789a5a8f7b7212df3ec5f051a778ebf2aef1937c34c9f4d",
+      "source": "/tmp/agent-unattended-intent-final-review.md"
+    }
+  }
+}

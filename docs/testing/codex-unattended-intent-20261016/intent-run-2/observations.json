@@ -1,0 +1,1430 @@
+[
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA busy_timeout', boundary='query_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA busy_timeout', boundary='query_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA busy_timeout', boundary='query_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA busy_timeout', boundary='query_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA busy_timeout', boundary='response_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA busy_timeout', boundary='response_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA busy_timeout', boundary='response_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA busy_timeout', boundary='response_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA main.synchronous', boundary='query_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA main.synchronous', boundary='query_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA main.synchronous', boundary='query_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA main.synchronous', boundary='query_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA main.synchronous', boundary='response_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA main.synchronous', boundary='response_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA main.synchronous', boundary='response_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA main.synchronous', boundary='response_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": 1,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": true,
+      "reason": "CLAIM_RECORDED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": 1,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": 1,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_REUSED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": 1,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": 1,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": true,
+      "reason": "CLAIM_RECORDED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "REVISION_CONFLICT",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "None",
+    "record_revision": 1,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='begin_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='begin_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='begin_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='begin_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='begin_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='begin_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='begin_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='begin_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='sql_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='sql_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='sql_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='sql_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='sql_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='sql_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='sql_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='sql_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='commit_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='commit_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='commit_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='commit_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='commit_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='commit_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='commit_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='commit_after')",
+    "record_revision": 1,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='commit_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "UNKNOWN_NO_REPLAY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='rollback_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='rollback_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='rollback_before')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": false
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='rollback_before')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='rollback_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='rollback_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='rollback_after')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "UNCERTAIN",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (failure_stage='rollback_after')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_OBSERVED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE TABLE foreign_sentinel (value INTEGER)')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE TABLE foreign_sentinel (value INTEGER)')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE TABLE foreign_sentinel (value INTEGER)')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE TABLE foreign_sentinel (value INTEGER)')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE VIEW unexpected_view AS SELECT 1')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE VIEW unexpected_view AS SELECT 1')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE VIEW unexpected_view AS SELECT 1')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE VIEW unexpected_view AS SELECT 1')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE INDEX unexpected_index ON submission_intents(intent_sha256)')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE INDEX unexpected_index ON submission_intents(intent_sha256)')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE INDEX unexpected_index ON submission_intents(intent_sha256)')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE INDEX unexpected_index ON submission_intents(intent_sha256)')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE TRIGGER unexpected_trigger AFTER UPDATE ON submission_intents BEGIN SELECT 1; END')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE TRIGGER unexpected_trigger AFTER UPDATE ON submission_intents BEGIN SELECT 1; END')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE TRIGGER unexpected_trigger AFTER UPDATE ON submission_intents BEGIN SELECT 1; END')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='CREATE TRIGGER unexpected_trigger AFTER UPDATE ON submission_intents BEGIN SELECT 1; END')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='PRAGMA application_id=7')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='PRAGMA application_id=7')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='PRAGMA application_id=7')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='PRAGMA application_id=7')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='PRAGMA user_version=2')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "JOURNAL_READY",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='PRAGMA user_version=2')",
+    "record_revision": 0,
+    "report": {
+      "database_commit_confirmed": true,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "INTENT_STORED",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "CONFIRMED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='PRAGMA user_version=2')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  },
+  {
+    "case": "test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (changed_schema='PRAGMA user_version=2')",
+    "record_revision": null,
+    "report": {
+      "database_commit_confirmed": false,
+      "input_origin_verified": false,
+      "native_ready": false,
+      "new_claim": false,
+      "reason": "SCHEMA_INVALID",
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+      "status": "BLOCKED",
+      "transaction_closed": true
+    },
+    "test": "test_claim_commit_boundary_reopen_and_failures"
+  }
+]

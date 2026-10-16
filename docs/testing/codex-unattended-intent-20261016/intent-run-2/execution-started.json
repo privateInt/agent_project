@@ -1,0 +1,8 @@
+{
+  "budget_reset": false,
+  "prior_journal_active_seconds": 1902,
+  "runner_sha256": "a1ab6455fa49237a3783cf02991c24a7ca7a283b9258e6a6848662c512af790b",
+  "runtime_D18": "HELD",
+  "scope": "dedicated temporary file SQLite only",
+  "utc": "2026-10-16T13:23:24.950427+00:00"
+}

@@ -1,0 +1,12 @@
+{
+  "observed_first_failure": "intent-run-1/normal-result.json; passes4 FAIL1 ERROR0; target preflight main.synchronous query_before attempts unexpectedly empty",
+  "cause": "Test helper passed three positional args to two-argument existing _one; earlier busy_timeout response_after could pass for the wrong TypeError. Product unchanged.",
+  "before_test_sha256": "8ae7d027bdbd1785c9bfa5f5654746b38395d73317c60296d425e41c77612d1f",
+  "after_test_sha256": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+  "source_sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+  "expected_results_assertions_changed": false,
+  "correction": "Only two actual_one call argument lists corrected.",
+  "rerun_scope": "Only affected fifth method, plus first execution of exactly two planned mutant targets; first4 reused unchanged",
+  "d17_fix_attempt": 1,
+  "initial_results_preserved": true
+}

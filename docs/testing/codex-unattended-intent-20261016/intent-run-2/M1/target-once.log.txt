@@ -1,0 +1,21 @@
+test_stale_revision_rejected (intent_journal_initial_five.IntentJournalTests) ... FAIL
+
+======================================================================
+FAIL: test_stale_revision_rejected (intent_journal_initial_five.IntentJournalTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/test_codex_unattended_intent_journal.py", line 417, in test_stale_revision_rejected
+    self.invoke("claim_intent", connection, intent_key(value), sha(raw), 1, reason="REVISION_CONFLICT")
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/test_codex_unattended_intent_journal.py", line 244, in invoke
+    return self.assert_result(result, connection, reason)
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/test_codex_unattended_intent_journal.py", line 231, in assert_result
+    self.assertEqual(reason, report["reason"])
+AssertionError: 'REVISION_CONFLICT' != 'CLAIM_RECORDED'
+- REVISION_CONFLICT
++ CLAIM_RECORDED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+FAILED (failures=1)

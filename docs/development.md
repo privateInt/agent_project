@@ -1,5 +1,7 @@
 # 개발 안내
 
+2026-10-16: 제출 전 저널은 `codex_unattended_intent_journal.py`의 initialize/reserve/read/claim 네 API만 사용한다. caller-owned 전용 파일 SQLite 연결을 빌리고 빈 DB의 명시 초기화만 허용한다. 기존 DB migration·연결 생성/종료·실제 queue IO는 없다. DB claim은 실행 권한이 아니며 UNKNOWN은 재claim하지 않는다. [새 검사 근거](testing/codex-unattended-intent-observed-20261016.json)는 최초 실패와 해당 method만 재검증한 결과를 구분한다.
+
 2026-10-16: [순수 admission 선택기](../src/ops/tools/codex_unattended_admission.py)는 외부 config/snapshot/state와 기존 gate의 두 순수 함수를 받아 후보만 반환한다. [합성 검사·변이·이식성 근거](testing/codex-unattended-admission-observed-20261016.json)를 실제 queue 실행과 구분한다. 후보는 실행·설정 변경 권한이 아니며 설치된 gate를 수정하지 않는다.
 
 2026-10-13 추가: 현재 개발 사본의 첫 작업은 src 구조·Ops 통합과 경로 검증이며 다음 기능 작업은 F0a다. [소스 구조](architecture/source-layout.md)를 따른다. 아래 날짜별 인수 상태와 운영 자산은 유지한다.
