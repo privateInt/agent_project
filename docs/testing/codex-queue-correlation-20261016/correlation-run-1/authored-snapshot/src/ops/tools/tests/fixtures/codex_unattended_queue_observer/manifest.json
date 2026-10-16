@@ -1,0 +1,11 @@
+{
+  "provenance": "SYNTHETIC_ONLY_OFFLINE_CORRELATION_NO_REMOTE_IO",
+  "files": {
+    "ThreadQueueAddParams.json": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+    "ThreadQueueListParams.json": "b4c889089eee8a0f785ff85e0128a4d3f347353870fa848221096a472223773b",
+    "ThreadQueueListResponse.json": "be4e0bfa6fc776101f96582543605d2eff6186309a08903203512b99c5005926",
+    "synthetic.json": "2c0cede7786cd841f1514bac7a666ee39f5431a3ab5b3f71005da829a69a2a2a"
+  },
+  "schema_reference_only": true,
+  "product_or_framework_fork": false
+}

@@ -1,0 +1,8 @@
+{
+  "expression": "len(matches) == 1",
+  "new_bytes": "len(matches) >= 1",
+  "old_bytes": "len(matches) == 1",
+  "only_one_comparison_changed": true,
+  "source_line": 171,
+  "source_sha256": "771a561f8bd3512d6d0d3aadfd892434e561508fc5ff2054581703dfb8a22717"
+}

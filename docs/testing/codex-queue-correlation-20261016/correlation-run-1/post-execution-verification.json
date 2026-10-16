@@ -1,0 +1,81 @@
+{
+  "completed_utc": "2026-10-16T15:26:23.401950+00:00",
+  "status": "FOUR_PASS_TWO_SEMANTIC_MUTANTS_DETECTED",
+  "normal_results": [
+    {
+      "test": "portable_queue_observer_tests.QueueObserverTests.test_valid_observation_and_read_only_boundary",
+      "status": "PASS"
+    },
+    {
+      "test": "portable_queue_observer_tests.QueueObserverTests.test_unknown_and_bounded_evidence",
+      "status": "PASS"
+    },
+    {
+      "test": "portable_queue_observer_tests.QueueObserverTests.test_matching_client_wrong_prompt_remains_unknown",
+      "status": "PASS"
+    },
+    {
+      "test": "portable_queue_observer_tests.QueueObserverTests.test_two_matching_queue_ids_remain_ambiguous",
+      "status": "PASS"
+    }
+  ],
+  "normal_counts": {
+    "tests_run": 4,
+    "passes": 4,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "normal_observation_count": 111,
+  "all_normal_database_bytes_rows_hashes_revision_profiles_preserved": true,
+  "all_normal_external_io_and_direct_sql_attempts": 0,
+  "mutants": {
+    "M1": {
+      "semantic_FAIL1_ERROR0": true,
+      "actual_wrong_candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "source_sha256": "5120741bc692434b19acb40ba8ac4cef6fad8898258a29075d72cea7e7f45070",
+      "result_sha256": "6e219ac0c7e52d68e407d2ac5fd2eec091bb922c688fcbd615aa1fbde03437ea",
+      "raw_log_sha256": "bc11e2f6ee720ccce735cf2f770fab9a8034b347c606c7c2a69535a28e36094f"
+    },
+    "M2": {
+      "semantic_FAIL1_ERROR0": true,
+      "actual_wrong_candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "source_sha256": "771a561f8bd3512d6d0d3aadfd892434e561508fc5ff2054581703dfb8a22717",
+      "result_sha256": "e3eeb40fc5b79ba785e2e94e32a4bccb15201c168d80b0e1c95ad0e1f5a9b21e",
+      "raw_log_sha256": "545628753f0c3e571bb7792ecd16bd3da46fa7f202a4872d106b5fb2c28a4285"
+    }
+  },
+  "fresh_source_copy": "/tmp/u01b2-portable-source-a0u5n23r",
+  "retained_source_snapshot": "execution-inputs",
+  "original_and_fresh_sources_fixtures_helpers_unchanged": true,
+  "original11_unchanged": true,
+  "source_sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+  "test_sha256": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371",
+  "runner_sha256": "704ce24042dc81db2978bc9b955656249c622d1a69c87cb86e202e1165defa37",
+  "plan_sha256": "25c798b43efd07b01c8c9030c0de7ff41a04b94cab8dd62dc4462ed13025403f",
+  "prereview_sha256": "29709c6c34feaf5fa673f325e43855b9dc44ab761beb1d815e9ef01997fdb5ac",
+  "preexecution_independent_review_sha256": "16c770f75a9a16fbd20dc4945f8eae1846aec56215ffaa77d847b9fc65949f20",
+  "readiness_sha256": "6b073bb217cbd8af6902f8bce7e7b734d199abc1260cc6b290ff766a5b6df96e",
+  "environment_sha256": "c4b7f79960642ae5a43d730d00483822d619af7593cc14e40997edc1866691d1",
+  "result_sha256": "c8a77dfebf70b4098d6e0c98d1d44aa7a116af6e77c288f93a074ecf0047d39d",
+  "normal_raw_log_sha256": "870812fd0750a6b14fae10a6eb37aff03a114b2de424e68ed7a9eec54bcb73b1",
+  "runner_invocations": 1,
+  "normal_methods_invoked_once_each": true,
+  "mutant_methods_invoked_once_each": true,
+  "normal_or_old_pass_reruns": 0,
+  "unexpected_failures": 0,
+  "native_auth_production_vms_actions": 0,
+  "runtime_D18": "HELD",
+  "scheduler_PAUSE": "UNCHANGED",
+  "deadline_utc": "2026-10-16T15:45:08Z",
+  "clock_reset": false,
+  "next_required_step": "final independent review of fixed source/test/runner and actual normal/mutant evidence; native acceptance NOT_RUN"
+}

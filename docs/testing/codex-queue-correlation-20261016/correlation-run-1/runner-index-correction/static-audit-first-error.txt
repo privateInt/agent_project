@@ -1,0 +1,5 @@
+Static metadata audit only; no runner/test/product execution.
+Traceback (most recent call last):
+  File "<stdin>", line 12, in <module>
+AttributeError: 'Attribute' object has no attribute 'args'
+Cause: audit read ast.parse(...).body Attribute without descending to its Call value. Corrected only metadata traversal for subsequent static audit.

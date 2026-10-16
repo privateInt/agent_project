@@ -1,0 +1,17 @@
+{
+  "recorded_utc": "2026-10-16T15:17:13.469224+00:00",
+  "before": {
+    "before-tests-ready.json": "f456e7153834e2bedf79fd630c9f7425cf9f2cf29b7b3d753b5faaebb51bac1d",
+    "before-runner.py.txt": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823",
+    "before-test.py.txt": "5eab928148a081e1f5ef5c27b0d8cc25b542988074c05c7b35e0b006a9caa048",
+    "before-authored-pins.json": "1fd6d837c56da53b462940dcf4dfe8e1e8e868025e6fde216e0a1e453652e0b6"
+  },
+  "finding1": "Already corrected in authored writer bytes and first readiness: standalone request is self.page(db)[0] with null cursor. No additional edit needed.",
+  "finding1_static_source": "expanded_page = packed(json.dumps(json.loads(self.page(db)[0]), indent=3).encode(),\n                                   json.dumps({\"nextCursor\": None, \"data\": [self.item(db, elements=True)]}, indent=2).encode())",
+  "finding2": "Apply frozen v2 order: only submission JSON parsed before journal; page request/response JSON failures are OBSERVATION_INVALID after read1/confirmedTrue.",
+  "parent_source_static_PASS": "0363984b (user-provided attribution; no review/result polling)",
+  "execution": 0,
+  "product_or_plan_edits": false,
+  "deadline_utc": "2026-10-16T15:45:08Z",
+  "clock_reset": false
+}

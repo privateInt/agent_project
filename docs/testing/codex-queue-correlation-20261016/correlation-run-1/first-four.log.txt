@@ -1,0 +1,9 @@
+test_valid_observation_and_read_only_boundary (portable_queue_observer_tests.QueueObserverTests) ... ok
+test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) ... ok
+test_matching_client_wrong_prompt_remains_unknown (portable_queue_observer_tests.QueueObserverTests) ... ok
+test_two_matching_queue_ids_remain_ambiguous (portable_queue_observer_tests.QueueObserverTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.182s
+
+OK

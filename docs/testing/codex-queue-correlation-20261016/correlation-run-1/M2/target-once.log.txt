@@ -1,0 +1,19 @@
+test_two_matching_queue_ids_remain_ambiguous (portable_queue_observer_tests.QueueObserverTests) ... FAIL
+
+======================================================================
+FAIL: test_two_matching_queue_ids_remain_ambiguous (portable_queue_observer_tests.QueueObserverTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/u01b2-portable-source-a0u5n23r/src/ops/tools/tests/test_codex_unattended_queue_observer.py", line 454, in test_two_matching_queue_ids_remain_ambiguous
+    self.invoke(db, pages=pages, reason="CORRELATION_AMBIGUOUS")
+  File "/tmp/u01b2-portable-source-a0u5n23r/src/ops/tools/tests/test_codex_unattended_queue_observer.py", line 243, in invoke
+    self.assertEqual(reason, report["reason"])  # Semantic mutation failure must occur here.
+AssertionError: 'CORRELATION_AMBIGUOUS' != 'CANDIDATE_OBSERVED'
+- CORRELATION_AMBIGUOUS
++ CANDIDATE_OBSERVED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (failures=1)

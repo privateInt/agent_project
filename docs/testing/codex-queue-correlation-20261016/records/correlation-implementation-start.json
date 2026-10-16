@@ -1,0 +1,8 @@
+{
+  "started_utc": "2026-10-16T15:04:11.542541+00:00",
+  "plan_version": "U01b2-D29-v2",
+  "plan_sha256": "25c798b43efd07b01c8c9030c0de7ff41a04b94cab8dd62dc4462ed13025403f",
+  "prereview_sha256": "29709c6c34feaf5fa673f325e43855b9dc44ab761beb1d815e9ef01997fdb5ac",
+  "old_pass_repeated": false,
+  "v1_finalized_after_v2_snapshot": "Reviewer assessed whole immutable v2 and recorded extra v1 clarity deltas; do not characterize as only2 textual edits."
+}

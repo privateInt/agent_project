@@ -1,0 +1,20 @@
+--- before/run-once.py
++++ corrected/run-once.py
+@@ -126,12 +126,11 @@
+     if mutation == "M1":
+         if not isinstance(node.ops[0], (ast.Eq, ast.NotEq)):
+             raise ValueError("M1_REQUIRES_EXACT_TEXT_BYTES_EQUALITY_GUARD")
+-        # Coordinator supplies the reviewed item/submission bytes comparison,
+-        # never a hash/client/thread/limit or cardinality guard.
+-        if (isinstance(node.left, ast.Constant) or isinstance(node.comparators[0], ast.Constant)
+-                or any(isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == "len"
+-                       for n in ast.walk(node))):
+-            raise ValueError("M1_REQUIRES_BYTES_VALUES_NOT_LITERAL_OR_CARDINALITY_GUARD")
++        # Exact reviewed bytes guard: integer 0/1 occur only in Subscript.slice.
++        # Literal Compare operands, Calls and every other expression are rejected.
++        reviewed_bytes = ast.parse("matches[0][1] != text", mode="eval").body
++        if ast.dump(node, include_attributes=False) != ast.dump(reviewed_bytes, include_attributes=False):
++            raise ValueError("M1_REQUIRES_REVIEWED_INDEXED_BYTES_COMPARISON")
+         changed = ast.Constant(value=isinstance(node.ops[0], ast.Eq))
+     else:
+         if not (isinstance(node.ops[0], ast.Eq) and isinstance(node.left, ast.Call)

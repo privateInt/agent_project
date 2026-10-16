@@ -1,0 +1,38 @@
+{
+  "files": {
+    "src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+    "src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+    "src/ops/tools/codex_unattended_intent_journal.py": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "src/ops/tools/codex_unattended_queue_observer.py": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+    "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+    "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+    "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+    "src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueAddParams.json": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListParams.json": "b4c889089eee8a0f785ff85e0128a4d3f347353870fa848221096a472223773b",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListResponse.json": "be4e0bfa6fc776101f96582543605d2eff6186309a08903203512b99c5005926",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/manifest.json": "2faf68df0fbacf05f1ea0c7b58b014af51711fb55fa7fa0a96e253e5a3fd2763",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/synthetic.json": "2c0cede7786cd841f1514bac7a666ee39f5431a3ab5b3f71005da829a69a2a2a",
+    "src/ops/tools/tests/test_codex_unattended_intent_journal.py": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+    "src/ops/tools/tests/test_codex_unattended_queue_observer.py": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371"
+  },
+  "mutations": {
+    "M1": {
+      "expression": "matches[0][1] != text",
+      "new_bytes": "False",
+      "old_bytes": "matches[0][1] != text",
+      "only_one_comparison_changed": true,
+      "source_line": 172
+    },
+    "M2": {
+      "expression": "len(matches) == 1",
+      "new_bytes": "len(matches) >= 1",
+      "old_bytes": "len(matches) == 1",
+      "only_one_comparison_changed": true,
+      "source_line": 171
+    }
+  },
+  "plan_sha256": "25c798b43efd07b01c8c9030c0de7ff41a04b94cab8dd62dc4462ed13025403f",
+  "review_sha256": "29709c6c34feaf5fa673f325e43855b9dc44ab761beb1d815e9ef01997fdb5ac",
+  "runner_sha256": "704ce24042dc81db2978bc9b955656249c622d1a69c87cb86e202e1165defa37"
+}
