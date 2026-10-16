@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-16T15:25:04.599895+00:00",
+  "preexecution_review_sha256": "16c770f75a9a16fbd20dc4945f8eae1846aec56215ffaa77d847b9fc65949f20",
+  "readiness_sha256": "6b073bb217cbd8af6902f8bce7e7b734d199abc1260cc6b290ff766a5b6df96e",
+  "plan_sha256": "25c798b43efd07b01c8c9030c0de7ff41a04b94cab8dd62dc4462ed13025403f",
+  "prereview_sha256": "29709c6c34feaf5fa673f325e43855b9dc44ab761beb1d815e9ef01997fdb5ac",
+  "source_sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+  "test_sha256": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371",
+  "runner_sha256": "704ce24042dc81db2978bc9b955656249c622d1a69c87cb86e202e1165defa37",
+  "authorization": "user explicitly authorized existing exact command once; actual-byte independent PASS",
+  "D06_previous_pending_readiness_superseded_by": "/tmp/agent-unattended-correlation-preexecution-review.md",
+  "runtime_D18": "HELD",
+  "scheduler_PAUSE": "UNCHANGED",
+  "clock_reset": false
+}

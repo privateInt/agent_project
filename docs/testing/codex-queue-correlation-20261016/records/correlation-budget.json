@@ -1,0 +1,9 @@
+{
+  "unit": "U01b2 offline queue correlation observer",
+  "start_utc": "2026-10-16T14:45:08+00:00",
+  "deadline_utc": "2026-10-16T15:45:08+00:00",
+  "old_runtime_d18": "HELD_NO_RESET",
+  "test_fix_limit": 3,
+  "fixes": 0,
+  "budget_note": "Conservatively include entire initial confirmation/analysis span rather than just role-plan dispatch; distinct old runtime issue remains HELD, no reset."
+}

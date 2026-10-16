@@ -1,0 +1,14 @@
+--- before/test_codex_unattended_queue_observer.py
++++ corrected/test_codex_unattended_queue_observer.py
+@@ -338,7 +338,10 @@
+             for index, bad in enumerate(bad_json):
+                 for field in ("submission", "request", "response"):
+                     with self.subTest(early_json=index, field=field):
+-                        kwargs = {"reason": "INPUT_INVALID", "reads": 0, "confirmed": False}
++                        # Frozen v2 parses submission before read, page JSON after it.
++                        kwargs = {"reason": "INPUT_INVALID" if field == "submission" else "OBSERVATION_INVALID",
++                                  "reads": 0 if field == "submission" else 1,
++                                  "confirmed": field != "submission"}
+                         if field == "submission":
+                             kwargs["submission"] = bad
+                         elif field == "request":

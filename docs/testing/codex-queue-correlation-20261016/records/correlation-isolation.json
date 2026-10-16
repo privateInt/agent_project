@@ -1,0 +1,10 @@
+{
+  "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/correlation-development",
+  "base": "780d0755378b9f95f0282ec766ca99300b2b0b53",
+  "branch": "codex/agent-project-queue-correlation-20261016",
+  "inherited_pins": {
+    "src/ops/tools/codex_unattended_intent_journal.py": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+    "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4"
+  }
+}

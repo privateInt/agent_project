@@ -1,0 +1,91 @@
+{
+  "status": "TESTS_AND_RUNNER_CORRECTED_NOT_EXECUTED_D06_CONFIRMATION_PENDING",
+  "created_utc": "2026-10-16T15:20:14.318865+00:00",
+  "plan_sha256": "25c798b43efd07b01c8c9030c0de7ff41a04b94cab8dd62dc4462ed13025403f",
+  "prereview_path": "/tmp/agent-unattended-correlation-plan-review.md",
+  "review_sha256": "29709c6c34feaf5fa673f325e43855b9dc44ab761beb1d815e9ef01997fdb5ac",
+  "base_commit": "780d0755378b9f95f0282ec766ca99300b2b0b53",
+  "test_sha256": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371",
+  "runner_sha256": "704ce24042dc81db2978bc9b955656249c622d1a69c87cb86e202e1165defa37",
+  "copy_files": {
+    "src/ops/tools/tests/test_codex_unattended_queue_observer.py": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371",
+    "src/ops/tools/tests/test_codex_unattended_intent_journal.py": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+    "src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66",
+    "src/ops/tools/codex_unattended_intent_journal.py": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+    "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+    "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueAddParams.json": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListParams.json": "b4c889089eee8a0f785ff85e0128a4d3f347353870fa848221096a472223773b",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListResponse.json": "be4e0bfa6fc776101f96582543605d2eff6186309a08903203512b99c5005926",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/manifest.json": "2faf68df0fbacf05f1ea0c7b58b014af51711fb55fa7fa0a96e253e5a3fd2763",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/synthetic.json": "2c0cede7786cd841f1514bac7a666ee39f5431a3ab5b3f71005da829a69a2a2a",
+    "src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+    "src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284"
+  },
+  "methods": [
+    "test_valid_observation_and_read_only_boundary",
+    "test_unknown_and_bounded_evidence",
+    "test_matching_client_wrong_prompt_remains_unknown",
+    "test_two_matching_queue_ids_remain_ambiguous"
+  ],
+  "method_count": 4,
+  "semantic_assertion_line": 243,
+  "normal_execution": "future first4 once, failfast, in fresh named minimal source copy only",
+  "mutants": "future M1 target3 and M2 target4 once each only after all4 PASS; semantic reason assertion FAIL1/ERROR0 plus actual bad candidate required",
+  "pending_coordinator_inputs": [
+    "frozen product source SHA-256",
+    "reviewed exact M1 item/submission UTF-8 bytes comparison expression",
+    "reviewed exact M2 len(matching_client_items) == 1 expression"
+  ],
+  "future_runner_argv": [
+    "python3",
+    "-B",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/run-once.py",
+    "--source-sha256",
+    "COORDINATOR_FROZEN_SHA256",
+    "--m1-comparison",
+    "REVIEWED_BYTES_COMPARISON",
+    "--m2-comparison",
+    "REVIEWED_LEN_EQUALS_ONE_COMPARISON"
+  ],
+  "portability": "relative pinned fixtures; fresh source copy; original checkout and operator /tmp fixtures and /opt reads blocked; no socket/subprocess; dedicated temporary SQLite only",
+  "syntax_check": "AST_PARSE_ONLY; no import/compile/exec of product or tests; runner not executed",
+  "product": "coordinator-owned parallel file; not edited, imported, executed, or read by test agent this turn",
+  "executions": {
+    "tests": 0,
+    "product_import": 0,
+    "SQLite": 0,
+    "mutants": 0,
+    "old_pass_reruns": 0,
+    "result_polling": 0,
+    "native_or_permission_probes": 0,
+    "agent_queries_or_delegation": 0
+  },
+  "existing_helper_and_original11_unchanged": true,
+  "runtime_D18": "HELD",
+  "scheduler_PAUSE": "UNCHANGED",
+  "conservative_deadline_utc": "2026-10-16T15:45:08Z",
+  "clock_reset": false,
+  "visible_approval_reviewer": "auto_review from current managed instructions; confirmations provided by parent; no policy reinspection",
+  "previous_tests_ready_sha256": "f456e7153834e2bedf79fd630c9f7425cf9f2cf29b7b3d753b5faaebb51bac1d",
+  "construction_correction": {
+    "evidence": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-construction-corrections",
+    "finding1": "Already corrected in original writer; first-page request cursor null retained; whitespace/key-order comparison unchanged",
+    "finding2": "Submission INPUT_INVALID/read0/confirmedFalse; request and response OBSERVATION_INVALID/read1/confirmedTrue, per frozen v2 evaluation order",
+    "only_AST_delta": "kwargs conditional values in existing bad_json loop",
+    "method_count": 4,
+    "all_existing_assertions_and_mutant_target_bodies_unchanged": true,
+    "D06_independent_confirmation": "PENDING_PARENT_BEFORE_FIRST_RUN"
+  },
+  "runner_previous_tests_ready_sha256": "619629ce81d8d7a31d8f650e1878dc7f63c3506eb63994d5a6e72f7099eff019",
+  "runner_correction": {
+    "evidence": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/runner-index-correction",
+    "M1_reviewed_expression": "matches[0][1] != text",
+    "M2_unchanged_expression": "len(matches) == 1",
+    "validation": "exact reviewed M1 AST; only integer0/1 in Subscript.slice; no literal Compare operands or Calls",
+    "all_other_runner_AST_including_exact_one_change_and_semantic_FAIL1_ERROR0_gate": "UNCHANGED",
+    "tests_criteria_product_and_fixtures": "UNCHANGED",
+    "D06_independent_confirmation": "PENDING_PARENT_BEFORE_FIRST_RUN"
+  }
+}

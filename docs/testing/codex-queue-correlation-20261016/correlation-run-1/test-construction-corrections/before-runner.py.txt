@@ -1,0 +1,315 @@
+"""Authorized future execution only: portable first four, then two semantic mutants.
+
+Requires the coordinator's frozen product SHA and exact comparison expressions.
+This file is authored without importing/executing product or tests.
+"""
+import argparse
+import ast
+import contextlib
+import copy
+import datetime
+import difflib
+import hashlib
+import importlib.util
+import json
+import os
+from pathlib import Path
+import platform
+import signal
+import sqlite3
+import sys
+import tempfile
+import traceback
+import types
+import unittest
+
+
+RUN = Path(__file__).resolve().parent
+ROOT = RUN.parents[3]
+WORK = ROOT / "var/unattended-20261015/correlation-development"
+PRODUCT = "src/ops/tools/codex_unattended_queue_observer.py"
+TEST = "src/ops/tools/tests/test_codex_unattended_queue_observer.py"
+METHODS = ["test_valid_observation_and_read_only_boundary", "test_unknown_and_bounded_evidence",
+           "test_matching_client_wrong_prompt_remains_unknown", "test_two_matching_queue_ids_remain_ambiguous"]
+DEADLINE = datetime.datetime(2026, 10, 16, 15, 45, 8, tzinfo=datetime.timezone.utc)
+SEMANTIC_ASSERTION_LINE = None
+
+
+def sha(value):
+    return hashlib.sha256(value).hexdigest()
+
+
+def write(path, value):
+    with path.open("x") as stream:
+        json.dump(value, stream, sort_keys=True, indent=2)
+        stream.write("\n")
+
+
+def deadline():
+    if datetime.datetime.now(datetime.timezone.utc) >= DEADLINE:
+        raise RuntimeError("CONSERVATIVE_DEADLINE_REACHED_NO_CLOCK_RESET")
+
+
+class EvidenceResult(unittest.TextTestResult):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.events = []
+
+    def remember(self, test, status, error=None, subtest=None):
+        entry = {"test": test.id(), "status": status,
+                 "actual_result": getattr(test, "last_result", None)}
+        if error:
+            entry["traceback"] = self._exc_info_to_string(error, test)
+            cursor = error[2]
+            semantic = False
+            while cursor is not None:
+                if (cursor.tb_frame.f_code.co_name == "invoke"
+                        and cursor.tb_lineno == SEMANTIC_ASSERTION_LINE
+                        and cursor.tb_frame.f_code.co_filename.endswith(TEST)):
+                    semantic = True
+                cursor = cursor.tb_next
+            entry["failure_at_semantic_reason_assertion"] = semantic
+        if subtest is not None:
+            entry["subtest"] = str(subtest)
+        self.events.append(entry)
+
+    def addSuccess(self, test):
+        self.remember(test, "PASS")
+        super().addSuccess(test)
+
+    def addFailure(self, test, error):
+        self.remember(test, "FAIL", error)
+        super().addFailure(test, error)
+
+    def addError(self, test, error):
+        self.remember(test, "ERROR", error)
+        super().addError(test, error)
+
+    def addSkip(self, test, reason):
+        self.remember(test, "SKIP")
+        super().addSkip(test, reason)
+        self.stop()
+
+    def addSubTest(self, test, subtest, error):
+        if error is not None:
+            self.remember(test, "FAIL" if issubclass(error[0], test.failureException) else "ERROR", error, subtest)
+        super().addSubTest(test, subtest, error)
+
+
+def execute(module, methods, directory, log_name):
+    deadline()
+    module.OBSERVATIONS.clear()
+    with (directory / log_name).open("x") as stream:
+        runner = unittest.TextTestRunner(stream=stream, verbosity=2, failfast=True, resultclass=EvidenceResult)
+        with contextlib.redirect_stdout(stream), contextlib.redirect_stderr(stream):
+            result = runner.run(unittest.TestSuite(module.QueueObserverTests(name) for name in methods))
+    record = {"methods": methods, "tests_run": result.testsRun,
+              "passes": sum(e["status"] == "PASS" for e in result.events),
+              "failures": len(result.failures), "errors": len(result.errors), "skips": len(result.skipped),
+              "events": result.events, "failfast": True}
+    write(directory / "observations.json", module.OBSERVATIONS)
+    return record
+
+
+def mutate(source, expression, mutation):
+    """Change one pinned Compare node; all other bytes/AST remain unchanged."""
+    parsed = ast.parse(source)
+    expected = ast.parse(expression, mode="eval").body
+    found = [node for node in ast.walk(parsed) if isinstance(node, ast.Compare)
+             and ast.dump(node, include_attributes=False) == ast.dump(expected, include_attributes=False)]
+    if len(found) != 1:
+        raise ValueError("MUTANT_EXACT_COMPARISON_NOT_UNIQUE")
+    node = found[0]
+    if len(node.ops) != 1 or len(node.comparators) != 1:
+        raise ValueError("MUTANT_CHAINED_COMPARISON_FORBIDDEN")
+    changed = copy.deepcopy(node)
+    if mutation == "M1":
+        if not isinstance(node.ops[0], (ast.Eq, ast.NotEq)):
+            raise ValueError("M1_REQUIRES_EXACT_TEXT_BYTES_EQUALITY_GUARD")
+        # Coordinator supplies the reviewed item/submission bytes comparison,
+        # never a hash/client/thread/limit or cardinality guard.
+        if (isinstance(node.left, ast.Constant) or isinstance(node.comparators[0], ast.Constant)
+                or any(isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == "len"
+                       for n in ast.walk(node))):
+            raise ValueError("M1_REQUIRES_BYTES_VALUES_NOT_LITERAL_OR_CARDINALITY_GUARD")
+        changed = ast.Constant(value=isinstance(node.ops[0], ast.Eq))
+    else:
+        if not (isinstance(node.ops[0], ast.Eq) and isinstance(node.left, ast.Call)
+                and isinstance(node.left.func, ast.Name) and node.left.func.id == "len"
+                and len(node.left.args) == 1 and not node.left.keywords
+                and isinstance(node.comparators[0], ast.Constant)
+                and type(node.comparators[0].value) is int and node.comparators[0].value == 1):
+            raise ValueError("M2_REQUIRES_LEN_MATCHES_EQUALS_ONE")
+        changed.ops = [ast.GtE()]
+    lines = source.splitlines(keepends=True)
+    begin = sum(len(line) for line in lines[:node.lineno - 1]) + node.col_offset
+    end = sum(len(line) for line in lines[:node.end_lineno - 1]) + node.end_col_offset
+    replacement = ast.unparse(changed).encode("utf-8")
+    output = source[:begin] + replacement + source[end:]
+    class Replace(ast.NodeTransformer):
+        def visit_Compare(self, item):
+            return changed if item is node else self.generic_visit(item)
+    intended = Replace().visit(parsed)
+    if ast.dump(intended, include_attributes=False) != ast.dump(ast.parse(output), include_attributes=False):
+        raise ValueError("MUTANT_CHANGED_OTHER_AST")
+    return output, {"expression": expression, "old_bytes": source[begin:end].decode(),
+                    "new_bytes": replacement.decode(), "source_line": node.lineno,
+                    "only_one_comparison_changed": True}
+
+
+def main():
+    global SEMANTIC_ASSERTION_LINE
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source-sha256", required=True)
+    parser.add_argument("--m1-comparison", required=True)
+    parser.add_argument("--m2-comparison", required=True)
+    args = parser.parse_args()
+    write(RUN / "execution-started.json", {"utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+          "deadline_utc": DEADLINE.isoformat(), "budget_reset": False, "source_sha256": args.source_sha256})
+    result = {"status": "NOT_EXECUTED", "old_tests_run": 0, "mutants": {}, "runtime_D18": "HELD",
+              "scheduler_PAUSE": "UNCHANGED", "remote_actions": 0}
+    try:
+        deadline()
+        class DeadlineExceeded(BaseException):
+            pass
+        def expired(signum, frame):
+            raise DeadlineExceeded("CONSERVATIVE_DEADLINE_REACHED_NO_CLOCK_RESET")
+        signal.signal(signal.SIGALRM, expired)
+        signal.setitimer(signal.ITIMER_REAL, (DEADLINE - datetime.datetime.now(datetime.timezone.utc)).total_seconds())
+        ready = json.loads((RUN / "tests-ready.json").read_text())
+        if sha(Path(__file__).read_bytes()) != ready["runner_sha256"]:
+            raise ValueError("RUNNER_PIN_CHANGED")
+        snapshots = RUN / "execution-inputs"
+        snapshots.mkdir(exist_ok=False)
+        fresh = Path(tempfile.mkdtemp(prefix="u01b2-portable-source-"))
+        files = dict(ready["copy_files"])
+        source = (WORK / PRODUCT).read_bytes()
+        if len(args.source_sha256) != 64 or sha(source) != args.source_sha256:
+            raise ValueError("COORDINATOR_FROZEN_PRODUCT_PIN_MISMATCH")
+        files[PRODUCT] = args.source_sha256
+        changes = {name: mutate(source, getattr(args, name.lower() + "_comparison"), name)
+                   for name in ("M1", "M2")}
+        for name, pin in files.items():
+            value = source if name == PRODUCT else (WORK / name).read_bytes()
+            if sha(value) != pin:
+                raise ValueError("COPY_INPUT_PIN_MISMATCH: " + name)
+            for base in (snapshots, fresh):
+                path = base / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(value)
+        syntax = ast.parse((fresh / TEST).read_bytes())
+        semantic_lines = [node.lineno for node in ast.walk(syntax)
+                          if isinstance(node, ast.Call)
+                          and ast.unparse(node) == "self.assertEqual(reason, report['reason'])"]
+        if len(semantic_lines) != 1:
+            raise ValueError("SEMANTIC_ASSERTION_NOT_UNIQUE")
+        SEMANTIC_ASSERTION_LINE = semantic_lines[0]
+        plan = ROOT / "var/unattended-20261015/transition-evidence/agent-unattended-correlation-plan-v2.md"
+        review = Path(ready["prereview_path"])
+        for name, path, pin in (("plan-v2.md", plan, ready["plan_sha256"]),
+                                ("prereview.md", review, ready["review_sha256"])):
+            data = path.read_bytes()
+            if sha(data) != pin:
+                raise ValueError("PLAN_OR_REVIEW_PIN_MISMATCH")
+            (snapshots / name).write_bytes(data)
+        write(RUN / "execution-pins.json", {"files": files, "runner_sha256": ready["runner_sha256"],
+              "plan_sha256": ready["plan_sha256"], "review_sha256": ready["review_sha256"],
+              "mutations": {name: change[1] for name, change in changes.items()}})
+        environment = {"python": sys.version, "sqlite_library": sqlite3.sqlite_version,
+                       "platform": platform.platform(), "source_copy": str(fresh), "original_work": str(WORK),
+                       "relative_fixtures": True, "initial_four_only_in_fresh_copy": True,
+                       "deadline_utc": DEADLINE.isoformat(), "budget_reset": False}
+        write(RUN / "environment.json", environment)
+        result["environment_sha256"] = sha((RUN / "environment.json").read_bytes())
+        # Hash-verified copies are complete before imports. No original worktree,
+        # private operator fixture, /opt, network or subprocess dependency is allowed.
+        fresh_s, run_s, root_s = str(fresh) + "/", str(RUN) + "/", str(ROOT) + "/"
+        violations = []
+        def audit(event, arguments):
+            if event == "open" and not isinstance(arguments[0], int):
+                path = os.path.abspath(os.fsdecode(arguments[0]))
+                allowed = path.startswith((fresh_s, run_s))
+                blocked = (path.startswith(root_s) or path == "/opt" or path.startswith("/opt/")
+                           or path.startswith("/tmp/agent-unattended"))
+                if blocked and not allowed:
+                    violations.append("PRIVATE_SOURCE_OR_OPERATOR_READ")
+                    raise RuntimeError("PORTABILITY_PRIVATE_READ_FORBIDDEN")
+            if event in ("socket.__new__", "socket.connect", "socket.bind", "subprocess.Popen", "os.system"):
+                violations.append("REMOTE_OR_PROCESS_ACTION")
+                raise RuntimeError("PORTABILITY_REMOTE_OR_PROCESS_FORBIDDEN")
+            if event == "sqlite3.connect":
+                path = os.path.abspath(os.fsdecode(arguments[0]))
+                if not path.startswith(str(Path(tempfile.gettempdir()) / "u01b2-offline-sqlite-")):
+                    violations.append("NONDEDICATED_DATABASE")
+                    raise RuntimeError("DEDICATED_TEMP_SQLITE_ONLY")
+        os.chdir(fresh)
+        sys.path[:] = [str(fresh)] + [p for p in sys.path if p and not os.path.abspath(p).startswith(str(ROOT))
+                                    and not os.path.abspath(p).startswith(("/opt/", "/tmp/agent-unattended"))]
+        sys.dont_write_bytecode = True
+        sys.addaudithook(audit)
+        spec = importlib.util.spec_from_file_location("portable_queue_observer_tests", fresh / TEST)
+        tests = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(tests)
+        normal = execute(tests, METHODS, RUN, "first-four.log")
+        normal_pass = (normal["tests_run"] == 4 and normal["passes"] == 4
+                       and not normal["failures"] and not normal["errors"] and not normal["skips"])
+        normal["status"] = "PASS" if normal_pass else "STOPPED_AT_FIRST_ISSUE"
+        write(RUN / "normal-result.json", normal)
+        result["normal"] = normal
+        if not normal_pass:
+            result["status"] = "STOPPED_AT_FIRST_ISSUE_NO_FIX_OR_RERUN"
+            return 1
+        for name, method, reason in (("M1", METHODS[2], "CONTENT_MISMATCH"),
+                                     ("M2", METHODS[3], "CORRELATION_AMBIGUOUS")):
+            deadline()
+            directory = RUN / name
+            directory.mkdir(exist_ok=False)
+            mutated, detail = changes[name]
+            snapshot = directory / "mutated-source.py.txt"
+            snapshot.write_bytes(mutated)
+            (directory / "mutation.diff").write_text("".join(difflib.unified_diff(
+                source.decode().splitlines(True), mutated.decode().splitlines(True),
+                fromfile="frozen-product.py", tofile=name + "-product.py")))
+            write(directory / "mutation-audit.json", dict(detail, source_sha256=sha(mutated)))
+            module = types.ModuleType("src.ops.tools._queue_observer_" + name)
+            # Compile with the fresh filename; traceback can read the portable copy.
+            module.__file__ = str(fresh / PRODUCT)
+            exec(compile(mutated, str(fresh / PRODUCT), "exec"), module.__dict__)
+            with tests.mock.patch.object(tests, "product", module):
+                observation = execute(tests, [method], directory, "target-once.log")
+            issue = next((e for e in observation["events"] if e["status"] != "PASS"), {})
+            actual = issue.get("actual_result") or {}
+            report, candidate = actual.get("report", {}), actual.get("candidate") or {}
+            observed_bad_candidate = (report.get("status") == "OBSERVED"
+                and report.get("reason") == "CANDIDATE_OBSERVED"
+                and candidate.get("queued_submission_id") == tests.QueueObserverTests.fixture["queue_id"]
+                and all(report.get(flag) is False for flag in tests.FALSE_FLAGS))
+            semantic = (observation["tests_run"] == 1 and observation["failures"] == 1
+                        and observation["errors"] == 0 and observation["skips"] == 0
+                        and issue.get("failure_at_semantic_reason_assertion") is True
+                        and reason in issue.get("traceback", "") and observed_bad_candidate)
+            observation.update({"semantic_FAIL1_ERROR0_actual_wrong_candidate": semantic,
+                                "normal_target_PASS_reused": method, "normal_target_rerun": False,
+                                "actual_wrong_candidate": candidate, "status": "DETECTED_AS_PLANNED" if semantic else "UNEXPECTED"})
+            write(directory / "result.json", observation)
+            result["mutants"][name] = observation
+            if not semantic:
+                result["status"] = "STOPPED_AT_UNEXPECTED_MUTANT_RESULT"
+                return 1
+        if violations:
+            raise RuntimeError("PORTABILITY_OR_SCOPE_GUARD_TRIGGERED")
+        result["status"] = "FOUR_PASS_TWO_SEMANTIC_MUTANTS_DETECTED"
+        return 0
+    except BaseException:
+        result["status"] = "STOPPED_AT_IMPORT_HARNESS_OR_DEADLINE_ERROR"
+        result["first_error"] = traceback.format_exc()
+        return 1
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        result["completed_utc"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        write(RUN / "result.json", result)
+        print(json.dumps({"status": result["status"], "result": str(RUN / "result.json")}))
+
+
+if __name__ == "__main__":
+    sys.exit(main())

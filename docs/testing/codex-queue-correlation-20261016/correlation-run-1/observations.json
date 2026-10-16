@@ -1,0 +1,3883 @@
+[
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "538709b130533cd5c3b2827fb1e2c059659755339b26df4db87810d4eda41067",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_valid_observation_and_read_only_boundary"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "2296755debc8dea29c9bc5a6eb2c80504c7df43fea435e7d3efa65a5c3828df1",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 2,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 2,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_valid_observation_and_read_only_boundary"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "538709b130533cd5c3b2827fb1e2c059659755339b26df4db87810d4eda41067",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_valid_observation_and_read_only_boundary"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "55da07e2f7f0383cf24a49601c36014cb62324600fa4f1ba8e7d39372abfbbfe",
+        "submission_params_sha256": "998f6962740a0ceb64046f270cf9bb6ac56ff15e944dc02a12a824c99c04cdd5"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_valid_observation_and_read_only_boundary"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "observation_sha256": "053be10a86051d5642a6f01e721ecb35f1ee497687856f657e1a9e973ba1b3a9",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": "INTENT_PIN_MISMATCH",
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "JOURNAL_BLOCKED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_valid_observation_and_read_only_boundary"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "538709b130533cd5c3b2827fb1e2c059659755339b26df4db87810d4eda41067",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": "CHECKPOINT_UNCONFIRMED",
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "JOURNAL_UNCONFIRMED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_valid_observation_and_read_only_boundary"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "538709b130533cd5c3b2827fb1e2c059659755339b26df4db87810d4eda41067",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 0,
+        "journal_state": "PREPARED",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INTENT_NOT_UNKNOWN",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_valid_observation_and_read_only_boundary"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='empty-complete')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "ec917ee268eea8e77e1d8944a3b584f7e947f89bf95b8c75fc18b66a07b252cd",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "ABSENT_UNRESOLVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='other-client')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "1c458c249bcaf379a0dae4e11a8ec215eb91993f8da1e8b3417d8f7745ede949",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "ABSENT_UNRESOLVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='no-evidence')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "c423feac3df9c1805c7fe40dc1fac6346e165f8c401d676435d8a4f60fa42da4",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "EVIDENCE_INCOMPLETE",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='lost-response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "addeed1c1abe1c3aab473b98af402e8a016a323e53772918833152f2d2dc4eaf",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "EVIDENCE_INCOMPLETE",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='partial')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "8641fa5baaa698e2c4d1659f44d11c1b5283589613e5e57f1d5df0f879619b07",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "EVIDENCE_INCOMPLETE",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='cursor-omitted')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "73ea73ca21f1a64db50c685fdf5c530db77f7b1399202884d64ffdeaa0428df5",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "EVIDENCE_INCOMPLETE",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='later-loss')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "7c5c4e81a75aa208efa47ff3e51ef4063f3ef9e9b259ed5153036755c4fc3efa",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "EVIDENCE_INCOMPLETE",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='duplicate-id')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "1bd9341eccf4717c37bc89986223c7268c26ddb15a409bfd961253034a6bec5c",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 2,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "CORRELATION_AMBIGUOUS",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='two-client-matches')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "f0be9b646c200a9b9ae491d4106d3fa9ef6ea4309f832a9860ecbb6cfc5dfab8",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 2,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CORRELATION_AMBIGUOUS",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='wrong-thread')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "26844d8e37f128044b70efb8c9e5c313c3457cd4dc2f8a5521fcd2af8b3222dc",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='bool-limit')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "3904d0ebdc7883b18cf5d84d8ac6c7ee59e35d345d34dc7c4d60789788c729dc",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='wrong-limit')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "4a394b06522e6090b68e1216995b793480249db92e192b0f26de09455fdbfff6",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='after-eof')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "efb821acd13e8575a7859242dea03721eddcc46f3ca1f8c818ffa993a35633d2",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='bad-chain')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "44dafbf19fb5389ed5ad00a7786bb201647a42aac8850b10ecae19802f0d2eaf",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='cursor-cycle')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "2ced5dea8ce0dde9dffc2239e391600ff405c63630ce5710b03b85ce822467a8",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 2,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='first-not-null')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "49e5b72bc45934982030501fc7db429c0005ab76e639f834bbbc06e562e04edc",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (snapshot='empty-cursor')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "9a23b6e4ae34ca7601906f6710e29bb18c89d2711dd567d56d89a509ed947ce6",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (unsupported='image')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "f7ecba0f622cef0ea81ea52245e372fea01ac8e639b7cba204ae1f74b08d517b",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 2,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (unsupported='image')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "69d5f5bcb49c84269ca813499b65ee7f2e16d52060dbdfb1b0034ae8bb844c00",
+        "submission_params_sha256": "3d6b170e35e540fb2b7355c28619420249f76ea14878f2ce16c3987bf607f15e"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (unsupported='spans')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "639a568f4bdf4af70762bdce7e924cf2e3776bc2bcc51448a1753fcd9d94db00",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (unsupported='spans')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "0fd1b0b417bba1f2539f4c4b7274bc35daf0b51c7192e13bb1dafd7961283bea",
+        "submission_params_sha256": "03bc5f679fd5fc2c0bd40d9a02c02f0b34456c68941bcf34ec207092f2d96542"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (unsupported='extra')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "5a3c57d420762a140b4bf7e44c311657b9de9bcb4b4ef81ff8d55639b3586c83",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 2,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (unsupported='extra')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "d7be3e44488b3afb679ce8dee96ca29778781788961db2cddd8b1195502462d2",
+        "submission_params_sha256": "a22b89c793f4e75723fa9d1b34b0c6f286e3511d9039e7fca9c51811e0125336"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (exact_text='trim')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "6929c917fd3e5a90b25771cbc4e8d0d0ffcbf6dd81d23b777e00b083a87b09c7",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CONTENT_MISMATCH",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (exact_text='newline')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "43c576479ff54c542e747153c4dcad86a58407541bcc08d8d61ad4f0173b0ef0",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CONTENT_MISMATCH",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (exact_text='normalization')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "fb1dd5514c2deb309d6f0bda9ec50c29ad979dea6a7c9cbfa156fd0979ff12c4",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CONTENT_MISMATCH",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "ef8ddf2b7c2c69d4978a49d717e3c204ac348d3359f9a5ceb199d49bb69ce740",
+        "submission_params_sha256": "b90a61e6b5f11994dc51a5b9196265bf7c473ce2feff89256d610ddb816ffc91"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INTENT_BINDING_MISMATCH",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "2c274dbc9c924dd5eb99d56de705c5b20d83d08aa582330df593c36c8860e7d6",
+        "submission_params_sha256": "3d8f0871e54bba0088e966de43f86a4b7cc3493a04a0df51ab4cf308b084236d"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INTENT_BINDING_MISMATCH",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (hash_tampering='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_HASH_MISMATCH",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (hash_tampering='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_HASH_MISMATCH",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (hash_tampering='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_HASH_MISMATCH",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=0, field='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "8c992169424655b7d05dc954a848b306410abcc316f0245dddabf43d2bb8ca2b",
+        "submission_params_sha256": "021fb596db81e6d02bf3d2586ee3981fe519f275c0ac9ca76bbcf2ebb4097d96"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=0, field='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "360cc49af51878a9a2dbedf6a000e8b1563005bc46647a6e3aa17b335d96c9d6",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=0, field='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "3ea25ed6b9401859c848a5bd303dc18521804db32a2a664a448046294bda9494",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=1, field='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "8eeb920db665407099478546584d21515077b76de82833623f6165aa000e2897",
+        "submission_params_sha256": "aa25e978046d680ef8740d837e6de5bc1e2a2dc6089dbda1012544b538d53f65"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=1, field='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "2d17251f66c95e599117a9b3554a1ccb207f93d5718931723cd1f018a89bb9fc",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=1, field='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "00da1b8e504422c77f017df630c5a33077e271a3c21a61cd29fdce2184b995a1",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=2, field='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "bc2e41e4592c408766a23526218d5a50ff4dccd6c1df07ba0b0ef81249c9bbf6",
+        "submission_params_sha256": "5b3430ee8e5c7490d0e154755cdae0c9a7791be87e77b1f91a52f77676bed0c7"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=2, field='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "87fe343e912e813511808ff1ce4dca24f59b0a2829c6175f663e1f6b1518ed93",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=2, field='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "4e1f191b4ca7e1cf37057d90411d9d341ebab6673b62d67a7848bbee49c5a1cb",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=3, field='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "f7e13e93244dff334df75b03d18dcd5f42a45341bac08b3489efd4a045ec23d1",
+        "submission_params_sha256": "d38245cfdb5d2239d67fe2a719312768b668a6928d8d97d04fbce83215e50b44"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=3, field='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "9d66429980f9273b725e0806fd47b64d999027a959be8358628263752dfc1095",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=3, field='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "c59403d70fd6f1b15f76b2e21c2fe5e2d8c5508987ba626a432947ffbc772567",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=4, field='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "7122469deed524bb13c4634799bb5d97057c1f7b70b76dc3532abdc98bee89ff",
+        "submission_params_sha256": "c238cb6e9ac5407491b0988102620ab9445290d2ed7713c516a2b28bd2388968"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=4, field='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "de64e8efa74be37c5b09c84e5d0d5d668f571d9b1f3b54e3579986be32caa666",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=4, field='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "02a1ad7c6eeb86de1a562f6db0092f2387eae8ab9fa2fc7f6413b3b634bf139d",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=5, field='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "84a0d16e7b1dcc3998adbe25570c94fcaca2b3cdfb4e960c317d0d73730ed8ff",
+        "submission_params_sha256": "504a7fad8d7687a0ca0c9eace25c99c63e8e3cf1ad8f4945644c781e4605c02d"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=5, field='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "59865e5a200ff92377e9b997e57242fdcf5a9872a78c7677652329be3eb4eff0",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=5, field='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "2dc3d18a22ea086a9a0064f541509b4b86b168fe2c84d683457d685db9118c6a",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=6, field='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "d57e40328a9b9995a4fb88347b9f0d3d38a886d67fa6027f3d0d20ba6f92c325",
+        "submission_params_sha256": "3340b7e2f8c6f8c8f84b3ac5eb1506dbc9a515a70a3745d5724874318190596b"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=6, field='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "2d89abf68c78bff491ddb132e38b0c5a4e06deebec806671e7471af71c2007d7",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=6, field='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "fa6e0fd8d5485f9a2bb842770b43c8d7884536eacca61f5b3136f5ca7f2124fe",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=7, field='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "29703c863c1c1e20bdedfe7028b26cf898f59fcd8378d523d7359c582dbee3c0",
+        "submission_params_sha256": "bf32f56236899e13ef54db875d136c6cbcc65244464829c54911aa9069b0ae25"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=7, field='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "c4edc8a620563010e604df6d653bbf714dc17f5f329155f9ae5ead84e0a8b151",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=7, field='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "a75e8f0c9e6e91cb827066a8ab3489f56395304f4e95de08a93db459094055a3",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=8, field='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "adb15c6e8e114f20c749496b9f84ba7194d16000121f294dea1ee66895f6f5cd",
+        "submission_params_sha256": "cea3ccc5f5b1091830621ca6f6e0f0ddf62c3b3b1c3d918717b8ac37d636724c"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=8, field='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "c65a1b00524fa1f93713a5129abaa48cbb743804307764e31dbd84d4d85c55e2",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=8, field='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "461764666bafa358d95e6de1d6e1ff94dbda259e2b94a8a18a8281b9f3485bf6",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=9, field='submission')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "0e86cc58ec7a565238c102ef52ac4763a226b1794ea916bb8a5ae6150cd04346",
+        "submission_params_sha256": "a87f12d34d179c4dd058f06d205b96585bd84797eab5360fe32bc414d56028ba"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=9, field='request')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "ec529e1134900ca87cd3d58913c89e3ffb3558eb8c8bd0621bafda234be5f0c6",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (early_json=9, field='response')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "578b82bd9f139ec9213db167b402160a29619919ee2338f07832be10f66aa47d",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (outer_type=['submission'])",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (outer_type=['pages'])",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (outer_type=['pages'])",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (outer_type=['submission_pin'])",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (outer_type=['intent_pin'])",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (outer_type=['key'])",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (outer_type=['pages'])",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (outer_type=['pages'])",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (outer_type=['pages'])",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (byte_boundary='submission', extra=0)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "df2919d61d54cbfeb414d1d22a028c6dab5959ebb12f17a06f2474510b16ee2c",
+        "submission_params_sha256": "268588c59e956522af488e0c10dacfc57869b1f37d05647ad885b960d32331cf"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (byte_boundary='submission', extra=1)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (byte_boundary='request', extra=0)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "f8c832fce424ae4ec0f479eb49177d58471d5ae9f44c9481fd82a62c7c82986d",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (byte_boundary='request', extra=1)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (byte_boundary='response', extra=0)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "9c76209b5cb3dcb907c3dfdcba423512d80ca7b8cf74687ad0478e757fb79335",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (byte_boundary='response', extra=1)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "9b6691f3391a36040668206e5712d52f15174ba281a05139bae11be48dd0266b",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 4,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "c5b6d4f00d9e344a2227a068fc34f587c5fb5411f1303c517f921f6e794a697a",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 4,
+        "pagination_complete": false,
+        "reason": "EVIDENCE_INCOMPLETE",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "cf2c8bd8f2c7f997cf3222d4ecdf48ed55849c9ac2e8c84d03b274fa557e4446",
+        "submission_params_sha256": "268588c59e956522af488e0c10dacfc57869b1f37d05647ad885b960d32331cf"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 4,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": null,
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "ARGUMENTS_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (page_items=20)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "02d6c8c5e9c5d27d70cd947c75d706c8b35ab61621638680f37e037dd1954086",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 20,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (page_items=21)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "51c4d4c30e7c7eea599912112ff548b1043ad6abbe801b0a9b39163e9b5d093a",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "bff2829dffc40bd05385dc2a2f67760beee2bbe0bad8a16dbaa70a75d8e817f5",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 80,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 4,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (cursor_utf8_bytes=1024)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "159d770dcec7ef18b16300cdc53b82f9304a4a92a353c1d13638d987b8c9b9c2",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 2,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (cursor_utf8_bytes=1025)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "21b5fb20a4d11cf86978ee4f310edb6e6831a887cee4542af3c05b00a5820ac9",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (queue_id_length=128)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "05b8a3ffeb8daf2b6c3cab1ebd0c1cdbd5d68ef3df6e34bda68292a20fd7357b",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (thread_id_length=128)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "030755a12d0d0afe243bfb89e4546ae7a009e60947b407626e373ef4a2aac4fb",
+        "submission_params_sha256": "b5f5271c9fc4b0173373a97a16fb9b298a6299743d83f70070a6f0691b94ecde"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (queue_id_length=129)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "7853fd5e3078417dab7b0a25dddefeb04f90fd2d50e89dd16fff3f379862fa0e",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (thread_id_length=129)",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "2be91c8c015277c7e7c43210ecfed3683f8b2a5cfe7a39e9e9bf119c7b69b36f",
+        "submission_params_sha256": "eba30d79b515df33aa04ed5a006b19caaf8543c859e3f8b2917029d0bde2a4b6"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "2f750bcda754d93c170afaede73ca92a3648619b3309553fd6cd732f8d0403be",
+        "submission_params_sha256": "60afcb38749706e5254c44ba3d1a11c62d1d2c6513c90526c3ae1f04418ef31c"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (empty_identifier='threadId')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "49d41627e387b1061213ac8643557e16869c9ed73dcd13ccda745a1918e0c603",
+        "submission_params_sha256": "f18245ac52560b024a04607121283ba29af47ee93f218eb9dc54f242c1ec471b"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "test_unknown_and_bounded_evidence (portable_queue_observer_tests.QueueObserverTests) (empty_identifier='clientUserMessageId')",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "bfa3a893dfdead63bae0d49909f9b6163db1e0819360332b3ef0491e732f8092",
+        "submission_params_sha256": "9537565b4c7a65538a167ec92afe050324c898172b3ef02d42289f70824fdcf2"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "30a1f1668d8c6d8e0e174eeb820a9df2ba3484edcb0a722541497d5be82c4875",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "4a54c87abc61dccc9a5e48d4591bb7f55b1bfd0987216eef86b7af57ea01bf19",
+        "observation_sha256": "4f0e1a34abd0a5f11c0ce6e090d808372d71053a49a1985486481d22be2690e6",
+        "submission_params_sha256": "10d138325db27ff8afe5231cd83722e0ff3fe1415ddfd9c394a705e6bb5f20b0"
+      },
+      "candidate": {
+        "client_user_message_id": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "4a54c87abc61dccc9a5e48d4591bb7f55b1bfd0987216eef86b7af57ea01bf19",
+        "observation_sha256": "b3f789aa4758182db6eef23d0bee411a299c9997c56caa758bb385a3c21e12c3",
+        "submission_params_sha256": "f2d8a21dd2d70b5dbebf1a479793c5a4ccf7f3e3993f599de8915283e91906c5"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "4a54c87abc61dccc9a5e48d4591bb7f55b1bfd0987216eef86b7af57ea01bf19",
+        "observation_sha256": "4ef96427cd922f21ccbacc4868d3ab0991bc6059e90fa6d6ab27288d4e9474be",
+        "submission_params_sha256": "10d138325db27ff8afe5231cd83722e0ff3fe1415ddfd9c394a705e6bb5f20b0"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "4a54c87abc61dccc9a5e48d4591bb7f55b1bfd0987216eef86b7af57ea01bf19",
+        "observation_sha256": "6dd530a85fcb3f33d7e8ff100e77cd60389a38d5094a284d1781b5ec66d64d5a",
+        "submission_params_sha256": "e676ffb3348468a8d7da2dfa5ee901a52b1a1a493c3c8543816b6ef3719074ef"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "4a54c87abc61dccc9a5e48d4591bb7f55b1bfd0987216eef86b7af57ea01bf19",
+        "observation_sha256": "623e78a011c03f2e8ce01292cad408f32e0f126abfa0e3a7707250d86898a106",
+        "submission_params_sha256": "10d138325db27ff8afe5231cd83722e0ff3fe1415ddfd9c394a705e6bb5f20b0"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 0,
+    "result": {
+      "binding": {
+        "intent_sha256": "4a54c87abc61dccc9a5e48d4591bb7f55b1bfd0987216eef86b7af57ea01bf19",
+        "observation_sha256": "25031a8763e52a001d8d936e96ce9665df30040cc3c7fd5e89410d756a8d7c7d",
+        "submission_params_sha256": "4ac8c04ada313116d35b69e6aba83c32b3c723bf7c76467ce4249cf3218ba8b0"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 0,
+        "journal_read_confirmed": false,
+        "journal_reason": null,
+        "journal_revision": null,
+        "journal_state": null,
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 0,
+        "pagination_complete": false,
+        "reason": "INPUT_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "BLOCKED"
+      }
+    },
+    "sql_count": 0,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "4a54c87abc61dccc9a5e48d4591bb7f55b1bfd0987216eef86b7af57ea01bf19",
+        "observation_sha256": "5dcab204505d3b64225bdec0f65c24facf958fbb80185da86881ec216091dc41",
+        "submission_params_sha256": "10d138325db27ff8afe5231cd83722e0ff3fe1415ddfd9c394a705e6bb5f20b0"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": false,
+        "reason": "OBSERVATION_INVALID",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "f416849c51bf45abe68c9c9fca813c19050f4289f287e7e338848787b86e16e2",
+        "observation_sha256": "67e8a401730530e23600502cc44d6c09d91eaf7b1b9e7da1156192989a0b5f5f",
+        "submission_params_sha256": "dbb3a535a774f40f4e7b086e7609cb653ec096586760c7e9307360e43c0dd467"
+      },
+      "candidate": {
+        "client_user_message_id": "C",
+        "queued_submission_id": "Q",
+        "thread_id": "T"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_unknown_and_bounded_evidence"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "dc4005b52f4544a4d75e62d110620c895a77f20b49babd1361e66c9b323d5f77",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CONTENT_MISMATCH",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_matching_client_wrong_prompt_remains_unknown"
+  },
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "02b506fc5a6fb7b9b1b074b4305d20536f4f89f76fe0a83ed6fad440f2b5edc3",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": null,
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 2,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 2,
+        "pagination_complete": true,
+        "reason": "CORRELATION_AMBIGUOUS",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "UNKNOWN"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_two_matching_queue_ids_remain_ambiguous"
+  }
+]

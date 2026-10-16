@@ -1,0 +1,19 @@
+test_matching_client_wrong_prompt_remains_unknown (portable_queue_observer_tests.QueueObserverTests) ... FAIL
+
+======================================================================
+FAIL: test_matching_client_wrong_prompt_remains_unknown (portable_queue_observer_tests.QueueObserverTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/u01b2-portable-source-a0u5n23r/src/ops/tools/tests/test_codex_unattended_queue_observer.py", line 447, in test_matching_client_wrong_prompt_remains_unknown
+    self.invoke(db, pages=(self.page(db, [self.item(db, text="WRONG_PRIVATE_PROMPT_NEVER_LOG")]),), reason="CONTENT_MISMATCH")
+  File "/tmp/u01b2-portable-source-a0u5n23r/src/ops/tools/tests/test_codex_unattended_queue_observer.py", line 243, in invoke
+    self.assertEqual(reason, report["reason"])  # Semantic mutation failure must occur here.
+AssertionError: 'CONTENT_MISMATCH' != 'CANDIDATE_OBSERVED'
+- CONTENT_MISMATCH
++ CANDIDATE_OBSERVED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (failures=1)

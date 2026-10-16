@@ -1,5 +1,7 @@
 # 다음 세션·Codex 인수인계
 
+2026-10-17 KST U01b2: PR18 고정 `780d0755378b9f95f0282ec766ca99300b2b0b53` 위에 오프라인 queue/list 관측기를 추가했다. 기존 공개 `read_intent` 한 번으로 원래 intent를 읽고, client·prompt bytes·thread·원문 hash와 완결 pagination의 유일 후보를 대조한다. 전용 임시 SQLite/독립 소스 복사본의 새4개 최초 PASS와 두 의미 변이 검출(각 FAIL1/ERROR0), 원래 UNKNOWN/raw/hash/revision 및 재개방 보존을 확인했다. 기존 PASS는 반복하지 않았다. 최종 독립 검토는 별도 근거에 기록한다. 실제 ACK 저장·turn/result·controller/scheduler 연결과 두 실제 작업 연속 실행은 미완료이며 runtime D18 보류·두 PAUSE·운영/인증정보/main/VMS 보호를 유지한다. [새 근거](testing/codex-queue-correlation-observed-20261016.json).
+
 2026-10-16: PR17 고정86b8861 위의 [intent 저널 실행 근거](testing/codex-unattended-intent-observed-20261016.json)를 이어받는다. source902fb39e는 유지했고 검사 helper 두 호출만 수정했다. 최초4PASS/1FAIL과 오류 원문을 보존했으며5번째만 재검증PASS, 두 변이 의미FAIL1/ERROR0이다. 기존 PASS·전체5개·R03/R04/R15를 반복하지 않는다. 실제 두 개발 작업/하위 Auto-review/native 연결은 미완료이며 보호 설정과 runtime 조사 상한을 유지한다.
 
 2026-10-16: 고정 PR #15 commit `c862bfc6951491192a9fe98b535c9a8be921ee35` 위의 [U01a 검증](testing/codex-unattended-admission-observed-20261016.json)과 [전송 Draft PR #16](https://github.com/privateInt/agent_project/pull/16)을 이어받는다. agent_project만 자동 작업 대상으로 유지하고 vms_project는 제외한다. 순수 입력 검증은 owner/서명/OS 격리 인수가 아니며 실제 queue 두 작업·Auto-review는 미완료다. source·기존 결과와 첫 오류·원본 11개 변경은 전용 개발 경로에 보존했다.

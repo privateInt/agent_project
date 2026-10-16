@@ -1,0 +1,11 @@
+--- frozen-product.py
++++ M2-product.py
+@@ -168,7 +168,7 @@
+             raise _Failure("EVIDENCE_INCOMPLETE")
+     if not matches:
+         raise _Failure("ABSENT_UNRESOLVED")
+-    if len(matches) == 1:
++    if len(matches) >= 1:
+         if matches[0][1] != text:
+             raise _Failure("CONTENT_MISMATCH")
+         return {"thread_id": submission["threadId"], "queued_submission_id": matches[0][0],

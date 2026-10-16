@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-10-16T15:19:05.139239+00:00",
+  "files": {
+    "before-tests-ready.json": "619629ce81d8d7a31d8f650e1878dc7f63c3506eb63994d5a6e72f7099eff019",
+    "before-runner.py.txt": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823",
+    "parent-preserved-before-runner.py.txt": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823"
+  },
+  "current_gate_observation": "Current pinned gate rejects direct literal operands and len calls, not all indexed integer constants; narrow exact reviewed expression validation will explicitly reject every Call and literal Compare operand.",
+  "executions": 0,
+  "clock_reset": false,
+  "deadline_utc": "2026-10-16T15:45:08Z"
+}

@@ -1,0 +1,8 @@
+{
+  "expression": "matches[0][1] != text",
+  "new_bytes": "False",
+  "old_bytes": "matches[0][1] != text",
+  "only_one_comparison_changed": true,
+  "source_line": 172,
+  "source_sha256": "5120741bc692434b19acb40ba8ac4cef6fad8898258a29075d72cea7e7f45070"
+}

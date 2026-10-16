@@ -1,0 +1,64 @@
+{
+  "provenance": "SYNTHETIC_ONLY_OFFLINE_CORRELATION_NO_REMOTE_IO",
+  "intent": {
+    "schema": 1,
+    "project_id": "agent_project",
+    "repository": "fixture-owner/agent_project",
+    "dev_root": "/fixture/intent-clone",
+    "git_common_dir": "/fixture/intent-common-git",
+    "batch_id": "fixture-intent-batch-1",
+    "task_id": "T1",
+    "project_sha256": "26f5a2dcbfe67abd7c5f8cb4c848c104adb0e7f2378532cc2f106ca500c7ae3a",
+    "task_sha256": "b9d13452e979af7422dd269954eb2575dfce4eece6c267d8ed91366b6f4ad8b8",
+    "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "plan_sha256": "229a1c6e5a22cc49eaeeb92bbd60c686b89b0f3537aaaceff48f9b3efef71af8",
+    "prompt_sha256": "49235bd865d6ea51aa4b7efce0518984d8b62a0fe992422bace10ac72b416845",
+    "settings_sha256": "98c674204b66a4203f62abaeda03c111e9a0baf01c5ff61353435aa63757174e",
+    "clientUserMessageId": "fixture-client-T1"
+  },
+  "task_descriptor": {
+    "task_id": "T1",
+    "predecessor_id": null,
+    "plan_sha256": "229a1c6e5a22cc49eaeeb92bbd60c686b89b0f3537aaaceff48f9b3efef71af8",
+    "required_test_ids": [
+      "fixture.unit",
+      "fixture.contract"
+    ],
+    "allowed_files": [
+      "src/ops/tools/fixture_task.py"
+    ],
+    "timeout_sec": 600
+  },
+  "settings_fixture": {
+    "cwd": "/fixture/intent-clone",
+    "approvalPolicy": {
+      "granular": {
+        "sandbox_approval": false,
+        "request_permissions": false,
+        "rules": false,
+        "mcp_elicitations": false,
+        "skill_approval": false
+      }
+    },
+    "approvalsReviewer": "auto_review",
+    "sandbox": {
+      "type": "workspaceWrite",
+      "networkAccess": false,
+      "writableRoots": [
+        "/fixture/intent-clone",
+        "/fixture/tmp"
+      ]
+    },
+    "runtimeWorkspaceRoots": [
+      "/fixture/intent-clone"
+    ]
+  },
+  "prompt": "SYNTHETIC_CORRELATION_PROMPT_NEVER_LOG_\ud55c\uae00\r\n caf\u00e9 e\u0301",
+  "thread_id": "fixture-correlation-thread",
+  "queue_id": "fixture-correlation-Q1",
+  "second_queue_id": "fixture-correlation-Q2",
+  "other_client": "fixture-correlation-other-client",
+  "other_queue": "fixture-correlation-other-Q",
+  "cursor": "SYNTHETIC_OPAQUE_CURSOR_NEVER_LOG",
+  "canonical_intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b"
+}

@@ -1,0 +1,22 @@
+{
+  "status": "TESTS_AND_RUNNER_CORRECTED_NOT_EXECUTED_D06_CONFIRMATION_PENDING",
+  "before_runner_sha256": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823",
+  "after_runner_sha256": "704ce24042dc81db2978bc9b955656249c622d1a69c87cb86e202e1165defa37",
+  "before_tests_ready_sha256": "619629ce81d8d7a31d8f650e1878dc7f63c3506eb63994d5a6e72f7099eff019",
+  "after_tests_ready_sha256": "6b073bb217cbd8af6902f8bce7e7b734d199abc1260cc6b290ff766a5b6df96e",
+  "diff_sha256": "d73492fc03a58b15d02aace702f9d2c7dd575a89942e1655c39d34d6e40480e3",
+  "unchanged_test_sha256": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371",
+  "plan_sha256": "25c798b43efd07b01c8c9030c0de7ff41a04b94cab8dd62dc4462ed13025403f",
+  "AST_audit": "only M1 selection guard changed; all other AST identical including mutation-equivalence and semantic-result gates",
+  "validation": "AST parse/structural comparison only; mutate/runner/product/tests not imported, compiled or executed",
+  "static_metadata_audit_first_error_preserved": true,
+  "product_source_reads_or_edits": 0,
+  "test_criteria_edits": 0,
+  "result_polling": 0,
+  "native_actions_or_agent_queries": 0,
+  "original11_unchanged": true,
+  "deadline_utc": "2026-10-16T15:45:08Z",
+  "clock_reset": false,
+  "runtime_D18": "HELD",
+  "scheduler_PAUSE": "UNCHANGED"
+}

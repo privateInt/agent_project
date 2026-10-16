@@ -1,5 +1,7 @@
 # 프로젝트 현재 상태
 
+2026-10-17 KST U01b2: PR18 고정 `780d0755378b9f95f0282ec766ca99300b2b0b53` 위에 오프라인 queue/list 관측기를 추가했다. 기존 공개 `read_intent` 한 번으로 원래 intent를 읽고, client·prompt bytes·thread·원문 hash와 완결 pagination의 유일 후보를 대조한다. 전용 임시 SQLite/독립 소스 복사본의 새4개 최초 PASS와 두 의미 변이 검출(각 FAIL1/ERROR0), 원래 UNKNOWN/raw/hash/revision 및 재개방 보존을 확인했다. 기존 PASS는 반복하지 않았다. 최종 독립 검토는 별도 근거에 기록한다. 실제 ACK 저장·turn/result·controller/scheduler 연결과 두 실제 작업 연속 실행은 미완료이며 runtime D18 보류·두 PAUSE·운영/인증정보/main/VMS 보호를 유지한다. [새 근거](testing/codex-queue-correlation-observed-20261016.json).
+
 2026-10-16: [제출 전 intent 저널 근거](testing/codex-unattended-intent-observed-20261016.json)는 전용 임시 SQLite의 불변 저장·재조회·CAS·UNKNOWN 보존을 확인했다. 최초 새5개는4PASS/1FAIL(검사 helper 인자 수 오류)였고, 두 호출만 수정한 뒤 실패한5번째만PASS, 지정 변이2개는 각각 의미FAIL1/ERROR0으로 탐지됐다. 최초 오류와 통과4개를 보존·재사용했으며 최종 전체5개는 반복하지 않았다. 최종 독립 검토는 관찰 JSON을 따른다. 실제 controller/두 개발 작업은 미인수이며 부모 Auto-review만 적용, 두 하위 역할은 user, 기존 service/timer는 inactive/disabled와 두 PAUSE 상태다.
 
 2026-10-16: [순수 admission 근거](testing/codex-unattended-admission-observed-20261016.json)에 새 6 methods PASS와 두 guard 변이의 의미 FAIL1/ERROR0, dependency 경로 변경 helper 결과를 보존했다. 전송 부품은 [별도 Draft PR #16](https://github.com/privateInt/agent_project/pull/16)에 있다. 실제 Auto-review·controller 연결·무인 두 작업은 미인수이며 D18 보류와 원본 11개 변경을 유지한다.

@@ -1,0 +1,58 @@
+{
+  "actual_wrong_candidate": {
+    "client_user_message_id": "fixture-client-T1",
+    "queued_submission_id": "fixture-correlation-Q1",
+    "thread_id": "fixture-correlation-thread"
+  },
+  "errors": 0,
+  "events": [
+    {
+      "actual_result": {
+        "binding": {
+          "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+          "observation_sha256": "02b506fc5a6fb7b9b1b074b4305d20536f4f89f76fe0a83ed6fad440f2b5edc3",
+          "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+        },
+        "candidate": {
+          "client_user_message_id": "fixture-client-T1",
+          "queued_submission_id": "fixture-correlation-Q1",
+          "thread_id": "fixture-correlation-thread"
+        },
+        "report": {
+          "input_origin_verified": false,
+          "items_examined": 2,
+          "journal_read_confirmed": true,
+          "journal_reason": "INTENT_OBSERVED",
+          "journal_revision": 1,
+          "journal_state": "SUBMISSION_UNKNOWN",
+          "native_acceptance_verified": false,
+          "native_ready": false,
+          "pages_examined": 2,
+          "pagination_complete": true,
+          "reason": "CANDIDATE_OBSERVED",
+          "remote_io_performed": false,
+          "remote_mutation_authorized": false,
+          "replay_permitted": false,
+          "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+          "status": "OBSERVED"
+        }
+      },
+      "failure_at_semantic_reason_assertion": true,
+      "status": "FAIL",
+      "test": "portable_queue_observer_tests.QueueObserverTests.test_two_matching_queue_ids_remain_ambiguous",
+      "traceback": "Traceback (most recent call last):\n  File \"/tmp/u01b2-portable-source-a0u5n23r/src/ops/tools/tests/test_codex_unattended_queue_observer.py\", line 454, in test_two_matching_queue_ids_remain_ambiguous\n    self.invoke(db, pages=pages, reason=\"CORRELATION_AMBIGUOUS\")\n  File \"/tmp/u01b2-portable-source-a0u5n23r/src/ops/tools/tests/test_codex_unattended_queue_observer.py\", line 243, in invoke\n    self.assertEqual(reason, report[\"reason\"])  # Semantic mutation failure must occur here.\nAssertionError: 'CORRELATION_AMBIGUOUS' != 'CANDIDATE_OBSERVED'\n- CORRELATION_AMBIGUOUS\n+ CANDIDATE_OBSERVED\n\n"
+    }
+  ],
+  "failfast": true,
+  "failures": 1,
+  "methods": [
+    "test_two_matching_queue_ids_remain_ambiguous"
+  ],
+  "normal_target_PASS_reused": "test_two_matching_queue_ids_remain_ambiguous",
+  "normal_target_rerun": false,
+  "passes": 0,
+  "semantic_FAIL1_ERROR0_actual_wrong_candidate": true,
+  "skips": 0,
+  "status": "DETECTED_AS_PLANNED",
+  "tests_run": 1
+}

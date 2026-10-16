@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "unit": "U01b2_OFFLINE_QUEUE_CORRELATION",
+  "base_commit": "780d0755378b9f95f0282ec766ca99300b2b0b53",
+  "scope": "Caller-supplied bounded queue/list pages + one read_intent; non-authoritative candidate only",
+  "source_sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+  "plan_sha256": "25c798b43efd07b01c8c9030c0de7ff41a04b94cab8dd62dc4462ed13025403f",
+  "new_tests": {
+    "status": "PASS",
+    "tests_run": 4,
+    "passes": 4,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "semantic_mutants": {
+    "M1": {
+      "status": "DETECTED_AS_PLANNED",
+      "tests_run": 1,
+      "failures": 1,
+      "errors": 0,
+      "skips": 0,
+      "semantic_FAIL1_ERROR0_actual_wrong_candidate": true,
+      "normal_target_rerun": false
+    },
+    "M2": {
+      "status": "DETECTED_AS_PLANNED",
+      "tests_run": 1,
+      "failures": 1,
+      "errors": 0,
+      "skips": 0,
+      "semantic_FAIL1_ERROR0_actual_wrong_candidate": true,
+      "normal_target_rerun": false
+    }
+  },
+  "old_passes": "NOT_REPEATED",
+  "first_errors": "PRESERVED",
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-queue-correlation-20261016/review/final-review.md",
+    "sha256": "e26155eeb4f6fab8d20634eb5e51a07d37b98aa62501b60c044eb39e52c89f2a"
+  },
+  "runtime_investigation": "HELD_D18_NO_FURTHER_CONTROL_PROBES",
+  "scheduler": "PAUSED_INACTIVE_DISABLED_UNCHANGED",
+  "two_complete_native_jobs": "NOT_RUN",
+  "native_acceptance_verified": false,
+  "owner_values_invented": false,
+  "vms_project": "EXCLUDED",
+  "test_sha256": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371",
+  "runner_sha256": "704ce24042dc81db2978bc9b955656249c622d1a69c87cb86e202e1165defa37",
+  "execution_result_sha256": "c8a77dfebf70b4098d6e0c98d1d44aa7a116af6e77c288f93a074ecf0047d39d",
+  "completed_utc": "2026-10-16T15:25:09.252810+00:00",
+  "environment": {
+    "budget_reset": false,
+    "deadline_utc": "2026-10-16T15:45:08+00:00",
+    "initial_four_only_in_fresh_copy": true,
+    "original_work": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/correlation-development",
+    "platform": "Linux-6.8.0-40-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0]",
+    "relative_fixtures": true,
+    "source_copy": "/tmp/u01b2-portable-source-a0u5n23r",
+    "sqlite_library": "3.37.2"
+  },
+  "observation_records": 111,
+  "preexecution_corrections": "D06 scope and exact-byte independent PASS; no product/test executed failure before first4; static metadata AttributeError preserved separately",
+  "source_static_review": "PASS0363984b",
+  "role_policy_evidence": "Separate minimal confirmation per child: actual auto_review unchanged managed boundary; not an escalation or OS enforcement test",
+  "owner_metadata_command": "Separate NOT_RUN utility: initial static3findings preserved; corrected6f06788c version awaits own static re-review, excluded from observer final PASS"
+}

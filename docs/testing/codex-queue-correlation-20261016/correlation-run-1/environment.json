@@ -1,0 +1,11 @@
+{
+  "budget_reset": false,
+  "deadline_utc": "2026-10-16T15:45:08+00:00",
+  "initial_four_only_in_fresh_copy": true,
+  "original_work": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/correlation-development",
+  "platform": "Linux-6.8.0-40-generic-x86_64-with-glibc2.35",
+  "python": "3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0]",
+  "relative_fixtures": true,
+  "source_copy": "/tmp/u01b2-portable-source-a0u5n23r",
+  "sqlite_library": "3.37.2"
+}

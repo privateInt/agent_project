@@ -1,0 +1,21 @@
+{
+  "status": "TEST_CONSTRUCTION_CORRECTED_NOT_EXECUTED_D06_CONFIRMATION_PENDING",
+  "plan_sha256": "25c798b43efd07b01c8c9030c0de7ff41a04b94cab8dd62dc4462ed13025403f",
+  "test_before_sha256": "5eab928148a081e1f5ef5c27b0d8cc25b542988074c05c7b35e0b006a9caa048",
+  "test_after_sha256": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371",
+  "runner_before_and_after_sha256": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823",
+  "old_tests_ready_sha256": "f456e7153834e2bedf79fd630c9f7425cf9f2cf29b7b3d753b5faaebb51bac1d",
+  "new_tests_ready_sha256": "619629ce81d8d7a31d8f650e1878dc7f63c3506eb63994d5a6e72f7099eff019",
+  "diff_sha256": "472e6e29072a07e2356db8ceb6d5f21d5de80bb4ace12903038ef61633f10778",
+  "original_snapshot_and_pins_unchanged": true,
+  "all4_methods_and_assertions_preserved": true,
+  "fixture_bytes_and_existing_helper_unchanged": true,
+  "original11_unchanged": true,
+  "product_and_plan_edits": 0,
+  "product_import_test_execution_result_polling": 0,
+  "D06_independent_confirmation": "PENDING_PARENT",
+  "runtime_D18": "HELD",
+  "scheduler_PAUSE": "UNCHANGED",
+  "conservative_deadline_utc": "2026-10-16T15:45:08Z",
+  "clock_reset": false
+}

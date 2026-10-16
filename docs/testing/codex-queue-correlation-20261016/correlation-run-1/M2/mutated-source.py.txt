@@ -1,0 +1,235 @@
+"""Observe caller-supplied queue pages against an existing local intent.
+
+Python 3.10+. This is not a dispatcher, receipt store or native acceptance gate.
+Only the existing journal's borrowed-connection read performs IO. Input origin,
+thread binding before submission and atomic/fresh remote snapshots are external.
+"""
+
+import hashlib
+import json
+import re
+
+from src.ops.tools import codex_unattended_intent_journal as _journal
+from src.ops.tools import github_fixture_collector as _json
+
+
+_BLOCKED = frozenset((
+    "ARGUMENTS_INVALID", "INPUT_HASH_MISMATCH", "INPUT_INVALID", "JOURNAL_BLOCKED",
+    "INTENT_BINDING_MISMATCH", "INTENT_NOT_UNKNOWN",
+))
+
+
+class _Failure(Exception):
+    def __init__(self, reason):
+        self.reason = reason
+
+
+def _need(condition, reason):
+    if not condition:
+        raise _Failure(reason)
+
+
+def _sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def _hex(value):
+    return type(value) is str and re.fullmatch(r"[0-9a-f]{64}", value) is not None
+
+
+def _identifier(value):
+    return type(value) is str and re.fullmatch(r"[A-Za-z0-9_.:-]{1,128}", value) is not None
+
+
+def _raw(raw, pin, maximum):
+    _need(type(raw) is bytes and 1 <= len(raw) <= maximum and _hex(pin),
+          "ARGUMENTS_INVALID")
+
+
+def _float(_value):
+    raise ValueError("FLOAT_UNSUPPORTED")
+
+
+def _depth(value, level=1):
+    if level > 8:
+        raise ValueError("DEPTH_UNSUPPORTED")
+    if type(value) is dict:
+        for child in value.values():
+            _depth(child, level + 1)
+    elif type(value) is list:
+        for child in value:
+            _depth(child, level + 1)
+
+
+def _decode(raw, reason):
+    try:
+        _need(not raw.startswith(b"\xef\xbb\xbf"), reason)
+        value = json.loads(raw.decode("utf-8"), object_pairs_hook=_json._unique,
+                           parse_int=_json._integer, parse_float=_float,
+                           parse_constant=_json._nonfinite)
+        _depth(value)
+        _need(type(value) is dict, reason)
+        return value
+    except Exception:
+        raise _Failure(reason) from None
+
+
+def _text(value, reason):
+    try:
+        _need(type(value) is list and len(value) == 1, reason)
+        item = value[0]
+        _need(type(item) is dict and set(item) in (
+            {"type", "text"}, {"type", "text", "text_elements"}), reason)
+        _need(type(item["type"]) is str and item["type"] == "text"
+              and type(item["text"]) is str, reason)
+        if "text_elements" in item:
+            _need(type(item["text_elements"]) is list and not item["text_elements"], reason)
+        text = item["text"].encode("utf-8")
+        _need(1 <= len(text) <= 16384, reason)
+        return text
+    except Exception:
+        raise _Failure(reason) from None
+
+
+def _cursor(value):
+    return value is None or (type(value) is str and
+                             1 <= len(value.encode("utf-8")) <= 1024)
+
+
+def _inputs(submission, submission_pin, pages, intent_pin):
+    _need(_hex(intent_pin) and type(pages) is tuple and len(pages) <= 4,
+          "ARGUMENTS_INVALID")
+    _raw(submission, submission_pin, 131072)
+    total = len(submission)
+    parts = [(submission, submission_pin)]
+    manifest = []
+    for index, page in enumerate(pages):
+        _need(type(page) is tuple and len(page) == 4, "ARGUMENTS_INVALID")
+        request, request_pin, response, response_pin = page
+        _raw(request, request_pin, 4096)
+        total += len(request)
+        parts.append((request, request_pin))
+        if response is None:
+            _need(response_pin is None and index == len(pages) - 1, "ARGUMENTS_INVALID")
+        else:
+            _raw(response, response_pin, 262144)
+            total += len(response)
+            parts.append((response, response_pin))
+        manifest.append({"request_sha256": request_pin, "response_sha256": response_pin})
+    _need(total <= 1048576, "ARGUMENTS_INVALID")
+    _need(all(_sha(raw) == pin for raw, pin in parts), "INPUT_HASH_MISMATCH")
+    return {"intent_sha256": intent_pin, "submission_params_sha256": submission_pin,
+            "observation_sha256": _sha(_json._canonical({
+                "schema": 1, "intent_sha256": intent_pin,
+                "submission_params_sha256": submission_pin, "pages": manifest}))}
+
+
+def _observe(pages, submission, text, report):
+    cursor, seen_cursors, seen_ids, matches = None, set(), set(), []
+    if not pages:
+        raise _Failure("EVIDENCE_INCOMPLETE")
+    for index, (request_raw, _request_pin, response_raw, _response_pin) in enumerate(pages):
+        request = _decode(request_raw, "OBSERVATION_INVALID")
+        _need(set(request) == {"threadId", "cursor", "limit"}, "OBSERVATION_INVALID")
+        _need(_identifier(request["threadId"]) and
+              request["threadId"] == submission["threadId"] and
+              type(request["limit"]) is int and request["limit"] == 20 and
+              _cursor(request["cursor"]) and request["cursor"] == cursor,
+              "OBSERVATION_INVALID")
+        if cursor is not None:
+            _need(cursor not in seen_cursors, "OBSERVATION_INVALID")
+            seen_cursors.add(cursor)
+        if response_raw is None:
+            raise _Failure("EVIDENCE_INCOMPLETE")
+        response = _decode(response_raw, "OBSERVATION_INVALID")
+        report["pages_examined"] += 1
+        _need(set(response) in ({"data"}, {"data", "nextCursor"}) and
+              type(response.get("data")) is list and len(response["data"]) <= 20,
+              "OBSERVATION_INVALID")
+        for item in response["data"]:
+            report["items_examined"] += 1
+            _need(type(item) is dict and set(item) == {"id", "clientUserMessageId", "input"}
+                  and _identifier(item["id"]) and _identifier(item["clientUserMessageId"]),
+                  "OBSERVATION_INVALID")
+            item_text = _text(item["input"], "OBSERVATION_INVALID")
+            _need(item["id"] not in seen_ids, "CORRELATION_AMBIGUOUS")
+            seen_ids.add(item["id"])
+            if item["clientUserMessageId"] == submission["clientUserMessageId"]:
+                matches.append((item["id"], item_text))
+        if "nextCursor" not in response:
+            raise _Failure("EVIDENCE_INCOMPLETE")
+        cursor = response["nextCursor"]
+        _need(_cursor(cursor) and (cursor is None or cursor not in seen_cursors),
+              "OBSERVATION_INVALID")
+        if cursor is None:
+            _need(index == len(pages) - 1, "OBSERVATION_INVALID")
+            report["pagination_complete"] = True
+        elif index == len(pages) - 1:
+            raise _Failure("EVIDENCE_INCOMPLETE")
+    if not matches:
+        raise _Failure("ABSENT_UNRESOLVED")
+    if len(matches) >= 1:
+        if matches[0][1] != text:
+            raise _Failure("CONTENT_MISMATCH")
+        return {"thread_id": submission["threadId"], "queued_submission_id": matches[0][0],
+                "client_user_message_id": submission["clientUserMessageId"]}
+    raise _Failure("CORRELATION_AMBIGUOUS")
+
+
+def observe_queue_correlation(connection, key, expected_intent_sha256, *,
+                              submission_params_bytes, expected_submission_sha256, pages):
+    """Read one local intent and return only a non-authoritative queue candidate.
+
+    Pages are tuples of request bytes/pin and response bytes/pin. Only a final
+    response may be None/None. Inputs are consumed in memory, never retained.
+    Even a unique candidate cannot authorize a remote action or journal change.
+    """
+    report = {"scope": "OFFLINE_QUEUE_CORRELATION_ONLY", "status": "UNKNOWN", "reason": None,
+              "journal_read_confirmed": False, "journal_reason": None,
+              "journal_state": None, "journal_revision": None,
+              "pages_examined": 0, "items_examined": 0, "pagination_complete": False,
+              "input_origin_verified": False, "native_acceptance_verified": False,
+              "remote_io_performed": False, "remote_mutation_authorized": False,
+              "replay_permitted": False, "native_ready": False}
+    binding, candidate = None, None
+    try:
+        _need(_journal._key(key), "ARGUMENTS_INVALID")
+        binding = _inputs(submission_params_bytes, expected_submission_sha256,
+                          pages, expected_intent_sha256)
+        submission = _decode(submission_params_bytes, "INPUT_INVALID")
+        _need(set(submission) == {"threadId", "clientUserMessageId", "input"}
+              and _identifier(submission["threadId"])
+              and _identifier(submission["clientUserMessageId"]), "INPUT_INVALID")
+        text = _text(submission["input"], "INPUT_INVALID")
+        try:
+            result = _journal.read_intent(connection, key, expected_intent_sha256)
+            journal_report = result["report"]
+            journal_reason = journal_report["reason"]
+            if type(journal_reason) is str and journal_reason in (
+                    _journal._BLOCKED | _journal._CONFIRMED | {"CHECKPOINT_UNCONFIRMED"}):
+                report["journal_reason"] = journal_reason
+            if journal_report["status"] == "BLOCKED" and journal_reason in _journal._BLOCKED:
+                raise _Failure("JOURNAL_BLOCKED")
+            _need(journal_report["status"] == "CONFIRMED" and
+                  journal_reason == "INTENT_OBSERVED", "JOURNAL_UNCONFIRMED")
+            row = result["record"]
+            intent = json.loads(row["intent_bytes"].decode("utf-8"))
+            report.update(journal_read_confirmed=True, journal_state=row["state"],
+                          journal_revision=row["revision"])
+        except _Failure:
+            raise
+        except Exception:
+            raise _Failure("JOURNAL_UNCONFIRMED") from None
+        _need(row["state"] == "SUBMISSION_UNKNOWN" and row["revision"] >= 1,
+              "INTENT_NOT_UNKNOWN")
+        _need(submission["clientUserMessageId"] == row["client_user_message_id"] and
+              _sha(text) == intent["prompt_sha256"], "INTENT_BINDING_MISMATCH")
+        candidate = _observe(pages, submission, text, report)
+        reason = "CANDIDATE_OBSERVED"
+    except _Failure as error:
+        reason, candidate = error.reason, None
+    except Exception:
+        reason, candidate = "OBSERVATION_INVALID", None
+    report.update(reason=reason, status=("OBSERVED" if reason == "CANDIDATE_OBSERVED" else
+                                       "BLOCKED" if reason in _BLOCKED else "UNKNOWN"))
+    return {"report": report, "binding": binding, "candidate": candidate}

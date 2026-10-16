@@ -1,0 +1,12 @@
+{
+  "files": {
+    "run-once.py": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueAddParams.json": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListParams.json": "b4c889089eee8a0f785ff85e0128a4d3f347353870fa848221096a472223773b",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListResponse.json": "be4e0bfa6fc776101f96582543605d2eff6186309a08903203512b99c5005926",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/manifest.json": "2faf68df0fbacf05f1ea0c7b58b014af51711fb55fa7fa0a96e253e5a3fd2763",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/synthetic.json": "2c0cede7786cd841f1514bac7a666ee39f5431a3ab5b3f71005da829a69a2a2a",
+    "src/ops/tools/tests/test_codex_unattended_queue_observer.py": "5eab928148a081e1f5ef5c27b0d8cc25b542988074c05c7b35e0b006a9caa048"
+  },
+  "tests_ready_sha256": "f456e7153834e2bedf79fd630c9f7425cf9f2cf29b7b3d753b5faaebb51bac1d"
+}

@@ -1,0 +1,141 @@
+{
+  "errors": 0,
+  "events": [
+    {
+      "actual_result": {
+        "binding": {
+          "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+          "observation_sha256": "538709b130533cd5c3b2827fb1e2c059659755339b26df4db87810d4eda41067",
+          "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+        },
+        "candidate": null,
+        "report": {
+          "input_origin_verified": false,
+          "items_examined": 0,
+          "journal_read_confirmed": true,
+          "journal_reason": "INTENT_OBSERVED",
+          "journal_revision": 0,
+          "journal_state": "PREPARED",
+          "native_acceptance_verified": false,
+          "native_ready": false,
+          "pages_examined": 0,
+          "pagination_complete": false,
+          "reason": "INTENT_NOT_UNKNOWN",
+          "remote_io_performed": false,
+          "remote_mutation_authorized": false,
+          "replay_permitted": false,
+          "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+          "status": "BLOCKED"
+        }
+      },
+      "status": "PASS",
+      "test": "portable_queue_observer_tests.QueueObserverTests.test_valid_observation_and_read_only_boundary"
+    },
+    {
+      "actual_result": {
+        "binding": {
+          "intent_sha256": "f416849c51bf45abe68c9c9fca813c19050f4289f287e7e338848787b86e16e2",
+          "observation_sha256": "67e8a401730530e23600502cc44d6c09d91eaf7b1b9e7da1156192989a0b5f5f",
+          "submission_params_sha256": "dbb3a535a774f40f4e7b086e7609cb653ec096586760c7e9307360e43c0dd467"
+        },
+        "candidate": {
+          "client_user_message_id": "C",
+          "queued_submission_id": "Q",
+          "thread_id": "T"
+        },
+        "report": {
+          "input_origin_verified": false,
+          "items_examined": 1,
+          "journal_read_confirmed": true,
+          "journal_reason": "INTENT_OBSERVED",
+          "journal_revision": 1,
+          "journal_state": "SUBMISSION_UNKNOWN",
+          "native_acceptance_verified": false,
+          "native_ready": false,
+          "pages_examined": 1,
+          "pagination_complete": true,
+          "reason": "CANDIDATE_OBSERVED",
+          "remote_io_performed": false,
+          "remote_mutation_authorized": false,
+          "replay_permitted": false,
+          "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+          "status": "OBSERVED"
+        }
+      },
+      "status": "PASS",
+      "test": "portable_queue_observer_tests.QueueObserverTests.test_unknown_and_bounded_evidence"
+    },
+    {
+      "actual_result": {
+        "binding": {
+          "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+          "observation_sha256": "dc4005b52f4544a4d75e62d110620c895a77f20b49babd1361e66c9b323d5f77",
+          "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+        },
+        "candidate": null,
+        "report": {
+          "input_origin_verified": false,
+          "items_examined": 1,
+          "journal_read_confirmed": true,
+          "journal_reason": "INTENT_OBSERVED",
+          "journal_revision": 1,
+          "journal_state": "SUBMISSION_UNKNOWN",
+          "native_acceptance_verified": false,
+          "native_ready": false,
+          "pages_examined": 1,
+          "pagination_complete": true,
+          "reason": "CONTENT_MISMATCH",
+          "remote_io_performed": false,
+          "remote_mutation_authorized": false,
+          "replay_permitted": false,
+          "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+          "status": "UNKNOWN"
+        }
+      },
+      "status": "PASS",
+      "test": "portable_queue_observer_tests.QueueObserverTests.test_matching_client_wrong_prompt_remains_unknown"
+    },
+    {
+      "actual_result": {
+        "binding": {
+          "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+          "observation_sha256": "02b506fc5a6fb7b9b1b074b4305d20536f4f89f76fe0a83ed6fad440f2b5edc3",
+          "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+        },
+        "candidate": null,
+        "report": {
+          "input_origin_verified": false,
+          "items_examined": 2,
+          "journal_read_confirmed": true,
+          "journal_reason": "INTENT_OBSERVED",
+          "journal_revision": 1,
+          "journal_state": "SUBMISSION_UNKNOWN",
+          "native_acceptance_verified": false,
+          "native_ready": false,
+          "pages_examined": 2,
+          "pagination_complete": true,
+          "reason": "CORRELATION_AMBIGUOUS",
+          "remote_io_performed": false,
+          "remote_mutation_authorized": false,
+          "replay_permitted": false,
+          "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+          "status": "UNKNOWN"
+        }
+      },
+      "status": "PASS",
+      "test": "portable_queue_observer_tests.QueueObserverTests.test_two_matching_queue_ids_remain_ambiguous"
+    }
+  ],
+  "failfast": true,
+  "failures": 0,
+  "methods": [
+    "test_valid_observation_and_read_only_boundary",
+    "test_unknown_and_bounded_evidence",
+    "test_matching_client_wrong_prompt_remains_unknown",
+    "test_two_matching_queue_ids_remain_ambiguous"
+  ],
+  "passes": 4,
+  "skips": 0,
+  "status": "PASS",
+  "tests_run": 4
+}

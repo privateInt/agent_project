@@ -1,0 +1,11 @@
+--- frozen-product.py
++++ M1-product.py
+@@ -169,7 +169,7 @@
+     if not matches:
+         raise _Failure("ABSENT_UNRESOLVED")
+     if len(matches) == 1:
+-        if matches[0][1] != text:
++        if False:
+             raise _Failure("CONTENT_MISMATCH")
+         return {"thread_id": submission["threadId"], "queued_submission_id": matches[0][0],
+                 "client_user_message_id": submission["clientUserMessageId"]}

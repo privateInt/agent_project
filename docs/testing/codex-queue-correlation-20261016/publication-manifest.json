@@ -1,0 +1,399 @@
+{
+  "parent_commit": "780d0755378b9f95f0282ec766ca99300b2b0b53",
+  "fixture_only": true,
+  "actual_runtime_transition": "NOT_COMPLETE",
+  "main_merged": false,
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-queue-correlation-20261016/review/final-review.md",
+    "sha256": "e26155eeb4f6fab8d20634eb5e51a07d37b98aa62501b60c044eb39e52c89f2a"
+  },
+  "raw_byte_retention": "Historical code/logs receive .txt suffix only; original bytes and paths are retained in mapping.",
+  "final_whole_suite_repeated": false,
+  "files": {
+    "src/ops/tools/codex_unattended_queue_observer.py": {
+      "sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+      "source": "src/ops/tools/codex_unattended_queue_observer.py"
+    },
+    "src/ops/tools/tests/test_codex_unattended_queue_observer.py": {
+      "sha256": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371",
+      "source": "src/ops/tools/tests/test_codex_unattended_queue_observer.py"
+    },
+    "docs/testing/codex-queue-correlation-observed-20261016.json": {
+      "sha256": "e705934cfba1b14ef9b546bd891f2e1d560658dd03afdaf9d0b67ecb24cbbc80",
+      "source": "docs/testing/codex-queue-correlation-observed-20261016.json"
+    },
+    "docs/development.md": {
+      "sha256": "5f95dacf923a9de6b53ab7a1c75b6ac66270a7fdd5843e90f12059ab2a3d0da0",
+      "source": "docs/development.md"
+    },
+    "docs/status.md": {
+      "sha256": "b4b2390fafb3e75d5105024c1879aa535357a6c35bb92cdcc736c0a91e7397a3",
+      "source": "docs/status.md"
+    },
+    "docs/roadmap.md": {
+      "sha256": "44abcc46a9efaba525455307ab103d9d44021aab1706f3ca5b19d0f30ec60116",
+      "source": "docs/roadmap.md"
+    },
+    "docs/HANDOFF_NEXT_SESSION.md": {
+      "sha256": "0b0ea27f1fcefd6383c0defbd77a4e8ac7b70b6d876a3374e75218d611b24b0a",
+      "source": "docs/HANDOFF_NEXT_SESSION.md"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueAddParams.json": {
+      "sha256": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueAddParams.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListParams.json": {
+      "sha256": "b4c889089eee8a0f785ff85e0128a4d3f347353870fa848221096a472223773b",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListParams.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListResponse.json": {
+      "sha256": "be4e0bfa6fc776101f96582543605d2eff6186309a08903203512b99c5005926",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListResponse.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/manifest.json": {
+      "sha256": "2faf68df0fbacf05f1ea0c7b58b014af51711fb55fa7fa0a96e253e5a3fd2763",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/manifest.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/synthetic.json": {
+      "sha256": "2c0cede7786cd841f1514bac7a666ee39f5431a3ab5b3f71005da829a69a2a2a",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_queue_observer/synthetic.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/observed-before-final-review.json": {
+      "sha256": "4f69cf439336d3c1e1a5e43f916ef67c392a73bc602db0fdbef4d95958582aef",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/codex-queue-correlation-20261016-observed-before-final-review.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M1/mutated-source.py.txt": {
+      "sha256": "5120741bc692434b19acb40ba8ac4cef6fad8898258a29075d72cea7e7f45070",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M1/mutated-source.py.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M1/mutation-audit.json": {
+      "sha256": "3b85aea15eedafb7892a4260d2b645a219d6f11677e911a401a98546867655fd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M1/mutation-audit.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M1/mutation.diff": {
+      "sha256": "3d1a4e28c7645c3dd317854a20faf984d52e8612626fa77032fd50567db8df38",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M1/mutation.diff"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M1/observations.json": {
+      "sha256": "779290b2e6403a322c077042ce97bbf292088ba6fdc2c65eac3401c4be7f3b9a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M1/observations.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M1/result.json": {
+      "sha256": "6e219ac0c7e52d68e407d2ac5fd2eec091bb922c688fcbd615aa1fbde03437ea",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M1/result.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M1/target-once.log.txt": {
+      "sha256": "bc11e2f6ee720ccce735cf2f770fab9a8034b347c606c7c2a69535a28e36094f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M1/target-once.log"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M2/mutated-source.py.txt": {
+      "sha256": "771a561f8bd3512d6d0d3aadfd892434e561508fc5ff2054581703dfb8a22717",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M2/mutated-source.py.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M2/mutation-audit.json": {
+      "sha256": "c958bfeadf53438eccdd786d9b7a7884711a99ff3799e488857deb21fd4d68b1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M2/mutation-audit.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M2/mutation.diff": {
+      "sha256": "2dc5e6d8f67ed2190eb441b385601275be11ef94812464df6731124f3829c3ba",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M2/mutation.diff"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M2/observations.json": {
+      "sha256": "58292008729b447241fd6ddd64d596a2d6b379cfc149c072c53f69cd315fda9a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M2/observations.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M2/result.json": {
+      "sha256": "e3eeb40fc5b79ba785e2e94e32a4bccb15201c168d80b0e1c95ad0e1f5a9b21e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M2/result.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/M2/target-once.log.txt": {
+      "sha256": "545628753f0c3e571bb7792ecd16bd3da46fa7f202a4872d106b5fb2c28a4285",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/M2/target-once.log"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/authored-pins.json": {
+      "sha256": "1fd6d837c56da53b462940dcf4dfe8e1e8e868025e6fde216e0a1e453652e0b6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/authored-pins.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/authored-snapshot/run-once.py.txt": {
+      "sha256": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/authored-snapshot/run-once.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueAddParams.json": {
+      "sha256": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueAddParams.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListParams.json": {
+      "sha256": "b4c889089eee8a0f785ff85e0128a4d3f347353870fa848221096a472223773b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListParams.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListResponse.json": {
+      "sha256": "be4e0bfa6fc776101f96582543605d2eff6186309a08903203512b99c5005926",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListResponse.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/manifest.json": {
+      "sha256": "2faf68df0fbacf05f1ea0c7b58b014af51711fb55fa7fa0a96e253e5a3fd2763",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/manifest.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/synthetic.json": {
+      "sha256": "2c0cede7786cd841f1514bac7a666ee39f5431a3ab5b3f71005da829a69a2a2a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/synthetic.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_queue_observer.py.txt": {
+      "sha256": "5eab928148a081e1f5ef5c27b0d8cc25b542988074c05c7b35e0b006a9caa048",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_queue_observer.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/environment.json": {
+      "sha256": "c4b7f79960642ae5a43d730d00483822d619af7593cc14e40997edc1866691d1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/environment.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/evidence-sha256.json": {
+      "sha256": "3b64a8994aaa2b5e8c27e1d658a8268466a5cb975da4ce41635d7181c7a24f67",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/evidence-sha256.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-authorization-pins.json": {
+      "sha256": "98ee0987f3c521a43a6761c9d254e419ca5ac567497d337e18e9b7abd3aaf07f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-authorization-pins.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/plan-v2.md": {
+      "sha256": "25c798b43efd07b01c8c9030c0de7ff41a04b94cab8dd62dc4462ed13025403f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/plan-v2.md"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/prereview.md": {
+      "sha256": "29709c6c34feaf5fa673f325e43855b9dc44ab761beb1d815e9ef01997fdb5ac",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/prereview.md"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/__init__.py.txt": {
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/__init__.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/__init__.py.txt": {
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/__init__.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/codex_unattended_intent_journal.py.txt": {
+      "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/codex_unattended_queue_observer.py.txt": {
+      "sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/codex_unattended_queue_observer.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/github_check_audit.py.txt": {
+      "sha256": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/github_check_audit.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/github_fixture_collector.py.txt": {
+      "sha256": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/github_fixture_collector.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/github_fixture_ledger.py.txt": {
+      "sha256": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/github_fixture_ledger.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json": {
+      "sha256": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueAddParams.json": {
+      "sha256": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueAddParams.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListParams.json": {
+      "sha256": "b4c889089eee8a0f785ff85e0128a4d3f347353870fa848221096a472223773b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListParams.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListResponse.json": {
+      "sha256": "be4e0bfa6fc776101f96582543605d2eff6186309a08903203512b99c5005926",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/ThreadQueueListResponse.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/manifest.json": {
+      "sha256": "2faf68df0fbacf05f1ea0c7b58b014af51711fb55fa7fa0a96e253e5a3fd2763",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/manifest.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/synthetic.json": {
+      "sha256": "2c0cede7786cd841f1514bac7a666ee39f5431a3ab5b3f71005da829a69a2a2a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/tests/fixtures/codex_unattended_queue_observer/synthetic.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/tests/test_codex_unattended_intent_journal.py.txt": {
+      "sha256": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/tests/test_codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-inputs/src/ops/tools/tests/test_codex_unattended_queue_observer.py.txt": {
+      "sha256": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-inputs/src/ops/tools/tests/test_codex_unattended_queue_observer.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-pins.json": {
+      "sha256": "b01a68e434e50960f54ed1b1aabd63d1df7e856fc32130d287e226099e374c07",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-pins.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/execution-started.json": {
+      "sha256": "5b1375b94f81fb73f45ad94e3fbdc0b4766181314a1bf320aec6e8f87428dbcf",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/execution-started.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/first-four.log.txt": {
+      "sha256": "870812fd0750a6b14fae10a6eb37aff03a114b2de424e68ed7a9eec54bcb73b1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/first-four.log"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/normal-result.json": {
+      "sha256": "abc3585f91dda5ef1ac5b3bc06ce608039db04eda838ce89a8a3daa3f1b0514c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/normal-result.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/observations.json": {
+      "sha256": "1fe19f8bf235ad17e869eefc3a11c6d6453573116345ab23f4a46c37e950a2f0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/observations.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/post-execution-verification.json": {
+      "sha256": "5ace2e007cbd71347fb8a5cc0e8135a36712ae80f9d2bbb271aeed3464715acd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/post-execution-verification.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/preexecution-review.md": {
+      "sha256": "16c770f75a9a16fbd20dc4945f8eae1846aec56215ffaa77d847b9fc65949f20",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/preexecution-review.md"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/result.json": {
+      "sha256": "c8a77dfebf70b4098d6e0c98d1d44aa7a116af6e77c288f93a074ecf0047d39d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/result.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/run-once.py.txt": {
+      "sha256": "704ce24042dc81db2978bc9b955656249c622d1a69c87cb86e202e1165defa37",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/run-once.py"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/runner-index-correction/after-runner.py.txt": {
+      "sha256": "704ce24042dc81db2978bc9b955656249c622d1a69c87cb86e202e1165defa37",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/runner-index-correction/after-runner.py.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/runner-index-correction/after-tests-ready.json": {
+      "sha256": "6b073bb217cbd8af6902f8bce7e7b734d199abc1260cc6b290ff766a5b6df96e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/runner-index-correction/after-tests-ready.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/runner-index-correction/before-pins.json": {
+      "sha256": "30aa364334c4973558849667ce3b8031018443ca0d7338a3afb93b9db9723543",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/runner-index-correction/before-pins.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/runner-index-correction/before-runner.py.txt": {
+      "sha256": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/runner-index-correction/before-runner.py.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/runner-index-correction/before-tests-ready.json": {
+      "sha256": "619629ce81d8d7a31d8f650e1878dc7f63c3506eb63994d5a6e72f7099eff019",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/runner-index-correction/before-tests-ready.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/runner-index-correction/correction-audit.json": {
+      "sha256": "186e57382a0c5896214f8371c8d9804693b8097ed9d7ddcea4f8dc5a01e06aeb",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/runner-index-correction/correction-audit.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/runner-index-correction/parent-preserved-before-runner.py.txt": {
+      "sha256": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/runner-index-correction/parent-preserved-before-runner.py.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/runner-index-correction/runner-correction.diff": {
+      "sha256": "d73492fc03a58b15d02aace702f9d2c7dd575a89942e1655c39d34d6e40480e3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/runner-index-correction/runner-correction.diff"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/runner-index-correction/static-audit-first-error.txt": {
+      "sha256": "bb27ed80071522da81e7f99283c9cfa5640cdef0b5529714974b06c6a8496782",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/runner-index-correction/static-audit-first-error.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/test-construction-corrections/after-test.py.txt": {
+      "sha256": "5555695acfd663b1d23092490db93d6a1e1e27d6e595f0c7c0e46f4ef11cb371",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-construction-corrections/after-test.py.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/test-construction-corrections/after-tests-ready.json": {
+      "sha256": "619629ce81d8d7a31d8f650e1878dc7f63c3506eb63994d5a6e72f7099eff019",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-construction-corrections/after-tests-ready.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/test-construction-corrections/before-authored-pins.json": {
+      "sha256": "1fd6d837c56da53b462940dcf4dfe8e1e8e868025e6fde216e0a1e453652e0b6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-construction-corrections/before-authored-pins.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/test-construction-corrections/before-pins-and-rationale.json": {
+      "sha256": "ea39bf15f4492efa3bc95d7fea95e1a3d3c859b5135242465300a9d76dd4f89a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-construction-corrections/before-pins-and-rationale.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/test-construction-corrections/before-runner.py.txt": {
+      "sha256": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-construction-corrections/before-runner.py.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/test-construction-corrections/before-test.py.txt": {
+      "sha256": "5eab928148a081e1f5ef5c27b0d8cc25b542988074c05c7b35e0b006a9caa048",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-construction-corrections/before-test.py.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/test-construction-corrections/before-tests-ready.json": {
+      "sha256": "f456e7153834e2bedf79fd630c9f7425cf9f2cf29b7b3d753b5faaebb51bac1d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-construction-corrections/before-tests-ready.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/test-construction-corrections/correction-audit.json": {
+      "sha256": "b4f53a7aef6bfa3837b8b9ac5dd252a15426c058413619f77181a56caf589b71",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-construction-corrections/correction-audit.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/test-construction-corrections/test-correction.diff": {
+      "sha256": "472e6e29072a07e2356db8ceb6d5f21d5de80bb4ace12903038ef61633f10778",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-construction-corrections/test-correction.diff"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/test-writing-baseline.json": {
+      "sha256": "7c64bd0c2a2793cd6a44c2f1d3384b8501acaf7665efb4db8b4702145cd6a37f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/test-writing-baseline.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/correlation-run-1/tests-ready.json": {
+      "sha256": "6b073bb217cbd8af6902f8bce7e7b734d199abc1260cc6b290ff766a5b6df96e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-run-1/tests-ready.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/records/correlation-isolation.json": {
+      "sha256": "e9ac6ae3b135e186919a178916c39c4000ab0ec123e70625a8e982a86c78b420",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-isolation.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/records/correlation-budget.json": {
+      "sha256": "4ebb9520ed5e87ff514a939c0845ccdac77febebed873d518b546813b6545aa4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-budget.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/records/agent-unattended-correlation-plan-v1.md": {
+      "sha256": "13a71687cf79b0fb42d2abd3b7a245e48ac621cfe11490d08fc43a923e88d6f7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/agent-unattended-correlation-plan-v1.md"
+    },
+    "docs/testing/codex-queue-correlation-20261016/records/agent-unattended-correlation-plan-v2.md": {
+      "sha256": "25c798b43efd07b01c8c9030c0de7ff41a04b94cab8dd62dc4462ed13025403f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/agent-unattended-correlation-plan-v2.md"
+    },
+    "docs/testing/codex-queue-correlation-20261016/records/correlation-implementation-start.json": {
+      "sha256": "da5b80bf5b285fa35aae85a7b563b2ed7e2d5e0ef4e7a32f2898a02e33b9592f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-implementation-start.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/records/correlation-source-ready.json": {
+      "sha256": "e8af1c0a9055209366d9f900e2d151b6a602a53250bc65265f1b99d18ab658d3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-source-ready.json"
+    },
+    "docs/testing/codex-queue-correlation-20261016/records/correlation-pretest-test-review-input.py.txt": {
+      "sha256": "5eab928148a081e1f5ef5c27b0d8cc25b542988074c05c7b35e0b006a9caa048",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-pretest-test-review-input.py.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/records/correlation-runner-before-m1-index-review.py.txt": {
+      "sha256": "274067174deb402afe9f193e65a0748681fb620f34d97b217e78cb79cd493823",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/correlation-runner-before-m1-index-review.py.txt"
+    },
+    "docs/testing/codex-queue-correlation-20261016/review/agent-unattended-correlation-plan-review.md": {
+      "sha256": "29709c6c34feaf5fa673f325e43855b9dc44ab761beb1d815e9ef01997fdb5ac",
+      "source": "/tmp/agent-unattended-correlation-plan-review.md"
+    },
+    "docs/testing/codex-queue-correlation-20261016/review/agent-unattended-correlation-static-review.md": {
+      "sha256": "3ca50732bb902629f06d58273f2283933c5a9dee46cbc8dbdaaa8d9fccc7e723",
+      "source": "/tmp/agent-unattended-correlation-static-review.md"
+    },
+    "docs/testing/codex-queue-correlation-20261016/review/agent-unattended-correlation-test-correction-review.md": {
+      "sha256": "f75cb20fd91d507f2eb74a73719f69cdd3515d72c63fe29c6c4b14582e28c665",
+      "source": "/tmp/agent-unattended-correlation-test-correction-review.md"
+    },
+    "docs/testing/codex-queue-correlation-20261016/review/agent-unattended-correlation-runner-correction-review.md": {
+      "sha256": "39b1eaae19d9428822e996db7886c1be52b41aa33443b04e405851b5e15c03f5",
+      "source": "/tmp/agent-unattended-correlation-runner-correction-review.md"
+    },
+    "docs/testing/codex-queue-correlation-20261016/review/agent-unattended-correlation-preexecution-review.md": {
+      "sha256": "16c770f75a9a16fbd20dc4945f8eae1846aec56215ffaa77d847b9fc65949f20",
+      "source": "/tmp/agent-unattended-correlation-preexecution-review.md"
+    },
+    "docs/testing/codex-queue-correlation-20261016/review/final-review.md": {
+      "sha256": "e26155eeb4f6fab8d20634eb5e51a07d37b98aa62501b60c044eb39e52c89f2a",
+      "source": "/tmp/agent-unattended-correlation-final-review.md"
+    }
+  }
+}

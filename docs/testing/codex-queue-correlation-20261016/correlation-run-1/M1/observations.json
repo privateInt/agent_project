@@ -1,0 +1,41 @@
+[
+  {
+    "case": "None",
+    "database_unchanged": true,
+    "direct_sql": 0,
+    "external_io_attempts": 0,
+    "read_calls": 1,
+    "result": {
+      "binding": {
+        "intent_sha256": "b33e8d935cb3bbecaf90f6e6b8c569293d210ea24e1e0ad76f2e350921ac0d6b",
+        "observation_sha256": "dc4005b52f4544a4d75e62d110620c895a77f20b49babd1361e66c9b323d5f77",
+        "submission_params_sha256": "39926e84790ef4866530ab30c51b6f28d488d28d72f4a42889be83b2ced63d94"
+      },
+      "candidate": {
+        "client_user_message_id": "fixture-client-T1",
+        "queued_submission_id": "fixture-correlation-Q1",
+        "thread_id": "fixture-correlation-thread"
+      },
+      "report": {
+        "input_origin_verified": false,
+        "items_examined": 1,
+        "journal_read_confirmed": true,
+        "journal_reason": "INTENT_OBSERVED",
+        "journal_revision": 1,
+        "journal_state": "SUBMISSION_UNKNOWN",
+        "native_acceptance_verified": false,
+        "native_ready": false,
+        "pages_examined": 1,
+        "pagination_complete": true,
+        "reason": "CANDIDATE_OBSERVED",
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "replay_permitted": false,
+        "scope": "OFFLINE_QUEUE_CORRELATION_ONLY",
+        "status": "OBSERVED"
+      }
+    },
+    "sql_count": 11,
+    "test": "test_matching_client_wrong_prompt_remains_unknown"
+  }
+]
