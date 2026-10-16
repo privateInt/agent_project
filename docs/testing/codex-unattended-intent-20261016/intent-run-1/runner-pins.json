@@ -1,0 +1,8 @@
+{
+  "runner_sha256": "0435e0fae4e9d779199ff9750ab7f779506376510b9e8ce23d67f0da69b106d3",
+  "syntax": "AST_PARSE_ONLY",
+  "normal": "exact five in approved order, failfast, one execution",
+  "mutants": "only if normal five PASS; M1 target3 and M2 target4 once each",
+  "product_import_or_test_executions_before_runner": 0,
+  "mutation_transform_count_checked_statically": true
+}

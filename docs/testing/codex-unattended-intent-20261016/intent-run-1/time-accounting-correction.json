@@ -1,0 +1,13 @@
+{
+  "recorded_utc": "2026-10-16T13:22:16.091957+00:00",
+  "authoritative_prior_journal_active_seconds": 1902,
+  "supersedes_prior_seconds_720_in_historical_snapshots": true,
+  "historical_files_not_rewritten": true,
+  "conservative_deadline_utc": "2026-10-16T13:28:48Z",
+  "budget_reset": false,
+  "outage_excluded_not_reset": true,
+  "current_phase_measured_seconds_since_baseline": 284.73357239738107,
+  "runtime_D18": "HELD",
+  "user_stop_condition": "first execution already occurred; preserve first failure and stop; no suite rerun",
+  "execution_after_failure": 0
+}

@@ -1,5 +1,7 @@
 # 앞으로의 작업 순서
 
+2026-10-16: [제출 intent 저장 단위](testing/codex-unattended-intent-observed-20261016.json) 이후에는 U01a·저널·native queue의 ACK/불명 재조회와 완료/검토/Draft PR readback을 연결해야 한다. 실제 owner 설정·native 계약/사용량/role 권한을 확인하고 별도 최소 계획을 독립 검토한 뒤 연결한다. D18 runtime 보류·두 PAUSE·agent_project 한정은 유지하며 VMS·worker·scheduler를 활성화하지 않는다.
+
 2026-10-16: [U01a 순수 후보 선택](testing/codex-unattended-admission-observed-20261016.json)을 실제 dispatch와 분리한다. 다음 U01b는 보호된 기존 controller의 queue intent/ACK·내구성·결과/독립 검토·Draft PR readback 연결이다. native 계약·소유자 설정·한도·권한·PAUSE 전제가 확인되기 전 worker나 F0a를 활성화하지 않는다.
 
 2026-10-15 fixture 연결: [설정 로더](codex/github-fixture-config.md)의 개발 인수 범위와 남은 조건은 [상태](status.md)·[근거](testing/github-fixture-config-observed-20261015.json)를 따른다. 다음 연결에는 소유자가 승인한 실제 version/hash·UID·설치/상태/DB 경로의 보호된 입력과 설치 인수가 필요하다. 그 뒤 tests/reviewer supervisor·issuer/서명·최신 binding/검사 발행을 별도 범위로 연결한다. 기존 sandbox 조사·운영·worker/scheduler 보류를 유지한다.

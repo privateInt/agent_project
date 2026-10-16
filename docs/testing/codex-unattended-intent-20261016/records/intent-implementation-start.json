@@ -1,0 +1,17 @@
+{
+  "plan_sha256": "4c005dd7c2a7703f0639ef71aed968c5a1fc5cf8b6ce404364debb779097d575",
+  "prereview_sha256": "f1fb9dad4822a897f13239cc5fc5fdae4734b7000240a21f056f78767cd476ee",
+  "source_sha256": "c4c6f602df8c24657f1f9c7d582c15c2a7bb265bdec38352559c731962f7bfd8",
+  "prior_active_seconds_conservative": 720,
+  "resumed_utc": "2026-10-16T13:00:46Z",
+  "d18_limit_seconds": 3600,
+  "runtime_issue_remains_held": true,
+  "tests_run": false,
+  "parent_auto_review_applied": true,
+  "role_child_auto_review_applied": false,
+  "existing_sql_helper_sources": {
+    "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+    "src/ops/tools/github_fixture_controller.py": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7",
+    "src/ops/tools/codex_unattended_admission.py": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "python": "3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0]",
+  "python_executable": "/usr/bin/python3",
+  "sqlite_library_version": "3.37.2",
+  "sqlite_module_version": "2.6.0",
+  "platform": "Linux-6.8.0-40-generic-x86_64-with-glibc2.35",
+  "worktree": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development",
+  "parent": "86b8861ba5b3ea049b77937e6c00da73a4330377",
+  "branch": "codex/agent-project-submission-intent-20261016",
+  "database_scope": "fresh TemporaryDirectory only; borrowed connections; DELETE/FULL/busy_timeout1000",
+  "external_io": "blocked by no_external_io during all product calls",
+  "old_suites_run": 0,
+  "runtime_D18": "HELD",
+  "prior_journal_active_seconds": 720,
+  "active_time_budget_reset": false,
+  "environment_variables_or_credentials_read": false,
+  "policy_probe": false,
+  "approval_policy": "not queried in this phase; prior child metadata preserved verbatim in first-tests-ready.json",
+  "visible_sandbox": "workspace-write; restricted network; no escalation requested"
+}

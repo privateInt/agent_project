@@ -1,0 +1,96 @@
+{
+  "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+  "parent_commit": "86b8861ba5b3ea049b77937e6c00da73a4330377",
+  "reviewed_files": {
+    "src/ops/tools/codex_unattended_intent_journal.py": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "src/ops/tools/tests/test_codex_unattended_intent_journal.py": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+    "src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66"
+  },
+  "plan_sha256": "4c005dd7c2a7703f0639ef71aed968c5a1fc5cf8b6ce404364debb779097d575",
+  "plan_review_sha256": "f1fb9dad4822a897f13239cc5fc5fdae4734b7000240a21f056f78767cd476ee",
+  "initial_execution": {
+    "file": "intent-run-1/normal-result.json",
+    "sha256": "b0029abfdffc47132ae99b9e23a3ff949390d9bf784cc8708fdc342f2ab56135",
+    "tests_run": 5,
+    "passes": 4,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "failure": "Test helper used 3 arguments with existing 2-argument _one; first failure preserved."
+  },
+  "scoped_revalidation": {
+    "file": "intent-run-2/result.json",
+    "sha256": "4d54222162084ab4de0504b022c84ce0c3739741c0c4b6d49261b38dee544d3b",
+    "executor": "coordinator using test_agent runner",
+    "tests_run": 1,
+    "passes": 1,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "test_fix": "Two actual_one calls only, same assertions and expected outcomes",
+    "initial_four_pass_reused": true,
+    "whole_five_repeated": false
+  },
+  "mutants": {
+    "M1": {
+      "tests_run": 1,
+      "failures": 1,
+      "errors": 0,
+      "skips": 0,
+      "semantic_FAIL1_ERROR0_with_actual_wrong_claim": true,
+      "source_sha256": "f7c7983bdb6adaf8bcd8a4fdd586b1796b15e2fcf9513f2aa0739bbffa4f1832",
+      "normal_target_rerun": false
+    },
+    "M2": {
+      "tests_run": 1,
+      "failures": 1,
+      "errors": 0,
+      "skips": 0,
+      "semantic_FAIL1_ERROR0_with_actual_wrong_claim": true,
+      "source_sha256": "d0fb262c67a3e4d9861e38eae098f56dc1c95273e8f108f60603e854429fd7f7",
+      "normal_target_rerun": false
+    }
+  },
+  "real_sqlite_scope": [
+    "dedicated temporary file DB",
+    "exact bytes/hash/correlation close/reopen",
+    "conflict/stale CAS/UNKNOWN no replay",
+    "competing two connections",
+    "preflight SQL failure uncertainty",
+    "real COMMIT followed by simulated response loss"
+  ],
+  "static_fixes_before_first_tests": [
+    "builtin key type before equality",
+    "preflight SQL errors remain uncertain; existing shared modules unchanged"
+  ],
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-unattended-intent-20261016/review/final-review.md",
+    "sha256": "5c88e67c3e50da6cc789a5a8f7b7212df3ec5f051a778ebf2aef1937c34c9f4d"
+  },
+  "actual_runtime": {
+    "native_queue_rpc": "NOT_RUN",
+    "two_full_development_jobs": "NOT_RUN",
+    "parent_auto_review": "APPLIED_IN_NEW_ACTUAL_TURN_SAME_BOUNDARY",
+    "children_auto_review": "NOT_APPLIED_NEW_TURNS_REMAIN_USER",
+    "service_timer": "INACTIVE_DISABLED",
+    "root_user_pause": "PRESENT",
+    "runtime_investigation": "D18_HELD"
+  },
+  "limits": {
+    "prior_active_seconds": 1902,
+    "conservative_deadline_utc": "2026-10-16T13:28:48Z",
+    "test_fix_attempts": 1,
+    "runtime_budget_reset": false
+  },
+  "not_verified": [
+    "actual owner/source/DB provenance",
+    "protected controller integration",
+    "native ACK/result/reconciliation",
+    "storage power loss/rollback resistance",
+    "scheduler activation/two full jobs"
+  ],
+  "vms_project": "EXCLUDED",
+  "old_tests_repeated": false,
+  "original_changes_preserved": 11
+}

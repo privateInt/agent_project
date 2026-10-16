@@ -1,0 +1,298 @@
+"""Record a local submission intent; never authorize or perform remote work.
+
+Python 3.10+. Borrow a dedicated file-backed SQLite connection. No connection
+creation, path access, migration, retry, clock, queue or settings API exists.
+Intent provenance, actual dispatch and storage rollback resistance are external.
+"""
+
+import hashlib
+import json
+import re
+
+from src.ops.tools import github_fixture_collector as _json
+from src.ops.tools import github_fixture_ledger as _sqlite
+
+
+_APPLICATION_ID = 0x41494A31
+_MAX_REVISION = 9223372036854775807
+_DDL = (
+    "CREATE TABLE submission_intents (project_id TEXT NOT NULL, batch_id TEXT NOT NULL, "
+    "task_id TEXT NOT NULL, client_user_message_id TEXT NOT NULL, intent_bytes BLOB NOT NULL, "
+    "intent_sha256 TEXT NOT NULL, state TEXT NOT NULL CHECK (state IN "
+    "('PREPARED','SUBMISSION_UNKNOWN')), revision INTEGER NOT NULL CHECK "
+    "(typeof(revision)='integer' AND revision BETWEEN 0 AND 9223372036854775807), "
+    "PRIMARY KEY (project_id,batch_id,task_id), UNIQUE (client_user_message_id), "
+    "CHECK ((state='PREPARED' AND revision=0) OR "
+    "(state='SUBMISSION_UNKNOWN' AND revision>=1))) WITHOUT ROWID"
+)
+_SCHEMA_SQL = (
+    "SELECT CASE WHEN length(type)<=128 THEN CAST(type AS TEXT) END, "
+    "CASE WHEN length(name)<=128 THEN CAST(name AS TEXT) END, "
+    "CASE WHEN length(tbl_name)<=128 THEN CAST(tbl_name AS TEXT) END, "
+    "CASE WHEN length(CAST(sql AS BLOB))<=4096 THEN CAST(sql AS TEXT) END "
+    "FROM main.sqlite_master ORDER BY type,name LIMIT 3"
+)
+_ROW_SQL = (
+    "SELECT " + ", ".join(
+        "CASE WHEN typeof(" + key + ")='text' AND length(" + key + ") BETWEEN 1 AND 128 "
+        "THEN CAST(" + key + " AS TEXT) END"
+        for key in ("project_id", "batch_id", "task_id", "client_user_message_id")
+    ) + ", CASE WHEN typeof(intent_bytes)='blob' AND length(intent_bytes) BETWEEN 1 AND 16384 "
+    "THEN CAST(intent_bytes AS BLOB) END, "
+    "CASE WHEN typeof(intent_sha256)='text' AND length(intent_sha256)=64 "
+    "THEN CAST(intent_sha256 AS TEXT) END, "
+    "CASE WHEN typeof(state)='text' AND length(state)<=32 THEN CAST(state AS TEXT) END, "
+    "CASE WHEN typeof(revision)='integer' THEN revision END "
+    "FROM main.submission_intents WHERE project_id=? AND batch_id=? AND task_id=? LIMIT 2"
+)
+_FIELDS = frozenset((
+    "schema", "project_id", "repository", "dev_root", "git_common_dir", "batch_id", "task_id",
+    "project_sha256", "task_sha256", "base_sha", "plan_sha256", "prompt_sha256",
+    "settings_sha256", "clientUserMessageId",
+))
+_CONFIRMED = frozenset(("JOURNAL_READY", "INTENT_STORED", "INTENT_REUSED",
+                        "INTENT_OBSERVED", "CLAIM_RECORDED"))
+_BLOCKED = frozenset((
+    "ARGUMENTS_INVALID", "CONNECTION_INVALID", "DATABASE_NOT_EMPTY", "SCHEMA_INVALID",
+    "INTENT_INVALID", "INTENT_HASH_MISMATCH", "INTENT_NOT_FOUND", "INTENT_CONFLICT",
+    "CORRELATION_CONFLICT", "INTENT_PIN_MISMATCH", "REVISION_CONFLICT",
+    "UNKNOWN_NO_REPLAY", "ROW_INVALID",
+))
+# Reuse the existing bounded cursor/connection primitives without changing their
+# fixture-specific schema, transaction runner, public API or stored data.
+_query = _sqlite._query
+_execute = _sqlite._execute
+_one = _sqlite._one
+
+
+class _Failure(Exception):
+    def __init__(self, reason):
+        self.reason = reason
+
+
+def _need(condition, reason="INTENT_INVALID"):
+    if not condition:
+        raise _Failure(reason)
+
+
+def _sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def _hex(value, length=64):
+    return type(value) is str and re.fullmatch(r"[0-9a-f]{%d}" % length, value) is not None
+
+
+def _identifier(value):
+    return type(value) is str and re.fullmatch(r"[A-Za-z0-9_.:-]{1,128}", value) is not None
+
+
+def _path(value):
+    return (type(value) is str and value.startswith("/") and not value.endswith("/")
+            and not any(char in value for char in "\x00*?[]")
+            and all(part not in ("", ".", "..") for part in value.split("/")[1:]))
+
+
+def _key(value):
+    return (type(value) is tuple and len(value) == 3 and value[0] == "agent_project"
+            and all(_identifier(part) for part in value))
+
+
+def _intent(raw, expected):
+    _need(_hex(expected), "ARGUMENTS_INVALID")
+    _need(type(raw) is bytes and 1 <= len(raw) <= 16384)
+    _need(_sha(raw) == expected, "INTENT_HASH_MISMATCH")
+    try:
+        _need(not raw.startswith(b"\xef\xbb\xbf"))
+        value = json.loads(raw.decode("utf-8"), object_pairs_hook=_json._unique,
+                           parse_int=_json._integer, parse_constant=_json._nonfinite)
+        _need(type(value) is dict and set(value) == _FIELDS)
+        _need(type(value["schema"]) is int and value["schema"] == 1)
+        _need(value["project_id"] == "agent_project" and type(value["project_id"]) is str)
+        _need(type(value["repository"]) is str and re.fullmatch(
+            r"[A-Za-z0-9][A-Za-z0-9-]{0,38}/agent_project", value["repository"]) is not None)
+        _need(all(_path(value[key]) for key in ("dev_root", "git_common_dir")))
+        _need(all(_identifier(value[key]) for key in ("batch_id", "task_id", "clientUserMessageId")))
+        _need(_hex(value["base_sha"], 40))
+        _need(all(_hex(value[key]) for key in _FIELDS if key.endswith("_sha256")))
+        _need(_json._canonical(value) == raw)
+        project = {key: value[key] for key in
+                   ("project_id", "repository", "dev_root", "git_common_dir")}
+        _need(_sha(_json._canonical(project)) == value["project_sha256"])
+        return value
+    except Exception:
+        raise _Failure("INTENT_INVALID") from None
+
+
+def _connection(connection):
+    try:
+        _sqlite._connection(connection)
+        _need(_one(connection, "PRAGMA main.synchronous") in (2, 3), "CONNECTION_INVALID")
+        _need(_one(connection, "PRAGMA main.journal_mode") == "delete", "CONNECTION_INVALID")
+        databases = _query(connection, "PRAGMA database_list")
+        main = [row for row in databases if row[1] == "main"]
+        _need(len(main) == 1 and type(main[0][2]) is str and bool(main[0][2])
+              and all(row[1] in ("main", "temp") for row in databases)
+              and not _query(connection, "SELECT 1 FROM temp.sqlite_master LIMIT 1"),
+              "CONNECTION_INVALID")
+    except Exception:
+        raise _Failure("CONNECTION_INVALID") from None
+
+
+def _schema(connection, initialize):
+    objects = _query(connection, _SCHEMA_SQL)
+    app = _one(connection, "PRAGMA main.application_id")
+    version = _one(connection, "PRAGMA main.user_version")
+    if initialize:
+        _need(not objects and app == 0 and version == 0, "DATABASE_NOT_EMPTY")
+        _execute(connection, _DDL)
+        _execute(connection, "PRAGMA main.application_id=1095322161")
+        _execute(connection, "PRAGMA main.user_version=1")
+        objects = _query(connection, _SCHEMA_SQL)
+        app = _one(connection, "PRAGMA main.application_id")
+        version = _one(connection, "PRAGMA main.user_version")
+    _need(type(app) is int and app == _APPLICATION_ID and type(version) is int and version == 1
+          and objects == [
+              ("index", "sqlite_autoindex_submission_intents_2", "submission_intents", None),
+              ("table", "submission_intents", "submission_intents", _DDL)], "SCHEMA_INVALID")
+
+
+def _read(connection, key):
+    rows = _query(connection, _ROW_SQL, key)
+    if not rows:
+        return None
+    try:
+        _need(len(rows) == 1 and type(rows[0]) is tuple and len(rows[0]) == 8)
+        project, batch, task, client, raw, digest, state, revision = rows[0]
+        intent = _intent(raw, digest)
+        _need((project, batch, task) == key and _key((project, batch, task)))
+        _need((project, batch, task, client) == tuple(intent[k] for k in
+              ("project_id", "batch_id", "task_id", "clientUserMessageId")))
+        _need(type(revision) is int and 0 <= revision <= _MAX_REVISION)
+        _need((state == "PREPARED" and revision == 0)
+              or (state == "SUBMISSION_UNKNOWN" and revision >= 1))
+        return dict(zip(("project_id", "batch_id", "task_id", "client_user_message_id",
+                         "intent_bytes", "intent_sha256", "state", "revision"), rows[0]))
+    except Exception:
+        raise _Failure("ROW_INVALID") from None
+
+
+def _pinned(connection, key, expected):
+    row = _read(connection, key)
+    _need(row is not None, "INTENT_NOT_FOUND")
+    _need(row["intent_sha256"] == expected, "INTENT_PIN_MISMATCH")
+    return row
+
+
+def _commit(connection):
+    _execute(connection, "COMMIT")
+
+
+def _rollback(connection):
+    _execute(connection, "ROLLBACK")
+
+
+def _result(connection, reason, record=None):
+    if reason not in _CONFIRMED | _BLOCKED:
+        reason = "CHECKPOINT_UNCONFIRMED"
+    confirmed = reason in _CONFIRMED
+    return {"report": {
+        "scope": "PRE_SUBMISSION_JOURNAL_ONLY",
+        "status": "CONFIRMED" if confirmed else
+                  "UNCERTAIN" if reason == "CHECKPOINT_UNCONFIRMED" else "BLOCKED",
+        "reason": reason, "database_commit_confirmed": confirmed,
+        "transaction_closed": _sqlite._closed(connection),
+        "new_claim": confirmed and reason == "CLAIM_RECORDED",
+        "remote_io_performed": False, "remote_mutation_authorized": False,
+        "input_origin_verified": False, "native_ready": False,
+    }, "record": record if confirmed else None}
+
+
+def _run(connection, action, *, write=True, initialize=False):
+    owned, record = False, None
+    try:
+        _connection(connection)
+        # BEGIN may execute before a cursor/response failure. Own this attempt,
+        # then inspect the real transaction state before cleanup.
+        owned = True
+        _execute(connection, "BEGIN IMMEDIATE" if write else "BEGIN")
+        _schema(connection, initialize)
+        reason, record = action()
+        _need(reason == "JOURNAL_READY" or record is not None, "CHECKPOINT_UNCONFIRMED")
+        _commit(connection)
+        _need(not connection.in_transaction, "CHECKPOINT_UNCONFIRMED")
+        owned = False
+    except _Failure as error:
+        reason, record = error.reason, None
+    except Exception:
+        reason, record = "CHECKPOINT_UNCONFIRMED", None
+    finally:
+        if owned:
+            try:
+                if connection.in_transaction:
+                    _rollback(connection)
+            except Exception:
+                reason, record = "CHECKPOINT_UNCONFIRMED", None
+    return _result(connection, reason, record)
+
+
+def initialize_intent_journal(connection):
+    """Explicitly create the schema in an empty dedicated file DB only."""
+    return _run(connection, lambda: ("JOURNAL_READY", None), initialize=True)
+
+
+def reserve_intent(connection, expected_intent_sha256, intent_bytes):
+    """Store immutable bytes, or reuse precisely the same existing intent."""
+    try:
+        intent = _intent(intent_bytes, expected_intent_sha256)
+    except _Failure as error:
+        return _result(connection, error.reason)
+    except Exception:
+        return _result(connection, "INTENT_INVALID")
+    key = tuple(intent[k] for k in ("project_id", "batch_id", "task_id"))
+
+    def action():
+        row = _read(connection, key)
+        if row is not None:
+            _need(row["intent_bytes"] == intent_bytes and
+                  row["intent_sha256"] == expected_intent_sha256, "INTENT_CONFLICT")
+            return "INTENT_REUSED", row
+        _need(not _query(connection,
+                        "SELECT 1 FROM main.submission_intents WHERE client_user_message_id=? LIMIT 1",
+                        (intent["clientUserMessageId"],)), "CORRELATION_CONFLICT")
+        _execute(connection,
+                 "INSERT INTO main.submission_intents VALUES (?,?,?,?,?,?,'PREPARED',0)",
+                 (*key, intent["clientUserMessageId"], intent_bytes, expected_intent_sha256))
+        return "INTENT_STORED", _pinned(connection, key, expected_intent_sha256)
+
+    return _run(connection, action)
+
+
+def read_intent(connection, key, expected_intent_sha256):
+    """Observe exact stored bytes and state; observation never rearms a claim."""
+    if not _key(key) or not _hex(expected_intent_sha256):
+        return _result(connection, "ARGUMENTS_INVALID")
+    return _run(connection, lambda: ("INTENT_OBSERVED", _pinned(
+        connection, key, expected_intent_sha256)), write=False)
+
+
+def claim_intent(connection, key, expected_intent_sha256, expected_revision):
+    """Commit UNKNOWN before any possible remote operation by a future caller."""
+    if (not _key(key) or not _hex(expected_intent_sha256)
+            or type(expected_revision) is not int or not 0 <= expected_revision < _MAX_REVISION):
+        return _result(connection, "ARGUMENTS_INVALID")
+
+    def action():
+        before = _pinned(connection, key, expected_intent_sha256)
+        changed = _execute(connection,
+                           "UPDATE main.submission_intents SET state='SUBMISSION_UNKNOWN',"
+                           "revision=revision+1 WHERE project_id=? AND batch_id=? AND task_id=? "
+                           "AND intent_sha256=? AND revision=? AND state='PREPARED'",
+                           (*key, expected_intent_sha256, expected_revision))
+        if changed != 1:
+            _need(before["revision"] == expected_revision, "REVISION_CONFLICT")
+            _need(before["state"] == "PREPARED", "UNKNOWN_NO_REPLAY")
+            raise _Failure("CHECKPOINT_UNCONFIRMED")
+        return "CLAIM_RECORDED", _pinned(connection, key, expected_intent_sha256)
+
+    return _run(connection, action)

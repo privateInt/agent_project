@@ -1,0 +1,13 @@
+--- frozen-source.py
++++ M1-source.py
+@@ -295,8 +295,8 @@
+         changed = _execute(connection,
+                            "UPDATE main.submission_intents SET state='SUBMISSION_UNKNOWN',"
+                            "revision=revision+1 WHERE project_id=? AND batch_id=? AND task_id=? "
+-                           "AND intent_sha256=? AND revision=? AND state='PREPARED'",
+-                           (*key, expected_intent_sha256, expected_revision))
++                           "AND intent_sha256=? AND state='PREPARED'",
++                           (*key, expected_intent_sha256))
+         if changed != 1:
+             _need(before["revision"] == expected_revision, "REVISION_CONFLICT")
+             _need(before["state"] == "PREPARED", "UNKNOWN_NO_REPLAY")

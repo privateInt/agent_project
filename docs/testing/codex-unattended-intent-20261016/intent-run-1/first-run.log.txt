@@ -1,0 +1,24 @@
+test_empty_initialize_and_borrowed_connection (intent_journal_initial_five.IntentJournalTests) ... ok
+test_immutable_reserve_roundtrip_and_conflicts (intent_journal_initial_five.IntentJournalTests) ... ok
+test_stale_revision_rejected (intent_journal_initial_five.IntentJournalTests) ... ok
+test_unknown_never_rearmed (intent_journal_initial_five.IntentJournalTests) ... ok
+test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) ... 
+======================================================================
+FAIL: test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) (preflight_query='PRAGMA main.synchronous', boundary='query_before')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/test_codex_unattended_intent_journal.py", line 456, in test_claim_commit_boundary_reopen_and_failures
+    self.assertEqual([query], attempts)
+AssertionError: Lists differ: ['PRAGMA main.synchronous'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'PRAGMA main.synchronous'
+
+- ['PRAGMA main.synchronous']
++ []
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.065s
+
+FAILED (failures=1)

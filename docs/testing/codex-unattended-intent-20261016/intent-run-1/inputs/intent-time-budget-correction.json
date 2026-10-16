@@ -1,0 +1,35 @@
+{
+  "previous_assessment": {
+    "status": "FROZEN_SOURCE_NEW_TESTS_QUEUED_SEQUENTIALLY",
+    "start_utc": "2026-10-16T01:03:34Z",
+    "d18_limit_seconds": 3600,
+    "separate_from_held_runtime_issue": true,
+    "queue_id": "01a144cd-95a7-7293-b8bf-b40e7130be1f",
+    "implementation_started": true,
+    "plan": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/agent-unattended-intent-plan-v1.md",
+    "plan_sha256": "4c005dd7c2a7703f0639ef71aed968c5a1fc5cf8b6ce404364debb779097d575",
+    "external_dependency_for_local_only_unit": false,
+    "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development",
+    "parent_commit": "86b8861ba5b3ea049b77937e6c00da73a4330377",
+    "prereview_sha256": "f1fb9dad4822a897f13239cc5fc5fdae4734b7000240a21f056f78767cd476ee",
+    "source_sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "prior_active_seconds_conservative": 720,
+    "outage_excluded": {
+      "from_utc": "2026-10-16T01:15:34Z",
+      "to_utc": "2026-10-16T13:00:46Z",
+      "reason": "user interruption/network outage; no product work or tests in workspace"
+    },
+    "resumed_utc": "2026-10-16T13:00:46Z",
+    "automatic_test_fix_attempts": 0,
+    "pretest_static_finding": "F1 fixed, malformed tuple ordering fixed; both before first tests",
+    "source_freeze": true
+  },
+  "corrected_prior_active_seconds": 1902,
+  "first_journal_work_utc": "2026-10-16T01:03:34Z",
+  "actual_previous_parent_interruption_utc": "2026-10-16T01:35:16Z",
+  "resumed_parent_task_started_utc": "2026-10-16T13:00:30Z",
+  "limit_seconds": 3600,
+  "conservative_deadline_utc": "2026-10-16T13:28:48Z",
+  "mistake": "Used last known tool vicinity as start of outage, understating prior analysis time. Corrected before consuming full limit.",
+  "no_runtime_budget_renewal": true
+}

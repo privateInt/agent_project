@@ -1,0 +1,15 @@
+{
+  "stage": "ISOLATED_SOURCE_CHECKOUT_ONLY",
+  "product_implementation_started": false,
+  "parent": "86b8861ba5b3ea049b77937e6c00da73a4330377",
+  "branch": "codex/agent-project-submission-intent-20261016",
+  "clean": true,
+  "checkout": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development",
+  "source_reused_unchanged": {
+    "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+    "src/ops/tools/github_fixture_controller.py": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7",
+    "src/ops/tools/codex_unattended_admission.py": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51"
+  },
+  "original_git_not_written": true,
+  "d29_pre_review": "PENDING_NO_IMPLEMENTATION"
+}

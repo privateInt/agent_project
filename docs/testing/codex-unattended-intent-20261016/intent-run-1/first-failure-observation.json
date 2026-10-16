@@ -1,0 +1,50 @@
+{
+  "status": "STOPPED_AFTER_FIRST_FAILURE",
+  "normal": {
+    "tests_run": 5,
+    "passes": 4,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "each_method_invoked_once": true,
+    "failfast": true
+  },
+  "first_failure": {
+    "method": "test_claim_commit_boundary_reopen_and_failures",
+    "subcase": {
+      "preflight_query": "PRAGMA main.synchronous",
+      "boundary": "query_before"
+    },
+    "test_line": 456,
+    "assertion": "[query] == attempts",
+    "observed_attempts": [],
+    "observed_report_reason": "CHECKPOINT_UNCONFIRMED",
+    "actual_injected_target_reached": false
+  },
+  "diagnosis": {
+    "owner": "test hook written by test_agent",
+    "static_signature": "github_fixture_ledger._one(connection, sql)",
+    "incorrect_calls": [
+      "actual_one(target, sql, parameters) in response_after",
+      "actual_one(target, sql, parameters) on pass-through"
+    ],
+    "effect": "Pass-through busy_timeout query raises TypeError before main.synchronous injection; product catches ordinary exception as CHECKPOINT_UNCONFIRMED; final attempts assertion correctly fails. Original exception is inferred from exact signature/call, not present in raw public result.",
+    "product_defect_established": false,
+    "busy_response_after_evidence": "NOT_VALIDATED: same arity error can satisfy UNCERTAIN without performing intended response-loss injection"
+  },
+  "unrun": [
+    "remainder of method5 after failed subcase, including normal commit boundary, concurrency and planned transaction faults/schema matrix",
+    "M1",
+    "M2"
+  ],
+  "next_scope": "Correct only the two actual_one calls to (target, sql); separately authorized affected-method-only rerun. Reuse original four PASS and original normal M1/M2 target PASS; no whole suite rerun.",
+  "test_correction_applied": false,
+  "stop_instruction_followed": true,
+  "source_sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+  "test_sha256": "8ae7d027bdbd1785c9bfa5f5654746b38395d73317c60296d425e41c77612d1f",
+  "original_ready_preserved": true,
+  "local_changes_preserved": 11,
+  "immutable_prior_files_preserved": 126,
+  "remote_runtime_owner_credential_probes": 0,
+  "old_suites_run": 0
+}

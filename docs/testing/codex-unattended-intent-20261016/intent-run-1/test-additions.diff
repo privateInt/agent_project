@@ -1,0 +1,64 @@
+--- before/test_codex_unattended_intent_journal.py
++++ final/test_codex_unattended_intent_journal.py
+@@ -364,10 +364,19 @@
+             self.assertEqual(original, rows(connection))
+             self.invoke("reserve_intent", connection, "0" * 64, raw, reason="INTENT_HASH_MISMATCH")
+             self.invoke("reserve_intent", connection, "invalid-pin", raw, reason="ARGUMENTS_INVALID")
++            equality_calls = []
++
++            class HostileNonString:
++                def __eq__(self, other):
++                    equality_calls.append("HOSTILE_EQUALITY_INVOKED")
++                    raise AssertionError("Invalid key must be rejected before equality")
++
+             for bad in (list(intent_key(value)), ("vms_project", value["batch_id"], value["task_id"]),
+-                        ("agent_project",), ("agent_project", "", "T1")):
++                        ("agent_project",), ("agent_project", "", "T1"),
++                        (HostileNonString(), value["batch_id"], value["task_id"])):
+                 with self.subTest(invalid_key=bad):
+                     self.invoke("read_intent", connection, bad, sha(raw), reason="ARGUMENTS_INVALID")
++                    self.assertEqual([], equality_calls)
+             self.invoke("read_intent", connection, intent_key(value), "0" * 64, reason="INTENT_PIN_MISMATCH")
+             self.invoke("read_intent", connection, intent_key(other), sha(other_raw), reason="INTENT_NOT_FOUND")
+             for revision in (True, -1, 2 ** 63 - 1):
+@@ -422,6 +431,40 @@
+                 self.observed(reopened, value, raw, "SUBMISSION_UNKNOWN", 1)
+ 
+     def test_claim_commit_boundary_reopen_and_failures(self):
++        for query in ("PRAGMA busy_timeout", "PRAGMA main.synchronous"):
++            for boundary in ("query_before", "response_after"):
++                with self.subTest(preflight_query=query, boundary=boundary), self.database() as (connection, path):
++                    value, raw = self.reserve(connection)
++                    original = database_snapshot(connection, path)
++                    actual_one = product._one
++                    attempts = []
++
++                    def preflight_read(target, sql, parameters=()):
++                        if sql == query:
++                            attempts.append(sql)
++                            if boundary == "response_after":
++                                actual_one(target, sql, parameters)
++                            raise sqlite3.OperationalError(PRIVATE_ERROR)
++                        return actual_one(target, sql, parameters)
++
++                    with mock.patch.object(product, "_one", side_effect=preflight_read), \
++                            mock.patch.object(product, "_execute", wraps=product._execute) as execute, \
++                            mock.patch.object(product, "_commit", wraps=product._commit) as commit, \
++                            mock.patch.object(product, "_rollback", wraps=product._rollback) as rollback:
++                        result = self.invoke("claim_intent", connection, intent_key(value), sha(raw), 0,
++                                             reason="CHECKPOINT_UNCONFIRMED")
++                    self.assertEqual([query], attempts)
++                    self.assertEqual(0, execute.call_count)
++                    self.assertEqual(0, commit.call_count)
++                    self.assertEqual(0, rollback.call_count)
++                    self.assertFalse(result["report"]["new_claim"])
++                    self.assertFalse(result["report"]["database_commit_confirmed"])
++                    self.assertTrue(result["report"]["transaction_closed"])
++                    self.assertIsNone(result["record"])
++                    self.assertEqual(original, database_snapshot(connection, path))
++                    connection.close()
++                    with contextlib.closing(connect(path)) as reopened:
++                        self.observed(reopened, value, raw, "PREPARED", 0)
+         with self.database() as (connection, path), contextlib.closing(connect(path)) as observer:
+             value, raw = self.reserve(connection)
+             actual_commit = product._commit

@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-10-16T13:18:59.738357+00:00",
+  "execution": "NOT_STARTED",
+  "source_sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+  "test_sha256": "8ae7d027bdbd1785c9bfa5f5654746b38395d73317c60296d425e41c77612d1f",
+  "fixture_sha256": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66",
+  "first_ready_sha256": "ad05962731b08c1ccb88a911e69210d6d4af1c9b809706b82d24c729e0d67bf1",
+  "plan_sha256": "4c005dd7c2a7703f0639ef71aed968c5a1fc5cf8b6ce404364debb779097d575",
+  "independent_plan_review_sha256": "f1fb9dad4822a897f13239cc5fc5fdae4734b7000240a21f056f78767cd476ee",
+  "static_review_sha256": "0eac007b117b8f4f4e5fca0474e6a029b3f87c027970cf8766bae74117230590",
+  "environment_sha256": "66b7b2a428b141c1deedb1f22079133980e28e5acd6507bab6f7117596333204",
+  "methods": [
+    "test_empty_initialize_and_borrowed_connection",
+    "test_immutable_reserve_roundtrip_and_conflicts",
+    "test_stale_revision_rejected",
+    "test_unknown_never_rearmed",
+    "test_claim_commit_boundary_reopen_and_failures"
+  ],
+  "method_count": 5,
+  "preexisting_AST_and_assertions": "all unchanged after removing exactly approved additions",
+  "changed_methods": [
+    "test_immutable_reserve_roundtrip_and_conflicts",
+    "test_claim_commit_boundary_reopen_and_failures"
+  ],
+  "new_subcases": {
+    "hostile_nonstring_tuple": "ARGUMENTS_INVALID and equality_calls empty",
+    "preflight": [
+      "busy_timeout/query_before",
+      "busy_timeout/response_after",
+      "main.synchronous/query_before",
+      "main.synchronous/response_after"
+    ]
+  },
+  "mutant_target_bodies_unchanged": true,
+  "fixture_bytes_unchanged": true,
+  "first_ready_unchanged": true,
+  "product_edited_by_test_agent": false
+}

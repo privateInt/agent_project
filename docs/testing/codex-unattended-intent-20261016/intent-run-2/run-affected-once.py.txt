@@ -1,0 +1,227 @@
+"""One authorized initial suite; only on PASS, two designated isolated mutants."""
+import contextlib
+import datetime
+import difflib
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import sys
+import time
+import traceback
+import types
+import unittest
+
+
+RUN = Path(__file__).resolve().parent
+ROOT = RUN.parents[3]
+WORK = ROOT / "var/unattended-20261015/intent-development"
+SOURCE = WORK / "src/ops/tools/codex_unattended_intent_journal.py"
+TEST = WORK / "src/ops/tools/tests/test_codex_unattended_intent_journal.py"
+FIXTURE = TEST.parent / "fixtures/codex_unattended_intent_journal/synthetic.json"
+PINS = json.loads((RUN / "final-test-pins.json").read_text())
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def clean(value):
+    if isinstance(value, bytes):
+        return {"bytes": len(value), "sha256": sha(value)}
+    if isinstance(value, dict):
+        return {str(k): clean(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [clean(v) for v in value]
+    return value
+
+
+def save(path, value):
+    with path.open("x") as stream:
+        json.dump(clean(value), stream, indent=2, sort_keys=True)
+        stream.write("\n")
+
+
+class EvidenceResult(unittest.TextTestResult):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.events = []
+        self.first_issue = None
+
+    def remember(self, test, status, error=None):
+        entry = {"test": test.id(), "status": status,
+                 "last_result": getattr(test, "last_result", None)}
+        if error is not None:
+            entry["traceback"] = self._exc_info_to_string(error, test)
+        self.events.append(clean(entry))
+        if status != "PASS" and self.first_issue is None:
+            self.first_issue = clean(entry)
+
+    def addSuccess(self, test):
+        self.remember(test, "PASS")
+        super().addSuccess(test)
+
+    def addFailure(self, test, error):
+        self.remember(test, "FAIL", error)
+        super().addFailure(test, error)
+
+    def addError(self, test, error):
+        self.remember(test, "ERROR", error)
+        super().addError(test, error)
+
+    def addSkip(self, test, reason):
+        self.remember(test, "SKIP")
+        super().addSkip(test, reason)
+        self.stop()
+
+    def addSubTest(self, test, subtest, error):
+        if error is not None:
+            self.remember(test, "FAIL" if issubclass(error[0], test.failureException) else "ERROR", error)
+            self.events[-1]["subtest"] = str(subtest)
+        super().addSubTest(test, subtest, error)
+
+
+def execute(test_module, names, directory, log_name):
+    test_module.OBSERVATIONS.clear()
+    with (directory / log_name).open("x") as stream:
+        runner = unittest.TextTestRunner(stream=stream, verbosity=2, failfast=True,
+                                         resultclass=EvidenceResult)
+        with contextlib.redirect_stdout(stream), contextlib.redirect_stderr(stream):
+            result = runner.run(unittest.TestSuite(test_module.IntentJournalTests(name) for name in names))
+    detail = {"methods": names, "tests_run": result.testsRun,
+              "passes": sum(event["status"] == "PASS" for event in result.events),
+              "failures": len(result.failures), "errors": len(result.errors),
+              "skips": len(result.skipped), "events": result.events,
+              "first_issue": result.first_issue, "failfast": True}
+    save(directory / "observations.json", test_module.OBSERVATIONS)
+    return detail
+
+
+def main():
+    started = time.monotonic()
+    assert datetime.datetime.now(datetime.timezone.utc) < datetime.datetime(2026, 10, 16, 13, 28, 48, tzinfo=datetime.timezone.utc), "D18_LIMIT"
+    save(RUN / "execution-started.json", {
+        "utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "runner_sha256": sha(Path(__file__).read_bytes()),
+        "prior_journal_active_seconds": 1902, "budget_reset": False,
+        "runtime_D18": "HELD", "scope": "dedicated temporary file SQLite only"})
+    summary = {"status": "NOT_EXECUTED", "mutants": {}, "old_suites_run": 0,
+               "external_actions": 0, "runtime_D18": "HELD"}
+    try:
+        for path, expected in ((SOURCE, PINS["source_sha256"]), (TEST, PINS["test_sha256"]),
+                               (FIXTURE, PINS["fixture_sha256"]),
+                               (RUN / "inputs/plan.md", PINS["plan_sha256"]),
+                               (RUN / "inputs/plan-review.md", PINS["independent_plan_review_sha256"]),
+                               (RUN / "inputs/static-review.md", PINS["static_review_sha256"]),
+                               (RUN / "environment.json", PINS["environment_sha256"])):
+            assert sha(path.read_bytes()) == expected, str(path)
+        baseline = json.loads((RUN / "baseline.json").read_text())
+        for name, info in baseline["inputs"].items():
+            assert sha((RUN / "inputs" / name).read_bytes()) == info["sha256"], name
+            if Path(info["original_path"]) != TEST:
+                assert sha(Path(info["original_path"]).read_bytes()) == info["sha256"], info["original_path"]
+        sys.dont_write_bytecode = True
+        sys.path.insert(0, str(WORK))
+        spec = importlib.util.spec_from_file_location("intent_journal_initial_five", TEST)
+        tests = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(tests)
+        normal = execute(tests, [PINS["methods"][-1]], RUN, "targeted-fifth.log")
+        normal["status"] = "PASS" if (normal["passes"] == 1 and normal["tests_run"] == 1
+                                          and not normal["failures"] and not normal["errors"]
+                                          and not normal["skips"]) else "STOPPED_AT_FIRST_ISSUE"
+        save(RUN / "normal-result.json", normal)
+        summary["normal"] = normal
+        if normal["status"] != "PASS":
+            summary["status"] = "STOPPED_AT_FIRST_ISSUE"
+            summary["mutants_not_run_reason"] = "Initial five did not all pass; no fixes or reruns"
+            return 1
+
+        original = SOURCE.read_text()
+        for mutation, target in (("M1", "test_stale_revision_rejected"),
+                                  ("M2", "test_unknown_never_rearmed")):
+            directory = RUN / mutation
+            directory.mkdir(exist_ok=False)
+            if mutation == "M1":
+                predicate = " AND revision=?"
+                parameter = "(*key, expected_intent_sha256, expected_revision)"
+                assert original.count(predicate) == 1 and original.count(parameter) == 1
+                changed = original.replace(predicate, "", 1).replace(
+                    parameter, "(*key, expected_intent_sha256)", 1)
+            else:
+                predicate = " AND state='PREPARED'"
+                assert original.count(predicate) == 1
+                changed = original.replace(predicate, "", 1)
+            snapshot = directory / "mutated-source.py.txt"
+            snapshot.write_text(changed)
+            (directory / "mutation.diff").write_text("".join(difflib.unified_diff(
+                original.splitlines(True), changed.splitlines(True),
+                fromfile="frozen-source.py", tofile=mutation + "-source.py")))
+            module = types.ModuleType("src.ops.tools._intent_journal_" + mutation)
+            module.__file__ = str(snapshot)
+            exec(compile(changed, str(snapshot), "exec"), module.__dict__)
+            actual_commit = module._commit
+            committed_rows = []
+
+            def commit_observer(connection):
+                actual_commit(connection)
+                cursor = connection.execute(
+                    "SELECT project_id,batch_id,task_id,client_user_message_id,"
+                    "intent_bytes,intent_sha256,state,revision FROM submission_intents")
+                try:
+                    committed_rows.append({"transaction_closed": not connection.in_transaction,
+                                           "rows": cursor.fetchall()})
+                finally:
+                    cursor.close()
+
+            with tests.mock.patch.object(tests, "product", module), \
+                    tests.mock.patch.object(module, "_commit", side_effect=commit_observer):
+                result = execute(tests, [target], directory, "target-once.log")
+            expected_reason = "REVISION_CONFLICT" if mutation == "M1" else "UNKNOWN_NO_REPLAY"
+            expected_revision = 1 if mutation == "M1" else 2
+            issue = result["first_issue"] or {}
+            actual = issue.get("last_result") or {}
+            report, record = actual.get("report", {}), actual.get("record") or {}
+            last_commit = committed_rows[-1] if committed_rows else {}
+            row = (last_commit.get("rows") or [None])[-1]
+            semantic = (result["tests_run"] == 1 and result["failures"] == 1
+                        and result["errors"] == 0 and result["skips"] == 0
+                        and report.get("reason") == "CLAIM_RECORDED"
+                        and report.get("new_claim") is True
+                        and report.get("database_commit_confirmed") is True
+                        and record.get("state") == "SUBMISSION_UNKNOWN"
+                        and record.get("revision") == expected_revision
+                        and row is not None and row[6:] == ("SUBMISSION_UNKNOWN", expected_revision)
+                        and last_commit.get("transaction_closed") is True
+                        and expected_reason in issue.get("traceback", ""))
+            result.update({"mutation": mutation, "source_sha256": sha(snapshot.read_bytes()),
+                           "test_sha256": PINS["test_sha256"],
+                           "normal_target_PASS_reused": target, "normal_target_rerun": False,
+                           "expected_rejection": expected_reason, "committed_rows": committed_rows,
+                           "semantic_FAIL1_ERROR0_with_actual_wrong_claim": semantic,
+                           "status": "DETECTED_AS_PLANNED" if semantic else "UNEXPECTED_MUTANT_RESULT"})
+            save(directory / "result.json", result)
+            summary["mutants"][mutation] = result
+            if not semantic:
+                summary["status"] = "STOPPED_AT_UNEXPECTED_MUTANT_RESULT"
+                return 1
+        assert sha(SOURCE.read_bytes()) == PINS["source_sha256"]
+        assert sha(TEST.read_bytes()) == PINS["test_sha256"]
+        summary["status"] = "FOUR_INITIAL_PASS_REUSED_TARGETED_FIFTH_PASS_TWO_MUTANTS_DETECTED"
+        return 0
+    except BaseException:
+        summary["status"] = "STOPPED_AT_HARNESS_OR_IMPORT_ERROR"
+        summary["first_error"] = traceback.format_exc()
+        with (RUN / "harness-first-error.log").open("x") as stream:
+            stream.write(summary["first_error"])
+        return 1
+    finally:
+        summary["elapsed_execution_seconds"] = time.monotonic() - started
+        summary["pins"] = PINS
+        save(RUN / "result.json", summary)
+        print(json.dumps({"status": summary["status"],
+                          "result": str(RUN / "result.json"),
+                          "old_suites_run": 0}))
+
+
+if __name__ == "__main__":
+    sys.exit(main())

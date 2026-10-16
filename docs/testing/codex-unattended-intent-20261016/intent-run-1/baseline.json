@@ -1,0 +1,281 @@
+{
+  "created_utc": "2026-10-16T13:17:31.358386+00:00",
+  "phase_monotonic_start": 13095071.742541531,
+  "source_sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+  "head": "86b8861ba5b3ea049b77937e6c00da73a4330377",
+  "branch": "codex/agent-project-submission-intent-20261016",
+  "initial_ready_sha256": "ad05962731b08c1ccb88a911e69210d6d4af1c9b809706b82d24c729e0d67bf1",
+  "inputs": {
+    "first-tests-ready.json": {
+      "original_path": "/tmp/agent-unattended-intent-tests-ready.json",
+      "sha256": "ad05962731b08c1ccb88a911e69210d6d4af1c9b809706b82d24c729e0d67bf1",
+      "bytes": 7030
+    },
+    "test-before-additions.py.txt": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/test_codex_unattended_intent_journal.py",
+      "sha256": "51ac9929e2bcc7b2ed46572f8e5015e531f600130147f5b14d35be205d971c67",
+      "bytes": 31145
+    },
+    "source.py.txt": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/codex_unattended_intent_journal.py",
+      "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+      "bytes": 13985
+    },
+    "synthetic.json": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json",
+      "sha256": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66",
+      "bytes": 2055
+    },
+    "plan.md": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/agent-unattended-intent-plan-v1.md",
+      "sha256": "4c005dd7c2a7703f0639ef71aed968c5a1fc5cf8b6ce404364debb779097d575",
+      "bytes": 17262
+    },
+    "plan-review.md": {
+      "original_path": "/tmp/agent-unattended-intent-plan-review.md",
+      "sha256": "f1fb9dad4822a897f13239cc5fc5fdae4734b7000240a21f056f78767cd476ee",
+      "bytes": 4907
+    },
+    "static-review.md": {
+      "original_path": "/tmp/agent-unattended-intent-static-review.md",
+      "sha256": "0eac007b117b8f4f4e5fca0474e6a029b3f87c027970cf8766bae74117230590",
+      "bytes": 6100
+    },
+    "github_fixture_ledger.py.txt": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/github_fixture_ledger.py",
+      "sha256": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "bytes": 17905
+    },
+    "github_fixture_collector.py.txt": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/intent-development/src/ops/tools/github_fixture_collector.py",
+      "sha256": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "bytes": 14757
+    },
+    "intent-source-before-preflight-fix.py.txt": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-source-before-preflight-fix.py.txt",
+      "sha256": "74f2799bcbd218582ed567ad917188501ee139d16779e38931b90803fc63ebc4",
+      "bytes": 13459
+    },
+    "intent-preflight-fix.diff": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-preflight-fix.diff",
+      "sha256": "5eb93857db3f9b375850bc825428e61ac91a9fbaa3ccc58ed1236d85e9126a59",
+      "bytes": 2201
+    },
+    "intent-preflight-fix-audit.json": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-preflight-fix-audit.json",
+      "sha256": "76e9e8b019790cbe9ef52dc208ab5a9b03aef0b7163378ea146b41683b25e2d5",
+      "bytes": 599
+    },
+    "intent-source-before-key-type-order.py.txt": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-source-before-key-type-order.py.txt",
+      "sha256": "c4c6f602df8c24657f1f9c7d582c15c2a7bb265bdec38352559c731962f7bfd8",
+      "bytes": 13459
+    },
+    "intent-key-type-order.diff": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-key-type-order.diff",
+      "sha256": "55eae3b8a28ad98c8e3334bc598c4773c62079d0010ee817a9517a2cde508242",
+      "bytes": 395
+    },
+    "intent-key-type-order-audit.json": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-key-type-order-audit.json",
+      "sha256": "2c26b62cab06d7511a80d00e603b0ec7437b74880dbf9d7ba0d014ae461e40d9",
+      "bytes": 555
+    },
+    "intent-time-budget-correction.json": {
+      "original_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/intent-time-budget-correction.json",
+      "sha256": "177002c4dde146679d0c12cb2e4462ed53b7162a0dbd27b8c647facf1ab0723c",
+      "bytes": 1932
+    }
+  },
+  "original_local_changes": [
+    {
+      "status": " M",
+      "path": "docs/HANDOFF_NEXT_SESSION.md",
+      "sha256": "063c2aaf6076c9ac6e0943bdd916f42930e66dae822037434f859ced1ceb1243"
+    },
+    {
+      "status": " M",
+      "path": "docs/codex/work-plan.md",
+      "sha256": "e60f66cda0dbf64b4891e899ba67f47b0eac93fde21cf1326f2b4a9840dc2f25"
+    },
+    {
+      "status": " M",
+      "path": "docs/roadmap.md",
+      "sha256": "a11b78bae0c83136d36d14dd7713c13fcbe3dfff951657374e5ac77679e146b1"
+    },
+    {
+      "status": " M",
+      "path": "docs/status.md",
+      "sha256": "06e47755839a3e3724a8eff0f2a215f3682e9413873eb4c75d9fb662b96c66c7"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/preparation-blockers.md",
+      "sha256": "bc1f2ce493c8c31d8cd1ad3fbde50be510081505120bba8c015d1f013cce41b6"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/runtime-acceptance-cases.json",
+      "sha256": "8e8166e05bd69fe79980a353463f0b2b66a089b7e88bb1f379b523a0b38a3dcc"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/runtime-acceptance-plan.md",
+      "sha256": "6c826455f4a61db6a4785435a52d3562398a64cd6421fafcabb4867b5cf5f4bd"
+    },
+    {
+      "status": "??",
+      "path": "docs/plans/codex-preparation-verification-20261015.md",
+      "sha256": "d265642b6ace90c8e8f2e306c04de986baa848c3605e27a862bc746b3602449f"
+    },
+    {
+      "status": "??",
+      "path": "docs/plans/document-qa-f0a-validation-plan.md",
+      "sha256": "93cf5692286cdbee24530ff27ba9838bc42acad2a2a0313f535bbb6cb4cb8b51"
+    },
+    {
+      "status": "??",
+      "path": "docs/testing/codex-preparation-contract-20261015.json",
+      "sha256": "a056197c83aebd5bdef87963b6418bb949b790b09ed3050b5d464f0096bcba1f"
+    },
+    {
+      "status": "??",
+      "path": "docs/testing/codex-preparation-observed-20261015.json",
+      "sha256": "517981506b0b7d78ec722c5aad15fc5fcd34ac7f15a3f298213dc27f94d69aed"
+    }
+  ],
+  "original_git_status": " M docs/HANDOFF_NEXT_SESSION.md\n M docs/codex/work-plan.md\n M docs/roadmap.md\n M docs/status.md\n?? docs/codex/preparation-blockers.md\n?? docs/codex/runtime-acceptance-cases.json\n?? docs/codex/runtime-acceptance-plan.md\n?? docs/plans/codex-preparation-verification-20261015.md\n?? docs/plans/document-qa-f0a-validation-plan.md\n?? docs/testing/codex-preparation-contract-20261015.json\n?? docs/testing/codex-preparation-observed-20261015.json\n",
+  "immutable_prior_artifacts": {
+    "var/unattended-20261015/transition-evidence/transport-run-1/codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+    "var/unattended-20261015/transition-evidence/transport-run-1/evidence-sha256.json": "7afbfaa2f6a41df4debc372d25cac8bee5dbcacf538ab0da48b799a99096ed80",
+    "var/unattended-20261015/transition-evidence/transport-run-1/execution-started.json": "82389ae8ea7867d65715677fb641010e675b79df527b334e9f057a5e7c3f0f84",
+    "var/unattended-20261015/transition-evidence/transport-run-1/execution.log": "b08f882b7524d2d6e50bd476a95fb82e408b11efd888fcd91ec52d08e9537e5a",
+    "var/unattended-20261015/transition-evidence/transport-run-1/manifest-before.json": "59acb14193d6c6852adf797eaf76166708ba75a1fe4c52db6a2ab37302583931",
+    "var/unattended-20261015/transition-evidence/transport-run-1/operation.py": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+    "var/unattended-20261015/transition-evidence/transport-run-1/original-operation.py": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+    "var/unattended-20261015/transition-evidence/transport-run-1/plan-review.md": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+    "var/unattended-20261015/transition-evidence/transport-run-1/plan.md": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+    "var/unattended-20261015/transition-evidence/transport-run-1/result.json": "8615b57a0b464f0bf2fefc508c0dbef8f2e194374b33c3afe446d761db5fa45d",
+    "var/unattended-20261015/transition-evidence/transport-run-1/run-four-once.py": "ee1e2e5dda8a05e3ae967c9e17384ee99f900f7093e9178ee06530a6c5cdaae6",
+    "var/unattended-20261015/transition-evidence/transport-run-1/test_codex_daemon_websocket.py": "51f632af70206443058cf5f68146ca4eab779e7954d95df5af5797bebe80c279",
+    "var/unattended-20261015/transition-evidence/transport-run-1/transport.py": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/evidence-sha256.json": "c5ecaf34198d91733d2f9fe933aa95db48ad4f86b3d56731f1cbe7a303004b50",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/execution-started.json": "1f9391e86584648fa8e9ab9c79b0b17f9c9520184d2269794a70ba86d53366a6",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/execution.log": "4d0f3a11cc730efda111723731842e34a707a6ffa23a2f8e4d8c357a6fa86fe8",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/manifest-before.json": "f053e19b17debc38b96608578c300a0c015a1ec2a1390640bd195ca7ccd4b785",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/operation.py": "b5af1109e0febdbc88dca395afbe598dfd62121723d44ed6a7c2c4a3cb58fa35",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/plan-review.md": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/plan.md": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/result.json": "f4ba1007c40a7f77ea6da702ad6c14f8a8512e603b7fb5080ab45195ab6c8c2c",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/run-two-once.py": "dbea4716e75540ff730d44e33afa50af75cc2e83e8d39bd0dd08755ed07eaad1",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/scope-decision.json": "10d6e544581171aa7c02976eb4182e0f905b2f894c82dd83084191e5b1417985",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/static-review.md": "2e565a98a3e2062b2817e908860ff6d3507603323f41eb0fc7048aa0797b51fe",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/test-extension.diff": "db0e00abda6190936a203d2b70d54436877c1817fc8f0d143ab832421a8aa6fa",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/test_codex_daemon_websocket.py": "97d09ab155a8f01ca9944d34291876383d5b1684fa36614cb97d2ee6791a9bb7",
+    "var/unattended-20261015/transition-evidence/transport-findings-before/transport.py": "18ee8259ab9f075dea32147351eabd7562c9f0fad67bc07ec3e720c9af938c70",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/execution-started.json": "2eb6696118e3a513a576ed74ca0918d4f6b80016493472beb700244cf54b04fb",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/execution.log": "ac58f23b6bec0d6051a5280d181f4c4fec48f62dc146c9053c9d66e26d2fd37d",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/fix-audit.json": "d3b659cb0207e13c4c143ab4b337c4d00a57adfe305ed6ddf235f9adb95c70a9",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/manifest-before.json": "65fbc25af12d391299d00a7ac830771e1d7e2d40c24af796ee00bc2f727f500e",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/operation.py": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/operation.py.fix.diff": "14d8cd28db31dc7f30c72af7c184cfc4ce18a5fa226813c1a3593a21ef202018",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/plan-review.md": "9dc87b9e674dbc2a86d1135e9814c3f67f351db888cd0fe9f9d6479552145b61",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/plan.md": "f6308eceb2ecfe48862fffb0bd4d592e88c820941251890957dbd4146bb08f6c",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/result.json": "324cc4e272269c9cc6d3d5ba1c906db598c77b2a1795cc1602dc3f58c639f567",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/run-two-once.py": "854c0c801c84a94c8a6341998ec9dfdd34478f4a00b1bce26ac9634b94787767",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/scope-decision.json": "10d6e544581171aa7c02976eb4182e0f905b2f894c82dd83084191e5b1417985",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/static-review.md": "2e565a98a3e2062b2817e908860ff6d3507603323f41eb0fc7048aa0797b51fe",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/test_codex_daemon_websocket.py": "97d09ab155a8f01ca9944d34291876383d5b1684fa36614cb97d2ee6791a9bb7",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/transport.py": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+    "var/unattended-20261015/transition-evidence/transport-findings-after/transport.py.fix.diff": "baba96ccd88de4b05226adeb6b56cdce1b217fe8729573b8abfae7580deb237f",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/evidence-sha256.json": "e6e9d6421c7cd13d16cb701cc3de963d1d8edbe315edf5036fe188ce6c45074b",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/execution-started.json": "1b200b3f3249607a8675d98a4d10dff726543d95e4514d3561183f4190c62a60",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/execution.log": "f9e322628791aa62a1694b6e0a48a8433c4f0fae99fbcb6a3f3aaed696dfeb3e",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/manifest-before.json": "ab6b126c0be9cd2083448ff3ca8b00d36b5901237ca1abc1aed94598ff978c90",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/operation.py": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/original-operation.py": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/result.json": "7e8c594d5428a469916d80909a243679065d3a5180f6b708cce38108b68f1ea3",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/run-audit-once.py": "23cc0bd383d593b27a4c953460b69d49a39dafce6ac519a5df93280cbf8c00e9",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/static-audit.json": "5b543e248a8be19f1819598e3abb996ac34d2c533e3503e1d754b359bba1df61",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/test-after.py": "0d4c2f025778b82a5778f9eb87220add9dcc083c04364c9550a148ce9adddb85",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/test-before.py": "97d09ab155a8f01ca9944d34291876383d5b1684fa36614cb97d2ee6791a9bb7",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/test.diff": "b7dd7de0370eaa69b5eb8fec41f689ec54f79d63377f9b2547175d0112f8f2bf",
+    "var/unattended-20261015/transition-evidence/transport-test-reconciliation/transport.py": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+    "var/unattended-20261015/transition-evidence/transport-portability/codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+    "var/unattended-20261015/transition-evidence/transport-portability/evidence-sha256.json": "8990be3c7e2f5c92bb1b33ae9cc8d5190baebc410dffc4b3fbe59d35a4b271c5",
+    "var/unattended-20261015/transition-evidence/transport-portability/execution-started.json": "3357b3e0de184b1816ddf407b131f5818a3c3b083a2cb5e8d6313da94e00a148",
+    "var/unattended-20261015/transition-evidence/transport-portability/execution.log": "8d55576a5696ecd7c905cae4b4e92a9cba5304e80e316eb7c1a2c35b08027e33",
+    "var/unattended-20261015/transition-evidence/transport-portability/fixture-manifest.json": "9f7a05ac526a0a6240a304df48db2b57e021742da78c1f508fb097f5e80db244",
+    "var/unattended-20261015/transition-evidence/transport-portability/manifest-before.json": "f3117c1e1f3150bef2003370a160327e37f2ffa7402d9a2d925d5b8d7c5c5cce",
+    "var/unattended-20261015/transition-evidence/transport-portability/operation.py.txt": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+    "var/unattended-20261015/transition-evidence/transport-portability/original-operation.py.txt": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+    "var/unattended-20261015/transition-evidence/transport-portability/portability-audit.json": "46577141b3420e43781713c998b789c81af3db086213c431508d002383e4d830",
+    "var/unattended-20261015/transition-evidence/transport-portability/result.json": "a0199340d98f92520d0ae9801732ab46a9ad39f8af5080b568e3d5e5ebbe8aba",
+    "var/unattended-20261015/transition-evidence/transport-portability/run-portability-once.py": "c5250ce03763968571da1ce0275e393ad3ce4ce3749c220dc776cd4d8c11aa18",
+    "var/unattended-20261015/transition-evidence/transport-portability/sources/src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+    "var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+    "var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/codex_daemon_websocket.py": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+    "var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+    "var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/tests/fixtures/codex_daemon_websocket/manifest.json": "9f7a05ac526a0a6240a304df48db2b57e021742da78c1f508fb097f5e80db244",
+    "var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/tests/fixtures/codex_daemon_websocket/operation.py.txt": "8a7308e1f3529f118065c7a256be3a3c82b970f9378d9ffdc67d3ef8bd7e647a",
+    "var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/tests/fixtures/codex_daemon_websocket/original-operation.py.txt": "48471f7dc2fc8c2b71ca25684857a9d77a76f87ec3b688dbe2f0e392fb430a98",
+    "var/unattended-20261015/transition-evidence/transport-portability/sources/src/ops/tools/tests/test_codex_daemon_websocket.py": "5085ce3d866a81afe7614cb6e4aeea785cf757da148395591dbc865ed0f3a9bf",
+    "var/unattended-20261015/transition-evidence/transport-portability/test-after.py": "5085ce3d866a81afe7614cb6e4aeea785cf757da148395591dbc865ed0f3a9bf",
+    "var/unattended-20261015/transition-evidence/transport-portability/test-before.py": "0d4c2f025778b82a5778f9eb87220add9dcc083c04364c9550a148ce9adddb85",
+    "var/unattended-20261015/transition-evidence/transport-portability/test.diff": "d29c5a2e3fbf3bb2ea41d71ac4fa05ece08536f73c14921f15c6be312076ab12",
+    "var/unattended-20261015/transition-evidence/transport-portability/transport.py": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+    "var/unattended-20261015/transition-evidence/admission-run-1/evidence-sha256.json": "3eb821e1e4445b7035174a4e897ea0aeee15c08a6953ea771331e59bb9f08fe5",
+    "var/unattended-20261015/transition-evidence/admission-run-1/execution-started.json": "ae51b82014111b47dc939f8ff0f92258327f51de09d0a894fae4a611a5ee995c",
+    "var/unattended-20261015/transition-evidence/admission-run-1/execution.log": "b8105d48edecde76bbf2271b6d50113a59fc549ef5d7a9413d646e59bc39edb2",
+    "var/unattended-20261015/transition-evidence/admission-run-1/flex_gate.py": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+    "var/unattended-20261015/transition-evidence/admission-run-1/manifest-before.json": "61129afdaddaa274180cd4bd0226aac41d16ea67edbb550493abe6bf3744faf2",
+    "var/unattended-20261015/transition-evidence/admission-run-1/margin-fix-audit.json": "4c329e11b8007c4f78340ab1f9a1c2e6dbb1fc259e95502dd24c32e18474dcd3",
+    "var/unattended-20261015/transition-evidence/admission-run-1/mutants/M1/codex_unattended_admission.py": "70f919a4abeae6791b6f3d8330c772bb18f0fb4b948813b174e5e60126fc0f15",
+    "var/unattended-20261015/transition-evidence/admission-run-1/mutants/M1/execution.log": "6375076bd2d5a55588726afbdd2a2f0a362c9ad56faa40db57649d69f8fe8ccb",
+    "var/unattended-20261015/transition-evidence/admission-run-1/mutants/M1/mutation.json": "bc165a9052b28eb0ab2b657c87ef681b6faf8d413f9a64e3d7073bc4b0bb722b",
+    "var/unattended-20261015/transition-evidence/admission-run-1/mutants/M1/result.json": "fde3b9f5a8729520b5269ca0b7147c9e38f4e23dd194951fb940917bbcc6ecbf",
+    "var/unattended-20261015/transition-evidence/admission-run-1/mutants/M1/source.diff": "06051113ffb35637dd9ed980d73aef1b57bba16c31ba91780ecf0006e7d36f13",
+    "var/unattended-20261015/transition-evidence/admission-run-1/mutants/M2/codex_unattended_admission.py": "3e6c79ec22152354978c5cb148f2444c8216f5c21ae349b2efabeef736bb5aa1",
+    "var/unattended-20261015/transition-evidence/admission-run-1/mutants/M2/execution.log": "3fc4230217990bea191f9bd7a49ef1e491ae90996102f80bb4e091fc1332f07e",
+    "var/unattended-20261015/transition-evidence/admission-run-1/mutants/M2/mutation.json": "412e09bc966cad7b15d6cd449ddc8e3d1b09809d98dd78712178f510ad5b2721",
+    "var/unattended-20261015/transition-evidence/admission-run-1/mutants/M2/result.json": "45c3c08cff6104776474707927dafb48ee95bb248ebb0664c2870d7851b209f9",
+    "var/unattended-20261015/transition-evidence/admission-run-1/mutants/M2/source.diff": "9b2384975531110f3e6354b211fa45df021202de5212364c9358ed620f0e4677",
+    "var/unattended-20261015/transition-evidence/admission-run-1/normal-result.json": "d58f8e139242c6566410d108f68e7ad049af86154b74daed7a47b07664951d79",
+    "var/unattended-20261015/transition-evidence/admission-run-1/plan-review.md": "60483649f5ae98246455425785f4bfb4e1442209cdadc2b7e9b44cac9e038431",
+    "var/unattended-20261015/transition-evidence/admission-run-1/plan.md": "321c5c9f8fa01246aeb627677505bc5581cc390174b47279b10f4760d489f410",
+    "var/unattended-20261015/transition-evidence/admission-run-1/result.json": "91253fabc1bdd89934585c8b46e18743fea67e22b5d8a27c46b8f51250a8e601",
+    "var/unattended-20261015/transition-evidence/admission-run-1/run-once.py": "70a328d7acb700caeff9a19154b8f07a8fce749642e337826e009d754b71a288",
+    "var/unattended-20261015/transition-evidence/admission-run-1/source.py": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+    "var/unattended-20261015/transition-evidence/admission-run-1/synthetic.json": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc",
+    "var/unattended-20261015/transition-evidence/admission-run-1/test-fixture-pins.json": "3c8b27fff84e466fa55311c41f9925edb3b1d44bcf7b569224917de1c07d9e02",
+    "var/unattended-20261015/transition-evidence/admission-run-1/test_codex_unattended_admission.py": "8c525d67d236627227080b51f4605afc8b9a69daeec7c47edb2276a5ff4effc1",
+    "var/unattended-20261015/transition-evidence/admission-portability/evidence-sha256.json": "b9002f281359c7449d0edb4ea7685c570d024fd09ea615241509226b01cd77b8",
+    "var/unattended-20261015/transition-evidence/admission-portability/execution-started.json": "185ecc6043e800c02b7ea36180de4d4f85642b4b990223c75d9721836af3f584",
+    "var/unattended-20261015/transition-evidence/admission-portability/execution.log": "be29257f044355cc4f5918d6e3f5683286b3e9c3e3b19ba77b4d9b1290634781",
+    "var/unattended-20261015/transition-evidence/admission-portability/manifest-before.json": "61d78f8316838987a9f511a9f68a8376011e65f27fb63245f3d69182375ca82a",
+    "var/unattended-20261015/transition-evidence/admission-portability/portability-audit.json": "bd6af613ed428ee9532f491a90aadf185c4e7acdf5b267559eb33be889112606",
+    "var/unattended-20261015/transition-evidence/admission-portability/result.json": "2c3d0c4f47162056a51b3a8bb240b70ee961f2e087bbc856af750d35954f86a2",
+    "var/unattended-20261015/transition-evidence/admission-portability/retained-flex-gate.py.txt": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+    "var/unattended-20261015/transition-evidence/admission-portability/run-portable-once.py": "70fbc283523f339806b46a67c6d3a257898dedaa73f719c841e7969ee15017f8",
+    "var/unattended-20261015/transition-evidence/admission-portability/source.py": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+    "var/unattended-20261015/transition-evidence/admission-portability/sources/src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+    "var/unattended-20261015/transition-evidence/admission-portability/sources/src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+    "var/unattended-20261015/transition-evidence/admission-portability/sources/src/ops/tools/codex_unattended_admission.py": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+    "var/unattended-20261015/transition-evidence/admission-portability/sources/src/ops/tools/tests/fixtures/codex_unattended_admission/flex_gate.py.txt": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+    "var/unattended-20261015/transition-evidence/admission-portability/sources/src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc",
+    "var/unattended-20261015/transition-evidence/admission-portability/sources/src/ops/tools/tests/test_codex_unattended_admission.py": "33d6ac1d164c5fa5e6c11b8e4dbce062cb9a65735e4bd95158a2f28c6af1d84b",
+    "var/unattended-20261015/transition-evidence/admission-portability/synthetic.json": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc",
+    "var/unattended-20261015/transition-evidence/admission-portability/test-after.py": "33d6ac1d164c5fa5e6c11b8e4dbce062cb9a65735e4bd95158a2f28c6af1d84b",
+    "var/unattended-20261015/transition-evidence/admission-portability/test-before.py": "8c525d67d236627227080b51f4605afc8b9a69daeec7c47edb2276a5ff4effc1",
+    "var/unattended-20261015/transition-evidence/admission-portability/test.diff": "17a148cdd265dfea55cf54b920e2a74bd0266d1f0910fead98f8fd02ca886e33",
+    "var/unattended-20261015/transition-evidence/runtime-policy-first-run.json": "da9e581f54dec7692ec65a4fe126b88dd12dab721ee193331c4adb277c98f7b0"
+  },
+  "old_artifact_count": 126,
+  "execution": "NOT_STARTED",
+  "runtime_D18": "HELD; prior 720 seconds retained, no runtime investigation",
+  "prior_journal_active_seconds": 720,
+  "this_phase_timer_does_not_reset_prior_active_time": true
+}

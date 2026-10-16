@@ -1,0 +1,6 @@
+test_claim_commit_boundary_reopen_and_failures (intent_journal_initial_five.IntentJournalTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.101s
+
+OK
