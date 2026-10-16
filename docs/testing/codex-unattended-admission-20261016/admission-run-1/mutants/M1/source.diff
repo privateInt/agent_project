@@ -1,0 +1,11 @@
+--- normal/source.py
++++ M1/source.py
+@@ -265,7 +265,7 @@
+                       for a in admissions)
+         _need(started < cap, "WINDOW_CAP_REACHED")
+         # Admissions remain consumed after failure, uncertainty, or a date boundary.
+-        _need(len(admissions) < 2, "LIFETIME_CAP_REACHED")
++        # M1: isolated planned guard omission
+         task = tasks[len(admissions)] if len(admissions) < len(tasks) else None
+         if task is not None:
+             remaining_ms = (end - now) // dt.timedelta(milliseconds=1)

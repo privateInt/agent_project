@@ -1,0 +1,8 @@
+{
+  "finding": "P2 margin reason priority",
+  "source_before_sha256": "0bbc6cb46efcef3af84d4ffeca7eeccf94af3618073cdcba413254a2fd1ef91d",
+  "source_after_sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+  "correction": "Move only pending task deadline guard before quota/settings as approved plan requires",
+  "tests_before_fix": "NOT_RUN; static finding corrected before first six tests",
+  "shared_gate_changed": false
+}

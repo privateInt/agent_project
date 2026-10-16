@@ -1,0 +1,20 @@
+{
+  "execution-started.json": "185ecc6043e800c02b7ea36180de4d4f85642b4b990223c75d9721836af3f584",
+  "execution.log": "be29257f044355cc4f5918d6e3f5683286b3e9c3e3b19ba77b4d9b1290634781",
+  "manifest-before.json": "61d78f8316838987a9f511a9f68a8376011e65f27fb63245f3d69182375ca82a",
+  "portability-audit.json": "bd6af613ed428ee9532f491a90aadf185c4e7acdf5b267559eb33be889112606",
+  "result.json": "2c3d0c4f47162056a51b3a8bb240b70ee961f2e087bbc856af750d35954f86a2",
+  "retained-flex-gate.py.txt": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+  "run-portable-once.py": "70fbc283523f339806b46a67c6d3a257898dedaa73f719c841e7969ee15017f8",
+  "source.py": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+  "sources/src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+  "sources/src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+  "sources/src/ops/tools/codex_unattended_admission.py": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+  "sources/src/ops/tools/tests/fixtures/codex_unattended_admission/flex_gate.py.txt": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+  "sources/src/ops/tools/tests/fixtures/codex_unattended_admission/synthetic.json": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc",
+  "sources/src/ops/tools/tests/test_codex_unattended_admission.py": "33d6ac1d164c5fa5e6c11b8e4dbce062cb9a65735e4bd95158a2f28c6af1d84b",
+  "synthetic.json": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc",
+  "test-after.py": "33d6ac1d164c5fa5e6c11b8e4dbce062cb9a65735e4bd95158a2f28c6af1d84b",
+  "test-before.py": "8c525d67d236627227080b51f4605afc8b9a69daeec7c47edb2276a5ff4effc1",
+  "test.diff": "17a148cdd265dfea55cf54b920e2a74bd0266d1f0910fead98f8fd02ca886e33"
+}

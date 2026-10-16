@@ -1,5 +1,7 @@
 # 다음 세션·Codex 인수인계
 
+2026-10-16: 고정 PR #15 commit `c862bfc6951491192a9fe98b535c9a8be921ee35` 위의 [U01a 검증](testing/codex-unattended-admission-observed-20261016.json)과 [전송 Draft PR #16](https://github.com/privateInt/agent_project/pull/16)을 이어받는다. agent_project만 자동 작업 대상으로 유지하고 vms_project는 제외한다. 순수 입력 검증은 owner/서명/OS 격리 인수가 아니며 실제 queue 두 작업·Auto-review는 미완료다. source·기존 결과와 첫 오류·원본 11개 변경은 전용 개발 경로에 보존했다.
+
 2026-10-15 L01 재개 기준: PR #14의 `c91e9e628402fcc89c2daa4301d54c3c321221ed`에서 분리한 fixture 설정 로더는 [계약](codex/github-fixture-config.md)과 [새 실행 근거](testing/github-fixture-config-observed-20261015.json)를 참조한다. 개발용 임시 설정만 사용했고 실제 소유자 승인값·운영 설치는 미제공/미실행이다. 기존13+3·R03/R04/R15와 전체 suite를 반복하지 않는다. 다음에는 보호된 실제 설정 입력·설치 인수를 준비하고 별도 역할/issuer 연결을 선정하며, 원래 개발 checkout의 변경11개·최초 실패·기존 sandbox 보류를 보존한다.
 
 2026-10-13 규칙 준비: 공통 정책과 템플릿·프로젝트별 책임·첫 작업 연결을 [Codex 문서](codex/README.md)에 정리했다. 문서의 GitHub main 반영과 서버 실행 환경 적용은 아직 완료되지 않았다. [현재 상태](status.md)를 기준으로 읽고 본문에 보존한 과거 근거와 구분한다.

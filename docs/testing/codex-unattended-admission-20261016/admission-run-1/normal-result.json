@@ -1,0 +1,2463 @@
+{
+  "phase": "NORMAL_INITIAL",
+  "executor": "test_agent",
+  "tests_run": 6,
+  "status": "PASS",
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "outcomes": {
+    "test_input_binding_and_purity": {
+      "runs": 1,
+      "status": "PASS",
+      "subtests": [
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'project', 'project_id'), value=\"'vms_project'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'project', 'value', 'project_id'), value=\"'other_project'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'project', 'value', 'repository'), value=\"'other-owner/agent_project'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'project', 'value', 'dev_root'), value=\"'/fixture/other-root'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'project', 'value', 'git_common_dir'), value=\"'/fixture/other-git'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'project', 'value', 'base_sha'), value=\"'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('state', 'batch_id'), value=\"'other-batch'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'schema'), value='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('state', 'schema'), value='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'now_ms'), value='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'pauses', 'value', 'root'), value='0')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'quota', 'value', 'exhausted'), value='0')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'freshness', 'max_age_ms'), value='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'freshness', 'max_age_ms'), value='0')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'freshness', 'max_age_ms'), value='300001')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'timeout_sec'), value='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'timeout_sec'), value='29')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'timeout_sec'), value='7201')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'plan_sha256'), value=\"'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'project', 'base_sha'), value=\"'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 1, 'task_id'), value=\"'T1'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 1, 'predecessor_id'), value=\"'wrong'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'required_test_ids'), value=\"['dup', 'dup']\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'allowed_files'), value=\"['same.py', 'same.py']\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'required_test_ids'), value='[]')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'task_id'), value=\"'bad id'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'task_id'), value=\"'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'schedule', 'version'), value='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'schedule', 'default', 'enabled'), value='1')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'schedule', 'default', 'max_starts'), value='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'freshness'), value='<object object at 0x794deb588fa0>')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'extra'), value=\"'PRIVATE_FIXTURE_MARKER'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'control', 'value', 'available'), value=\"'yes'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (absolute_path=\"'relative/root'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (absolute_path=\"'/fixture/./root'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (absolute_path=\"'/fixture/../root'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (absolute_path=\"'/fixture//root'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (absolute_path=\"'/fixture/root\\\\x00'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (relative_path=\"'/absolute.py'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (relative_path=\"'src/../bad.py'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (relative_path=\"'src/./bad.py'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (relative_path=\"'src//bad.py'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (relative_path=\"'bad\\\\x00.py'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (timeout_boundary=30)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (timeout_boundary=7200)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (admission_binding='plan_sha256')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (admission_binding='project_id')",
+          "status": "PASS"
+        }
+      ],
+      "last_decision": {
+        "schema": 1,
+        "scope": "PURE_ADMISSION_ONLY",
+        "status": "BLOCKED",
+        "reason": "PROJECT_BINDING_MISMATCH",
+        "candidate": null,
+        "desired_settings": null,
+        "runtime_io_performed": false,
+        "mutation_authorized": false
+      }
+    },
+    "test_pause_and_freshness": {
+      "runs": 1,
+      "status": "PASS",
+      "subtests": [
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='root', value=True)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='root', value=None)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='user', value=True)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='user', value=None)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='state', value=True)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='state', value=None)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', age=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', age=30000)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', age=30001)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', age=-1)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', bad_timestamp='<object object at 0x794deb588fa0>')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', bad_timestamp='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', bad_timestamp=\"'yesterday'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', age=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', age=30000)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', age=30001)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', age=-1)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', bad_timestamp='<object object at 0x794deb588fa0>')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', bad_timestamp='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', bad_timestamp=\"'yesterday'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', age=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', age=30000)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', age=30001)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', age=-1)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', bad_timestamp='<object object at 0x794deb588fa0>')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', bad_timestamp='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', bad_timestamp=\"'yesterday'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', age=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', age=30000)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', age=30001)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', age=-1)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', bad_timestamp='<object object at 0x794deb588fa0>')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', bad_timestamp='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', bad_timestamp=\"'yesterday'\")",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', age=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', age=30000)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', age=30001)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', age=-1)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', bad_timestamp='<object object at 0x794deb588fa0>')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', bad_timestamp='True')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', bad_timestamp=\"'yesterday'\")",
+          "status": "PASS"
+        }
+      ],
+      "last_decision": {
+        "schema": 1,
+        "scope": "PURE_ADMISSION_ONLY",
+        "status": "BLOCKED",
+        "reason": "SNAPSHOT_TIME_INVALID",
+        "candidate": null,
+        "desired_settings": null,
+        "runtime_io_performed": false,
+        "mutation_authorized": false
+      }
+    },
+    "test_schedule_quota_and_settings": {
+      "runs": 1,
+      "status": "PASS",
+      "subtests": [
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (schedule_boundary='2024-01-01T23:00:00+09:00')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (schedule_boundary='2024-01-02T00:00:00+09:00')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (schedule_boundary='2024-01-02T07:00:00+09:00')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (margin_delta_ms=-1)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (margin_delta_ms=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (margin_delta_ms=1)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('quota', 'ordinaryUsageAllowed'), value=False)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('quota', 'ordinaryUsageAllowed'), value=None)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('quota', 'exhausted'), value=True)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('quota', 'exhausted'), value=None)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('control', 'available'), value=False)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('control', 'available'), value=None)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('control', 'desired_settings_supported'), value=False)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('control', 'desired_settings_supported'), value=None)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'cwd'), value='/fixture/other')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'runtimeWorkspaceRoots'), value=['/fixture/other'])",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'approvalsReviewer'), value='unknown')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'approvalPolicy'), value='never')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'sandbox', 'networkAccess'), value=True)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'sandbox', 'networkAccess'), value=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'sandbox', 'type'), value='dangerFullAccess')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'sandbox', 'writableRoots'), value=['/fixture/other'])",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (accepted_reviewer='user')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (accepted_reviewer='auto_review')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='sandbox_approval', value=True)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='sandbox_approval', value=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='request_permissions', value=True)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='request_permissions', value=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='rules', value=True)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='rules', value=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='mcp_elicitations', value=True)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='mcp_elicitations', value=0)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='skill_approval', value=True)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='skill_approval', value=0)",
+          "status": "PASS"
+        }
+      ],
+      "last_decision": {
+        "schema": 1,
+        "scope": "PURE_ADMISSION_ONLY",
+        "status": "BLOCKED",
+        "reason": "SETTINGS_UNVERIFIED",
+        "candidate": null,
+        "desired_settings": null,
+        "runtime_io_performed": false,
+        "mutation_authorized": false
+      }
+    },
+    "test_state_and_t1_t2_evidence": {
+      "runs": 1,
+      "status": "PASS",
+      "subtests": [
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (occupied='RESERVED')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (occupied='QUEUED')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (occupied='ACTIVE')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (unknown='UNKNOWN')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (unknown='SUBMISSION_UNKNOWN')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (unknown='START_UNKNOWN')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (unknown='CHECKPOINT_UNCONFIRMED')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (predecessor='FAILED')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (predecessor='INTERRUPTED')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='binding')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='terminal')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='tests')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='review')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='draft_pr')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='readback')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('binding', 'project_id'), value='other_project')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('binding', 'batch_id'), value='other-batch')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('binding', 'plan_sha256'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('binding', 'base_sha'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('binding', 'head_sha'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('terminal', 'status'), value='failed')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'results'), value={'unit.T1': 'PASS'})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'results'), value={'unit.T1': 'PASS', 'contract.T1': 'SKIP'})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'results'), value={'unit.T1': 'FAIL', 'contract.T1': 'PASS'})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'binding_sha256'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'failures'), value=1)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'errors'), value=1)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'skipped'), value=1)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'skipped'), value=False)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('review', 'independent'), value=False)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('review', 'status'), value='FAIL')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('review', 'status'), value='NOT_RUN')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('review', 'reviewer_id'), value='fixture-implementer')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('review', 'reviewer_id'), value='')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'draft'), value=False)",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'url'), value='https://github.com/other-owner/agent_project/pull/123')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'url'), value='https://github.com/fixture-owner/agent_project/pull/123?extra=1')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'head_sha'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'base_sha'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'files_sha256'), value={})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'files_sha256'), value={'outside.py': 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'})",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('readback', 'status'), value='PENDING')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('readback', 'status'), value='NOT_RUN')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('readback', 'status'), value='FAIL')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('readback', 'head_sha'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+          "status": "PASS"
+        },
+        {
+          "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('readback', 'files_sha256'), value={'src/ops/tools/fixture_T1.py': 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'})",
+          "status": "PASS"
+        }
+      ],
+      "last_decision": {
+        "schema": 1,
+        "scope": "PURE_ADMISSION_ONLY",
+        "status": "BLOCKED",
+        "reason": "LIFETIME_CAP_REACHED",
+        "candidate": null,
+        "desired_settings": null,
+        "runtime_io_performed": false,
+        "mutation_authorized": false
+      }
+    },
+    "test_lifetime_cap_blocks_third_candidate": {
+      "runs": 1,
+      "status": "PASS",
+      "subtests": [],
+      "last_decision": {
+        "schema": 1,
+        "scope": "PURE_ADMISSION_ONLY",
+        "status": "BLOCKED",
+        "reason": "LIFETIME_CAP_REACHED",
+        "candidate": null,
+        "desired_settings": null,
+        "runtime_io_performed": false,
+        "mutation_authorized": false
+      }
+    },
+    "test_t2_pending_review_blocks": {
+      "runs": 1,
+      "status": "PASS",
+      "subtests": [],
+      "last_decision": {
+        "schema": 1,
+        "scope": "PURE_ADMISSION_ONLY",
+        "status": "BLOCKED",
+        "reason": "EVIDENCE_UNVERIFIED",
+        "candidate": null,
+        "desired_settings": null,
+        "runtime_io_performed": false,
+        "mutation_authorized": false
+      }
+    }
+  },
+  "setup": {
+    "gate_loads": 1,
+    "gate_sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+    "gate_path": "/opt/codex-agent/scheduler-v2/flex_gate.py",
+    "injected_functions": [
+      "validate_config",
+      "windows"
+    ],
+    "fixture_sha256": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc"
+  },
+  "native_queued_jobs_executed": 0,
+  "candidate_is_execution_authorization": false,
+  "observations": [
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "None",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "None",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'project', 'project_id'), value=\"'vms_project'\")",
+      "reason": "PROJECT_NOT_ALLOWED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'project', 'value', 'project_id'), value=\"'other_project'\")",
+      "reason": "PROJECT_NOT_ALLOWED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'project', 'value', 'repository'), value=\"'other-owner/agent_project'\")",
+      "reason": "PROJECT_BINDING_MISMATCH",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'project', 'value', 'dev_root'), value=\"'/fixture/other-root'\")",
+      "reason": "PROJECT_BINDING_MISMATCH",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'project', 'value', 'git_common_dir'), value=\"'/fixture/other-git'\")",
+      "reason": "PROJECT_BINDING_MISMATCH",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'project', 'value', 'base_sha'), value=\"'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'\")",
+      "reason": "PROJECT_BINDING_MISMATCH",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('state', 'batch_id'), value=\"'other-batch'\")",
+      "reason": "PROJECT_BINDING_MISMATCH",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'schema'), value='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('state', 'schema'), value='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'now_ms'), value='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'pauses', 'value', 'root'), value='0')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'quota', 'value', 'exhausted'), value='0')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'freshness', 'max_age_ms'), value='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'freshness', 'max_age_ms'), value='0')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'freshness', 'max_age_ms'), value='300001')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'timeout_sec'), value='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'timeout_sec'), value='29')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'timeout_sec'), value='7201')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'plan_sha256'), value=\"'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'project', 'base_sha'), value=\"'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 1, 'task_id'), value=\"'T1'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 1, 'predecessor_id'), value=\"'wrong'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'required_test_ids'), value=\"['dup', 'dup']\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'allowed_files'), value=\"['same.py', 'same.py']\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'required_test_ids'), value='[]')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'task_id'), value=\"'bad id'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'tasks', 0, 'task_id'), value=\"'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'schedule', 'version'), value='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'schedule', 'default', 'enabled'), value='1')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'schedule', 'default', 'max_starts'), value='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'freshness'), value='<object object at 0x794deb588fa0>')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('config', 'extra'), value=\"'PRIVATE_FIXTURE_MARKER'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (path=('snapshot', 'control', 'value', 'available'), value=\"'yes'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (absolute_path=\"'relative/root'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (absolute_path=\"'/fixture/./root'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (absolute_path=\"'/fixture/../root'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (absolute_path=\"'/fixture//root'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (absolute_path=\"'/fixture/root\\\\x00'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (relative_path=\"'/absolute.py'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (relative_path=\"'src/../bad.py'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (relative_path=\"'src/./bad.py'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (relative_path=\"'src//bad.py'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (relative_path=\"'bad\\\\x00.py'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (timeout_boundary=30)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (timeout_boundary=7200)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (admission_binding='plan_sha256')",
+      "reason": "PROJECT_BINDING_MISMATCH",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_input_binding_and_purity",
+      "case": "test_input_binding_and_purity (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (admission_binding='project_id')",
+      "reason": "PROJECT_BINDING_MISMATCH",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='root', value=True)",
+      "reason": "ROOT_PAUSED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='root', value=None)",
+      "reason": "PAUSE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='user', value=True)",
+      "reason": "USER_PAUSED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='user', value=None)",
+      "reason": "PAUSE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='state', value=True)",
+      "reason": "STATE_PAUSED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (pause='state', value=None)",
+      "reason": "PAUSE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "None",
+      "reason": "ROOT_PAUSED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "None",
+      "reason": "PAUSE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', age=0)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', age=30000)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', age=30001)",
+      "reason": "SNAPSHOT_STALE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', age=-1)",
+      "reason": "SNAPSHOT_TIME_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', bad_timestamp='<object object at 0x794deb588fa0>')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', bad_timestamp='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='project', bad_timestamp=\"'yesterday'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', age=0)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', age=30000)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', age=30001)",
+      "reason": "SNAPSHOT_STALE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', age=-1)",
+      "reason": "SNAPSHOT_TIME_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', bad_timestamp='<object object at 0x794deb588fa0>')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', bad_timestamp='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='pauses', bad_timestamp=\"'yesterday'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', age=0)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', age=30000)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', age=30001)",
+      "reason": "SNAPSHOT_STALE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', age=-1)",
+      "reason": "SNAPSHOT_TIME_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', bad_timestamp='<object object at 0x794deb588fa0>')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', bad_timestamp='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='quota', bad_timestamp=\"'yesterday'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', age=0)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', age=30000)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', age=30001)",
+      "reason": "SNAPSHOT_STALE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', age=-1)",
+      "reason": "SNAPSHOT_TIME_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', bad_timestamp='<object object at 0x794deb588fa0>')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', bad_timestamp='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='control', bad_timestamp=\"'yesterday'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', age=0)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', age=30000)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', age=30001)",
+      "reason": "SNAPSHOT_STALE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', age=-1)",
+      "reason": "SNAPSHOT_TIME_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', bad_timestamp='<object object at 0x794deb588fa0>')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', bad_timestamp='True')",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "test_pause_and_freshness (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (observation='settings', bad_timestamp=\"'yesterday'\")",
+      "reason": "INPUT_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "None",
+      "reason": "SNAPSHOT_TIME_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_pause_and_freshness",
+      "case": "None",
+      "reason": "SNAPSHOT_TIME_INVALID",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (schedule_boundary='2024-01-01T23:00:00+09:00')",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (schedule_boundary='2024-01-02T00:00:00+09:00')",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (schedule_boundary='2024-01-02T07:00:00+09:00')",
+      "reason": "OUTSIDE_WINDOW",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (margin_delta_ms=-1)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (margin_delta_ms=0)",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (margin_delta_ms=1)",
+      "reason": "WINDOW_TOO_SHORT",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "None",
+      "reason": "WINDOW_TOO_SHORT",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "None",
+      "reason": "OUTSIDE_WINDOW",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "None",
+      "reason": "WINDOW_CAP_REACHED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "None",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T2",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "plan_sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "None",
+      "reason": "WINDOW_CAP_REACHED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('quota', 'ordinaryUsageAllowed'), value=False)",
+      "reason": "USAGE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('quota', 'ordinaryUsageAllowed'), value=None)",
+      "reason": "USAGE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('quota', 'exhausted'), value=True)",
+      "reason": "USAGE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('quota', 'exhausted'), value=None)",
+      "reason": "USAGE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('control', 'available'), value=False)",
+      "reason": "CONTROL_UNAVAILABLE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('control', 'available'), value=None)",
+      "reason": "CONTROL_UNAVAILABLE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('control', 'desired_settings_supported'), value=False)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('control', 'desired_settings_supported'), value=None)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'cwd'), value='/fixture/other')",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'runtimeWorkspaceRoots'), value=['/fixture/other'])",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'approvalsReviewer'), value='unknown')",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'approvalPolicy'), value='never')",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'sandbox', 'networkAccess'), value=True)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'sandbox', 'networkAccess'), value=0)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'sandbox', 'type'), value='dangerFullAccess')",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (gate=('settings', 'sandbox', 'writableRoots'), value=['/fixture/other'])",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (accepted_reviewer='user')",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (accepted_reviewer='auto_review')",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T1",
+        "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "plan_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='sandbox_approval', value=True)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='sandbox_approval', value=0)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='request_permissions', value=True)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='request_permissions', value=0)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='rules', value=True)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='rules', value=0)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='mcp_elicitations', value=True)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='mcp_elicitations', value=0)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='skill_approval', value=True)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_schedule_quota_and_settings",
+      "case": "test_schedule_quota_and_settings (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (granular_flag='skill_approval', value=0)",
+      "reason": "SETTINGS_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (occupied='RESERVED')",
+      "reason": "ACTIVE_TASK",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (occupied='QUEUED')",
+      "reason": "ACTIVE_TASK",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (occupied='ACTIVE')",
+      "reason": "ACTIVE_TASK",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "None",
+      "reason": "STATE_CONFLICT",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (unknown='UNKNOWN')",
+      "reason": "UNKNOWN_STATE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (unknown='SUBMISSION_UNKNOWN')",
+      "reason": "UNKNOWN_STATE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (unknown='START_UNKNOWN')",
+      "reason": "UNKNOWN_STATE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (unknown='CHECKPOINT_UNCONFIRMED')",
+      "reason": "UNKNOWN_STATE",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (predecessor='FAILED')",
+      "reason": "PREDECESSOR_NOT_COMPLETED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (predecessor='INTERRUPTED')",
+      "reason": "PREDECESSOR_NOT_COMPLETED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "None",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T2",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "plan_sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "None",
+      "reason": "NO_PENDING_TASK",
+      "status": "NO_CANDIDATE",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "None",
+      "reason": "NO_PENDING_TASK",
+      "status": "NO_CANDIDATE",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='binding')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='terminal')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='tests')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='review')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='draft_pr')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (missing_bundle_section='readback')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('binding', 'project_id'), value='other_project')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('binding', 'batch_id'), value='other-batch')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('binding', 'plan_sha256'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('binding', 'base_sha'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('binding', 'head_sha'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('terminal', 'status'), value='failed')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'results'), value={'unit.T1': 'PASS'})",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'results'), value={'unit.T1': 'PASS', 'contract.T1': 'SKIP'})",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'results'), value={'unit.T1': 'FAIL', 'contract.T1': 'PASS'})",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'binding_sha256'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'failures'), value=1)",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'errors'), value=1)",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'skipped'), value=1)",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('tests', 'skipped'), value=False)",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('review', 'independent'), value=False)",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('review', 'status'), value='FAIL')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('review', 'status'), value='NOT_RUN')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('review', 'reviewer_id'), value='fixture-implementer')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('review', 'reviewer_id'), value='')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'draft'), value=False)",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'url'), value='https://github.com/other-owner/agent_project/pull/123')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'url'), value='https://github.com/fixture-owner/agent_project/pull/123?extra=1')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'head_sha'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'base_sha'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'files_sha256'), value={})",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('draft_pr', 'files_sha256'), value={'outside.py': 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'})",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('readback', 'status'), value='PENDING')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('readback', 'status'), value='NOT_RUN')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('readback', 'status'), value='FAIL')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('readback', 'head_sha'), value='eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "test_state_and_t1_t2_evidence (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) (evidence_field=('readback', 'files_sha256'), value={'src/ops/tools/fixture_T1.py': 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'})",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "None",
+      "reason": "HEAD_BINDING_MISMATCH",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_state_and_t1_t2_evidence",
+      "case": "None",
+      "reason": "LIFETIME_CAP_REACHED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_lifetime_cap_blocks_third_candidate",
+      "case": "None",
+      "reason": "LIFETIME_CAP_REACHED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    },
+    {
+      "test": "test_t2_pending_review_blocks",
+      "case": "None",
+      "reason": "EVIDENCE_UNVERIFIED",
+      "status": "BLOCKED",
+      "candidate": null,
+      "io_attempts": 0
+    }
+  ]
+}

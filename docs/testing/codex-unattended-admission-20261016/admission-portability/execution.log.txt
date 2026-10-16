@@ -1,0 +1,7 @@
+case_portable_t1_t2_candidates (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests)
+The same pinned pure gate selects T1 and fully evidenced T2 anywhere. ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK

@@ -1,5 +1,7 @@
 # 프로젝트 현재 상태
 
+2026-10-16: [순수 admission 근거](testing/codex-unattended-admission-observed-20261016.json)에 새 6 methods PASS와 두 guard 변이의 의미 FAIL1/ERROR0, dependency 경로 변경 helper 결과를 보존했다. 전송 부품은 [별도 Draft PR #16](https://github.com/privateInt/agent_project/pull/16)에 있다. 실제 Auto-review·controller 연결·무인 두 작업은 미인수이며 D18 보류와 원본 11개 변경을 유지한다.
+
 2026-10-15 L01: [fixture 설정 로더](codex/github-fixture-config.md)는 PR #14 고정 commit 기준의 외부 기대 버전·7개 source hash, 실제 import 경로, 전용 상태·기존 두 SQLite DB의 경로/권한/schema를 검증해 기존 controller에 연결한다. [이번 실행 근거](testing/github-fixture-config-observed-20261015.json)는 최초23 methods 중22 PASS·L17의16 subcase ERROR, fixture 보정 후 해당 read16개와 가려진 sidecar14개 PASS, 새 예외 문맥 사례의 수정 전 FAIL1→수정 후 PASS1을 구분한다. 기존 검사·두 변이는 재실행하지 않았다. DB 자동 초기화/migration·운영 변경은 없고 실제 owner 승인값·운영 설치·독립 역할/검사 발행 연결은 미인수다.
 
 2026-10-13 규칙 준비: 공통 정책과 템플릿·프로젝트별 책임·첫 작업 연결을 [Codex 문서](codex/README.md)에 정리했다. 문서의 GitHub main 반영과 서버 실행 환경 적용은 아직 완료되지 않았다. 현재 준비 상태는 아래 표에서 관리한다.

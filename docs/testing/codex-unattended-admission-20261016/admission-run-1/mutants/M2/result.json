@@ -1,0 +1,79 @@
+{
+  "phase": "M2",
+  "executor": "test_agent",
+  "tests_run": 1,
+  "status": "FAIL",
+  "failures": 1,
+  "errors": 0,
+  "skipped": 0,
+  "outcomes": {
+    "test_t2_pending_review_blocks": {
+      "runs": 1,
+      "status": "FAIL",
+      "subtests": [],
+      "traceback": "Traceback (most recent call last):\n  File \"/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/tools/tests/test_codex_unattended_admission.py\", line 430, in test_t2_pending_review_blocks\n    self.expect(inputs, \"EVIDENCE_UNVERIFIED\")\n  File \"/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/tools/tests/test_codex_unattended_admission.py\", line 196, in expect\n    self.assertEqual(reason, answer[\"reason\"])\nAssertionError: 'EVIDENCE_UNVERIFIED' != 'CANDIDATE_READY'\n- EVIDENCE_UNVERIFIED\n+ CANDIDATE_READY\n\n",
+      "last_decision": {
+        "schema": 1,
+        "scope": "PURE_ADMISSION_ONLY",
+        "status": "CANDIDATE",
+        "reason": "CANDIDATE_READY",
+        "candidate": {
+          "project_id": "agent_project",
+          "repository": "fixture-owner/agent_project",
+          "dev_root": "/fixture/agent-project-clone",
+          "git_common_dir": "/fixture/shared-agent-git",
+          "task_id": "T2",
+          "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "plan_sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+        },
+        "desired_settings": {
+          "approvalsReviewer": "auto_review",
+          "approvalPolicy": {
+            "granular": {
+              "sandbox_approval": false,
+              "request_permissions": false,
+              "rules": false,
+              "mcp_elicitations": false,
+              "skill_approval": false
+            }
+          }
+        },
+        "runtime_io_performed": false,
+        "mutation_authorized": false
+      }
+    }
+  },
+  "setup": {
+    "gate_loads": 1,
+    "gate_sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+    "gate_path": "/opt/codex-agent/scheduler-v2/flex_gate.py",
+    "injected_functions": [
+      "validate_config",
+      "windows"
+    ],
+    "fixture_sha256": "2dbd92639c906232ac9492c2f200fb03ba082c7fc2308ee25472f75943c4aacc"
+  },
+  "native_queued_jobs_executed": 0,
+  "candidate_is_execution_authorization": false,
+  "observations": [
+    {
+      "test": "test_t2_pending_review_blocks",
+      "case": "None",
+      "reason": "CANDIDATE_READY",
+      "status": "CANDIDATE",
+      "candidate": {
+        "project_id": "agent_project",
+        "repository": "fixture-owner/agent_project",
+        "dev_root": "/fixture/agent-project-clone",
+        "git_common_dir": "/fixture/shared-agent-git",
+        "task_id": "T2",
+        "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "plan_sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      "io_attempts": 0
+    }
+  ],
+  "semantic_FAIL1_ERROR0": true,
+  "original_normal_positive_reexecuted": false,
+  "gate_total_loads": 1
+}

@@ -1,0 +1,19 @@
+test_lifetime_cap_blocks_third_candidate (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests) ... FAIL
+
+======================================================================
+FAIL: test_lifetime_cap_blocks_third_candidate (src.ops.tools.tests.test_codex_unattended_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/tools/tests/test_codex_unattended_admission.py", line 425, in test_lifetime_cap_blocks_third_candidate
+    self.expect(inputs, "LIFETIME_CAP_REACHED")
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/admission-development/src/ops/tools/tests/test_codex_unattended_admission.py", line 196, in expect
+    self.assertEqual(reason, answer["reason"])
+AssertionError: 'LIFETIME_CAP_REACHED' != 'CANDIDATE_READY'
+- LIFETIME_CAP_REACHED
++ CANDIDATE_READY
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
