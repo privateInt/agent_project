@@ -1,0 +1,3 @@
+[agent-project-task:v1:74693b87-eec0-4a6b-accd-9c2c608af26f]
+D29 bounded correlation acceptance. Reply exactly: D29_CORRELATION_OBSERVED
+Do not use tools, edit files, run commands, or contact services.

@@ -1,0 +1,14 @@
+test_two_exact_messages_cannot_create_a_terminal (__main__.CandidateCountMutant) ... FAIL
+
+======================================================================
+FAIL: test_two_exact_messages_cannot_create_a_terminal (__main__.CandidateCountMutant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/agent-owner-cli-unit-406q6ok2/source-checkout/src/ops/tools/tests/test_codex_owner_message_correlation_mutant.py", line 71, in test_two_exact_messages_cannot_create_a_terminal
+    self.assertNotEqual(observed['status'], 'TURN_COMPLETED',
+AssertionError: 'TURN_COMPLETED' == 'TURN_COMPLETED' : MUTANT_ACCEPTED_TWO_EXACT_MESSAGES_TERMINAL
+
+----------------------------------------------------------------------
+Ran 1 test in 0.020s
+
+FAILED (failures=1)

@@ -1,0 +1,8 @@
+{
+  "source_implementation_ready": true,
+  "tests_run": 0,
+  "test_author": "completed two files only",
+  "integration_adjustment": "Explicit expected PR number/base/head branch added to all Draft calls, with self-consistent wrongPR negative. Fixture source/temp scope and terminal preparation included. Tested candidate head differs evidence-only publication head, each separately pinned; exact published source bytes required. No old assertions removed.",
+  "python310_ast_files": 6,
+  "no_existing_package_rebuild": true
+}

@@ -1,0 +1,56 @@
+{
+  "status": "PROPOSED_NOT_SUBMITTED_NOT_OWNER_APPROVAL",
+  "task_id": "74693b87-eec0-4a6b-accd-9c2c608af26f",
+  "body": "D29 bounded correlation acceptance. Reply exactly: D29_CORRELATION_OBSERVED\nDo not use tools, edit files, run commands, or contact services.",
+  "exact_message": "[agent-project-task:v1:74693b87-eec0-4a6b-accd-9c2c608af26f]\nD29 bounded correlation acceptance. Reply exactly: D29_CORRELATION_OBSERVED\nDo not use tools, edit files, run commands, or contact services.",
+  "message_utf8_sha256": "a8dd5da5ce09f1ee883b8283ac138798ebf167724310ffd2f4414904120c03f4",
+  "role": "test_agent",
+  "thread_id": "01a13fb0-1721-7af3-82e6-747eac4de411",
+  "repository": "privateInt/agent_project",
+  "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+  "cli": "/home/codex_shshin/.local/bin/codex",
+  "owner_endpoint": "/home/codex_shshin/.codex/app-server-control/app-server-control.sock",
+  "native_queue_submissions": {
+    "max": 1,
+    "timeout_seconds": 5,
+    "cleanup_seconds": 1,
+    "retry": 0
+  },
+  "read_only_history": {
+    "method": "thread/turns/list",
+    "pre_max_calls": 4,
+    "post_max_calls": 4,
+    "total_max_calls": 8,
+    "params": {
+      "threadId": "01a13fb0-1721-7af3-82e6-747eac4de411",
+      "cursor": "None then exact nextCursor",
+      "limit": 20,
+      "itemsView": "full",
+      "sortDirection": "desc"
+    },
+    "scan_timeout_seconds": 20,
+    "scan_max_bytes": 1048576
+  },
+  "overall_timeout_seconds": 60,
+  "initialize_calls": 0,
+  "resume_calls": 0,
+  "polls": 0,
+  "connection_retries": 0,
+  "automatic_resubmits": 0,
+  "preconditions": [
+    "separately authorized live acceptance",
+    "borrow already initialized readonly owner client with only this fixed thread",
+    "client request timeout at most5s, total remaining lifetime within60s",
+    "same reviewed source/plan/hash settings; no fabricated owner pins",
+    "all existing runtime gates pass; current root/user PAUSE is preserved and blocks submission",
+    "no installation or service change authorized by this proposal"
+  ],
+  "on_ambiguity_or_incomplete": "UNCONFIRMED/UNKNOWN; save receipt; stop without more calls or resubmission",
+  "scope_limit": "Own-message correlation only, not native ACK/clientId provenance, required-check gate or two full development jobs",
+  "expected_final_text": "D29_CORRELATION_OBSERVED",
+  "expected_final_text_sha256": "9c4d69fc4744c36febb15cf16c72f25de380dcccdac62b08f69951c2c1c0ea14",
+  "history_coverage": "Complete history required within4pages/80turns; never truncate/prune or increase budget to obtain a match",
+  "reviewed_candidate_commit": "4c16f6515990f3fc34d85b13e10d1d367f40048d",
+  "plan_sha256": "2679e0ffc8df41b93f6d00bf8639bf3c4d8446b29a639051142290a8c487fa2c",
+  "source_manifest_sha256": "522733f8dcad463f74cdc196874097fa8e494aee290c9d35195fc8fb25eaa944"
+}

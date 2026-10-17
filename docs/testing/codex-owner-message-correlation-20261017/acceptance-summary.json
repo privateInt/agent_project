@@ -1,0 +1,45 @@
+{
+  "base_PR25": "2659a34386580256808880437e30828cb7b386d4",
+  "candidate_commit": "4c16f6515990f3fc34d85b13e10d1d367f40048d",
+  "new7": {
+    "pass": 7,
+    "fail": 0,
+    "error": 0,
+    "skip": 0,
+    "first_run_only": true,
+    "seconds": 2.336
+  },
+  "mutant": {
+    "actual_codex_queue": 0,
+    "designated_assertion_detected": true,
+    "errors": 0,
+    "failures": 1,
+    "native_rpc": 0,
+    "run": 1,
+    "skips": 0
+  },
+  "mutant_witness_sha256": "d7baced9c3325d62f72df804cae03c4ced33b601314c62b2d269acbe7f6d5551",
+  "old_passes_repeated": 0,
+  "real_local_components": [
+    "private SQLite/files/fences/claims/immutable records",
+    "actual fixed Python test child",
+    "new7 execution outcome ingestion"
+  ],
+  "fixture_components": [
+    "owner native full turn history",
+    "native queue adapter",
+    "unit reviewer and Draft snapshots"
+  ],
+  "actual_owner_rpc": 0,
+  "actual_codex_queue": 0,
+  "actual_install": false,
+  "service_switch": false,
+  "pause_release": false,
+  "automatic_correlation": "OWN_EXACT_USER_MESSAGE; not native ACK or clientId identity/provenance",
+  "actual_standalone_reviewer_and_publisher_ingestion": {
+    "reviewer": "REVIEW_PASSED actual standalone JSON ingested and read back",
+    "draft": "POST_PUBLICATION_CHECKPOINT_PENDING",
+    "native_fixed_role_workflow": "NOT_RUN"
+  },
+  "native_full_workflow": "NOT_RUN"
+}

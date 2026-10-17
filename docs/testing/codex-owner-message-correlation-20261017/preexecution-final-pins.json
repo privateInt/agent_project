@@ -1,0 +1,9 @@
+{
+  "src/ops/tools/codex_owner_cli_controller.py": "0b5af71f9df6507b619919d0a41577f47cda8d332f775bc2518a622e939f4f52",
+  "src/ops/tools/codex_owner_turns.py": "77d087e4171693afc3d613dc6becd4ee8b4add274567d409a648ce468e7ae7dc",
+  "src/ops/tools/codex_owner_stage_results.py": "6b184345a32ea45b1098785a34a4f380ddf05c7ebe303cbd58587eed5b5d5d7f",
+  "src/ops/tools/build_agent_execution_package.py": "dac8889f1fd51fb52c5d6856587e61aa3b3f61e5df02fafde74ed06289cf37ad",
+  "src/ops/tools/tests/test_codex_owner_message_correlation.py": "0a08b150fb54b7dee36a2bda105335d0ae7b67688aab39c15e299a8d6981cc59",
+  "src/ops/tools/tests/test_codex_owner_message_correlation_mutant.py": "ae882ed883d9a90142aa1ab2b8b9c5d956f29f1496fb871ee2b70362220da1c4",
+  "docs/operations/codex-owner-cli-controller.md": "7e5e99500d7b670354edf48390e3cd6176451cf42997ba7bcbe968a0a3d8b37b"
+}

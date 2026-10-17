@@ -1,0 +1,13 @@
+{
+  "execution_ref": "standalone-cli-exec-session:56298",
+  "author_ref": "coordinator-author:message-correlation-20261017",
+  "exec_session": 56298,
+  "model": "gpt-6.1-sol",
+  "reasoning": "xhigh",
+  "sandbox": "read-only",
+  "exit_code": 0,
+  "source_unchanged_since_preexecution": true,
+  "review_artifact_sha256": "18facad9b2e7a8d8559708a44094f16a232e18a02934bf313dc035702cbcc89b",
+  "owner_socket_rpc": 0,
+  "native_fixed_role_thread_turn": "NOT_RUN"
+}
