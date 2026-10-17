@@ -1,0 +1,20 @@
+{
+  "code_commit": "82477695d924e71221310204d4bd4dc987fd73bf",
+  "manifest_sha256": "3546b7163f32fc2a087c8a80829ff6afe1e2e6af091bd8749fded6b7ee9b88d6",
+  "launcher_sha256": "54ed5d524d1dd6acc470a2bbc52671079cd77ee4579d40605ab0ca1de477f4cc",
+  "files": {
+    "COMMANDS.md": "9ff7572609459f62aa1097c5c3b0f5c55f004afd32ae5b49254cbd37ffd7779e",
+    "final-review-v2.md": "fdb3e99711ac9a19450ffce2764ac51bedcbafb7b72d1baa7787bde096b00ce2",
+    "CHANGE-LIST.txt": "03d8830370cf8d0df898095c01582a7b06c170882441aa4e9207f50b6f5b7bc4",
+    "priority-summary.json": "7c49926d0e9a02ec0bf865b19c8df74ddf0f5d6042c01eac7b1262bf9d90df15",
+    "final-package-provenance.json": "da9c3eee9115c6af778659461c885934641575fcdd29e1611ef71e2a8f4e2b04",
+    "acceptance-summary.json": "76bb83fa2d9c9b6d044d4cb9a8d50b7ebeed60027ef157e28bc725877256580e",
+    "DB-ROLES.md": "9a434b23e45689c469c291bac7143deea61cefbd80a65e50e31bd54bffbb94e6",
+    "DELIVERY.json": "dfe87ec2e614808987ee6f4ed7ef09f7fc5ac884993f39976ef884f9156e4e6e"
+  },
+  "commands_adjustment": "Separate install/verify/status from run PAUSE check. Existing temp fixture exit1 distinct from real PAUSE exit2. Only external runbook edited; installed bytes unchanged.",
+  "whole_immutable_installation": "bundle/manifest.json23payload + detached manifestSHA",
+  "new_db_initializer": "installation/launch.py init-new, explicit only",
+  "actual_target_created": false,
+  "new_db_created_in_delivery": false
+}

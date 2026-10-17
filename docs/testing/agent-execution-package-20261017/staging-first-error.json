@@ -1,0 +1,8 @@
+{
+  "action": "git add evidence copies",
+  "wrong_workdir": "original development clone",
+  "observed_error": "Unable to create .git/index.lock: Read-only file system",
+  "original_modified": false,
+  "correction": "same Git staging action in isolated execution-package-development only",
+  "permission_escalation": false
+}

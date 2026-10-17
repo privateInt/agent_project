@@ -1,0 +1,24 @@
+{
+  "actual_installation_executed": false,
+  "native_rpc_count": 0,
+  "scheduler_pause_preserved": true,
+  "automatic_two_real_native_tasks": "NOT_RUN",
+  "required_external_actions": [
+    {
+      "owner": "codex_shshin / 開発 설치 담당자",
+      "where": "COMMANDS.md 외부 고정 pin과 agent_project/runtime-candidate 전용 경로",
+      "what": "검토된 candidate 목적지·manifest·UID 명시 승인 뒤 hash 검증, stage, init-new, verify. 기존 /opt 및 automation_mvp 교체 없음",
+      "new_rpc_required": 0
+    },
+    {
+      "owner": "기존 소유 client와 controller 구현 담당자",
+      "where": "기존 codex_shshin CLI queue 경로 / 기존 두 역할 thread",
+      "what": "문서화된 codex queue를 호출하는 caller의 intent/receipt/응답 유실 대조를 실제 연결해야 함. queue/list handler 부작용 계약은 미확인. native 최소 인수는 별도 횟수·시간 승인 필요"
+    },
+    {
+      "owner": "서비스 관리자와 소유자",
+      "where": "별도 독립 검토된 unit/전환안",
+      "what": "현재 서비스와 root/user PAUSE를 유지. fixture package 검증은 서비스 전환 또는 PAUSE 해제 승인이 아님"
+    }
+  ]
+}

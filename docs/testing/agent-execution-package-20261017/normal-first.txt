@@ -1,0 +1,12 @@
+test_P01_complete_pinned_bundle (__main__.PackageAcceptance) ... ok
+test_P02_explicit_five_database_initialization (__main__.PackageAcceptance) ... ok
+test_P03_real_fixture_collection_reopen_and_reuse (__main__.PackageAcceptance) ... ok
+test_P04_manifest_identity_and_boundary_rejections (__main__.PackageAcceptance) ... ok
+test_P05_all_databases_fail_closed_and_partial_init (__main__.PackageAcceptance) ... ok
+test_P06_pause_schedule_and_unknown_no_collection (__main__.PackageAcceptance) ... ok
+test_P07_atomic_stage_runbook_and_preserving_rollback (__main__.PackageAcceptance) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 4.737s
+
+OK

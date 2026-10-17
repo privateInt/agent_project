@@ -1,0 +1,21 @@
+{
+  "code_commit": "82477695d924e71221310204d4bd4dc987fd73bf",
+  "source_tree": "e112e729b9ed4c4e00f12eb9d18ddccf7abf4371",
+  "manifest_sha256": "3546b7163f32fc2a087c8a80829ff6afe1e2e6af091bd8749fded6b7ee9b88d6",
+  "launcher_sha256": "54ed5d524d1dd6acc470a2bbc52671079cd77ee4579d40605ab0ca1de477f4cc",
+  "package_review": "PASS",
+  "package_review_sha256": "fc4e065855485d0a5567860c61a98b9ff397e490a582b61979e624b97ae09745",
+  "original_review_sha256": "d21a49cee24bc2363f09c1c5912b88c316893accc619d17618685c2ead170973",
+  "source_final_review": "PASS",
+  "initial_new_groups_passed": 7,
+  "new_post_review_P08_passed": 1,
+  "original_7_and_mutant_not_repeated": true,
+  "mutant_detected": true,
+  "source_publication_readback_files": 30,
+  "installation_payloads_verified": 23,
+  "actual_installation": false,
+  "actual_native_two_tasks": "NOT_RUN",
+  "additional_native_rpcs": 0,
+  "scheduler_pause_preserved": true,
+  "original_11_preserved": true
+}

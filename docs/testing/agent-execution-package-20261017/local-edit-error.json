@@ -1,0 +1,7 @@
+{
+  "stage": "source correction helper parsing",
+  "error": "SyntaxError: invalid syntax in quoted shell case string; helper failed before any source file write",
+  "fix": "corrected helper quoting, then source grammar verified",
+  "product_executed": false,
+  "original_failure_preserved": true
+}

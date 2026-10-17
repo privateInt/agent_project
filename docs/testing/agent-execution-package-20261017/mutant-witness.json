@@ -1,0 +1,12 @@
+{
+  "mutation": "bypass-only-full-manifest-payload-hash",
+  "tamper_same_size": true,
+  "mutant_process_exit": 0,
+  "mutant_response": {
+    "code_version": "314622f0ef1abcb6821ae7cd504cc3d793021f4d",
+    "native_ready": false,
+    "status": "BUNDLE_VERIFIED"
+  },
+  "temporary_root": "/tmp/agent-execution-package-mr_xtbcu",
+  "native_rpc": 0
+}

@@ -1,0 +1,57 @@
+{
+  "run": 1,
+  "failures": 0,
+  "errors": 0,
+  "observations": [
+    {
+      "temporary_root": "/tmp/agent-execution-package-osqekddr",
+      "baseline": "314622f0ef1abcb6821ae7cd504cc3d793021f4d",
+      "development_launcher": true
+    },
+    {
+      "action": "stage",
+      "exit": 0,
+      "result": {
+        "destination": "/tmp/agent-execution-package-osqekddr/candidate",
+        "state_initialized": false,
+        "status": "STAGED"
+      }
+    },
+    {
+      "action": "run",
+      "exit": 3,
+      "result": {
+        "jobs": [
+          {
+            "artifact_sha256": "f32f13047864ee57bdb0ead93f4fac1944d560336d078e90e9a6b3afbceafa84",
+            "assignment_sha256": "202cd3b629c61df5a83fa455239c43848ce176918fce6d361a544a8067bb5ff8",
+            "job_id": "package-fixture:2",
+            "reason": "ARTIFACT_STORED",
+            "status": "FAILED"
+          },
+          {
+            "artifact_sha256": null,
+            "assignment_sha256": "589341d372e79fec217ebd66952d235e7b3589514ffeb6d88dc3f2d6a75112d6",
+            "job_id": "package-fixture:1",
+            "reason": "OUTCOME_UNKNOWN",
+            "status": "OUTCOME_UNKNOWN"
+          }
+        ],
+        "native_dispatch": false,
+        "native_ready": false,
+        "status": "OBSERVED"
+      }
+    },
+    {
+      "P08": true,
+      "statuses": [
+        "FAILED",
+        "OUTCOME_UNKNOWN"
+      ],
+      "exit": 3,
+      "new_collector_calls": 0,
+      "retained_source_state_unchanged": true
+    }
+  ],
+  "native_rpc": 0
+}
