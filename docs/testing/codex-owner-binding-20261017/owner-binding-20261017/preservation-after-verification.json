@@ -1,0 +1,12 @@
+{
+  "original_11_hashes_status_head_unchanged": true,
+  "old_owner_source_and_receipt_unchanged": true,
+  "pause_root_exists": true,
+  "pause_user_exists": true,
+  "old_native_D18_hold": "UNCHANGED",
+  "actual_new_quota_queries": 1,
+  "thread_resume": 0,
+  "production_db_docker_credentials_settings_main_mutations": 0,
+  "completed_utc": "2026-10-17T01:41:42.433258+00:00",
+  "deadline_utc": "2026-10-17T01:57:31Z"
+}

@@ -1,0 +1,11 @@
+--- before
++++ after
+@@ -595,7 +595,7 @@
+ 
+             with mock.patch.object(product, "_execute", arm_readback):
+                 self.invoke(db, reason="CHECKPOINT_UNCONFIRMED", phase="BINDING_READBACK",
+-                            after_call=lambda: db.binding.set_authorizer(None))
++                            after_call=lambda: db.binding.set_authorizer(lambda *args: sqlite3.SQLITE_OK))
+             self.assertEqual(["INSERT_SUCCEEDED"], inserts)
+             self.assertEqual(["SQLITE_READBACK_DENIED"], denials)
+             self.assertEqual([], binding_rows(db.peer_binding))

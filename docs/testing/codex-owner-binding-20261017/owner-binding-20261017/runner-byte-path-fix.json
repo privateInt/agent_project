@@ -1,0 +1,36 @@
+{
+  "first_testsRun": 4,
+  "first_methods": [
+    {
+      "id": "src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests.test_quota_sequence_sanitization_and_fail_closed",
+      "outcome": "PASS"
+    },
+    {
+      "id": "src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests.test_quota_fault_phases_and_no_send_inference",
+      "outcome": "PASS"
+    },
+    {
+      "id": "src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests.test_unknown_ordinary_never_allowed",
+      "outcome": "PASS"
+    },
+    {
+      "id": "src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests.test_binding_prepare_reuse_conflict_and_reopen",
+      "outcome": "ERROR",
+      "exception_type": "TypeError"
+    }
+  ],
+  "first_failures": 0,
+  "first_errors": 1,
+  "first_boundary_violations": [],
+  "first_result_sha256": "cfee9e4c24162d8154ce64bdfbd68e668e28f37dbdcc2904ba71ed003273d5d3",
+  "first_runner_sha256": "065cc786bd77d96c8c119053441c6e3e3a2bbcafb404e3e4b7e2644123b92fa3",
+  "corrected_runner_sha256": "ba73c78dc87001825fc84c41f40e032efb2f004f17ee042ebd1f909a0ff87d38",
+  "cause": "sqlite3 audit event path is bytes; startswith expected str; setup failed before binding DB or product API",
+  "fix_round": 1,
+  "quota_passes_to_reuse": 3,
+  "remaining_normal_methods": 3,
+  "product_or_test_sources_changed": false,
+  "corrected_utc": "2026-10-17T01:31:16.349782+00:00",
+  "deadline_utc": "2026-10-17T01:57:31Z",
+  "requires_independent_minor_review_before_run": true
+}

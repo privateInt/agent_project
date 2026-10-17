@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "fixture_only": true,
+  "files": {
+    "GetAccountRateLimitsResponse.json": "cb9655e68130116f634ed9353e45b336492e6069a6628f424d1cd52e54eda0e0",
+    "InitializeParams.json": "b55124e7c0f36a1789396daa5578217a92be67f053903696236686e59f6f212e",
+    "ThreadQueueAddParams.json": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+    "binding.json": "3f2f92208aa2b2e3ae00bda222732b546cea9561168f1eaea4a05be3877fe480",
+    "quota.json": "08c6e61f652293367fd4017425e47231a1df98e0ac0ed74853d426488f6eb8aa"
+  },
+  "schema_reference_not_framework_fork": true
+}

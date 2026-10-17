@@ -1,0 +1,39 @@
+{
+  "owner_execution_utc": "2026-10-17T00:40:28+00:00",
+  "receipt_sha256": "22e14deebb25db329fb0ebef6b22659167d2ffe06d3cbaeddd90b2fbc6a430bc",
+  "executed_source_sha256": "7ec43e502ed7a59e61c3abfd8949df059fb9dbb2f80657fdcd93dee08f83d259",
+  "completed_requests": [
+    "initialize",
+    "configRequirements/read",
+    "account/rateLimits/read"
+  ],
+  "fourth_request": {
+    "method": "thread/resume",
+    "target": "existing parent",
+    "server_received": true,
+    "connection_id": 71,
+    "rpc_id": 4,
+    "completed_response_in_receipt": false,
+    "cause": "SESSION_WRITER_CONFLICT",
+    "client_ProbeError_code": "NOT_RECORDED",
+    "server_JSON_RPC_numeric_error_code": "NOT_CAPTURED",
+    "server_detail": "thread-store conflict: parent thread already has an active writer",
+    "detail_provenance": "daemon logs, not receipt"
+  },
+  "further_role_resumes": 0,
+  "thread_resume_attempted_session_creation": true,
+  "session_creation": "REJECTED_AT_WRITER_INIT",
+  "arbitrary_error_discarded_by_original_script": true,
+  "ordinaryUsageAllowed": false,
+  "weekly_used_percent": 100,
+  "reset_utc": "2026-10-22T06:12:59Z",
+  "reset_kst": "2026-10-22T15:12:59+09:00",
+  "reset_is_not_resume_authorization": true,
+  "new_socket_connections": 0,
+  "new_RPC_calls": 0,
+  "new_subagent_calls": 0,
+  "old_runtime_d18": "HELD_NO_RESET",
+  "old_pass_repeated": false,
+  "local_directory_listing_error": "A socket entry stat got PermissionError, no connection attempt/retry; separate from original owner failure",
+  "evidence_export_fix_rounds": 1
+}

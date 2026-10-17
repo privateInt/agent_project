@@ -1,0 +1,45 @@
+{
+  "created_utc": "2026-10-17T01:27:13.558643+00:00",
+  "mode": "AST_AND_HASH_ONLY_NO_IMPORT_OR_EXECUTION",
+  "checks": [
+    {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/binding-development/src/ops/tools/tests/test_codex_unattended_quota_reader.py",
+      "sha256": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+      "test_methods": [
+        "test_quota_sequence_sanitization_and_fail_closed",
+        "test_quota_fault_phases_and_no_send_inference",
+        "test_unknown_ordinary_never_allowed"
+      ],
+      "test_class_bases": [
+        "unittest.TestCase"
+      ],
+      "python310_ast_parse": true
+    },
+    {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/binding-development/src/ops/tools/tests/test_codex_unattended_submission_binding.py",
+      "sha256": "3b7547142b02c454f12f2597d85365ba5351cf1e6e42be11776f0a950165ef93",
+      "test_methods": [
+        "test_binding_prepare_reuse_conflict_and_reopen",
+        "test_binding_prepared_guard_and_lock_boundary",
+        "test_binding_faults_pins_schema_and_privacy"
+      ],
+      "test_class_bases": [
+        "unittest.TestCase"
+      ],
+      "python310_ast_parse": true
+    },
+    {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-binding-20261017/run-1/run-once.py",
+      "sha256": "065cc786bd77d96c8c119053441c6e3e3a2bbcafb404e3e4b7e2644123b92fa3",
+      "test_methods": [],
+      "test_class_bases": [],
+      "python310_ast_parse": true
+    }
+  ],
+  "plan_review_and_fixture_pins_match": true,
+  "original11_hashes_match": true,
+  "new_test_methods": 6,
+  "old_test_methods_run": 0,
+  "product_reads": 0,
+  "tests_executed": 0
+}

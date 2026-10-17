@@ -1,0 +1,21 @@
+unittest.case.FunctionTestCase (case_unknown_intent_cannot_create_binding)
+M_B.case_unknown_intent_cannot_create_binding ... FAIL
+
+======================================================================
+FAIL: unittest.case.FunctionTestCase (case_unknown_intent_cannot_create_binding)
+M_B.case_unknown_intent_cannot_create_binding
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/owner-binding-portable-M_B-v2i8qodd/fresh-source/src/ops/tools/tests/test_codex_unattended_submission_binding.py", line 271, in case_unknown_intent_cannot_create_binding
+    result = self.invoke(db, reason="INTENT_NOT_PREPARED", phase="INTENT_VALIDATE")
+  File "/tmp/owner-binding-portable-M_B-v2i8qodd/fresh-source/src/ops/tools/tests/test_codex_unattended_submission_binding.py", line 259, in invoke
+    self.assertEqual(reason, report["reason"])
+AssertionError: 'INTENT_NOT_PREPARED' != 'BINDING_STORED'
+- INTENT_NOT_PREPARED
++ BINDING_STORED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.011s
+
+FAILED (failures=1)

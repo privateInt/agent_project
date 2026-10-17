@@ -1,0 +1,10 @@
+{
+  "started_utc": "2026-10-17T00:57:31.868126+00:00",
+  "scope": "D29 owner preflight local correction plus U01b2 durable prebinding, no native dispatch",
+  "base": "ddec1931eed8828cdd84ae783845729edf617fc1",
+  "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/binding-development",
+  "live_quotas_completed": 1,
+  "previous_native_D18_hold": "UNCHANGED",
+  "max_new_unit_seconds": 3600,
+  "max_same_test_fixes": 3
+}

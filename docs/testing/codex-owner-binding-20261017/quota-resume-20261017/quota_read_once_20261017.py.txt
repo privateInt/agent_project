@@ -1,0 +1,119 @@
+"""One user-authorized observation; invoke once under a 19s + 1s kill bound."""
+import hashlib
+import json
+import math
+from pathlib import Path
+import sys
+import time
+
+ROOT = Path(__file__).resolve().parent
+SOURCE = ROOT / 'bridge-development/src/ops/tools/codex_daemon_websocket.py'
+READINESS = SOURCE.with_name('codex_readiness.py')
+PINS = ((SOURCE, '7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415'),
+        (READINESS, '5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399'))
+DEST = ROOT / 'transition-evidence/quota-read-once-20261017.json'
+THREADS = ('01a13f12-328d-7342-b285-a0868ac66447',
+           '01a13fb0-1721-7af3-82e6-747eac4de411',
+           '01a13fb0-1abe-7623-a15e-cf07071ce54a')
+
+
+def main():
+    for path, expected in PINS:
+        if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+            print('PIN_MISMATCH_NO_CONNECTION')
+            return 1
+    sys.path.insert(0, str(ROOT / 'bridge-development'))
+    from src.ops.tools.codex_daemon_websocket import UnixWebSocketRpc, ProbeError
+    record = dict(status='ATTEMPT_RESERVED', phase='BEFORE_CONNECT',
+                  observed_unix=int(time.time()), requests=[], retries=0,
+                  max_rpc_requests=2, initialized_notifications=0,
+                  transport_timeout_seconds=16, request_timeout_seconds=5,
+                  external_timeout_seconds=19, external_kill_after_seconds=1,
+                  source_sha256=PINS[0][1], readiness_sha256=PINS[1][1],
+                  settings_changed=False, queue_changed=False, services_changed=False,
+                  thread_operations=0, raw_account_or_error_text_retained=False)
+    # This durable exclusive marker prevents repeating the live observation.
+    with DEST.open('x') as stream:
+        json.dump(record, stream, indent=2)
+    DEST.chmod(0o600)
+
+    def save():
+        temporary = DEST.with_suffix('.new')
+        with temporary.open('x') as stream:
+            json.dump(record, stream, indent=2, allow_nan=False)
+            stream.write('\n')
+        temporary.chmod(0o600)
+        temporary.replace(DEST)
+
+    started = time.monotonic()
+    try:
+        record['phase'] = 'CONNECT_AND_INITIALIZE'
+        save()
+        with UnixWebSocketRpc('/home/codex_shshin/.codex/app-server-control/app-server-control.sock',
+                              THREADS, total_timeout=16, request_timeout=5) as client:
+            def call(method, params):
+                if method not in ('initialize', 'account/rateLimits/read'):
+                    raise ValueError()
+                record['requests'].append(dict(method=method, request_id=len(record['requests']) + 1,
+                                               call_entered=True, completed=False,
+                                               server_received='UNCONFIRMED_UNTIL_RESPONSE'))
+                save()
+                response = client.call(method, params)
+                record['requests'][-1].update(completed=True, server_received='RESPONSE_OBSERVED')
+                save()
+                return response
+
+            call('initialize', {'clientInfo': {'name': 'agent_project_quota_observation', 'version': '1'},
+                                'capabilities': {'experimentalApi': True}})
+            record['phase'] = 'INITIALIZED_NOTIFICATION'
+            save()
+            client.notify_initialized()
+            record['initialized_notifications'] = 1
+            record['phase'] = 'RATE_LIMITS_READ'
+            save()
+            response = call('account/rateLimits/read', {})
+            ordinary = response.get('ordinaryUsageAllowed')
+            record['usage'] = {'ordinaryUsageAllowed': ordinary if type(ordinary) is bool else None,
+                               'windows': []}
+            buckets = response.get('rateLimitsByLimitId')
+            if type(buckets) is not dict:
+                buckets = {'legacy': response.get('rateLimits')}
+            for limit_id, bucket in list(buckets.items())[:16]:
+                if type(limit_id) is not str or type(bucket) is not dict:
+                    continue
+                window = {'limit_id_sha256': hashlib.sha256(limit_id.encode()).hexdigest(),
+                          'reached_type_is_null': bucket.get('rateLimitReachedType') is None}
+                for period in ('primary', 'secondary'):
+                    source = bucket.get(period)
+                    window[period] = None
+                    if type(source) is dict:
+                        window[period] = {key: val if type(val) in (int, float) and
+                                          math.isfinite(val) and abs(val) <= 2**63 else None
+                                          for key in ('usedPercent', 'windowDurationMins', 'resetsAt')
+                                          for val in (source.get(key),)}
+                record['usage']['windows'].append(window)
+            record['status'] = ('OBSERVED_USAGE_ALLOWED' if ordinary is True else
+                                'OBSERVED_USAGE_BLOCKED' if ordinary is False else 'OBSERVED_USAGE_UNKNOWN')
+            record['phase'] = 'COMPLETE'
+    except Exception as error:
+        # Fixed codes only; never persist arbitrary exception or remote account bodies.
+        known = {'RPC_REQUEST_TIMEOUT', 'RPC_WIRE_LIMIT', 'RPC_LINE_LIMIT', 'RPC_STDOUT_LIMIT',
+                 'RPC_CONNECT_FAILED', 'RPC_DEPENDENCY_UNSUPPORTED', 'RPC_UPGRADE_REJECTED',
+                 'RPC_SEND_FAILED', 'RPC_RECEIVE_FAILED', 'RPC_REMOTE_ERROR', 'RPC_RESPONSE_INVALID',
+                 'RPC_TEXT_REQUIRED', 'RPC_NONFINITE_JSON', 'RPC_SERVER_REQUEST_FORBIDDEN'}
+        code = getattr(error, 'code', None) if isinstance(error, ProbeError) else None
+        record['error_code'] = code if code in known else 'UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR'
+        record['status'] = 'STOPPED_UNCONFIRMED_NO_RETRY'
+    record['elapsed_seconds'] = round(time.monotonic() - started, 6)
+    save()
+    print(json.dumps(record, indent=2))
+    return 0 if record['status'] == 'OBSERVED_USAGE_ALLOWED' else 1
+
+
+if __name__ == '__main__':
+    try:
+        result = main()
+    except BaseException:
+        print('LOCAL_RECEIPT_OR_STARTUP_UNCONFIRMED_NO_RETRY')
+        result = 1
+    raise SystemExit(result)

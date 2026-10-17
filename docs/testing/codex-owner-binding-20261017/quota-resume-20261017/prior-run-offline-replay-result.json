@@ -1,0 +1,47 @@
+{
+  "kind": "UNCHANGED_SOURCE_OFFLINE_DIAGNOSTIC_NOT_PRODUCT_ACCEPTANCE",
+  "executed_source_sha256": "7ec43e502ed7a59e61c3abfd8949df059fb9dbb2f80657fdcd93dee08f83d259",
+  "original_receipt_sha256": "22e14deebb25db329fb0ebef6b22659167d2ffe06d3cbaeddd90b2fbc6a430bc",
+  "passes": 3,
+  "failures": 0,
+  "live_socket_or_RPC_calls": 0,
+  "cases": [
+    {
+      "case": "remote_error",
+      "status": "PASS",
+      "synthetic_client_error": "RPC_REMOTE_ERROR",
+      "fake_RPC_send_count": 4,
+      "receipt_request_count": 4,
+      "receipt_request_states_equal_owner_receipt": true,
+      "continues_after_quota_false": true,
+      "raw_error_retained": false,
+      "live_socket_or_RPC_calls": 0,
+      "old_test_methods_executed": 0
+    },
+    {
+      "case": "send_failure_before_fourth_send",
+      "status": "PASS",
+      "synthetic_client_error": "RPC_SEND_FAILED",
+      "fake_RPC_send_count": 3,
+      "receipt_request_count": 4,
+      "receipt_request_states_equal_owner_receipt": true,
+      "continues_after_quota_false": true,
+      "raw_error_retained": false,
+      "live_socket_or_RPC_calls": 0,
+      "old_test_methods_executed": 0
+    },
+    {
+      "case": "receive_failure_after_fourth_send",
+      "status": "PASS",
+      "synthetic_client_error": "RPC_RECEIVE_FAILED",
+      "fake_RPC_send_count": 4,
+      "receipt_request_count": 4,
+      "receipt_request_states_equal_owner_receipt": true,
+      "continues_after_quota_false": true,
+      "raw_error_retained": false,
+      "live_socket_or_RPC_calls": 0,
+      "old_test_methods_executed": 0
+    }
+  ],
+  "original_evidence_unchanged": true
+}

@@ -1,0 +1,115 @@
+{
+  "stage": "M_B",
+  "testsRun": 1,
+  "failures": 1,
+  "errors": 0,
+  "skips": 0,
+  "methods": [
+    {
+      "id": "case_unknown_intent_cannot_create_binding",
+      "outcome": "FAIL",
+      "exception_type": "AssertionError",
+      "last_test_assertion": {
+        "file": "src/ops/tools/tests/test_codex_unattended_submission_binding.py",
+        "function": "invoke",
+        "line": 259
+      }
+    }
+  ],
+  "boundary_violations": [],
+  "sqlite_connections": [
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    }
+  ],
+  "runtime_calls": 0,
+  "source_copy": "/tmp/owner-binding-portable-M_B-v2i8qodd/fresh-source",
+  "original_checkout_reads": 0,
+  "opt_reads": 0,
+  "operator_tmp_reads": 0,
+  "quota_observations": [],
+  "binding_observations": [
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    }
+  ],
+  "actual_wrong_candidate": {
+    "report": {
+      "scope": "DURABLE_SUBMISSION_BINDING_ONLY",
+      "status": "CONFIRMED",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "database_commit_confirmed": true,
+      "intent_validated": true,
+      "intent_reason": null,
+      "intent_state": "SUBMISSION_UNKNOWN",
+      "intent_revision": 1,
+      "new_binding": true,
+      "binding_transaction_closed": true,
+      "intent_transaction_closed": true,
+      "remote_io_performed": false,
+      "remote_mutation_authorized": false,
+      "input_origin_verified": false,
+      "native_acceptance_verified": false,
+      "replay_permitted": false,
+      "native_ready": false
+    },
+    "record": {
+      "binding_sha256": "6c64d5ac2a2f45f3d0a55a69d9f7e67a9d30bc8fd09419ebb04051a26a4b6e2f",
+      "actual_bytes_sha256": "6c64d5ac2a2f45f3d0a55a69d9f7e67a9d30bc8fd09419ebb04051a26a4b6e2f"
+    }
+  },
+  "committed_wrong_binding_witness": {
+    "row_count": 1,
+    "intent_state": "SUBMISSION_UNKNOWN",
+    "intent_revision": 1,
+    "rows": [
+      {
+        "binding_sha256": "6c64d5ac2a2f45f3d0a55a69d9f7e67a9d30bc8fd09419ebb04051a26a4b6e2f",
+        "actual_sha256": "6c64d5ac2a2f45f3d0a55a69d9f7e67a9d30bc8fd09419ebb04051a26a4b6e2f",
+        "binding": {
+          "batch_id": "fixture-intent-batch-1",
+          "client_user_message_id": "fixture-client-T1",
+          "intent_revision": 0,
+          "intent_sha256": "fd8fc5bdfe37aa37ec9f82c6cc723a6627e77bb1dc238825f3c1edc72e5c3cad",
+          "project_id": "agent_project",
+          "schema": 1,
+          "submission_params_sha256": "39152ecb263585cf77e23571f0094981955649a0f2c2165a795f289a817bd3d6",
+          "task_id": "T1",
+          "thread_id": "fixture-owner-binding-thread"
+        }
+      }
+    ]
+  },
+  "wrong_commit_db_sha256": "4885bf5c82ff752514fe717dcae83129914c771c30b0b73f82520b9f8e431204",
+  "semantic_fail1_error0": true,
+  "actual_wrong_candidate_verified": true
+}

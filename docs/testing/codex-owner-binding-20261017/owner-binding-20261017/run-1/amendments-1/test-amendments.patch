@@ -1,0 +1,44 @@
+--- before/src/ops/tools/tests/test_codex_unattended_submission_binding.py
++++ after/src/ops/tools/tests/test_codex_unattended_submission_binding.py
+@@ -105,7 +105,12 @@
+                     self.assertEqual("CLAIM_RECORDED", claimed["report"]["reason"])
+                 yield db
+             finally:
++                seen_connections = set()
+                 for connection in (db.peer_binding, db.peer_intent, db.binding, db.intent, bconn, iconn):
++                    identity = id(connection)
++                    if identity in seen_connections:
++                        continue
++                    seen_connections.add(identity)
+                     if alive(connection):
+                         if connection.in_transaction:
+                             connection.rollback()  # Test owns final cleanup, never product policy.
+@@ -350,7 +355,8 @@
+             before = binding_snapshot(db.binding, db.binding_path)
+             self.invoke(db, reason="SCHEMA_INVALID")
+             self.assertEqual(before, binding_snapshot(db.binding, db.binding_path))
+-            self.invoke(db, "initialize_submission_bindings", reason="BINDINGS_READY")
++            initialized = self.invoke(db, "initialize_submission_bindings", reason="BINDINGS_READY")
++            self.assertIsNone(initialized["report"]["intent_transaction_closed"])
+             before = binding_snapshot(db.binding, db.binding_path)
+             self.invoke(db, "initialize_submission_bindings", reason="DATABASE_NOT_EMPTY")
+             self.assertEqual(before, binding_snapshot(db.binding, db.binding_path))
+@@ -390,8 +396,17 @@
+                 conn.rollback()
+             for role in ("intent", "binding"):
+                 for bad in (None, object(), Opaque()):
+-                    self.invoke(db, reason="CONNECTION_INVALID", **{role + "_connection": bad})
++                    rejected = self.invoke(db, reason="CONNECTION_INVALID", **{role + "_connection": bad})
+                     self.assertEqual([], self.last_sql)
++                    if role == "intent" and bad is None:
++                        # F1: _UNSET supplies defaults; explicit None reaches the real bind/read API.
++                        self.assertIsNone(rejected["record"])
++                        self.assertIs(rejected["report"]["intent_transaction_closed"], False)
++                        observed = self.invoke(db, "read_submission_binding", intent_connection=None,
++                            binding_sha="0"*64, reason="CONNECTION_INVALID")
++                        self.assertEqual([], self.last_sql)
++                        self.assertIsNone(observed["record"])
++                        self.assertIs(observed["report"]["intent_transaction_closed"], False)
+                 closed = support.connect(db.binding_path)
+                 closed.close()
+                 self.invoke(db, reason="CONNECTION_INVALID", **{role + "_connection": closed})

@@ -1,0 +1,45 @@
+{
+  "query_bound": "fixed4existing rows from owner run; no raw body exported",
+  "records": [
+    {
+      "source": "existing logs_2.sqlite, read-only",
+      "row_id": 187902,
+      "ts": 1792197628,
+      "ts_nanos": 954566125,
+      "target": "codex_app_server::message_processor",
+      "kind": "SERVER_RECEIVED_REQUEST",
+      "sanitized_detail": "thread/resume connection71 request4",
+      "raw_body_sha256": "6ec19c2df6ec817fa680dac0bbfb2586dfb4592a60dc6965f71a15811efe6f6c"
+    },
+    {
+      "source": "existing logs_2.sqlite, read-only",
+      "row_id": 187913,
+      "ts": 1792197629,
+      "ts_nanos": 5042575,
+      "target": "codex_core::session::session",
+      "kind": "SESSION_WRITER_CONFLICT",
+      "sanitized_detail": "thread-store conflict: parent thread already has an active writer",
+      "raw_body_sha256": "7c9eb8c2641401ee36a6c852dada63e2da61ec0c05329c51f54a094394d3b916"
+    },
+    {
+      "source": "existing logs_2.sqlite, read-only",
+      "row_id": 187914,
+      "ts": 1792197629,
+      "ts_nanos": 5076956,
+      "target": "codex_core::session",
+      "kind": "SESSION_WRITER_CONFLICT",
+      "sanitized_detail": "thread-store conflict: parent thread already has an active writer",
+      "raw_body_sha256": "bd9f4ce19ac099a7f5a132f9bb4f6ea5d44f9b8df60a7399d6bcbdbf84d5e755"
+    },
+    {
+      "source": "existing logs_2.sqlite, read-only",
+      "row_id": 187915,
+      "ts": 1792197629,
+      "ts_nanos": 5666364,
+      "target": "codex_app_server_transport::transport::websocket",
+      "kind": "CONNECTION_RESET_AFTER_FAILURE",
+      "sanitized_detail": "Later websocket reset; cause/direction not inferred",
+      "raw_body_sha256": "e616448808af99268687ca6dd994540cc88fe0543c2ac66497ac062bb3a02ee4"
+    }
+  ]
+}

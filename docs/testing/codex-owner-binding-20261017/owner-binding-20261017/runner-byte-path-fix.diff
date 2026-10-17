@@ -1,0 +1,86 @@
+--- run-1
++++ run-2
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env python3
+ """Frozen 4ef0459d/D06 run-once harness. Writing this file does not execute tests.
+ 
++Continuation: reuse the first three quota PASS results; execute only binding3 and mutants.
+ Only after SOURCE_READY + independent static comparison, invoke with both final
+ product pins and the exact reviewed positive PREPARED/revision guard expression.
+ The driver permits one first six-method process and two designated mutant processes.
+@@ -179,7 +180,7 @@
+         elif event in ("os.listdir", "os.scandir"):
+             forbidden = not path_allowed(args[0] if args else ".")
+         elif event == "sqlite3.connect":
+-            target = os.fspath(args[0])
++            target = os.fsdecode(os.fspath(args[0]))
+             forbidden = target != ":memory:" and not os.path.abspath(target).startswith(str(tmp) + os.sep)
+             db_connections.append({"dedicated_temporary": not forbidden, "memory_invalid_case": target == ":memory:"})
+         if forbidden:
+@@ -221,7 +222,7 @@
+         need(Path(qm.product.__file__).is_relative_to(copy_root) and Path(bm.product.__file__).is_relative_to(copy_root),
+              "PRODUCT_IMPORT_NOT_PORTABLE")
+         if stage == "normal":
+-            cases = [qm.QuotaReaderTests(name) for name in METHODS_Q] + [bm.SubmissionBindingTests(name) for name in METHODS_B]
++            cases = [bm.SubmissionBindingTests(name) for name in METHODS_B]
+             suite = unittest.TestSuite(cases)
+         elif stage == "M_Q":
+             instance = qm.QuotaReaderTests(METHODS_Q[2])
+@@ -273,8 +274,8 @@
+                        "operator_tmp_reads": 0 if not violations else "UNCONFIRMED",
+                        "quota_observations": qm.OBSERVATIONS, "binding_observations": bm.OBSERVATIONS}
+         if stage == "normal":
+-            result_data["all_pass"] = result.testsRun == 6 and result.wasSuccessful() and not result.skipped and len(records) == 6
+-            result_data["unknown_helper_normal_pass"] = bool(getattr(cases[4], "unknown_guard_normal_passed", False))
++            result_data["all_pass"] = result.testsRun == 3 and result.wasSuccessful() and not result.skipped and len(records) == 3
++            result_data["unknown_helper_normal_pass"] = bool(getattr(cases[1], "unknown_guard_normal_passed", False))
+         else:
+             last = getattr(instance, "last_result", None)
+             result_data["actual_wrong_candidate"] = last
+@@ -351,6 +352,16 @@
+     need(args.source_ready and args.quota_source_sha256 and args.binding_source_sha256 and args.binding_guard,
+          "SOURCE_READY_STATIC_REVIEW_AND_EXACT_PINS_REQUIRED")
+     remaining()
++    previous = json.loads((EVIDENCE / "run-1/normal/result.json").read_bytes())
++    previous_pins = json.loads((EVIDENCE / "run-1/normal/source-copy-pins.json").read_bytes())
++    need(previous["testsRun"] == 4 and previous["failures"] == 0 and previous["errors"] == 1
++         and previous["skips"] == 0 and previous["boundary_violations"] == [],
++         "PREVIOUS_FIRST_RESULT_UNEXPECTED_NO_REPLAY")
++    need([x["outcome"] for x in previous["methods"]] == ["PASS", "PASS", "PASS", "ERROR"],
++         "PREVIOUS_QUOTA_THREE_PASS_REQUIRED")
++    need(previous_pins[QUOTA] == args.quota_source_sha256
++         and previous_pins[BINDING] == args.binding_source_sha256,
++         "PREVIOUS_PRODUCT_PINS_CHANGED")
+     readiness_raw = (HERE / "tests-ready.json").read_bytes()
+     ready = json.loads(readiness_raw)
+     need(sha(Path(__file__).read_bytes()) == ready["runner_sha256"], "RUNNER_READINESS_PIN_MISMATCH")
+@@ -358,6 +369,8 @@
+     need(sha((EVIDENCE / "implementation-plan-review.md").read_bytes()) == REVIEW_PIN, "D06_REVIEW_PIN_MISMATCH")
+     pins = dict(REUSE_PINS, **ready["files"])
+     pins.update({QUOTA: args.quota_source_sha256, BINDING: args.binding_source_sha256})
++    need(previous_pins[QT] == pins[QT] and previous_pins[BT] == pins[BT],
++         "PREVIOUS_TEST_PINS_CHANGED")
+     sources = {}
+     for relative, pin in pins.items():
+         raw = (WORK / relative).read_bytes()
+@@ -390,7 +403,10 @@
+     (snapshot / "tests-ready.json").write_bytes(readiness_raw)
+     shutil.copyfile(HERE / "test-writing-inputs.json", snapshot / "test-writing-inputs.json")
+     save(HERE / "mutation-ast-audits.json", {"M_Q": mq_audit, "M_B": mb_audit})
+-    summary = {"normal": None, "M_Q": None, "M_B": None, "deadline_utc": DEADLINE.isoformat(),
++    summary = {"quota_previous_passes_reused": 3,
++               "previous_result_sha256": sha((EVIDENCE / "run-1/normal/result.json").read_bytes()),
++               "test_fix_round": 1, "normal": None, "M_Q": None, "M_B": None,
++               "deadline_utc": DEADLINE.isoformat(),
+                "clock_reset": False, "runtime_calls": 0, "old_suites_run": False}
+     for stage in ("normal", "M_Q", "M_B"):
+         stage_dir = HERE / stage
+@@ -431,7 +447,7 @@
+     summary["completed_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
+     summary["all_required_verification_pass"] = True
+     save(HERE / "result.json", summary)
+-    print("PASS normal6 + exactly2 semantic FAIL1/ERROR0 mutants; evidence=" + str(HERE))
++    print("PASS reused quota3 + remaining binding3 + exactly2 semantic FAIL1/ERROR0 mutants; evidence=" + str(HERE))
+     return 0
+ 
+ 

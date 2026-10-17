@@ -1,0 +1,13 @@
+{
+  "status": "SOURCE_READY",
+  "utc": "2026-10-17T01:12:20.256264+00:00",
+  "files": {
+    "src/ops/tools/codex_unattended_quota_reader.py": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+    "src/ops/tools/codex_unattended_submission_binding.py": "1cc5e361ec8cc5268459973a2843bb3ad9a70f2e7f81417edba7eb7b7b5844bf"
+  },
+  "static_python310_ast": "PASS",
+  "product_tests_run": 0,
+  "live_rpc_for_new_modules": 0,
+  "old_suite_run": 0,
+  "plan": "4ef0459db19aa24a806f1eae5701abc04dca6994220a7df67deff889a2b2d265"
+}

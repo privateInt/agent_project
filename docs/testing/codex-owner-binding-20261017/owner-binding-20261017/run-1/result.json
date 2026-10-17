@@ -1,0 +1,907 @@
+{
+  "normal": {
+    "stage": "normal",
+    "testsRun": 4,
+    "failures": 0,
+    "errors": 1,
+    "skips": 0,
+    "methods": [
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests.test_quota_sequence_sanitization_and_fail_closed",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests.test_quota_fault_phases_and_no_send_inference",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests.test_unknown_ordinary_never_allowed",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests.test_binding_prepare_reuse_conflict_and_reopen",
+        "outcome": "ERROR",
+        "exception_type": "TypeError"
+      }
+    ],
+    "boundary_violations": [],
+    "sqlite_connections": [],
+    "runtime_calls": 0,
+    "source_copy": "/tmp/owner-binding-portable-normal-v3s_0dx1/fresh-source",
+    "original_checkout_reads": 0,
+    "opt_reads": 0,
+    "operator_tmp_reads": 0,
+    "quota_observations": [
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_BLOCKED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_USAGE_UNKNOWN",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_USAGE_UNKNOWN",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_USAGE_UNKNOWN",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_USAGE_UNKNOWN",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_USAGE_UNKNOWN",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_USAGE_UNKNOWN",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_ALLOWED_OBSERVED",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "QUOTA_SNAPSHOT_INVALID",
+        "phase": "SANITIZE",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_INTERFACE_INVALID",
+        "phase": "PRECHECK",
+        "requests": 0,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_INTERFACE_INVALID",
+        "phase": "PRECHECK",
+        "requests": 0,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_INTERFACE_INVALID",
+        "phase": "PRECHECK",
+        "requests": 0,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "INITIALIZE_RESULT_INVALID",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "INITIALIZE_RESULT_INVALID",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "INITIALIZE_RESULT_INVALID",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "INITIALIZE_RESULT_INVALID",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZE",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "INITIALIZED_NOTIFICATION",
+        "requests": 1,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "CLIENT_CALL_UNCONFIRMED",
+        "phase": "RATE_LIMITS_READ",
+        "requests": 2,
+        "runtime_calls": 0
+      },
+      {
+        "reason": "ORDINARY_USAGE_UNKNOWN",
+        "phase": "COMPLETE",
+        "requests": 2,
+        "runtime_calls": 0
+      }
+    ],
+    "binding_observations": [],
+    "all_pass": false,
+    "unknown_helper_normal_pass": false,
+    "process_returncode": 1,
+    "result_sha256": "cfee9e4c24162d8154ce64bdfbd68e668e28f37dbdcc2904ba71ed003273d5d3",
+    "log_sha256": "7ed9fef9b1d6579126a08e8cf1cd9b128a2fd1b423724c8586fe2ca0011791cc"
+  },
+  "M_Q": null,
+  "M_B": null,
+  "deadline_utc": "2026-10-17T01:57:31+00:00",
+  "clock_reset": false,
+  "runtime_calls": 0,
+  "old_suites_run": false
+}

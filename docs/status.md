@@ -1,5 +1,7 @@
 # 프로젝트 현재 상태
 
+2026-10-17: owner quota 조회1회(2RPC·재시도0)는 ordinaryUsageAllowed=true/주간14%를 확인했다. quota-only reader와 U01b2 별도 DB prebinding의 필수 새6개는 3+2+1로 통과했고 지정 의미 변이2개도 검출했다. 최초 setup/fixture 오류2개와 과거 false/100%·writer 충돌은 보존했다. 최종 독립 검토 PASS이며 같은 근거의 고정 보고서에 판정을 보존했다. [실제 근거](testing/codex-owner-binding-observed-20261017.json). 새 reader의 native 인수·send/ACK/controller·두 native 작업은 미완료이며 PAUSE/D18 보류를 유지한다.
+
 2026-10-17 KST U01b2: PR18 고정 `780d0755378b9f95f0282ec766ca99300b2b0b53` 위에 오프라인 queue/list 관측기를 추가했다. 기존 공개 `read_intent` 한 번으로 원래 intent를 읽고, client·prompt bytes·thread·원문 hash와 완결 pagination의 유일 후보를 대조한다. 전용 임시 SQLite/독립 소스 복사본의 새4개 최초 PASS와 두 의미 변이 검출(각 FAIL1/ERROR0), 원래 UNKNOWN/raw/hash/revision 및 재개방 보존을 확인했다. 기존 PASS는 반복하지 않았다. 최종 독립 검토는 별도 근거에 기록한다. 실제 ACK 저장·turn/result·controller/scheduler 연결과 두 실제 작업 연속 실행은 미완료이며 runtime D18 보류·두 PAUSE·운영/인증정보/main/VMS 보호를 유지한다. [새 근거](testing/codex-queue-correlation-observed-20261016.json).
 
 2026-10-16: [제출 전 intent 저널 근거](testing/codex-unattended-intent-observed-20261016.json)는 전용 임시 SQLite의 불변 저장·재조회·CAS·UNKNOWN 보존을 확인했다. 최초 새5개는4PASS/1FAIL(검사 helper 인자 수 오류)였고, 두 호출만 수정한 뒤 실패한5번째만PASS, 지정 변이2개는 각각 의미FAIL1/ERROR0으로 탐지됐다. 최초 오류와 통과4개를 보존·재사용했으며 최종 전체5개는 반복하지 않았다. 최종 독립 검토는 관찰 JSON을 따른다. 실제 controller/두 개발 작업은 미인수이며 부모 Auto-review만 적용, 두 하위 역할은 user, 기존 service/timer는 inactive/disabled와 두 PAUSE 상태다.

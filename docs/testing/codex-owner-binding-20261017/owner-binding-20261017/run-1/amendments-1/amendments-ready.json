@@ -1,0 +1,17 @@
+{
+  "status": "AMENDMENTS_READY",
+  "tests_ready_sha256": "c6f8baccc419386453025532d674b1abfbfd5c2dead9267153d45699c08cac6c",
+  "runner_sha256": "065cc786bd77d96c8c119053441c6e3e3a2bbcafb404e3e4b7e2644123b92fa3",
+  "quota_test_sha256": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+  "binding_test_sha256": "4190ad0152637cb06d5276bd94682a767def9ee8da9f7dbc86ee31930569a117",
+  "source_pins": {
+    "src/ops/tools/codex_unattended_submission_binding.py": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+    "src/ops/tools/codex_unattended_quota_reader.py": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c"
+  },
+  "static_checks_sha256": "eca523729dedb43a6e02604fe2f68afa3ca5e9c54667a7a1f4e2e664a4dcaf48",
+  "amendment_diff_sha256": "4dabe73b342bc17bbba89d65ac054a8142c50fbaff4e0b0597fd5a23bcd0adaa",
+  "new_tests_patch_sha256": "b3a88a59941df86fa935d3bec321b3ed24c6de9804b0fdd30da901a6350601a4",
+  "tests_executed": 0,
+  "source_ready_received": true,
+  "execution_authorized_now": false
+}

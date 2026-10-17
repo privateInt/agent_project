@@ -1,0 +1,86 @@
+{
+  "status": "PLAN_COMPLETE",
+  "plan_id": "OWNER-BINDING-20261017-D29-v1",
+  "plan_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-binding-20261017/frozen-plan.md",
+  "plan_sha256": "982a1c8e4405986319ec29005290dda7c36c4505a4fecef43496282c59f92efe",
+  "created_utc": "2026-10-17T01:07:43.342989+00:00",
+  "base_commit": "ddec1931eed8828cdd84ae783845729edf617fc1",
+  "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/binding-development",
+  "scope": {
+    "A": "reusable injected-owner-client quota-only reader; at most initialize/read2RPC plus initialized notification1; retries0; allowlisted code/phase; call-entry is not send proof",
+    "B": "new dedicated borrowed SQLite binding store; explicit empty initialization; locked PREPARED0 validation; immutable canonical thread/params/client/intent binding; reuse/conflict; unknown readback; no intent migration/claim/send"
+  },
+  "new_modules": [
+    "src/ops/tools/codex_unattended_quota_reader.py",
+    "src/ops/tools/codex_unattended_submission_binding.py"
+  ],
+  "public_APIs": [
+    "read_quota_only",
+    "initialize_submission_bindings",
+    "bind_submission",
+    "read_submission_binding"
+  ],
+  "test_methods": [
+    "test_quota_sequence_sanitization_and_fail_closed",
+    "test_quota_fault_phases_and_no_send_inference",
+    "test_unknown_ordinary_never_allowed",
+    "test_binding_prepare_reuse_conflict_and_reopen",
+    "test_binding_prepared_guard_and_lock_boundary",
+    "test_binding_faults_pins_schema_and_privacy"
+  ],
+  "test_method_count": 6,
+  "semantic_mutants": [
+    {
+      "id": "M_Q",
+      "target": "test_unknown_ordinary_never_allowed",
+      "delta": "ordinary is True -> ordinary is not False",
+      "required": "semantic FAIL1 ERROR0 actual null admitted by ordinary-only reader"
+    },
+    {
+      "id": "M_B",
+      "target": "case_unknown_intent_cannot_create_binding",
+      "delta": "bypass complete PREPARED and revision0 guard only",
+      "required": "semantic FAIL1 ERROR0 actual committed new binding against UNKNOWN1; no remote call"
+    }
+  ],
+  "validation_plan": "first normal6 once failfast in fresh portable source copy; real dedicated file SQLite, fake client only; old suites not rerun; isolated2 mutants only after allPASS",
+  "time_budget": {
+    "start_utc": "2026-10-17T00:57:31Z",
+    "deadline_utc": "2026-10-17T01:57:31Z",
+    "max_seconds": 3600,
+    "fixes_per_same_failure_max": 3,
+    "clock_reset": false
+  },
+  "execution_by_this_planning_turn": {
+    "product_or_test_implementation": 0,
+    "product_import_or_tests": 0,
+    "SQLite_or_SQL": 0,
+    "native_socket_network_RPC_queue": 0,
+    "old_sixRPC_or_thread_resume": 0,
+    "auth_or_permission_probes": 0,
+    "agent_queries_delegations": 0
+  },
+  "latest_owner_usage": "provided and statically corroborated existing receipt; ordinaryUsageAllowed=true weekly14%; no new owner RPC",
+  "source_pins": {
+    "src/ops/tools/codex_unattended_queue_observer.py": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+    "src/ops/tools/codex_unattended_intent_journal.py": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+    "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0"
+  },
+  "retained_owner_receipts_and_script_pins": {
+    "owner-native-metadata-once.json": "22e14deebb25db329fb0ebef6b22659167d2ffe06d3cbaeddd90b2fbc6a430bc",
+    "owner_metadata_once.py.txt": "7ec43e502ed7a59e61c3abfd8949df059fb9dbb2f80657fdcd93dee08f83d259",
+    "quota-read-once-20261017.json": "57a25a332bf29dfe3eabaee2817a1be5d75dd8114177b6a82bac8d51a9e0825c"
+  },
+  "original11_unchanged": true,
+  "runtime_D18": "HELD_NO_RESET",
+  "scheduler_PAUSE": "UNCHANGED",
+  "not_accepted": [
+    "actual new owner-client send",
+    "ACK/turn/controller connection",
+    "claim-to-dispatch live integration",
+    "owner/provenance/transport-pin proof",
+    "native quota admission freshness and applicable bucket gate"
+  ],
+  "next": "STOP. Coordinator freezes exact plan and obtains independent reviewer pre-PASS before implementation/tests-writing assignment."
+}

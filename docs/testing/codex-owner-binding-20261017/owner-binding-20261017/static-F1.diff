@@ -1,0 +1,30 @@
+--- before
++++ after
+@@ -173,7 +173,7 @@
+     }
+ 
+ 
+-def _result(report, intent_connection, binding_connection, reason, record=None):
++def _result(report, intent_connection, binding_connection, reason, record=None, *, initialize=False):
+     if reason not in _CONFIRMED | _BLOCKED:
+         reason = "CHECKPOINT_UNCONFIRMED"
+     confirmed = reason in _CONFIRMED
+@@ -182,7 +182,7 @@
+         status="CONFIRMED" if confirmed else "BLOCKED" if reason in _BLOCKED else "UNCERTAIN",
+         database_commit_confirmed=confirmed, new_binding=confirmed and reason == "BINDING_STORED",
+         binding_transaction_closed=_sqlite._closed(binding_connection),
+-        intent_transaction_closed=None if intent_connection is None else _sqlite._closed(intent_connection),
++        intent_transaction_closed=None if initialize else _sqlite._closed(intent_connection),
+     )
+     return {"report": report, "record": record if confirmed else None}
+ 
+@@ -282,7 +282,8 @@
+                         _rollback(connection)
+                 except Exception:
+                     reason, record = "CHECKPOINT_UNCONFIRMED", None
+-    return _result(report, intent_connection, binding_connection, reason, record)
++    return _result(report, intent_connection, binding_connection, reason, record,
++                   initialize=mode == "initialize")
+ 
+ 
+ def initialize_submission_bindings(binding_connection):

@@ -1,0 +1,8 @@
+{
+  "scope": "Status wording references immutable final report; does not claim review PASS early",
+  "changed_file": "docs/status.md",
+  "before": "최종 독립 검토는 진행 중이다.",
+  "after": "최종 독립 검토 판정은 같은 근거의 고정 보고서를 따른다.",
+  "utc": "2026-10-17T01:42:31.568472+00:00",
+  "product_tests_repeated": false
+}

@@ -1,0 +1,168 @@
+{
+  "schema": 1,
+  "unit": "U01b2_OWNER_PREFLIGHT_AND_DURABLE_PREBINDING",
+  "base_commit": "ddec1931eed8828cdd84ae783845729edf617fc1",
+  "scope": "Injected owner quota-only reader + separate file SQLite immutable prebinding; no send/ACK/controller activation",
+  "source_sha256": {
+    "src/ops/tools/codex_unattended_quota_reader.py": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+    "src/ops/tools/codex_unattended_submission_binding.py": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c"
+  },
+  "plan_sha256": "4ef0459db19aa24a806f1eae5701abc04dca6994220a7df67deff889a2b2d265",
+  "new_tests": {
+    "status": "PASS_WITH_PRIOR_ERRORS_PRESERVED",
+    "unique_required_methods": 6,
+    "final_accepted_passes": 6,
+    "final_accepted_errors": 0,
+    "skips": 0,
+    "normal_execution_split": [
+      {
+        "run": 1,
+        "testsRun": 4,
+        "failures": 0,
+        "errors": 1,
+        "methods": [
+          {
+            "id": "src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests.test_quota_sequence_sanitization_and_fail_closed",
+            "outcome": "PASS"
+          },
+          {
+            "id": "src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests.test_quota_fault_phases_and_no_send_inference",
+            "outcome": "PASS"
+          },
+          {
+            "id": "src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests.test_unknown_ordinary_never_allowed",
+            "outcome": "PASS"
+          },
+          {
+            "id": "src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests.test_binding_prepare_reuse_conflict_and_reopen",
+            "outcome": "ERROR",
+            "exception_type": "TypeError"
+          }
+        ]
+      },
+      {
+        "run": 2,
+        "testsRun": 3,
+        "failures": 0,
+        "errors": 1,
+        "methods": [
+          {
+            "id": "src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests.test_binding_prepare_reuse_conflict_and_reopen",
+            "outcome": "PASS"
+          },
+          {
+            "id": "src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests.test_binding_prepared_guard_and_lock_boundary",
+            "outcome": "PASS"
+          },
+          {
+            "id": "src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests.test_binding_faults_pins_schema_and_privacy",
+            "outcome": "ERROR",
+            "exception_type": "DatabaseError"
+          }
+        ]
+      },
+      {
+        "run": 3,
+        "testsRun": 1,
+        "failures": 0,
+        "errors": 0,
+        "methods": [
+          {
+            "id": "src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests.test_binding_faults_pins_schema_and_privacy",
+            "outcome": "PASS"
+          }
+        ]
+      }
+    ],
+    "passing_methods_repeated": false,
+    "earlier_setup_and_fixture_errors_preserved": 2,
+    "test_fix_rounds": 2,
+    "whole_suite_repeated": false
+  },
+  "semantic_mutants": {
+    "M_Q": {
+      "status": "DETECTED_AS_PLANNED",
+      "tests_run": 1,
+      "failures": 1,
+      "errors": 0,
+      "skips": 0,
+      "actual_wrong_candidate_verified": true,
+      "semantic_fail1_error0": true,
+      "normal_target_pass_reused": true
+    },
+    "M_B": {
+      "status": "DETECTED_AS_PLANNED",
+      "tests_run": 1,
+      "failures": 1,
+      "errors": 0,
+      "skips": 0,
+      "actual_wrong_candidate_verified": true,
+      "semantic_fail1_error0": true,
+      "normal_target_pass_reused": true
+    }
+  },
+  "old_passes": "NOT_REPEATED",
+  "first_errors": "PRESERVED",
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-owner-binding-20261017/review/final-review.md",
+    "sha256": "7d023e97996c6bf3ba35b198b5bf928bb787b723dad6907baaf06ccf539325f7"
+  },
+  "runtime_investigation": "HELD_D18_NO_FURTHER_CONTROL_PROBES",
+  "scheduler": "PAUSED_UNCHANGED",
+  "two_complete_native_jobs": "NOT_RUN",
+  "native_acceptance_verified": false,
+  "owner_values_invented": false,
+  "vms_project": "EXCLUDED",
+  "latest_owner_quota_observation": {
+    "status": "ACTUAL_OWNER_QUERY_COMPLETED_ONCE",
+    "ordinaryUsageAllowed": true,
+    "weekly_used_percent": 14,
+    "observed_unix": 1792198621,
+    "requests": 2,
+    "initialized_notifications": 1,
+    "retries": 0,
+    "transport_elapsed_seconds": 0.566302,
+    "configured_outer_bound_seconds": 20,
+    "new_product_reader_used_for_actual_query": false,
+    "earlier_false_observation": "PRESERVED_HISTORICAL",
+    "thread_resume": 0
+  },
+  "native_new_product_reader_acceptance": "NOT_RUN_NO_SECOND_QUOTA_QUERY",
+  "native_send_ack_turn_controller": "NOT_IMPLEMENTED",
+  "deadline_utc": "2026-10-17T01:57:31Z",
+  "test_environment": {
+    "python": "3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0]",
+    "sqlite": "3.37.2",
+    "executable": "/usr/bin/python3",
+    "cwd_before_copy": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+    "declared_turn_metadata_at_authoring": {
+      "sandbox_mode": "workspace-write",
+      "approvals_reviewer": "auto_review",
+      "approval_policy": "NOT_SEPARATELY_DECLARED_IN_THIS_TURN_CONTEXT",
+      "network_access": "restricted",
+      "permission_probes": 0
+    },
+    "native_probe_count": 0,
+    "permissions_investigated": false,
+    "scheduler_pause_changed": false,
+    "D18": "HELD",
+    "old_results_rerun": false
+  },
+  "preexecution_static_F1": "Fixed report None/mode discrimination; independent delta PASS; original source/finding retained",
+  "test_sha256": {
+    "test_codex_unattended_quota_reader.py": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+    "test_codex_unattended_submission_binding.py": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6"
+  },
+  "execution_result_sha256": "09fbe7e8585185322f53ba45f6820fa906d0dbf1a1b8c586272113fa5dce67b8",
+  "execution_scope": {
+    "quota": "fake injected client only; raw metadata discarded",
+    "binding": "actual Python3.10.12 SQLite3.37.2 dedicated file DBs, commit/reopen/peer/locks/faults",
+    "all_from_fresh_minimal_copies": true,
+    "runtime_rpc_for_new_modules": 0,
+    "boundary_violations": 0,
+    "old_tests_rerun": false
+  },
+  "runner_sha256": "025372067ccd97fdd8f1a5f7070fe2ea5161d6e99903403abad624ffb4670238",
+  "completed_verification_utc": "2026-10-17T01:41:42.425123+00:00"
+}

@@ -1,0 +1,25 @@
+test_quota_sequence_sanitization_and_fail_closed (src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests) ... ok
+test_quota_fault_phases_and_no_send_inference (src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests) ... ok
+test_unknown_ordinary_never_allowed (src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests) ... ok
+test_binding_prepare_reuse_conflict_and_reopen (src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests) ... ERROR
+
+======================================================================
+ERROR: test_binding_prepare_reuse_conflict_and_reopen (src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/owner-binding-portable-normal-v3s_0dx1/fresh-source/src/ops/tools/tests/test_codex_unattended_submission_binding.py", line 280, in test_binding_prepare_reuse_conflict_and_reopen
+    with self.database() as db:
+  File "/usr/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/tmp/owner-binding-portable-normal-v3s_0dx1/fresh-source/src/ops/tools/tests/test_codex_unattended_submission_binding.py", line 80, in database
+    iconn, bconn = support.connect(ipath), support.connect(bpath)
+  File "/tmp/owner-binding-portable-normal-v3s_0dx1/fresh-source/src/ops/tools/tests/test_codex_unattended_intent_journal.py", line 80, in connect
+    connection = sqlite3.connect(path, isolation_level=None, timeout=1, check_same_thread=not shared)
+  File "/tmp/owner-binding-portable-normal-v3s_0dx1/fresh-source/run-once.py", line 183, in audit
+    forbidden = target != ":memory:" and not os.path.abspath(target).startswith(str(tmp) + os.sep)
+TypeError: startswith first arg must be bytes or a tuple of bytes, not str
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.023s
+
+FAILED (errors=1)

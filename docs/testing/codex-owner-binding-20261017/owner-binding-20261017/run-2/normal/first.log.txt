@@ -1,0 +1,22 @@
+test_binding_prepare_reuse_conflict_and_reopen (src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests) ... ok
+test_binding_prepared_guard_and_lock_boundary (src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests) ... ok
+test_binding_faults_pins_schema_and_privacy (src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests) ... ERROR
+
+======================================================================
+ERROR: test_binding_faults_pins_schema_and_privacy (src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/owner-binding-portable-normal-esrq8w6x/fresh-source/src/ops/tools/tests/test_codex_unattended_submission_binding.py", line 597, in test_binding_faults_pins_schema_and_privacy
+    self.invoke(db, reason="CHECKPOINT_UNCONFIRMED", phase="BINDING_READBACK",
+  File "/tmp/owner-binding-portable-normal-esrq8w6x/fresh-source/src/ops/tools/tests/test_codex_unattended_submission_binding.py", line 199, in invoke
+    self.assertEqual(before_profiles, [support.profile(c) for c in actual_connections])
+  File "/tmp/owner-binding-portable-normal-esrq8w6x/fresh-source/src/ops/tools/tests/test_codex_unattended_submission_binding.py", line 199, in <listcomp>
+    self.assertEqual(before_profiles, [support.profile(c) for c in actual_connections])
+  File "/tmp/owner-binding-portable-normal-esrq8w6x/fresh-source/src/ops/tools/tests/test_codex_unattended_intent_journal.py", line 100, in profile
+    cursor = connection.execute("PRAGMA " + name)
+sqlite3.DatabaseError: not authorized
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.434s
+
+FAILED (errors=1)

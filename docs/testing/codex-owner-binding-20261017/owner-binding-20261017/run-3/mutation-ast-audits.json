@@ -1,0 +1,18 @@
+{
+  "M_Q": {
+    "before_sha256": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+    "after_sha256": "92581ffb6f1b5ad37803309cf78aabdb11d24618a27bee54d6d82be689e592e7",
+    "target_count": 1,
+    "before_expression": "ordinary is True",
+    "after_expression": "ordinary is not False",
+    "other_ast_equal": true
+  },
+  "M_B": {
+    "before_sha256": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+    "after_sha256": "ac586c058c83e06325018b7b5dac478eb255f10fd5e58303bb5028cd9dc46f2e",
+    "target_count": 1,
+    "before_expression": "intent[\"state\"] == \"PREPARED\" and intent[\"revision\"] == 0",
+    "after_expression": "True",
+    "other_ast_equal": true
+  }
+}

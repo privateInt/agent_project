@@ -1,0 +1,382 @@
+--- authoring-v1/test_codex_unattended_quota_reader.py
++++ tests-ready/test_codex_unattended_quota_reader.py
+@@ -95,6 +95,13 @@
+     __hash__ = None
+ 
+ 
++class HostileCode(str):
++    def __eq__(self, other):
++        raise support.ForbiddenIO("HOSTILE_CODE_EQUALITY_CALLED")
++
++    __hash__ = str.__hash__
++
++
+ class ClientFailure(Exception):
+     def __init__(self, code):
+         super().__init__("PRIVATE_SYNTHETIC_CLIENT_EXCEPTION_NEVER_LOG")
+@@ -193,12 +200,14 @@
+         self.assertIs(type(result["windows"]), list)
+         self.assertLessEqual(len(result["windows"]), 16)
+         for window in result["windows"]:
++            self.assertIs(type(window), dict)
+             self.assertEqual({"limit_id_sha256", "reached_type_is_null", "primary", "secondary"}, set(window))
+             self.assertTrue(window["limit_id_sha256"] is None or
+                             (type(window["limit_id_sha256"]) is str and len(window["limit_id_sha256"]) == 64))
+             self.assertTrue(window["reached_type_is_null"] is None or type(window["reached_type_is_null"]) is bool)
+             for name in ("primary", "secondary"):
+                 if window[name] is not None:
++                    self.assertIs(type(window[name]), dict)
+                     self.assertEqual({"usedPercent", "windowDurationMins", "resetsAt"}, set(window[name]))
+                     self.assertIs(type(window[name]["usedPercent"]), int)
+                     self.assertTrue(0 <= window[name]["usedPercent"] <= 100)
+@@ -212,6 +221,7 @@
+             self.assertIs(result["initialized_notification_completed"], "initialized" in client.completed)
+             self.assertEqual((0, 0, 0, 0), (client.send_count, client.context_entries, client.context_exits, client.closes))
+         for request in result["requests"]:
++            self.assertIs(type(request), dict)
+             self.assertEqual({"method", "call_entered", "response_observed"}, set(request))
+             self.assertIs(type(request["call_entered"]), bool)
+             self.assertIs(type(request["response_observed"]), bool)
+@@ -278,6 +288,17 @@
+         self.assertEqual({"limit_id_sha256": None, "reached_type_is_null": None,
+                           "primary": {"usedPercent": 0, "windowDurationMins": None, "resetsAt": None},
+                           "secondary": None}, projected)
++        secondary = self.snapshot()
++        secondary["rateLimits"]["secondary"] = secondary["rateLimits"].pop("primary")
++        secondary["rateLimitsByLimitId"] = None
++        result = self.invoke(self.client(secondary), reason="ORDINARY_ALLOWED_OBSERVED")
++        self.assertIsNone(result["windows"][0]["primary"])
++        self.assertEqual(self.data["window"], result["windows"][0]["secondary"])
++        for limit_id in (None, "é"*128):
++            snapshot = self.snapshot()
++            snapshot["rateLimits"]["limitId"] = limit_id
++            result = self.invoke(self.client(snapshot), reason="ORDINARY_ALLOWED_OBSERVED")
++            self.assertEqual(None if limit_id is None else support.sha(limit_id.encode()), result["windows"][0]["limit_id_sha256"])
+         for duration, reset in ((1, 0), (2**63-1, 2**63-1), (None, None)):
+             snapshot = self.snapshot()
+             snapshot["rateLimits"]["primary"].update(windowDurationMins=duration, resetsAt=reset)
+@@ -298,7 +319,7 @@
+             snapshot = self.snapshot()
+             snapshot["rateLimitsByLimitId"] = value
+             invalid.append(snapshot)
+-        for value in ("", "x"*257, "\ud800", 1):
++        for value in ("", "x"*257, "é"*129, "\ud800", 1):
+             snapshot = self.snapshot()
+             snapshot["rateLimitsByLimitId"] = {value: self.snapshot()["rateLimits"]}
+             invalid.append(snapshot)
+@@ -338,6 +359,7 @@
+                 self.assertIsNone(result["ordinaryUsageAllowed"])
+                 self.assertIs(result["ordinary_usage_observed_allowed"], False)
+         for error in (ClientFailure("PRIVATE_UNKNOWN_CODE"), ClientFailure(1), ClientFailure(Opaque()),
++                      ClientFailure(HostileCode("RPC_REQUEST_TIMEOUT")),
+                       PropertyFailure("PRIVATE_PROPERTY_EXCEPTION")):
+             client = self.client(self.snapshot(), error_at="account/rateLimits/read", error=error)
+             self.invoke(client, reason="CLIENT_CALL_UNCONFIRMED", phase="RATE_LIMITS_READ",
+--- authoring-v1/test_codex_unattended_submission_binding.py
++++ tests-ready/test_codex_unattended_submission_binding.py
+@@ -30,6 +30,7 @@
+ PHASES = {"PRECHECK", "INTENT_LOCK", "INTENT_VALIDATE", "BINDING_TRANSACTION", "BINDING_VALIDATE",
+           "BINDING_WRITE", "BINDING_READBACK", "BINDING_COMMIT", "INTENT_RELEASE", "COMPLETE"}
+ OBSERVATIONS = []
++_UNSET = object()
+ 
+ 
+ def binding_rows(connection):
+@@ -104,7 +105,7 @@
+                     self.assertEqual("CLAIM_RECORDED", claimed["report"]["reason"])
+                 yield db
+             finally:
+-                for connection in (peer_b, peer_i, bconn, iconn):
++                for connection in (db.peer_binding, db.peer_intent, db.binding, db.intent, bconn, iconn):
+                     if alive(connection):
+                         if connection.in_transaction:
+                             connection.rollback()  # Test owns final cleanup, never product policy.
+@@ -119,15 +120,15 @@
+                 "submission_params_sha256": support.sha(raw)}
+ 
+     def invoke(self, db, operation="bind_submission", *, reason, phase=None, raw=None,
+-               raw_sha=None, key=None, intent_sha=None, binding_sha=None,
+-               intent_connection=None, binding_connection=None, after_call=None):
+-        iconn = db.intent if intent_connection is None else intent_connection
+-        bconn = db.binding if binding_connection is None else binding_connection
++               raw_sha=None, key=_UNSET, intent_sha=_UNSET, binding_sha=None,
++               intent_connection=_UNSET, binding_connection=_UNSET, after_call=None):
++        iconn = db.intent if intent_connection is _UNSET else intent_connection
++        bconn = db.binding if binding_connection is _UNSET else binding_connection
+         is_init = operation == "initialize_submission_bindings"
+         raw = db.raw if raw is None else raw
+         raw_sha = support.sha(raw) if raw_sha is None and type(raw) is bytes else raw_sha
+-        key = db.key if key is None else key
+-        intent_sha = db.intent_sha if intent_sha is None else intent_sha
++        key = db.key if key is _UNSET else key
++        intent_sha = db.intent_sha if intent_sha is _UNSET else intent_sha
+         traces, reuse = [], []
+         actual_connections = [c for c in (iconn, bconn) if alive(c)]
+         before_profiles = [support.profile(c) for c in actual_connections]
+@@ -214,6 +215,9 @@
+             self.assertIs(type(report["intent_revision"]), int)
+         else:
+             self.assertIsNone(report["intent_revision"])
++        if report["reason"] in CONFIRMED and not is_init:
++            self.assertIn(("connection", True), reuse)
++            self.assertIn(("connection", False), reuse)
+         if report["intent_validated"]:
+             self.assertIn(("schema", True), reuse)
+             self.assertIn(("pinned", True), reuse)
+@@ -246,10 +250,10 @@
+                              "intent_transaction_closed": report["intent_transaction_closed"],
+                              "binding_transaction_closed": report["binding_transaction_closed"],
+                              "sql_count": len(traces), "runtime_calls": 0})
++        # Capture the committed candidate first; a changed outcome fails the semantic reason.
++        self.assertEqual(reason, report["reason"])
+         if phase is not None:
+             self.assertEqual(phase, report["phase"])
+-        # The M_B semantic guard is deliberately last: capture actual committed wrong candidate first.
+-        self.assertEqual(reason, report["reason"])
+         return result
+ 
+     def case_unknown_intent_cannot_create_binding(self):
+@@ -258,12 +262,14 @@
+             before_b = binding_snapshot(db.binding, db.binding_path)
+             self.assertEqual(("SUBMISSION_UNKNOWN", 1), support.rows(db.intent)[0][6:])
+             self.assertEqual([], binding_rows(db.peer_binding))
++            self.expected_wrong_candidate = self.expected_c(db)
+             result = self.invoke(db, reason="INTENT_NOT_PREPARED", phase="INTENT_VALIDATE")
+             self.assertIsNone(result["record"])
+             self.assertIs(result["report"]["new_binding"], False)
+             self.assertEqual([], binding_rows(db.peer_binding))
+             self.assertEqual(before_i, support.database_snapshot(db.intent, db.intent_path))
+             self.assertEqual(before_b, binding_snapshot(db.binding, db.binding_path))
++            self.unknown_guard_normal_passed = True
+ 
+     def test_binding_prepare_reuse_conflict_and_reopen(self):
+         with self.database() as db:
+@@ -368,19 +374,41 @@
+             # Both structural/active checks precede ANY SQL, including the other valid connection.
+             for conn, role in ((db.intent, "intent"), (db.binding, "binding")):
+                 conn.execute("BEGIN").close()
++                if role == "intent":
++                    conn.execute("UPDATE submission_intents SET client_user_message_id='caller-owned-uncommitted'").close()
++                    pending = support.rows(conn)
++                else:
++                    raw = support.canonical(self.expected_c(db))
++                    conn.execute("INSERT INTO submission_bindings VALUES (?,?,?,?,?)", (*db.key, raw, support.sha(raw))).close()
++                    pending = binding_rows(conn)
+                 self.invoke(db, reason="CONNECTION_INVALID")
+                 self.assertEqual([], self.last_sql)
+                 self.assertTrue(conn.in_transaction)
++                self.assertEqual(pending, support.rows(conn) if role == "intent" else binding_rows(conn))
++                self.assertEqual([], binding_rows(db.peer_binding))
++                self.assertEqual(db.value["clientUserMessageId"], support.rows(db.peer_intent)[0][3])
+                 conn.rollback()
+             for role in ("intent", "binding"):
+-                for bad in (object(), Opaque()):
++                for bad in (None, object(), Opaque()):
+                     self.invoke(db, reason="CONNECTION_INVALID", **{role + "_connection": bad})
+                     self.assertEqual([], self.last_sql)
+                 closed = support.connect(db.binding_path)
+                 closed.close()
+                 self.invoke(db, reason="CONNECTION_INVALID", **{role + "_connection": closed})
+                 self.assertEqual([], self.last_sql)
++            memory = support.connect(":memory:")
++            try:
++                self.invoke(db, binding_connection=memory, reason="CONNECTION_INVALID")
++            finally:
++                memory.close()
+             for conn in (db.intent, db.binding):
++                for attribute, invalid in (("row_factory", sqlite3.Row), ("text_factory", bytes),
++                                           ("isolation_level", "DEFERRED")):
++                    previous = getattr(conn, attribute)
++                    setattr(conn, attribute, invalid)
++                    self.invoke(db, reason="CONNECTION_INVALID")
++                    self.assertEqual([], self.last_sql)
++                    setattr(conn, attribute, previous)
+                 for sql, restore in (("PRAGMA synchronous=OFF", "PRAGMA synchronous=FULL"),
+                                      ("PRAGMA busy_timeout=1001", "PRAGMA busy_timeout=1000")):
+                     conn.execute(sql).close()
+@@ -458,6 +486,29 @@
+                 before = binding_snapshot(db.binding, db.binding_path)
+                 self.invoke(db, "read_submission_binding", binding_sha=pin, reason="ROW_INVALID")
+                 self.assertEqual(before, binding_snapshot(db.binding, db.binding_path))
++        for field, invalid in (("schema", True), ("intent_revision", False),
++                               ("client_user_message_id", "bad client"), ("extra", "unsupported")):
++            with self.database() as db:
++                stored = self.invoke(db, reason="BINDING_STORED")
++                value = json.loads(stored["record"]["binding_bytes"])
++                value[field] = invalid
++                raw = support.canonical(value)
++                pin = support.sha(raw)
++                db.binding.execute("UPDATE submission_bindings SET binding_bytes=?,binding_sha256=?", (raw, pin)).close()
++                before = binding_snapshot(db.binding, db.binding_path)
++                self.invoke(db, "read_submission_binding", binding_sha=pin, reason="ROW_INVALID")
++                self.assertEqual(before, binding_snapshot(db.binding, db.binding_path))
++        for field, wrong in (("intent_sha256", "0"*64), ("client_user_message_id", "different-valid-client")):
++            with self.database() as db:
++                stored = self.invoke(db, reason="BINDING_STORED")
++                value = json.loads(stored["record"]["binding_bytes"])
++                value[field] = wrong
++                raw = support.canonical(value)
++                pin = support.sha(raw)
++                db.binding.execute("UPDATE submission_bindings SET binding_bytes=?,binding_sha256=?", (raw, pin)).close()
++                before = binding_snapshot(db.binding, db.binding_path)
++                self.invoke(db, "read_submission_binding", binding_sha=pin, reason="INTENT_BINDING_MISMATCH")
++                self.assertEqual(before, binding_snapshot(db.binding, db.binding_path))
+         # D06: preflight _one has TWO arguments. Count actual injected reach, no arity-error PASS.
+         for role in ("intent", "binding"):
+             for pragma in ("PRAGMA busy_timeout", "PRAGMA main.synchronous"):
+--- authoring-v1/run-once.py
++++ tests-ready/run-once.py
+@@ -26,8 +26,8 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ EVIDENCE = HERE.parent
+-ROOT = EVIDENCE.parents[3]
+-WORK = ROOT / "var/unattended-20261015/binding-development"
++ROOT = next((parent for parent in HERE.parents if parent.name == "agent_project"), None)
++WORK = ROOT / "var/unattended-20261015/binding-development" if ROOT is not None else None
+ DEADLINE = dt.datetime(2026, 10, 17, 1, 57, 31, tzinfo=dt.timezone.utc)
+ PLAN_PIN = "4ef0459db19aa24a806f1eae5701abc04dca6994220a7df67deff889a2b2d265"
+ REVIEW_PIN = "14183f1e79baceed04bb3c656a252d67382ec65209409e005e741e002c289499"
+@@ -132,13 +132,13 @@
+     pass
+ 
+ 
+-def worker(copy_root, stage_dir, stage):
++def worker(copy_root, stage_dir, stage, forbidden_root):
+     """Only this fresh process imports candidate/test code; paths already pinned by driver."""
+     copy_root, stage_dir = Path(copy_root), Path(stage_dir)
+     sys.dont_write_bytecode = True
+     os.chdir(copy_root)
+     sys.path[:] = [str(copy_root)] + [p for p in sys.path if p and
+-        not str(Path(p).absolute()).startswith(str(ROOT)) and p != str(copy_root)]
++        not str(Path(p).absolute()).startswith(forbidden_root) and p != str(copy_root)]
+     tmp = copy_root / "temporary-databases"
+     tmp.mkdir()
+     tempfile.tempdir = str(tmp)
+@@ -159,9 +159,13 @@
+         text = os.path.abspath(os.fspath(path))
+         if text == str(copy_root) or text.startswith(copy_prefix):
+             return True
++        if text == str(stage_dir) or text.startswith(output_prefix):
++            return True
++        if text == forbidden_root or text.startswith(forbidden_root + os.sep) or text == "/opt" or text.startswith("/opt/"):
++            return False
+         if not write and any(text == r or text.startswith(r + os.sep) for r in std_roots):
+             return True
+-        return text == str(stage_dir) or text.startswith(output_prefix)
++        return False
+ 
+     def audit(event, args):
+         if not active[0]:
+@@ -183,6 +187,24 @@
+             raise BoundaryViolation("ORIGINAL_CHECKOUT_OPT_OPERATOR_NETWORK_IO_FORBIDDEN")
+ 
+     sys.addaudithook(audit)
++    # stat/lstat do not emit portable Python audit events; guard them explicitly too.
++    original_fs = {}
++    metadata_ancestors = {str(parent) for base in (copy_root, *(Path(r) for r in std_roots)) for parent in base.parents}
++    for fs_name in ("stat", "lstat", "listdir", "scandir", "access", "readlink"):
++        original = getattr(os, fs_name)
++        original_fs[fs_name] = original
++
++        def guarded_fs(path=".", *args, _original=original, _kind=fs_name, **kwargs):
++            # pathlib.resolve needs metadata for /, /tmp and stdlib ancestors, never their contents.
++            ancestor_metadata = (_kind in ("stat", "lstat", "access", "readlink")
++                                 and isinstance(path, (str, bytes, os.PathLike))
++                                 and os.path.abspath(os.fsdecode(path)) in metadata_ancestors)
++            if active[0] and not path_allowed(path) and not ancestor_metadata:
++                violations.append({"event": "filesystem_metadata_read", "reason": "OFFLINE_IO_BOUNDARY_VIOLATION"})
++                raise BoundaryViolation("ORIGINAL_CHECKOUT_OPT_OPERATOR_METADATA_READ_FORBIDDEN")
++            return _original(path, *args, **kwargs)
++
++        setattr(os, fs_name, guarded_fs)
+     seconds = remaining()
+ 
+     def expired(signum, frame):
+@@ -218,7 +240,16 @@
+                 super().addSuccess(test)
+ 
+             def addFailure(self, test, err):
+-                records.append({"id": test.id(), "outcome": "FAIL", "exception_type": err[0].__name__})
++                assertion_frame = None
++                tb = err[2]
++                while tb:
++                    filename = tb.tb_frame.f_code.co_filename
++                    if filename in (str(copy_root / QT), str(copy_root / BT)):
++                        assertion_frame = {"file": str(Path(filename).relative_to(copy_root)),
++                                           "function": tb.tb_frame.f_code.co_name, "line": tb.tb_lineno}
++                    tb = tb.tb_next
++                records.append({"id": test.id(), "outcome": "FAIL", "exception_type": err[0].__name__,
++                                "last_test_assertion": assertion_frame})
+                 super().addFailure(test, err)
+ 
+             def addError(self, test, err):
+@@ -237,6 +268,9 @@
+                        "errors": len(result.errors), "skips": len(result.skipped), "methods": records,
+                        "boundary_violations": violations, "sqlite_connections": db_connections,
+                        "runtime_calls": 0, "source_copy": str(copy_root),
++                       "original_checkout_reads": 0 if not violations else "UNCONFIRMED",
++                       "opt_reads": 0 if not violations else "UNCONFIRMED",
++                       "operator_tmp_reads": 0 if not violations else "UNCONFIRMED",
+                        "quota_observations": qm.OBSERVATIONS, "binding_observations": bm.OBSERVATIONS}
+         if stage == "normal":
+             result_data["all_pass"] = result.testsRun == 6 and result.wasSuccessful() and not result.skipped and len(records) == 6
+@@ -245,7 +279,15 @@
+             last = getattr(instance, "last_result", None)
+             result_data["actual_wrong_candidate"] = last
+             expected_fail = result.testsRun == 1 and len(result.failures) == 1 and not result.errors and not result.skipped
+-            semantic_assertion = len(records) == 1 and records[0].get("exception_type") == "AssertionError"
++            assertion_file = QT if stage == "M_Q" else BT
++            expression = 'self.assertEqual(expected_status, result["status"])' if stage == "M_Q" else 'self.assertEqual(reason, report["reason"])'
++            assertion_ast = ast.parse(expression).body[0].value
++            assertion_nodes = [node for node in ast.walk(ast.parse((copy_root / assertion_file).read_bytes()))
++                               if isinstance(node, ast.Call) and ast.dump(node, include_attributes=False) == ast.dump(assertion_ast, include_attributes=False)]
++            need(len(assertion_nodes) == 1, "MUTANT_SEMANTIC_ASSERTION_MUST_BE_UNIQUE")
++            expected_frame = {"file": assertion_file, "function": "invoke", "line": assertion_nodes[0].lineno}
++            semantic_assertion = (len(records) == 1 and records[0].get("exception_type") == "AssertionError"
++                                  and records[0].get("last_test_assertion") == expected_frame)
+             if stage == "M_Q":
+                 wrong = (type(last) is dict and last.get("status") == "OBSERVED_ALLOWED"
+                          and last.get("reason") == "ORDINARY_ALLOWED_OBSERVED"
+@@ -287,6 +329,8 @@
+     finally:
+         active[0] = False
+         signal.setitimer(signal.ITIMER_REAL, 0)
++        for name, original in original_fs.items():
++            setattr(os, name, original)
+         save(stage_dir / "result.json", result_data)
+     return 0 if result_data.get("all_pass") or result_data.get("semantic_fail1_error0") else 1
+ 
+@@ -300,9 +344,10 @@
+     parser.add_argument("--internal-stage", choices=("normal", "M_Q", "M_B"))
+     parser.add_argument("--copy-root")
+     parser.add_argument("--stage-dir")
++    parser.add_argument("--forbidden-root")
+     args = parser.parse_args()
+     if args.internal_stage:
+-        return worker(args.copy_root, args.stage_dir, args.internal_stage)
++        return worker(args.copy_root, args.stage_dir, args.internal_stage, args.forbidden_root)
+     need(args.source_ready and args.quota_source_sha256 and args.binding_source_sha256 and args.binding_guard,
+          "SOURCE_READY_STATIC_REVIEW_AND_EXACT_PINS_REQUIRED")
+     remaining()
+@@ -342,6 +387,8 @@
+     for name in ("review-plan-v1.md", "implementation-plan-review.md"):
+         shutil.copyfile(EVIDENCE / name, snapshot / name)
+     shutil.copyfile(__file__, snapshot / "run-once.py")
++    (snapshot / "tests-ready.json").write_bytes(readiness_raw)
++    shutil.copyfile(HERE / "test-writing-inputs.json", snapshot / "test-writing-inputs.json")
+     save(HERE / "mutation-ast-audits.json", {"M_Q": mq_audit, "M_B": mb_audit})
+     summary = {"normal": None, "M_Q": None, "M_B": None, "deadline_utc": DEADLINE.isoformat(),
+                "clock_reset": False, "runtime_calls": 0, "old_suites_run": False}
+@@ -362,8 +409,9 @@
+             changed = QUOTA if stage == "M_Q" else BINDING if stage == "M_B" else None
+             if changed:
+                 (stage_dir / "mutated-source.py.txt").write_bytes((copied / changed).read_bytes())
+-            command = [sys.executable, "-B", str(copied / "run-once.py"), "--internal-stage", stage,
+-                       "--copy-root", str(copied), "--stage-dir", str(stage_dir)]
++            command = [sys.executable, "-I", "-S", "-B", str(copied / "run-once.py"), "--internal-stage", stage,
++                       "--copy-root", str(copied), "--stage-dir", str(stage_dir),
++                       "--forbidden-root", str(ROOT)]
+             save(stage_dir / "command.json", command)
+             with (stage_dir / "process.log").open("x") as log:
+                 completed = subprocess.run(command, cwd=copied, stdout=log, stderr=subprocess.STDOUT,

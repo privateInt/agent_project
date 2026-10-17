@@ -1,0 +1,87 @@
+--- run-2
++++ run-3
+@@ -222,7 +222,7 @@
+         need(Path(qm.product.__file__).is_relative_to(copy_root) and Path(bm.product.__file__).is_relative_to(copy_root),
+              "PRODUCT_IMPORT_NOT_PORTABLE")
+         if stage == "normal":
+-            cases = [bm.SubmissionBindingTests(name) for name in METHODS_B]
++            cases = [bm.SubmissionBindingTests(METHODS_B[2])]
+             suite = unittest.TestSuite(cases)
+         elif stage == "M_Q":
+             instance = qm.QuotaReaderTests(METHODS_Q[2])
+@@ -274,8 +274,8 @@
+                        "operator_tmp_reads": 0 if not violations else "UNCONFIRMED",
+                        "quota_observations": qm.OBSERVATIONS, "binding_observations": bm.OBSERVATIONS}
+         if stage == "normal":
+-            result_data["all_pass"] = result.testsRun == 3 and result.wasSuccessful() and not result.skipped and len(records) == 3
+-            result_data["unknown_helper_normal_pass"] = bool(getattr(cases[1], "unknown_guard_normal_passed", False))
++            result_data["all_pass"] = result.testsRun == 1 and result.wasSuccessful() and not result.skipped and len(records) == 1
++            result_data["unknown_helper_normal_pass"] = None  # B2 helper PASS is reused by the driver from the preserved second attempt
+         else:
+             last = getattr(instance, "last_result", None)
+             result_data["actual_wrong_candidate"] = last
+@@ -362,6 +362,13 @@
+     need(previous_pins[QUOTA] == args.quota_source_sha256
+          and previous_pins[BINDING] == args.binding_source_sha256,
+          "PREVIOUS_PRODUCT_PINS_CHANGED")
++    previous_binding = json.loads((EVIDENCE / "run-2/normal/result.json").read_bytes())
++    need(previous_binding["testsRun"] == 3 and previous_binding["failures"] == 0
++         and previous_binding["errors"] == 1 and previous_binding["skips"] == 0
++         and previous_binding["boundary_violations"] == []
++         and previous_binding["unknown_helper_normal_pass"] is True
++         and [x["outcome"] for x in previous_binding["methods"]] == ["PASS", "PASS", "ERROR"],
++         "PREVIOUS_BINDING_TWO_PASS_AND_UNKNOWN_HELPER_REQUIRED")
+     readiness_raw = (HERE / "tests-ready.json").read_bytes()
+     ready = json.loads(readiness_raw)
+     need(sha(Path(__file__).read_bytes()) == ready["runner_sha256"], "RUNNER_READINESS_PIN_MISMATCH")
+@@ -369,13 +376,22 @@
+     need(sha((EVIDENCE / "implementation-plan-review.md").read_bytes()) == REVIEW_PIN, "D06_REVIEW_PIN_MISMATCH")
+     pins = dict(REUSE_PINS, **ready["files"])
+     pins.update({QUOTA: args.quota_source_sha256, BINDING: args.binding_source_sha256})
+-    need(previous_pins[QT] == pins[QT] and previous_pins[BT] == pins[BT],
++    need(previous_pins[QT] == pins[QT] and previous_pins[BT] == "4190ad0152637cb06d5276bd94682a767def9ee8da9f7dbc86ee31930569a117",
+          "PREVIOUS_TEST_PINS_CHANGED")
+     sources = {}
+     for relative, pin in pins.items():
+         raw = (WORK / relative).read_bytes()
+         need(sha(raw) == pin, "SOURCE_TEST_FIXTURE_PIN_MISMATCH:" + relative)
+         sources[relative] = raw
++    old_bt = (EVIDENCE / "run-2/initial-snapshot" / BT).read_bytes()
++    need(sha(old_bt) == previous_pins[BT], "PREVIOUS_BINDING_TEST_SNAPSHOT_MISMATCH")
++    def functions(raw):
++        return {n.name: ast.dump(n, include_attributes=False) for n in ast.walk(ast.parse(raw))
++                if isinstance(n, ast.FunctionDef)}
++    before_functions, now_functions = functions(old_bt), functions(sources[BT])
++    need(set(before_functions) == set(now_functions)
++         and [k for k in before_functions if before_functions[k] != now_functions[k]]
++             == [METHODS_B[2]], "PASSED_BINDING_METHOD_OR_HELPER_CHANGED")
+     for rel, methods in ((QT, METHODS_Q), (BT, METHODS_B)):
+         names = [n.name for n in ast.walk(ast.parse(sources[rel])) if isinstance(n, ast.FunctionDef) and n.name.startswith("test_")]
+         need(tuple(names) == methods, "EXACT_SIX_METHODS_REQUIRED")
+@@ -405,7 +421,7 @@
+     save(HERE / "mutation-ast-audits.json", {"M_Q": mq_audit, "M_B": mb_audit})
+     summary = {"quota_previous_passes_reused": 3,
+                "previous_result_sha256": sha((EVIDENCE / "run-1/normal/result.json").read_bytes()),
+-               "test_fix_round": 1, "normal": None, "M_Q": None, "M_B": None,
++               "test_fix_round": 2, "binding_previous_passes_reused": 2, "normal": None, "M_Q": None, "M_B": None,
+                "deadline_utc": DEADLINE.isoformat(),
+                "clock_reset": False, "runtime_calls": 0, "old_suites_run": False}
+     for stage in ("normal", "M_Q", "M_B"):
+@@ -439,7 +455,7 @@
+             result["log_sha256"] = sha((stage_dir / "first.log").read_bytes()) if (stage_dir / "first.log").exists() else None
+             summary[stage] = result
+             save(HERE / "result.json", summary)
+-            ok = result.get("all_pass") and result.get("unknown_helper_normal_pass") if stage == "normal" else result.get("semantic_fail1_error0")
++            ok = result.get("all_pass") and previous_binding["unknown_helper_normal_pass"] if stage == "normal" else result.get("semantic_fail1_error0")
+             if completed.returncode or not ok:
+                 print("STOP " + stage + " evidence=" + str(stage_dir))
+                 return 1
+@@ -447,7 +463,7 @@
+     summary["completed_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
+     summary["all_required_verification_pass"] = True
+     save(HERE / "result.json", summary)
+-    print("PASS reused quota3 + remaining binding3 + exactly2 semantic FAIL1/ERROR0 mutants; evidence=" + str(HERE))
++    print("PASS reused quota3+binding2 + corrected binding fault1 + exactly2 semantic FAIL1/ERROR0 mutants; evidence=" + str(HERE))
+     return 0
+ 
+ 

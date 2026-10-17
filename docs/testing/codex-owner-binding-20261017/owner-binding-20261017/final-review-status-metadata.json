@@ -1,0 +1,9 @@
+{
+  "scope": "Final review explicitly permits review status metadata update only",
+  "file": "docs/status.md",
+  "before_sha256": "ac00d0ebed5fc9faf96409ebf02358371e01c8db4d7df909458082cdee120b10",
+  "after_sha256": "73191c6496ab433ae53d21321c5b90ccf2a4b84a3dc9c473cd83fe688a143234",
+  "review_sha256": "7d023e97996c6bf3ba35b198b5bf928bb787b723dad6907baaf06ccf539325f7",
+  "code_or_tests_changed": false,
+  "utc": "2026-10-17T01:45:47.626659+00:00"
+}

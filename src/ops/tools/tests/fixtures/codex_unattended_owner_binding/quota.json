@@ -1,0 +1,16 @@
+{
+  "provenance": "SYNTHETIC_ONLY_FAKE_CLIENT_NO_NATIVE_IO",
+  "limit_id": "PRIVATE_SYNTHETIC_LIMIT_ID_NEVER_LOG",
+  "initialize_response": {
+    "codexHome": "/PRIVATE_SYNTHETIC_OWNER_HOME_NEVER_LOG",
+    "platformFamily": "unix",
+    "platformOs": "linux",
+    "userAgent": "PRIVATE_SYNTHETIC_USER_AGENT_NEVER_LOG"
+  },
+  "window": {
+    "usedPercent": 14,
+    "windowDurationMins": 10080,
+    "resetsAt": 1792802600
+  },
+  "ignored_secret": "PRIVATE_SYNTHETIC_ACCOUNT_CREDIT_UPSELL_NEVER_LOG"
+}
