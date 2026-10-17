@@ -1,0 +1,11 @@
+{
+  "scope": "FRESH_TEMP_SQLITE_AUTHORZER_CLEANUP_DIAGNOSIS",
+  "python": "3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0]",
+  "sqlite": "3.37.2",
+  "existing_dbs_accessed": false,
+  "observations": [
+    "INJECTED_READ_DENIED",
+    "NONE_CLEANUP_STILL_NOT_AUTHORIZED"
+  ],
+  "allow_all_cleanup_journal_mode": "delete"
+}

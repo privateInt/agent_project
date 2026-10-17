@@ -1,0 +1,21 @@
+{
+  "src/ops/tools/codex_unattended_intent_journal.py": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+  "src/ops/tools/codex_unattended_queue_observer.py": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+  "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+  "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+  "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+  "src/ops/tools/tests/test_codex_unattended_intent_journal.py": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+  "src/ops/tools/tests/test_codex_unattended_quota_reader.py": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+  "src/ops/tools/tests/test_codex_unattended_submission_binding.py": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6",
+  "src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+  "src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+  "src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66",
+  "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/GetAccountRateLimitsResponse.json": "cb9655e68130116f634ed9353e45b336492e6069a6628f424d1cd52e54eda0e0",
+  "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/InitializeParams.json": "b55124e7c0f36a1789396daa5578217a92be67f053903696236686e59f6f212e",
+  "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/ThreadQueueAddParams.json": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+  "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/binding.json": "3f2f92208aa2b2e3ae00bda222732b546cea9561168f1eaea4a05be3877fe480",
+  "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/manifest.json": "fb53a6dcc308cdc5334aa266145519e130f79cca06dd5e3ec6f2d4fc18932617",
+  "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/quota.json": "08c6e61f652293367fd4017425e47231a1df98e0ac0ed74853d426488f6eb8aa",
+  "src/ops/tools/codex_unattended_quota_reader.py": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+  "src/ops/tools/codex_unattended_submission_binding.py": "ac586c058c83e06325018b7b5dac478eb255f10fd5e58303bb5028cd9dc46f2e"
+}

@@ -1,0 +1,10 @@
+{
+  "implementation_started_utc": "2026-10-17T01:10:39.982944+00:00",
+  "plan_sha256": "4ef0459db19aa24a806f1eae5701abc04dca6994220a7df67deff889a2b2d265",
+  "prereview_sha256": "14183f1e79baceed04bb3c656a252d67382ec65209409e005e741e002c289499",
+  "D06_minor_clarifications": "Both structural prechecks before SQL; _connection before BEGIN; local profile invalid vs intent validation vs uncertain SQL classification",
+  "deadline_utc": "2026-10-17T01:57:31Z",
+  "new_test_methods": 6,
+  "old_passes_not_repeated": true,
+  "later_producer_plan_sha256_not_adopted": "982a1c8e4405986319ec29005290dda7c36c4505a4fecef43496282c59f92efe"
+}

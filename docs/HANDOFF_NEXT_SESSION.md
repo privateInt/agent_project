@@ -1,5 +1,7 @@
 # 다음 세션·Codex 인수인계
 
+2026-10-17: 최신 owner query1회는 ordinaryUsageAllowed=true/주간14%이며 과거 차단을 보존했다. [U01b2 실행 기록](testing/codex-owner-binding-observed-20261017.json)의 새6개/2변이와 최초 오류2개를 재사용한다. quota3·binding2 PASS를 반복하지 않고 실패 fault1만 보정·재검증했다. 최종 검토·Draft PR 연결 뒤 다음 ACK/turn/result 단위로 이어간다. old six-RPC/thread-resume 재실행과 PAUSE/native D18 해제는 하지 않는다.
+
 2026-10-17 KST U01b2: PR18 고정 `780d0755378b9f95f0282ec766ca99300b2b0b53` 위에 오프라인 queue/list 관측기를 추가했다. 기존 공개 `read_intent` 한 번으로 원래 intent를 읽고, client·prompt bytes·thread·원문 hash와 완결 pagination의 유일 후보를 대조한다. 전용 임시 SQLite/독립 소스 복사본의 새4개 최초 PASS와 두 의미 변이 검출(각 FAIL1/ERROR0), 원래 UNKNOWN/raw/hash/revision 및 재개방 보존을 확인했다. 기존 PASS는 반복하지 않았다. 최종 독립 검토는 별도 근거에 기록한다. 실제 ACK 저장·turn/result·controller/scheduler 연결과 두 실제 작업 연속 실행은 미완료이며 runtime D18 보류·두 PAUSE·운영/인증정보/main/VMS 보호를 유지한다. [새 근거](testing/codex-queue-correlation-observed-20261016.json).
 
 2026-10-16: PR17 고정86b8861 위의 [intent 저널 실행 근거](testing/codex-unattended-intent-observed-20261016.json)를 이어받는다. source902fb39e는 유지했고 검사 helper 두 호출만 수정했다. 최초4PASS/1FAIL과 오류 원문을 보존했으며5번째만 재검증PASS, 두 변이 의미FAIL1/ERROR0이다. 기존 PASS·전체5개·R03/R04/R15를 반복하지 않는다. 실제 두 개발 작업/하위 Auto-review/native 연결은 미완료이며 보호 설정과 runtime 조사 상한을 유지한다.

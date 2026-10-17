@@ -1,0 +1,1847 @@
+{
+  "stage": "normal",
+  "testsRun": 3,
+  "failures": 0,
+  "errors": 1,
+  "skips": 0,
+  "methods": [
+    {
+      "id": "src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests.test_binding_prepare_reuse_conflict_and_reopen",
+      "outcome": "PASS"
+    },
+    {
+      "id": "src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests.test_binding_prepared_guard_and_lock_boundary",
+      "outcome": "PASS"
+    },
+    {
+      "id": "src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests.test_binding_faults_pins_schema_and_privacy",
+      "outcome": "ERROR",
+      "exception_type": "DatabaseError"
+    }
+  ],
+  "boundary_violations": [],
+  "sqlite_connections": [
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": true
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    },
+    {
+      "dedicated_temporary": true,
+      "memory_invalid_case": false
+    }
+  ],
+  "runtime_calls": 0,
+  "source_copy": "/tmp/owner-binding-portable-normal-esrq8w6x/fresh-source",
+  "original_checkout_reads": 0,
+  "opt_reads": 0,
+  "operator_tmp_reads": 0,
+  "quota_observations": [],
+  "binding_observations": [
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_REUSED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_CONFLICT",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_CONFLICT",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_CONFLICT",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_CONFLICT",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "BINDING_OBSERVED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "BINDING_OBSERVED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INTENT_NOT_PREPARED",
+      "phase": "INTENT_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 18,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INTENT_NOT_PREPARED",
+      "phase": "INTENT_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 18,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "BINDING_OBSERVED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "SCHEMA_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 23,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "DATABASE_NOT_EMPTY",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 10,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "DATABASE_NOT_EMPTY",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 10,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "DATABASE_NOT_EMPTY",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 10,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "DATABASE_NOT_EMPTY",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 10,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 12,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": false,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": false,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": false,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": false,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": false,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": false,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": false,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": false,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": false,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": false,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": false,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 3,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 7,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 6,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 10,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 9,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 2,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 1,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 5,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CONNECTION_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 4,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_HASH_MISMATCH",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "ARGUMENTS_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "ARGUMENTS_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "ARGUMENTS_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "ARGUMENTS_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INPUT_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "ARGUMENTS_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "ARGUMENTS_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "ARGUMENTS_INVALID",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INTENT_BINDING_MISMATCH",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INTENT_BINDING_MISMATCH",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INTENT_BLOCKED",
+      "phase": "INTENT_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 18,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "BINDING_NOT_FOUND",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "INTENT_BLOCKED",
+      "phase": "INTENT_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 17,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "SCHEMA_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 23,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "SCHEMA_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 23,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "SCHEMA_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 23,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "BINDING_PIN_MISMATCH",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "ROW_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "BINDING_PIN_MISMATCH",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "ROW_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "BINDING_PIN_MISMATCH",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "ROW_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "BINDING_PIN_MISMATCH",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "ROW_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "ROW_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "ROW_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "ROW_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "ROW_INVALID",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "INTENT_BINDING_MISMATCH",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "BINDING_STORED",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 26,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "read_submission_binding",
+      "reason": "INTENT_BINDING_MISMATCH",
+      "phase": "BINDING_VALIDATE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 5,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 6,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 0,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "phase": "PRECHECK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 1,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "phase": "INTENT_LOCK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 12,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "phase": "INTENT_LOCK",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 14,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "phase": "BINDING_TRANSACTION",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 18,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "phase": "BINDING_TRANSACTION",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 20,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "phase": "BINDING_WRITE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 24,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "bind_submission",
+      "reason": "CHECKPOINT_UNCONFIRMED",
+      "phase": "BINDING_WRITE",
+      "intent_transaction_closed": true,
+      "binding_transaction_closed": true,
+      "sql_count": 25,
+      "runtime_calls": 0
+    },
+    {
+      "operation": "initialize_submission_bindings",
+      "reason": "BINDINGS_READY",
+      "phase": "COMPLETE",
+      "intent_transaction_closed": null,
+      "binding_transaction_closed": true,
+      "sql_count": 16,
+      "runtime_calls": 0
+    }
+  ],
+  "all_pass": false,
+  "unknown_helper_normal_pass": true
+}

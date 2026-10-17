@@ -1,0 +1,30 @@
+{
+  "first_errors_preserved": [
+    "TypeError NoneType object is not subscriptable, initial observation",
+    "TypeError NoneType object is not subscriptable, first attempted normalization"
+  ],
+  "initial_missing_row_inference": "WITHDRAWN_NOT_ESTABLISHED",
+  "correction": "Guard missing row and require builtin str before slicing nullable metadata fields",
+  "safe_observation": {
+    "row_exists": true,
+    "field_types": {
+      "type": "str",
+      "id": "str",
+      "text": "str",
+      "phase": "str",
+      "memoryCitation": "NoneType",
+      "delivery": "NoneType",
+      "questions": "NoneType"
+    },
+    "age_seconds": 1,
+    "type": "agentMessage",
+    "status": null,
+    "exit_code": null,
+    "exitCode": null,
+    "command": null,
+    "text": "정적 점검에서 source copy의 runner 경로 계산과 `pathlib.resolve()`에 필요한 상위 디렉터리 메타데이터 접근을 보정했습니다. 원본 checkout·`/opt`·operator 파일은 계속 차단하며, 변이 검출은 지정 assertion의 FAIL과 실제 잘못된 결과가 함께 확인될 때만 인정하도록 했습니다. 실행은 아직 0회입니다."
+  },
+  "socket_rpc": 0,
+  "product_tests": 0,
+  "same_observation_fix_attempts": 2
+}

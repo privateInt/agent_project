@@ -1,0 +1,8 @@
+{
+  "scope": "LOCAL_PROGRESS_OBSERVATION_NOT_PRODUCT_TEST",
+  "observed_utc": "2026-10-17T01:24:56.852472+00:00",
+  "error": "TypeError: NoneType object is not subscriptable",
+  "cause": "Assumed latest matching thread_items row exists; query returned None",
+  "rpc_calls": 0,
+  "fix": "Guard empty result; use selected existing rollout event metadata once"
+}

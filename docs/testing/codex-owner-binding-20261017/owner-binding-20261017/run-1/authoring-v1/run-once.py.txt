@@ -1,0 +1,391 @@
+#!/usr/bin/env python3
+"""Frozen 4ef0459d/D06 run-once harness. Writing this file does not execute tests.
+
+Only after SOURCE_READY + independent static comparison, invoke with both final
+product pins and the exact reviewed positive PREPARED/revision guard expression.
+The driver permits one first six-method process and two designated mutant processes.
+"""
+import argparse
+import ast
+import copy
+import datetime as dt
+import hashlib
+import importlib
+import io
+import json
+import os
+from pathlib import Path
+import shutil
+import signal
+import sqlite3
+import subprocess
+import sys
+import tempfile
+import traceback
+import unittest
+
+HERE = Path(__file__).resolve().parent
+EVIDENCE = HERE.parent
+ROOT = EVIDENCE.parents[3]
+WORK = ROOT / "var/unattended-20261015/binding-development"
+DEADLINE = dt.datetime(2026, 10, 17, 1, 57, 31, tzinfo=dt.timezone.utc)
+PLAN_PIN = "4ef0459db19aa24a806f1eae5701abc04dca6994220a7df67deff889a2b2d265"
+REVIEW_PIN = "14183f1e79baceed04bb3c656a252d67382ec65209409e005e741e002c289499"
+QUOTA = "src/ops/tools/codex_unattended_quota_reader.py"
+BINDING = "src/ops/tools/codex_unattended_submission_binding.py"
+QT = "src/ops/tools/tests/test_codex_unattended_quota_reader.py"
+BT = "src/ops/tools/tests/test_codex_unattended_submission_binding.py"
+QM = "src.ops.tools.tests.test_codex_unattended_quota_reader"
+BM = "src.ops.tools.tests.test_codex_unattended_submission_binding"
+METHODS_Q = ("test_quota_sequence_sanitization_and_fail_closed",
+             "test_quota_fault_phases_and_no_send_inference", "test_unknown_ordinary_never_allowed")
+METHODS_B = ("test_binding_prepare_reuse_conflict_and_reopen",
+             "test_binding_prepared_guard_and_lock_boundary", "test_binding_faults_pins_schema_and_privacy")
+REUSE_PINS = {
+    "src/ops/tools/codex_unattended_intent_journal.py": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "src/ops/tools/codex_unattended_queue_observer.py": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+    "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+    "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+    "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+    "src/ops/tools/tests/test_codex_unattended_intent_journal.py": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+}
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def save(path, value):
+    path.write_text(json.dumps(value, indent=2, ensure_ascii=True, allow_nan=False) + "\n")
+
+
+def need(condition, code):
+    if not condition:
+        raise AssertionError(code)
+
+
+def remaining():
+    seconds = (DEADLINE - dt.datetime.now(dt.timezone.utc)).total_seconds()
+    need(seconds > 0, "SHARED_DEADLINE_EXPIRED_NO_RESET")
+    return seconds
+
+
+def span_replace(raw, node, replacement):
+    lines = raw.splitlines(keepends=True)
+    start = sum(map(len, lines[:node.lineno-1])) + node.col_offset
+    end = sum(map(len, lines[:node.end_lineno-1])) + node.end_col_offset
+    return raw[:start] + replacement + raw[end:]
+
+
+def mutate(raw, which, binding_guard):
+    tree = ast.parse(raw)
+    if which == "M_Q":
+        matches = [n for n in ast.walk(tree) if isinstance(n, ast.Compare)
+                   and isinstance(n.left, ast.Name) and n.left.id == "ordinary"
+                   and len(n.ops) == 1 and isinstance(n.ops[0], ast.Is)
+                   and len(n.comparators) == 1 and isinstance(n.comparators[0], ast.Constant)
+                   and n.comparators[0].value is True]
+        replacement = b"ordinary is not False"
+        expected_node = ast.parse(replacement.decode(), mode="eval").body
+    else:
+        guard = ast.parse(binding_guard, mode="eval").body
+        need(isinstance(guard, ast.BoolOp) and isinstance(guard.op, ast.And) and len(guard.values) == 2,
+             "M_B_REQUIRES_ENTIRE_TWO_TERM_POSITIVE_GUARD")
+        wanted = {("state", "PREPARED"), ("revision", 0)}
+        observed = set()
+        for comparison in guard.values:
+            need(isinstance(comparison, ast.Compare) and len(comparison.ops) == 1
+                 and isinstance(comparison.ops[0], ast.Eq) and len(comparison.comparators) == 1,
+                 "M_B_GUARD_COMPARISON_INVALID")
+            left, right = comparison.left, comparison.comparators[0]
+            need(isinstance(left, ast.Subscript) and isinstance(left.value, ast.Name)
+                 and isinstance(left.slice, ast.Constant) and type(left.slice.value) is str
+                 and isinstance(right, ast.Constant) and type(right.value) in (str, int),
+                 "M_B_GUARD_MUST_BE_REVIEWED_STATE_AND_REVISION")
+            observed.add((left.slice.value, right.value))
+        need(observed == wanted, "M_B_GUARD_CRITERIA_MISMATCH")
+        matches = [n for n in ast.walk(tree) if isinstance(n, ast.BoolOp)
+                   and ast.dump(n, include_attributes=False) == ast.dump(guard, include_attributes=False)]
+        replacement, expected_node = b"True", ast.Constant(value=True)
+    need(len(matches) == 1, "MUTATION_TARGET_MUST_BE_EXACTLY_ONE")
+    node = matches[0]
+    before_expression = ast.get_source_segment(raw.decode(), node)
+    changed = span_replace(raw, node, replacement)
+    expected = copy.deepcopy(tree)
+
+    class ReplaceExact(ast.NodeTransformer):
+        def visit(self, candidate):
+            if (type(candidate) is type(node) and getattr(candidate, "lineno", None) == node.lineno
+                    and getattr(candidate, "col_offset", None) == node.col_offset):
+                return copy.deepcopy(expected_node)
+            return super().visit(candidate)
+
+    expected = ReplaceExact().visit(expected)
+    need(ast.dump(ast.parse(changed), include_attributes=False) == ast.dump(expected, include_attributes=False),
+         "MUTATION_CHANGED_OTHER_AST")
+    return changed, {"before_sha256": sha(raw), "after_sha256": sha(changed),
+                     "target_count": 1, "before_expression": before_expression,
+                     "after_expression": replacement.decode(), "other_ast_equal": True}
+
+
+class BoundaryViolation(BaseException):
+    pass
+
+
+def worker(copy_root, stage_dir, stage):
+    """Only this fresh process imports candidate/test code; paths already pinned by driver."""
+    copy_root, stage_dir = Path(copy_root), Path(stage_dir)
+    sys.dont_write_bytecode = True
+    os.chdir(copy_root)
+    sys.path[:] = [str(copy_root)] + [p for p in sys.path if p and
+        not str(Path(p).absolute()).startswith(str(ROOT)) and p != str(copy_root)]
+    tmp = copy_root / "temporary-databases"
+    tmp.mkdir()
+    tempfile.tempdir = str(tmp)
+    active = [True]
+    violations, db_connections = [], []
+    std_roots = tuple(str(Path(p).absolute()) for p in
+                      (sys.base_prefix + "/lib", sys.prefix + "/lib", "/usr/lib", "/lib"))
+    copy_prefix = str(copy_root) + os.sep
+    output_prefix = str(stage_dir) + os.sep
+
+    def path_allowed(path, *, write=False):
+        if isinstance(path, int):
+            return True
+        if isinstance(path, bytes):
+            path = os.fsdecode(path)
+        if not isinstance(path, (str, os.PathLike)):
+            return False
+        text = os.path.abspath(os.fspath(path))
+        if text == str(copy_root) or text.startswith(copy_prefix):
+            return True
+        if not write and any(text == r or text.startswith(r + os.sep) for r in std_roots):
+            return True
+        return text == str(stage_dir) or text.startswith(output_prefix)
+
+    def audit(event, args):
+        if not active[0]:
+            return
+        forbidden = event.startswith(("socket.", "subprocess.", "os.exec", "os.spawn", "os.posix_spawn")) or event in ("os.system", "os.fork", "os.forkpty")
+        if event == "open":
+            mode, flags = args[1], args[2]
+            writing = (isinstance(mode, str) and any(c in mode for c in "wax+")) or (
+                isinstance(flags, int) and bool(flags & (os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_TRUNC)))
+            forbidden = not path_allowed(args[0], write=writing)
+        elif event in ("os.listdir", "os.scandir"):
+            forbidden = not path_allowed(args[0] if args else ".")
+        elif event == "sqlite3.connect":
+            target = os.fspath(args[0])
+            forbidden = target != ":memory:" and not os.path.abspath(target).startswith(str(tmp) + os.sep)
+            db_connections.append({"dedicated_temporary": not forbidden, "memory_invalid_case": target == ":memory:"})
+        if forbidden:
+            violations.append({"event": event, "reason": "OFFLINE_IO_BOUNDARY_VIOLATION"})
+            raise BoundaryViolation("ORIGINAL_CHECKOUT_OPT_OPERATOR_NETWORK_IO_FORBIDDEN")
+
+    sys.addaudithook(audit)
+    seconds = remaining()
+
+    def expired(signum, frame):
+        raise BoundaryViolation("SHARED_DEADLINE_EXPIRED_NO_RESET")
+
+    signal.signal(signal.SIGALRM, expired)
+    signal.setitimer(signal.ITIMER_REAL, seconds)
+    result_data, instance = {}, None
+    try:
+        qm, bm = importlib.import_module(QM), importlib.import_module(BM)
+        # Import is from the fresh copy; namespace package cannot fall through to private source.
+        need(Path(qm.__file__).is_relative_to(copy_root) and Path(bm.__file__).is_relative_to(copy_root),
+             "TEST_IMPORT_NOT_PORTABLE")
+        need(Path(qm.product.__file__).is_relative_to(copy_root) and Path(bm.product.__file__).is_relative_to(copy_root),
+             "PRODUCT_IMPORT_NOT_PORTABLE")
+        if stage == "normal":
+            cases = [qm.QuotaReaderTests(name) for name in METHODS_Q] + [bm.SubmissionBindingTests(name) for name in METHODS_B]
+            suite = unittest.TestSuite(cases)
+        elif stage == "M_Q":
+            instance = qm.QuotaReaderTests(METHODS_Q[2])
+            cases, suite = [instance], unittest.TestSuite([instance])
+        else:
+            bm.SubmissionBindingTests.setUpClass()
+            instance = bm.SubmissionBindingTests(METHODS_B[1])
+            case = unittest.FunctionTestCase(instance.case_unknown_intent_cannot_create_binding,
+                                           description="M_B.case_unknown_intent_cannot_create_binding")
+            cases, suite = [instance], unittest.TestSuite([case])
+        records = []
+
+        class RecordedResult(unittest.TextTestResult):
+            def addSuccess(self, test):
+                records.append({"id": test.id(), "outcome": "PASS"})
+                super().addSuccess(test)
+
+            def addFailure(self, test, err):
+                records.append({"id": test.id(), "outcome": "FAIL", "exception_type": err[0].__name__})
+                super().addFailure(test, err)
+
+            def addError(self, test, err):
+                records.append({"id": test.id(), "outcome": "ERROR", "exception_type": err[0].__name__})
+                super().addError(test, err)
+
+            def addSkip(self, test, reason):
+                records.append({"id": test.id(), "outcome": "SKIP"})
+                super().addSkip(test, reason)
+                self.stop()
+
+        with (stage_dir / "first.log").open("x") as log:
+            result = unittest.TextTestRunner(stream=log, verbosity=2, failfast=True,
+                                            resultclass=RecordedResult).run(suite)
+        result_data = {"stage": stage, "testsRun": result.testsRun, "failures": len(result.failures),
+                       "errors": len(result.errors), "skips": len(result.skipped), "methods": records,
+                       "boundary_violations": violations, "sqlite_connections": db_connections,
+                       "runtime_calls": 0, "source_copy": str(copy_root),
+                       "quota_observations": qm.OBSERVATIONS, "binding_observations": bm.OBSERVATIONS}
+        if stage == "normal":
+            result_data["all_pass"] = result.testsRun == 6 and result.wasSuccessful() and not result.skipped and len(records) == 6
+            result_data["unknown_helper_normal_pass"] = bool(getattr(cases[4], "unknown_guard_normal_passed", False))
+        else:
+            last = getattr(instance, "last_result", None)
+            result_data["actual_wrong_candidate"] = last
+            expected_fail = result.testsRun == 1 and len(result.failures) == 1 and not result.errors and not result.skipped
+            semantic_assertion = len(records) == 1 and records[0].get("exception_type") == "AssertionError"
+            if stage == "M_Q":
+                wrong = (type(last) is dict and last.get("status") == "OBSERVED_ALLOWED"
+                         and last.get("reason") == "ORDINARY_ALLOWED_OBSERVED"
+                         and last.get("ordinaryUsageAllowed") is None
+                         and last.get("ordinary_usage_observed_allowed") is True
+                         and last.get("phase") == "COMPLETE" and last.get("error_code") is None
+                         and len(last.get("requests", [])) == 2 and len(last.get("windows", [])) == 1
+                         and last["windows"][0]["primary"]["usedPercent"] == 14)
+            else:
+                witness = getattr(instance, "last_committed_witness", {})
+                expected_c = getattr(instance, "expected_wrong_candidate", None)
+                rows = witness.get("rows", [])
+                wrong = (type(last) is dict and last.get("report", {}).get("reason") == "BINDING_STORED"
+                         and last["report"].get("new_binding") is True
+                         and last["report"].get("database_commit_confirmed") is True
+                         and witness.get("row_count") == 1 and witness.get("intent_state") == "SUBMISSION_UNKNOWN"
+                         and witness.get("intent_revision") == 1 and len(rows) == 1
+                         and rows[0]["actual_sha256"] == rows[0]["binding_sha256"]
+                         and expected_c is not None and rows[0]["binding"] == expected_c
+                         and expected_c["intent_revision"] == 0
+                         and type(getattr(instance, "wrong_commit_db_bytes", None)) is bytes)
+                result_data["committed_wrong_binding_witness"] = witness
+                if type(getattr(instance, "wrong_commit_db_bytes", None)) is bytes:
+                    (stage_dir / "wrong-commit-witness.sqlite").write_bytes(instance.wrong_commit_db_bytes)
+                    result_data["wrong_commit_db_sha256"] = sha(instance.wrong_commit_db_bytes)
+                # Report record bytes separately; keep result JSON a sanitized serializable projection.
+                if type(last) is dict and type(last.get("record")) is dict:
+                    result_data["actual_wrong_candidate"] = {"report": last["report"], "record": {
+                        "binding_sha256": last["record"]["binding_sha256"],
+                        "actual_bytes_sha256": sha(last["record"]["binding_bytes"])}}
+            result_data["semantic_fail1_error0"] = bool(expected_fail and semantic_assertion and wrong and not violations)
+            result_data["actual_wrong_candidate_verified"] = bool(wrong)
+    except BaseException as error:
+        active[0] = False
+        with (stage_dir / "first-harness-error.log").open("x") as log:
+            traceback.print_exc(file=log)
+        result_data = {"stage": stage, "all_pass": False, "harness_error": type(error).__name__,
+                       "boundary_violations": violations, "runtime_calls": 0}
+    finally:
+        active[0] = False
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        save(stage_dir / "result.json", result_data)
+    return 0 if result_data.get("all_pass") or result_data.get("semantic_fail1_error0") else 1
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source-ready", action="store_true", required=False)
+    parser.add_argument("--quota-source-sha256")
+    parser.add_argument("--binding-source-sha256")
+    parser.add_argument("--binding-guard", help="Exact independently reviewed positive PREPARED AND revision0 expression")
+    parser.add_argument("--internal-stage", choices=("normal", "M_Q", "M_B"))
+    parser.add_argument("--copy-root")
+    parser.add_argument("--stage-dir")
+    args = parser.parse_args()
+    if args.internal_stage:
+        return worker(args.copy_root, args.stage_dir, args.internal_stage)
+    need(args.source_ready and args.quota_source_sha256 and args.binding_source_sha256 and args.binding_guard,
+         "SOURCE_READY_STATIC_REVIEW_AND_EXACT_PINS_REQUIRED")
+    remaining()
+    readiness_raw = (HERE / "tests-ready.json").read_bytes()
+    ready = json.loads(readiness_raw)
+    need(sha(Path(__file__).read_bytes()) == ready["runner_sha256"], "RUNNER_READINESS_PIN_MISMATCH")
+    need(sha((EVIDENCE / "review-plan-v1.md").read_bytes()) == PLAN_PIN, "FROZEN_PLAN_PIN_MISMATCH")
+    need(sha((EVIDENCE / "implementation-plan-review.md").read_bytes()) == REVIEW_PIN, "D06_REVIEW_PIN_MISMATCH")
+    pins = dict(REUSE_PINS, **ready["files"])
+    pins.update({QUOTA: args.quota_source_sha256, BINDING: args.binding_source_sha256})
+    sources = {}
+    for relative, pin in pins.items():
+        raw = (WORK / relative).read_bytes()
+        need(sha(raw) == pin, "SOURCE_TEST_FIXTURE_PIN_MISMATCH:" + relative)
+        sources[relative] = raw
+    for rel, methods in ((QT, METHODS_Q), (BT, METHODS_B)):
+        names = [n.name for n in ast.walk(ast.parse(sources[rel])) if isinstance(n, ast.FunctionDef) and n.name.startswith("test_")]
+        need(tuple(names) == methods, "EXACT_SIX_METHODS_REQUIRED")
+    # Precompute narrow byte/AST mutations without importing or executing either product.
+    mq, mq_audit = mutate(sources[QUOTA], "M_Q", args.binding_guard)
+    mb, mb_audit = mutate(sources[BINDING], "M_B", args.binding_guard)
+    with (HERE / "execution-attempt.json").open("x") as marker:
+        json.dump({"started_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
+                   "deadline_utc": DEADLINE.isoformat(), "clock_reset": False,
+                   "ready_sha256": sha(readiness_raw), "source_pins": pins}, marker, indent=2)
+    save(HERE / "environment.json", {"python": sys.version, "sqlite": sqlite3.sqlite_version,
+         "executable": sys.executable, "cwd_before_copy": str(Path.cwd()),
+         "declared_turn_metadata_at_authoring": ready["declared_turn_metadata"],
+         "native_probe_count": 0, "permissions_investigated": False, "scheduler_pause_changed": False,
+         "D18": "HELD", "old_results_rerun": False})
+    snapshot = HERE / "initial-snapshot"
+    snapshot.mkdir()
+    for relative, raw in sources.items():
+        target = snapshot / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(raw)
+    for name in ("review-plan-v1.md", "implementation-plan-review.md"):
+        shutil.copyfile(EVIDENCE / name, snapshot / name)
+    shutil.copyfile(__file__, snapshot / "run-once.py")
+    save(HERE / "mutation-ast-audits.json", {"M_Q": mq_audit, "M_B": mb_audit})
+    summary = {"normal": None, "M_Q": None, "M_B": None, "deadline_utc": DEADLINE.isoformat(),
+               "clock_reset": False, "runtime_calls": 0, "old_suites_run": False}
+    for stage in ("normal", "M_Q", "M_B"):
+        stage_dir = HERE / stage
+        stage_dir.mkdir()
+        with tempfile.TemporaryDirectory(prefix="owner-binding-portable-%s-" % stage) as directory:
+            copied = Path(directory) / "fresh-source"
+            copied.mkdir()
+            for relative, original in sources.items():
+                raw = mq if stage == "M_Q" and relative == QUOTA else mb if stage == "M_B" and relative == BINDING else original
+                target = copied / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(raw)
+            shutil.copyfile(__file__, copied / "run-once.py")
+            stage_pins = {p: sha((copied / p).read_bytes()) for p in sources}
+            save(stage_dir / "source-copy-pins.json", stage_pins)
+            changed = QUOTA if stage == "M_Q" else BINDING if stage == "M_B" else None
+            if changed:
+                (stage_dir / "mutated-source.py.txt").write_bytes((copied / changed).read_bytes())
+            command = [sys.executable, "-B", str(copied / "run-once.py"), "--internal-stage", stage,
+                       "--copy-root", str(copied), "--stage-dir", str(stage_dir)]
+            save(stage_dir / "command.json", command)
+            with (stage_dir / "process.log").open("x") as log:
+                completed = subprocess.run(command, cwd=copied, stdout=log, stderr=subprocess.STDOUT,
+                                           timeout=remaining(), check=False)
+            need((stage_dir / "result.json").exists(), "CHILD_RESULT_MISSING_STOP_NO_RETRY")
+            result = json.loads((stage_dir / "result.json").read_bytes())
+            result["process_returncode"] = completed.returncode
+            result["result_sha256"] = sha((stage_dir / "result.json").read_bytes())
+            result["log_sha256"] = sha((stage_dir / "first.log").read_bytes()) if (stage_dir / "first.log").exists() else None
+            summary[stage] = result
+            save(HERE / "result.json", summary)
+            ok = result.get("all_pass") and result.get("unknown_helper_normal_pass") if stage == "normal" else result.get("semantic_fail1_error0")
+            if completed.returncode or not ok:
+                print("STOP " + stage + " evidence=" + str(stage_dir))
+                return 1
+    summary["normal_target_pass_reused"] = [METHODS_Q[2], "case_unknown_intent_cannot_create_binding (within normal B2)"]
+    summary["completed_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
+    summary["all_required_verification_pass"] = True
+    save(HERE / "result.json", summary)
+    print("PASS normal6 + exactly2 semantic FAIL1/ERROR0 mutants; evidence=" + str(HERE))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

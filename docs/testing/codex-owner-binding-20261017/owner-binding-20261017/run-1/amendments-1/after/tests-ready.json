@@ -1,0 +1,93 @@
+{
+  "status": "AMENDMENTS_READY",
+  "created_utc": "2026-10-17T01:27:13.558643+00:00",
+  "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/binding-development",
+  "base_pr19": "ddec1931eed8828cdd84ae783845729edf617fc1",
+  "implementation_plan": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-binding-20261017/review-plan-v1.md",
+  "plan_sha256": "4ef0459db19aa24a806f1eae5701abc04dca6994220a7df67deff889a2b2d265",
+  "D06_review": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-binding-20261017/implementation-plan-review.md",
+  "review_sha256": "14183f1e79baceed04bb3c656a252d67382ec65209409e005e741e002c289499",
+  "producer_982_plan_adopted": false,
+  "files": {
+    "src/ops/tools/tests/test_codex_unattended_quota_reader.py": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+    "src/ops/tools/tests/test_codex_unattended_submission_binding.py": "4190ad0152637cb06d5276bd94682a767def9ee8da9f7dbc86ee31930569a117",
+    "src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+    "src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+    "src/ops/tools/tests/fixtures/codex_unattended_intent_journal/synthetic.json": "3932939c84c22a0875e5fa8141a70869738132f32b8b68f0bccce47a80074a66",
+    "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/GetAccountRateLimitsResponse.json": "cb9655e68130116f634ed9353e45b336492e6069a6628f424d1cd52e54eda0e0",
+    "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/InitializeParams.json": "b55124e7c0f36a1789396daa5578217a92be67f053903696236686e59f6f212e",
+    "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/ThreadQueueAddParams.json": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+    "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/binding.json": "3f2f92208aa2b2e3ae00bda222732b546cea9561168f1eaea4a05be3877fe480",
+    "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/manifest.json": "fb53a6dcc308cdc5334aa266145519e130f79cca06dd5e3ec6f2d4fc18932617",
+    "src/ops/tools/tests/fixtures/codex_unattended_owner_binding/quota.json": "08c6e61f652293367fd4017425e47231a1df98e0ac0ed74853d426488f6eb8aa"
+  },
+  "runner": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-binding-20261017/run-1/run-once.py",
+  "runner_sha256": "065cc786bd77d96c8c119053441c6e3e3a2bbcafb404e3e4b7e2644123b92fa3",
+  "initial_inputs_sha256": "0135c647defdcb3750d3aeec11131c015029696639ce1983d7c64fc5cbab4c4c",
+  "source_ready_received": true,
+  "execution_authorized_now": false,
+  "new_product_modules_read_or_modified": true,
+  "candidate_or_test_imports": 0,
+  "tests_executed": 0,
+  "sqlite_connections_opened": 0,
+  "runtime_calls": 0,
+  "old_suites_or_passes_rerun": false,
+  "first_errors_untouched": true,
+  "original11_hashes_preserved": true,
+  "old_helper_sha256": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+  "method_count": 6,
+  "methods": {
+    "quota": [
+      "test_quota_sequence_sanitization_and_fail_closed",
+      "test_quota_fault_phases_and_no_send_inference",
+      "test_unknown_ordinary_never_allowed"
+    ],
+    "binding": [
+      "test_binding_prepare_reuse_conflict_and_reopen",
+      "test_binding_prepared_guard_and_lock_boundary",
+      "test_binding_faults_pins_schema_and_privacy"
+    ]
+  },
+  "declared_turn_metadata": {
+    "sandbox_mode": "workspace-write",
+    "approvals_reviewer": "auto_review",
+    "approval_policy": "NOT_SEPARATELY_DECLARED_IN_THIS_TURN_CONTEXT",
+    "network_access": "restricted",
+    "permission_probes": 0
+  },
+  "deadline_utc": "2026-10-17T01:57:31Z",
+  "same_failure_fix_limit": 3,
+  "clock_reset": false,
+  "D18": "HELD",
+  "scheduler_pause_changed": false,
+  "runner_gate": "Explicit --source-ready, both final product SHA256 pins, --binding-guard exact reviewed expression; parent static comparison required before invocation",
+  "normal_execution": "first six methods once, failfast in fresh -I -S -B minimal source process; STOP any FAIL/ERROR/SKIP",
+  "mutants": {
+    "M_Q": {
+      "target": "test_unknown_ordinary_never_allowed",
+      "change": "ordinary is True -> ordinary is not False",
+      "required": "semantic FAIL1 ERROR0 at exact expected-status assertion AND actual OBSERVED_ALLOWED / ordinary=null / allowed=true / valid14 snapshot"
+    },
+    "M_B": {
+      "target": "case_unknown_intent_cannot_create_binding ONLY",
+      "change": "entire PREPARED AND revision0 predicate -> True; builder revision0 and all other AST unchanged",
+      "required": "semantic FAIL1 ERROR0 at exact expected-reason assertion AND actual BINDING_STORED/new_binding=true, peer-visible committed C matching fixture, immutable UNKNOWN1; retained wrong-commit-witness.sqlite"
+    }
+  },
+  "portability_boundary": "Relative fixtures only; pinned source copy includes package/readiness dependencies, PR18 helper functions without old TestCase inheritance; BaseException guard rejects original checkout, /opt, operator files, native/process IO inside product calls; ancestor metadata only for pathlib resolution",
+  "reuse_boundaries": "Existing passed tests/results and initial errors remain evidence only; normal mutant target PASS reused; no old TestCase methods run",
+  "updated_utc": "2026-10-17T01:28:51.914322+00:00",
+  "new_product_modules_read": true,
+  "new_product_modules_modified": false,
+  "source_reads_scope": "Static source/review reads and bytes-only hash/snapshot; no import or execution",
+  "source_pins": {
+    "src/ops/tools/codex_unattended_submission_binding.py": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+    "src/ops/tools/codex_unattended_quota_reader.py": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c"
+  },
+  "source_static_review_sha256": "8b41f16772a5866aad404247a1ba63953af48fbbdcd584acb44457f3ad2f39bd",
+  "source_static_F1_review_sha256": "691d0951b71ba57717f53e4ebca5a52837f2796d6a5b9d1ac0c4746951f1f872",
+  "amendment_scope": [
+    "F1 None intent bind/read: CONNECTION_INVALID, record=None, closed identity False, actual SQL trace empty; initialize closed None",
+    "Fixture final cleanup includes reopened current and captured original connections; id dedupe + alive guard"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "status": "OBSERVED_USAGE_ALLOWED",
+  "phase": "COMPLETE",
+  "observed_unix": 1792198621,
+  "requests": [
+    {
+      "method": "initialize",
+      "request_id": 1,
+      "call_entered": true,
+      "completed": true,
+      "server_received": "RESPONSE_OBSERVED"
+    },
+    {
+      "method": "account/rateLimits/read",
+      "request_id": 2,
+      "call_entered": true,
+      "completed": true,
+      "server_received": "RESPONSE_OBSERVED"
+    }
+  ],
+  "retries": 0,
+  "max_rpc_requests": 2,
+  "initialized_notifications": 1,
+  "transport_timeout_seconds": 16,
+  "request_timeout_seconds": 5,
+  "external_timeout_seconds": 19,
+  "external_kill_after_seconds": 1,
+  "source_sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+  "readiness_sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+  "settings_changed": false,
+  "queue_changed": false,
+  "services_changed": false,
+  "thread_operations": 0,
+  "raw_account_or_error_text_retained": false,
+  "usage": {
+    "ordinaryUsageAllowed": true,
+    "windows": [
+      {
+        "limit_id_sha256": "57de4cf40144bdf7d00010f2f5557a7d642c2b9705309bfade167dd313e2ca93",
+        "reached_type_is_null": true,
+        "primary": {
+          "usedPercent": 14,
+          "windowDurationMins": 10080,
+          "resetsAt": 1792802600
+        },
+        "secondary": null
+      }
+    ]
+  },
+  "elapsed_seconds": 0.566302
+}

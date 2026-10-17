@@ -1,0 +1,18 @@
+{
+  "python": "3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0]",
+  "sqlite": "3.37.2",
+  "executable": "/usr/bin/python3",
+  "cwd_before_copy": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+  "declared_turn_metadata_at_authoring": {
+    "sandbox_mode": "workspace-write",
+    "approvals_reviewer": "auto_review",
+    "approval_policy": "NOT_SEPARATELY_DECLARED_IN_THIS_TURN_CONTEXT",
+    "network_access": "restricted",
+    "permission_probes": 0
+  },
+  "native_probe_count": 0,
+  "permissions_investigated": false,
+  "scheduler_pause_changed": false,
+  "D18": "HELD",
+  "old_results_rerun": false
+}

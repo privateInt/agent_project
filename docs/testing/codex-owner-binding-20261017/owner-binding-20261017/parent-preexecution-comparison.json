@@ -1,0 +1,23 @@
+{
+  "actor": "COORDINATOR_STATIC_COMPARISON_NOT_FINAL_INDEPENDENT_REVIEW",
+  "utc": "2026-10-17T01:30:01.688767+00:00",
+  "readiness_sha256": "c6f8baccc419386453025532d674b1abfbfd5c2dead9267153d45699c08cac6c",
+  "runner_sha256": "065cc786bd77d96c8c119053441c6e3e3a2bbcafb404e3e4b7e2644123b92fa3",
+  "source_pins": {
+    "src/ops/tools/codex_unattended_submission_binding.py": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+    "src/ops/tools/codex_unattended_quota_reader.py": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c"
+  },
+  "checks": [
+    "six exact new methods; no old TestCase invocation",
+    "relative fixed schema fixtures and fresh -I -S -B copy",
+    "dedicated fileSQLite; original/opt/operator files blocked; ancestor metadata only",
+    "F1 None bind/read SQL0 and bool false; initialize null",
+    "fixture reopened connection cleanup",
+    "M_Q and M_B exact unique AST guards, intended assertion locations, real wrong candidate witnesses",
+    "same original shared deadline and exclusive execution marker"
+  ],
+  "tests_executed": 0,
+  "authorize": "FIRST_NORMAL6_THEN_EXACT2_MUTANT_TARGETS_ONLY",
+  "existing_passes_repeated": false,
+  "binding_guard": "intent[\"state\"] == \"PREPARED\" and intent[\"revision\"] == 0"
+}

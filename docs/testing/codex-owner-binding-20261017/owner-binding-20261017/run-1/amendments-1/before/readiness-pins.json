@@ -1,0 +1,11 @@
+{
+  "tests_ready_sha256": "7d3f8b79eccc09fc167a30b80eb0c56afc285df4f806d6282c967a54ec0891ca",
+  "runner_sha256": "065cc786bd77d96c8c119053441c6e3e3a2bbcafb404e3e4b7e2644123b92fa3",
+  "quota_test_sha256": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+  "binding_test_sha256": "3b7547142b02c454f12f2597d85365ba5351cf1e6e42be11776f0a950165ef93",
+  "static_checks_sha256": "88ccc5f40dcf32103b38ae0d8c7947f3ea5ccb63aa56f6fcda56273c885d5cd0",
+  "new_tests_patch_sha256": "23bb1ac8a6fa11523bb1bd2af9334f19284ada713fae1caf53e92803d1c234d9",
+  "preexecution_authoring_diff_sha256": "9d7ed5a14ece5722e8cf2f1ebdfb7c811889e285f29a1636c3270482eab499c2",
+  "tests_executed": 0,
+  "source_ready_received": false
+}

@@ -1,0 +1,13 @@
+{
+  "finding": "F1",
+  "stage": "PRE_EXECUTION_STATIC_REVIEW",
+  "before_sha256": "1cc5e361ec8cc5268459973a2843bb3ad9a70f2e7f81417edba7eb7b7b5844bf",
+  "after_sha256": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+  "fixed_utc": "2026-10-17T01:15:44.845621+00:00",
+  "behavior_changed": "Only initialize API returns intent_transaction_closed null; bind/read always bool, including None invalid input",
+  "new_test_methods": 0,
+  "existing_new_fault_method_covers": "None intent connection must be bool false and SQL0",
+  "product_tests_run": 0,
+  "old_passes_repeated": false,
+  "test_failure_fix_rounds": 0
+}

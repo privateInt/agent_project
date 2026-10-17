@@ -1,0 +1,33 @@
+[
+  {
+    "role": "parent",
+    "actual_turn_context": {
+      "turn_id": "01a1475a-2485-7ce2-962d-a3abc05ee970",
+      "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+      "approval_policy": "on-request",
+      "approvals_reviewer": "auto_review",
+      "sandbox_policy": {
+        "type": "workspace-write",
+        "network_access": false,
+        "exclude_tmpdir_env_var": false,
+        "exclude_slash_tmp": false
+      }
+    }
+  },
+  {
+    "role": "test_agent",
+    "actual_turn_context": {
+      "turn_id": "01a1475d-6786-78e2-86cd-59cdbed03c9b",
+      "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+      "approval_policy": "on-request",
+      "approvals_reviewer": "auto_review",
+      "sandbox_policy": {
+        "type": "workspace-write",
+        "network_access": false,
+        "exclude_tmpdir_env_var": false,
+        "exclude_slash_tmp": false
+      },
+      "permission_profile_sha256": "bd4ecaa91fcb05111447bd2136aeb585cbfd2175ec345386d0a52905b9658927"
+    }
+  }
+]

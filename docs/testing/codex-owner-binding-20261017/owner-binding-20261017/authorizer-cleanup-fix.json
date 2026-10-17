@@ -1,0 +1,20 @@
+{
+  "cause": "Fresh local Python3.10.12 SQLite3.37.2 diagnostic confirms set_authorizer(None) leaves subsequent PRAGMA not authorized; allow-all callback restores fixture queries",
+  "product_sources_changed": false,
+  "test_before": "4190ad0152637cb06d5276bd94682a767def9ee8da9f7dbc86ee31930569a117",
+  "test_after": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6",
+  "runner_before": "ba73c78dc87001825fc84c41f40e032efb2f004f17ee042ebd1f909a0ff87d38",
+  "runner_after": "025372067ccd97fdd8f1a5f7070fe2ea5161d6e99903403abad624ffb4670238",
+  "changed_methods_AST": [
+    "test_binding_faults_pins_schema_and_privacy"
+  ],
+  "previous_quota_methods_reused": 3,
+  "previous_binding_methods_reused": 2,
+  "only_failed_method_rerun": true,
+  "test_fix_round_total": 2,
+  "this_failure_fix_round": 1,
+  "first_run_and_second_run_preserved": true,
+  "deadline_utc": "2026-10-17T01:57:31Z",
+  "created_utc": "2026-10-17T01:36:58.371708+00:00",
+  "run3_executed": false
+}

@@ -1,5 +1,7 @@
 # 앞으로의 작업 순서
 
+2026-10-17 U01b2: owner quota-only reader와 durable prebinding의 새6개(3+2+1 재사용), 지정2 의미 변이 검출을 완료했다. 최종 독립 검토 후 별도 Draft PR로 보존한다. 다음 작은 구현은 기존 소유 client 요청의 ACK 보존·turn/result 결합이다. 실제 설치·신뢰 pin/상태 경로·role/owner 입력과 native 인수는 별도 조건이며 PAUSE/native D18 보류를 유지한다.
+
 2026-10-17 KST U01b2: PR18 고정 `780d0755378b9f95f0282ec766ca99300b2b0b53` 위에 오프라인 queue/list 관측기를 추가했다. 기존 공개 `read_intent` 한 번으로 원래 intent를 읽고, client·prompt bytes·thread·원문 hash와 완결 pagination의 유일 후보를 대조한다. 전용 임시 SQLite/독립 소스 복사본의 새4개 최초 PASS와 두 의미 변이 검출(각 FAIL1/ERROR0), 원래 UNKNOWN/raw/hash/revision 및 재개방 보존을 확인했다. 기존 PASS는 반복하지 않았다. 최종 독립 검토는 별도 근거에 기록한다. 실제 ACK 저장·turn/result·controller/scheduler 연결과 두 실제 작업 연속 실행은 미완료이며 runtime D18 보류·두 PAUSE·운영/인증정보/main/VMS 보호를 유지한다. [새 근거](testing/codex-queue-correlation-observed-20261016.json).
 
 2026-10-16: [제출 intent 저장 단위](testing/codex-unattended-intent-observed-20261016.json) 이후에는 U01a·저널·native queue의 ACK/불명 재조회와 완료/검토/Draft PR readback을 연결해야 한다. 실제 owner 설정·native 계약/사용량/role 권한을 확인하고 별도 최소 계획을 독립 검토한 뒤 연결한다. D18 runtime 보류·두 PAUSE·agent_project 한정은 유지하며 VMS·worker·scheduler를 활성화하지 않는다.

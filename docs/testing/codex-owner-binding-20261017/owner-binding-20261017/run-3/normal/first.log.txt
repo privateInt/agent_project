@@ -1,0 +1,6 @@
+test_binding_faults_pins_schema_and_privacy (src.ops.tools.tests.test_codex_unattended_submission_binding.SubmissionBindingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.421s
+
+OK

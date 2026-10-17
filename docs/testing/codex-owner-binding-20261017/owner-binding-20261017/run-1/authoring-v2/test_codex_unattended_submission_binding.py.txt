@@ -1,0 +1,584 @@
+"""Frozen owner-binding 4ef0459d + D06: dedicated file SQLite, three methods."""
+import contextlib
+import copy
+import json
+from pathlib import Path
+import sqlite3
+import sys
+import tempfile
+from types import SimpleNamespace
+import unittest
+from unittest import mock
+
+from src.ops.tools import codex_unattended_submission_binding as product
+from src.ops.tools import codex_unattended_intent_journal as journal
+from src.ops.tools import codex_unattended_queue_observer as parser
+from src.ops.tools.tests import test_codex_unattended_intent_journal as support
+from src.ops.tools.tests.test_codex_unattended_quota_reader import fixture, strict_io, Opaque
+
+CONFIRMED = {"BINDINGS_READY", "BINDING_STORED", "BINDING_REUSED", "BINDING_OBSERVED"}
+BLOCKED = {"ARGUMENTS_INVALID", "CONNECTION_INVALID", "DATABASE_NOT_EMPTY", "SCHEMA_INVALID",
+           "INPUT_HASH_MISMATCH", "INPUT_INVALID", "INTENT_BLOCKED", "INTENT_NOT_PREPARED",
+           "INTENT_BINDING_MISMATCH", "BINDING_NOT_FOUND", "BINDING_PIN_MISMATCH", "BINDING_CONFLICT", "ROW_INVALID"}
+FALSE_FLAGS = {"remote_io_performed", "remote_mutation_authorized", "input_origin_verified",
+               "native_acceptance_verified", "replay_permitted", "native_ready"}
+REPORT_KEYS = {"scope", "status", "reason", "phase", "database_commit_confirmed", "intent_validated",
+               "intent_reason", "intent_state", "intent_revision", "new_binding",
+               "binding_transaction_closed", "intent_transaction_closed"} | FALSE_FLAGS
+C_KEYS = {"schema", "project_id", "batch_id", "task_id", "intent_sha256", "intent_revision",
+          "client_user_message_id", "thread_id", "submission_params_sha256"}
+PHASES = {"PRECHECK", "INTENT_LOCK", "INTENT_VALIDATE", "BINDING_TRANSACTION", "BINDING_VALIDATE",
+          "BINDING_WRITE", "BINDING_READBACK", "BINDING_COMMIT", "INTENT_RELEASE", "COMPLETE"}
+OBSERVATIONS = []
+_UNSET = object()
+
+
+def binding_rows(connection):
+    tables = connection.execute("SELECT name FROM main.sqlite_master WHERE type='table'").fetchall()
+    if ("submission_bindings",) not in tables:
+        return []
+    return connection.execute("SELECT project_id,batch_id,task_id,binding_bytes,binding_sha256 "
+                              "FROM main.submission_bindings ORDER BY 1,2,3").fetchall()
+
+
+def binding_snapshot(connection, path):
+    return {"objects": connection.execute("SELECT type,name,tbl_name,sql FROM sqlite_master ORDER BY 1,2").fetchall(),
+            "rows": binding_rows(connection),
+            "app": connection.execute("PRAGMA application_id").fetchone()[0],
+            "version": connection.execute("PRAGMA user_version").fetchone()[0], "bytes": path.read_bytes()}
+
+
+def alive(connection):
+    if type(connection) is not sqlite3.Connection:
+        return False
+    try:
+        connection.in_transaction
+        return True
+    except sqlite3.ProgrammingError:
+        return False
+
+
+class SubmissionBindingTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.data = fixture("binding.json")
+        if cls.data["provenance"] != "SYNTHETIC_ONLY_OWNER_BINDING_NO_NATIVE_IO":
+            raise AssertionError("SYNTHETIC_FIXTURE_REQUIRED")
+        value = cls.data["intent"]
+        if (support.sha(support.canonical(value)) != cls.data["canonical_intent_sha256"]
+                or support.sha(cls.data["prompt_fixture"].encode()) != value["prompt_sha256"]
+                or support.sha(support.canonical({k: value[k] for k in support.PROJECT_KEYS})) != value["project_sha256"]
+                or support.sha(support.canonical(cls.data["task_descriptor"])) != value["task_sha256"]
+                or support.sha(support.canonical(cls.data["settings_fixture"])) != value["settings_sha256"]):
+            raise AssertionError("SYNTHETIC_DIGEST_BINDING_INVALID")
+
+    @contextlib.contextmanager
+    def database(self, *, initialized=True, unknown=False):
+        with tempfile.TemporaryDirectory(prefix="owner-binding-db-") as directory:
+            root = Path(directory)
+            ipath, bpath = root / "intent.sqlite", root / "bindings.sqlite"
+            iconn, bconn = support.connect(ipath), support.connect(bpath)
+            peer_i, peer_b = support.connect(ipath), support.connect(bpath)
+            peer_i.execute("PRAGMA busy_timeout=0").close()
+            db = SimpleNamespace(intent=iconn, binding=bconn, peer_intent=peer_i, peer_binding=peer_b,
+                                 intent_path=ipath, binding_path=bpath, value=copy.deepcopy(self.data["intent"]))
+            db.key = support.intent_key(db.value)
+            db.intent_raw = support.canonical(db.value)
+            db.intent_sha = support.sha(db.intent_raw)
+            db.params = {"threadId": self.data["thread_id"], "clientUserMessageId": db.value["clientUserMessageId"],
+                         "input": [{"type": "text", "text": self.data["prompt_fixture"]}]}
+            db.raw = support.canonical(db.params)
+            db.raw_sha = support.sha(db.raw)
+            try:
+                # Existing PR18 APIs are fixture setup, never an old TestCase execution.
+                with strict_io() as (attempts, output):
+                    initial = journal.initialize_intent_journal(iconn)
+                    reserved = journal.reserve_intent(iconn, db.intent_sha, db.intent_raw)
+                self.assertEqual([], attempts)
+                self.assertEqual("", output.getvalue())
+                self.assertEqual("JOURNAL_READY", initial["report"]["reason"])
+                self.assertEqual("INTENT_STORED", reserved["report"]["reason"])
+                if initialized:
+                    self.invoke(db, "initialize_submission_bindings", reason="BINDINGS_READY")
+                if unknown:
+                    claimed = journal.claim_intent(iconn, db.key, db.intent_sha, 0)
+                    self.assertEqual("CLAIM_RECORDED", claimed["report"]["reason"])
+                yield db
+            finally:
+                for connection in (db.peer_binding, db.peer_intent, db.binding, db.intent, bconn, iconn):
+                    if alive(connection):
+                        if connection.in_transaction:
+                            connection.rollback()  # Test owns final cleanup, never product policy.
+                        connection.close()
+
+    def expected_c(self, db, raw=None):
+        raw = db.raw if raw is None else raw
+        params = json.loads(raw)
+        return {"schema": 1, "project_id": db.key[0], "batch_id": db.key[1], "task_id": db.key[2],
+                "intent_sha256": db.intent_sha, "intent_revision": 0,
+                "client_user_message_id": params["clientUserMessageId"], "thread_id": params["threadId"],
+                "submission_params_sha256": support.sha(raw)}
+
+    def invoke(self, db, operation="bind_submission", *, reason, phase=None, raw=None,
+               raw_sha=None, key=_UNSET, intent_sha=_UNSET, binding_sha=None,
+               intent_connection=_UNSET, binding_connection=_UNSET, after_call=None):
+        iconn = db.intent if intent_connection is _UNSET else intent_connection
+        bconn = db.binding if binding_connection is _UNSET else binding_connection
+        is_init = operation == "initialize_submission_bindings"
+        raw = db.raw if raw is None else raw
+        raw_sha = support.sha(raw) if raw_sha is None and type(raw) is bytes else raw_sha
+        key = db.key if key is _UNSET else key
+        intent_sha = db.intent_sha if intent_sha is _UNSET else intent_sha
+        traces, reuse = [], []
+        actual_connections = [c for c in (iconn, bconn) if alive(c)]
+        before_profiles = [support.profile(c) for c in actual_connections]
+        for c in actual_connections:
+            c.set_trace_callback(lambda sql, c=c: traces.append(("intent" if c is iconn else "binding", sql)))
+        private_codes = {journal._connection.__code__: "connection", journal._schema.__code__: "schema",
+                         journal._pinned.__code__: "pinned"}
+        forbidden_codes = {journal.initialize_intent_journal.__code__, journal.reserve_intent.__code__,
+                           journal.claim_intent.__code__}
+        parser_codes = {getattr(parser, name).__code__: name for name in
+                        ("_raw", "_inputs", "_decode", "_identifier", "_text")}
+        parser_calls = []
+
+        def watch(frame, event, arg):
+            if event != "call":
+                return
+            if frame.f_code in forbidden_codes:
+                raise support.ForbiddenIO("PRODUCT_INTENT_MUTATION_FORBIDDEN")
+            name = private_codes.get(frame.f_code)
+            connection = frame.f_locals.get("connection")
+            if name:
+                reuse.append((name, connection is iconn))
+                if name == "connection" and alive(connection) and connection.in_transaction:
+                    raise support.ForbiddenIO("PROFILE_CHECK_AFTER_BEGIN_FORBIDDEN")
+                if name in ("schema", "pinned") and connection is iconn and not connection.in_transaction:
+                    raise support.ForbiddenIO("INTENT_VALIDATION_WITHOUT_OWNED_LOCK")
+            if frame.f_code in parser_codes:
+                parser_calls.append(parser_codes[frame.f_code])
+
+        try:
+            sys.setprofile(watch)
+            with strict_io() as (attempts, output):
+                if is_init:
+                    result = product.initialize_submission_bindings(bconn)
+                elif operation == "bind_submission":
+                    result = product.bind_submission(iconn, bconn, key, intent_sha,
+                        submission_params_bytes=raw, expected_submission_sha256=raw_sha)
+                else:
+                    result = product.read_submission_binding(iconn, bconn, key, intent_sha, binding_sha)
+        finally:
+            sys.setprofile(None)
+            for c in actual_connections:
+                c.set_trace_callback(None)
+            if after_call:
+                after_call()
+        self.last_result = result
+        self.last_sql = traces
+        self.last_reuse = reuse
+        self.last_parser_calls = parser_calls
+        # Capture a durable wrong row BEFORE semantic assertions, also in M_B's helper-only run.
+        committed = binding_rows(db.peer_binding)
+        current = support.rows(db.peer_intent)
+        self.last_committed_witness = {"row_count": len(committed), "intent_state": current[0][6],
+                                       "intent_revision": current[0][7], "rows": []}
+        for row in committed:
+            self.last_committed_witness["rows"].append({"binding_sha256": row[4],
+                "actual_sha256": support.sha(row[3]), "binding": json.loads(row[3])})
+        if (current[0][6:] == ("SUBMISSION_UNKNOWN", 1) and len(committed) == 1
+                and result["report"]["reason"] == "BINDING_STORED"):
+            self.wrong_commit_db_bytes = db.binding_path.read_bytes()
+        self.assertEqual([], attempts)
+        self.assertEqual("", output.getvalue())
+        self.assertEqual(before_profiles, [support.profile(c) for c in actual_connections])
+        self.assertIs(type(result), dict)
+        self.assertEqual({"report", "record"}, set(result))
+        report = result["report"]
+        self.assertIs(type(report), dict)
+        self.assertEqual(REPORT_KEYS, set(report))
+        self.assertEqual("DURABLE_SUBMISSION_BINDING_ONLY", report["scope"])
+        self.assertIn(report["reason"], CONFIRMED | BLOCKED | {"CHECKPOINT_UNCONFIRMED"})
+        self.assertIn(report["phase"], PHASES)
+        expected_status = "CONFIRMED" if report["reason"] in CONFIRMED else "BLOCKED" if report["reason"] in BLOCKED else "UNCERTAIN"
+        self.assertEqual(expected_status, report["status"])
+        self.assertIs(report["database_commit_confirmed"], report["reason"] in CONFIRMED)
+        self.assertIs(report["new_binding"], report["reason"] == "BINDING_STORED")
+        for flag in FALSE_FLAGS:
+            self.assertIs(report[flag], False)
+        self.assertIs(report["binding_transaction_closed"], support.transaction_closed(bconn))
+        self.assertIs(report["intent_transaction_closed"], None if is_init else support.transaction_closed(iconn))
+        self.assertIs(type(report["intent_validated"]), bool)
+        self.assertTrue(report["intent_reason"] is None or report["intent_reason"] in support.BLOCKED)
+        if report["intent_state"] is not None:
+            self.assertIn(report["intent_state"], ("PREPARED", "SUBMISSION_UNKNOWN"))
+            self.assertIs(type(report["intent_revision"]), int)
+        else:
+            self.assertIsNone(report["intent_revision"])
+        if report["intent_validated"]:
+            self.assertIn(("schema", True), reuse)
+            self.assertIn(("pinned", True), reuse)
+        if report["reason"] in CONFIRMED:
+            self.assertEqual("COMPLETE", report["phase"])
+        if result["record"] is not None:
+            self.assertIn(report["reason"], {"BINDING_STORED", "BINDING_REUSED", "BINDING_OBSERVED"})
+            self.assertEqual({"binding_bytes", "binding_sha256"}, set(result["record"]))
+            record = result["record"]
+            self.assertIs(type(record["binding_bytes"]), bytes)
+            self.assertLessEqual(len(record["binding_bytes"]), 4096)
+            self.assertEqual(support.sha(record["binding_bytes"]), record["binding_sha256"])
+            value = json.loads(record["binding_bytes"])
+            self.assertEqual(C_KEYS, set(value))
+            self.assertEqual(record["binding_bytes"], support.canonical(value))
+            self.assertEqual(0, value["intent_revision"])
+            self.assertIs(type(value["intent_revision"]), int)
+        elif report["reason"] in {"BINDING_STORED", "BINDING_REUSED", "BINDING_OBSERVED"}:
+            self.fail("CONFIRMED_BINDING_REQUIRES_RECORD")
+        for role, sql in traces:
+            normalized = sql.strip().upper()
+            if role == "intent":
+                self.assertFalse(normalized.startswith(("INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "REPLACE")))
+                self.assertFalse(normalized.startswith("PRAGMA") and "=" in normalized)
+        public = support.canonical(report)
+        for private in (self.data["prompt_fixture"], support.PRIVATE_ERROR, self.data["intent"]["dev_root"],
+                        self.data["intent"]["git_common_dir"], str(db.intent_path), str(db.binding_path)):
+            self.assertNotIn(private.encode(), public)
+        OBSERVATIONS.append({"operation": operation, "reason": report["reason"], "phase": report["phase"],
+                             "intent_transaction_closed": report["intent_transaction_closed"],
+                             "binding_transaction_closed": report["binding_transaction_closed"],
+                             "sql_count": len(traces), "runtime_calls": 0})
+        # Capture the committed candidate first; a changed outcome fails the semantic reason.
+        self.assertEqual(reason, report["reason"])
+        if phase is not None:
+            self.assertEqual(phase, report["phase"])
+        return result
+
+    def case_unknown_intent_cannot_create_binding(self):
+        with self.database(unknown=True) as db:
+            before_i = support.database_snapshot(db.intent, db.intent_path)
+            before_b = binding_snapshot(db.binding, db.binding_path)
+            self.assertEqual(("SUBMISSION_UNKNOWN", 1), support.rows(db.intent)[0][6:])
+            self.assertEqual([], binding_rows(db.peer_binding))
+            self.expected_wrong_candidate = self.expected_c(db)
+            result = self.invoke(db, reason="INTENT_NOT_PREPARED", phase="INTENT_VALIDATE")
+            self.assertIsNone(result["record"])
+            self.assertIs(result["report"]["new_binding"], False)
+            self.assertEqual([], binding_rows(db.peer_binding))
+            self.assertEqual(before_i, support.database_snapshot(db.intent, db.intent_path))
+            self.assertEqual(before_b, binding_snapshot(db.binding, db.binding_path))
+            self.unknown_guard_normal_passed = True
+
+    def test_binding_prepare_reuse_conflict_and_reopen(self):
+        with self.database() as db:
+            before_i = support.database_snapshot(db.intent, db.intent_path)
+            first = self.invoke(db, reason="BINDING_STORED")
+            expected_raw = support.canonical(self.expected_c(db))
+            self.assertEqual({"binding_bytes": expected_raw, "binding_sha256": support.sha(expected_raw)}, first["record"])
+            self.assertEqual([(*db.key, expected_raw, support.sha(expected_raw))], binding_rows(db.peer_binding))
+            self.assertEqual(0x41494231, db.binding.execute("PRAGMA application_id").fetchone()[0])
+            self.assertEqual(1, db.binding.execute("PRAGMA user_version").fetchone()[0])
+            self.assertTrue({"_inputs", "_raw", "_decode", "_identifier", "_text"}.issubset(self.last_parser_calls))
+            pinned = binding_snapshot(db.binding, db.binding_path)
+            self.assertEqual(first["record"], self.invoke(db, reason="BINDING_REUSED")["record"])
+            self.assertEqual(pinned, binding_snapshot(db.binding, db.binding_path))
+            variants = []
+            changed = copy.deepcopy(db.params)
+            changed["threadId"] = "different-valid-thread"
+            variants.append(support.canonical(changed))
+            variants.append(json.dumps(db.params, indent=2, ensure_ascii=True).encode())
+            variants.append(json.dumps(dict(reversed(list(db.params.items()))), separators=(",", ":"), ensure_ascii=True).encode())
+            changed = copy.deepcopy(db.params)
+            changed["input"][0]["text_elements"] = []
+            variants.append(support.canonical(changed))
+            for index, raw in enumerate(variants):
+                with self.subTest(conflict=index):
+                    self.assertNotEqual(db.raw_sha, support.sha(raw))
+                    self.invoke(db, raw=raw, reason="BINDING_CONFLICT")
+                    self.assertEqual(pinned, binding_snapshot(db.binding, db.binding_path))
+                    self.assertEqual(before_i, support.database_snapshot(db.intent, db.intent_path))
+            db.binding.close()
+            db.intent.close()
+            db.intent, db.binding = support.connect(db.intent_path), support.connect(db.binding_path)
+            reread = self.invoke(db, "read_submission_binding", binding_sha=first["record"]["binding_sha256"], reason="BINDING_OBSERVED")
+            self.assertEqual(first["record"], reread["record"])
+            self.assertEqual(before_i, support.database_snapshot(db.intent, db.intent_path))
+            claimed = journal.claim_intent(db.intent, db.key, db.intent_sha, 0)
+            self.assertEqual("CLAIM_RECORDED", claimed["report"]["reason"])
+            self.assertEqual(("SUBMISSION_UNKNOWN", 1), support.rows(db.intent)[0][6:])
+            self.assertEqual(first["record"], self.invoke(db, "read_submission_binding", binding_sha=first["record"]["binding_sha256"], reason="BINDING_OBSERVED")["record"])
+            self.invoke(db, reason="INTENT_NOT_PREPARED")
+            self.assertEqual(pinned, binding_snapshot(db.binding, db.binding_path))
+            self.assertEqual(("SUBMISSION_UNKNOWN", 1), support.rows(db.intent)[0][6:])
+            file_raw = db.binding_path.read_bytes()
+            for forbidden in (self.data["prompt_fixture"].encode(), db.raw, self.data["intent"]["dev_root"].encode(),
+                              self.data["intent"]["git_common_dir"].encode()):
+                self.assertNotIn(forbidden, file_raw)
+
+    def test_binding_prepared_guard_and_lock_boundary(self):
+        self.case_unknown_intent_cannot_create_binding()
+        with self.database() as db:
+            before = support.database_snapshot(db.intent, db.intent_path)
+            actual_commit = product._commit
+            hits = []
+
+            def check_lock(connection):
+                if connection is db.binding:
+                    hits.append("BINDING_COMMIT_WHILE_INTENT_LOCKED")
+                    self.assertTrue(db.intent.in_transaction)
+                    self.assertEqual(("PREPARED", 0), support.rows(db.peer_intent)[0][6:])
+                    with self.assertRaises(sqlite3.OperationalError):
+                        db.peer_intent.execute("BEGIN IMMEDIATE").close()
+                    self.assertFalse(db.peer_intent.in_transaction)
+                return actual_commit(connection)
+
+            with mock.patch.object(product, "_commit", check_lock):
+                stored = self.invoke(db, reason="BINDING_STORED")
+            self.assertEqual(["BINDING_COMMIT_WHILE_INTENT_LOCKED"], hits)
+            order = [(role, sql.strip().upper()) for role, sql in self.last_sql if sql.strip().upper().startswith("BEGIN")]
+            self.assertEqual([("intent", "BEGIN IMMEDIATE"), ("binding", "BEGIN IMMEDIATE")], order)
+            self.assertEqual(before, support.database_snapshot(db.intent, db.intent_path))
+            self.assertEqual("CLAIM_RECORDED", journal.claim_intent(db.intent, db.key, db.intent_sha, 0)["report"]["reason"])
+            read = self.invoke(db, "read_submission_binding", binding_sha=stored["record"]["binding_sha256"], reason="BINDING_OBSERVED")
+            self.assertEqual(stored["record"], read["record"])
+
+    def test_binding_faults_pins_schema_and_privacy(self):
+        # Explicit empty-only initialize; no migration/repair even for recognized schema.
+        with self.database(initialized=False) as db:
+            before = binding_snapshot(db.binding, db.binding_path)
+            self.invoke(db, reason="SCHEMA_INVALID")
+            self.assertEqual(before, binding_snapshot(db.binding, db.binding_path))
+            self.invoke(db, "initialize_submission_bindings", reason="BINDINGS_READY")
+            before = binding_snapshot(db.binding, db.binding_path)
+            self.invoke(db, "initialize_submission_bindings", reason="DATABASE_NOT_EMPTY")
+            self.assertEqual(before, binding_snapshot(db.binding, db.binding_path))
+        for sql in ("CREATE TABLE foreign_sentinel(value TEXT)", "PRAGMA application_id=7", "PRAGMA user_version=2"):
+            with self.database(initialized=False) as db:
+                db.binding.execute(sql).close()
+                before = binding_snapshot(db.binding, db.binding_path)
+                self.invoke(db, "initialize_submission_bindings", reason="DATABASE_NOT_EMPTY")
+                self.assertEqual(before, binding_snapshot(db.binding, db.binding_path))
+        with self.database() as db:
+            before_i = support.database_snapshot(db.intent, db.intent_path)
+            before_b = binding_snapshot(db.binding, db.binding_path)
+            for overrides in ({"intent_connection": db.binding}, {"binding_connection": db.intent}):
+                self.invoke(db, reason="CONNECTION_INVALID", **overrides)
+                self.assertEqual([], self.last_sql)
+            same_file = support.connect(db.intent_path)
+            try:
+                self.invoke(db, binding_connection=same_file, reason="CONNECTION_INVALID")
+            finally:
+                same_file.close()
+            # Both structural/active checks precede ANY SQL, including the other valid connection.
+            for conn, role in ((db.intent, "intent"), (db.binding, "binding")):
+                conn.execute("BEGIN").close()
+                self.invoke(db, reason="CONNECTION_INVALID")
+                self.assertEqual([], self.last_sql)
+                self.assertTrue(conn.in_transaction)
+                conn.rollback()
+            for role in ("intent", "binding"):
+                for bad in (None, object(), Opaque()):
+                    self.invoke(db, reason="CONNECTION_INVALID", **{role + "_connection": bad})
+                    self.assertEqual([], self.last_sql)
+                closed = support.connect(db.binding_path)
+                closed.close()
+                self.invoke(db, reason="CONNECTION_INVALID", **{role + "_connection": closed})
+                self.assertEqual([], self.last_sql)
+            memory = support.connect(":memory:")
+            try:
+                self.invoke(db, binding_connection=memory, reason="CONNECTION_INVALID")
+            finally:
+                memory.close()
+            for conn in (db.intent, db.binding):
+                for attribute, invalid in (("row_factory", sqlite3.Row), ("text_factory", bytes),
+                                           ("isolation_level", "DEFERRED")):
+                    previous = getattr(conn, attribute)
+                    setattr(conn, attribute, invalid)
+                    self.invoke(db, reason="CONNECTION_INVALID")
+                    self.assertEqual([], self.last_sql)
+                    setattr(conn, attribute, previous)
+                for sql, restore in (("PRAGMA synchronous=OFF", "PRAGMA synchronous=FULL"),
+                                     ("PRAGMA busy_timeout=1001", "PRAGMA busy_timeout=1000")):
+                    conn.execute(sql).close()
+                    self.invoke(db, reason="CONNECTION_INVALID")
+                    conn.execute(restore).close()
+                conn.execute("CREATE TEMP TABLE private_temp(value)").close()
+                self.invoke(db, reason="CONNECTION_INVALID")
+                conn.execute("DROP TABLE private_temp").close()
+                conn.execute("ATTACH DATABASE ':memory:' AS other").close()
+                self.invoke(db, reason="CONNECTION_INVALID")
+                conn.execute("DETACH DATABASE other").close()
+            bad_inputs = [(b"{}", support.sha(b"{}"), "INPUT_INVALID"),
+                          (db.raw, "0"*64, "INPUT_HASH_MISMATCH"),
+                          (b"", support.sha(b""), "ARGUMENTS_INVALID"),
+                          (bytearray(db.raw), db.raw_sha, "ARGUMENTS_INVALID"),
+                          (db.raw, db.raw_sha.upper(), "ARGUMENTS_INVALID"),
+                          (b"x"*131073, "0"*64, "ARGUMENTS_INVALID")]
+            invalid_json = [b'\xef\xbb\xbf{}', b'{"threadId":"a","threadId":"b"}',
+                            b'{"extra":NaN}', b'{"extra":1e400}', b'[]',
+                            b'{"extra":' + b'['*9 + b'0' + b']'*9 + b'}']
+            for raw in invalid_json:
+                bad_inputs.append((raw, support.sha(raw), "INPUT_INVALID"))
+            for update in ({"threadId": "bad thread"}, {"clientUserMessageId": 1}, {"extra": 1},
+                           {"input": []}, {"input": [{"type": "image", "text": "x"}]},
+                           {"input": [{"type": "text", "text": "x", "text_elements": [1]}]},
+                           {"input": [{"type": "text", "text": "x"*16385}]}):
+                params = copy.deepcopy(db.params)
+                params.update(update)
+                raw = support.canonical(params)
+                bad_inputs.append((raw, support.sha(raw), "INPUT_INVALID"))
+            for index, (raw, pin, expected) in enumerate(bad_inputs):
+                with self.subTest(input=index):
+                    self.invoke(db, raw=raw, raw_sha=pin, reason=expected)
+                    self.assertEqual(before_i, support.database_snapshot(db.intent, db.intent_path))
+                    self.assertEqual(before_b, binding_snapshot(db.binding, db.binding_path))
+            for key in ([*db.key], (Opaque(), *db.key[1:]), ("other", *db.key[1:])):
+                self.invoke(db, key=key, reason="ARGUMENTS_INVALID")
+                self.assertEqual([], self.last_sql)
+            for update in ({"clientUserMessageId": "different-valid-client"},
+                           {"input": [{"type": "text", "text": "different valid prompt"}]}):
+                params = dict(db.params, **update)
+                self.invoke(db, raw=support.canonical(params), reason="INTENT_BINDING_MISMATCH")
+                self.assertEqual(before_b, binding_snapshot(db.binding, db.binding_path))
+            result = self.invoke(db, intent_sha="0"*64, reason="INTENT_BLOCKED", phase="INTENT_VALIDATE")
+            self.assertEqual("INTENT_PIN_MISMATCH", result["report"]["intent_reason"])
+            self.invoke(db, "read_submission_binding", binding_sha="0"*64, reason="BINDING_NOT_FOUND")
+        # A corrupt existing intent schema is known rejection, not SQL uncertainty.
+        with self.database() as db:
+            db.intent.execute("PRAGMA user_version=7").close()
+            before = support.database_snapshot(db.intent, db.intent_path)
+            result = self.invoke(db, reason="INTENT_BLOCKED", phase="INTENT_VALIDATE")
+            self.assertEqual("SCHEMA_INVALID", result["report"]["intent_reason"])
+            self.assertEqual(before, support.database_snapshot(db.intent, db.intent_path))
+        for sql in ("PRAGMA application_id=9", "PRAGMA user_version=9", "CREATE TABLE unexpected(value)"):
+            with self.database() as db:
+                db.binding.execute(sql).close()
+                before = binding_snapshot(db.binding, db.binding_path)
+                self.invoke(db, reason="SCHEMA_INVALID", phase="BINDING_VALIDATE")
+                self.assertEqual(before, binding_snapshot(db.binding, db.binding_path))
+        for corruption in ("hash", "bytes", "canonical", "column"):
+            with self.database() as db:
+                stored = self.invoke(db, reason="BINDING_STORED")
+                pin = stored["record"]["binding_sha256"]
+                self.invoke(db, "read_submission_binding", binding_sha="0"*64, reason="BINDING_PIN_MISMATCH")
+                if corruption == "hash":
+                    db.binding.execute("UPDATE submission_bindings SET binding_sha256=?", ("0"*64,)).close()
+                elif corruption == "bytes":
+                    db.binding.execute("UPDATE submission_bindings SET binding_bytes=?", (b"{}",)).close()
+                else:
+                    value = json.loads(stored["record"]["binding_bytes"])
+                    if corruption == "column":
+                        value["task_id"] = "other-task"
+                    raw = (json.dumps(value, indent=2).encode() if corruption == "canonical" else support.canonical(value))
+                    db.binding.execute("UPDATE submission_bindings SET binding_bytes=?,binding_sha256=?", (raw, support.sha(raw))).close()
+                before = binding_snapshot(db.binding, db.binding_path)
+                self.invoke(db, "read_submission_binding", binding_sha=pin, reason="ROW_INVALID")
+                self.assertEqual(before, binding_snapshot(db.binding, db.binding_path))
+        # D06: preflight _one has TWO arguments. Count actual injected reach, no arity-error PASS.
+        for role in ("intent", "binding"):
+            for pragma in ("PRAGMA busy_timeout", "PRAGMA main.synchronous"):
+                with self.database() as db:
+                    target = getattr(db, role)
+                    actual_one = journal._one
+                    hits = []
+                    before_i = support.database_snapshot(db.intent, db.intent_path)
+                    before_b = binding_snapshot(db.binding, db.binding_path)
+
+                    def preflight(connection, sql):
+                        if connection is target and sql == pragma:
+                            hits.append("PREFLIGHT_SQL_FAILURE")
+                            raise sqlite3.OperationalError(support.PRIVATE_ERROR)
+                        return actual_one(connection, sql)
+
+                    with mock.patch.object(journal, "_one", preflight):
+                        self.invoke(db, reason="CHECKPOINT_UNCONFIRMED", phase="PRECHECK")
+                    self.assertEqual(["PREFLIGHT_SQL_FAILURE"], hits)
+                    self.assertEqual(before_i, support.database_snapshot(db.intent, db.intent_path))
+                    self.assertEqual(before_b, binding_snapshot(db.binding, db.binding_path))
+        for role, statement, after, expected_phase in (
+                ("intent", "BEGIN IMMEDIATE", False, "INTENT_LOCK"),
+                ("intent", "BEGIN IMMEDIATE", True, "INTENT_LOCK"),
+                ("binding", "BEGIN IMMEDIATE", False, "BINDING_TRANSACTION"),
+                ("binding", "BEGIN IMMEDIATE", True, "BINDING_TRANSACTION"),
+                ("binding", "INSERT", False, "BINDING_WRITE"),
+                ("binding", "INSERT", True, "BINDING_WRITE")):
+            with self.database() as db:
+                target = getattr(db, role)
+                actual_execute = product._execute
+                hits = []
+                before_i = support.database_snapshot(db.intent, db.intent_path)
+                before_b = binding_snapshot(db.binding, db.binding_path)
+
+                def execute_failure(connection, sql, parameters=()):
+                    matched = connection is target and sql.strip().upper().startswith(statement)
+                    if matched and not hits:
+                        hits.append("ACTUAL_SQL_BOUNDARY")
+                        if after:
+                            actual_execute(connection, sql, parameters)
+                        raise sqlite3.OperationalError(support.PRIVATE_ERROR)
+                    return actual_execute(connection, sql, parameters)
+
+                with mock.patch.object(product, "_execute", execute_failure):
+                    self.invoke(db, reason="CHECKPOINT_UNCONFIRMED", phase=expected_phase)
+                self.assertEqual(["ACTUAL_SQL_BOUNDARY"], hits)
+                self.assertFalse(db.intent.in_transaction)
+                self.assertFalse(db.binding.in_transaction)
+                self.assertEqual(before_i, support.database_snapshot(db.intent, db.intent_path))
+                self.assertEqual(before_b, binding_snapshot(db.binding, db.binding_path))
+        # Actual SQLite readback denial after INSERT, independent of private _read helper names.
+        with self.database() as db:
+            actual_execute = product._execute
+            inserts, denials = [], []
+
+            def authorizer(action, name, column, database, origin):
+                if action == sqlite3.SQLITE_READ and name == "submission_bindings":
+                    denials.append("SQLITE_READBACK_DENIED")
+                    return sqlite3.SQLITE_DENY
+                return sqlite3.SQLITE_OK
+
+            def arm_readback(connection, sql, parameters=()):
+                result = actual_execute(connection, sql, parameters)
+                if connection is db.binding and sql.strip().upper().startswith("INSERT"):
+                    inserts.append("INSERT_SUCCEEDED")
+                    connection.set_authorizer(authorizer)
+                return result
+
+            with mock.patch.object(product, "_execute", arm_readback):
+                self.invoke(db, reason="CHECKPOINT_UNCONFIRMED", phase="BINDING_READBACK",
+                            after_call=lambda: db.binding.set_authorizer(None))
+            self.assertEqual(["INSERT_SUCCEEDED"], inserts)
+            self.assertEqual(["SQLITE_READBACK_DENIED"], denials)
+            self.assertEqual([], binding_rows(db.peer_binding))
+        for point, after in (("commit", False), ("commit", True), ("release", False), ("release", True)):
+            with self.database() as db:
+                hook = "_commit" if point == "commit" else "_rollback"
+                actual = getattr(product, hook)
+                target = db.binding if point == "commit" else db.intent
+                hits = []
+                before_i = support.database_snapshot(db.intent, db.intent_path)
+
+                def boundary_failure(connection):
+                    if connection is target and not hits:
+                        hits.append("ACTUAL_%s_%s" % (point, after))
+                        if after:
+                            actual(connection)
+                        raise sqlite3.OperationalError(support.PRIVATE_ERROR)
+                    return actual(connection)
+
+                with mock.patch.object(product, hook, boundary_failure):
+                    result = self.invoke(db, reason="CHECKPOINT_UNCONFIRMED",
+                        phase="BINDING_COMMIT" if point == "commit" else "INTENT_RELEASE")
+                self.assertEqual(1, len(hits))
+                self.assertIsNone(result["record"])
+                self.assertIs(result["report"]["new_binding"], False)
+                self.assertEqual(before_i, support.database_snapshot(db.intent, db.intent_path))
+                committed = after or point == "release"
+                self.assertEqual(1 if committed else 0, len(binding_rows(db.peer_binding)))
+                if db.intent.in_transaction:
+                    db.intent.rollback()  # Explicit fixture cleanup after reported uncertain release.
+                if committed:
+                    expected_raw = support.canonical(self.expected_c(db))
+                    db.binding.close()
+                    db.binding = support.connect(db.binding_path)
+                    observed = self.invoke(db, "read_submission_binding", binding_sha=support.sha(expected_raw), reason="BINDING_OBSERVED")
+                    self.assertEqual(expected_raw, observed["record"]["binding_bytes"])
+                    self.assertEqual(1, len(binding_rows(db.peer_binding)))

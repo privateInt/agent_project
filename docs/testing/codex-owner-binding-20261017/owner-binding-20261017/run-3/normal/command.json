@@ -1,0 +1,15 @@
+[
+  "/usr/bin/python3",
+  "-I",
+  "-S",
+  "-B",
+  "/tmp/owner-binding-portable-normal-tpe2sdur/fresh-source/run-once.py",
+  "--internal-stage",
+  "normal",
+  "--copy-root",
+  "/tmp/owner-binding-portable-normal-tpe2sdur/fresh-source",
+  "--stage-dir",
+  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-binding-20261017/run-3/normal",
+  "--forbidden-root",
+  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+]

@@ -1,0 +1,21 @@
+{
+  "owner_metadata_once.py": "7ec43e502ed7a59e61c3abfd8949df059fb9dbb2f80657fdcd93dee08f83d259",
+  "transition-evidence/owner-native-metadata-once.json": "22e14deebb25db329fb0ebef6b22659167d2ffe06d3cbaeddd90b2fbc6a430bc",
+  "/etc/codex-agent/PAUSE": {
+    "exists": true,
+    "modified": false
+  },
+  "/home/codex_shshin/automation_mvp/PAUSE": {
+    "exists": true,
+    "modified": false
+  },
+  "scope": {
+    "live_connection_attempts": 1,
+    "rpc_requests": 2,
+    "old_six_rpc_script_rerun": false,
+    "thread_resume": false,
+    "systemctl": false,
+    "credentials_read": false,
+    "previous_pass_suite_repeated": false
+  }
+}

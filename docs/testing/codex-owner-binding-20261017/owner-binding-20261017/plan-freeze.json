@@ -1,0 +1,8 @@
+{
+  "sha256": "4ef0459db19aa24a806f1eae5701abc04dca6994220a7df67deff889a2b2d265",
+  "bytes": 31071,
+  "frozen_utc": "2026-10-17T01:07:00.195064+00:00",
+  "producer_turn_may_still_finalize": true,
+  "review_target": "review-plan-v1.md",
+  "later_producer_edits_not_auto_applied": true
+}

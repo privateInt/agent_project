@@ -1,0 +1,7 @@
+{
+  "stage": "LOCAL_RUNNER_GENERATION_BEFORE_ANY_STATEMENT_EXECUTED",
+  "error": "SyntaxError: positional argument follows keyword argument",
+  "cause": "Invalid mixing of dictionary key syntax with update keyword arguments",
+  "correction": "runner= keyword only",
+  "product_or_test_execution": 0
+}

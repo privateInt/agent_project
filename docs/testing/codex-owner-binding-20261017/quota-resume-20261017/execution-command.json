@@ -1,0 +1,14 @@
+{
+  "command": "/usr/bin/timeout --signal=TERM --kill-after=1s 19s python3 -B /home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/quota_read_once_20261017.py",
+  "working_directory": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+  "access_target": "existing owner AF_UNIX app-server-control socket; initialize + initialized notification + account/rateLimits/read only",
+  "requested_permission": "require_escalated, current auto_review, no policy edit",
+  "executions": 1,
+  "rpc_requests": 2,
+  "notifications": 1,
+  "retries": 0,
+  "transport_elapsed_seconds": 0.566302,
+  "outer_bound_seconds_including_forced_kill": 20,
+  "tool_exit_code": 0,
+  "fresh_product_reader_not_yet_implemented_at_observation": true
+}

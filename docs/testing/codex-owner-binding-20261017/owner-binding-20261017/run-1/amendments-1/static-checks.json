@@ -1,0 +1,27 @@
+{
+  "mode": "AST_AND_HASH_ONLY_NO_IMPORT_OR_EXECUTION",
+  "created_utc": "2026-10-17T01:28:51.914322+00:00",
+  "changed_functions": [
+    "database",
+    "test_binding_faults_pins_schema_and_privacy"
+  ],
+  "invoke_AST_unchanged": true,
+  "explicit_none_preserved_by_UNSET": true,
+  "quota_test_bytes_unchanged": true,
+  "runner_bytes_unchanged": true,
+  "all_prior_assertions_preserved": true,
+  "M_B_helper_AST_unchanged": true,
+  "normal_test_methods": 6,
+  "tests_executed": 0,
+  "source_pins": {
+    "src/ops/tools/codex_unattended_submission_binding.py": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+    "src/ops/tools/codex_unattended_quota_reader.py": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c"
+  },
+  "original11_hashes_preserved": true,
+  "source_imports": 0,
+  "test_imports": 0,
+  "sqlite_connections_opened": 0,
+  "runtime_calls": 0,
+  "deadline_utc": "2026-10-17T01:57:31Z",
+  "clock_reset": false
+}

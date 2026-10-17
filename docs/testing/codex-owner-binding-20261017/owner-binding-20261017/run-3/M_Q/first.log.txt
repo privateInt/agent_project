@@ -1,0 +1,19 @@
+test_unknown_ordinary_never_allowed (src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests) ... FAIL
+
+======================================================================
+FAIL: test_unknown_ordinary_never_allowed (src.ops.tools.tests.test_codex_unattended_quota_reader.QuotaReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/owner-binding-portable-M_Q-orlr056l/fresh-source/src/ops/tools/tests/test_codex_unattended_quota_reader.py", line 371, in test_unknown_ordinary_never_allowed
+    result = self.invoke(self.client(self.snapshot(None)), reason="ORDINARY_USAGE_UNKNOWN")
+  File "/tmp/owner-binding-portable-M_Q-orlr056l/fresh-source/src/ops/tools/tests/test_codex_unattended_quota_reader.py", line 243, in invoke
+    self.assertEqual(expected_status, result["status"])
+AssertionError: 'OBSERVED_UNKNOWN' != 'OBSERVED_ALLOWED'
+- OBSERVED_UNKNOWN
++ OBSERVED_ALLOWED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
