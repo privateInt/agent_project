@@ -1,5 +1,7 @@
 # 앞으로의 작업 순서
 
+2026-10-17 owner ACK adapter: PR21 고정 commit 위에 기존 소유 client의 decoded 결과를 제한된 canonical bytes/hash 또는 고정 오류 코드로 준비하는 순수 함수를 추가했다. [이번 단위 근거](testing/codex-owner-ack-adapter-observed-20261017.json)는 이전 ACK 원장 PASS와 분리한다. 새4개 최초 실행 PASS(FAIL0/ERROR0/SKIP0)·의미 변이2개 검출(각 FAIL1/ERROR0, 실제 잘못 준비된 bytes/hash)과 임시 SQLite 저장·재개방 결합을 확인했다. 실행과 체크포인트 갱신을 묶었으며 최종 독립 판정은 같은 근거의 고정 보고서를 따른다. 실제 client 호출·controller 연결·두 native 작업은 미검증이고 PAUSE/D18 보류를 유지한다.
+
 2026-10-17 ACK: serialized decoded 결과의 후보/UNKNOWN 불변 원장을 새4개 최초 PASS·2의미 변이 검출로 검증했다. 최종 독립 검토·Draft PR/readback으로 보존한다. 다음 구현은 기존 소유 client의 bounded serialization·오류 adapter 및 claim→submit/turn/result 연결이다. 실제 client 신뢰 pin/설치·상태 경로와 native 인수는 별도 조건이며 PAUSE/D18 보류를 유지한다.
 
 2026-10-17 U01b2: owner quota-only reader와 durable prebinding의 새6개(3+2+1 재사용), 지정2 의미 변이 검출을 완료했다. 최종 독립 검토 후 별도 Draft PR로 보존한다. 다음 작은 구현은 기존 소유 client 요청의 ACK 보존·turn/result 결합이다. 실제 설치·신뢰 pin/상태 경로·role/owner 입력과 native 인수는 별도 조건이며 PAUSE/native D18 보류를 유지한다.

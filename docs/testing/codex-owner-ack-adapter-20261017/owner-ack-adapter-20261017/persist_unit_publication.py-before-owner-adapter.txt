@@ -1,0 +1,84 @@
+"""Materialize only the remotely read-back Git commit; no network or tests."""
+import argparse
+import datetime
+import hashlib
+import itertools
+import json
+from pathlib import Path
+import subprocess
+
+ROOT = Path(__file__).resolve().parent
+parser = argparse.ArgumentParser()
+parser.add_argument('unit', choices=('transport', 'admission', 'intent', 'correlation', 'binding', 'ack'))
+unit = parser.parse_args().unit
+prefix = 'codex-daemon-transport-20261016' if unit == 'transport' else 'codex-unattended-admission-20261016'
+if unit == 'intent':
+    prefix = 'codex-unattended-intent-20261016'
+if unit == 'correlation':
+    prefix = 'codex-queue-correlation-20261016'
+if unit == 'binding':
+    prefix = 'codex-owner-binding-20261017'
+if unit == 'ack':
+    prefix = 'codex-queue-receipts-20261017'
+delivery = ROOT / (prefix + '-delivery')
+m = json.loads((delivery / 'remote.json').read_text())
+expected = json.loads((delivery / 'hashes.json').read_text())
+work = Path(json.loads((delivery / 'local-tree.json').read_text())['workspace'])
+def git(*args, data=None):
+    return subprocess.check_output(['git', *args], cwd=work, input=data)
+expected_parent = ('86b8861ba5b3ea049b77937e6c00da73a4330377' if unit == 'intent'
+                   else 'c862bfc6951491192a9fe98b535c9a8be921ee35')
+expected_base = ('codex/agent-project-unattended-admission-20261016' if unit == 'intent'
+                 else 'codex/github-fixture-config-loader-20261015')
+if unit == 'correlation':
+    expected_parent = '780d0755378b9f95f0282ec766ca99300b2b0b53'
+    expected_base = 'codex/agent-project-submission-intent-20261016'
+if unit == 'binding':
+    expected_parent = 'ddec1931eed8828cdd84ae783845729edf617fc1'
+    expected_base = 'codex/agent-project-queue-correlation-20261016'
+if unit == 'ack':
+    expected_parent = 'aef3af98d1bbc9037f1b75906e0217844bb5bd1d'
+    expected_base = 'codex/agent-project-owner-preflight-binding-20261017'
+assert m['parent'] == expected_parent
+assert m['pr']['draft'] and m['pr']['base'] == expected_base
+assert set(m['files']) == set(expected) and all(x['bytes_match'] for x in m['files'].values())
+assert git('write-tree').decode().strip() == m['tree']
+commit = m['commit_record']
+assert commit['verification']['reason'] == 'unsigned'
+def ident(value, zone):
+    stamp = int(datetime.datetime.fromisoformat(value['date'].replace('Z', '+00:00')).timestamp())
+    return f"{value['name']} <{value['email']}> {stamp} {zone}"
+matches = []
+for az, cz, end in itertools.product(('+0900', '+0000'), ('+0900', '+0000'), ('', '\n')):
+    raw = (f"tree {m['tree']}\nparent {m['parent']}\nauthor {ident(commit['author'], az)}\n"
+           f"committer {ident(commit['committer'], cz)}\n\n{commit['message']}" + end).encode()
+    digest = hashlib.sha1(b'commit ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+    if digest == m['commit']:
+        matches.append(raw)
+assert len(matches) == 1, 'REMOTE_RAW_COMMIT_UNVERIFIED'
+raw = matches[0]
+assert git('hash-object', '-t', 'commit', '-w', '--stdin', data=raw).decode().strip() == m['commit']
+branch = git('branch', '--show-current').decode().strip()
+assert branch == m['pr']['head']
+git('update-ref', 'refs/heads/' + branch, m['commit'], m['parent'])
+assert not git('status', '--porcelain').strip()
+assert git('rev-parse', 'HEAD^').decode().strip() == m['parent']
+for name, digest in expected.items():
+    content = git('show', m['commit'] + ':' + name)
+    assert content == (work / name).read_bytes() and hashlib.sha256(content).hexdigest() == digest
+
+original = ROOT.parents[1]
+checkpoint = ROOT / 'checkpoint-001'
+baseline = json.loads((checkpoint / 'manifest.json').read_text())
+for name, digest in baseline['original_files'].items():
+    assert hashlib.sha256((original / name).read_bytes()).hexdigest() == digest
+assert subprocess.check_output(['git', 'status', '--porcelain=v1', '-z'], cwd=original) == (checkpoint / 'status.z').read_bytes()
+assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=original).decode().strip() == baseline['original_head']
+result = dict(m, persistent_repository=str(work), repository_clean=True,
+              original_11_local_changes_unchanged=True, verified_files=len(expected),
+              tests_executed_during_publication=False, git_metadata_source='Exact object SHA reconstructed from public remote commit; no new commit or network clone')
+with (delivery / 'publication-result.json').open('x') as out:
+    json.dump(result, out, ensure_ascii=False, indent=2)
+    out.write('\n')
+print(json.dumps({'pr': m['pr']['url'], 'commit': m['commit'], 'verified_files': len(expected),
+                  'persistent_repository': str(work), 'original_11_unchanged': True, 'tests_repeated': False}))

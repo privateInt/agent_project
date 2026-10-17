@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-17T02:58:36.687983+00:00",
+  "automatic_retry": false,
+  "command": [
+    "python3",
+    "-B",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/run-once.py",
+    "--source-ready",
+    "--source-sha256",
+    "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05"
+  ]
+}

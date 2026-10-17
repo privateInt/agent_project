@@ -1,0 +1,13 @@
+{
+  "unit": "U01b2_EXISTING_OWNER_DECODED_ACK_ADAPTER",
+  "start_utc": "2026-10-17T02:32:19.107024+00:00",
+  "deadline_utc": "2026-10-17T03:32:19.107024+00:00",
+  "base": "7806daca6bf48c220f7bcd228d1140ef79c2b230",
+  "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development",
+  "old_native_D18": "HELD_UNCHANGED",
+  "scheduler": "PAUSED_UNCHANGED",
+  "native_RPC": 0,
+  "test_fix_limit": 3,
+  "scope": "Bounded serialization/fixed safe errors for existing owner decoded queue result; no native client creation/call or scheduler",
+  "analysis_time_included": true
+}

@@ -1,0 +1,7 @@
+{
+  "missing_lineage_file": "codex_daemon_websocket.py is in separate PR16 workspace, not PR21 branch; one rg returned exit2, other two files read successfully",
+  "is_product_or_test_failure": false,
+  "new_queries": 0,
+  "retry": false,
+  "resolution": "Adapter uses unchanged PR20 quota error code and canonical primitives already in PR21, no transport source required"
+}

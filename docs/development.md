@@ -1,5 +1,7 @@
 # 개발 안내
 
+2026-10-17 owner ACK adapter: PR21 고정 commit 위에 기존 소유 client의 decoded 결과를 제한된 canonical bytes/hash 또는 고정 오류 코드로 준비하는 순수 함수를 추가했다. [이번 단위 근거](testing/codex-owner-ack-adapter-observed-20261017.json)는 이전 ACK 원장 PASS와 분리한다. 새4개 최초 실행 PASS(FAIL0/ERROR0/SKIP0)·의미 변이2개 검출(각 FAIL1/ERROR0, 실제 잘못 준비된 bytes/hash)과 임시 SQLite 저장·재개방 결합을 확인했다. 실행과 체크포인트 갱신을 묶었으며 최종 독립 판정은 같은 근거의 고정 보고서를 따른다. 실제 client 호출·controller 연결·두 native 작업은 미검증이고 PAUSE/D18 보류를 유지한다.
+
 2026-10-17 ACK 원장: initialize_queue_receipts/record_queue_receipt/read_queue_receipt는 borrowed DB와 기존 binding/intent public read·JSON/SQLite primitives를 사용한다. caller가 직렬화한 decoded 결과의 해시이며 wire hash가 아니다. 원문 ACK/prompt/error 없이 projection bytes/hash만 저장한다. [새4개 최초 PASS·2의미 변이 검출](testing/codex-queue-receipts-observed-20261017.json)을 재사용한다. 최종 독립 검토 판정은 같은 근거의 고정 보고서를 따른다.
 
 2026-10-17: injected owner client의 read_quota_only와 별도 빈 file SQLite에 명시 초기화하는 submission binding을 추가했다. 기존 intent/observer/ledger 소스는 불변이다. [새6개·의미 변이2개·첫 오류와 실행 범위](testing/codex-owner-binding-observed-20261017.json)를 참고한다. 최초 quota3/binding2 PASS는 재사용하고 fault1만 재검증했다. quota 검사는 fake client, binding은 실제 임시 SQLite이며 새로운 reader native 실행·설치·dispatch는 미검증이다.

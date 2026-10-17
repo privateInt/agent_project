@@ -1,0 +1,7 @@
+{
+  "initial_draft_sha256": "ebc040897f68c980622cb901ebca4957cbdf2c52aa5d6e36cf2bb90cfa0f8f3f",
+  "initial_draft_not_executed": true,
+  "final_test_sha256": "738e83cda5e141edae8a626b4741ffda6c214711089d9c15f80f0b45241cc988",
+  "test_or_product_failures_observed": 0,
+  "note": "Initial draft was incomplete; only completed file was statically parsed; no product/test import or execution."
+}

@@ -1,0 +1,24 @@
+{
+  "utc": "2026-10-17T02:59:05.582080+00:00",
+  "original_files": {
+    "docs/HANDOFF_NEXT_SESSION.md": true,
+    "docs/codex/work-plan.md": true,
+    "docs/roadmap.md": true,
+    "docs/status.md": true,
+    "docs/codex/preparation-blockers.md": true,
+    "docs/codex/runtime-acceptance-cases.json": true,
+    "docs/codex/runtime-acceptance-plan.md": true,
+    "docs/plans/codex-preparation-verification-20261015.md": true,
+    "docs/plans/document-qa-f0a-validation-plan.md": true,
+    "docs/testing/codex-preparation-contract-20261015.json": true,
+    "docs/testing/codex-preparation-observed-20261015.json": true
+  },
+  "original_head": true,
+  "original_status": true,
+  "root_pause": true,
+  "user_pause": true,
+  "old_owner_script": true,
+  "old_owner_receipt": true,
+  "PR21_head_clean": true,
+  "new_native_queries": 0
+}

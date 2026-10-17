@@ -1,0 +1,75 @@
+"""Run the already reviewed local checks once and save actual status immediately."""
+import datetime
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import time
+
+EVIDENCE = Path(__file__).resolve().parent
+ROOT = EVIDENCE.parents[1]
+WORK = ROOT / 'owner-ack-adapter-development'
+RUN = EVIDENCE / 'run-1'
+deadline = datetime.datetime.fromisoformat('2026-10-17T03:32:19.107024+00:00')
+assert datetime.datetime.now(datetime.timezone.utc) < deadline
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(RUN / 'tests-ready.json') == 'c297f45ed2553873dd0f8fd0999c0cf87ccb5479825886f8cc7371139dd871dd'
+assert sha(RUN / 'run-once.py') == '7f721389764e16571ed8605ec166f9f7229c5921ebfea6e9e4d887b8667e0029'
+ready = json.loads((RUN / 'tests-ready.json').read_text())
+assert ready['command'] == ['python3', '-B', str(RUN / 'run-once.py'), '--source-ready',
+                            '--source-sha256', 'c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05']
+assert not (RUN / 'execution-attempt.json').exists()
+assert not (RUN / 'result.json').exists()
+with (EVIDENCE / 'coordinator-execution-attempt.json').open('x') as out:
+    json.dump({'utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               'automatic_retry': False, 'command': ready['command']}, out, indent=2)
+summary_path = WORK / 'docs/testing/codex-owner-ack-adapter-observed-20261017.json'
+with (EVIDENCE / 'observed-before-execution.json').open('xb') as out:
+    out.write(summary_path.read_bytes())
+returncode, coordinator_error = None, None
+try:
+    with (RUN / 'coordinator-process.stdout.log').open('xb') as stdout, (RUN / 'coordinator-process.stderr.log').open('xb') as stderr:
+        completed = subprocess.run(ready['command'], cwd=WORK, stdout=stdout, stderr=stderr,
+                                   timeout=min(60, (deadline - datetime.datetime.now(datetime.timezone.utc)).total_seconds()))
+    returncode = completed.returncode
+except Exception as error:
+    coordinator_error = type(error).__name__
+result = json.loads((RUN / 'result.json').read_text()) if (RUN / 'result.json').exists() else {}
+normal = result.get('normal') or {}
+passed = (returncode == 0 and result.get('all_required_verification_pass') is True
+          and normal.get('testsRun') == 4 and all(normal.get(k) == 0 for k in ('failures', 'errors', 'skips'))
+          and all((result.get(stage) or {}).get('semantic_fail1_error0') is True
+                  and result[stage].get('actual_wrong_prepared_verified') is True for stage in ('M_UTF8CAP', 'M_DUAL')))
+receipt = {'utc': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'returncode': returncode,
+           'coordinator_error_type': coordinator_error, 'status': 'PASS' if passed else 'STOPPED_INCOMPLETE_NO_RETRY',
+           'result_sha256': sha(RUN / 'result.json') if result else None,
+           'normal': {k: normal.get(k) for k in ('testsRun', 'failures', 'errors', 'skips')},
+           'semantic_mutants': 2 if passed else 'INCOMPLETE', 'new_native_queries': 0,
+           'old_passes_repeated': False, 'checkpoint_saved_in_same_execution': True}
+(EVIDENCE / 'execution-checkpoint.json').write_text(json.dumps(receipt, indent=2) + '\n')
+summary = json.loads(summary_path.read_text())
+summary['new_tests'] = dict(receipt['normal'], status='PASS' if passed else 'INCOMPLETE',
+                            first_execution_only=True, result_sha256=receipt['result_sha256'],
+                            test_source_sha256=ready['test_sha256'])
+summary['semantic_mutants'] = {'status': 'DETECTED' if passed else 'INCOMPLETE', 'count': 2,
+                               'meaning': 'Actual wrong prepared bytes/hash; no DB wrong commit',
+                               'each': 'semantic FAIL1 ERROR0 SKIP0' if passed else 'See immutable stage results'}
+summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
+for filename in ('state.json', 'action-required.json'):
+    path = ROOT / filename
+    state = json.loads(path.read_text())
+    phase = 'OWNER_ACK_ADAPTER_NEW4_PASS_MUTANTS2_DETECTED_FINAL_REVIEW_READY' if passed else 'OWNER_ACK_ADAPTER_EXECUTION_INCOMPLETE_PRESERVE_FIRST_RESULT'
+    if filename == 'state.json':
+        state['state'] = phase
+        state['active_review'] = 'READY_TO_QUEUE_FINAL_REVIEW' if passed else 'NONE_PENDING_FAILED_STAGE_DIAGNOSIS'
+        state['last_saved_unix'] = int(time.time())
+        state['owner_ack_adapter_unit'].update(status=phase, result_sha256=receipt['result_sha256'], execution=receipt)
+        state['clients']['test_agent']['status'] = 'COMPLETED'
+        state['clients']['reviewer']['status'] = 'COMPLETED_SOURCE_STATIC_REVIEW'
+    else:
+        state['current_unit']['state'] = phase
+        state['independent_offline_work']['status'] = phase
+        state['queue_status']['assigned_role_turns'] = 'BOTH_COMPLETED_FINAL_REVIEW_READY' if passed else 'BOTH_COMPLETED_FAILED_STAGE_DIAGNOSIS_REQUIRED'
+    path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n')
+print(json.dumps(receipt))
+raise SystemExit(0 if passed else 1)

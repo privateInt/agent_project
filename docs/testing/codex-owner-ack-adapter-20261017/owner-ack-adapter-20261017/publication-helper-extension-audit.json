@@ -1,0 +1,20 @@
+{
+  "package_unit.py": {
+    "before_sha256": "1e5938e8b6d8ff139c511f58e2130f3692aa75e26b3bd028eea2cee16e2cc31f",
+    "after_sha256": "a7d2387979ee762c670a4795a10bdad5283b9896f452f5b66a001e34fdb45747",
+    "ast_python310": true
+  },
+  "persist_unit_publication.py": {
+    "before_sha256": "90dd809da52968c5a27b86c0fb6b74c0759c7b5fec7789918ebe9f5c8a4c5fa3",
+    "after_sha256": "f775b637e2af4cc56475a8fc4f190d6c739aef2b2e53aa2df5b2152bae0ad4b7",
+    "ast_python310": true
+  },
+  "check_checkpoint.py": {
+    "before_sha256": "b5ceb3a6bfffb3f94e0ec32b65dd1ff097f33589cf3943fa448ede6c9e110878",
+    "after_sha256": "19d1ef9df2cfabdaca96035892a16c630658307959c2a2a69de9054b25d4df2a",
+    "ast_python310": true
+  },
+  "prior_unit_settings_unchanged": true,
+  "old_helpers_original_bytes_preserved": true,
+  "tests_run": false
+}

@@ -1,0 +1,202 @@
+"""Package independently reviewed bytes, never run product code or tests."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import re
+import subprocess
+
+ROOT = Path(__file__).resolve().parent
+PARENT = 'c862bfc6951491192a9fe98b535c9a8be921ee35'
+SETTINGS = {
+    'ack': {
+        'parent': 'aef3af98d1bbc9037f1b75906e0217844bb5bd1d',
+        'workspace': 'ack-development',
+        'module': 'codex_unattended_queue_receipts',
+        'prefix': 'codex-queue-receipts-20261017',
+        'summary_name': 'docs/testing/codex-queue-receipts-observed-20261017.json',
+        'review': '/tmp/agent-unattended-ack-final-review.md',
+        'families': ['queue-ack-20261017'],
+        'records': [],
+        'reviews': [],
+    },
+    'binding': {
+        'parent': 'ddec1931eed8828cdd84ae783845729edf617fc1',
+        'workspace': 'binding-development',
+        'module': 'codex_unattended_submission_binding',
+        'extra_files': ['src/ops/tools/codex_unattended_quota_reader.py',
+                        'src/ops/tools/tests/test_codex_unattended_quota_reader.py'],
+        'extra_fixture_modules': ['codex_unattended_quota_reader', 'codex_unattended_owner_binding'],
+        'prefix': 'codex-owner-binding-20261017',
+        'summary_name': 'docs/testing/codex-owner-binding-observed-20261017.json',
+        'review': '/tmp/agent-unattended-binding-final-review.md',
+        'families': ['owner-binding-20261017', 'quota-resume-20261017'],
+        'records': ['quota-read-once-20261017.json'],
+        'reviews': [],
+    },
+    'correlation': {
+        'parent': '780d0755378b9f95f0282ec766ca99300b2b0b53',
+        'workspace': 'correlation-development',
+        'module': 'codex_unattended_queue_observer',
+        'prefix': 'codex-queue-correlation-20261016',
+        'review': '/tmp/agent-unattended-correlation-final-review.md',
+        'families': ['correlation-run-1'],
+        'records': ['correlation-isolation.json', 'correlation-budget.json',
+                    'agent-unattended-correlation-plan-v1.md',
+                    'agent-unattended-correlation-plan-v2.md',
+                    'correlation-implementation-start.json', 'correlation-source-ready.json',
+                    'correlation-pretest-test-review-input.py.txt',
+                    'correlation-runner-before-m1-index-review.py.txt'],
+        'reviews': ['agent-unattended-correlation-plan-review.md',
+                    'agent-unattended-correlation-static-review.md',
+                    'agent-unattended-correlation-test-correction-review.md',
+                    'agent-unattended-correlation-runner-correction-review.md',
+                    'agent-unattended-correlation-preexecution-review.md'],
+    },
+    'intent': {
+        'parent': '86b8861ba5b3ea049b77937e6c00da73a4330377',
+        'workspace': 'intent-development',
+        'module': 'codex_unattended_intent_journal',
+        'prefix': 'codex-unattended-intent-20261016',
+        'review': '/tmp/agent-unattended-intent-final-review.md',
+        'families': ['intent-run-1', 'intent-run-2'],
+        'records': ['intent-isolation.json', 'intent-implementation-start.json',
+                    'intent-source-before-key-type-order.py.txt', 'intent-key-type-order.diff',
+                    'intent-key-type-order-audit.json', 'intent-source-before-preflight-fix.py.txt',
+                    'intent-preflight-fix.diff', 'intent-preflight-fix-audit.json',
+                    'intent-time-budget-correction.json'],
+        'reviews': ['agent-unattended-intent-plan.md', 'agent-unattended-intent-plan-review.md',
+                    'agent-unattended-intent-viability-review.md',
+                    'agent-unattended-intent-static-review.md',
+                    'agent-unattended-intent-postfix-static-review.md'],
+    },
+    'transport': {
+        'workspace': 'bridge-development',
+        'module': 'codex_daemon_websocket',
+        'prefix': 'codex-daemon-transport-20261016',
+        'review': '/tmp/agent-unattended-transport-final-review.md',
+        'families': ['transport-run-1', 'transport-findings-before', 'transport-findings-after',
+                     'transport-test-reconciliation', 'transport-portability'],
+        'records': ['transport-implementation-start.json', 'transport-findings-scope-decision.json',
+                    'investigation-limit-audit.json'],
+        'reviews': ['agent-unattended-transport-plan.md', 'agent-unattended-transport-plan-review.md',
+                    'agent-unattended-transport-static-review.md'],
+    },
+    'admission': {
+        'workspace': 'admission-development',
+        'module': 'codex_unattended_admission',
+        'prefix': 'codex-unattended-admission-20261016',
+        'review': '/tmp/agent-unattended-admission-final-review.md',
+        'families': ['admission-run-1', 'admission-portability'],
+        'records': ['admission-implementation-start.json', 'admission-implementation-ready.json',
+                    'admission-margin-fix-audit.json', 'admission-margin-fix.diff',
+                    'admission-source-before-margin-fix.py.txt'],
+        'reviews': ['agent-unattended-admission-plan.md', 'agent-unattended-admission-plan-review.md',
+                    'agent-unattended-admission-static-review.md'],
+    },
+}
+args = argparse.ArgumentParser()
+args.add_argument('unit', choices=SETTINGS)
+cfg = SETTINGS[args.parse_args().unit]
+PARENT = cfg.get('parent', PARENT)
+work = ROOT / cfg['workspace']
+prefix = 'docs/testing/' + cfg['prefix']
+review = Path(cfg['review'])
+text = review.read_text()
+verdict = next(line for line in text.splitlines()[:12] if line.startswith('판정:'))
+assert verdict.split(':', 1)[1].replace('*', '').strip().split()[0] == 'PASS', 'FINAL_REVIEW_NOT_PASS'
+sha = lambda data: hashlib.sha256(data).hexdigest()
+source = 'src/ops/tools/' + cfg['module'] + '.py'
+test = 'src/ops/tools/tests/test_' + cfg['module'] + '.py'
+for name in (source, test):
+    assert sha((work / name).read_bytes()) in text, 'REVIEW_PIN_MISSING: ' + name
+summary_name = cfg.get('summary_name', 'docs/testing/' + cfg['prefix'].replace('-20261016', '-observed-20261016') + '.json')
+summary_path = work / summary_name
+old_summary = summary_path.read_bytes()
+summary = json.loads(old_summary)
+assert summary['final_independent_review']['status'] == 'PENDING'
+names = [source, test, summary_name, 'docs/development.md', 'docs/status.md',
+         'docs/roadmap.md', 'docs/HANDOFF_NEXT_SESSION.md']
+names.extend(cfg.get('extra_files', []))
+for name in cfg.get('extra_files', []):
+    if name.endswith('.py'):
+        assert sha((work / name).read_bytes()) in text, 'EXTRA_REVIEW_PIN_MISSING: ' + name
+for fixture_module in [cfg['module']] + cfg.get('extra_fixture_modules', []):
+    fixture_dir = work / 'src/ops/tools/tests/fixtures' / fixture_module
+    if fixture_dir.exists():
+        names.extend(str(p.relative_to(work)) for p in sorted(fixture_dir.rglob('*')) if p.is_file())
+mapping = {name: {'sha256': sha((work / name).read_bytes()), 'source': name} for name in names}
+
+def retain(path, relative):
+    assert path.is_file() and not path.is_symlink(), 'UNSAFE_EVIDENCE_PATH'
+    raw = path.read_bytes()
+    assert len(raw) <= 2 * 1024 * 1024, 'EVIDENCE_LIMIT'
+    raw.decode('utf-8')
+    # Keep raw bytes, while preventing discovery/execution of historical code/logs.
+    if relative.endswith(('.py', '.log')):
+        relative += '.txt'
+    name = prefix + '/' + relative
+    target = work / name
+    target.parent.mkdir(parents=True, exist_ok=True)
+    if target.exists():
+        assert target.read_bytes() == raw, 'EXISTING_EVIDENCE_DIFFERS'
+    else:
+        target.write_bytes(raw)
+    names.append(name)
+    mapping[name] = {'sha256': sha(raw), 'source': str(path)}
+
+evidence = ROOT / 'transition-evidence'
+pending = evidence / (cfg['prefix'] + '-observed-before-final-review.json')
+with pending.open('xb') as out:
+    out.write(old_summary)
+retain(pending, 'observed-before-final-review.json')
+for family in cfg['families']:
+    directory = evidence / family
+    assert directory.is_dir(), 'MISSING_EVIDENCE_FAMILY: ' + family
+    for p in sorted(directory.rglob('*')):
+        if p.is_file() and p.suffix in ('.py', '.json', '.md', '.log', '.diff', '.txt', '.patch'):
+            retain(p, str(p.relative_to(evidence)))
+for name in cfg['records']:
+    retain(evidence / name, 'records/' + name)
+for name in cfg['reviews']:
+    p = Path('/tmp') / name
+    retain(p if p.exists() else evidence / name, 'review/' + name)
+retain(review, 'review/final-review.md')
+summary['final_independent_review'] = {
+    'status': 'PASS', 'file': cfg['prefix'] + '/review/final-review.md',
+    'sha256': sha(review.read_bytes())}
+summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
+mapping[summary_name]['sha256'] = sha(summary_path.read_bytes())
+manifest_name = prefix + '/publication-manifest.json'
+manifest = {'parent_commit': PARENT, 'fixture_only': True,
+            'actual_runtime_transition': 'NOT_COMPLETE', 'main_merged': False,
+            'final_independent_review': summary['final_independent_review'],
+            'raw_byte_retention': 'Historical code/logs receive .txt suffix only; original bytes and paths are retained in mapping.',
+            'final_whole_suite_repeated': False, 'files': mapping}
+(work / manifest_name).write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+names.append(manifest_name)
+for name in names:
+    raw = (work / name).read_bytes()
+    assert not re.search(rb'(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)', raw), 'SENSITIVE_CONTENT'
+    if name.endswith('.json'):
+        json.loads(raw)
+assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=work).decode().strip() == PARENT
+subprocess.run(['git', 'add', '--', *names], cwd=work, check=True)
+staged = subprocess.check_output(['git', 'diff', '--cached', '--name-only', '-z'], cwd=work).decode().split('\0')
+assert set(staged) - {''} == set(names), 'UNEXPECTED_STAGED_FILES'
+subprocess.run(['git', 'diff', '--cached', '--check', '--', *names[:7],
+                *cfg.get('extra_files', [])], cwd=work, check=True)
+packet = []
+hashes = {}
+for name in sorted(names):
+    raw = (work / name).read_bytes()
+    assert subprocess.check_output(['git', 'show', ':' + name], cwd=work) == raw
+    packet.append({'path': name, 'mode': '100644', 'type': 'blob', 'content': raw.decode()})
+    hashes[name] = sha(raw)
+out = ROOT / (cfg['prefix'] + '-delivery')
+out.mkdir(mode=0o700)
+(out / 'tree-elements.json').write_text(json.dumps(packet))
+(out / 'hashes.json').write_text(json.dumps(hashes, indent=2))
+(out / 'reviewed.patch').write_bytes(subprocess.check_output(['git', 'diff', '--cached', '--binary'], cwd=work))
+(out / 'local-tree.json').write_text(json.dumps({'tree': subprocess.check_output(['git', 'write-tree'], cwd=work).decode().strip(), 'workspace': str(work), 'files': len(names)}))
+print(json.dumps({'delivery': str(out), 'files': len(names), 'bytes': sum(len(x['content'].encode()) for x in packet), 'tests_run': False}))

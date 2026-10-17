@@ -1,0 +1,1694 @@
+{
+  "normal": {
+    "stage": "normal",
+    "testsRun": 4,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "methods": [
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_owner_ack_adapter.OwnerAckAdapterTests.test_result_canonical_bounds_and_receipt_reopen",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_owner_ack_adapter.OwnerAckAdapterTests.test_invalid_result_shape_utf8_and_caps",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_owner_ack_adapter.OwnerAckAdapterTests.test_safe_error_absence_and_unknown_receipt",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_owner_ack_adapter.OwnerAckAdapterTests.test_dual_none_and_no_io",
+        "outcome": "PASS"
+      }
+    ],
+    "boundary_violations": [],
+    "old_case_calls": [],
+    "sqlite_connections": [
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      },
+      {
+        "dedicated_temporary_file": true
+      }
+    ],
+    "runtime_calls": 0,
+    "source_copy": "/tmp/owner-ack-adapter-portable-normal-yw136r9t/minimal-source",
+    "observations": [
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "ACK_RESULT_PREPARED",
+        "ack_bytes_length": 195,
+        "actual_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b",
+        "expected_ack_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b",
+        "call_error_code": null,
+        "utf8_length": 48,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "ACK_RESULT_PREPARED",
+        "ack_bytes_length": 195,
+        "actual_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b",
+        "expected_ack_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b",
+        "call_error_code": null,
+        "utf8_length": 48,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "ACK_RESULT_PREPARED",
+        "ack_bytes_length": 214,
+        "actual_sha256": "5ee3af52d9209248996020946d8b3571841da097aa50c886ad409fef17e67f48",
+        "expected_ack_sha256": "5ee3af52d9209248996020946d8b3571841da097aa50c886ad409fef17e67f48",
+        "call_error_code": null,
+        "utf8_length": 48,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "ACK_RESULT_PREPARED",
+        "ack_bytes_length": 148,
+        "actual_sha256": "16a51da9b4843307d0d1af1ca59b26f77c454f4650d3602391120bbdb9c6e846",
+        "expected_ack_sha256": "16a51da9b4843307d0d1af1ca59b26f77c454f4650d3602391120bbdb9c6e846",
+        "call_error_code": null,
+        "utf8_length": 13,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "ACK_RESULT_PREPARED",
+        "ack_bytes_length": 49499,
+        "actual_sha256": "3da819de5b8c38d604abd01d27547fe0af11f5cf56dac29922123e41763bd623",
+        "expected_ack_sha256": "3da819de5b8c38d604abd01d27547fe0af11f5cf56dac29922123e41763bd623",
+        "call_error_code": null,
+        "utf8_length": 16384,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "TEXT_UTF8_LIMIT",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": true,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "ABSENCE_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_CLIENT_CLOSED",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_CONNECT_FAILED",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_DEPENDENCY_UNSUPPORTED",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_DUPLICATE_RESPONSE",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_LINE_LIMIT",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_METHOD_FORBIDDEN",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_NONFINITE_JSON",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_NOTIFICATION_LIMIT",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_PARAMS_FORBIDDEN",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_RECEIVE_FAILED",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_REMOTE_ERROR",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_REQUEST_TIMEOUT",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_REQUEST_TOO_LARGE",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_RESPONSE_ID_MISMATCH",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_RESPONSE_INVALID",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_RESULT_INVALID",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_SEND_FAILED",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_SERVER_REQUEST_FORBIDDEN",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_STDOUT_LIMIT",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_TEXT_REQUIRED",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_UPGRADE_REJECTED",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_WIRE_LIMIT",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_REQUEST_TIMEOUT",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "RPC_REQUEST_TIMEOUT",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "CALL_ERROR_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": "UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR",
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "ERROR_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "ERROR_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "ERROR_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "ERROR_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "ERROR_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "ERROR_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "ERROR_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "ERROR_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "INPUTS_MUTUALLY_EXCLUSIVE",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": true,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "INPUTS_MUTUALLY_EXCLUSIVE",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "INPUTS_MUTUALLY_EXCLUSIVE",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "INPUTS_MUTUALLY_EXCLUSIVE",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "INPUTS_MUTUALLY_EXCLUSIVE",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "RESULT_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "ERROR_INVALID",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "ABSENCE_PREPARED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      },
+      {
+        "ready": false,
+        "status": "REJECTED",
+        "reason": "PREPARATION_UNCONFIRMED",
+        "ack_bytes_length": null,
+        "actual_sha256": null,
+        "expected_ack_sha256": null,
+        "call_error_code": null,
+        "utf8_length": null,
+        "input_unchanged": null,
+        "runtime_calls": 0
+      }
+    ],
+    "receipt_compositions": [
+      {
+        "outcome": "ACK_CANDIDATE",
+        "observation_reason": "ACK_RESULT_OBSERVED",
+        "temporary_file_databases": 3,
+        "peer_exact_row": true,
+        "all_three_closed_reopened": true,
+        "receipt_projection": {
+          "ack_result_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b",
+          "batch_id": "fixture-intent-batch-1",
+          "binding_sha256": "63ddbe089d180e1f0b79768564dbef9fa862e2ad6fbadb9dcc1176999f94610a",
+          "client_user_message_id": "fixture-client-T1",
+          "intent_sha256": "b1208ed0280dc7799a2c02caf1154f131cda3c7e1dbc893d1085c0d60e6987c5",
+          "observation_reason": "ACK_RESULT_OBSERVED",
+          "outcome": "ACK_CANDIDATE",
+          "project_id": "agent_project",
+          "queued_submission_id": "fixture-owner-ack-queued",
+          "schema": 1,
+          "submission_params_sha256": "a767ef58252a5bb25b8858933e997f5047c222e1f6383f383780edeaed5bffe8",
+          "task_id": "T1",
+          "thread_id": "fixture-owner-ack-thread"
+        },
+        "receipt_sha256": "d685c34a7b72be0d3ec92ecf614831072e8fce447565bbd5f0d521f42ec74b69",
+        "actual_bytes_sha256": "d685c34a7b72be0d3ec92ecf614831072e8fce447565bbd5f0d521f42ec74b69",
+        "source_bytes_unchanged": true,
+        "borrowed_profiles_unchanged": true,
+        "transactions_closed": true,
+        "raw_prompt_and_ack_absent": true
+      },
+      {
+        "outcome": "ACK_CANDIDATE",
+        "observation_reason": "ACK_RESULT_OBSERVED",
+        "temporary_file_databases": 3,
+        "peer_exact_row": true,
+        "all_three_closed_reopened": true,
+        "receipt_projection": {
+          "ack_result_sha256": "3da819de5b8c38d604abd01d27547fe0af11f5cf56dac29922123e41763bd623",
+          "batch_id": "fixture-intent-batch-1",
+          "binding_sha256": "6620d788b07b840dc449e497a7c9d69c33c9a26f3aa7e54fb188b0494c75cda4",
+          "client_user_message_id": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+          "intent_sha256": "0489e352e17ddcce2b483d249c086b00f8aee85b04db69f603ba454cf24d34e0",
+          "observation_reason": "ACK_RESULT_OBSERVED",
+          "outcome": "ACK_CANDIDATE",
+          "project_id": "agent_project",
+          "queued_submission_id": "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+          "schema": 1,
+          "submission_params_sha256": "d6b86b8de374e9f570aecaba3f93368d0f96d656142677e304101e4f1b11abad",
+          "task_id": "T1",
+          "thread_id": "fixture-owner-ack-thread"
+        },
+        "receipt_sha256": "fa831f0f94900ca3e1c92b418a41e45fc43ac147ad86005200b908c7531ccb71",
+        "actual_bytes_sha256": "fa831f0f94900ca3e1c92b418a41e45fc43ac147ad86005200b908c7531ccb71",
+        "source_bytes_unchanged": true,
+        "borrowed_profiles_unchanged": true,
+        "transactions_closed": true,
+        "raw_prompt_and_ack_absent": true
+      },
+      {
+        "outcome": "UNKNOWN",
+        "observation_reason": "ACK_RESULT_ABSENT",
+        "temporary_file_databases": 3,
+        "peer_exact_row": true,
+        "all_three_closed_reopened": true,
+        "receipt_projection": {
+          "ack_result_sha256": null,
+          "batch_id": "fixture-intent-batch-1",
+          "binding_sha256": "63ddbe089d180e1f0b79768564dbef9fa862e2ad6fbadb9dcc1176999f94610a",
+          "client_user_message_id": "fixture-client-T1",
+          "intent_sha256": "b1208ed0280dc7799a2c02caf1154f131cda3c7e1dbc893d1085c0d60e6987c5",
+          "observation_reason": "ACK_RESULT_ABSENT",
+          "outcome": "UNKNOWN",
+          "project_id": "agent_project",
+          "queued_submission_id": null,
+          "schema": 1,
+          "submission_params_sha256": "a767ef58252a5bb25b8858933e997f5047c222e1f6383f383780edeaed5bffe8",
+          "task_id": "T1",
+          "thread_id": "fixture-owner-ack-thread"
+        },
+        "receipt_sha256": "d79165cb390d647e834c098af43adba044c41d4873e123dc84b5f01c61694aba",
+        "actual_bytes_sha256": "d79165cb390d647e834c098af43adba044c41d4873e123dc84b5f01c61694aba",
+        "source_bytes_unchanged": true,
+        "borrowed_profiles_unchanged": true,
+        "transactions_closed": true,
+        "raw_prompt_and_ack_absent": true
+      },
+      {
+        "outcome": "UNKNOWN",
+        "observation_reason": "RPC_REQUEST_TIMEOUT",
+        "temporary_file_databases": 3,
+        "peer_exact_row": true,
+        "all_three_closed_reopened": true,
+        "receipt_projection": {
+          "ack_result_sha256": null,
+          "batch_id": "fixture-intent-batch-1",
+          "binding_sha256": "63ddbe089d180e1f0b79768564dbef9fa862e2ad6fbadb9dcc1176999f94610a",
+          "client_user_message_id": "fixture-client-T1",
+          "intent_sha256": "b1208ed0280dc7799a2c02caf1154f131cda3c7e1dbc893d1085c0d60e6987c5",
+          "observation_reason": "RPC_REQUEST_TIMEOUT",
+          "outcome": "UNKNOWN",
+          "project_id": "agent_project",
+          "queued_submission_id": null,
+          "schema": 1,
+          "submission_params_sha256": "a767ef58252a5bb25b8858933e997f5047c222e1f6383f383780edeaed5bffe8",
+          "task_id": "T1",
+          "thread_id": "fixture-owner-ack-thread"
+        },
+        "receipt_sha256": "1509afd00633f77a6d715dce7c415e80a60f04cbb0334f53dba427aebaa08445",
+        "actual_bytes_sha256": "1509afd00633f77a6d715dce7c415e80a60f04cbb0334f53dba427aebaa08445",
+        "source_bytes_unchanged": true,
+        "borrowed_profiles_unchanged": true,
+        "transactions_closed": true,
+        "raw_prompt_and_ack_absent": true
+      },
+      {
+        "outcome": "UNKNOWN",
+        "observation_reason": "UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR",
+        "temporary_file_databases": 3,
+        "peer_exact_row": true,
+        "all_three_closed_reopened": true,
+        "receipt_projection": {
+          "ack_result_sha256": null,
+          "batch_id": "fixture-intent-batch-1",
+          "binding_sha256": "63ddbe089d180e1f0b79768564dbef9fa862e2ad6fbadb9dcc1176999f94610a",
+          "client_user_message_id": "fixture-client-T1",
+          "intent_sha256": "b1208ed0280dc7799a2c02caf1154f131cda3c7e1dbc893d1085c0d60e6987c5",
+          "observation_reason": "UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR",
+          "outcome": "UNKNOWN",
+          "project_id": "agent_project",
+          "queued_submission_id": null,
+          "schema": 1,
+          "submission_params_sha256": "a767ef58252a5bb25b8858933e997f5047c222e1f6383f383780edeaed5bffe8",
+          "task_id": "T1",
+          "thread_id": "fixture-owner-ack-thread"
+        },
+        "receipt_sha256": "53bb0fbd6ad4d6e0cdf78209b30e6c71508bdde3c3d79984ec3a32291373565b",
+        "actual_bytes_sha256": "53bb0fbd6ad4d6e0cdf78209b30e6c71508bdde3c3d79984ec3a32291373565b",
+        "source_bytes_unchanged": true,
+        "borrowed_profiles_unchanged": true,
+        "transactions_closed": true,
+        "raw_prompt_and_ack_absent": true
+      }
+    ],
+    "fixture_cleanup": [
+      {
+        "distinct_owned_connections": 9,
+        "all_closed": true,
+        "identity_deduplicated": true,
+        "current_reopened_connections_included": true
+      },
+      {
+        "distinct_owned_connections": 9,
+        "all_closed": true,
+        "identity_deduplicated": true,
+        "current_reopened_connections_included": true
+      },
+      {
+        "distinct_owned_connections": 9,
+        "all_closed": true,
+        "identity_deduplicated": true,
+        "current_reopened_connections_included": true
+      },
+      {
+        "distinct_owned_connections": 9,
+        "all_closed": true,
+        "identity_deduplicated": true,
+        "current_reopened_connections_included": true
+      },
+      {
+        "distinct_owned_connections": 9,
+        "all_closed": true,
+        "identity_deduplicated": true,
+        "current_reopened_connections_included": true
+      }
+    ],
+    "protected_original_opt_operator_reads": 0,
+    "normal_helper_markers": {
+      "case_utf8_byte_cap_rejects_overlong_result": {
+        "outcome": "PASS",
+        "invocations": 1
+      },
+      "case_dual_arguments_are_rejected": {
+        "outcome": "PASS",
+        "invocations": 1
+      }
+    },
+    "all_pass": true,
+    "process_returncode": 0,
+    "result_sha256": "d82af22a67b41caed04235e98dc177849af505e356653896967f60636659384f",
+    "first_log_sha256": "ee5879cacfff96ff6f43a64452816c06f2207a44040c94bf7c47fd8ac7a3e7c9"
+  },
+  "M_UTF8CAP": {
+    "stage": "M_UTF8CAP",
+    "testsRun": 1,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "methods": [
+      {
+        "id": "case_utf8_byte_cap_rejects_overlong_result",
+        "outcome": "FAIL",
+        "exception_type": "AssertionError",
+        "last_test_assertion": {
+          "function": "invoke",
+          "line": 272
+        }
+      }
+    ],
+    "boundary_violations": [],
+    "old_case_calls": [],
+    "sqlite_connections": [],
+    "runtime_calls": 0,
+    "source_copy": "/tmp/owner-ack-adapter-portable-M_UTF8CAP-ucszlcde/minimal-source",
+    "observations": [
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "ACK_RESULT_PREPARED",
+        "ack_bytes_length": 49296,
+        "actual_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+        "expected_ack_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+        "call_error_code": null,
+        "utf8_length": 16388,
+        "input_unchanged": true,
+        "runtime_calls": 0
+      }
+    ],
+    "receipt_compositions": [],
+    "fixture_cleanup": [],
+    "protected_original_opt_operator_reads": 0,
+    "actual_wrong_prepared_verified": true,
+    "wrong_prepared_witness": {
+      "ready": true,
+      "status": "PREPARED",
+      "reason": "ACK_RESULT_PREPARED",
+      "ack_bytes_length": 49296,
+      "actual_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+      "expected_ack_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+      "call_error_code": null,
+      "utf8_length": 16388,
+      "input_unchanged": true,
+      "runtime_calls": 0
+    },
+    "target_presence_and_expected_hash": {
+      "has_result": true,
+      "has_error": false,
+      "expected_payload_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+      "utf8_length": 16388
+    },
+    "helper_invocations": {
+      "case_utf8_byte_cap_rejects_overlong_result": 1
+    },
+    "actual_wrong_candidate": {
+      "scope": "OWNER_QUEUE_ACK_ADAPTER_ONLY",
+      "ready": true,
+      "status": "PREPARED",
+      "reason": "ACK_RESULT_PREPARED",
+      "expected_ack_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+      "call_error_code": null,
+      "remote_io_performed": false,
+      "db_io_performed": false,
+      "input_origin_verified": false,
+      "client_identity_verified": false,
+      "transport_pin_verified": false,
+      "transport_id_matching_verified": false,
+      "deadline_verified": false,
+      "native_acceptance_verified": false,
+      "remote_mutation_authorized": false,
+      "dispatch_permitted": false,
+      "replay_permitted": false,
+      "native_ready": false
+    },
+    "wrong_bytes_retained_in_log_or_db": false,
+    "semantic_fail1_error0": true,
+    "process_returncode": 0,
+    "result_sha256": "79b1834c893467874ee55db7dfe92472e09625dd902ada9461fc3f875d028423",
+    "first_log_sha256": "9509eba5187f3bb18b9eed2fd5efd3c4ac6e7a9a51e84e4b21b4672e18bf9ba7"
+  },
+  "M_DUAL": {
+    "stage": "M_DUAL",
+    "testsRun": 1,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "methods": [
+      {
+        "id": "case_dual_arguments_are_rejected",
+        "outcome": "FAIL",
+        "exception_type": "AssertionError",
+        "last_test_assertion": {
+          "function": "invoke",
+          "line": 272
+        }
+      }
+    ],
+    "boundary_violations": [],
+    "old_case_calls": [],
+    "sqlite_connections": [],
+    "runtime_calls": 0,
+    "source_copy": "/tmp/owner-ack-adapter-portable-M_DUAL-_49ux74x/minimal-source",
+    "observations": [
+      {
+        "ready": true,
+        "status": "PREPARED",
+        "reason": "ACK_RESULT_PREPARED",
+        "ack_bytes_length": 195,
+        "actual_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b",
+        "expected_ack_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b",
+        "call_error_code": null,
+        "utf8_length": 48,
+        "input_unchanged": true,
+        "runtime_calls": 0
+      }
+    ],
+    "receipt_compositions": [],
+    "fixture_cleanup": [],
+    "protected_original_opt_operator_reads": 0,
+    "actual_wrong_prepared_verified": true,
+    "wrong_prepared_witness": {
+      "ready": true,
+      "status": "PREPARED",
+      "reason": "ACK_RESULT_PREPARED",
+      "ack_bytes_length": 195,
+      "actual_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b",
+      "expected_ack_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b",
+      "call_error_code": null,
+      "utf8_length": 48,
+      "input_unchanged": true,
+      "runtime_calls": 0
+    },
+    "target_presence_and_expected_hash": {
+      "has_result": true,
+      "has_error": true,
+      "expected_payload_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b"
+    },
+    "helper_invocations": {
+      "case_dual_arguments_are_rejected": 1
+    },
+    "actual_wrong_candidate": {
+      "scope": "OWNER_QUEUE_ACK_ADAPTER_ONLY",
+      "ready": true,
+      "status": "PREPARED",
+      "reason": "ACK_RESULT_PREPARED",
+      "expected_ack_sha256": "d561825f71a65e97c2ad30d7f7768ee42a8748baece5193d7e73cb3e6cf9174b",
+      "call_error_code": null,
+      "remote_io_performed": false,
+      "db_io_performed": false,
+      "input_origin_verified": false,
+      "client_identity_verified": false,
+      "transport_pin_verified": false,
+      "transport_id_matching_verified": false,
+      "deadline_verified": false,
+      "native_acceptance_verified": false,
+      "remote_mutation_authorized": false,
+      "dispatch_permitted": false,
+      "replay_permitted": false,
+      "native_ready": false
+    },
+    "wrong_bytes_retained_in_log_or_db": false,
+    "semantic_fail1_error0": true,
+    "process_returncode": 0,
+    "result_sha256": "b6bdde40d0f96b2361a71e5491edcaada796ac463dcc6b00a0af3a177e8d09db",
+    "first_log_sha256": "0eb43fc26e902c6207e585a1e3a61eb712ae7a79063a7db8ca0abe7296ebfa20"
+  },
+  "runtime_calls": 0,
+  "clock_reset": false,
+  "deadline_utc": "2026-10-17T03:32:19.107024+00:00",
+  "old_suites_rerun": false,
+  "normal_helper_pass_reused": [
+    "case_utf8_byte_cap_rejects_overlong_result",
+    "case_dual_arguments_are_rejected"
+  ],
+  "all_required_verification_pass": true,
+  "completed_utc": "2026-10-17T02:58:37.380759+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-17T02:58:06.576241+00:00",
+  "all_source_helper_fixture_evidence_pins_match": true,
+  "ready_sha256": "c297f45ed2553873dd0f8fd0999c0cf87ccb5479825886f8cc7371139dd871dd",
+  "source_sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+  "test_sha256": "738e83cda5e141edae8a626b4741ffda6c214711089d9c15f80f0b45241cc988",
+  "runner_sha256": "7f721389764e16571ed8605ec166f9f7229c5921ebfea6e9e4d887b8667e0029",
+  "exact_new4_and2_targets": true,
+  "prereviews_and_first_source_static": "PASS reused, no repeat",
+  "test_agent_turn_completed": [
+    "01a147bf-78e4-7d30-a4b2-6aad512677c6",
+    "completed",
+    1792205852,
+    null
+  ],
+  "old_passes_repeated": false,
+  "boundary": "Dedicated minimum source copy -I -S -B, actual tempSQLite, synthetic decoded input, native0",
+  "gate": "READY_TO_EXECUTE_ONCE_NOW"
+}

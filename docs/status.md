@@ -1,5 +1,7 @@
 # 프로젝트 현재 상태
 
+2026-10-17 owner ACK adapter: PR21 고정 commit 위에 기존 소유 client의 decoded 결과를 제한된 canonical bytes/hash 또는 고정 오류 코드로 준비하는 순수 함수를 추가했다. [이번 단위 근거](testing/codex-owner-ack-adapter-observed-20261017.json)는 이전 ACK 원장 PASS와 분리한다. 새4개 최초 실행 PASS(FAIL0/ERROR0/SKIP0)·의미 변이2개 검출(각 FAIL1/ERROR0, 실제 잘못 준비된 bytes/hash)과 임시 SQLite 저장·재개방 결합을 확인했다. 실행과 체크포인트 갱신을 묶었으며 최종 독립 판정은 같은 근거의 고정 보고서를 따른다. 실제 client 호출·controller 연결·두 native 작업은 미검증이고 PAUSE/D18 보류를 유지한다.
+
 2026-10-17 ACK: PR20 고정 commit 위의 decoded ACK 최초 관찰 원장을 새4개 최초 실행 PASS(FAIL0/ERROR0/SKIP0)와 의미 변이2개 검출(각 FAIL1/ERROR0·실제 오저장 witness)로 검증했다. [실행 근거](testing/codex-queue-receipts-observed-20261017.json). 최종 독립 검토 판정은 같은 근거의 고정 보고서를 따른다. 임시 SQLite의 저장·재개방 검증이며 native 연결·두 native 작업은 미검증이다. PAUSE/D18 보류를 유지한다.
 
 2026-10-17: owner quota 조회1회(2RPC·재시도0)는 ordinaryUsageAllowed=true/주간14%를 확인했다. quota-only reader와 U01b2 별도 DB prebinding의 필수 새6개는 3+2+1로 통과했고 지정 의미 변이2개도 검출했다. 최초 setup/fixture 오류2개와 과거 false/100%·writer 충돌은 보존했다. 최종 독립 검토 PASS이며 같은 근거의 고정 보고서에 판정을 보존했다. [실제 근거](testing/codex-owner-binding-observed-20261017.json). 새 reader의 native 인수·send/ACK/controller·두 native 작업은 미완료이며 PAUSE/D18 보류를 유지한다.

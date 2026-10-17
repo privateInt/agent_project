@@ -1,0 +1,9 @@
+test_result_canonical_bounds_and_receipt_reopen (src.ops.tools.tests.test_codex_unattended_owner_ack_adapter.OwnerAckAdapterTests) ... ok
+test_invalid_result_shape_utf8_and_caps (src.ops.tools.tests.test_codex_unattended_owner_ack_adapter.OwnerAckAdapterTests) ... ok
+test_safe_error_absence_and_unknown_receipt (src.ops.tools.tests.test_codex_unattended_owner_ack_adapter.OwnerAckAdapterTests) ... ok
+test_dual_none_and_no_io (src.ops.tools.tests.test_codex_unattended_owner_ack_adapter.OwnerAckAdapterTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.221s
+
+OK

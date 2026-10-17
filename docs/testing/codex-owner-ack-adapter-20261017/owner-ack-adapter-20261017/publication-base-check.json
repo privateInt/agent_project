@@ -1,0 +1,7 @@
+{
+  "base_branch": "codex/agent-project-queue-ack-20261017",
+  "base_sha": "7806daca6bf48c220f7bcd228d1140ef79c2b230",
+  "new_branch_absent": true,
+  "new_branch": "codex/agent-project-owner-ack-adapter-20261017",
+  "base_tree": "1fa9fc50faefddab02fdf7e6874a7b87be3aa1c4"
+}

@@ -1,0 +1,391 @@
+#!/usr/bin/env python3
+"""Owner ACK adapter frozen v3: gated first normal4, then exact2 helper mutants.
+
+Writing/AST inspection never imports candidates. Explicit SOURCE_READY and all
+independent review, environment, fixture and guard pins are required to execute.
+"""
+import argparse
+import ast
+import copy
+import datetime as dt
+import hashlib
+import importlib
+import json
+import os
+from pathlib import Path
+import shutil
+import signal
+import sqlite3
+import subprocess
+import sys
+import tempfile
+import traceback
+import unittest
+
+HERE = Path(__file__).resolve().parent
+EVIDENCE = HERE.parent
+ROOT = next((p for p in HERE.parents if p.name == "agent_project"), None)
+WORK = ROOT / "var/unattended-20261015/owner-ack-adapter-development" if ROOT is not None else None
+DEADLINE = dt.datetime(2026, 10, 17, 3, 32, 19, 107024, tzinfo=dt.timezone.utc)
+PLAN_PIN = "896b50320eedce867dc2aee90b0744ff58b6307811e3fccf8cef55250e7b0849"
+SOURCE_PIN = "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05"
+PRODUCT = "src/ops/tools/codex_unattended_owner_ack_adapter.py"
+TEST = "src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py"
+MODULE = "src.ops.tools.tests.test_codex_unattended_owner_ack_adapter"
+METHODS = ("test_result_canonical_bounds_and_receipt_reopen", "test_invalid_result_shape_utf8_and_caps",
+           "test_safe_error_absence_and_unknown_receipt", "test_dual_none_and_no_io")
+TARGETS = {"M_UTF8CAP": "case_utf8_byte_cap_rejects_overlong_result", "M_DUAL": "case_dual_arguments_are_rejected"}
+EXPRESSIONS = {"M_UTF8CAP": "len(text_utf8) <= 16384", "M_DUAL": "not (has_result and has_error)"}
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def save(path, value):
+    path.write_text(json.dumps(value, indent=2, ensure_ascii=True, allow_nan=False) + "\n")
+
+
+def need(condition, reason):
+    if not condition:
+        raise AssertionError(reason)
+
+
+def remaining():
+    seconds = (DEADLINE - dt.datetime.now(dt.timezone.utc)).total_seconds()
+    need(seconds > 0, "ORIGINAL_SHARED_DEADLINE_EXPIRED_NO_EXTENSION")
+    return seconds
+
+
+def mutate(raw, stage):
+    """Replace the exact reviewed complete predicate once; no other bytes/AST."""
+    tree = ast.parse(raw, feature_version=(3, 10))
+    selected = ast.parse(EXPRESSIONS[stage], mode="eval").body
+    matches = [node for node in ast.walk(tree) if type(node) is type(selected)
+               and ast.dump(node, include_attributes=False) == ast.dump(selected, include_attributes=False)]
+    need(len(matches) == 1, "EXACTLY_ONE_REVIEWED_PREDICATE_REQUIRED")
+    node = matches[0]
+    need(any(isinstance(call, ast.Call) and isinstance(call.func, ast.Name) and call.func.id == "_need"
+             and call.args and call.args[0] is node for call in ast.walk(tree)), "PREDICATE_MUST_BE_COMPLETE_NEED_ARGUMENT")
+    lines = raw.splitlines(keepends=True)
+    start = sum(map(len, lines[:node.lineno-1])) + node.col_offset
+    end = sum(map(len, lines[:node.end_lineno-1])) + node.end_col_offset
+    changed = raw[:start] + b"True" + raw[end:]
+
+    class ReplaceExact(ast.NodeTransformer):
+        def visit(self, item):
+            if type(item) is type(node) and getattr(item, "lineno", None) == node.lineno and getattr(item, "col_offset", None) == node.col_offset:
+                return ast.Constant(value=True)
+            return super().visit(item)
+
+    expected = ReplaceExact().visit(copy.deepcopy(tree))
+    need(ast.dump(expected, include_attributes=False) == ast.dump(ast.parse(changed), include_attributes=False), "NON_TARGET_AST_CHANGED")
+    return changed, {"source_sha256": sha(raw), "mutated_source_sha256": sha(changed), "target_count": 1,
+                     "before_expression": ast.get_source_segment(raw.decode("utf-8"), node), "after_expression": "True",
+                     "line": node.lineno, "other_ast_equal": True,
+                     "other_bytes_equal": changed == raw[:start] + b"True" + raw[end:]}
+
+
+class BoundaryViolation(BaseException):
+    pass
+
+
+def worker(copy_root, stage_dir, stage, forbidden_root):
+    copy_root, stage_dir = Path(copy_root), Path(stage_dir)
+    sys.dont_write_bytecode = True
+    os.chdir(copy_root)
+    sys.path[:] = [str(copy_root)] + [p for p in sys.path if p and not os.path.abspath(p).startswith(forbidden_root) and p != str(copy_root)]
+    temporary = copy_root / "temporary-databases"
+    temporary.mkdir()
+    tempfile.tempdir = str(temporary)
+    active, violations, connections, old_calls = [True], [], [], []
+    copy_prefix, output_prefix = str(copy_root) + os.sep, str(stage_dir) + os.sep
+    std_roots = tuple(os.path.abspath(p) for p in (sys.base_prefix + "/lib", sys.prefix + "/lib", "/usr/lib", "/lib"))
+
+    def allowed(path, *, write=False):
+        if isinstance(path, int):
+            return True
+        if not isinstance(path, (str, bytes, os.PathLike)):
+            return False
+        text = os.path.abspath(os.fsdecode(os.fspath(path)))
+        if text == str(copy_root) or text.startswith(copy_prefix) or text == str(stage_dir) or text.startswith(output_prefix):
+            return True
+        if text == forbidden_root or text.startswith(forbidden_root + os.sep) or text == "/opt" or text.startswith("/opt/"):
+            return False
+        return not write and any(text == root or text.startswith(root + os.sep) for root in std_roots)
+
+    def audit(event, args):
+        if not active[0]:
+            return
+        denied = event.startswith(("socket.", "subprocess.", "os.exec", "os.spawn", "os.posix_spawn")) or event in ("os.system", "os.fork", "os.forkpty")
+        if event == "open":
+            mode, flags = args[1:3]
+            writing = (isinstance(mode, str) and any(c in mode for c in "wax+")) or (
+                isinstance(flags, int) and bool(flags & (os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_TRUNC)))
+            denied = not allowed(args[0], write=writing)
+        elif event in ("os.listdir", "os.scandir"):
+            denied = not allowed(args[0] if args else ".")
+        elif event == "sqlite3.connect":
+            target = os.fsdecode(os.fspath(args[0]))
+            denied = not os.path.abspath(target).startswith(str(temporary) + os.sep)
+            connections.append({"dedicated_temporary_file": not denied})
+        if denied:
+            violations.append({"event": event, "reason": "OFFLINE_IO_BOUNDARY_VIOLATION"})
+            raise BoundaryViolation("ORIGINAL_CHECKOUT_OPT_OPERATOR_NATIVE_IO_FORBIDDEN")
+
+    sys.addaudithook(audit)
+    original_fs = {}
+    metadata_ancestors = {str(p) for base in (copy_root, *(Path(r) for r in std_roots)) for p in base.parents}
+    for name in ("stat", "lstat", "listdir", "scandir", "access", "readlink"):
+        original_fs[name] = getattr(os, name)
+
+        def guarded(path=".", *args, _original=original_fs[name], _kind=name, **kwargs):
+            ancestor = (_kind in ("stat", "lstat", "access", "readlink") and isinstance(path, (str, bytes, os.PathLike))
+                        and os.path.abspath(os.fsdecode(os.fspath(path))) in metadata_ancestors)
+            if active[0] and not allowed(path) and not ancestor:
+                violations.append({"event": "filesystem_metadata", "reason": "OFFLINE_IO_BOUNDARY_VIOLATION"})
+                raise BoundaryViolation("PROTECTED_SOURCE_METADATA_READ_FORBIDDEN")
+            return _original(path, *args, **kwargs)
+
+        setattr(os, name, guarded)
+
+    def expired(signum, frame):
+        raise BoundaryViolation("ORIGINAL_SHARED_DEADLINE_EXPIRED_NO_EXTENSION")
+
+    signal.signal(signal.SIGALRM, expired)
+    signal.setitimer(signal.ITIMER_REAL, remaining())
+    data = {}
+    try:
+        module = importlib.import_module(MODULE)
+        need(Path(module.__file__).is_relative_to(copy_root) and Path(module.product.__file__).is_relative_to(copy_root), "SOURCE_COPY_IMPORT_REQUIRED")
+        banned_codes = module.old_case_codes()
+
+        def forbid_old_case(frame, event, arg):
+            if event == "call" and frame.f_code in banned_codes:
+                old_calls.append("OLD_TESTCASE_METHOD_CALL")
+                raise BoundaryViolation("OLD_PASSED_METHOD_SETUP_CLASSMETHOD_INVOCATION_FORBIDDEN")
+
+        sys.setprofile(forbid_old_case)
+        if stage == "normal":
+            cases = [module.OwnerAckAdapterTests(name) for name in METHODS]
+            suite = unittest.TestSuite(cases)
+        else:
+            module.OwnerAckAdapterTests.setUpClass()
+            instance = module.OwnerAckAdapterTests(METHODS[1] if stage == "M_UTF8CAP" else METHODS[3])
+            instance.setUp()
+            cases = [instance]
+            suite = unittest.TestSuite([unittest.FunctionTestCase(getattr(instance, TARGETS[stage]), description=stage+"."+TARGETS[stage])])
+        records = []
+
+        class RecordedResult(unittest.TextTestResult):
+            def addSuccess(self, test):
+                records.append({"id": test.id(), "outcome": "PASS"})
+                super().addSuccess(test)
+
+            def addFailure(self, test, err):
+                frame, tb = None, err[2]
+                while tb:
+                    if tb.tb_frame.f_code.co_filename == str(copy_root / TEST):
+                        frame = {"function": tb.tb_frame.f_code.co_name, "line": tb.tb_lineno}
+                    tb = tb.tb_next
+                records.append({"id": test.id(), "outcome": "FAIL", "exception_type": err[0].__name__, "last_test_assertion": frame})
+                super().addFailure(test, err)
+
+            def addError(self, test, err):
+                records.append({"id": test.id(), "outcome": "ERROR", "exception_type": err[0].__name__})
+                super().addError(test, err)
+
+            def addSubTest(self, test, subtest, err):
+                if err is not None:
+                    records.append({"id": test.id(), "outcome": "FAIL" if issubclass(err[0], AssertionError) else "ERROR", "subtest": True})
+                super().addSubTest(test, subtest, err)
+
+            def addSkip(self, test, reason):
+                records.append({"id": test.id(), "outcome": "SKIP"})
+                super().addSkip(test, reason)
+                self.stop()
+
+        with (stage_dir / "first.log").open("x") as log:
+            result = unittest.TextTestRunner(stream=log, verbosity=2, failfast=True, resultclass=RecordedResult).run(suite)
+        data = {"stage": stage, "testsRun": result.testsRun, "failures": len(result.failures), "errors": len(result.errors),
+                "skips": len(result.skipped), "methods": records, "boundary_violations": violations, "old_case_calls": old_calls,
+                "sqlite_connections": connections, "runtime_calls": 0, "source_copy": str(copy_root), "observations": module.OBSERVATIONS,
+                "receipt_compositions": module.COMPOSITIONS, "fixture_cleanup": module.CLEANUPS,
+                "protected_original_opt_operator_reads": 0 if not violations else "UNCONFIRMED"}
+        if stage == "normal":
+            markers = dict(cases[1].helper_markers, **cases[3].helper_markers)
+            marker_pass = set(markers) == set(TARGETS.values()) and all(marker == {"outcome": "PASS", "invocations": 1} for marker in markers.values())
+            data["normal_helper_markers"] = markers
+            data["all_pass"] = bool(result.testsRun == 4 and result.wasSuccessful() and not result.skipped
+                and len(records) == 4 and marker_pass and not violations and not old_calls and connections
+                and len(module.COMPOSITIONS) == 5 and len(module.CLEANUPS) == 5
+                and all(item["all_closed"] and item["identity_deduplicated"] for item in module.CLEANUPS)
+                and [item["outcome"] for item in module.COMPOSITIONS] == ["ACK_CANDIDATE", "ACK_CANDIDATE", "UNKNOWN", "UNKNOWN", "UNKNOWN"])
+        else:
+            instance = cases[0]
+            report, witness = getattr(instance, "last_report", None), getattr(instance, "last_observation", {})
+            context = getattr(instance, "target_context", {})
+            raw = report.get("ack_result_bytes") if type(report) is dict else None
+            wrong = (type(report) is dict and report.get("ready") is True and report.get("status") == "PREPARED"
+                and report.get("reason") == "ACK_RESULT_PREPARED" and report.get("call_error_code") is None
+                and type(raw) is bytes and 1 <= len(raw) <= 262144 and sha(raw) == report.get("expected_ack_sha256")
+                and witness.get("actual_sha256") == context.get("expected_payload_sha256")
+                and witness.get("input_unchanged") is True and context.get("has_result") is True
+                and all(report.get(flag) is False for flag in module.FALSE_FLAGS))
+            if stage == "M_UTF8CAP":
+                wrong = wrong and context.get("has_error") is False and witness.get("utf8_length") == 16388 and witness["utf8_length"] > 16384
+            else:
+                wrong = wrong and context.get("has_error") is True and type(witness.get("utf8_length")) is int and 1 <= witness["utf8_length"] <= 16384
+            expression = ast.parse('self.assertEqual(reason, report["reason"])').body[0].value
+            assertions = [node for node in ast.walk(ast.parse((copy_root / TEST).read_bytes())) if isinstance(node, ast.Call)
+                and ast.dump(node, include_attributes=False) == ast.dump(expression, include_attributes=False)]
+            need(len(assertions) == 1, "UNIQUE_SEMANTIC_REASON_ASSERTION_REQUIRED")
+            expected_frame = {"function": "invoke", "line": assertions[0].lineno}
+            semantic = (len(records) == 1 and records[0].get("exception_type") == "AssertionError"
+                        and records[0].get("last_test_assertion") == expected_frame)
+            data["actual_wrong_prepared_verified"] = bool(wrong)
+            data["wrong_prepared_witness"] = witness
+            data["target_presence_and_expected_hash"] = context
+            data["helper_invocations"] = instance.helper_invocations
+            data["actual_wrong_candidate"] = None if report is None else {key: value for key, value in report.items() if key != "ack_result_bytes"}
+            data["wrong_bytes_retained_in_log_or_db"] = False
+            data["semantic_fail1_error0"] = bool(result.testsRun == 1 and len(result.failures) == 1 and not result.errors
+                and not result.skipped and semantic and wrong and instance.helper_invocations == {TARGETS[stage]: 1}
+                and not violations and not old_calls and not connections)
+    except BaseException as error:
+        active[0] = False
+        sys.setprofile(None)
+        with (stage_dir / "first-harness-error.log").open("x") as log:
+            traceback.print_exc(file=log)
+        data = {"stage": stage, "all_pass": False, "harness_error": type(error).__name__, "boundary_violations": violations,
+                "old_case_calls": old_calls, "runtime_calls": 0}
+    finally:
+        active[0] = False
+        sys.setprofile(None)
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        for name, original in original_fs.items():
+            setattr(os, name, original)
+        save(stage_dir / "result.json", data)
+    return 0 if data.get("all_pass") or data.get("semantic_fail1_error0") else 1
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source-ready", action="store_true")
+    parser.add_argument("--source-sha256")
+    parser.add_argument("--internal-stage", choices=("normal", "M_UTF8CAP", "M_DUAL"))
+    parser.add_argument("--copy-root")
+    parser.add_argument("--stage-dir")
+    parser.add_argument("--forbidden-root")
+    args = parser.parse_args()
+    if args.internal_stage:
+        return worker(args.copy_root, args.stage_dir, args.internal_stage, args.forbidden_root)
+    need(args.source_ready and args.source_sha256 == SOURCE_PIN, "EXPLICIT_SOURCE_READY_AND_EXACT_SOURCE_PIN_REQUIRED")
+    remaining()
+    ready_raw = (HERE / "tests-ready.json").read_bytes()
+    ready = json.loads(ready_raw)
+    need(sha(Path(__file__).read_bytes()) == ready["runner_sha256"], "RUNNER_READINESS_PIN_MISMATCH")
+    need(ready["source_sha256"] == SOURCE_PIN and ready["plan_sha256"] == PLAN_PIN, "READINESS_SOURCE_PLAN_MISMATCH")
+    for filename, pin in ready["evidence_pins"].items():
+        need(sha((EVIDENCE / filename).read_bytes()) == pin, "PLAN_REVIEW_ENVIRONMENT_GUARD_GATE_PIN_MISMATCH:"+filename)
+    for filename in ("frozen-plan-v3.md", "review-plan.md"):
+        need(sha((EVIDENCE / filename).read_bytes()) == PLAN_PIN, "AUTHORITATIVE_V3_PLAN_PIN_MISMATCH")
+    source_ready = json.loads((EVIDENCE / "source-ready.json").read_bytes())
+    need(source_ready["source_sha256"] == SOURCE_PIN and source_ready["plan_sha256"] == PLAN_PIN
+         and source_ready["mutation_guards"] == EXPRESSIONS, "SOURCE_READY_GUARDS_MISMATCH")
+    start = json.loads((EVIDENCE / "implementation-start.json").read_bytes())
+    need(start["plan_sha256"] == PLAN_PIN and start["review_turn_completed"][1] == "completed"
+         and start["prereview_v2_sha256"] == ready["prereview_v2_sha256"]
+         and start["prereview_delta_sha256"] == ready["prereview_delta_sha256"], "INDEPENDENT_PREREVIEW_COMPLETION_REQUIRED")
+    static = (EVIDENCE / "source-static-review.md").read_text()
+    need("PASS (STATIC ONLY)" in static and SOURCE_PIN in static and PLAN_PIN in static and "REQUEST_CHANGES" not in static,
+         "INDEPENDENT_PINNED_SOURCE_STATIC_PASS_REQUIRED")
+    environment = json.loads((HERE / "authoring-environment.json").read_bytes())
+    need(environment["python_version"] == sys.version and environment["executable"] == sys.executable, "PINNED_EXECUTOR_ENVIRONMENT_MISMATCH")
+    sources = {}
+    for relative, pin in ready["files"].items():
+        raw = (WORK / relative).read_bytes()
+        need(sha(raw) == pin, "SOURCE_HELPER_TEST_FIXTURE_PIN_MISMATCH:"+relative)
+        sources[relative] = raw
+    need(sha(sources[PRODUCT]) == SOURCE_PIN, "PRODUCT_SOURCE_PIN_MISMATCH")
+    test_tree = ast.parse(sources[TEST], feature_version=(3, 10))
+    names = tuple(node.name for node in ast.walk(test_tree) if isinstance(node, ast.FunctionDef) and node.name.startswith("test_"))
+    need(names == METHODS, "EXACT_FOUR_NEW_METHODS_REQUIRED")
+    mutated, audits = {}, {}
+    for stage in TARGETS:
+        mutated[stage], audits[stage] = mutate(sources[PRODUCT], stage)
+    guard = json.loads((HERE / "guard-snapshot.json").read_bytes())
+    need(guard["source_sha256"] == SOURCE_PIN and guard["expressions"] == EXPRESSIONS
+         and all(audits[stage]["line"] == guard["locations"][stage]["line"] for stage in TARGETS), "GUARD_SNAPSHOT_MISMATCH")
+    with (HERE / "execution-attempt.json").open("x") as marker:
+        json.dump({"started_utc": dt.datetime.now(dt.timezone.utc).isoformat(), "deadline_utc": DEADLINE.isoformat(),
+                   "clock_reset": False, "readiness_sha256": sha(ready_raw), "source_sha256": SOURCE_PIN}, marker, indent=2)
+    snapshot = HERE / "initial-snapshot"
+    snapshot.mkdir()
+    for relative, raw in sources.items():
+        target = snapshot / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(raw)
+    for filename in ready["evidence_pins"]:
+        target = snapshot / "evidence" / filename
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes((EVIDENCE / filename).read_bytes())
+    shutil.copyfile(__file__, snapshot / "run-once.py")
+    (snapshot / "tests-ready.json").write_bytes(ready_raw)
+    save(HERE / "environment.json", {"python": sys.version, "sqlite": sqlite3.sqlite_version, "executable": sys.executable,
+         "declared_turn_metadata_at_authoring": environment["declared_turn_metadata"], "D18": "HELD", "PAUSE_changed": False,
+         "permission_probes": 0, "deadline_utc": DEADLINE.isoformat(), "clock_reset": False, "old_passes_rerun": False})
+    save(HERE / "mutation-ast-audits.json", audits)
+    summary = {"normal": None, "M_UTF8CAP": None, "M_DUAL": None, "runtime_calls": 0, "clock_reset": False,
+               "deadline_utc": DEADLINE.isoformat(), "old_suites_rerun": False}
+    for stage in ("normal", "M_UTF8CAP", "M_DUAL"):
+        stage_dir = HERE / stage
+        stage_dir.mkdir()
+        with tempfile.TemporaryDirectory(prefix="owner-ack-adapter-portable-%s-" % stage) as directory:
+            copied = Path(directory) / "minimal-source"
+            copied.mkdir()
+            for relative, raw in sources.items():
+                value = mutated[stage] if stage != "normal" and relative == PRODUCT else raw
+                target = copied / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(value)
+                need(target.read_bytes() == value, "SOURCE_COPY_BYTES_MISMATCH")
+            shutil.copyfile(__file__, copied / "run-once.py")
+            save(stage_dir / "source-copy-pins.json", {name: sha((copied / name).read_bytes()) for name in sources})
+            if stage != "normal":
+                (stage_dir / "mutated-source.py.txt").write_bytes(mutated[stage])
+            command = [sys.executable, "-I", "-S", "-B", str(copied / "run-once.py"), "--internal-stage", stage,
+                       "--copy-root", str(copied), "--stage-dir", str(stage_dir), "--forbidden-root", str(ROOT)]
+            save(stage_dir / "command.json", command)
+            with (stage_dir / "process.log").open("x") as log:
+                completed = subprocess.run(command, cwd=copied, stdout=log, stderr=subprocess.STDOUT, check=False, timeout=remaining())
+            need((stage_dir / "result.json").exists(), "FIRST_CHILD_RESULT_MISSING_STOP_NO_RETRY")
+            result = json.loads((stage_dir / "result.json").read_bytes())
+            result["process_returncode"] = completed.returncode
+            result["result_sha256"] = sha((stage_dir / "result.json").read_bytes())
+            result["first_log_sha256"] = sha((stage_dir / "first.log").read_bytes()) if (stage_dir / "first.log").exists() else None
+            summary[stage] = result
+            save(HERE / "result.json", summary)
+            ok = result.get("all_pass") if stage == "normal" else result.get("semantic_fail1_error0")
+            if completed.returncode or not ok:
+                print("STOP "+stage+" evidence="+str(stage_dir))
+                return 1
+    summary["normal_helper_pass_reused"] = list(TARGETS.values())
+    summary["all_required_verification_pass"] = True
+    summary["completed_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
+    save(HERE / "result.json", summary)
+    print("PASS normal4 + exact2 semantic FAIL1/ERROR0 wrong-prepared helpers; evidence="+str(HERE))
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        exit_status = main()
+    except BaseException as error:
+        if ROOT is not None:
+            with (HERE / "first-controller-error.log").open("x") as first_error:
+                traceback.print_exc(file=first_error)
+            save(HERE / "first-controller-error.json", {"error_type": type(error).__name__,
+                 "deadline_utc": DEADLINE.isoformat(), "clock_reset": False, "automatic_retry": False})
+        raise
+    raise SystemExit(exit_status)

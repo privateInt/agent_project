@@ -1,0 +1,84 @@
+{
+  "stage": "M_UTF8CAP",
+  "testsRun": 1,
+  "failures": 1,
+  "errors": 0,
+  "skips": 0,
+  "methods": [
+    {
+      "id": "case_utf8_byte_cap_rejects_overlong_result",
+      "outcome": "FAIL",
+      "exception_type": "AssertionError",
+      "last_test_assertion": {
+        "function": "invoke",
+        "line": 272
+      }
+    }
+  ],
+  "boundary_violations": [],
+  "old_case_calls": [],
+  "sqlite_connections": [],
+  "runtime_calls": 0,
+  "source_copy": "/tmp/owner-ack-adapter-portable-M_UTF8CAP-ucszlcde/minimal-source",
+  "observations": [
+    {
+      "ready": true,
+      "status": "PREPARED",
+      "reason": "ACK_RESULT_PREPARED",
+      "ack_bytes_length": 49296,
+      "actual_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+      "expected_ack_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+      "call_error_code": null,
+      "utf8_length": 16388,
+      "input_unchanged": true,
+      "runtime_calls": 0
+    }
+  ],
+  "receipt_compositions": [],
+  "fixture_cleanup": [],
+  "protected_original_opt_operator_reads": 0,
+  "actual_wrong_prepared_verified": true,
+  "wrong_prepared_witness": {
+    "ready": true,
+    "status": "PREPARED",
+    "reason": "ACK_RESULT_PREPARED",
+    "ack_bytes_length": 49296,
+    "actual_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+    "expected_ack_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+    "call_error_code": null,
+    "utf8_length": 16388,
+    "input_unchanged": true,
+    "runtime_calls": 0
+  },
+  "target_presence_and_expected_hash": {
+    "has_result": true,
+    "has_error": false,
+    "expected_payload_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+    "utf8_length": 16388
+  },
+  "helper_invocations": {
+    "case_utf8_byte_cap_rejects_overlong_result": 1
+  },
+  "actual_wrong_candidate": {
+    "scope": "OWNER_QUEUE_ACK_ADAPTER_ONLY",
+    "ready": true,
+    "status": "PREPARED",
+    "reason": "ACK_RESULT_PREPARED",
+    "expected_ack_sha256": "e6c125c27e578c32f6025c990a70b4f54ad6a75146c9f8967126b22c8ae8f9fb",
+    "call_error_code": null,
+    "remote_io_performed": false,
+    "db_io_performed": false,
+    "input_origin_verified": false,
+    "client_identity_verified": false,
+    "transport_pin_verified": false,
+    "transport_id_matching_verified": false,
+    "deadline_verified": false,
+    "native_acceptance_verified": false,
+    "remote_mutation_authorized": false,
+    "dispatch_permitted": false,
+    "replay_permitted": false,
+    "native_ready": false
+  },
+  "wrong_bytes_retained_in_log_or_db": false,
+  "semantic_fail1_error0": true
+}

@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "unit": "U01b2_EXISTING_OWNER_DECODED_ACK_ADAPTER",
+  "base_commit": "7806daca6bf48c220f7bcd228d1140ef79c2b230",
+  "scope": "Pure bounded canonical decoded-result preparation and sanitized fixed errors; actual SQLite composition only in synthetic fixture",
+  "source_sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+  "dependency_pins": {
+    "codex_unattended_queue_receipts": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af",
+    "codex_unattended_quota_reader": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+    "codex_unattended_queue_observer": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+    "github_fixture_collector": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+    "codex_unattended_submission_binding": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+    "codex_unattended_intent_journal": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "github_fixture_ledger": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4"
+  },
+  "plan_sha256": "896b50320eedce867dc2aee90b0744ff58b6307811e3fccf8cef55250e7b0849",
+  "prereview_v2_sha256": "7a37efe4f262cc81f234cc67b439b838ea63b2ef2bfb06756b0945fd672977de",
+  "prereview_delta_sha256": "8c761f48a19ab21fff8dc1b80c9b23753e8bc48eb244c44b78e8150cddd9cf63",
+  "source_static_review": "PASS_STATIC_ONLY",
+  "new_tests": {
+    "testsRun": 4,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "status": "PASS",
+    "first_execution_only": true,
+    "result_sha256": "745104895dedd539430cdd5a49d7e33e01664b081946eaf9716a2baa1f5e8665",
+    "test_source_sha256": "738e83cda5e141edae8a626b4741ffda6c214711089d9c15f80f0b45241cc988"
+  },
+  "semantic_mutants": {
+    "status": "DETECTED",
+    "count": 2,
+    "meaning": "Actual wrong prepared bytes/hash; no DB wrong commit",
+    "each": "semantic FAIL1 ERROR0 SKIP0"
+  },
+  "old_passes": "NOT_REPEATED",
+  "first_errors": "No new product/test execution errors; prior errors and preexecution authoring snapshots preserved",
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-owner-ack-adapter-20261017/review/final-review.md",
+    "sha256": "4ba79141b6813f2a02c245a70a68eb9f84110eb7b2efb84debec081c0d1defdb"
+  },
+  "new_native_queries": 0,
+  "native_connection": "NOT_IMPLEMENTED_NOT_RUN",
+  "two_complete_native_jobs": "NOT_RUN",
+  "native_ready": false,
+  "scheduler": "PAUSED_UNCHANGED",
+  "runtime_investigation": "OLD_D18_HELD_NO_NEW_PROBES",
+  "vms_project": "EXCLUDED",
+  "deadline_utc": "2026-10-17T03:32:19.107024Z",
+  "prior_ack_unit": "PR21 7806daca6bf48c220f7bcd228d1140ef79c2b230;4PASS+2semanticmutants;finalPASS;110readback;not rerun",
+  "source_static_review_sha256": "cf304541e899de57b2d681e63cf13f32ba7f70b6bc60f8e30360620569a617e5",
+  "actual_sqlite_compositions": {
+    "count": 5,
+    "outcomes": [
+      "ACK_CANDIDATE",
+      "ACK_CANDIDATE",
+      "UNKNOWN",
+      "UNKNOWN",
+      "UNKNOWN"
+    ],
+    "all_cleanup_closed": true
+  },
+  "execution_checkpoint_same_command": true,
+  "result_location": "codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/result.json"
+}

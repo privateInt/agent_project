@@ -1,0 +1,7 @@
+{
+  "reason": "Static concrete gap: fixed helper uses original attributes.get(code); arbitrary Exception instance dict can hold a hostile key colliding with code and trigger equality hook. Do not change pinned quota helper; bound/sanitize original metadata by items iteration into a plain Exception proxy, then delegate existing classifier once.",
+  "new_tests_required": "Extend existing error/absence method only with hostile colliding dict key and oversized attrs; same4 methods+2mutants.",
+  "v3_sha256": "896b50320eedce867dc2aee90b0744ff58b6307811e3fccf8cef55250e7b0849",
+  "code_or_tests_executed": false,
+  "prior_plan_v2_preserved": true
+}

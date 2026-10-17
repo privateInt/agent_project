@@ -1,0 +1,26 @@
+{
+  "source_sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+  "expressions": {
+    "M_UTF8CAP": "len(text_utf8) <= 16384",
+    "M_DUAL": "not (has_result and has_error)"
+  },
+  "locations": {
+    "M_UTF8CAP": {
+      "line": 72,
+      "column": 10,
+      "ast": "Compare(left=Call(func=Name(id='len', ctx=Load()), args=[Name(id='text_utf8', ctx=Load())], keywords=[]), ops=[LtE()], comparators=[Constant(value=16384)])"
+    },
+    "M_DUAL": {
+      "line": 115,
+      "column": 14,
+      "ast": "UnaryOp(op=Not(), operand=BoolOp(op=And(), values=[Name(id='has_result', ctx=Load()), Name(id='has_error', ctx=Load())]))"
+    }
+  },
+  "semantic_assertion": {
+    "function": "invoke",
+    "line": 272,
+    "expression": "self.assertEqual(reason, report[\"reason\"])"
+  },
+  "mutants_executed": 0,
+  "product_imported": false
+}
