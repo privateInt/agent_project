@@ -1,0 +1,8 @@
+{
+  "stage": "static fixture source pin before any test/import",
+  "initial_stale_pin": "0d4c2f025778b82a5778f9eb87220add9dcc083c04364c9550a148ce9adddb85",
+  "observed": "AssertionError before extraction or imports",
+  "cause": "stale pre-portability test pin; pinned published PR16 8c1a9c18 and current file both hash 5085ce3d...",
+  "tests_executed": 0,
+  "product_imports": 0
+}

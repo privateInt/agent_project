@@ -1,0 +1,1 @@
+PASS normal4 + exact2 actual wrong-wire semantic FAIL1/ERROR0 mutants; evidence=/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1

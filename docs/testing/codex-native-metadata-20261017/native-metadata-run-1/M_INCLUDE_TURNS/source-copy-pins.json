@@ -1,0 +1,10 @@
+{
+  "src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+  "src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+  "src/ops/tools/codex_daemon_websocket.py": "45ceca876e4fe12a80cb25a487d977c3311665d13baff34183f29bbade1a8954",
+  "src/ops/tools/codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+  "src/ops/tools/tests/test_codex_daemon_websocket_read_only.py": "e6c485f1e1852ca365c70cdc5986478fee3f8619182dd00a19b8ed1d1589d3ac",
+  "src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/manifest.json": "007d17ec97c30eec9f5d5b30f9d9205e500505ec3f3626f54062f4a81f154862",
+  "src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/synthetic.json": "22036ceaf79a83def772b42110ef076343207a3c296c162d7df623efdea287b6",
+  "src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/transport_primitives.py.txt": "44639fbdfd9d120e82abd158f4b8a9416ba1122a3d6184014825233a1564fc0d"
+}

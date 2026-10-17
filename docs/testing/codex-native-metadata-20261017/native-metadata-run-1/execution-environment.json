@@ -1,0 +1,18 @@
+{
+  "python_version": "3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0]",
+  "executable": "/usr/bin/python3",
+  "turn_metadata": {
+    "sandbox_mode": "workspace-write",
+    "approvals_reviewer": "auto_review",
+    "network_access": "restricted",
+    "approval_policy": "NOT_EXPOSED_IN_CURRENT_TURN_CONTEXT",
+    "origin": "current developer/environment declarations only; no permission probes",
+    "permission_changes": 0,
+    "native_investigation": "CLOSED"
+  },
+  "native_investigation": "CLOSED",
+  "native_calls": 0,
+  "deadline_utc": "2026-10-17T04:00:00+00:00",
+  "clock_reset": false,
+  "scheduler_PAUSE_changed": false
+}

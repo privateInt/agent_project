@@ -1,0 +1,12 @@
+{
+  "before_sha256": "a7d2387979ee762c670a4795a10bdad5283b9896f452f5b66a001e34fdb45747",
+  "after_sha256": "f4c363ad801ea378bf73931a83409a2c25948b8a462321dc37f571d8ac45a532",
+  "scope": "Add metadata unit config and optional test/fixture_only override. Packaging only, no product/test execution. Existing unit defaults retained.",
+  "independent_final_review_required": true,
+  "correction": {
+    "reason": "records list expanded after initial audit; source bytes unchanged since packaging review",
+    "prior_record_preserved": "native-metadata-run-1/helper-change-before-pin-correction.json",
+    "utc": "2026-10-17T03:35:57.060425+00:00",
+    "product_or_test_rerun_required": false
+  }
+}

@@ -1,0 +1,799 @@
+{
+  "normal": {
+    "stage": "normal",
+    "testsRun": 4,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "methods": [
+      {
+        "id": "src.ops.tools.tests.test_codex_daemon_websocket_read_only.ReadOnlyMetadataTests.test_read_only_metadata_wire_and_id_binding",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_daemon_websocket_read_only.ReadOnlyMetadataTests.test_read_only_blocks_mutation_thread_and_pagination",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_daemon_websocket_read_only.ReadOnlyMetadataTests.test_read_only_wrong_response_id_is_not_accepted",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_daemon_websocket_read_only.ReadOnlyMetadataTests.test_read_only_deadlines_and_loss_never_replay",
+        "outcome": "PASS"
+      }
+    ],
+    "boundary_violations": [],
+    "source_copy": "/tmp/native-metadata-portable-normal-czsjtmi5/minimal-source",
+    "observations": [
+      {
+        "reason": "EXPLICIT_INITIALIZE_HELPER_READ_TURNS_ONCE",
+        "frames": 4,
+        "ids": [
+          1,
+          null,
+          2,
+          3
+        ],
+        "methods": [
+          "initialize",
+          "initialized",
+          "thread/read",
+          "thread/turns/list"
+        ],
+        "next_id": 4,
+        "connects": 1,
+        "close_calls": 0,
+        "all_fake_sockets_closed": false,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "9b554af9a1e17c84d3cff9b6f6c0f349c6d5ad6725bf3f8506e26587a02f75ae",
+          "52a8ef24458e5bf4f69ca911e1cf9e35eaf12232d767eec9becf4dfceb22516c",
+          "5566adc2b3d453272eced8c7036ee1e80af352c5713e8b278bc95036f8484c12",
+          "1a2f0e34a129af489c68948b326ab4eb3d1bef561eaa7e1182fdb086ed9e052b"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "ALL_FORBIDDEN_CALLS_SEND_ZERO",
+        "frames": 0,
+        "ids": [],
+        "methods": [],
+        "next_id": 1,
+        "connects": 1,
+        "close_calls": 0,
+        "all_fake_sockets_closed": false,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "WRONG_RPC_ID_CLOSED_NO_REPLAY",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/read"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "79fd4e897ef63a66d9397ad857200ba63f6015d70596dca9c47c6b9e44f23f67"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "WRONG_RPC_ID_CLOSED_NO_REPLAY",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/turns/list"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "5f3c9285874d1f6872e159798a30b8476626d6a3a4c09d6bd3fba7863a3f22a5"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "RPC_ID_MATCHED_THREAD_BINDING_REJECTED",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/read"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "7bc23c455e29920854a0e6bf48be85fdc716dc075b9cecdd2b934987dd11fc91"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "RPC_ID_MATCHED_THREAD_BINDING_REJECTED",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/read"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "2b792ff661e6f31003841df19a296f3232862bcc338480c3e50bd87736f28222"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "RPC_ID_MATCHED_THREAD_BINDING_REJECTED",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/read"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "aaa6b35336876612510e94b2ca178cfa63231d10369831ed5dd84feda34d1a2c"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "RPC_ID_MATCHED_THREAD_BINDING_REJECTED",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/read"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "698006cd096936a847deaa9b2b993d358b416b3b6ee327207801fdb7ffed2d08"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "RPC_ID_MATCHED_THREAD_BINDING_REJECTED",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/read"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "404a2a49e937ec8f905ca794694e1e0e335b878f3283cc74e6fd076059f0346e"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "HELPER_CALL_ERROR_CLOSED_FIXED_CODE",
+        "frames": 0,
+        "ids": [],
+        "methods": [],
+        "next_id": 1,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "HELPER_CALL_ERROR_CLOSED_FIXED_CODE",
+        "frames": 0,
+        "ids": [],
+        "methods": [],
+        "next_id": 1,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "ACTUAL_SEND_THEN_DEADLINE_NO_REPLAY",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/read"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "b7366ba3026352aac7c36fe1ca4387b1b3daa4dbac198fc89191f84214fabb43"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "ACTUAL_SEND_THEN_DEADLINE_NO_REPLAY",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/read"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "efdca5180847d9d1fd49b1c13b67ba2b08f07d547e8c0a27fc2f4bb61c54d5a3"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "ACTUAL_SEND_THEN_DEADLINE_NO_REPLAY",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/turns/list"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "1bece0ea1717261ff65c0ad2efc50ddd66f83569417711316f2bc9ede504eba6"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "ACTUAL_SEND_THEN_DEADLINE_NO_REPLAY",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/turns/list"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "39b385a6f56208067562767dd90a8b8eb67323324aa648c4aabc6fdef6a9aa84"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "LOSS_UNKNOWN_NO_RETRY_OR_FOLLOWUP",
+        "frames": 1,
+        "ids": [
+          1
+        ],
+        "methods": [
+          "thread/read"
+        ],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [
+          "2444383e63428a6771d6e3c0c0967dc096205c8c3ec761eb93ec7f62f36c944e"
+        ],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "LOSS_UNKNOWN_NO_RETRY_OR_FOLLOWUP",
+        "frames": 0,
+        "ids": [],
+        "methods": [],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      },
+      {
+        "reason": "TOTAL_EXPIRED_BEFORE_SEND",
+        "frames": 0,
+        "ids": [],
+        "methods": [],
+        "next_id": 2,
+        "connects": 1,
+        "close_calls": 2,
+        "all_fake_sockets_closed": true,
+        "real_io_attempts": 0,
+        "graceful_calls": 0,
+        "wire_hashes": [],
+        "summary_phase": "BEFORE_FIXTURE_EXIT",
+        "native_calls": 0
+      }
+    ],
+    "fixture_cleanup": [
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 0,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 0,
+        "native_calls": 0
+      },
+      {
+        "sockets": 0,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 0,
+        "native_calls": 0
+      },
+      {
+        "sockets": 0,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 0,
+        "native_calls": 0
+      },
+      {
+        "sockets": 0,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 0,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      },
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      }
+    ],
+    "native_calls": 0,
+    "sqlite_connections": 0,
+    "old_testcase_calls": 0,
+    "old_testcase_absent_from_fixture": true,
+    "websocket_version": "1.9.0",
+    "websocket_file": "/tmp/native-metadata-portable-normal-czsjtmi5/minimal-source/vendor/websocket/__init__.py",
+    "allowed_reads": 144,
+    "normal_helper_markers": {
+      "case_read_only_include_turns_true_never_sent": {
+        "outcome": "PASS",
+        "invocations": 1,
+        "request_count": 0
+      },
+      "case_read_only_limit_two_never_sent": {
+        "outcome": "PASS",
+        "invocations": 1,
+        "request_count": 0
+      }
+    },
+    "all_pass": true,
+    "process_returncode": 0,
+    "result_sha256": "df05271eb4b25bbcf2081deb9f996c2c8c9a398a12300e5de322f6fae6351ac5",
+    "first_log_sha256": "107d76abd55f24973378cb6650ab8000d97dc94187e434ace8a74d357567ce9d"
+  },
+  "M_INCLUDE_TURNS": {
+    "stage": "M_INCLUDE_TURNS",
+    "testsRun": 1,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "methods": [
+      {
+        "id": "case_read_only_include_turns_true_never_sent",
+        "outcome": "FAIL",
+        "exception_type": "AssertionError",
+        "last_test_assertion": {
+          "function": "_blocked_mutation_target",
+          "line": 159
+        }
+      }
+    ],
+    "boundary_violations": [],
+    "source_copy": "/tmp/native-metadata-portable-M_INCLUDE_TURNS-s3m2ijw5/minimal-source",
+    "observations": [],
+    "fixture_cleanup": [
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      }
+    ],
+    "native_calls": 0,
+    "sqlite_connections": 0,
+    "old_testcase_calls": 0,
+    "old_testcase_absent_from_fixture": true,
+    "websocket_version": "1.9.0",
+    "websocket_file": "/tmp/native-metadata-portable-M_INCLUDE_TURNS-s3m2ijw5/minimal-source/vendor/websocket/__init__.py",
+    "allowed_reads": 89,
+    "wrong_wire_witness": {
+      "target": "case_read_only_include_turns_true_never_sent",
+      "observed_code": null,
+      "request_count": 1,
+      "actual_request": {
+        "id": 1,
+        "method": "thread/read",
+        "params": {
+          "threadId": "00000000-0000-4000-8000-000000000001",
+          "includeTurns": true
+        }
+      },
+      "expected_method": "thread/read",
+      "expected_params": {
+        "threadId": "00000000-0000-4000-8000-000000000001",
+        "includeTurns": true
+      },
+      "next_id": 2,
+      "connects": 1,
+      "request_wire_base64": "gfDC9aawudfP1ODPl5zgmMPEqprCkvjX0tiwkMfU7YfD0abXipKylNTRr4aEirnX0tiwkMfUi5GEiuDFloDyxZaA8tiWgPLFi4TyxZad+sWWgO/FloDyxZaA8sWWgPPXipKrm8Xct5HD5LeHyMPgz9LCt5DbzQ==",
+      "request_wire_sha256": "86cc4ee81ef9f695eb80b921fd735bc7b531bd589f0619bc6dca811e97a30951",
+      "native_calls": 0
+    },
+    "actual_wrong_wire_verified": true,
+    "helper_invocations": {
+      "case_read_only_include_turns_true_never_sent": 1
+    },
+    "semantic_fail1_error0": true,
+    "process_returncode": 0,
+    "result_sha256": "b204556fe2bc418359cb18afeb9bce5b81475b9079b7de6bbc51cabe94bb6586",
+    "first_log_sha256": "bba8b9c83efc82910a8dfc40813b0c243a2ba0eb369ac0948b083d34169991f3"
+  },
+  "M_LIMIT": {
+    "stage": "M_LIMIT",
+    "testsRun": 1,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "methods": [
+      {
+        "id": "case_read_only_limit_two_never_sent",
+        "outcome": "FAIL",
+        "exception_type": "AssertionError",
+        "last_test_assertion": {
+          "function": "_blocked_mutation_target",
+          "line": 159
+        }
+      }
+    ],
+    "boundary_violations": [],
+    "source_copy": "/tmp/native-metadata-portable-M_LIMIT-2vvrf4u3/minimal-source",
+    "observations": [],
+    "fixture_cleanup": [
+      {
+        "sockets": 1,
+        "all_closed": true,
+        "forbidden": 0,
+        "graceful": 0,
+        "connects": 1,
+        "native_calls": 0
+      }
+    ],
+    "native_calls": 0,
+    "sqlite_connections": 0,
+    "old_testcase_calls": 0,
+    "old_testcase_absent_from_fixture": true,
+    "websocket_version": "1.9.0",
+    "websocket_file": "/tmp/native-metadata-portable-M_LIMIT-2vvrf4u3/minimal-source/vendor/websocket/__init__.py",
+    "allowed_reads": 89,
+    "wrong_wire_witness": {
+      "target": "case_read_only_limit_two_never_sent",
+      "observed_code": null,
+      "request_count": 1,
+      "actual_request": {
+        "id": 1,
+        "method": "thread/turns/list",
+        "params": {
+          "threadId": "00000000-0000-4000-8000-000000000001",
+          "cursor": null,
+          "limit": 2,
+          "itemsView": "notLoaded",
+          "sortDirection": "desc"
+        }
+      },
+      "expected_method": "thread/turns/list",
+      "expected_params": {
+        "threadId": "00000000-0000-4000-8000-000000000001",
+        "cursor": null,
+        "limit": 2,
+        "itemsView": "notLoaded",
+        "sortDirection": "desc"
+      },
+      "next_id": 2,
+      "connects": 1,
+      "request_wire_base64": "gf4AqVDHQ/wr5SqYcv1y0HKqJog4qCfeauU3lCKiIph/szaOPrRskDm0N9585TOdIqYuj3L9ON4krzGZMaMKmHL9Ycxg93PMYPdz0WD3c8x983PMYOp7zGD3bsxg93PMYPdzzGD3ct585SCJIrQsjnL9LYk8q2/ePK4ulSTlec585SqINaowqjmiNN5q5S2TJIssnTSiJ9585TCTIrMHlSKiIIg5qC3eauUnmSOkYYEt",
+      "request_wire_sha256": "8eb906652e9cc322dd6ae031ad6af4e5645cbb83a35ec5256acd4e3610e322c8",
+      "native_calls": 0
+    },
+    "actual_wrong_wire_verified": true,
+    "helper_invocations": {
+      "case_read_only_limit_two_never_sent": 1
+    },
+    "semantic_fail1_error0": true,
+    "process_returncode": 0,
+    "result_sha256": "249b4cc2d1f91c6d7f732be71ed86bcee34487e728bc6ef256595b74c2430186",
+    "first_log_sha256": "93d27887c9efb7a932890683c752abfdea73e1d69f5d0221e509ee8b01d09cc4"
+  },
+  "native_calls": 0,
+  "old_suites_rerun": false,
+  "deadline_utc": "2026-10-17T04:00:00+00:00",
+  "clock_reset": false,
+  "normal_helper_pass_reused": [
+    "case_read_only_include_turns_true_never_sent",
+    "case_read_only_limit_two_never_sent"
+  ],
+  "all_required_verification_pass": true,
+  "completed_utc": "2026-10-17T03:41:49.468473+00:00"
+}

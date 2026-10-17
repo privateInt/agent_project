@@ -36,3 +36,8 @@
 문서 QA의 상세 계약/Q05c-2·Q09~Q11은 [기존 계획](plans/document-qa-work-plan-20261002.md)을 유지한다. 실제 question-policy의 질문 가능과 답변/의미 품질 인수는 구분한다. static production_* flag나 과거 보류 실행권을 바꿔 완료로 대체하지 않는다.
 
 Ops 운영 백업/복원·추가 운영 자동화·실제 재부팅·Kubernetes는 보류이며 backup_ready=false다. DDP/원격 다중 노드·ZenML·범용 자율 그래프·외부 알림·전체 복구는 별도 검토 범위다. [백업 범위](operations/backup-restore.md), [설계 원칙](design-principles.md)을 따른다.
+
+
+## 2026-10-17 소유 client의 제한된 metadata 연결
+
+다음 연결 조건: 최종 검토 source/transport manifest와 전용 설치·state·DB 경로/UID의 소유자 승인 → 기존 owner thread/client binding → queue 조회의 읽기 전용 handler 계약 → 실제 controller launcher와 승인된 작은 작업 두 건의 순차 인수. 설치된 legacy never/ephemeral runner 및 VMS 포함 console은 자동 전환하지 않는다. 현장7RPC 관측과 수정 제품 native 인수는 구분한다.

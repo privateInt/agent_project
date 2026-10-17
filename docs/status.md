@@ -133,3 +133,8 @@
 상세 근거는 [Agent 결과](../src/platform/agent/tests/results/a09-server-20260925.json), [추적 실패 결과](../src/platform/agent/tests/results/o02-tracing-server-20260927.json), [Knowledge 평가](../src/platform/knowledge/tests/results/evaluation-candidate-diagnostics-20260921.json), [Data 상태](data-platform/status.md)에 있다.
 
 현재 우선순위는 [로드맵](roadmap.md), 과거 단계 이력은 [이력 목차](history/README.md)에서 관리한다.
+
+
+## 2026-10-17 소유 client의 제한된 metadata 연결
+
+기존 소유 socket에서 초기화·세 thread/read·세 turns/list의 읽기 전용 계약 7응답을 2026-10-17에 확인했고 0retry로 조사를 종료했다. 기존 client의 단일 thread read_only 경로와 응답 binding helper를 별도 구현했다. 새4 검사가 최초 실행에서 PASS했고 지정 semantic mutant2는 각각 실제 잘못된 wire를 남기며 FAIL1/ERROR0으로 탐지됐다. 최종 독립 검토 판정은 현재 근거 JSON에서 확인한다. 수정본 native 인수·queue 조회·실제 controller dispatch·두 native 작업은 미완료이며 scheduler PAUSE를 유지한다. 새 검사·최종 검토의 현재 결과는 [이번 근거](testing/codex-native-metadata-observed-20261017.json)에 기록한다.

@@ -1,0 +1,15 @@
+[
+  "/usr/bin/python3",
+  "-I",
+  "-S",
+  "-B",
+  "/tmp/native-metadata-portable-M_INCLUDE_TURNS-s3m2ijw5/minimal-source/run-once.py",
+  "--internal-stage",
+  "M_INCLUDE_TURNS",
+  "--copy-root",
+  "/tmp/native-metadata-portable-M_INCLUDE_TURNS-s3m2ijw5/minimal-source",
+  "--stage-dir",
+  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_INCLUDE_TURNS",
+  "--forbidden-root",
+  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+]

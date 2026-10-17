@@ -1,0 +1,474 @@
+{
+  "schema": 1,
+  "scope": "READ_ONLY_INSTALLATION_VS_REVIEWED_CANDIDATE",
+  "observed_utc": "2026-10-17T03:21:22.276796+00:00",
+  "renewed_D18": {
+    "start_utc": "2026-10-17T03:16:41Z",
+    "deadline_utc": "2026-10-17T03:31:41Z",
+    "rpc_limit_shared": 8,
+    "this_agent_rpc": 0,
+    "retries": 0,
+    "thread_resume": 0
+  },
+  "previous_D18_hold": "PREVIOUS_RECORDS_PRESERVED; renewed metadata window does not overwrite or reset prior hold/budget",
+  "service_account": {
+    "configured_user": "codex_shshin",
+    "account_uid": 1011,
+    "account_gid": 1013,
+    "effective_service_uid_verified": false,
+    "method": "unit User/Group text + local account mapping; no process/service query"
+  },
+  "installed_files": {
+    "/etc/codex-agent/schedule.json": {
+      "path": "/etc/codex-agent/schedule.json",
+      "exists": true,
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o644",
+      "regular": true,
+      "symlink": false,
+      "bytes": 137,
+      "sha256": "1840b98caac4689eff8186225f7ae5372029bb98eea97d9ccedac38b545a9237"
+    },
+    "/etc/systemd/system/codex-nightly.service": {
+      "path": "/etc/systemd/system/codex-nightly.service",
+      "exists": true,
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o644",
+      "regular": true,
+      "symlink": false,
+      "bytes": 819,
+      "sha256": "26f1c496cb1a7d301eb00f529c7c6a5ff265b3b8aa2967622f3d48295b04a036"
+    },
+    "/etc/systemd/system/codex-nightly.timer": {
+      "path": "/etc/systemd/system/codex-nightly.timer",
+      "exists": true,
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o644",
+      "regular": true,
+      "symlink": false,
+      "bytes": 222,
+      "sha256": "ec94cea10a93fa647b176e451a2a21dec70eb193c0a75da1380705f3204069a6"
+    },
+    "/etc/systemd/system/codex-nightly.service.d/98-flex-schedule.conf": {
+      "path": "/etc/systemd/system/codex-nightly.service.d/98-flex-schedule.conf",
+      "exists": true,
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o644",
+      "regular": true,
+      "symlink": false,
+      "bytes": 176,
+      "sha256": "6ddac0eb7999d4fcdd37a8b56267f61aac49aa514b8b1adaab73c1e59ce84499"
+    },
+    "/opt/codex-agent/nightly-v1/orchestrator.py": {
+      "path": "/opt/codex-agent/nightly-v1/orchestrator.py",
+      "exists": true,
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o644",
+      "regular": true,
+      "symlink": false,
+      "bytes": 11700,
+      "sha256": "5daa8c8407799c9d035827c4ce4d3916e471c2171ebd269d7257d373763a9acb"
+    },
+    "/opt/codex-agent/scheduler-v2/flex_gate.py": {
+      "path": "/opt/codex-agent/scheduler-v2/flex_gate.py",
+      "exists": true,
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o644",
+      "regular": true,
+      "symlink": false,
+      "bytes": 6323,
+      "sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b"
+    },
+    "/opt/codex-agent/console-v2/console_api.py": {
+      "path": "/opt/codex-agent/console-v2/console_api.py",
+      "exists": true,
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o644",
+      "regular": true,
+      "symlink": false,
+      "bytes": 12162,
+      "sha256": "d312bd69d123427ff36159304864488a03a58fa2954d9951aaf1368e3f1238a5"
+    }
+  },
+  "initial_installation_files_sha256": "641139326244f6e12475ac6be3ff13fa770e956a00c5e57ebdc3e0ede66b3851",
+  "initial_hashes_uid_sizes_unchanged": true,
+  "actual_configuration": {
+    "service_working_directory": "/home/codex_shshin/workspace",
+    "legacy_state_source_default": "/home/codex_shshin/automation_mvp",
+    "service_exec_start": "/usr/bin/python3 -B /opt/codex-agent/nightly-v1/orchestrator.py run-once",
+    "effective_exec_condition_from_read_unit_and_one_dropin": "/usr/bin/python3 -B /opt/codex-agent/scheduler-v2/flex_gate.py",
+    "unit_dropins_scope": "only specified 98-flex-schedule.conf read; live merged unit/state not queried",
+    "timer": "every five minutes; Persistent=false; time gate schedule 23:00-07:00 Asia/Seoul,max_starts=3",
+    "legacy_runner_policy": "approval_policy=\"never\"; --ephemeral; --sandbox workspace-write; static source, actual launched policy unverified",
+    "legacy_codex_binary_source_default": "/opt/codex-agent/0.162.1/bin/codex",
+    "binary_version_executed_or_verified": false,
+    "console_projects": [
+      "agent_project",
+      "vms_project"
+    ],
+    "console_runner_reference": "/home/codex_shshin/automation_mvp/orchestrator.py",
+    "console_runner_reference_target_read": false,
+    "new_loader_config_in_schedule": false,
+    "installation_root": null,
+    "state_dir_for_new_loader": null,
+    "ledger_db": null,
+    "control_db": null,
+    "role_thread_actual_configuration": "NOT_PRESENT_IN_ALLOWED_CONFIG_SERVICE_OR_SPECIFIED_SOURCE_TEXT; no state/jobs/owner metadata read",
+    "new_config_absence_scope": "initial observation reports no new SQLite config in /etc; schedule lacks required keys; no exhaustive config directory search",
+    "operator_pause_metadata": {
+      "path": "/etc/codex-agent/PAUSE",
+      "exists": true,
+      "uid": 65534,
+      "gid": 65534,
+      "mode": "0o644",
+      "regular": true,
+      "symlink": false,
+      "bytes": 0
+    },
+    "legacy_state_pause": "NOT_READ_OR_STAT; preserve parent-observed PAUSE; not required to inspect protected operational state"
+  },
+  "loader_contract": {
+    "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/github_fixture_config.py",
+    "sha256": "63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88",
+    "source_files_exact": [
+      "src/__init__.py",
+      "src/ops/__init__.py",
+      "src/ops/tools/github_check_audit.py",
+      "src/ops/tools/github_fixture_collector.py",
+      "src/ops/tools/github_fixture_ledger.py",
+      "src/ops/tools/github_fixture_controller.py",
+      "src/ops/tools/github_fixture_config.py"
+    ],
+    "config_exact_keys": [
+      "schema",
+      "installation_root",
+      "state_dir",
+      "ledger_db",
+      "control_db"
+    ],
+    "config_schema": 1,
+    "marker_filename": "fixture-controller-installation.json",
+    "marker_exact_keys": [
+      "schema",
+      "code_version"
+    ],
+    "expected_version_is_caller_supplied": true,
+    "existing_candidate_marker": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/fixture-controller-installation.json",
+      "exists": false
+    },
+    "pins_and_uid_are_not_owner_approval": true,
+    "source_rules": "regular, no symlink, nlink1, exact expected UID, no group/other write; module origins/package paths must match installation; tools namespace package",
+    "state_rules": "dedicated private directory; two distinct existing regular 0600 SQLite DBs within state_dir, matching UID/profile/schema; loader never init/migrate",
+    "runtime_uid_rule": "expected_uid must equal process geteuid; no candidate loader executed",
+    "coverage_gap": "seven fixture-controller sources only; does not pin or activate unattended modules/transport/native client/thread binding"
+  },
+  "reviewed_candidate": {
+    "base_pr22_commit": "d59de21d4b43a71f3e518592c589b0761e668de5",
+    "head_verified_read_only": true,
+    "git_status_clean": true,
+    "loader_source_files": {
+      "src/__init__.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/__init__.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 82,
+        "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64"
+      },
+      "src/ops/__init__.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/__init__.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 63,
+        "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284"
+      },
+      "src/ops/tools/github_check_audit.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/github_check_audit.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 9977,
+        "sha256": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e"
+      },
+      "src/ops/tools/github_fixture_collector.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/github_fixture_collector.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 14757,
+        "sha256": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0"
+      },
+      "src/ops/tools/github_fixture_ledger.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/github_fixture_ledger.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 17905,
+        "sha256": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4"
+      },
+      "src/ops/tools/github_fixture_controller.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/github_fixture_controller.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 20436,
+        "sha256": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7"
+      },
+      "src/ops/tools/github_fixture_config.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/github_fixture_config.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 18907,
+        "sha256": "63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88"
+      }
+    },
+    "unattended_component_files_not_in_loader": {
+      "codex_unattended_admission.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/codex_unattended_admission.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 15312,
+        "sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51"
+      },
+      "codex_unattended_intent_journal.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/codex_unattended_intent_journal.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 13985,
+        "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8"
+      },
+      "codex_unattended_queue_observer.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/codex_unattended_queue_observer.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 10429,
+        "sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a"
+      },
+      "codex_unattended_quota_reader.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/codex_unattended_quota_reader.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 6521,
+        "sha256": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c"
+      },
+      "codex_unattended_submission_binding.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/codex_unattended_submission_binding.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 14899,
+        "sha256": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c"
+      },
+      "codex_unattended_queue_receipts.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/codex_unattended_queue_receipts.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 20280,
+        "sha256": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af"
+      },
+      "codex_unattended_owner_ack_adapter.py": {
+        "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/codex_unattended_owner_ack_adapter.py",
+        "exists": true,
+        "uid": 1011,
+        "gid": 1013,
+        "mode": "0o664",
+        "regular": true,
+        "symlink": false,
+        "bytes": 5524,
+        "sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05"
+      }
+    },
+    "transport_separate_fixed_source": {
+      "path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/codex_daemon_websocket.py",
+      "exists": true,
+      "uid": 1011,
+      "gid": 1013,
+      "mode": "0o664",
+      "regular": true,
+      "symlink": false,
+      "bytes": 9698,
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415"
+    },
+    "publication_evidence": {
+      "final-review-completed.json": {
+        "sha256": "162adf927bf415d90245db2e4be7c03e01313f3e4cd512665622c3fe1a008bd7",
+        "record": {
+          "turn": [
+            "01a147cc-7b69-7183-9744-a48f69fd0583",
+            "completed",
+            1792206250,
+            null
+          ],
+          "verdict": "PASS",
+          "review_sha256": "4ba79141b6813f2a02c245a70a68eb9f84110eb7b2efb84debec081c0d1defdb",
+          "recorded_utc": "2026-10-17T03:04:12.334748+00:00",
+          "tests_rerun": false
+        }
+      },
+      "unit-complete-publication.json": {
+        "sha256": "5e0ba1cebadf565d92e3488e3828cbaa6ae6f3224f86085e9ba2b99d948113e2",
+        "record": {
+          "completed_utc": "2026-10-17T03:06:27.733434+00:00",
+          "start_utc": "2026-10-17T02:32:19.107024+00:00",
+          "deadline_utc": "2026-10-17T03:32:19.107024+00:00",
+          "elapsed_seconds": 2048.62641,
+          "budget_reset": false,
+          "pr": "https://github.com/privateInt/agent_project/pull/22",
+          "commit": "d59de21d4b43a71f3e518592c589b0761e668de5",
+          "files_verified": 146,
+          "normal": "4PASS FAIL0 ERROR0 SKIP0; first execution only",
+          "semantic_mutants": "2detected, each FAIL1 ERROR0 SKIP0; actual wrong prepared bytes, not DB commit",
+          "sqlite_compositions": "Actual dedicated temporary fileSQLite5: ACK2 UNKNOWN3; peer/reopen/hash/source/cleanup confirmed",
+          "result_sha256": "745104895dedd539430cdd5a49d7e33e01664b081946eaf9716a2baa1f5e8665",
+          "final_review": "PASS",
+          "final_review_sha256": "4ba79141b6813f2a02c245a70a68eb9f84110eb7b2efb84debec081c0d1defdb",
+          "repository_clean": true,
+          "original_11_unchanged": true,
+          "direct_native_control_probes": 0,
+          "supported_existing_role_queue_dispatches": 6,
+          "queue_dispatches_are_coordination_not_controller_native_acceptance": true,
+          "old_passes_repeated": false,
+          "scheduler": "PAUSE_UNCHANGED",
+          "old_native_D18": "HELD_UNCHANGED",
+          "two_complete_native_jobs": "NOT_RUN"
+        }
+      }
+    },
+    "publication_is_not_installation_or_native_acceptance": true
+  },
+  "candidate_paths": {
+    "approval": "CANDIDATE_ONLY_NOT_AUTHORIZED_OR_APPLIED",
+    "config_file": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-candidate/pr22-d59de21d4b43/fixture-controller.json",
+    "installation_root": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-candidate/pr22-d59de21d4b43/installation",
+    "state_dir": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-candidate/pr22-d59de21d4b43/state",
+    "ledger_db": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-candidate/pr22-d59de21d4b43/state/fixture-ledger.sqlite",
+    "control_db": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-candidate/pr22-d59de21d4b43/state/fixture-controller.sqlite",
+    "candidate_expected_uid": 1011,
+    "candidate_code_version": "pr22-d59de21d4b43",
+    "code_version_status": "PROPOSED_VERSION_LABEL_NOT_INSTALLED_OWNER_APPROVAL",
+    "owner_approval": null,
+    "role_thread_mapping": null,
+    "native_authorization": false,
+    "additional_unattended_databases": "NOT_ASSIGNED: PR18 intent/PR20 binding/PR21 receipt DBs are separate contracts, not this fixture loader schema",
+    "source_pin_manifest": {
+      "src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+      "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "src/ops/tools/github_fixture_controller.py": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7",
+      "src/ops/tools/github_fixture_config.py": "63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88"
+    },
+    "transport_candidate": {
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/bridge-development/src/ops/tools/codex_daemon_websocket.py",
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+      "separate_review_line": "PR16; not included by current loader seven-file manifest"
+    }
+  },
+  "unexecuted_change_proposal": [
+    {
+      "who": "service/host owner (codex_shshin) and administrator only where required",
+      "where": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-candidate/pr22-d59de21d4b43",
+      "what": "approve separate agent_project-only developer installation/state destinations; snapshot existing unit/dropin/schedule hashes and PAUSE metadata; do not modify production workspace/automation_mvp"
+    },
+    {
+      "who": "installation owner",
+      "where": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-candidate/pr22-d59de21d4b43/installation",
+      "what": "stage exact reviewed source bytes; all seven loader sources and namespace layout; marker schema1/code_version must match an explicitly approved candidate version and independent source manifest. UID must match service UID; do not chown legacy installation automatically"
+    },
+    {
+      "who": "database owner after explicit separate initialization approval",
+      "where": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-candidate/pr22-d59de21d4b43/state",
+      "what": "create dedicated private state directory and separate empty ledger/controller files, initialize only new approved files using respective public APIs and required schema/profile checks. No current DB access, init, migration or old-record copy is authorized here"
+    },
+    {
+      "who": "owner/controller integrator",
+      "where": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/runtime-candidate/pr22-d59de21d4b43/fixture-controller.json",
+      "what": "supply exact schema/path config and caller expected version/source hashes/UID. Existing loader only handles fixture controller; unattended source/transport pin admission and journal/binding/receipt connection adapter remain separate implementation/integration work"
+    },
+    {
+      "who": "native owner and independent reviewer",
+      "where": "explicit caller-owned client and role mapping, separate from current legacy ExecStart/console",
+      "what": "provide actual authorized role thread IDs and approval/settings from owner evidence; never synthesize or infer from files. Keep console VMS entry untouched; any future agent_project-only adapter must reject cross-project dispatch"
+    },
+    {
+      "who": "service owner/admin, only after further review and explicit activation authorization",
+      "where": "new isolated launcher/unit proposal; existing codex-nightly service/dropin",
+      "what": "prepare a separate pinned launch path instead of substituting legacy v1 automatically; no activation, timer enable/start or PAUSE removal now"
+    }
+  ],
+  "rollback_and_pause_conditions": [
+    "Current observation performs no deployment: no rollback mutation is needed; original installation-files.json, all prior D18 holds/budgets/errors, and exact current file hashes remain preserved.",
+    "Future staging rollback removes only newly approved staging after preserving its receipts; retain old paths/config/units and exact backup hashes. Any unit switch requires separately reviewed restore procedure and must remain stopped/PAUSED throughout.",
+    "Do not clear /etc/codex-agent/PAUSE or legacy/root/user PAUSE; schedule enabled=true does not override pause. Gate only blocks new starts and is not proof that a process stopped.",
+    "If source/UID/marker/version/schema/path identity/owner mapping/role thread/transport approval is absent or mismatched, remain blocked with no source substitution, auto-init, retry, dispatch or replay.",
+    "After 03:31:41Z no further investigation/RPC from this renewed window; this agent finishes static reads now. Other owner RPC budget must be accounted by coordinator, not inferred from this zero-RPC report."
+  ],
+  "boundaries": {
+    "product_code_changed": false,
+    "installation_changed": false,
+    "service_state_queried_or_changed": false,
+    "db_open_or_sql": 0,
+    "runtime_imports_or_tests": 0,
+    "tokens_opened": 0,
+    "private_job_prompts_read": 0,
+    "socket_rpc_cli_native_calls": 0,
+    "other_agents_queried": 0,
+    "owner_approval_generated": false,
+    "production_paths_traversed": false
+  }
+}

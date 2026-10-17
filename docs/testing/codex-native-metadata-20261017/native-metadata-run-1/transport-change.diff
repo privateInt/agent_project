@@ -1,0 +1,76 @@
+--- PR16-pinned
++++ read_only-metadata
+@@ -54,7 +54,11 @@
+ 
+ 
+ class UnixWebSocketRpc:
+-    def __init__(self, endpoint, allowed_threads, *, total_timeout=60, request_timeout=5):
++    def __init__(self, endpoint, allowed_threads, *, total_timeout=60, request_timeout=5,
++                 read_only=False):
++        if type(read_only) is not bool:
++            raise ProbeError("RPC_PARAMS_FORBIDDEN")
++        self.read_only = read_only
+         if not 0 < total_timeout <= 60 or not 0 < request_timeout <= 5:
+             raise ProbeError("TIMEOUT_ARGUMENT_INVALID")
+         if (not isinstance(endpoint, str) or not endpoint.startswith("/")
+@@ -62,6 +66,8 @@
+             raise ProbeError("RPC_ENDPOINT_INVALID")
+         try:
+             tids = frozenset(allowed_threads)
++            if read_only and len(tids) != 1:
++                raise ProbeError("RPC_PARAMS_FORBIDDEN")
+             if not tids or len(tids) > 3 or any(str(uuid.UUID(t)) != t for t in tids):
+                 raise ValueError()
+         except (TypeError, ValueError, AttributeError):
+@@ -143,7 +149,51 @@
+                 pass
+             self.sock = None
+ 
++    def read_thread_metadata(self, thread_id):
++        """Read one bound thread using a caller-initialized read-only client.
++
++        Returns the decoded result, which may contain private metadata. No
++        logging, storage, initialization, turns query, retry or readiness claim.
++        Every helper failure closes the existing connection before propagation.
++        """
++        try:
++            if not self.read_only:
++                raise ProbeError("RPC_METHOD_FORBIDDEN")
++            result = self.call("thread/read", {"threadId": thread_id, "includeTurns": False})
++            thread = result.get("thread")
++            if type(thread) is not dict or thread.get("id") != thread_id:
++                raise ProbeError("RPC_THREAD_BINDING_MISMATCH")
++            return result
++        except ProbeError:
++            self.close()
++            raise
++        except Exception:
++            self.close()
++            raise ProbeError("RPC_METADATA_UNCONFIRMED") from None
++
+     def _validate(self, method, params):
++        if self.read_only:
++            if method not in ("initialize", "thread/read", "thread/turns/list"):
++                raise ProbeError("RPC_METHOD_FORBIDDEN")
++            if type(params) is not dict:
++                raise ProbeError("RPC_PARAMS_FORBIDDEN")
++            if method == "initialize":
++                return
++            if (type(params.get("threadId")) is not str
++                    or params["threadId"] not in self.allowed_threads):
++                raise ProbeError("RPC_PARAMS_FORBIDDEN")
++            if method == "thread/read":
++                valid = (set(params) == {"threadId", "includeTurns"}
++                         and params["includeTurns"] is False)
++            else:
++                valid = (set(params) == {"threadId", "cursor", "limit", "itemsView", "sortDirection"}
++                         and params["cursor"] is None
++                         and type(params["limit"]) is int and params["limit"] == 1
++                         and type(params["itemsView"]) is str and params["itemsView"] == "notLoaded"
++                         and type(params["sortDirection"]) is str and params["sortDirection"] == "desc")
++            if not valid:
++                raise ProbeError("RPC_PARAMS_FORBIDDEN")
++            return
+         if method not in METHODS:
+             raise ProbeError("RPC_METHOD_FORBIDDEN")
+         if not isinstance(params, dict):

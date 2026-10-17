@@ -1,0 +1,6 @@
+{
+  "source_sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+  "python310_grammar": "PASS",
+  "kind": "AST parse only, no import/product execution",
+  "utc": "2026-10-17T03:31:12.795008+00:00"
+}

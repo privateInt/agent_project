@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-17T03:20:38.686859+00:00",
+  "allowed2": true,
+  "rejected6": true,
+  "socket_or_RPC": 0,
+  "script_sha256": "5d609b664e56e16d6c582c609e5188e270540fd44855d55e54fc94a2f0107d7e",
+  "scope": "New diagnostic allowlist only; no old tests rerun"
+}

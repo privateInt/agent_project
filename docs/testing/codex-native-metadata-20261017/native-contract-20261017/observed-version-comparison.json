@@ -1,0 +1,32 @@
+{
+  "basis": "Compare stored scalar hashes to named known values offline; not another native/version command",
+  "candidate_hashes": {
+    "0.162.1": "ee57ed2a7441ed36d10badfd3a4b93e406628b48c68788493e7d095336b08fa5",
+    "0.161.0": "418c22482ddf4ae60312a8af19e07125d25f0762aa70cad26cc8c7b80cd704bb",
+    "paginated": "361ec6d1d7ceb9ed2e70e6728ce2531eb3fbffb1cb4e19ae1b54676d76b4e767",
+    "legacy": "e4c13c4401d43136853edf41d4fa114389d5228b7f01ca06038e4ec9b73796ea",
+    "true": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+  },
+  "threads": [
+    {
+      "thread_id": "01a13f12-328d-7342-b285-a0868ac66447",
+      "cliVersion_matches_0_162_1": false,
+      "historyMode_matches_paginated": true,
+      "canAcceptDirectInput_matches_true": false
+    },
+    {
+      "thread_id": "01a13fb0-1721-7af3-82e6-747eac4de411",
+      "cliVersion_matches_0_162_1": true,
+      "historyMode_matches_paginated": true,
+      "canAcceptDirectInput_matches_true": true
+    },
+    {
+      "thread_id": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+      "cliVersion_matches_0_162_1": true,
+      "historyMode_matches_paginated": true,
+      "canAcceptDirectInput_matches_true": true
+    }
+  ],
+  "native_rpc": 0,
+  "interpretation": "thread.cliVersion is stored thread metadata; do not infer current server executable/build version from it. No CLI --version execution was performed."
+}

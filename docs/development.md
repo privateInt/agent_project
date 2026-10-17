@@ -118,3 +118,8 @@ Codex 작업은 [AGENTS.md](../AGENTS.md), [최신 인수인계](HANDOFF_NEXT_SE
 ## 학습 출력 보존과 복구
 
 [trainingoutput](../src/platform/model/internal/trainingoutput)은 완료 receipt·파일 검증·공유 잠금과 공통 publication 순서를 담당한다. [Training output controller](../src/platform/model/training/app/output.go)는 요청 멱등성·DB 복구 상태·원래 실행 증거·정리를 담당한다. 복구는 새 실행 Operation을 만들지 않고 원래 실패 이력을 보존한다. 조회 응답에 receipt의 실행 승인 값이나 로컬 경로를 노출하지 않는다. 변경 시 [출력 복구 검증](testing/training-output.md)을 사용한다.
+
+
+## 2026-10-17 소유 client의 제한된 metadata 연결
+
+기존 소유 client metadata 호출은 UnixWebSocketRpc(endpoint, (existing_thread_id,), read_only=True)로 범위를 명시한다. caller가 initialize와 initialized를 직접 호출한 뒤 read_thread_metadata(existing_thread_id)를 사용한다. helper는 thread/read(includeTurns=false) 1회와 응답 thread.id 대조만 수행하고 오류 시 연결을 닫는다. turns/list는 별도 명시 call이며 threadId/cursor=null/limit=1/itemsView=notLoaded/sortDirection=desc의 exact params만 허용한다. 새 mode에서 resume/settings/queue/account/config는 송신 전에 거부한다. 반환은 원문 decoded result이므로 로그·DB에 그대로 기록하지 않는다. 이 경로가 설치 승인·Auto-review·native_ready를 증명하지는 않는다.

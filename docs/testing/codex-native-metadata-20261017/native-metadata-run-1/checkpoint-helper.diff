@@ -1,0 +1,11 @@
+--- before
++++ after
+@@ -17,7 +17,7 @@
+ for name in ('codex-daemon-transport-20261016', 'codex-unattended-admission-20261016',
+              'codex-unattended-intent-20261016', 'codex-queue-correlation-20261016',
+              'codex-owner-binding-20261017', 'codex-queue-receipts-20261017',
+-             'codex-owner-ack-adapter-20261017'):
++             'codex-owner-ack-adapter-20261017', 'codex-native-metadata-20261017'):
+     p = ROOT / (name + '-delivery/publication-result.json')
+     if p.exists():
+         value = json.loads(p.read_text())

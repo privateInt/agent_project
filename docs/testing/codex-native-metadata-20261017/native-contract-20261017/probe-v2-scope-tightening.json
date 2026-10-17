@@ -1,0 +1,5 @@
+{
+  "sha256": "f0242b8964451e15fd1772330956854cdaa5c4d5cb07090dc727586fa0bdf9eb",
+  "change": "Drop full items/list; only metadata and bounded queue projections remain. Maximum7RPC, no native executed. Old v1 preserved.",
+  "command": "/usr/bin/timeout --signal=TERM --kill-after=1s 49s python3 -B /home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/observe_metadata_once_v2.py"
+}

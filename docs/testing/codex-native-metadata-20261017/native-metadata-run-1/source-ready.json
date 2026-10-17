@@ -1,0 +1,15 @@
+{
+  "source_sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+  "original_sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+  "base_commit": "d59de21d4b43a71f3e518592c589b0761e668de5",
+  "plan_sha256": "67953b3166ad22a3211a85cd701511811aaffe71188f6291d7d3c811be74aa8c",
+  "addendum_sha256": "d101e3a675c01155feaa6ce07649d1cf8dab4faadb9b6af03469a455cd214394",
+  "new_errors": [
+    "RPC_THREAD_BINDING_MISMATCH",
+    "RPC_METADATA_UNCONFIRMED"
+  ],
+  "written_utc": "2026-10-17T03:30:14.430905+00:00",
+  "source_executed": false,
+  "native_queries": 0,
+  "preexecution_type_preflight_correction": true
+}
