@@ -1,0 +1,9 @@
+{
+  "exit": 124,
+  "limit_seconds": 240,
+  "approval_blocked": false,
+  "last_actual_progress": "Reviewer identified post-spawn cleanup and failed-durability recovery; checking records overlap/schedule cap",
+  "final_verdict": "NOT_PRODUCED",
+  "preserved": "source-review.stderr.log",
+  "fixes": "all post-spawn paths finally cleanup; durable reads re-fsync file+parent; production records only owner-cli-state subtree; schedule<=3/night; fixture CLI/endpoint temp-only; enabled state hash-bound"
+}

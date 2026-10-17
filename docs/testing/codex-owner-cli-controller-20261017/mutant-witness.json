@@ -1,0 +1,22 @@
+{
+  "mutation": "bypass-exact-prompt-comparison-only",
+  "result": {
+    "status": "TURN_COMPLETED",
+    "reason": "BOUND_COMPLETION_OBSERVED",
+    "turn_id": "synthetic-turn",
+    "final_text_sha256": "bb6e36df6508dcdf445afd5d96534f8ca52a05e8f37874e21bf751fb18944a8e",
+    "native_ready": false,
+    "binding_origin_verified": false,
+    "replay_permitted": false,
+    "page_hashes": [
+      "55caa4e7aa8d649889ba13b2ce12fd3c5c0b02f9f16d1fce8a5c10d4aedaba7d"
+    ],
+    "turn_status": "completed",
+    "request_sha256": "d5b5343937d20976517ed8a5f96a8d68edaf2b0a3faff157065254228544eb0d",
+    "owner_binding_sha256": "15317f5c36064060c77a67a97f51841302ea8cb7e50e88d6b33f73e38c05fe12"
+  },
+  "terminal_record_written": true,
+  "terminal_sha256": "72984b27d6434ce13249ac9a76cd6e3b4aabff1ed5409e19e2d10dad959c9d5c",
+  "actual_codex_queue": 0,
+  "native_rpc": 0
+}

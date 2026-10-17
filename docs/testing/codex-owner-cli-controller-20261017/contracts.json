@@ -1,0 +1,28 @@
+{
+  "official_completion": "https://learn.chatgpt.com/docs/app-server#list-thread-turns",
+  "official_items": "https://learn.chatgpt.com/docs/app-server#list-thread-items",
+  "official_queue": "https://learn.chatgpt.com/docs/cli/reference#codex-queue",
+  "installed_schema_projection_reused": "../native-contract-20261017/generated-contract-projection.json",
+  "turn_fields": [
+    "id",
+    "items",
+    "status",
+    "itemsView"
+  ],
+  "user_item_fields": [
+    "type",
+    "id",
+    "content",
+    "clientId"
+  ],
+  "cli_queue_help_observed_flags": [
+    "--thread",
+    "--message",
+    "--approve-for-me",
+    "-C"
+  ],
+  "cli_no_json_or_caller_client_id_option": true,
+  "queue_id_to_turn_id_mapping": "NOT_DOCUMENTED_NO_HANDLER_SOURCE",
+  "native_rpc": 0,
+  "minimal_supported_alternative": "existing owner explicitly confirms native message/turn binding once; controller then reads only that fixed role thread using documented history pages; no exec resume or thread/resume"
+}

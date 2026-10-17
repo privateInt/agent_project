@@ -15,7 +15,8 @@ MODULES = ('github_check_audit', 'github_fixture_collector', 'github_fixture_led
            'codex_daemon_websocket', 'codex_unattended_admission',
            'codex_unattended_intent_journal', 'codex_unattended_queue_observer',
            'codex_unattended_quota_reader', 'codex_unattended_submission_binding',
-           'codex_unattended_queue_receipts', 'codex_unattended_owner_ack_adapter')
+           'codex_unattended_queue_receipts', 'codex_unattended_owner_ack_adapter',
+           'agent_execution_package', 'codex_owner_cli_controller', 'codex_owner_turns')
 DBS = [('fixture-ledger.sqlite', 'github_fixture_ledger'),
        ('fixture-controller.sqlite', 'github_fixture_controller'),
        ('intents.sqlite', 'codex_unattended_intent_journal'),
@@ -120,6 +121,9 @@ def build(repository, commit, output, target, workspace, uid, *, development_lau
 기존 var 후보의0775 상위경로를 보존하고 target은 {target}로 제안한다.
 bootstrap/source 부모는0700이어야 한다. 기존 /opt·automation_mvp·service/timer/PAUSE는 수정하지 않는다.
 
+실행 계정은 codex_shshin이다. 이미 해당 계정으로 로그인했으면 그대로 진행한다.
+다른 관리 계정에서는 `sudo -iu codex_shshin`으로 전환한다. HOME을 수동 변경하거나 root로 실행하지 않는다.
+`id -un`이 codex_shshin, `id -u`가 {uid}인지 확인하고 `cd {workspace}`로 이동한다.
 아래 명령은 승인 후에만 실행한다. 이번 작업은 temp fixture 대상에서만 같은 명령을 검사한다.
 
 ```sh
@@ -131,12 +135,15 @@ printf '%s  %s\\n' '{launcher_pin}' '{bundle}/installation/launch.py' | sha256su
 printf '%s  %s\\n' '{launcher_pin}' '{target}/installation/launch.py' | sha256sum -c -
 {installed} init-new {expected}
 {installed} verify {expected}
-set +e
-{installed} run {expected}
-fixture_rc=$?
-set -e
-case "$fixture_rc" in 1) ;; *) echo 'Expected fixture exit 1; stop and inspect saved result'; exit 2;; esac
 {installed} status {expected}
+```
+
+현재 PAUSE를 유지한 run 확인은 별도 동작이다. 설치 후 현재 PAUSE가 유지되면 REJECTED/PAUSED exit2가 기대값이다. 임시 fixture 인수의 exit1과 구분한다.
+
+```sh
+set -eu
+printf '%s  %s\\n' '{launcher_pin}' '{target}/installation/launch.py' | sha256sum -c -
+{installed} run {expected}
 ```
 
 복귀는 아래 별도 명령으로 수행한다. 현재 candidate를 보존하여 퇴역시키며 기존 서비스는 전환하지 않는다.

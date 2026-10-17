@@ -1,5 +1,7 @@
 # 다음 세션·Codex 인수인계
 
+2026-10-17 CLI 연결 인계: PR24 `02724c5f7fbc0aadecebe2befdaf9f8990374869` 위 별도 개발 브랜치에 owner CLI controller·bounded completion read scope·codex_shshin 설치 절차를 추가했다. [새6그룹/의미 변이 근거](testing/codex-owner-cli-controller-observed-20261017.json)와 [지원 계약·미연결 부분](operations/codex-owner-cli-controller.md)을 읽는다. 기존 PASS는 재사용했으며 실제 CLI 제출/owner RPC는0이다. 자동 turn 매핑은 구현하지 않았고 owner가 실제 관측한 binding이 없으면 UNBOUND로 멈춘다. 원본 미커밋11개·운영·인증정보·VMS·scheduler PAUSE·닫힌 D18 범위를 유지한다.
+
 2026-10-17 owner ACK adapter: PR21 고정 commit 위에 기존 소유 client의 decoded 결과를 제한된 canonical bytes/hash 또는 고정 오류 코드로 준비하는 순수 함수를 추가했다. [이번 단위 근거](testing/codex-owner-ack-adapter-observed-20261017.json)는 이전 ACK 원장 PASS와 분리한다. 새4개 최초 실행 PASS(FAIL0/ERROR0/SKIP0)·의미 변이2개 검출(각 FAIL1/ERROR0, 실제 잘못 준비된 bytes/hash)과 임시 SQLite 저장·재개방 결합을 확인했다. 실행과 체크포인트 갱신을 묶었으며 최종 독립 판정은 같은 근거의 고정 보고서를 따른다. 실제 client 호출·controller 연결·두 native 작업은 미검증이고 PAUSE/D18 보류를 유지한다.
 
 2026-10-17 ACK: [전용 원장 실행 근거](testing/codex-queue-receipts-observed-20261017.json)의 새4개 최초 PASS·2의미 변이 검출을 재사용한다. 검사 실행 뒤 상태 갱신 지연으로 남았던 NOT_RUN을 정정했다. 기존 검토·PASS를 반복하지 않는다. 최종 독립 검토 판정은 같은 근거의 고정 보고서를 따른다. 원본11개·첫 오류를 보존하며 native RPC/usage 재조회·old thread-resume·PAUSE/D18 해제를 하지 않는다.

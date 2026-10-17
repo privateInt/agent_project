@@ -1,0 +1,14 @@
+test_wrong_prompt_cannot_be_a_completed_bound_turn (__main__.PromptMutant) ... FAIL
+
+======================================================================
+FAIL: test_wrong_prompt_cannot_be_a_completed_bound_turn (__main__.PromptMutant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-cli-controller-development/src/ops/tools/tests/test_codex_owner_cli_controller_mutant.py", line 35, in test_wrong_prompt_cannot_be_a_completed_bound_turn
+    self.assertNotEqual(observed['status'],'TURN_COMPLETED','MUTANT_ACCEPTED_WRONG_PROMPT_TERMINAL')
+AssertionError: 'TURN_COMPLETED' == 'TURN_COMPLETED' : MUTANT_ACCEPTED_WRONG_PROMPT_TERMINAL
+
+----------------------------------------------------------------------
+Ran 1 test in 0.017s
+
+FAILED (failures=1)

@@ -1,0 +1,191 @@
+{
+  "installed_cli_version": "0.162.1",
+  "source_schema_sha256": "eba82395d4479bb28091bbe6f39c929c7c66a30d7b0eeabedac39057ce72aceb",
+  "official_source": "https://learn.chatgpt.com/docs/app-server",
+  "Turn": {
+    "properties": {
+      "completedAt": {
+        "description": "Unix timestamp (in seconds) when the turn completed.",
+        "format": "int64",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "durationMs": {
+        "description": "Duration between turn start and completion in milliseconds, if known.",
+        "format": "int64",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "error": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/TurnError"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "Error associated with a failed or interrupted turn."
+      },
+      "id": {
+        "description": "Identifier for this turn. Codex-generated turn IDs are UUIDv7.",
+        "type": "string"
+      },
+      "items": {
+        "description": "Thread items currently included in this turn payload.",
+        "items": {
+          "$ref": "#/definitions/ThreadItem"
+        },
+        "type": "array"
+      },
+      "itemsView": {
+        "allOf": [
+          {
+            "$ref": "#/definitions/TurnItemsView"
+          }
+        ],
+        "default": "full",
+        "description": "Describes how much of `items` has been loaded for this turn."
+      },
+      "rootTurnId": {
+        "description": "ID of the first turn in the chain of work that led to this turn. Pass this as `rootTurnId` when starting work on behalf of this turn. May be null in older history or a `review/start` response.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "startedAt": {
+        "description": "Unix timestamp (in seconds) when the turn started.",
+        "format": "int64",
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "status": {
+        "$ref": "#/definitions/TurnStatus"
+      }
+    },
+    "required": [
+      "id",
+      "items",
+      "status"
+    ],
+    "type": "object"
+  },
+  "TurnStatus": {
+    "enum": [
+      "completed",
+      "interrupted",
+      "failed",
+      "inProgress"
+    ],
+    "type": "string"
+  },
+  "items": [
+    {
+      "properties": {
+        "clientId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "content": {
+          "items": {
+            "$ref": "#/definitions/UserInput"
+          },
+          "type": "array"
+        },
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "userMessage"
+          ],
+          "title": "UserMessageThreadItemType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "id",
+        "type"
+      ],
+      "title": "UserMessageThreadItem",
+      "type": "object"
+    },
+    {
+      "properties": {
+        "delivery": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentMessageDelivery"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "id": {
+          "type": "string"
+        },
+        "memoryCitation": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MemoryCitation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "phase": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MessagePhase"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "questions": {
+          "default": null,
+          "items": {
+            "$ref": "#/definitions/AsyncUserInputQuestion"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "agentMessage"
+          ],
+          "title": "AgentMessageThreadItemType",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "text",
+        "type"
+      ],
+      "title": "AgentMessageThreadItem",
+      "type": "object"
+    }
+  ]
+}

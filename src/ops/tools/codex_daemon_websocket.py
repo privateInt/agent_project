@@ -55,10 +55,12 @@ class _DeadlineSocket(socket.socket):
 
 class UnixWebSocketRpc:
     def __init__(self, endpoint, allowed_threads, *, total_timeout=60, request_timeout=5,
-                 read_only=False):
-        if type(read_only) is not bool:
+                 read_only=False, completion_reads=False):
+        if (type(read_only) is not bool or type(completion_reads) is not bool
+                or (completion_reads and not read_only)):
             raise ProbeError("RPC_PARAMS_FORBIDDEN")
         self.read_only = read_only
+        self.completion_reads = completion_reads
         if not 0 < total_timeout <= 60 or not 0 < request_timeout <= 5:
             raise ProbeError("TIMEOUT_ARGUMENT_INVALID")
         if (not isinstance(endpoint, str) or not endpoint.startswith("/")
@@ -171,6 +173,20 @@ class UnixWebSocketRpc:
             self.close()
             raise ProbeError("RPC_METADATA_UNCONFIRMED") from None
 
+    def read_turn_page(self, thread_id, cursor=None):
+        """One documented history page; borrowed initialized client, no retry."""
+        try:
+            if not self.read_only or not self.completion_reads:
+                raise ProbeError("RPC_METHOD_FORBIDDEN")
+            return self.call("thread/turns/list", {"threadId": thread_id, "cursor": cursor,
+                             "limit": 20, "itemsView": "full", "sortDirection": "desc"})
+        except ProbeError:
+            self.close()
+            raise
+        except Exception:
+            self.close()
+            raise ProbeError("RPC_COMPLETION_UNCONFIRMED") from None
+
     def _validate(self, method, params):
         if self.read_only:
             if method not in ("initialize", "thread/read", "thread/turns/list"):
@@ -191,6 +207,12 @@ class UnixWebSocketRpc:
                          and type(params["limit"]) is int and params["limit"] == 1
                          and type(params["itemsView"]) is str and params["itemsView"] == "notLoaded"
                          and type(params["sortDirection"]) is str and params["sortDirection"] == "desc")
+            if self.completion_reads and method == "thread/turns/list":
+                valid = valid or (set(params) == {"threadId", "cursor", "limit", "itemsView", "sortDirection"}
+                         and (params["cursor"] is None or (type(params["cursor"]) is str
+                              and 1 <= len(params["cursor"].encode("utf8")) <= 1024))
+                         and type(params["limit"]) is int and params["limit"] == 20
+                         and params["itemsView"] == "full" and params["sortDirection"] == "desc")
             if not valid:
                 raise ProbeError("RPC_PARAMS_FORBIDDEN")
             return
