@@ -1,0 +1,12 @@
+{
+  "stage": "evidence_file_list_assertion",
+  "error": "AssertionError",
+  "missing": [
+    "docs/testing/codex-owner-cli-controller-20261017/delivery/package-import.stderr.log",
+    "docs/testing/codex-owner-cli-controller-20261017/delivery/package-import.stdout.log",
+    "docs/testing/codex-owner-cli-controller-20261017/delivery/package-verify.stderr.log",
+    "docs/testing/codex-owner-cli-controller-20261017/delivery/package-verify.stdout.log"
+  ],
+  "extra": [],
+  "product_tests_not_repeated": true
+}

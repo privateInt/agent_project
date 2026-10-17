@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "source_commit": "37fb6b9e1f1492776ab84eff6fc4f7f5d614d2a9",
+  "files_verified": [
+    {
+      "path": "fixture-controller.json",
+      "sha256": "b53ee71087852b23c6c0f0d63a9f7de55c8546825a48bb059a0b79b4721ce5a8",
+      "git_origin": false
+    },
+    {
+      "path": "installation/fixture-controller-installation.json",
+      "sha256": "17ae3b1ae245a29c9aee5d61de13cb698cf6dcf08a7b856437b0e246cfc46868",
+      "git_origin": false
+    },
+    {
+      "path": "installation/launch.py",
+      "sha256": "54ed5d524d1dd6acc470a2bbc52671079cd77ee4579d40605ab0ca1de477f4cc",
+      "git_origin": true
+    },
+    {
+      "path": "installation/schedule_policy.py",
+      "sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/__init__.py",
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/__init__.py",
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/agent_execution_package.py",
+      "sha256": "54ed5d524d1dd6acc470a2bbc52671079cd77ee4579d40605ab0ca1de477f4cc",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_daemon_websocket.py",
+      "sha256": "112a53e20996fc5db3a49afc86f511a304c904410bdb0dedc3a564416e188547",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_owner_cli_controller.py",
+      "sha256": "20299714f909746a5a1622b2a6445af004213f2eac6450f9fc5b4dec42767434",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_owner_turns.py",
+      "sha256": "faa85ac782530c80dba25b4d48871a58733a8d320774ec497609f045110f104d",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_readiness.py",
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_unattended_admission.py",
+      "sha256": "b012469262a0de2b9025b393ea2dadc6799933eb1a57fe10c68187809d85da51",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_unattended_intent_journal.py",
+      "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_unattended_owner_ack_adapter.py",
+      "sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_unattended_queue_observer.py",
+      "sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_unattended_queue_receipts.py",
+      "sha256": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_unattended_quota_reader.py",
+      "sha256": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/codex_unattended_submission_binding.py",
+      "sha256": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/github_check_audit.py",
+      "sha256": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/github_fixture_collector.py",
+      "sha256": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/github_fixture_config.py",
+      "sha256": "63f5faf6a0bb828928d14bc97a173388ffaca8829f7bad4621a6981e8f180e88",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/github_fixture_controller.py",
+      "sha256": "671885e474d4eb2eafe4f786ea8f7075924bbd96250b77ff832561e1b943c5e7",
+      "git_origin": true
+    },
+    {
+      "path": "installation/src/ops/tools/github_fixture_ledger.py",
+      "sha256": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "git_origin": true
+    },
+    {
+      "path": "runtime.json",
+      "sha256": "3d0f933b2167add68afcecc9430ddfa28da2d28446a8ccf8896edacacb44b6d7",
+      "git_origin": false
+    },
+    {
+      "path": "schema-contracts.json",
+      "sha256": "69e32c3823f9e15507d65038f09ecffdefa320f542b2830b378bddf73c5ab136",
+      "git_origin": false
+    },
+    {
+      "path": "usage.md",
+      "sha256": "d1c763c2b7aeb6ecbebfd21a8f03952218f54343f11cee8e593b865f48d0a9dd",
+      "git_origin": false
+    }
+  ],
+  "git_origin_files": 21,
+  "payload_files": 26,
+  "manifest_sha256": "a6f8cfef7cc5e3f1a11676b314e2abc3515fddbdfef3608f7dc7a72abe5cfe2d",
+  "launcher_sha256": "54ed5d524d1dd6acc470a2bbc52671079cd77ee4579d40605ab0ca1de477f4cc",
+  "uid": 1011,
+  "verify_bundle_exit": 0,
+  "isolated_import_exit": 0,
+  "import_result": {
+    "imported": [
+      "src.ops.tools.codex_owner_cli_controller",
+      "src.ops.tools.codex_owner_turns",
+      "src.ops.tools.codex_daemon_websocket",
+      "src.ops.tools.agent_execution_package"
+    ],
+    "origins_verified": true,
+    "network_or_child_processes": 0,
+    "controller_instantiation": 0,
+    "db_connections": 0
+  },
+  "target_absent": true,
+  "actual_install": false,
+  "owner_rpc_count": 0,
+  "actual_queue_count": 0,
+  "old_tests_repeated": 0,
+  "runtime_native_dispatch": false,
+  "commands_account": "codex_shshin",
+  "result": "PASS"
+}

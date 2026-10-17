@@ -1,0 +1,9 @@
+{
+  "raw_logs_retained_in_private_evidence": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-cli-controller-20261017",
+  "outputs": {
+    "package-import.stderr.log": "",
+    "package-import.stdout.log": "{\"imported\": [\"src.ops.tools.codex_owner_cli_controller\", \"src.ops.tools.codex_owner_turns\", \"src.ops.tools.codex_daemon_websocket\", \"src.ops.tools.agent_execution_package\"], \"origins_verified\": true, \"network_or_child_processes\": 0, \"controller_instantiation\": 0, \"db_connections\": 0}\n",
+    "package-verify.stderr.log": "",
+    "package-verify.stdout.log": "{\"code_version\": \"37fb6b9e1f1492776ab84eff6fc4f7f5d614d2a9\", \"native_ready\": false, \"status\": \"BUNDLE_VERIFIED\"}\n"
+  }
+}
