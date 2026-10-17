@@ -1,0 +1,11 @@
+{
+  "additional_native_rpcs": 0,
+  "local_installed_sources": "rg --files found installed CLI JS wrapper and READMEs, no server handler source",
+  "prior_generated_schema": "Request/response shape present; no handler side-effect proof",
+  "official_app_server": "https://learn.chatgpt.com/docs/app-server",
+  "queue_list_found_in_official_page": false,
+  "official_supported_alternative": "https://learn.chatgpt.com/docs/cli/reference#codex-queue",
+  "cli_queue_command": "codex queue --approve-for-me -C <approved agent_project workspace> --thread <existing role UUID> --message <approved task>",
+  "alternative_invoked": false,
+  "notes": "CLI queue is documented; automatic recovery/correlation is not supplied by command documentation. No fallback or auto-replay implemented."
+}

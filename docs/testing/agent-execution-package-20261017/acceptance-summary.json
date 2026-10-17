@@ -1,0 +1,98 @@
+{
+  "base_commit": "314622f0ef1abcb6821ae7cd504cc3d793021f4d",
+  "normal": {
+    "groups": 7,
+    "pass": 7,
+    "fail": 0,
+    "errors": 0,
+    "seconds": 4.737
+  },
+  "actual_collector_calls": 2,
+  "repeat_collector_calls": 0,
+  "fixture_exits": [
+    0,
+    7
+  ],
+  "artifacts": [
+    {
+      "job_id": "package-fixture:1",
+      "assignment_sha256": "589341d372e79fec217ebd66952d235e7b3589514ffeb6d88dc3f2d6a75112d6",
+      "revision": 1,
+      "artifact_sha256": "d5725599f961fd1f064677a94ebc3a2b4389a0503ffdad4793d3c95d73ec62f9",
+      "exit": 0,
+      "target": {
+        "base_sha": "314622f0ef1abcb6821ae7cd504cc3d793021f4d",
+        "head_sha": "314622f0ef1abcb6821ae7cd504cc3d793021f4d",
+        "plan_sha256": "df0611a958479549c0b439bb2ff87e6c89525bb66191fcc4ce797d954855d4e2",
+        "pr_number": 23,
+        "release_sha256": "6ffb35625a4aa5e5dce2110fd31d872c6c6a3e2e9a3f868a9374301a097d2e7e",
+        "repository": "privateInt/agent_project"
+      }
+    },
+    {
+      "job_id": "package-fixture:2",
+      "assignment_sha256": "202cd3b629c61df5a83fa455239c43848ce176918fce6d361a544a8067bb5ff8",
+      "revision": 1,
+      "artifact_sha256": "f32f13047864ee57bdb0ead93f4fac1944d560336d078e90e9a6b3afbceafa84",
+      "exit": 7,
+      "target": {
+        "base_sha": "314622f0ef1abcb6821ae7cd504cc3d793021f4d",
+        "head_sha": "314622f0ef1abcb6821ae7cd504cc3d793021f4d",
+        "plan_sha256": "df0611a958479549c0b439bb2ff87e6c89525bb66191fcc4ce797d954855d4e2",
+        "pr_number": 23,
+        "release_sha256": "6ffb35625a4aa5e5dce2110fd31d872c6c6a3e2e9a3f868a9374301a097d2e7e",
+        "repository": "privateInt/agent_project"
+      }
+    }
+  ],
+  "controller_claims": [
+    [
+      "package-fixture:1",
+      "CLAIMED",
+      null
+    ],
+    [
+      "package-fixture:2",
+      "CLAIMED",
+      null
+    ]
+  ],
+  "retained_state_hashes": {
+    "run.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fixture-controller.sqlite": "c7532fe5edbf56fb31fc3f296e8692e85b01750a90b4af0fe5f7a1c17d74f5ad",
+    "fixture-ledger.sqlite": "aa036d68b06b3baffcce76d6c9847d3b2aaee4a3e9e29320a74c21ad05350fff",
+    "init.json": "23d47d9d2ee7aab51f05b99b94e676f1a396512ffd5790ba6183b5277fa7ebe4",
+    "assignment.json": "202cd3b629c61df5a83fa455239c43848ce176918fce6d361a544a8067bb5ff8",
+    "admissions.json": "139e6b40ccc69189edf453713f06d7ce5fc90ae7e9bf667c169dc71fc0f91be0",
+    "checkpoint.json": "c588c79140c9f6c0a493bcdae530e46aa7fdfaededdac0c12dca0f455236ca6d",
+    "receipts.sqlite": "90268d5867092f153bbee2d6cdc62e8d9febe97665d0a4b7b40c8292c518ba20",
+    "intents.sqlite": "5877ada4223ab48438c50b4304645ca0311415a878f4c9365d480864eb788866",
+    "bindings.sqlite": "8e60beff719e09dbcabf89666a0a56dc44e60d494a3b64e71955323d308586f3"
+  },
+  "mutant": {
+    "run": 1,
+    "failures": 1,
+    "errors": 0,
+    "designated_assertion_detected": true
+  },
+  "mutant_witness": {
+    "mutation": "bypass-only-full-manifest-payload-hash",
+    "tamper_same_size": true,
+    "mutant_process_exit": 0,
+    "mutant_response": {
+      "code_version": "314622f0ef1abcb6821ae7cd504cc3d793021f4d",
+      "native_ready": false,
+      "status": "BUNDLE_VERIFIED"
+    },
+    "temporary_root": "/tmp/agent-execution-package-mr_xtbcu",
+    "native_rpc": 0
+  },
+  "old_checks_repeated": [],
+  "native_rpc_count": 0,
+  "actual_installation": false,
+  "service_switch": false,
+  "pause_release": false,
+  "native_two_tasks": "NOT_RUN",
+  "temporary_fixture_only": true,
+  "development_working_launcher_explicit": true
+}

@@ -1,0 +1,28 @@
+{
+  "check": "git diff --cached --check",
+  "result": "trailing Markdown linebreak spaces in copied review records",
+  "source_test_files_clean": true,
+  "fix": "normalize repository copies only; raw originals preserved",
+  "files": {
+    "preexecution-review.md": {
+      "original_raw_sha256": "8705f5799ce3f0d783072c3d6a49998639bc662e9c44828d385b7d0e95d57429",
+      "repository_normalized_sha256": "387615d8baa7885a222adac9157df5ca1b81392114f07dd892fc752a5eee6f72",
+      "change": "Markdown trailing whitespace only; original evidence bytes retained in checkpoint"
+    },
+    "plan-review.md": {
+      "original_raw_sha256": "4b0eef2c732f24ba9dd579bc53ecf0df932d32306f4f75e83e88f294b942e105",
+      "repository_normalized_sha256": "38d8bb5a198d5f142088a01f993c3a8fc4f7a26631df460a1526b867f962657a",
+      "change": "Markdown trailing whitespace only; original evidence bytes retained in checkpoint"
+    },
+    "preexecution-review-initial.md": {
+      "original_raw_sha256": "98e248fadc97dffb4cb8021be3e7eee73d487014c78c0103cd4ecadee49dd4dd",
+      "repository_normalized_sha256": "31babe966dfbc07d90e37984f9f4981dc19b6bb97bef4a722e8294abc0526250",
+      "change": "Markdown trailing whitespace only; original evidence bytes retained in checkpoint"
+    },
+    "source-review-initial.md": {
+      "original_raw_sha256": "0797e4919d94484810bc6d6d4ef1aa52a2c3a3ceff6a4aabb59accc9cee48e7b",
+      "repository_normalized_sha256": "889d8ca69c154b53fbfe4b94aa5b4b06a38e2faabfadd90e0cbab17c67d6c71e",
+      "change": "Markdown trailing whitespace only; original evidence bytes retained in checkpoint"
+    }
+  }
+}

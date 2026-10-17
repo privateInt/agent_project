@@ -1,0 +1,7 @@
+{
+  "python": "3.10.12",
+  "libc": "glibc2.35",
+  "kernel_family": "Linux",
+  "grammar_checked": "Python3.10",
+  "native_rpc": 0
+}

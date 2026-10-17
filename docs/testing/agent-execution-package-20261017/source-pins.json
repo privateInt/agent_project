@@ -1,0 +1,6 @@
+{
+  "src/ops/tools/agent_execution_package.py": "73345b30c51f09e6ed7a9f697f561b9a4f3e2f95130fdfa8c22ef3667c3ebaf8",
+  "src/ops/tools/build_agent_execution_package.py": "992fcbfa94449e983ce21dd47acc3eaa821ad6100cf90b00043941283e81e585",
+  "src/ops/tools/tests/test_agent_execution_package.py": "6fc86e199884568678fea45dc4ee5dca8e5ba09477de223482eb12e8eee31b47",
+  "src/ops/tools/tests/test_agent_execution_package_mutant.py": "2f000c085db4f48f4fa9671990f21299f70874779dfcbe7625e87f3584aa5f5a"
+}

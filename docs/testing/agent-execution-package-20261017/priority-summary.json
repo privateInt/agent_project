@@ -1,0 +1,16 @@
+{
+  "source_pins": "source-pins-v3.json",
+  "initial_7": "REUSED PASS; not rerun",
+  "initial_mutant": "REUSED detected FAIL1 ERROR0; not rerun",
+  "new_P08": "PASS",
+  "actual_exit": 3,
+  "mixed_statuses": [
+    "FAILED",
+    "OUTCOME_UNKNOWN"
+  ],
+  "new_collector_calls": 0,
+  "new_initializer_calls": 0,
+  "db_assignment_admissions_and_source_preserved": true,
+  "native_rpc": 0,
+  "acceptance_prerequisite": "P08 reuses retained actual local fixture-state-preserved; not an independent fresh-checkout CI suite"
+}

@@ -1,0 +1,6 @@
+test_P08_stored_failure_plus_unknown_returns_three_without_collection (__main__.ExitPriority) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.140s
+
+OK

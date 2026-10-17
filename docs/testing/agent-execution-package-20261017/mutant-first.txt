@@ -1,0 +1,14 @@
+test_same_size_immutable_hash_tamper_rejected (__main__.SemanticMutant) ... FAIL
+
+======================================================================
+FAIL: test_same_size_immutable_hash_tamper_rejected (__main__.SemanticMutant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/execution-package-development/src/ops/tools/tests/test_agent_execution_package_mutant.py", line 40, in test_same_size_immutable_hash_tamper_rejected
+    self.assertEqual(code, 2, 'MUTANT_ACCEPTED_TAMPERED_PAYLOAD')
+AssertionError: 0 != 2 : MUTANT_ACCEPTED_TAMPERED_PAYLOAD
+
+----------------------------------------------------------------------
+Ran 1 test in 0.064s
+
+FAILED (failures=1)
