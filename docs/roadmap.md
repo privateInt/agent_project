@@ -1,5 +1,7 @@
 # 앞으로의 작업 순서
 
+2026-10-17 PR25 후속 자동 대응: 제출 전 고정한 UUIDv4와 exact userMessage 원문으로 turn/item을 자동 연결한다. 완결된 pre/post 이력·5초 fence·신규 claim·dispatch 기록을 요구하며 중복/본문 불일치/불완전 조회는 미확정, 재제출은 금지한다. [새7그룹 최초 PASS·단일 의미 변이 검출·최종 독립 PASS](testing/codex-owner-message-correlation-observed-20261017.json)를 보존했다. 실제 고정 test runner 결과와 standalone reviewer 응답을 원본 bytes/hash/이전 단계 digest로 연결했다. Draft 실제 응답은 게시 후 전용 체크포인트에 기록한다. native ACK/clientId 동일성·인증된 required-check 발행·고정 role workflow는 미인수이며 owner RPC/실제 queue/설치/서비스/PAUSE 변경0, 기존 PASS·패키지·원본11개를 유지한다.
+
 2026-10-17 준비 후속: CLI/controller 로컬 연결과 지원되는 readonly turn 이력 계약을 확인했다. [상태](status.md)와 [설치·연결 절차](operations/codex-owner-cli-controller.md)를 기준으로 다음 필수 작업은 기존 소유 client가 확인한 실제 turn binding 또는 공식 CLI 접수→turn 대응 계약 확보, 인증된 tests/reviewer/Draft PR 근거 연결과 별도 native 인수다. 새 source의 실제 설치·PAUSE 전환 승인을 합치지 않는다. F0a 기능 시작 전 준비 게이트는 유지한다.
 
 2026-10-17 owner ACK adapter: PR21 고정 commit 위에 기존 소유 client의 decoded 결과를 제한된 canonical bytes/hash 또는 고정 오류 코드로 준비하는 순수 함수를 추가했다. [이번 단위 근거](testing/codex-owner-ack-adapter-observed-20261017.json)는 이전 ACK 원장 PASS와 분리한다. 새4개 최초 실행 PASS(FAIL0/ERROR0/SKIP0)·의미 변이2개 검출(각 FAIL1/ERROR0, 실제 잘못 준비된 bytes/hash)과 임시 SQLite 저장·재개방 결합을 확인했다. 실행과 체크포인트 갱신을 묶었으며 최종 독립 판정은 같은 근거의 고정 보고서를 따른다. 실제 client 호출·controller 연결·두 native 작업은 미검증이고 PAUSE/D18 보류를 유지한다.

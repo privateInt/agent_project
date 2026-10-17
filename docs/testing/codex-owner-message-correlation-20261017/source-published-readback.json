@@ -1,0 +1,16 @@
+{
+  "source_commit": "4c16f6515990f3fc34d85b13e10d1d367f40048d",
+  "source_tree": "6405408750b619c2c58aba3c7cebe258a6c9e91c",
+  "source_files": [
+    "docs/operations/codex-owner-cli-controller.md",
+    "src/ops/tools/build_agent_execution_package.py",
+    "src/ops/tools/codex_owner_cli_controller.py",
+    "src/ops/tools/codex_owner_stage_results.py",
+    "src/ops/tools/codex_owner_turns.py",
+    "src/ops/tools/tests/test_codex_owner_message_correlation.py",
+    "src/ops/tools/tests/test_codex_owner_message_correlation_mutant.py"
+  ],
+  "source_files_equal": 7,
+  "source_code_unchanged_after_preexecution_review": true,
+  "old_tests_repeated": 0
+}

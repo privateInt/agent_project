@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "scope": "LOCAL_AUTOMATIC_MESSAGE_CORRELATION_AND_ACTUAL_STAGE_RESULTS",
+  "base_PR25_commit": "2659a34386580256808880437e30828cb7b386d4",
+  "source_commit": "4c16f6515990f3fc34d85b13e10d1d367f40048d",
+  "new_tests": {
+    "pass": 7,
+    "fail": 0,
+    "error": 0,
+    "skip": 0,
+    "first_run_only": true
+  },
+  "mutant": {
+    "designated_failures": 1,
+    "errors": 0,
+    "wrong_terminal_witness": true
+  },
+  "prereview": "PASS",
+  "preexecution_first": "REQUEST_CHANGES5 preserved; corrected before first tests",
+  "preexecution_delta": "PASS",
+  "final_independent_review": "PASS",
+  "actual_tests_stage_record_sha256": "60553426ec726ea2d9a2b181c4e7c662118ba0ac090376c391fbe6bedfe37aa2",
+  "actual_reviewer_stage_record_sha256": "be847cdec835357452bb3aa545b89756b4cc54fd857114a7a93e13e6b774da2d",
+  "actual_draft_stage": "Saved in post-publication development checkpoint; cannot exist before this evidence commit is published",
+  "persistent_checkpoint": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/message-correlation-20261017",
+  "automatic_binding": "Own durable UUIDv4+exact full userMessage, complete pre/post history; no per-task human binding needed",
+  "not_claimed": [
+    "native ACK",
+    "clientId equality",
+    "authenticated required-check issuer",
+    "native role workflow",
+    "merge authorization"
+  ],
+  "source_manifest_files": 26,
+  "existing_PR25_passes_and_packages": "REUSED_NOT_RERUN_NOT_OVERWRITTEN",
+  "actual_owner_rpcs": 0,
+  "actual_codex_queue": 0,
+  "installation": false,
+  "service_switch": false,
+  "pause_release": false
+}

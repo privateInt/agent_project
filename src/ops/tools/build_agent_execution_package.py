@@ -16,7 +16,8 @@ MODULES = ('github_check_audit', 'github_fixture_collector', 'github_fixture_led
            'codex_unattended_intent_journal', 'codex_unattended_queue_observer',
            'codex_unattended_quota_reader', 'codex_unattended_submission_binding',
            'codex_unattended_queue_receipts', 'codex_unattended_owner_ack_adapter',
-           'agent_execution_package', 'codex_owner_cli_controller', 'codex_owner_turns')
+           'agent_execution_package', 'codex_owner_cli_controller', 'codex_owner_turns',
+           'codex_owner_stage_results')
 DBS = [('fixture-ledger.sqlite', 'github_fixture_ledger'),
        ('fixture-controller.sqlite', 'github_fixture_controller'),
        ('intents.sqlite', 'codex_unattended_intent_journal'),

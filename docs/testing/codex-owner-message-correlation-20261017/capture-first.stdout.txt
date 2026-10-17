@@ -1,0 +1,1 @@
+{"status": "TESTS_PASSED", "record_sha256": "60553426ec726ea2d9a2b181c4e7c662118ba0ac090376c391fbe6bedfe37aa2", "artifact_sha256": "86b2cdf01aabaa3a41ccdaef5726c47f3493f105a23db191241eac7ac52bc7e8", "fixture_native_context": true, "actual_fixed_test_child": true, "native_rpc": 0, "actual_queue": 0}

@@ -1,0 +1,19 @@
+test_M01 (__main__.MessageCorrelationAcceptance)
+Exact message bytes and write-before-dispatch task identity. ... ok
+test_M02 (__main__.MessageCorrelationAcceptance)
+Fresh fences, confirmed claims, loss, contention and legacy compatibility. ... ok
+test_M03 (__main__.MessageCorrelationAcceptance)
+Unique exact messages, full scan, literal client IDs and status rules. ... ok
+test_M04 (__main__.MessageCorrelationAcceptance)
+Pagination completeness and stable prehistory user projections. ... ok
+test_M05 (__main__.MessageCorrelationAcceptance)
+Strict recorder schema, exact contexts, byte hashes and immutable records. ... ok
+test_M06 (__main__.MessageCorrelationAcceptance)
+Fixed subprocess capture counts/source pins and explicit reviewer linkage. ... ok
+test_M07 (__main__.MessageCorrelationAcceptance)
+Draft structure, publication head and tested source/previous-stage binding. ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 2.336s
+
+OK

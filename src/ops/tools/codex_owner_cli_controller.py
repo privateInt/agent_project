@@ -19,7 +19,7 @@ import uuid
 from . import agent_execution_package as files
 from . import codex_unattended_intent_journal as journal
 from . import github_check_audit as audit
-from .codex_owner_turns import observe_bound_turn
+from .codex_owner_turns import observe_bound_turn, history_snapshot, marker_items, match_task_turn
 
 MAX_STREAM = 65536
 APPROVED_WORKSPACE = files.APPROVED_WORKSPACE
@@ -35,6 +35,19 @@ def sha(raw):
 
 def need(value, reason):
     files.need(value, reason)
+
+
+def task_message(task_id, body):
+    try:
+        identity = uuid.UUID(task_id)
+    except (ValueError, TypeError, AttributeError):
+        raise files.PackageError('TASK_ID_INVALID') from None
+    need(str(identity) == task_id and identity.version == 4, 'TASK_ID_INVALID')
+    need(type(body) is str and body and '\x00' not in body
+         and '[agent-project-task:' not in body, 'TASK_BODY_INVALID')
+    message = '[agent-project-task:v1:' + task_id + ']\n' + body
+    need(len(message.encode('utf8')) <= 16384, 'TASK_MESSAGE_TOO_LARGE')
+    return message
 
 
 def durable_read(path, uid):
@@ -208,7 +221,7 @@ class OwnerCLIController:
             row, _request, _folder, request_pin = self._prepare(raw, pin, role, prompt)
             return {'status': row['state'], 'request_sha256': request_pin, 'local_token_scope': 'LOCAL_ONLY', 'native_ready': False}
 
-    def submit(self, raw, pin, role, prompt, *, runner=queue_once):
+    def submit(self, raw, pin, role, prompt, *, runner=queue_once, automatic_fence_sha256=None):
         try:
             with files.lock(self.records, self.uid):
                 row, request, folder, request_pin = self._prepare(raw, pin, role, prompt)
@@ -222,12 +235,24 @@ class OwnerCLIController:
                 info = target.stat()
                 need(stat.S_ISREG(info.st_mode) and not info.st_mode & 0o022 and info.st_nlink == 1
                      and info.st_size <= 262144 and sha(target.read_bytes()) == self.cli_pin, 'CLI_ENTRY_PIN_MISMATCH')
+                fence = None
+                if prompt.startswith('[agent-project-task:'):
+                    fence = self._automatic_fence(folder, request, row, request_pin, automatic_fence_sha256)
+                    need(0 <= time.monotonic() - fence['monotonic_at'] <= 5
+                         and 0 <= time.time() - fence['wall_at'] <= 5, 'AUTOMATIC_FENCE_STALE')
                 files.admit(self.records, {'pause_paths': self.pause_paths, 'schedule': self.schedule}, self.policy, self.uid)
+                if fence is not None:
+                    self._fresh_fence(fence)
                 key = tuple(row[k] for k in ('project_id', 'batch_id', 'task_id'))
                 claim = journal.claim_intent(self.connection, key, pin, 0)
                 claimed = self._confirmed(claim, {'CLAIM_RECORDED'})
                 need(claim['report']['new_claim'] is True and claimed['state'] == 'SUBMISSION_UNKNOWN'
                      and claimed['revision'] == 1, 'CLAIM_UNCONFIRMED')
+                if fence is not None:
+                    self._fresh_fence(fence)
+                    write_once(folder / 'dispatch-attempt.json', canonical({'schema':1,
+                               'request_sha256':request_pin, 'task_id':row['task_id'],
+                               'baseline_sha256':automatic_fence_sha256, 'confirmed_claim_revision':1}), self.uid)
                 try:
                     observed = runner(request['argv'])
                     need(type(observed) is dict and set(observed) == {'reason', 'returncode', 'stdout', 'stderr_sha256', 'stderr_bytes', 'streams_complete'}
@@ -337,4 +362,86 @@ class OwnerCLIController:
                       'draft_snapshot_sha256': sha(canonical(draft_pr)), 'input_origin_verified': False,
                       'independent_review_verified': False, 'native_ready': False, 'merge_authorized': False}
             data = canonical(result); write_once(folder / ('delivery-' + sha(data) + '.json'), data, self.uid)
+            return result
+
+    def _automatic_fence(self, folder, request, row, request_pin, fence_pin):
+        need(journal._hex(fence_pin), 'AUTOMATIC_FENCE_REQUIRED')
+        raw = durable_read(folder / ('baseline-' + fence_pin + '.json'), self.uid)
+        need(sha(raw) == fence_pin, 'AUTOMATIC_FENCE_PIN_MISMATCH')
+        fence = files.decode(raw)
+        need(canonical(fence) == raw and type(fence) is dict
+             and set(fence) == {'schema','task_id','thread_id','request_sha256','prompt_sha256',
+                               'users','turn_ids','page_hashes','monotonic_at','wall_at'}
+             and fence['schema'] == 1 and type(fence['schema']) is int
+             and fence['task_id'] == row['task_id'] and fence['thread_id'] == request['thread_id']
+             and fence['request_sha256'] == request_pin
+             and fence['prompt_sha256'] == sha(request['prompt'].encode())
+             and type(fence['users']) is dict and type(fence['turn_ids']) is list
+             and sorted(fence['users']) == fence['turn_ids']
+             and type(fence['monotonic_at']) in (int,float) and type(fence['wall_at']) in (int,float),
+             'AUTOMATIC_FENCE_INVALID')
+        marker, body = request['prompt'].split('\n', 1)
+        need(request['prompt'] == task_message(row['task_id'], body), 'AUTOMATIC_MESSAGE_BINDING_MISMATCH')
+        index = files.decode(durable_read(self.records / ('task-' + row['task_id'] + '.json'), self.uid))
+        need(index == {'schema':1,'task_id':row['task_id'],'intent_sha256':request['intent_sha256'],
+                       'request_sha256':request_pin}, 'AUTOMATIC_TASK_CONFLICT')
+        return fence
+
+    @staticmethod
+    def _fresh_fence(fence):
+        need(0 <= time.monotonic() - fence['monotonic_at'] <= 5
+             and 0 <= time.time() - fence['wall_at'] <= 5, 'AUTOMATIC_FENCE_STALE')
+
+    def prepare_automatic(self, raw, pin, role, prompt, owner_client):
+        with files.lock(self.records, self.uid):
+            value = files.decode(raw)
+            need(type(prompt) is str and '\n' in prompt
+                 and prompt == task_message(value['task_id'], prompt.split('\n', 1)[1]),
+                 'AUTOMATIC_MESSAGE_BINDING_MISMATCH')
+            row, request, folder, request_pin = self._prepare(raw, pin, role, prompt)
+            if row['state'] != 'PREPARED':
+                return self.read(pin, request_pin)
+            write_once(self.records / ('task-' + row['task_id'] + '.json'), canonical({'schema':1,
+                       'task_id':row['task_id'],'intent_sha256':pin,'request_sha256':request_pin}), self.uid)
+            snapshot = history_snapshot(owner_client, request['thread_id'])
+            need(not marker_items(snapshot, prompt.split('\n', 1)[0]), 'AUTOMATIC_TASK_PREEXISTING')
+            fence = {'schema':1,'task_id':row['task_id'],'thread_id':request['thread_id'],
+                     'request_sha256':request_pin,'prompt_sha256':sha(prompt.encode()),
+                     'users':snapshot['users'],'turn_ids':snapshot['turn_ids'],'page_hashes':snapshot['page_hashes'],
+                     'monotonic_at':time.monotonic(),'wall_at':time.time()}
+            data = canonical(fence); fence_pin = sha(data)
+            write_once(folder / ('baseline-' + fence_pin + '.json'), data, self.uid)
+            return {'status':'PREPARED','request_sha256':request_pin,'automatic_fence_sha256':fence_pin,
+                    'native_ack_verified':False,'native_ready':False}
+
+    def observe_automatic(self, pin, request_pin, owner_client):
+        with files.lock(self.records, self.uid):
+            folder, request, row = self._request(pin, request_pin)
+            need(row['state'] == 'SUBMISSION_UNKNOWN' and row['revision'] == 1, 'INTENT_NOT_SUBMITTED')
+            dispatch_raw = durable_read(folder / 'dispatch-attempt.json', self.uid)
+            dispatch = files.decode(dispatch_raw)
+            need(canonical(dispatch) == dispatch_raw and dispatch == {'schema':1,
+                 'request_sha256':request_pin,'task_id':row['task_id'],
+                 'baseline_sha256':dispatch.get('baseline_sha256'),'confirmed_claim_revision':1},
+                 'AUTOMATIC_DISPATCH_INVALID')
+            fence = self._automatic_fence(folder, request, row, request_pin, dispatch['baseline_sha256'])
+            terminal = folder / 'terminal.json'
+            if terminal.exists():
+                result = files.decode(durable_read(terminal, self.uid))
+                need(result.get('request_sha256') == request_pin
+                     and result.get('correlation_kind') == 'OWN_EXACT_USER_MESSAGE', 'AUTOMATIC_TERMINAL_CONFLICT')
+                return result
+            result = match_task_turn(owner_client, fence, request['prompt'], row['task_id'])
+            result.update(request_sha256=request_pin, baseline_sha256=dispatch['baseline_sha256'],
+                          dispatch_attempt_sha256=sha(dispatch_raw))
+            if result['status'] != 'UNCONFIRMED':
+                binding = {k:result[k] for k in ('turn_id','user_message_item_id','observed_client_id','prompt_sha256')}
+                binding.update(schema=1,request_sha256=request_pin,task_id=row['task_id'],
+                               correlation_kind='OWN_EXACT_USER_MESSAGE',native_ack_verified=False,
+                               binding_origin_verified=False,client_id_identity_verified=False)
+                write_once(folder / 'automatic-binding.json', canonical(binding), self.uid)
+            data = canonical(result)
+            write_once(folder / ('observation-' + sha(data) + '.json'), data, self.uid)
+            if result['status'] in ('TURN_COMPLETED','TURN_FAILED','TURN_INTERRUPTED'):
+                write_once(terminal, data, self.uid)
             return result
