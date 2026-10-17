@@ -1,0 +1,92 @@
+{
+  "observed_branches": [
+    {
+      "name": "codex/agent-project-daemon-transport-20261016",
+      "sha": "8c1a9c18f496ad99311ad1e976c2e00c31817747"
+    },
+    {
+      "name": "codex/agent-project-owner-preflight-binding-20261017",
+      "sha": "aef3af98d1bbc9037f1b75906e0217844bb5bd1d"
+    },
+    {
+      "name": "codex/agent-project-queue-correlation-20261016",
+      "sha": "ddec1931eed8828cdd84ae783845729edf617fc1"
+    },
+    {
+      "name": "codex/agent-project-submission-intent-20261016",
+      "sha": "780d0755378b9f95f0282ec766ca99300b2b0b53"
+    },
+    {
+      "name": "codex/agent-project-unattended-admission-20261016",
+      "sha": "86b8861ba5b3ea049b77937e6c00da73a4330377"
+    },
+    {
+      "name": "codex/experiment-advisor-plan-20261014",
+      "sha": "7b5d36ccf404913757c737e93f16244e0f7bf87e"
+    },
+    {
+      "name": "codex/f0a-citation-diagnostics-20261014",
+      "sha": "55c714728806443463e8bb946c2621407071d4f6"
+    },
+    {
+      "name": "codex/f0a-definition-probe-20261014",
+      "sha": "75f326d89db98e158cfd291cb7d873cfce4e6a29"
+    },
+    {
+      "name": "codex/github-app-key-boundary-20261015",
+      "sha": "03f4587b99526f99f47b359f232ddf3134d41eeb"
+    },
+    {
+      "name": "codex/github-app-readback-20261015",
+      "sha": "414ca0654ff07f14a1224faaf463be7a0c0818bc"
+    },
+    {
+      "name": "codex/github-app-registration-20261015",
+      "sha": "5e91e4bff2460e33fff95ec99ea32899d911a973"
+    },
+    {
+      "name": "codex/github-check-audit-20261014",
+      "sha": "66b3f4fb1e054862e2b3a94e167982f0c5173a5f"
+    },
+    {
+      "name": "codex/github-check-smoke-20261015",
+      "sha": "4e8eeb5db1abd847ba4d1bfe40ddbbf1f9106e17"
+    },
+    {
+      "name": "codex/github-evidence-binding-20261014",
+      "sha": "c9bfb1e8e506c09e09394a49a49420e0e7539a12"
+    },
+    {
+      "name": "codex/github-fixture-collector-20261015",
+      "sha": "da98ac811b07b27274cce326a26e3a6540754508"
+    },
+    {
+      "name": "codex/github-fixture-config-loader-20261015",
+      "sha": "c862bfc6951491192a9fe98b535c9a8be921ee35"
+    },
+    {
+      "name": "codex/github-fixture-controller-20261015",
+      "sha": "c91e9e628402fcc89c2daa4301d54c3c321221ed"
+    },
+    {
+      "name": "codex/github-fixture-ledger-20261015",
+      "sha": "e1eff75b47cdf3fae1088d51d35aaea701f81477"
+    },
+    {
+      "name": "codex/github-signed-receipts-20261015",
+      "sha": "859b401af70b74e9417f7c0fab8f26b2985fcee3"
+    },
+    {
+      "name": "codex/governance-20261013",
+      "sha": "b1fda4916041fde8438251b04db62e6ff702c24f"
+    },
+    {
+      "name": "main",
+      "sha": "6dd46d069079fc20df5b3d4bac71fe3450550bf8"
+    }
+  ],
+  "base_matches_fixed_commit": true,
+  "new_branch_absent": true,
+  "new_branch": "codex/agent-project-queue-ack-20261017",
+  "no_main_mutation": true
+}

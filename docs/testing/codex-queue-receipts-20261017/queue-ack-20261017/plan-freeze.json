@@ -1,0 +1,9 @@
+{
+  "review_plan_sha256": "027cd5bda32eac67e91246b410d2177afb8a108830bde951ffeab7a0351521f7",
+  "budget_sha256": "b81401334b875233b0a8034df275b6ea428aa34928bfa5c355b7438cfb355d1e",
+  "canonical_start_utc": "2026-10-17T01:50:11.827731Z",
+  "canonical_deadline_utc": "2026-10-17T02:50:11.827731Z",
+  "budget_note": "Earlier full-analysis start includes CLI/schema reads; frozen v2 printed initial workspace time. Tightened canonical budget is mandatory; requires minor independent clarification in D29 PASS.",
+  "producer_turn_complete": true,
+  "product_tests_executed": 0
+}

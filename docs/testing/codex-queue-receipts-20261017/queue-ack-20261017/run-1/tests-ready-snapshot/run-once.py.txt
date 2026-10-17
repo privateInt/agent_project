@@ -1,0 +1,394 @@
+#!/usr/bin/env python3
+"""ACK frozen v2/D06: one fresh normal4, then two exact isolated helper mutants.
+
+Authoring does not import candidate/tests. Parent must first provide SOURCE_READY,
+static confirmation and exact source/gate pins; no candidate discovery or polling.
+"""
+import argparse
+import ast
+import copy
+import datetime as dt
+import hashlib
+import importlib
+import json
+import os
+from pathlib import Path
+import shutil
+import signal
+import sqlite3
+import subprocess
+import sys
+import tempfile
+import traceback
+import unittest
+
+HERE = Path(__file__).resolve().parent
+EVIDENCE = HERE.parent
+ROOT = next((p for p in HERE.parents if p.name == "agent_project"), None)
+WORK = ROOT / "var/unattended-20261015/ack-development" if ROOT is not None else None
+DEADLINE = dt.datetime(2026, 10, 17, 2, 50, 11, 827731, tzinfo=dt.timezone.utc)
+PLAN_PIN = "027cd5bda32eac67e91246b410d2177afb8a108830bde951ffeab7a0351521f7"
+BUDGET_PIN = "b81401334b875233b0a8034df275b6ea428aa34928bfa5c355b7438cfb355d1e"
+PRODUCT = "src/ops/tools/codex_unattended_queue_receipts.py"
+TEST = "src/ops/tools/tests/test_codex_unattended_queue_receipts.py"
+MODULE = "src.ops.tools.tests.test_codex_unattended_queue_receipts"
+METHODS = ("test_ack_candidate_store_reuse_and_reopen", "test_unknown_receipt_is_immutable",
+           "test_receipt_validation_conflict_and_privacy", "test_receipt_database_faults_and_profiles")
+TARGETS = {"M_CLIENT": "case_ack_client_mismatch_cannot_store", "M_STATE": "case_prepared_intent_cannot_store_ack"}
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def save(path, value):
+    path.write_text(json.dumps(value, indent=2, ensure_ascii=True, allow_nan=False) + "\n")
+
+
+def need(condition, reason):
+    if not condition:
+        raise AssertionError(reason)
+
+
+def remaining():
+    value = (DEADLINE - dt.datetime.now(dt.timezone.utc)).total_seconds()
+    need(value > 0, "EARLIEST_SHARED_DEADLINE_EXPIRED_NO_EXTENSION")
+    return value
+
+
+def mutate(raw, stage, expression):
+    """Exact parent-reviewed guard only; other source bytes and AST remain identical."""
+    tree, selected = ast.parse(raw), ast.parse(expression, mode="eval").body
+    if stage == "M_CLIENT":
+        need(isinstance(selected, ast.Compare) and len(selected.ops) == 1 and isinstance(selected.ops[0], ast.Eq)
+             and len(selected.comparators) == 1, "M_CLIENT_REQUIRES_ONE_EQUALITY_GATE")
+        need(not any(isinstance(n, ast.Call) for n in ast.walk(selected)), "M_CLIENT_CALL_OPERAND_FORBIDDEN")
+        need(not isinstance(selected.left, ast.Constant) and not isinstance(selected.comparators[0], ast.Constant),
+             "M_CLIENT_LITERAL_COMPARISON_OPERAND_FORBIDDEN")
+    else:
+        need(isinstance(selected, ast.BoolOp) and isinstance(selected.op, ast.And) and len(selected.values) == 2,
+             "M_STATE_REQUIRES_ENTIRE_UNKNOWN_AND_REVISION1_GUARD")
+        values = []
+        for item in selected.values:
+            need(isinstance(item, ast.Compare) and len(item.ops) == 1 and isinstance(item.ops[0], ast.Eq)
+                 and len(item.comparators) == 1 and not isinstance(item.left, ast.Constant)
+                 and isinstance(item.comparators[0], ast.Constant), "M_STATE_COMPARISON_INVALID")
+            value = item.comparators[0].value
+            need(type(value) in (str, int), "M_STATE_STRICT_GUARD_VALUE_REQUIRED")
+            values.append(value)
+        need(set(values) == {"SUBMISSION_UNKNOWN", 1}, "M_STATE_GUARD_CRITERIA_MISMATCH")
+        need(not any(isinstance(n, ast.Call) for n in ast.walk(selected)), "M_STATE_CALL_OPERAND_FORBIDDEN")
+    matches = [n for n in ast.walk(tree) if type(n) is type(selected)
+               and ast.dump(n, include_attributes=False) == ast.dump(selected, include_attributes=False)]
+    need(len(matches) == 1, "EXACTLY_ONE_REVIEWED_GUARD_REQUIRED")
+    node = matches[0]
+    lines = raw.splitlines(keepends=True)
+    start = sum(map(len, lines[:node.lineno-1])) + node.col_offset
+    end = sum(map(len, lines[:node.end_lineno-1])) + node.end_col_offset
+    changed = raw[:start] + b"True" + raw[end:]
+
+    class ReplaceExact(ast.NodeTransformer):
+        def visit(self, item):
+            if (type(item) is type(node) and getattr(item, "lineno", None) == node.lineno
+                    and getattr(item, "col_offset", None) == node.col_offset):
+                return ast.Constant(value=True)
+            return super().visit(item)
+
+    expected = ReplaceExact().visit(copy.deepcopy(tree))
+    need(ast.dump(expected, include_attributes=False) == ast.dump(ast.parse(changed), include_attributes=False),
+         "NON_TARGET_AST_CHANGED")
+    return changed, {"before_sha256": sha(raw), "after_sha256": sha(changed), "target_count": 1,
+                     "before_expression": ast.get_source_segment(raw.decode(), node),
+                     "after_expression": "True", "other_ast_equal": True}
+
+
+class BoundaryViolation(BaseException):
+    pass
+
+
+def worker(copy_root, stage_dir, stage, forbidden_root):
+    copy_root, stage_dir = Path(copy_root), Path(stage_dir)
+    sys.dont_write_bytecode = True
+    os.chdir(copy_root)
+    sys.path[:] = [str(copy_root)] + [p for p in sys.path if p and
+        not os.path.abspath(p).startswith(forbidden_root) and p != str(copy_root)]
+    temporary = copy_root / "temporary-databases"
+    temporary.mkdir()
+    tempfile.tempdir = str(temporary)
+    active, violations, connections, old_calls = [True], [], [], []
+    copy_prefix, output_prefix = str(copy_root) + os.sep, str(stage_dir) + os.sep
+    std_roots = tuple(os.path.abspath(p) for p in (sys.base_prefix + "/lib", sys.prefix + "/lib", "/usr/lib", "/lib"))
+
+    def allowed(path, *, write=False):
+        if isinstance(path, int):
+            return True
+        if not isinstance(path, (str, bytes, os.PathLike)):
+            return False
+        text = os.path.abspath(os.fsdecode(os.fspath(path)))
+        if text == str(copy_root) or text.startswith(copy_prefix) or text == str(stage_dir) or text.startswith(output_prefix):
+            return True
+        if text == forbidden_root or text.startswith(forbidden_root + os.sep) or text == "/opt" or text.startswith("/opt/"):
+            return False
+        return not write and any(text == r or text.startswith(r + os.sep) for r in std_roots)
+
+    def audit(event, args):
+        if not active[0]:
+            return
+        denied = event.startswith(("socket.", "subprocess.", "os.exec", "os.spawn", "os.posix_spawn")) or event in ("os.system", "os.fork", "os.forkpty")
+        if event == "open":
+            mode, flags = args[1:3]
+            writing = (isinstance(mode, str) and any(c in mode for c in "wax+")) or (
+                isinstance(flags, int) and bool(flags & (os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_TRUNC)))
+            denied = not allowed(args[0], write=writing)
+        elif event in ("os.listdir", "os.scandir"):
+            denied = not allowed(args[0] if args else ".")
+        elif event == "sqlite3.connect":
+            # D06/PR20 portability: Path/bytes/str normalize identically, no stat/realpath.
+            target = os.fsdecode(os.fspath(args[0]))
+            denied = target != ":memory:" and not os.path.abspath(target).startswith(str(temporary) + os.sep)
+            connections.append({"dedicated_temporary": not denied, "memory_rejection_fixture": target == ":memory:"})
+        if denied:
+            violations.append({"event": event, "reason": "OFFLINE_IO_BOUNDARY_VIOLATION"})
+            raise BoundaryViolation("ORIGINAL_CHECKOUT_OPT_OPERATOR_NATIVE_IO_FORBIDDEN")
+
+    sys.addaudithook(audit)
+    original_fs = {}
+    metadata_ancestors = {str(p) for base in (copy_root, *(Path(r) for r in std_roots)) for p in base.parents}
+    for name in ("stat", "lstat", "listdir", "scandir", "access", "readlink"):
+        original_fs[name] = getattr(os, name)
+
+        def guarded(path=".", *args, _original=original_fs[name], _kind=name, **kwargs):
+            ancestor = (_kind in ("stat", "lstat", "access", "readlink")
+                        and isinstance(path, (str, bytes, os.PathLike))
+                        and os.path.abspath(os.fsdecode(os.fspath(path))) in metadata_ancestors)
+            if active[0] and not allowed(path) and not ancestor:
+                violations.append({"event": "filesystem_metadata", "reason": "OFFLINE_IO_BOUNDARY_VIOLATION"})
+                raise BoundaryViolation("PROTECTED_SOURCE_METADATA_READ_FORBIDDEN")
+            return _original(path, *args, **kwargs)
+
+        setattr(os, name, guarded)
+
+    def expired(signum, frame):
+        raise BoundaryViolation("EARLIEST_SHARED_DEADLINE_EXPIRED_NO_EXTENSION")
+
+    signal.signal(signal.SIGALRM, expired)
+    signal.setitimer(signal.ITIMER_REAL, remaining())
+    data = {}
+    try:
+        module = importlib.import_module(MODULE)
+        need(Path(module.__file__).is_relative_to(copy_root) and Path(module.product.__file__).is_relative_to(copy_root),
+             "SOURCE_COPY_IMPORT_REQUIRED")
+        banned_codes = module.old_case_codes()
+
+        def forbid_old_case(frame, event, arg):
+            if event == "call" and frame.f_code in banned_codes:
+                old_calls.append("OLD_TESTCASE_METHOD_CALL")
+                raise BoundaryViolation("OLD_PASSED_METHOD_INVOCATION_FORBIDDEN")
+
+        sys.setprofile(forbid_old_case)
+        if stage == "normal":
+            cases = [module.QueueReceiptTests(name) for name in METHODS]
+            suite = unittest.TestSuite(cases)
+        else:
+            module.QueueReceiptTests.setUpClass()
+            instance = module.QueueReceiptTests(METHODS[2])
+            instance.setUp()
+            cases = [instance]
+            suite = unittest.TestSuite([unittest.FunctionTestCase(getattr(instance, TARGETS[stage]), description=stage + "." + TARGETS[stage])])
+        records = []
+
+        class RecordedResult(unittest.TextTestResult):
+            def addSuccess(self, test):
+                records.append({"id": test.id(), "outcome": "PASS"})
+                super().addSuccess(test)
+
+            def addFailure(self, test, err):
+                frame, tb = None, err[2]
+                while tb:
+                    if tb.tb_frame.f_code.co_filename == str(copy_root / TEST):
+                        frame = {"function": tb.tb_frame.f_code.co_name, "line": tb.tb_lineno}
+                    tb = tb.tb_next
+                records.append({"id": test.id(), "outcome": "FAIL", "exception_type": err[0].__name__, "last_test_assertion": frame})
+                super().addFailure(test, err)
+
+            def addError(self, test, err):
+                records.append({"id": test.id(), "outcome": "ERROR", "exception_type": err[0].__name__})
+                super().addError(test, err)
+
+            def addSubTest(self, test, subtest, err):
+                if err is not None:
+                    records.append({"id": test.id(), "outcome": "FAIL" if issubclass(err[0], AssertionError) else "ERROR", "subtest": True})
+                super().addSubTest(test, subtest, err)
+
+            def addSkip(self, test, reason):
+                records.append({"id": test.id(), "outcome": "SKIP"})
+                super().addSkip(test, reason)
+                self.stop()
+
+        with (stage_dir / "first.log").open("x") as log:
+            result = unittest.TextTestRunner(stream=log, verbosity=2, failfast=True, resultclass=RecordedResult).run(suite)
+        data = {"stage": stage, "testsRun": result.testsRun, "failures": len(result.failures), "errors": len(result.errors),
+                "skips": len(result.skipped), "methods": records, "boundary_violations": violations,
+                "old_case_calls": old_calls, "sqlite_connections": connections, "runtime_calls": 0,
+                "source_copy": str(copy_root), "observations": module.OBSERVATIONS,
+                "protected_original_opt_operator_reads": 0 if not violations else "UNCONFIRMED"}
+        if stage == "normal":
+            markers = cases[2].helper_markers
+            marker_pass = set(markers) == set(TARGETS.values()) and all(
+                marker == {"outcome": "PASS", "invocations": 1, "peer_rows": 0, "reopen_rows": 0} for marker in markers.values())
+            data["normal_helper_markers"] = markers
+            data["all_pass"] = bool(result.testsRun == 4 and result.wasSuccessful() and not result.skipped
+                and len(records) == 4 and marker_pass and not violations and not old_calls)
+        else:
+            instance = cases[0]
+            last, witness = getattr(instance, "last_result", None), getattr(instance, "last_wrong_witness", {})
+            expected_p = getattr(instance, "expected_wrong_projection", None)
+            state = getattr(instance, "expected_wrong_state", None)
+            rows = witness.get("rows", [])
+            wrong = (type(last) is dict and last.get("report", {}).get("reason") == "RECEIPT_STORED"
+                and last["report"].get("new_receipt") is True and last["report"].get("database_commit_confirmed") is True
+                and last["report"].get("outcome") == "ACK_CANDIDATE" and witness.get("peer_row_count") == 1
+                and witness.get("reopen_row_count") == 1 and witness.get("peer_equals_reopen") is True
+                and witness.get("source_unchanged") is True and state is not None
+                and (witness.get("intent_state"), witness.get("intent_revision")) == state
+                and len(rows) == 1 and expected_p is not None and rows[0]["projection"] == expected_p
+                and rows[0]["actual_sha256"] == rows[0]["receipt_sha256"]
+                and type(getattr(instance, "wrong_commit_db_bytes", None)) is bytes)
+            expression = ast.parse('self.assertEqual(reason, report["reason"])').body[0].value
+            assertions = [n for n in ast.walk(ast.parse((copy_root / TEST).read_bytes())) if isinstance(n, ast.Call)
+                          and ast.dump(n, include_attributes=False) == ast.dump(expression, include_attributes=False)]
+            need(len(assertions) == 1, "UNIQUE_SEMANTIC_REASON_ASSERTION_REQUIRED")
+            expected_frame = {"function": "invoke", "line": assertions[0].lineno}
+            semantic = (len(records) == 1 and records[0].get("exception_type") == "AssertionError"
+                        and records[0].get("last_test_assertion") == expected_frame)
+            data["actual_wrong_commit_verified"] = bool(wrong)
+            data["wrong_commit_witness"] = witness
+            data["helper_invocations"] = instance.helper_invocations
+            if type(getattr(instance, "wrong_commit_db_bytes", None)) is bytes:
+                (stage_dir / "wrong-commit-witness.sqlite").write_bytes(instance.wrong_commit_db_bytes)
+                data["wrong_commit_db_sha256"] = sha(instance.wrong_commit_db_bytes)
+            data["actual_wrong_candidate"] = None if last is None else {"report": last["report"], "record": None if last["record"] is None else {
+                "receipt_sha256": last["record"]["receipt_sha256"], "actual_bytes_sha256": sha(last["record"]["receipt_bytes"])}}
+            data["semantic_fail1_error0"] = bool(result.testsRun == 1 and len(result.failures) == 1 and not result.errors
+                and not result.skipped and semantic and wrong and instance.helper_invocations == {TARGETS[stage]: 1}
+                and not violations and not old_calls)
+    except BaseException as error:
+        active[0] = False
+        sys.setprofile(None)
+        with (stage_dir / "first-harness-error.log").open("x") as log:
+            traceback.print_exc(file=log)
+        data = {"stage": stage, "all_pass": False, "harness_error": type(error).__name__, "boundary_violations": violations,
+                "old_case_calls": old_calls, "runtime_calls": 0}
+    finally:
+        active[0] = False
+        sys.setprofile(None)
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        for name, original in original_fs.items():
+            setattr(os, name, original)
+        save(stage_dir / "result.json", data)
+    return 0 if data.get("all_pass") or data.get("semantic_fail1_error0") else 1
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source-ready", action="store_true")
+    parser.add_argument("--source-sha256")
+    parser.add_argument("--client-gate")
+    parser.add_argument("--state-guard")
+    parser.add_argument("--internal-stage", choices=("normal", "M_CLIENT", "M_STATE"))
+    parser.add_argument("--copy-root")
+    parser.add_argument("--stage-dir")
+    parser.add_argument("--forbidden-root")
+    args = parser.parse_args()
+    if args.internal_stage:
+        return worker(args.copy_root, args.stage_dir, args.internal_stage, args.forbidden_root)
+    need(args.source_ready and args.source_sha256 and args.client_gate and args.state_guard,
+         "SOURCE_READY_STATIC_REVIEW_AND_EXACT_SOURCE_GATES_REQUIRED")
+    remaining()
+    ready_raw = (HERE / "tests-ready.json").read_bytes()
+    ready = json.loads(ready_raw)
+    need(sha(Path(__file__).read_bytes()) == ready["runner_sha256"], "RUNNER_READINESS_PIN_MISMATCH")
+    for filename in ("frozen-plan-v2.md", "review-plan.md"):
+        need(sha((EVIDENCE / filename).read_bytes()) == PLAN_PIN, "PLAN_PIN_MISMATCH")
+    need(sha((EVIDENCE / "implementation-plan-review.md").read_bytes()) == ready["review_sha256"], "D29_REVIEW_PIN_MISMATCH")
+    need(sha((EVIDENCE / "unit-budget.json").read_bytes()) == BUDGET_PIN, "EARLIEST_BUDGET_PIN_MISMATCH")
+    sources = {}
+    for relative, pin in dict(ready["files"], **{PRODUCT: args.source_sha256}).items():
+        raw = (WORK / relative).read_bytes()
+        need(sha(raw) == pin, "SOURCE_HELPER_TEST_FIXTURE_PIN_MISMATCH:" + relative)
+        sources[relative] = raw
+    names = tuple(n.name for n in ast.walk(ast.parse(sources[TEST])) if isinstance(n, ast.FunctionDef) and n.name.startswith("test_"))
+    need(names == METHODS, "EXACT_FOUR_NEW_METHODS_REQUIRED")
+    mutated, audits = {}, {}
+    for stage, expression in (("M_CLIENT", args.client_gate), ("M_STATE", args.state_guard)):
+        mutated[stage], audits[stage] = mutate(sources[PRODUCT], stage, expression)
+    with (HERE / "execution-attempt.json").open("x") as marker:
+        json.dump({"started_utc": dt.datetime.now(dt.timezone.utc).isoformat(), "deadline_utc": DEADLINE.isoformat(),
+                   "clock_reset": False, "readiness_sha256": sha(ready_raw), "source_sha256": args.source_sha256}, marker, indent=2)
+    snapshot = HERE / "initial-snapshot"
+    snapshot.mkdir()
+    for relative, raw in sources.items():
+        target = snapshot / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(raw)
+    for filename in ("frozen-plan-v2.md", "review-plan.md", "implementation-plan-review.md", "unit-budget.json"):
+        shutil.copyfile(EVIDENCE / filename, snapshot / filename)
+    shutil.copyfile(__file__, snapshot / "run-once.py")
+    (snapshot / "tests-ready.json").write_bytes(ready_raw)
+    save(HERE / "environment.json", {"python": sys.version, "sqlite": sqlite3.sqlite_version, "executable": sys.executable,
+         "declared_turn_metadata_at_authoring": ready["declared_turn_metadata"], "D18": "HELD", "PAUSE_changed": False,
+         "permission_probes": 0, "deadline_utc": DEADLINE.isoformat(), "clock_reset": False, "old_passes_rerun": False})
+    save(HERE / "mutation-ast-audits.json", audits)
+    summary = {"normal": None, "M_CLIENT": None, "M_STATE": None, "runtime_calls": 0, "clock_reset": False,
+               "deadline_utc": DEADLINE.isoformat(), "old_suites_rerun": False}
+    for stage in ("normal", "M_CLIENT", "M_STATE"):
+        stage_dir = HERE / stage
+        stage_dir.mkdir()
+        with tempfile.TemporaryDirectory(prefix="queue-ack-portable-%s-" % stage) as directory:
+            copied = Path(directory) / "minimal-source"
+            copied.mkdir()
+            for relative, raw in sources.items():
+                value = mutated[stage] if stage != "normal" and relative == PRODUCT else raw
+                target = copied / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(value)
+                need(target.read_bytes() == value, "SOURCE_COPY_BYTES_MISMATCH")
+            shutil.copyfile(__file__, copied / "run-once.py")
+            save(stage_dir / "source-copy-pins.json", {name: sha((copied / name).read_bytes()) for name in sources})
+            if stage != "normal":
+                (stage_dir / "mutated-source.py.txt").write_bytes(mutated[stage])
+            command = [sys.executable, "-I", "-S", "-B", str(copied / "run-once.py"), "--internal-stage", stage,
+                       "--copy-root", str(copied), "--stage-dir", str(stage_dir), "--forbidden-root", str(ROOT)]
+            save(stage_dir / "command.json", command)
+            with (stage_dir / "process.log").open("x") as log:
+                completed = subprocess.run(command, cwd=copied, stdout=log, stderr=subprocess.STDOUT, check=False, timeout=remaining())
+            need((stage_dir / "result.json").exists(), "FIRST_CHILD_RESULT_MISSING_STOP_NO_RETRY")
+            result = json.loads((stage_dir / "result.json").read_bytes())
+            result["process_returncode"] = completed.returncode
+            result["result_sha256"] = sha((stage_dir / "result.json").read_bytes())
+            result["first_log_sha256"] = sha((stage_dir / "first.log").read_bytes()) if (stage_dir / "first.log").exists() else None
+            summary[stage] = result
+            save(HERE / "result.json", summary)
+            ok = result.get("all_pass") if stage == "normal" else result.get("semantic_fail1_error0")
+            if completed.returncode or not ok:
+                print("STOP " + stage + " evidence=" + str(stage_dir))
+                return 1
+    summary["normal_helper_pass_reused"] = list(TARGETS.values())
+    summary["all_required_verification_pass"] = True
+    summary["completed_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
+    save(HERE / "result.json", summary)
+    print("PASS normal4 + exact2 semantic FAIL1/ERROR0 helper mutants; evidence=" + str(HERE))
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        exit_status = main()
+    except BaseException as error:
+        if ROOT is not None:
+            with (HERE / "first-controller-error.log").open("x") as first_error:
+                traceback.print_exc(file=first_error)
+            save(HERE / "first-controller-error.json", {"error_type": type(error).__name__,
+                 "deadline_utc": DEADLINE.isoformat(), "clock_reset": False, "automatic_retry": False})
+        raise
+    raise SystemExit(exit_status)

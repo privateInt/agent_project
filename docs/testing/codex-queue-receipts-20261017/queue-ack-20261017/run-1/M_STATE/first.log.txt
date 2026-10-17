@@ -1,0 +1,21 @@
+unittest.case.FunctionTestCase (case_prepared_intent_cannot_store_ack)
+M_STATE.case_prepared_intent_cannot_store_ack ... FAIL
+
+======================================================================
+FAIL: unittest.case.FunctionTestCase (case_prepared_intent_cannot_store_ack)
+M_STATE.case_prepared_intent_cannot_store_ack
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/queue-ack-portable-M_STATE-10douvdk/minimal-source/src/ops/tools/tests/test_codex_unattended_queue_receipts.py", line 335, in case_prepared_intent_cannot_store_ack
+    self.invoke(db, reason="INTENT_NOT_UNKNOWN")
+  File "/tmp/queue-ack-portable-M_STATE-10douvdk/minimal-source/src/ops/tools/tests/test_codex_unattended_queue_receipts.py", line 298, in invoke
+    self.assertEqual(reason, report["reason"])
+AssertionError: 'INTENT_NOT_UNKNOWN' != 'RECEIPT_STORED'
+- INTENT_NOT_UNKNOWN
++ RECEIPT_STORED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.022s
+
+FAILED (failures=1)

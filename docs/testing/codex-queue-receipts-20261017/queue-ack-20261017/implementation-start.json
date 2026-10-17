@@ -1,0 +1,8 @@
+{
+  "implementation_started_utc": "2026-10-17T02:05:24.683801+00:00",
+  "plan_sha256": "027cd5bda32eac67e91246b410d2177afb8a108830bde951ffeab7a0351521f7",
+  "review_sha256": "bdfb9175adb149a5295adbca21a32f336d527ecc6903a2ef241d44139a12fc74",
+  "deadline_utc": "2026-10-17T02:50:11.827731Z",
+  "D06": "earlier budget mandatory; fault injections at actual journal._one arity2; no stat/alias resolution",
+  "product_tests": 0
+}

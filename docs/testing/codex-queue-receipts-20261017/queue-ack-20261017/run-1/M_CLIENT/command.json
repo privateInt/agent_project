@@ -1,0 +1,15 @@
+[
+  "/usr/bin/python3",
+  "-I",
+  "-S",
+  "-B",
+  "/tmp/queue-ack-portable-M_CLIENT-f80qn2z_/minimal-source/run-once.py",
+  "--internal-stage",
+  "M_CLIENT",
+  "--copy-root",
+  "/tmp/queue-ack-portable-M_CLIENT-f80qn2z_/minimal-source",
+  "--stage-dir",
+  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_CLIENT",
+  "--forbidden-root",
+  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+]

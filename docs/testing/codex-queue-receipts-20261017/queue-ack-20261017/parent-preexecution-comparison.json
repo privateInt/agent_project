@@ -1,0 +1,19 @@
+{
+  "actor": "COORDINATOR_STATIC_COMPARISON",
+  "utc": "2026-10-17T02:21:21.041530+00:00",
+  "source_sha256": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af",
+  "test_sha256": "730b8118103263175fbee94d30fde2fff5b5ae98d6b653e93f8da93db688fbf3",
+  "runner_sha256": "aa17d7ed3547024ba816295a95dcd412d05153fde53304b7a48c786461ea6ff4",
+  "ready_sha256": "74a2f1e2013c97aa5c79c95634254d5f54b5bfb4bb4b9fd0e9f18c42f18077b1",
+  "source_static_review_sha256": "6c273a12051049e91cc6b6234c57d52dd0dccac442789a51f99e4a7511286db1",
+  "checks": [
+    "exact four new methods and two helper targets",
+    "mutant setup initialized explicitly; exact semantic reason assertion before phase checks",
+    "peer/reopen wrong commit plus preserved source witness",
+    "strict IO + old TestCase code ban + Python3.10 callback and byte path fixes reused",
+    "source/dependency/relative fixture pins and earlier deadline fixed"
+  ],
+  "authorize": "FIRST_NORMAL4_THEN_EXACT_TWO_HELPERS_ONCE",
+  "old_passes_repeated": false,
+  "tests_executed_before": 0
+}

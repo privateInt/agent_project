@@ -1,0 +1,19 @@
+{
+  "src/ops/tools/codex_unattended_submission_binding.py": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+  "src/ops/tools/codex_unattended_intent_journal.py": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+  "src/ops/tools/codex_unattended_queue_observer.py": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+  "src/ops/tools/codex_unattended_quota_reader.py": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+  "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+  "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+  "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+  "src/ops/tools/tests/test_codex_unattended_intent_journal.py": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+  "src/ops/tools/tests/test_codex_unattended_submission_binding.py": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6",
+  "src/ops/tools/tests/test_codex_unattended_quota_reader.py": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+  "src/ops/tools/tests/test_codex_unattended_queue_receipts.py": "730b8118103263175fbee94d30fde2fff5b5ae98d6b653e93f8da93db688fbf3",
+  "src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+  "src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+  "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/ThreadQueueAddResponse.json": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314",
+  "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/manifest.json": "6a5a3117f704fdebf54305b9ce7529ce85470ce30387de9c004b41645009e6d0",
+  "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/synthetic.json": "6524918db5f70e3d7e3ecef2121ffcbbe6effe03200eeb37b370b9fe3075b04d",
+  "src/ops/tools/codex_unattended_queue_receipts.py": "bc1135e80bb9f55cc30ffff624776ff1a69ef2dd2470ce3eb0a5979b2dc38105"
+}

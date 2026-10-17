@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "unit": "U01b2_DURABLE_QUEUE_RECEIPTS",
+  "base_commit": "aef3af98d1bbc9037f1b75906e0217844bb5bd1d",
+  "scope": "First immutable candidate/UNKNOWN projection of serialized decoded ACK; no native IO or wire capture",
+  "source_sha256": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af",
+  "dependency_pins": {
+    "src/ops/tools/codex_unattended_submission_binding.py": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+    "src/ops/tools/codex_unattended_intent_journal.py": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "src/ops/tools/codex_unattended_queue_observer.py": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+    "src/ops/tools/codex_unattended_quota_reader.py": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+    "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+    "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0"
+  },
+  "plan_sha256": "027cd5bda32eac67e91246b410d2177afb8a108830bde951ffeab7a0351521f7",
+  "prereview_sha256": "bdfb9175adb149a5295adbca21a32f336d527ecc6903a2ef241d44139a12fc74",
+  "source_static_review": "PASS_STATIC_ONLY",
+  "new_tests": {
+    "status": "NOT_RUN",
+    "planned_methods": 4
+  },
+  "semantic_mutants": {
+    "status": "NOT_RUN",
+    "planned": 2
+  },
+  "old_passes": "NOT_REPEATED",
+  "first_errors": "PRESERVED",
+  "final_independent_review": {
+    "status": "PENDING"
+  },
+  "native_connection": "NOT_IMPLEMENTED_NOT_RUN",
+  "two_complete_native_jobs": "NOT_RUN",
+  "native_ready": false,
+  "scheduler": "PAUSED_UNCHANGED",
+  "runtime_investigation": "OLD_D18_HELD_NO_NEW_PROBES",
+  "new_usage_queries": 0,
+  "inherited_actual_usage_receipt": "PR20 fixed commit metadata query true/weekly14 at 2026-10-17T00:57:01Z; not a new or current query",
+  "owner_values_invented": false,
+  "vms_project": "EXCLUDED",
+  "deadline_utc": "2026-10-17T02:50:11.827731Z"
+}

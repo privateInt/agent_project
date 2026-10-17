@@ -1,5 +1,7 @@
 # 다음 세션·Codex 인수인계
 
+2026-10-17 ACK: [전용 원장 실행 근거](testing/codex-queue-receipts-observed-20261017.json)의 새4개 최초 PASS·2의미 변이 검출을 재사용한다. 검사 실행 뒤 상태 갱신 지연으로 남았던 NOT_RUN을 정정했다. 기존 검토·PASS를 반복하지 않는다. 최종 독립 검토 판정은 같은 근거의 고정 보고서를 따른다. 원본11개·첫 오류를 보존하며 native RPC/usage 재조회·old thread-resume·PAUSE/D18 해제를 하지 않는다.
+
 2026-10-17: 최신 owner query1회는 ordinaryUsageAllowed=true/주간14%이며 과거 차단을 보존했다. [U01b2 실행 기록](testing/codex-owner-binding-observed-20261017.json)의 새6개/2변이와 최초 오류2개를 재사용한다. quota3·binding2 PASS를 반복하지 않고 실패 fault1만 보정·재검증했다. 최종 검토·Draft PR 연결 뒤 다음 ACK/turn/result 단위로 이어간다. old six-RPC/thread-resume 재실행과 PAUSE/native D18 해제는 하지 않는다.
 
 2026-10-17 KST U01b2: PR18 고정 `780d0755378b9f95f0282ec766ca99300b2b0b53` 위에 오프라인 queue/list 관측기를 추가했다. 기존 공개 `read_intent` 한 번으로 원래 intent를 읽고, client·prompt bytes·thread·원문 hash와 완결 pagination의 유일 후보를 대조한다. 전용 임시 SQLite/독립 소스 복사본의 새4개 최초 PASS와 두 의미 변이 검출(각 FAIL1/ERROR0), 원래 UNKNOWN/raw/hash/revision 및 재개방 보존을 확인했다. 기존 PASS는 반복하지 않았다. 최종 독립 검토는 별도 근거에 기록한다. 실제 ACK 저장·turn/result·controller/scheduler 연결과 두 실제 작업 연속 실행은 미완료이며 runtime D18 보류·두 PAUSE·운영/인증정보/main/VMS 보호를 유지한다. [새 근거](testing/codex-queue-correlation-observed-20261016.json).

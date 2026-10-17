@@ -1,0 +1,236 @@
+{
+  "scope": [
+    "agent_project"
+  ],
+  "vms_project": "EXCLUDED_FROM_SELECTION_MODIFICATION_EXECUTION",
+  "overall_unattended_transition": "NOT_COMPLETE",
+  "completed_components": {
+    "fixture_config": "PR15 c862bfc6951491192a9fe98b535c9a8be921ee35;70files readback",
+    "bounded_websocket": "PR16 8c1a9c18f496ad99311ad1e976c2e00c31817747;100files readback",
+    "pure_admission": "PR17 86b8861ba5b3ea049b77937e6c00da73a4330377;64files readback;final independent PASS",
+    "pre_submission_intent_journal": "PR18 780d0755378b9f95f0282ec766ca99300b2b0b53;84files readback;final independentPASS;initial4PASS1FAIL, targeted1PASS, exact2semanticmutants; oldPASS reused",
+    "parent_auto_review": "Verified in actual new turn, same managed boundary. Needed read-only systemctl escalation completed without human Allow.",
+    "all_role_auto_review": "Parent and both role actual new turn_context auto_review; unchanged managed policy; transition-evidence/policy-confirmation-20261016-1445/result.json",
+    "offline_queue_correlation": "PR19 ddec1931eed8828cdd84ae783845729edf617fc1;97files readback;new4PASS once +2semanticmutants;final independentPASS;localobserveronly",
+    "owner_metadata_future_command": "Historical staticPASS followed by owner once execution; failed at session writer conflict. Original command withdrawn, client error omitted; original receipt22e14dee preserved."
+  },
+  "remaining_implementation": [
+    {
+      "id": "U01b2",
+      "work": "기존 controller/scheduler와 native queue의 제출 intent·ACK/응답 유실 재조회·내구성·작업 결과/검사/독립 검토·Draft PR/readback 연결",
+      "currently_implemented": "PR20 quota reader/prebinding published/readback232; ACK receipt source static PASS with new4 tests pending; actual owner-client submit/turn/result/controller remains",
+      "why_blocked_now": "Local implementation is unblocked by latest quota result and D29 PASS. Actual native controller remains pending protected owner inputs and approved provenance/correlation acceptance; scheduler PAUSE and old native D18 hold unchanged.",
+      "resume_when": "Next local ACK receipt unit with D29 prereview; no old native investigation or usage query replay."
+    }
+  ],
+  "required_external_actions": [
+    {
+      "id": "bounded_runtime_contract",
+      "who": "사용자와 현재 daemon 소유 계정 codex_shshin의 실행환경 담당",
+      "where": "기존 /home/codex_shshin/.codex/app-server-control/app-server-control.sock의 지원되는 소유 client 경로",
+      "action": "새 소유 client 초기화+사용량 조회2RPC/0retry 완료. 추가 quota/resume 조회 요청 없음. 로컬 reader/prebinding은 독립 D29 PASS 후 구현·검사 중. native ACK/turn/result의 소유 경로 연결·출처 인수는 별도 미완료.",
+      "permission_needed": "해당 기존 local endpoint의 bounded metadata만. token/auth 캐시/비밀 값이나 임의 shell/network 허용은 필요하지 않음",
+      "required_receipt": [
+        "실제 ordinaryUsageAllowed 및 현재 bucket 상태(계정/토큰 원문 제외)",
+        "세 역할의 실제 지원 설정/유효 권한·instruction source",
+        "queue ACK→turn/result의 실제 binding 및 불명 처리 계약",
+        "기존 fixed role thread와 해당 제출/turn/result의 최소 queue 조회 영수증; raw prompt/account/token 제외"
+      ],
+      "agent_will_not_run_before_renewed_scope": true,
+      "excluded_command": "/tmp/agent-unattended-runtime-websocket.py: do not execute; old script includes settings/update and is not a read-only receipt command",
+      "later_queue_contract": "Not covered by these6 metadata requests. Separate prereviewed bounded queue-list/turn binding observation needed before live controller dispatch; no queue add/start authorization inferred.",
+      "prepared_command_sha256": "7ec43e502ed7a59e61c3abfd8949df059fb9dbb2f80657fdcd93dee08f83d259",
+      "prepared_command_status": "WITHDRAWN_DO_NOT_RERUN_OR_DELETE_ORIGINAL_RECEIPT",
+      "prepared_command_review": "transition-evidence/agent-unattended-owner-metadata-final-static-review.md",
+      "prepared_command_review_sha256": "6729c6d585aec12989da01e136dcb4fb02c78eefb274dacb77980fb4bde0ae43",
+      "required_permission": "Only fixed existing Unix endpoint metadata for listed3existingthreads; no filesystem/network widening, token/cache access, settings/queue/service mutation. D18 review scope must be expressly renewed; Auto-review alone does not waive it.",
+      "status": "CURRENT_QUOTA_CONFIRMED_ALLOWED_NATIVE_CORRELATION_NOT_OBSERVED",
+      "current_live_query_limit": 0,
+      "current_live_query_time_seconds": 0,
+      "why_no_new_command": "이번 사용자 허용 조회1회는 성공으로 소진했다. 후속 native correlation 조회는 현 단위 로컬 구현에 필요 없으며 D18 hold를 자동 해제하지 않는다.",
+      "historical_command_not_current_recommendation": "/usr/bin/timeout --signal=TERM --kill-after=1s 59s python3 -B /home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner_metadata_once.py",
+      "historical_exact_metadata_requests": [
+        {
+          "method": "configRequirements/read",
+          "params": {}
+        },
+        {
+          "method": "account/rateLimits/read",
+          "params": {}
+        },
+        {
+          "method": "thread/resume",
+          "params": {
+            "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+            "excludeTurns": true
+          }
+        },
+        {
+          "method": "thread/resume",
+          "params": {
+            "threadId": "01a13fb0-1721-7af3-82e6-747eac4de411",
+            "excludeTurns": true
+          }
+        },
+        {
+          "method": "thread/resume",
+          "params": {
+            "threadId": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+            "excludeTurns": true
+          }
+        }
+      ],
+      "historical_initial_metadata_query_bound": {
+        "initialize": 1,
+        "configRequirements/read": 1,
+        "account/rateLimits/read": 1,
+        "thread/resume": {
+          "count": 3,
+          "threadIds": [
+            "01a13f12-328d-7342-b285-a0868ac66447",
+            "01a13fb0-1721-7af3-82e6-747eac4de411",
+            "01a13fb0-1abe-7623-a15e-cf07071ce54a"
+          ],
+          "excludeTurns": true
+        },
+        "rpc_requests_total": 6,
+        "notification": "initialized once",
+        "per_request_timeout_seconds": 5,
+        "total_wall_seconds": 60,
+        "retries": 0,
+        "transport_timeout_seconds": 55,
+        "external_TERM_seconds": 59,
+        "external_KILL_after_seconds": 1
+      },
+      "historical_prepared_command_scope": "6RPC+notification1 max5s/request; transport55s and externalTERM59s/KILL+1s; retries0, alias/hash receipt, no raw exception or settings/queue/service/auth-cache actions",
+      "current_recommended_requests": []
+    },
+    {
+      "id": "protected_controller_inputs",
+      "who": "개발 실행환경/기존 Codex scheduler 관리자",
+      "where": "기존 /etc/codex-agent와 /opt/codex-agent 및 전용 개발 설치/state 대상",
+      "action": "실제 신뢰 입력(설치/state 경로, 외부 승인 version/hash, UID·role binding)을 제공한다. 코드 연결과 독립 인수 전에는 현재 두 PAUSE·disabled service/timer를 유지한다. 설치/활성화 승인 요청이나 명령은 아직 준비하지 않는다.",
+      "existing_constraints": "legacy console은 아직 두 프로젝트를 허용하며 v1 runner는 never+단일 verify만 사용한다. 현재 /etc의 실행창23-07KST·cap3·두 PAUSE를 우회하면 안 됨. 등록과 dispatch 양쪽의 agent_project 제한이 필요.",
+      "permission_needed": "현재는 대상과 신뢰 설정 입력 제공. 향후 검토된 정확한 /etc·/opt delta 설치는 관리자 범위에서 별도 수행",
+      "not_requested_now": [
+        "main 병합/보호 설정 변경",
+        "Docker/운영 DB/인증정보 변경",
+        "자동 충전·구매·유료 API 전환",
+        "미검토 controller 설치/기존 PAUSE 해제"
+      ]
+    }
+  ],
+  "safe_check_command": "python3 -B /home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/check_checkpoint.py",
+  "safe_check_scope": "저장된 결과와 선택된 현재 turn metadata만 읽음. socket 호출·설정/DB 직접쓰기·비밀 값 출력 없음.",
+  "not_verified": [
+    "native 역할/OS 격리·사용량·합산 제어의 실제 인수",
+    "실제 controller와 queue/ACK/결과 연결 인수",
+    "완전한 개발 작업2개의 사람 추가 지시/Allow 없는 순차 완료"
+  ],
+  "rules_kept": [
+    "원본11개 변경/최초 오류/기존 PASS 보존",
+    "standalone sandbox 조사 소진 보류",
+    "새로 부여한 queue 명령은 고정 프로젝트·기존 role thread로만 제한",
+    "운영·인증정보·결제·main 승인 조건 유지"
+  ],
+  "independent_offline_work": {
+    "status": "ACK_UNIT_D29_AND_SOURCE_STATIC_PASS_NEW_TESTS_ACTIVE",
+    "additional_user_approval_required_for_completed_code": false,
+    "runtime_investigation_held": true,
+    "current_offline_diagnostic": "All six required behaviors and two semantic mutants verified; two first errors preserved",
+    "new_agent_calls": "Existing role queue resumed after fresh ordinaryUsageAllowed=true",
+    "additional_user_approval_required_for_current_code": false
+  },
+  "scheduler_current": {
+    "service": "inactive/disabled",
+    "timer": "inactive/disabled",
+    "root_pause": true,
+    "user_pause": true,
+    "status_receipt": "transition-evidence/scheduler-after-network-recovery.json",
+    "check_command": "systemctl show codex-nightly.service codex-nightly.timer -p Id -p LoadState -p ActiveState -p SubState -p UnitFileState -p MainPID",
+    "mutating_command_prepared": false,
+    "why_no_start_command": "실제 controller 연결 코드/검토/owner 입력 인수 전이며 현재 서비스는 종전 never runner와 VMS 포함 경로라 시작하면 요구 게이트를 충족하지 않는다."
+  },
+  "checkpoint": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/state.json",
+  "final_timing_receipt": "transition-evidence/intent-final-timing-receipt.json",
+  "boundaries_receipts": [
+    "transition-evidence/policy-after-network-recovery.json",
+    "transition-evidence/managed-boundaries-observed.json"
+  ],
+  "queue_status": {
+    "assigned_role_turns": "TEST_AGENT_WRITING_NEW4_REVIEWER_SOURCE_STATIC_COMPLETED",
+    "automatic_sequential_role_phases": "OBSERVED; coordinator prequeued next phase, no new human instruction/Allow",
+    "two_full_controller_development_jobs": "NOT_RUN",
+    "live_native_backlog_list": "NOT_READ_D18_HELD",
+    "receipt": "transition-evidence/final-execution-state.json",
+    "policy_confirmation": "Exactly1minimal turn each existing role completed actual auto_review and same managedboundary. Evidence policy-confirmation-20261016-1445/result.json; not2complete nativejobs or escalation/OS proof."
+  },
+  "completed_external_actions": [
+    {
+      "id": "owner_review_route",
+      "who": "현재 agent_project 세션을 소유한 Codex 앱/CLI 운영자 또는 실행환경 담당",
+      "where": "기존 test_agent 01a13fb0-1721-7af3-82e6-747eac4de411와 reviewer 01a13fb0-1abe-7623-a15e-cf07071ce54a의 소유 frontend",
+      "action": "지원되는 Permissions 제어에서 Approve for me/Auto-review를 해당 thread에만 선택하고 approval_policy=on-request와 기존 managed filesystem/network 범위를 유지. 현 소유 frontend에서 공식 handoff가 필요하면 그것을 사용; lock 파일 삭제·강제 fork·전체 접근은 사용하지 않음.",
+      "observed_block": "Resolved by owning frontend setting; exactly one confirmation per child completed auto_review; same boundary SHA",
+      "permission_needed": "해당 프로젝트 thread reviewer 경로 변경/소유권 인계만. 디스크·네트워크·운영 권한 확대 없음",
+      "required_receipt": "새 실제 turn의 approvals_reviewer=auto_review와 기존 동일 boundary hash/권한 profile. 설정값만으로 자동 승인/두 작업 인수를 PASS로 표시하지 않음",
+      "verification_command": "python3 -B /home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/check_checkpoint.py",
+      "command_limit": "현재 소유 frontend에서 해당 두 thread의 지원되는 Permissions→Approve for me/Auto-review를 적용해야 한다. 확인된 CLI remote override 명령은 없으며 기존 실패 명령을 재시도하지 않는다.",
+      "status": "COMPLETE_ACTUAL_TURNS_VERIFIED",
+      "evidence": "transition-evidence/policy-confirmation-20261016-1445/result.json"
+    }
+  ],
+  "current_owner_execution": {
+    "status": "PARTIAL_STOPPED_ACTIVE_WRITER_CONFLICT",
+    "receipt_sha256": "22e14deebb25db329fb0ebef6b22659167d2ffe06d3cbaeddd90b2fbc6a430bc",
+    "evidence": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-run-analysis-20261017/observed.json",
+    "new_queries_for_root_cause": 0,
+    "old_six_call_command_withdrawn": true,
+    "lock_or_owner_frontend_mutation_requested": false,
+    "observation_scope": "HISTORICAL_OLD_SIX_RPC_ATTEMPT_NOT_CURRENT_QUOTA"
+  },
+  "usage_hold": {
+    "status": "CLEARED_BY_NEW_OWNER_QUERY",
+    "ordinaryUsageAllowed": true,
+    "weekly_used_percent": 14,
+    "observed_unix": 1792198621,
+    "receipt": "transition-evidence/quota-read-once-20261017.json",
+    "receipt_sha256": "57a25a332bf29dfe3eabaee2817a1be5d75dd8114177b6a82bac8d51a9e0825c",
+    "retries": 0,
+    "new_rpc_requests": 2,
+    "thread_operations": 0,
+    "previous_block_preserved": true
+  },
+  "current_live_query_limit": 0,
+  "current_recommended_requests": [],
+  "latest_quota_query": {
+    "status": "COMPLETED_ONCE_ALLOWED",
+    "receipt": "transition-evidence/quota-read-once-20261017.json",
+    "no_retry": true,
+    "additional_quota_query_authorized": false,
+    "ordinaryUsageAllowed": true,
+    "observation_is_not_fresh_native_admission": true
+  },
+  "historical_usage_observations": [
+    {
+      "ordinaryUsageAllowed": false,
+      "weekly_used_percent": 100,
+      "receipt_observed_utc": "2026-10-17T00:40:28+00:00",
+      "reset_utc": "2026-10-22T06:12:59Z",
+      "reset_kst": "2026-10-22T15:12:59+09:00",
+      "status": "WAIT_RESET_AND_EXPLICIT_RESUME_ELIGIBILITY",
+      "auto_purchase_api_fallback": false,
+      "new_role_or_job_dispatches": 0,
+      "reset_time_alone_not_permission_to_resume": true,
+      "no_new_RPC_current_turn": true
+    }
+  ],
+  "current_unit": {
+    "id": "U01b2_DURABLE_QUEUE_RECEIPTS",
+    "state": "SOURCE_STATIC_PASS_NEW_TESTS_WRITING",
+    "base_commit": "aef3af98d1bbc9037f1b75906e0217844bb5bd1d",
+    "deadline_utc": "2026-10-17T02:50:11.827731Z",
+    "native_calls": 0,
+    "old_passes_repeated": false
+  }
+}

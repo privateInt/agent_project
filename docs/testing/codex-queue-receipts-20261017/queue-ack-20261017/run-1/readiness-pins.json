@@ -1,0 +1,13 @@
+{
+  "status": "TESTS_READY",
+  "test_sha256": "730b8118103263175fbee94d30fde2fff5b5ae98d6b653e93f8da93db688fbf3",
+  "runner_sha256": "aa17d7ed3547024ba816295a95dcd412d05153fde53304b7a48c786461ea6ff4",
+  "tests_ready_sha256": "74a2f1e2013c97aa5c79c95634254d5f54b5bfb4bb4b9fd0e9f18c42f18077b1",
+  "static_checks_sha256": "fa5fb257b96b376f606c2a5754fc3b085d70e0a1fd0f9217cb8d253f8d5c79be",
+  "new_test_patch_sha256": "d7c1afd95442a5c72e8d97aee4acb6db994628a2709c327b671facdc566c309a",
+  "preexecution_construction_diff_sha256": "dc8e1240b93a5d66be99bff14c0e700e265ba93e87137b917af5afc824b86fb9",
+  "deadline_utc": "2026-10-17T02:50:11.827731Z",
+  "tests_executed": 0,
+  "source_ready_received": false,
+  "execution_authorized_now": false
+}
