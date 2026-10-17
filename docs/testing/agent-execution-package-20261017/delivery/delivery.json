@@ -1,0 +1,14 @@
+{
+  "bundle": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/agent-execution-deliveries/build/20261017/package-82477695d924/bundle",
+  "target_base": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/runtime-candidate/pr23-314622f0ef1a",
+  "code_version": "82477695d924e71221310204d4bd4dc987fd73bf",
+  "expected_uid": 1011,
+  "manifest_sha256": "3546b7163f32fc2a087c8a80829ff6afe1e2e6af091bd8749fded6b7ee9b88d6",
+  "launcher_sha256": "54ed5d524d1dd6acc470a2bbc52671079cd77ee4579d40605ab0ca1de477f4cc",
+  "files": 23,
+  "development_launcher": false,
+  "temporary_fixture": false,
+  "state_created": false,
+  "native_dispatch": false,
+  "owner_approval_verified": false
+}

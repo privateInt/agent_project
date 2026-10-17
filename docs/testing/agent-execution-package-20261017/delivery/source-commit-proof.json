@@ -1,0 +1,10 @@
+{
+  "commit": "82477695d924e71221310204d4bd4dc987fd73bf",
+  "raw_git_hash_verified": true,
+  "author_zone": "+0900",
+  "committer_zone": "+0900",
+  "message_trailing_newline": false,
+  "first_error": "UTC+newline-only reconstruction hash mismatch; no ref update occurred",
+  "correction": "reused existing persist_unit_publication.py supported canonical variants offline",
+  "commit_creation_schema_error": "parents field rejected before mutation; corrected to required parent_sha"
+}

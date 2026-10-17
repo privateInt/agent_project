@@ -1,0 +1,157 @@
+{
+  "commit": "82477695d924e71221310204d4bd4dc987fd73bf",
+  "files_checked": 30,
+  "all_equal": true,
+  "files": [
+    {
+      "path": "src/ops/tools/agent_execution_package.py",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "src/ops/tools/build_agent_execution_package.py",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "src/ops/tools/tests/test_agent_execution_package.py",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "src/ops/tools/tests/test_agent_execution_package_exit_priority.py",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "src/ops/tools/tests/test_agent_execution_package_mutant.py",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/DB-ROLES.md",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/acceptance-summary.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/evidence-provenance.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/execution-environment.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/final-review-initial.md",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/final-review.md",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/local-edit-error.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/mutant-first.txt",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/mutant-result.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/mutant-witness.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/normal-first.txt",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/plan-review.md",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/preexecution-review-initial.md",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/preexecution-review.md",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/priority-first.txt",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/priority-preexecution-review.md",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/priority-result.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/priority-summary.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/queue-contract-evidence.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/remaining-actions.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/source-pins-v3.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/source-pins.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/source-review-initial.md",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/staging-first-error.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    },
+    {
+      "path": "docs/testing/agent-execution-package-20261017/whitespace-first.json",
+      "bytes_match": true,
+      "commit": "82477695d924e71221310204d4bd4dc987fd73bf"
+    }
+  ]
+}
