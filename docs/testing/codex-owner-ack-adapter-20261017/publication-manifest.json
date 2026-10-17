@@ -1,0 +1,595 @@
+{
+  "parent_commit": "7806daca6bf48c220f7bcd228d1140ef79c2b230",
+  "fixture_only": true,
+  "actual_runtime_transition": "NOT_COMPLETE",
+  "main_merged": false,
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-owner-ack-adapter-20261017/review/final-review.md",
+    "sha256": "4ba79141b6813f2a02c245a70a68eb9f84110eb7b2efb84debec081c0d1defdb"
+  },
+  "raw_byte_retention": "Historical code/logs receive .txt suffix only; original bytes and paths are retained in mapping.",
+  "final_whole_suite_repeated": false,
+  "files": {
+    "src/ops/tools/codex_unattended_owner_ack_adapter.py": {
+      "sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+      "source": "src/ops/tools/codex_unattended_owner_ack_adapter.py"
+    },
+    "src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py": {
+      "sha256": "738e83cda5e141edae8a626b4741ffda6c214711089d9c15f80f0b45241cc988",
+      "source": "src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-observed-20261017.json": {
+      "sha256": "879bf39f4a2ebde30ae6156614cd457485a25d27c88dd61258526b17909ea7ff",
+      "source": "docs/testing/codex-owner-ack-adapter-observed-20261017.json"
+    },
+    "docs/development.md": {
+      "sha256": "4f7b44f985e4b2d6e84f1483471dcb15d5c790ea10cec1965678d59177bb64a9",
+      "source": "docs/development.md"
+    },
+    "docs/status.md": {
+      "sha256": "892ec8716ca5ab7b85936db7d035b585ae59b43b69b4a454405689447882f1d3",
+      "source": "docs/status.md"
+    },
+    "docs/roadmap.md": {
+      "sha256": "00b0ead56aa666e5e5e4dccbde91510b1a1791c096ee402b5b01efdf660e6598",
+      "source": "docs/roadmap.md"
+    },
+    "docs/HANDOFF_NEXT_SESSION.md": {
+      "sha256": "c8535202e915bdcf6245bee8da8c03151bd1f519dd4c4ab4052232f80195abdf",
+      "source": "docs/HANDOFF_NEXT_SESSION.md"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/ThreadQueueAddResponse.json": {
+      "sha256": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/ThreadQueueAddResponse.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/manifest.json": {
+      "sha256": "e49259add137df580029e786f46313997a75f6429b316d5f451acd45d1b18bcd",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/manifest.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/synthetic.json": {
+      "sha256": "6002b752fac6c02dc60a1a4d17f053cd940aa4b16049d1e30a68eb1836322202",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/synthetic.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/observed-before-final-review.json": {
+      "sha256": "39e8f2df6b4e7b882816fa095ec2285e33f1fc84bdc4e4eacdb9b02aba556941",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/codex-owner-ack-adapter-20261017-observed-before-final-review.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/authoring-command-errors.json": {
+      "sha256": "3bf15d56716ba6bd353081a1673d42a7e756b3733e7ea51a2102becbdd79c5d1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/authoring-command-errors.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/check_checkpoint.py-before-owner-adapter.txt": {
+      "sha256": "b5ceb3a6bfffb3f94e0ec32b65dd1ff097f33589cf3943fa448ede6c9e110878",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/check_checkpoint.py-before-owner-adapter.txt"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/check_checkpoint.py-config-only.diff": {
+      "sha256": "8ba3e503e0735a3c488c820d82151c4c9ef7fadea457aee8cef048f2c284617b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/check_checkpoint.py-config-only.diff"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/checkpoint-after-execution.json": {
+      "sha256": "4dbcdcb2598b530de3b079dbee2eabbd8c5dfbf5e8c33498697c4d1660283da5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/checkpoint-after-execution.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/coordinator-execution-attempt.json": {
+      "sha256": "9e9ba577c068004e5f4ea4e43e055fcb85ceeb111116aa4c578d4a295dd819cc",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/coordinator-execution-attempt.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/error-key-builtin-diagnostic.json": {
+      "sha256": "2703907239ed843836bf3b1bff37bfbfec9d84f10f415f082d2cc0e7122ae931",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/error-key-builtin-diagnostic.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/execute-and-checkpoint-once.py.txt": {
+      "sha256": "a68204297b1b767d5b4466d8decdbd53c8af976c173c68aa8516c0c640c96b0d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/execute-and-checkpoint-once.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/execution-checkpoint.json": {
+      "sha256": "d52fd1d9d1b4ac62177515e1f092aab5cc37b4a0255e22df798396f1ea5ea222",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/execution-checkpoint.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/final-review-completed.json": {
+      "sha256": "162adf927bf415d90245db2e4be7c03e01313f3e4cd512665622c3fe1a008bd7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/final-review-completed.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/frozen-plan-v1.md": {
+      "sha256": "483a2ffcedbf6cb12ad524496dd018768e735e64d189b6f48e25d56876bd97bc",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/frozen-plan-v1.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/frozen-plan-v2.md": {
+      "sha256": "52144e10edda70a96a25989a13bdc96d0069a5bce1d0cfab35e667a903a6d995",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/frozen-plan-v2.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/frozen-plan-v3.md": {
+      "sha256": "896b50320eedce867dc2aee90b0744ff58b6307811e3fccf8cef55250e7b0849",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/frozen-plan-v3.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/implementation-plan-review.md": {
+      "sha256": "7a37efe4f262cc81f234cc67b439b838ea63b2ef2bfb06756b0945fd672977de",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/implementation-plan-review.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/implementation-plan-v3-delta-review.md": {
+      "sha256": "8c761f48a19ab21fff8dc1b80c9b23753e8bc48eb244c44b78e8150cddd9cf63",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/implementation-plan-v3-delta-review.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/implementation-start.json": {
+      "sha256": "f28a0b32bab2dd4de3fe6f58de356c9052c45ba0da380482dcd2772e0a87e644",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/implementation-start.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/initial-static-read-observation.json": {
+      "sha256": "619bf6d98cf4c34ec63384d75863e1953bdc05671d7c83af8c7e79af6c2279f8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/initial-static-read-observation.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/observed-before-execution.json": {
+      "sha256": "ec2034a9fd3157188899f923e3287c261cfb4dde5fb7df7ab98d6260fdd7403d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/observed-before-execution.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/package_unit.py-before-owner-adapter.txt": {
+      "sha256": "1e5938e8b6d8ff139c511f58e2130f3692aa75e26b3bd028eea2cee16e2cc31f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/package_unit.py-before-owner-adapter.txt"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/package_unit.py-config-only.diff": {
+      "sha256": "d6d8ff271be439ebf0d1e8a6adc7f463de4fd10568867b24fd389b91a11993d1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/package_unit.py-config-only.diff"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/parent-preexecution-comparison.json": {
+      "sha256": "2a5c2c916da598938536a87746691d744b537533fdb74c495fa3926c4a45632e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/parent-preexecution-comparison.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/persist_unit_publication.py-before-owner-adapter.txt": {
+      "sha256": "90dd809da52968c5a27b86c0fb6b74c0759c7b5fec7789918ebe9f5c8a4c5fa3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/persist_unit_publication.py-before-owner-adapter.txt"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/persist_unit_publication.py-config-only.diff": {
+      "sha256": "ff2adf870ecab706bc7e7ebf6fc5dc25e89e55583cce62e23a6ac13968b94d78",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/persist_unit_publication.py-config-only.diff"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/preimplementation-error-key-finding.json": {
+      "sha256": "3143388fb46c98bb18a0d265e53d9e07098104b95c6262291c0075840c8b384a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/preimplementation-error-key-finding.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/preimplementation-plan-correction.json": {
+      "sha256": "5d7d2280c89d38efccf1f4edce7d7e68afcfce73ec9427b7b8ceb18806ab7ed4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/preimplementation-plan-correction.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/preservation-after-verification.json": {
+      "sha256": "a5e82700b928b5fc5dfba3546e683945fc376c9073874a3fde595b21535c42e5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/preservation-after-verification.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/publication-base-check.json": {
+      "sha256": "a61d2faae57f0c63bafc3cbe250e12b021ced7cc352990fc256191e245b3fefe",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/publication-base-check.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/publication-final-base-check.json": {
+      "sha256": "e50a0dae118238234529985c7664c42fd682403ecdc6f22c090138650eb0ba29",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/publication-final-base-check.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/publication-helper-extension-audit.json": {
+      "sha256": "4dca417de5c015968bf16c92d02b02cd780dceb30b7b9577c2f72120d0151dc6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/publication-helper-extension-audit.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/review-plan.md": {
+      "sha256": "896b50320eedce867dc2aee90b0744ff58b6307811e3fccf8cef55250e7b0849",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/review-plan.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_DUAL/command.json": {
+      "sha256": "2e6ff93bee6a7224c64d86d1af28769dc3cb0f523d84c3e4686c8dd88ca9914f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_DUAL/command.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_DUAL/first.log.txt": {
+      "sha256": "0eb43fc26e902c6207e585a1e3a61eb712ae7a79063a7db8ca0abe7296ebfa20",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_DUAL/first.log"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_DUAL/mutated-source.py.txt": {
+      "sha256": "37cd4953b8d7cbab572ad1638b3832598afccaf28d3665b499276f4099589c13",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_DUAL/mutated-source.py.txt"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_DUAL/process.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_DUAL/process.log"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_DUAL/result.json": {
+      "sha256": "b6bdde40d0f96b2361a71e5491edcaada796ac463dcc6b00a0af3a177e8d09db",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_DUAL/result.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_DUAL/source-copy-pins.json": {
+      "sha256": "115677c401eeeb1f97a515b4a605946088fcc82d7d572e8f330a3b147cce9618",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_DUAL/source-copy-pins.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_UTF8CAP/command.json": {
+      "sha256": "31176a328de60c609615c8d57a4c7dd9177c5cde5bb21ce6272e3aa928ad2e87",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_UTF8CAP/command.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_UTF8CAP/first.log.txt": {
+      "sha256": "9509eba5187f3bb18b9eed2fd5efd3c4ac6e7a9a51e84e4b21b4672e18bf9ba7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_UTF8CAP/first.log"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_UTF8CAP/mutated-source.py.txt": {
+      "sha256": "bf2012a6c466e5ca2135e411b5d643528b9912b6a7586180161bcb942c4b9844",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_UTF8CAP/mutated-source.py.txt"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_UTF8CAP/process.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_UTF8CAP/process.log"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_UTF8CAP/result.json": {
+      "sha256": "79b1834c893467874ee55db7dfe92472e09625dd902ada9461fc3f875d028423",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_UTF8CAP/result.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/M_UTF8CAP/source-copy-pins.json": {
+      "sha256": "9102b794eafbd681e0f720fddecee5f51ccd90d736d5e18f281ce3669df6b8e0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_UTF8CAP/source-copy-pins.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/frozen-plan-v3.md": {
+      "sha256": "896b50320eedce867dc2aee90b0744ff58b6307811e3fccf8cef55250e7b0849",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/frozen-plan-v3.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/implementation-plan-review.md": {
+      "sha256": "7a37efe4f262cc81f234cc67b439b838ea63b2ef2bfb06756b0945fd672977de",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/implementation-plan-review.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/implementation-plan-v3-delta-review.md": {
+      "sha256": "8c761f48a19ab21fff8dc1b80c9b23753e8bc48eb244c44b78e8150cddd9cf63",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/implementation-plan-v3-delta-review.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/implementation-start.json": {
+      "sha256": "f28a0b32bab2dd4de3fe6f58de356c9052c45ba0da380482dcd2772e0a87e644",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/implementation-start.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/review-plan.md": {
+      "sha256": "896b50320eedce867dc2aee90b0744ff58b6307811e3fccf8cef55250e7b0849",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/review-plan.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/run-1/authoring-environment.json": {
+      "sha256": "d226acc3d92ccaff15feea25d361d3063ec5610e464840586c63783746dd4e97",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/run-1/authoring-environment.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/run-1/guard-snapshot.json": {
+      "sha256": "929c5673bca6e1402e142ffc47bf708eef04adf5a1d565970398ca7f0071fb70",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/run-1/guard-snapshot.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/run-1/static-authoring-checks.json": {
+      "sha256": "4362023c8f6850ed9179153a3f014fd488fc2b166e8bc0e62fdc7d153e8de93f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/run-1/static-authoring-checks.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/source-ready.json": {
+      "sha256": "755003a560554d5bd6bd50883822e743590c9834489808bf8c1f323932b39776",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/source-ready.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/source-static-review.md": {
+      "sha256": "cf304541e899de57b2d681e63cf13f32ba7f70b6bc60f8e30360620569a617e5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/source-static-review.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/unit-budget.json": {
+      "sha256": "3e2ee7e6e0c0466a7e8cebdd2da2a80460d74658aaad64e4f74ca15a26302db8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/evidence/unit-budget.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/run-once.py.txt": {
+      "sha256": "7f721389764e16571ed8605ec166f9f7229c5921ebfea6e9e4d887b8667e0029",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/run-once.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/__init__.py.txt": {
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/__init__.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/__init__.py.txt": {
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/__init__.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_intent_journal.py.txt": {
+      "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_owner_ack_adapter.py.txt": {
+      "sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_owner_ack_adapter.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_queue_observer.py.txt": {
+      "sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_queue_observer.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_queue_receipts.py.txt": {
+      "sha256": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_queue_receipts.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_quota_reader.py.txt": {
+      "sha256": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_quota_reader.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_submission_binding.py.txt": {
+      "sha256": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/codex_unattended_submission_binding.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/github_check_audit.py.txt": {
+      "sha256": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/github_check_audit.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/github_fixture_collector.py.txt": {
+      "sha256": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/github_fixture_collector.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/github_fixture_ledger.py.txt": {
+      "sha256": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/github_fixture_ledger.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/ThreadQueueAddResponse.json": {
+      "sha256": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/ThreadQueueAddResponse.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/manifest.json": {
+      "sha256": "e49259add137df580029e786f46313997a75f6429b316d5f451acd45d1b18bcd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/manifest.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/synthetic.json": {
+      "sha256": "6002b752fac6c02dc60a1a4d17f053cd940aa4b16049d1e30a68eb1836322202",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/synthetic.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_intent_journal.py.txt": {
+      "sha256": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py.txt": {
+      "sha256": "738e83cda5e141edae8a626b4741ffda6c214711089d9c15f80f0b45241cc988",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_queue_receipts.py.txt": {
+      "sha256": "730b8118103263175fbee94d30fde2fff5b5ae98d6b653e93f8da93db688fbf3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_queue_receipts.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_quota_reader.py.txt": {
+      "sha256": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_quota_reader.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_submission_binding.py.txt": {
+      "sha256": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/src/ops/tools/tests/test_codex_unattended_submission_binding.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authored-snapshot/tests-ready.json": {
+      "sha256": "c297f45ed2553873dd0f8fd0999c0cf87ccb5479825886f8cc7371139dd871dd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authored-snapshot/tests-ready.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authoring-artifact-pins.json": {
+      "sha256": "addc301ca0ded7135c726eed96385dfadb91421de75322441917cdd74599c457",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authoring-artifact-pins.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/authoring-environment.json": {
+      "sha256": "d226acc3d92ccaff15feea25d361d3063ec5610e464840586c63783746dd4e97",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/authoring-environment.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/coordinator-process.stderr.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/coordinator-process.stderr.log"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/coordinator-process.stdout.log.txt": {
+      "sha256": "fb9192f5b548564180387a166f10b5b22603786deb8c2176d5bec311806ea1e9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/coordinator-process.stdout.log"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/environment.json": {
+      "sha256": "b821c60d8847ed5f0367345fa437847536e75313bdd0746f1d12efa1f9c4fe1d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/environment.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/execution-attempt.json": {
+      "sha256": "e969198ea78a759be5a7f1fe177cb69c7e25a543cbe1c7931bf701e6372aacd4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/execution-attempt.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/guard-snapshot.json": {
+      "sha256": "929c5673bca6e1402e142ffc47bf708eef04adf5a1d565970398ca7f0071fb70",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/guard-snapshot.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/frozen-plan-v3.md": {
+      "sha256": "896b50320eedce867dc2aee90b0744ff58b6307811e3fccf8cef55250e7b0849",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/frozen-plan-v3.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/implementation-plan-review.md": {
+      "sha256": "7a37efe4f262cc81f234cc67b439b838ea63b2ef2bfb06756b0945fd672977de",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/implementation-plan-review.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/implementation-plan-v3-delta-review.md": {
+      "sha256": "8c761f48a19ab21fff8dc1b80c9b23753e8bc48eb244c44b78e8150cddd9cf63",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/implementation-plan-v3-delta-review.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/implementation-start.json": {
+      "sha256": "f28a0b32bab2dd4de3fe6f58de356c9052c45ba0da380482dcd2772e0a87e644",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/implementation-start.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/review-plan.md": {
+      "sha256": "896b50320eedce867dc2aee90b0744ff58b6307811e3fccf8cef55250e7b0849",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/review-plan.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/run-1/authoring-environment.json": {
+      "sha256": "d226acc3d92ccaff15feea25d361d3063ec5610e464840586c63783746dd4e97",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/run-1/authoring-environment.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/run-1/guard-snapshot.json": {
+      "sha256": "929c5673bca6e1402e142ffc47bf708eef04adf5a1d565970398ca7f0071fb70",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/run-1/guard-snapshot.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/run-1/static-authoring-checks.json": {
+      "sha256": "4362023c8f6850ed9179153a3f014fd488fc2b166e8bc0e62fdc7d153e8de93f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/run-1/static-authoring-checks.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/source-ready.json": {
+      "sha256": "755003a560554d5bd6bd50883822e743590c9834489808bf8c1f323932b39776",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/source-ready.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/source-static-review.md": {
+      "sha256": "cf304541e899de57b2d681e63cf13f32ba7f70b6bc60f8e30360620569a617e5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/source-static-review.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/unit-budget.json": {
+      "sha256": "3e2ee7e6e0c0466a7e8cebdd2da2a80460d74658aaad64e4f74ca15a26302db8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/evidence/unit-budget.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/run-once.py.txt": {
+      "sha256": "7f721389764e16571ed8605ec166f9f7229c5921ebfea6e9e4d887b8667e0029",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/run-once.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/__init__.py.txt": {
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/__init__.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/__init__.py.txt": {
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/__init__.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_intent_journal.py.txt": {
+      "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_owner_ack_adapter.py.txt": {
+      "sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_owner_ack_adapter.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_queue_observer.py.txt": {
+      "sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_queue_observer.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_queue_receipts.py.txt": {
+      "sha256": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_queue_receipts.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_quota_reader.py.txt": {
+      "sha256": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_quota_reader.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_submission_binding.py.txt": {
+      "sha256": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_submission_binding.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/github_check_audit.py.txt": {
+      "sha256": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/github_check_audit.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/github_fixture_collector.py.txt": {
+      "sha256": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/github_fixture_collector.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/github_fixture_ledger.py.txt": {
+      "sha256": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/github_fixture_ledger.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/ThreadQueueAddResponse.json": {
+      "sha256": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/ThreadQueueAddResponse.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/manifest.json": {
+      "sha256": "e49259add137df580029e786f46313997a75f6429b316d5f451acd45d1b18bcd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/manifest.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/synthetic.json": {
+      "sha256": "6002b752fac6c02dc60a1a4d17f053cd940aa4b16049d1e30a68eb1836322202",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_owner_ack_adapter/synthetic.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_intent_journal.py.txt": {
+      "sha256": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py.txt": {
+      "sha256": "738e83cda5e141edae8a626b4741ffda6c214711089d9c15f80f0b45241cc988",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_queue_receipts.py.txt": {
+      "sha256": "730b8118103263175fbee94d30fde2fff5b5ae98d6b653e93f8da93db688fbf3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_queue_receipts.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_quota_reader.py.txt": {
+      "sha256": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_quota_reader.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_submission_binding.py.txt": {
+      "sha256": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_submission_binding.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/initial-snapshot/tests-ready.json": {
+      "sha256": "c297f45ed2553873dd0f8fd0999c0cf87ccb5479825886f8cc7371139dd871dd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/initial-snapshot/tests-ready.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/mutation-ast-audits.json": {
+      "sha256": "c907e9cdfdc297847bc52fe262c8474d68a490659b61bb131df02feb5aa7fe69",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/mutation-ast-audits.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/normal/command.json": {
+      "sha256": "45190907404f1176033997c55e14d54a25a8f905e8b42fc75ec25d0f740fbec7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/normal/command.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/normal/first.log.txt": {
+      "sha256": "ee5879cacfff96ff6f43a64452816c06f2207a44040c94bf7c47fd8ac7a3e7c9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/normal/first.log"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/normal/process.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/normal/process.log"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/normal/result.json": {
+      "sha256": "d82af22a67b41caed04235e98dc177849af505e356653896967f60636659384f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/normal/result.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/normal/source-copy-pins.json": {
+      "sha256": "65fbcca468dd2410ab1e39a40e87748607da95e37c47984d20b9072c70069765",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/normal/source-copy-pins.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/result.json": {
+      "sha256": "745104895dedd539430cdd5a49d7e33e01664b081946eaf9716a2baa1f5e8665",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/result.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/run-once.py.txt": {
+      "sha256": "7f721389764e16571ed8605ec166f9f7229c5921ebfea6e9e4d887b8667e0029",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/run-once.py"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/static-authoring-checks.json": {
+      "sha256": "4362023c8f6850ed9179153a3f014fd488fc2b166e8bc0e62fdc7d153e8de93f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/static-authoring-checks.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/test-authoring-history.json": {
+      "sha256": "b7921c1936cddc63dcb772debc49a93716fb76386e092d24210c2f3a4c7f83b9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/test-authoring-history.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/test-authoring-initial.py.txt": {
+      "sha256": "ebc040897f68c980622cb901ebca4957cbdf2c52aa5d6e36cf2bb90cfa0f8f3f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/test-authoring-initial.py.txt"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/test-authoring.diff": {
+      "sha256": "33a12d815b4783e02a88eb9aa51b581453194a636f24bf844ec964964406b970",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/test-authoring.diff"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/test-new-file.diff": {
+      "sha256": "e01e26c69370594396df67187d7b3c075ecac2a619cb6e8e77a554f3067501d7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/test-new-file.diff"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/test-writing-inputs.json": {
+      "sha256": "d79304d03e9991b129808fb8312fecfa10a1854878b21b1bfeb6404fed6ccecc",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/test-writing-inputs.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/run-1/tests-ready.json": {
+      "sha256": "c297f45ed2553873dd0f8fd0999c0cf87ccb5479825886f8cc7371139dd871dd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/tests-ready.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/source-before-static-review.py.txt": {
+      "sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/source-before-static-review.py.txt"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/source-ready.json": {
+      "sha256": "755003a560554d5bd6bd50883822e743590c9834489808bf8c1f323932b39776",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/source-ready.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/source-static-review.md": {
+      "sha256": "cf304541e899de57b2d681e63cf13f32ba7f70b6bc60f8e30360620569a617e5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/source-static-review.md"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/test-authoring-before-ready-parent-read.py.txt": {
+      "sha256": "e248eddace237c42b5dec5f2874b4a889fbcdf1e53b1fdb0f5ccc2453e6fda0c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/test-authoring-before-ready-parent-read.py.txt"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/test-authoring-parent-read.json": {
+      "sha256": "91eadd68c2cfee6cb4d5dfd1fbdce15755602589c99504c5846c7ee88ad691e6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/test-authoring-parent-read.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/owner-ack-adapter-20261017/unit-budget.json": {
+      "sha256": "3e2ee7e6e0c0466a7e8cebdd2da2a80460d74658aaad64e4f74ca15a26302db8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/unit-budget.json"
+    },
+    "docs/testing/codex-owner-ack-adapter-20261017/review/final-review.md": {
+      "sha256": "4ba79141b6813f2a02c245a70a68eb9f84110eb7b2efb84debec081c0d1defdb",
+      "source": "/tmp/agent-unattended-owner-ack-adapter-final-review.md"
+    }
+  }
+}

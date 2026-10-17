@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-17T02:51:54.707684+00:00",
+  "sha256": "e248eddace237c42b5dec5f2874b4a889fbcdf1e53b1fdb0f5ccc2453e6fda0c",
+  "bytes": 27266,
+  "authoring_in_progress": true,
+  "ready_file_exists": false,
+  "not_final_preexecution_review": true,
+  "product_or_tests_executed": false,
+  "note": "Parent inspected module-level fixture/invoke and then observed authoring not complete; final pin comparison deferred to TESTS_READY. This is not an executed test failure."
+}

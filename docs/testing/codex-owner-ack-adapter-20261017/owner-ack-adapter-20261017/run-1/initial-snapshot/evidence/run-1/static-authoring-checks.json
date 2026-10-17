@@ -1,0 +1,51 @@
+{
+  "kind": "STATIC_ONLY_NO_TEST_PRODUCT_IMPORT_OR_SQL",
+  "python310_ast_parse": true,
+  "exact_methods": [
+    "test_result_canonical_bounds_and_receipt_reopen",
+    "test_invalid_result_shape_utf8_and_caps",
+    "test_safe_error_absence_and_unknown_receipt",
+    "test_dual_none_and_no_io"
+  ],
+  "exact_helpers": [
+    "case_utf8_byte_cap_rejects_overlong_result",
+    "case_dual_arguments_are_rejected"
+  ],
+  "normal_helper_calls": {
+    "case_utf8_byte_cap_rejects_overlong_result": [
+      "test_invalid_result_shape_utf8_and_caps"
+    ],
+    "case_dual_arguments_are_rejected": [
+      "test_dual_none_and_no_io"
+    ]
+  },
+  "fresh_testcase_base": "unittest.TestCase",
+  "old_testcase_calls_or_inheritance_authored": false,
+  "relative_fixture_files": {
+    "synthetic.json": "6002b752fac6c02dc60a1a4d17f053cd940aa4b16049d1e30a68eb1836322202",
+    "ThreadQueueAddResponse.json": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314"
+  },
+  "original11_hashes_unchanged": true,
+  "source_and_all_legacy_support_pins_unchanged": true,
+  "frozen_v3_and_both_prereviews_verified": true,
+  "source_static_pass_sha256": "cf304541e899de57b2d681e63cf13f32ba7f70b6bc60f8e30360620569a617e5",
+  "helper_mutants": "only exact reviewed source predicates -> True; semantic FAIL1/ERROR0 and actual wrong transient bytes/hash required",
+  "wrong_db_commit_required": false,
+  "runtime_calls": 0,
+  "tests_executed": 0,
+  "project_imports": 0,
+  "portable_fixture_design": "new module-relative fixtures, minimum package/source/helper copy; no old fixture or old setup read",
+  "execution_boundaries": "driver reads pinned candidate/evidence to copy; child BaseException guard forbids original checkout,/opt/operator reads, native IO; standard library read and dedicated copy/output/tempDB only",
+  "normal_sqlite_compositions": [
+    "ACK_CANDIDATE normal",
+    "ACK_CANDIDATE maximum UTF8",
+    "UNKNOWN absence",
+    "UNKNOWN allowed RPC code",
+    "UNKNOWN unclassified"
+  ],
+  "cleanup": "dedup current reopened/original/peer connection identities; alive guard; Python3.10 authorizer lambda SQLITE_OK",
+  "D18": "HELD_UNCHANGED",
+  "scheduler_PAUSE_changed": false,
+  "deadline_utc": "2026-10-17T03:32:19.107024Z",
+  "clock_reset": false
+}

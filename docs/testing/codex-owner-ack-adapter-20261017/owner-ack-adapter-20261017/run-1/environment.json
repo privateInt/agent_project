@@ -1,0 +1,20 @@
+{
+  "python": "3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0]",
+  "sqlite": "3.37.2",
+  "executable": "/usr/bin/python3",
+  "declared_turn_metadata_at_authoring": {
+    "sandbox_mode": "workspace-write",
+    "approvals_reviewer": "auto_review",
+    "network_access": "restricted",
+    "approval_policy": "NOT_EXPOSED_IN_CURRENT_TURN_CONTEXT",
+    "origin": "developer permissions and current environment declarations only",
+    "permission_changes": 0,
+    "permission_probes": 0
+  },
+  "D18": "HELD",
+  "PAUSE_changed": false,
+  "permission_probes": 0,
+  "deadline_utc": "2026-10-17T03:32:19.107024+00:00",
+  "clock_reset": false,
+  "old_passes_rerun": false
+}

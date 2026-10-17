@@ -1,0 +1,1 @@
+PASS normal4 + exact2 semantic FAIL1/ERROR0 wrong-prepared helpers; evidence=/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1

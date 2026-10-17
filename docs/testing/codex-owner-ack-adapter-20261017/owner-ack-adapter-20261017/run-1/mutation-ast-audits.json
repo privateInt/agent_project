@@ -1,0 +1,22 @@
+{
+  "M_UTF8CAP": {
+    "source_sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+    "mutated_source_sha256": "bf2012a6c466e5ca2135e411b5d643528b9912b6a7586180161bcb942c4b9844",
+    "target_count": 1,
+    "before_expression": "len(text_utf8) <= 16384",
+    "after_expression": "True",
+    "line": 72,
+    "other_ast_equal": true,
+    "other_bytes_equal": true
+  },
+  "M_DUAL": {
+    "source_sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+    "mutated_source_sha256": "37cd4953b8d7cbab572ad1638b3832598afccaf28d3665b499276f4099589c13",
+    "target_count": 1,
+    "before_expression": "not (has_result and has_error)",
+    "after_expression": "True",
+    "line": 115,
+    "other_ast_equal": true,
+    "other_bytes_equal": true
+  }
+}

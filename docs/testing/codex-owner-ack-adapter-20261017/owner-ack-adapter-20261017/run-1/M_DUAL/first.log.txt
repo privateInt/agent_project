@@ -1,0 +1,21 @@
+unittest.case.FunctionTestCase (case_dual_arguments_are_rejected)
+M_DUAL.case_dual_arguments_are_rejected ... FAIL
+
+======================================================================
+FAIL: unittest.case.FunctionTestCase (case_dual_arguments_are_rejected)
+M_DUAL.case_dual_arguments_are_rejected
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/owner-ack-adapter-portable-M_DUAL-_49ux74x/minimal-source/src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py", line 359, in case_dual_arguments_are_rejected
+    self.invoke(decoded_result=value, call_error=Exception(PRIVATE), reason="INPUTS_MUTUALLY_EXCLUSIVE")
+  File "/tmp/owner-ack-adapter-portable-M_DUAL-_49ux74x/minimal-source/src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py", line 272, in invoke
+    self.assertEqual(reason, report["reason"])
+AssertionError: 'INPUTS_MUTUALLY_EXCLUSIVE' != 'ACK_RESULT_PREPARED'
+- INPUTS_MUTUALLY_EXCLUSIVE
++ ACK_RESULT_PREPARED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=1)

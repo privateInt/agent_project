@@ -1,0 +1,20 @@
+--- package_unit.py-before
++++ package_unit.py-after
+@@ -9,6 +9,17 @@
+ ROOT = Path(__file__).resolve().parent
+ PARENT = 'c862bfc6951491192a9fe98b535c9a8be921ee35'
+ SETTINGS = {
++    'owner_adapter': {
++        'parent': '7806daca6bf48c220f7bcd228d1140ef79c2b230',
++        'workspace': 'owner-ack-adapter-development',
++        'module': 'codex_unattended_owner_ack_adapter',
++        'prefix': 'codex-owner-ack-adapter-20261017',
++        'summary_name': 'docs/testing/codex-owner-ack-adapter-observed-20261017.json',
++        'review': '/tmp/agent-unattended-owner-ack-adapter-final-review.md',
++        'families': ['owner-ack-adapter-20261017'],
++        'records': [],
++        'reviews': [],
++    },
+     'ack': {
+         'parent': 'aef3af98d1bbc9037f1b75906e0217844bb5bd1d',
+         'workspace': 'ack-development',

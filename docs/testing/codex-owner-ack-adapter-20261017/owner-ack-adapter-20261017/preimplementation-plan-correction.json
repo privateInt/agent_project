@@ -1,0 +1,6 @@
+{
+  "v1_sha256": "483a2ffcedbf6cb12ad524496dd018768e735e64d189b6f48e25d56876bd97bc",
+  "v2_sha256": "52144e10edda70a96a25989a13bdc96d0069a5bce1d0cfab35e667a903a6d995",
+  "reason": "Existing PR21 text contract permits U+FEFF inside valid UTF-8 text; preserve text bytes instead of imposing a new content ban. Raw BOM bytes are invalid decoded-result type. No execution occurred.",
+  "requires_independent_D06_review": true
+}

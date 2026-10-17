@@ -1,0 +1,21 @@
+unittest.case.FunctionTestCase (case_utf8_byte_cap_rejects_overlong_result)
+M_UTF8CAP.case_utf8_byte_cap_rejects_overlong_result ... FAIL
+
+======================================================================
+FAIL: unittest.case.FunctionTestCase (case_utf8_byte_cap_rejects_overlong_result)
+M_UTF8CAP.case_utf8_byte_cap_rejects_overlong_result
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/owner-ack-adapter-portable-M_UTF8CAP-ucszlcde/minimal-source/src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py", line 345, in case_utf8_byte_cap_rejects_overlong_result
+    self.invoke(decoded_result=value, reason="TEXT_UTF8_LIMIT")
+  File "/tmp/owner-ack-adapter-portable-M_UTF8CAP-ucszlcde/minimal-source/src/ops/tools/tests/test_codex_unattended_owner_ack_adapter.py", line 272, in invoke
+    self.assertEqual(reason, report["reason"])
+AssertionError: 'TEXT_UTF8_LIMIT' != 'ACK_RESULT_PREPARED'
+- TEXT_UTF8_LIMIT
++ ACK_RESULT_PREPARED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (failures=1)

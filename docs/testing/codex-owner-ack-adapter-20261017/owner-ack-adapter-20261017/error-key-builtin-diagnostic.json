@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-17T02:42:32.066534+00:00",
+  "python": "3.10.12",
+  "diagnostic": "Builtin dict only; no product/helper/test module import or call",
+  "dict_get_colliding_key_equality_calls": 1,
+  "bounded_items_type_guard_equality_calls": 0,
+  "native_calls": 0,
+  "old_test_cases": 0,
+  "new4_or_mutants_executed": false,
+  "status": "REPRODUCED_PURE_BUILTIN"
+}

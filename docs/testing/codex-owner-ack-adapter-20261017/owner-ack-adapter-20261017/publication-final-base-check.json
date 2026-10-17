@@ -1,0 +1,8 @@
+{
+  "observed_utc": "2026-10-17 03:01:10 UTC",
+  "base": "codex/agent-project-queue-ack-20261017",
+  "parent": "7806daca6bf48c220f7bcd228d1140ef79c2b230",
+  "new_branch": "codex/agent-project-owner-ack-adapter-20261017",
+  "new_branch_absent": true,
+  "reason": "Fresh external ref check immediately before authorized new publication; no passed tests repeated"
+}

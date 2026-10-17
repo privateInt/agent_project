@@ -1,0 +1,15 @@
+[
+  "/usr/bin/python3",
+  "-I",
+  "-S",
+  "-B",
+  "/tmp/owner-ack-adapter-portable-M_UTF8CAP-ucszlcde/minimal-source/run-once.py",
+  "--internal-stage",
+  "M_UTF8CAP",
+  "--copy-root",
+  "/tmp/owner-ack-adapter-portable-M_UTF8CAP-ucszlcde/minimal-source",
+  "--stage-dir",
+  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/owner-ack-adapter-20261017/run-1/M_UTF8CAP",
+  "--forbidden-root",
+  "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project"
+]

@@ -1,0 +1,88 @@
+"""Read saved completion and local task metadata. No control API or secrets."""
+import hashlib
+import json
+from pathlib import Path
+import sqlite3
+
+ROOT = Path(__file__).resolve().parent
+state = json.loads((ROOT / 'state.json').read_text())
+summary = {'project': state['project'], 'excluded': ['vms_project'],
+           'checkpoint_state': state['state'],
+           'two_complete_native_tasks': state['two_real_sequential_tasks'],
+           'runtime_investigation': state.get('runtime_investigation', {}).get('status'),
+           'latest_usage': {k: state.get('usage_hold', {}).get(k) for k in
+                            ('status', 'ordinaryUsageAllowed', 'weekly_used_percent',
+                             'observed_unix', 'receipt_sha256')},
+           'publications': {}, 'latest_turn_metadata': []}
+for name in ('codex-daemon-transport-20261016', 'codex-unattended-admission-20261016',
+             'codex-unattended-intent-20261016', 'codex-queue-correlation-20261016',
+             'codex-owner-binding-20261017', 'codex-queue-receipts-20261017'):
+    p = ROOT / (name + '-delivery/publication-result.json')
+    if p.exists():
+        value = json.loads(p.read_text())
+        summary['publications'][name] = {k: value[k] for k in
+                                        ('commit', 'verified_files', 'repository_clean',
+                                         'original_11_local_changes_unchanged')}
+        summary['publications'][name]['pr'] = value['pr']['url']
+base = Path('/home/codex_shshin/.codex')
+connection = sqlite3.connect((base / 'state_5.sqlite').as_uri() + '?mode=ro', uri=True)
+connection.execute('pragma query_only=on')
+try:
+    for tid in ('01a13f12-328d-7342-b285-a0868ac66447',
+                '01a13fb0-1721-7af3-82e6-747eac4de411',
+                '01a13fb0-1abe-7623-a15e-cf07071ce54a'):
+        row = connection.execute('select rollout_path,sandbox_policy from threads where id=?',
+                                 (tid,)).fetchone()
+        if not row:
+            summary['latest_turn_metadata'].append({'thread': tid, 'status': 'NOT_FOUND'})
+            continue
+        latest = None
+        with Path(row[0]).open() as stream:
+            for line in stream:
+                item = json.loads(line)
+                if item.get('type') == 'turn_context':
+                    payload = item['payload']
+                    latest = {k: payload.get(k) for k in
+                              ('turn_id', 'cwd', 'approval_policy', 'approvals_reviewer',
+                               'model', 'effort')}
+        # Only selected metadata; no prompts, reasoning, account, auth or usage bodies.
+        summary['latest_turn_metadata'].append({
+            'thread': tid, 'last_recorded_context': latest,
+            'managed_boundary_sha256': hashlib.sha256(row[1].encode()).hexdigest()})
+finally:
+    connection.close()
+history = sqlite3.connect((base / 'thread_history_1.sqlite').as_uri() + '?mode=ro', uri=True)
+history.execute('pragma query_only=on')
+try:
+    for entry in summary['latest_turn_metadata']:
+        tid = entry['thread']
+        turn = history.execute(
+            'select turn_id,status,started_at,completed_at,error_json from thread_turns '
+            'where thread_id=? order by rollout_ordinal desc limit 1', (tid,)).fetchone()
+        if turn is not None:
+            entry['last_turn_state'] = dict(zip(
+                ('turn_id', 'status', 'started_at', 'completed_at'), turn[:4]))
+            entry['last_turn_state']['error_present'] = turn[4] is not None
+            current_context = entry.get('last_recorded_context') or {}
+            entry['local_history_matches_context'] = turn[0] == current_context.get('turn_id')
+            entry['history_is_live_liveness_proof'] = False
+        item = history.execute(
+            "select created_at_ms,item_json from thread_items where thread_id=? and "
+            "item_type in ('commandExecution','agentMessage','fileChange',"
+            "'CommandExecution','AgentMessage','FileChange') order by rollout_ordinal desc limit 1",
+            (tid,)).fetchone()
+        if item is not None:
+            value = json.loads(item[1])
+            # These public execution fields can be explicitly null. Do not slice
+            # nullable strings, expose message text, or inspect reasoning items.
+            metadata = {'created_at_ms': item[0]}
+            for key in ('type', 'status'):
+                v = value.get(key)
+                metadata[key] = v if type(v) is str else None
+            command = value.get('command')
+            metadata['command_sha256'] = (hashlib.sha256(command.encode()).hexdigest()
+                                          if type(command) is str else None)
+            entry['last_public_activity'] = metadata
+finally:
+    history.close()
+print(json.dumps(summary, ensure_ascii=False, indent=2))

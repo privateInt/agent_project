@@ -1,0 +1,12 @@
+{
+  "turn": [
+    "01a147cc-7b69-7183-9744-a48f69fd0583",
+    "completed",
+    1792206250,
+    null
+  ],
+  "verdict": "PASS",
+  "review_sha256": "4ba79141b6813f2a02c245a70a68eb9f84110eb7b2efb84debec081c0d1defdb",
+  "recorded_utc": "2026-10-17T03:04:12.334748+00:00",
+  "tests_rerun": false
+}

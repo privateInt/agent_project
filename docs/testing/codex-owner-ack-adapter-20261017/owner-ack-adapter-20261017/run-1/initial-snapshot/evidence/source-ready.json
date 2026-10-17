@@ -1,0 +1,14 @@
+{
+  "utc": "2026-10-17T02:44:25.225604+00:00",
+  "source_sha256": "c471abd71fd34d8a2f6d037150ab4a642a0ec81c1c7cb7feb59759ffcdc01e05",
+  "source_path": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/owner-ack-adapter-development/src/ops/tools/codex_unattended_owner_ack_adapter.py",
+  "plan_sha256": "896b50320eedce867dc2aee90b0744ff58b6307811e3fccf8cef55250e7b0849",
+  "static_review": "PENDING",
+  "new_tests_execution": "NOT_RUN",
+  "native_RPC": 0,
+  "mutation_guards": {
+    "M_UTF8CAP": "len(text_utf8) <= 16384",
+    "M_DUAL": "not (has_result and has_error)"
+  },
+  "implementation_note": "Error-code value len<=64 before whitelist hash is equivalent for existing fixed codes and bounds hostile oversized unknown strings"
+}
