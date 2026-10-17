@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-10-17T02:16:17.946589+00:00",
+  "mode": "PYTHON310_AST_AND_HASH_ONLY_NO_PROJECT_IMPORT_OR_EXECUTION",
+  "normal_methods": [
+    "test_ack_candidate_store_reuse_and_reopen",
+    "test_unknown_receipt_is_immutable",
+    "test_receipt_validation_conflict_and_privacy",
+    "test_receipt_database_faults_and_profiles"
+  ],
+  "helper_call_count_within_normal_method3": {
+    "case_ack_client_mismatch_cannot_store": 1,
+    "case_prepared_intent_cannot_store_ack": 1
+  },
+  "testcase_base": "unittest.TestCase",
+  "journal_one_fault_arity": 2,
+  "actual_one_forwarded_args": 2,
+  "plan_review_budget_fixture_helper_pins_match": true,
+  "earliest_deadline_utc": "2026-10-17T02:50:11.827731Z",
+  "original11_hashes_preserved": true,
+  "new_product_source_reads": 0,
+  "tests_executed": 0,
+  "project_code_imports": 0,
+  "sqlite_connections_opened": 0,
+  "native_calls": 0
+}

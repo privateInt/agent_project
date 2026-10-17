@@ -1,0 +1,18 @@
+{
+  "M_CLIENT": {
+    "before_sha256": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af",
+    "after_sha256": "56f05b75746f60ba8e744ad436d877c313403eb278fa3bacdb6becbfe1a87a90",
+    "target_count": 1,
+    "before_expression": "ack_client == intent[\"client_user_message_id\"]",
+    "after_expression": "True",
+    "other_ast_equal": true
+  },
+  "M_STATE": {
+    "before_sha256": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af",
+    "after_sha256": "bc1135e80bb9f55cc30ffff624776ff1a69ef2dd2470ce3eb0a5979b2dc38105",
+    "target_count": 1,
+    "before_expression": "intent[\"state\"] == \"SUBMISSION_UNKNOWN\" and intent[\"revision\"] == 1",
+    "after_expression": "True",
+    "other_ast_equal": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "fixture_only": true,
+  "files": {
+    "ThreadQueueAddResponse.json": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314",
+    "synthetic.json": "6524918db5f70e3d7e3ecef2121ffcbbe6effe03200eeb37b370b9fe3075b04d"
+  },
+  "schema_reference_not_protocol_fork": true
+}

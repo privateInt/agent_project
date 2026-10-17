@@ -1,0 +1,21 @@
+unittest.case.FunctionTestCase (case_ack_client_mismatch_cannot_store)
+M_CLIENT.case_ack_client_mismatch_cannot_store ... FAIL
+
+======================================================================
+FAIL: unittest.case.FunctionTestCase (case_ack_client_mismatch_cannot_store)
+M_CLIENT.case_ack_client_mismatch_cannot_store
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/queue-ack-portable-M_CLIENT-f80qn2z_/minimal-source/src/ops/tools/tests/test_codex_unattended_queue_receipts.py", line 315, in case_ack_client_mismatch_cannot_store
+    result = self.invoke(db, ack=raw, reason="ACK_MISMATCH")
+  File "/tmp/queue-ack-portable-M_CLIENT-f80qn2z_/minimal-source/src/ops/tools/tests/test_codex_unattended_queue_receipts.py", line 298, in invoke
+    self.assertEqual(reason, report["reason"])
+AssertionError: 'ACK_MISMATCH' != 'RECEIPT_STORED'
+- ACK_MISMATCH
++ RECEIPT_STORED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.022s
+
+FAILED (failures=1)

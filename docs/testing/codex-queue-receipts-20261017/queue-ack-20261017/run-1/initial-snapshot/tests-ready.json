@@ -1,0 +1,90 @@
+{
+  "status": "TESTS_READY",
+  "created_utc": "2026-10-17T02:16:17.946589+00:00",
+  "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/ack-development",
+  "base_pr20": "aef3af98d1bbc9037f1b75906e0217844bb5bd1d",
+  "plan_sha256": "027cd5bda32eac67e91246b410d2177afb8a108830bde951ffeab7a0351521f7",
+  "review_sha256": "bdfb9175adb149a5295adbca21a32f336d527ecc6903a2ef241d44139a12fc74",
+  "budget_sha256": "b81401334b875233b0a8034df275b6ea428aa34928bfa5c355b7438cfb355d1e",
+  "deadline_utc": "2026-10-17T02:50:11.827731Z",
+  "later_025209_plan_body_deadline_not_used": true,
+  "clock_reset": false,
+  "same_failure_fix_limit": 3,
+  "files": {
+    "src/ops/tools/codex_unattended_submission_binding.py": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+    "src/ops/tools/codex_unattended_intent_journal.py": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+    "src/ops/tools/codex_unattended_queue_observer.py": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+    "src/ops/tools/codex_unattended_quota_reader.py": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+    "src/ops/tools/github_fixture_ledger.py": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+    "src/ops/tools/github_fixture_collector.py": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+    "src/ops/tools/github_check_audit.py": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+    "src/ops/tools/tests/test_codex_unattended_intent_journal.py": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+    "src/ops/tools/tests/test_codex_unattended_submission_binding.py": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6",
+    "src/ops/tools/tests/test_codex_unattended_quota_reader.py": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+    "src/ops/tools/tests/test_codex_unattended_queue_receipts.py": "730b8118103263175fbee94d30fde2fff5b5ae98d6b653e93f8da93db688fbf3",
+    "src/__init__.py": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+    "src/ops/__init__.py": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/ThreadQueueAddResponse.json": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/manifest.json": "6a5a3117f704fdebf54305b9ce7529ce85470ce30387de9c004b41645009e6d0",
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/synthetic.json": "6524918db5f70e3d7e3ecef2121ffcbbe6effe03200eeb37b370b9fe3075b04d"
+  },
+  "test": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/ack-development/src/ops/tools/tests/test_codex_unattended_queue_receipts.py",
+  "test_sha256": "730b8118103263175fbee94d30fde2fff5b5ae98d6b653e93f8da93db688fbf3",
+  "runner": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/run-once.py",
+  "runner_sha256": "aa17d7ed3547024ba816295a95dcd412d05153fde53304b7a48c786461ea6ff4",
+  "methods": [
+    "test_ack_candidate_store_reuse_and_reopen",
+    "test_unknown_receipt_is_immutable",
+    "test_receipt_validation_conflict_and_privacy",
+    "test_receipt_database_faults_and_profiles"
+  ],
+  "helpers": [
+    "case_ack_client_mismatch_cannot_store",
+    "case_prepared_intent_cannot_store_ack"
+  ],
+  "source_ready_received": false,
+  "source_gate_names": "Deferred to SOURCE_READY independent static comparison; no source polling",
+  "execution_authorized_now": false,
+  "new_product_reads_or_modifications": 0,
+  "project_code_imports": 0,
+  "tests_executed": 0,
+  "sqlite_connections_opened": 0,
+  "native_calls": 0,
+  "old_testcase_methods_invoked": 0,
+  "old_passes_or_suites_rerun": false,
+  "old_helpers_immutable": {
+    "test_codex_unattended_intent_journal.py": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+    "test_codex_unattended_submission_binding.py": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6",
+    "test_codex_unattended_quota_reader.py": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476"
+  },
+  "original11_hashes_preserved": true,
+  "initial_inputs_sha256": "db8e612e3013d02a1387cf01e618ecac32b99470c2c068d682a5dcf10f889f73",
+  "normal_execution": "one explicit failfast normal4 in minimal fresh source copy using Python -I -S -B; helper markers exactly once each inside method3; stop FAIL/ERROR/SKIP",
+  "mutants": {
+    "M_CLIENT": {
+      "target": "case_ack_client_mismatch_cannot_store",
+      "mutation": "exact reviewed single ACK client equality -> True only"
+    },
+    "M_STATE": {
+      "target": "case_prepared_intent_cannot_store_ack",
+      "mutation": "exact reviewed UNKNOWN AND revision1 guard -> True only"
+    }
+  },
+  "semantic_gate": "normal helper PASS reused; each isolated helper runs once, FAIL1 ERROR0 SKIP0 at exact reason assertion AND actual wrong committed P with matching hash, peer/reopen row, preserved source, retained DB witness",
+  "portable_boundary": "relative fixtures plus pinned original support source; BaseException protects checkout/opt/operator/native IO; SQLite target=os.fsdecode(os.fspath(...)); no stat-based alias identity; Python3.10 authorizer cleanup lambdaOK; reopened fixture connections identity-dedup cleanup",
+  "declared_turn_metadata": {
+    "sandbox_mode": "workspace-write",
+    "approvals_reviewer": "auto_review",
+    "approval_policy": "NOT_SEPARATELY_DECLARED_IN_THIS_TURN_CONTEXT",
+    "network_access": "restricted",
+    "permission_probes": 0
+  },
+  "D18": "HELD",
+  "PAUSE_changed": false,
+  "required_future_args": [
+    "--source-ready",
+    "--source-sha256 <SOURCE_READY frozen SHA>",
+    "--client-gate <exact reviewed comparison>",
+    "--state-guard <exact reviewed UNKNOWN/revision1 guard>"
+  ]
+}

@@ -1,5 +1,7 @@
 # 개발 안내
 
+2026-10-17 ACK 원장: initialize_queue_receipts/record_queue_receipt/read_queue_receipt는 borrowed DB와 기존 binding/intent public read·JSON/SQLite primitives를 사용한다. caller가 직렬화한 decoded 결과의 해시이며 wire hash가 아니다. 원문 ACK/prompt/error 없이 projection bytes/hash만 저장한다. [새4개 최초 PASS·2의미 변이 검출](testing/codex-queue-receipts-observed-20261017.json)을 재사용한다. 최종 독립 검토 판정은 같은 근거의 고정 보고서를 따른다.
+
 2026-10-17: injected owner client의 read_quota_only와 별도 빈 file SQLite에 명시 초기화하는 submission binding을 추가했다. 기존 intent/observer/ledger 소스는 불변이다. [새6개·의미 변이2개·첫 오류와 실행 범위](testing/codex-owner-binding-observed-20261017.json)를 참고한다. 최초 quota3/binding2 PASS는 재사용하고 fault1만 재검증했다. quota 검사는 fake client, binding은 실제 임시 SQLite이며 새로운 reader native 실행·설치·dispatch는 미검증이다.
 
 2026-10-17 KST U01b2: PR18 고정 `780d0755378b9f95f0282ec766ca99300b2b0b53` 위에 오프라인 queue/list 관측기를 추가했다. 기존 공개 `read_intent` 한 번으로 원래 intent를 읽고, client·prompt bytes·thread·원문 hash와 완결 pagination의 유일 후보를 대조한다. 전용 임시 SQLite/독립 소스 복사본의 새4개 최초 PASS와 두 의미 변이 검출(각 FAIL1/ERROR0), 원래 UNKNOWN/raw/hash/revision 및 재개방 보존을 확인했다. 기존 PASS는 반복하지 않았다. 최종 독립 검토는 별도 근거에 기록한다. 실제 ACK 저장·turn/result·controller/scheduler 연결과 두 실제 작업 연속 실행은 미완료이며 runtime D18 보류·두 PAUSE·운영/인증정보/main/VMS 보호를 유지한다. [새 근거](testing/codex-queue-correlation-observed-20261016.json).

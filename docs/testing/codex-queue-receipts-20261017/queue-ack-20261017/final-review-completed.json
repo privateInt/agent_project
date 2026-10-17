@@ -1,0 +1,10 @@
+{
+  "turn_id": "01a147ae-5661-7c92-b22f-17e0c45c363b",
+  "status": "completed",
+  "completed_unix": 1792204221,
+  "review_sha256": "6673a9228bedcb63eaa6e3de61e6584b1543a5c5bf816ce2a7237b07725f66a3",
+  "verdict": "PASS",
+  "recorded_utc": "2026-10-17T02:30:32.476905+00:00",
+  "tests_rerun": false,
+  "old_static_review_repeated": false
+}

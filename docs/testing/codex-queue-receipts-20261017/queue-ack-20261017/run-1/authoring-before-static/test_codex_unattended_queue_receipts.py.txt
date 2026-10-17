@@ -1,0 +1,637 @@
+"""ACK D29 frozen v2 + D06. Four new methods, no native IO or old TestCase calls."""
+import contextlib
+import copy
+import json
+from pathlib import Path
+import sqlite3
+import sys
+import tempfile
+from types import SimpleNamespace
+import unittest
+from unittest import mock
+
+from src.ops.tools import codex_unattended_queue_receipts as product
+from src.ops.tools import codex_unattended_submission_binding as binding
+from src.ops.tools import codex_unattended_intent_journal as journal
+from src.ops.tools import codex_unattended_quota_reader as quota
+from src.ops.tools.tests import test_codex_unattended_intent_journal as support
+from src.ops.tools.tests import test_codex_unattended_submission_binding as binding_support
+from src.ops.tools.tests import test_codex_unattended_quota_reader as quota_support
+
+FIXTURES = Path(__file__).resolve().parent / "fixtures/codex_unattended_queue_receipts"
+SCHEMA_PIN = "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314"
+CONFIRMED = {"RECEIPTS_READY", "RECEIPT_STORED", "RECEIPT_REUSED", "RECEIPT_OBSERVED"}
+BLOCKED = {"ARGUMENTS_INVALID", "CONNECTION_INVALID", "DATABASE_NOT_EMPTY", "SCHEMA_INVALID",
+           "INPUT_HASH_MISMATCH", "INPUT_INVALID", "SOURCE_BLOCKED", "INTENT_NOT_UNKNOWN",
+           "BINDING_MISMATCH", "ACK_MISMATCH", "RECEIPT_CONFLICT", "RECEIPT_NOT_FOUND",
+           "RECEIPT_PIN_MISMATCH", "ROW_INVALID"}
+FALSE_FLAGS = {"remote_io_performed", "remote_mutation_authorized", "input_origin_verified",
+               "client_identity_verified", "transport_pin_verified", "transport_id_matching_verified",
+               "deadline_verified", "native_acceptance_verified", "dispatch_permitted", "replay_permitted", "native_ready"}
+REPORT_KEYS = {"scope", "status", "reason", "phase", "database_commit_confirmed", "new_receipt",
+               "outcome", "source_binding_confirmed", "source_reason", "intent_transaction_closed",
+               "binding_transaction_closed", "receipt_transaction_closed"} | FALSE_FLAGS
+P_KEYS = {"schema", "project_id", "batch_id", "task_id", "intent_sha256", "binding_sha256", "thread_id",
+          "client_user_message_id", "submission_params_sha256", "ack_result_sha256", "outcome",
+          "observation_reason", "queued_submission_id"}
+PHASES = {"PRECHECK", "INPUT_VALIDATE", "SOURCE_READ", "SOURCE_VALIDATE", "RECEIPT_TRANSACTION",
+          "RECEIPT_VALIDATE", "RECEIPT_WRITE", "RECEIPT_READBACK", "RECEIPT_COMMIT", "RECEIPT_CLEANUP", "COMPLETE"}
+ALLOWED_CODES = frozenset(quota._ERRORS) | {"UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR"}
+OBSERVATIONS = []
+_UNSET = object()
+
+
+def receipt_rows(connection):
+    if not connection.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='queue_receipts'").fetchone():
+        return []
+    return connection.execute("SELECT project_id,batch_id,task_id,receipt_bytes,receipt_sha256 "
+                              "FROM queue_receipts ORDER BY 1,2,3").fetchall()
+
+
+def receipt_snapshot(connection, path):
+    return {"objects": connection.execute("SELECT type,name,tbl_name,sql FROM sqlite_master ORDER BY 1,2").fetchall(),
+            "rows": receipt_rows(connection), "app": connection.execute("PRAGMA application_id").fetchone()[0],
+            "version": connection.execute("PRAGMA user_version").fetchone()[0], "bytes": path.read_bytes()}
+
+
+def old_case_codes():
+    codes = set()
+    for cls in (support.IntentJournalTests, binding_support.SubmissionBindingTests, quota_support.QuotaReaderTests):
+        for value in cls.__dict__.values():
+            function = getattr(value, "__func__", value)
+            code = getattr(function, "__code__", None)
+            if code is not None:
+                codes.add(code)
+    return codes
+
+
+class QueueReceiptTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        manifest = json.loads((FIXTURES / "manifest.json").read_bytes())
+        if not manifest["fixture_only"] or manifest["files"]["ThreadQueueAddResponse.json"] != SCHEMA_PIN:
+            raise AssertionError("FIXTURE_SCHEMA_PIN_MISMATCH")
+        for name, pin in manifest["files"].items():
+            if support.sha((FIXTURES / name).read_bytes()) != pin:
+                raise AssertionError("RELATIVE_FIXTURE_PIN_MISMATCH")
+        cls.data = json.loads((FIXTURES / "synthetic.json").read_bytes())
+        value = cls.data["intent"]
+        if (cls.data["provenance"] != "SYNTHETIC_ONLY_QUEUE_RECEIPT_NO_NATIVE_IO"
+                or support.sha(support.canonical(value)) != cls.data["canonical_intent_sha256"]
+                or support.sha(cls.data["prompt_fixture"].encode()) != value["prompt_sha256"]
+                or support.sha(support.canonical({k: value[k] for k in support.PROJECT_KEYS})) != value["project_sha256"]
+                or support.sha(support.canonical(cls.data["task_descriptor"])) != value["task_sha256"]
+                or support.sha(support.canonical(cls.data["settings_fixture"])) != value["settings_sha256"]):
+            raise AssertionError("SYNTHETIC_SOURCE_PINS_INVALID")
+
+    def setUp(self):
+        self.helper_markers = {}
+        self.helper_invocations = {}
+        self.capture_wrong_commit = False
+
+    @contextlib.contextmanager
+    def database(self, *, initialized=True, unknown=True):
+        with tempfile.TemporaryDirectory(prefix="queue-receipt-db-") as directory:
+            root = Path(directory)
+            paths = {name: root / (name + ".sqlite") for name in ("intent", "binding", "receipt")}
+            connections = {name: support.connect(path) for name, path in paths.items()}
+            peers = {name: support.connect(path) for name, path in paths.items()}
+            db = SimpleNamespace(**connections, **{name + "_path": path for name, path in paths.items()},
+                                 **{"peer_" + name: c for name, c in peers.items()})
+            db.value = copy.deepcopy(self.data["intent"])
+            db.key, db.intent_raw = support.intent_key(db.value), support.canonical(db.value)
+            db.intent_sha = support.sha(db.intent_raw)
+            db.params = {"threadId": self.data["thread_id"], "clientUserMessageId": db.value["clientUserMessageId"],
+                         "input": [{"type": "text", "text": self.data["prompt_fixture"]}]}
+            db.raw, db.binding_sha = support.canonical(db.params), None
+            db.ack = {"queuedSubmission": {"id": self.data["queued_id"],
+                       "clientUserMessageId": db.value["clientUserMessageId"], "input": copy.deepcopy(db.params["input"])}}
+            db.ack_raw = support.canonical(db.ack)
+            try:
+                with quota_support.strict_io() as (attempts, output):
+                    initial = journal.initialize_intent_journal(db.intent)
+                    reserved = journal.reserve_intent(db.intent, db.intent_sha, db.intent_raw)
+                    bready = binding.initialize_submission_bindings(db.binding)
+                    bound = binding.bind_submission(db.intent, db.binding, db.key, db.intent_sha,
+                        submission_params_bytes=db.raw, expected_submission_sha256=support.sha(db.raw))
+                self.assertEqual([], attempts)
+                self.assertEqual("", output.getvalue())
+                for result, reason in ((initial, "JOURNAL_READY"), (reserved, "INTENT_STORED"),
+                                       (bready, "BINDINGS_READY"), (bound, "BINDING_STORED")):
+                    self.assertEqual(reason, result["report"]["reason"])
+                db.binding_sha = bound["record"]["binding_sha256"]
+                if initialized:
+                    self.invoke(db, "initialize_queue_receipts", reason="RECEIPTS_READY")
+                if unknown:
+                    claimed = journal.claim_intent(db.intent, db.key, db.intent_sha, 0)
+                    self.assertEqual("CLAIM_RECORDED", claimed["report"]["reason"])
+                yield db
+            finally:
+                seen = set()
+                for connection in (db.peer_receipt, db.peer_binding, db.peer_intent,
+                                   db.receipt, db.binding, db.intent, *peers.values(), *connections.values()):
+                    identity = id(connection)
+                    if identity in seen:
+                        continue
+                    seen.add(identity)
+                    if binding_support.alive(connection):
+                        if connection.in_transaction:
+                            connection.rollback()  # Fixture owns this cleanup, including deliberately failed cleanup.
+                        connection.close()
+
+    def sources(self, db):
+        return (support.database_snapshot(db.intent, db.intent_path),
+                binding_support.binding_snapshot(db.binding, db.binding_path))
+
+    def expected_p(self, db, ack, code=None):
+        return {"schema": 1, "project_id": db.key[0], "batch_id": db.key[1], "task_id": db.key[2],
+                "intent_sha256": db.intent_sha, "binding_sha256": db.binding_sha,
+                "thread_id": db.params["threadId"], "client_user_message_id": db.value["clientUserMessageId"],
+                "submission_params_sha256": support.sha(db.raw),
+                "ack_result_sha256": support.sha(ack) if ack is not None else None,
+                "outcome": "ACK_CANDIDATE" if ack is not None else "UNKNOWN",
+                "observation_reason": "ACK_RESULT_OBSERVED" if ack is not None else code or "ACK_RESULT_ABSENT",
+                "queued_submission_id": json.loads(ack)["queuedSubmission"]["id"] if ack is not None else None}
+
+    def invoke(self, db, operation="record_queue_receipt", *, reason, phase=None, submission=_UNSET,
+               submission_pin=_UNSET, ack=_UNSET, ack_pin=_UNSET, code=None, key=_UNSET,
+               intent_pin=_UNSET, binding_pin=_UNSET, receipt_pin=None,
+               intent_connection=_UNSET, binding_connection=_UNSET, receipt_connection=_UNSET, after_call=None):
+        conns = {"intent": db.intent if intent_connection is _UNSET else intent_connection,
+                 "binding": db.binding if binding_connection is _UNSET else binding_connection,
+                 "receipt": db.receipt if receipt_connection is _UNSET else receipt_connection}
+        submission = db.raw if submission is _UNSET else submission
+        ack = db.ack_raw if ack is _UNSET else ack
+        if submission_pin is _UNSET:
+            submission_pin = support.sha(submission) if type(submission) is bytes else None
+        if ack_pin is _UNSET:
+            ack_pin = support.sha(ack) if type(ack) is bytes else None
+        key = db.key if key is _UNSET else key
+        intent_pin = db.intent_sha if intent_pin is _UNSET else intent_pin
+        binding_pin = db.binding_sha if binding_pin is _UNSET else binding_pin
+        traces, source_calls = [], []
+        unique = {}
+        for role, connection in conns.items():
+            if binding_support.alive(connection):
+                unique.setdefault(id(connection), (role, connection))
+        profiles = [support.profile(c) for _, c in unique.values()]
+        for role, connection in unique.values():
+            connection.set_trace_callback(lambda sql, role=role: traces.append((role, sql)))
+        banned = old_case_codes() | {journal.initialize_intent_journal.__code__, journal.reserve_intent.__code__,
+                                    journal.claim_intent.__code__, binding.initialize_submission_bindings.__code__, binding.bind_submission.__code__}
+        reads = {binding.read_submission_binding.__code__: "binding", journal.read_intent.__code__: "intent"}
+        previous_profile = sys.getprofile()
+
+        def watch(frame, event, arg):
+            if event == "call":
+                if frame.f_code in banned:
+                    raise support.ForbiddenIO("OLD_CASE_OR_SOURCE_MUTATION_FORBIDDEN")
+                if frame.f_code in reads:
+                    source_calls.append(reads[frame.f_code])
+                if frame.f_code is journal._connection.__code__:
+                    c = frame.f_locals["connection"]
+                    if binding_support.alive(c) and c.in_transaction:
+                        raise support.ForbiddenIO("PROFILE_SQL_AFTER_BEGIN_FORBIDDEN")
+
+        try:
+            sys.setprofile(watch)
+            with quota_support.strict_io() as (attempts, output):
+                if operation == "initialize_queue_receipts":
+                    result = product.initialize_queue_receipts(conns["receipt"])
+                elif operation == "read_queue_receipt":
+                    result = product.read_queue_receipt(conns["receipt"], key, intent_pin, binding_pin, receipt_pin)
+                else:
+                    result = product.record_queue_receipt(conns["intent"], conns["binding"], conns["receipt"], key, intent_pin, binding_pin,
+                        submission_params_bytes=submission, expected_submission_sha256=submission_pin,
+                        ack_result_bytes=ack, expected_ack_sha256=ack_pin, call_error_code=code)
+        finally:
+            sys.setprofile(previous_profile)
+            for _, connection in unique.values():
+                connection.set_trace_callback(None)
+            if after_call:
+                after_call()
+        self.last_result, self.last_sql, self.last_source_calls = result, traces, source_calls
+        if self.capture_wrong_commit:
+            peer_rows = receipt_rows(db.peer_receipt)
+            reopened = support.connect(db.receipt_path)
+            try:
+                reopened_rows = receipt_rows(reopened)
+            finally:
+                reopened.close()
+            source_row = support.rows(db.peer_intent)[0]
+            self.last_wrong_witness = {"peer_row_count": len(peer_rows), "reopen_row_count": len(reopened_rows),
+                "peer_equals_reopen": peer_rows == reopened_rows, "intent_state": source_row[6], "intent_revision": source_row[7],
+                "rows": [{"projection": json.loads(row[3]), "receipt_sha256": row[4], "actual_sha256": support.sha(row[3])} for row in peer_rows]}
+            if len(peer_rows) == 1 and peer_rows == reopened_rows:
+                self.wrong_commit_db_bytes = db.receipt_path.read_bytes()
+        self.assertEqual([], attempts)
+        self.assertEqual("", output.getvalue())
+        self.assertEqual(profiles, [support.profile(c) for _, c in unique.values()])
+        self.assertIs(type(result), dict)
+        self.assertEqual({"report", "record"}, set(result))
+        report, record = result["report"], result["record"]
+        self.assertIs(type(report), dict)
+        self.assertEqual(REPORT_KEYS, set(report))
+        self.assertEqual("DURABLE_QUEUE_RECEIPT_ONLY", report["scope"])
+        self.assertIn(report["reason"], CONFIRMED | BLOCKED | {"CHECKPOINT_UNCONFIRMED"})
+        status = "CONFIRMED" if report["reason"] in CONFIRMED else "BLOCKED" if report["reason"] in BLOCKED else "UNCERTAIN"
+        self.assertEqual(status, report["status"])
+        self.assertIs(report["database_commit_confirmed"], report["reason"] in CONFIRMED)
+        self.assertIs(report["new_receipt"], report["reason"] == "RECEIPT_STORED")
+        self.assertIn(report["phase"], PHASES)
+        self.assertIs(type(report["source_binding_confirmed"]), bool)
+        if report["source_binding_confirmed"]:
+            self.assertEqual(1, source_calls.count("binding"))
+        self.assertTrue(report["source_reason"] is None or report["source_reason"] in support.BLOCKED | binding_support.BLOCKED)
+        if report["reason"] != "SOURCE_BLOCKED":
+            self.assertIsNone(report["source_reason"])
+        for flag in FALSE_FLAGS:
+            self.assertIs(report[flag], False)
+        for role, connection in conns.items():
+            expected_closed = None if role != "receipt" and operation != "record_queue_receipt" else support.transaction_closed(connection)
+            self.assertIs(report[role + "_transaction_closed"], expected_closed)
+        if report["reason"] in CONFIRMED:
+            self.assertEqual("COMPLETE", report["phase"])
+        if record is not None:
+            self.assertIn(report["reason"], {"RECEIPT_STORED", "RECEIPT_REUSED", "RECEIPT_OBSERVED"})
+            self.assertIs(type(record), dict)
+            self.assertEqual({"receipt_bytes", "receipt_sha256"}, set(record))
+            self.assertIs(type(record["receipt_bytes"]), bytes)
+            self.assertTrue(1 <= len(record["receipt_bytes"]) <= 4096)
+            self.assertEqual(support.sha(record["receipt_bytes"]), record["receipt_sha256"])
+            value = json.loads(record["receipt_bytes"])
+            self.assertEqual(P_KEYS, set(value))
+            self.assertEqual(record["receipt_bytes"], support.canonical(value))
+            self.assertIs(type(value["schema"]), int)
+            self.assertEqual(1, value["schema"])
+            self.assertEqual(value["outcome"], report["outcome"])
+            if value["outcome"] == "ACK_CANDIDATE":
+                self.assertEqual("ACK_RESULT_OBSERVED", value["observation_reason"])
+                self.assertIs(type(value["queued_submission_id"]), str)
+                self.assertIs(type(value["ack_result_sha256"]), str)
+            else:
+                self.assertEqual("UNKNOWN", value["outcome"])
+                self.assertIn(value["observation_reason"], ALLOWED_CODES | {"ACK_RESULT_ABSENT"})
+                self.assertIsNone(value["ack_result_sha256"])
+                self.assertIsNone(value["queued_submission_id"])
+            if operation == "record_queue_receipt":
+                self.assertEqual(["binding", "intent"], source_calls)
+        else:
+            self.assertNotIn(report["reason"], {"RECEIPT_STORED", "RECEIPT_REUSED", "RECEIPT_OBSERVED"})
+            self.assertIsNone(report["outcome"])
+        for role, sql in traces:
+            normalized = sql.strip().upper()
+            if role != "receipt":
+                self.assertFalse(normalized.startswith(("INSERT", "UPDATE", "DELETE", "REPLACE", "CREATE", "DROP", "ALTER")))
+                self.assertFalse(normalized.startswith("PRAGMA") and "=" in normalized)
+        public = support.canonical(report)
+        for private in (self.data["prompt_fixture"], support.PRIVATE_ERROR, self.data["intent"]["dev_root"],
+                        self.data["intent"]["git_common_dir"], str(db.receipt_path), str(db.binding_path), str(db.intent_path)):
+            self.assertNotIn(private.encode(), public)
+        OBSERVATIONS.append({"operation": operation, "reason": report["reason"], "phase": report["phase"],
+                             "sql_count": len(traces), "source_reads": list(source_calls), "runtime_calls": 0})
+        # Exact semantic mutation assertion: actual peer/reopen wrong candidate was captured above.
+        self.assertEqual(reason, report["reason"])
+        if phase is not None:
+            self.assertEqual(phase, report["phase"])
+        return result
+
+    def case_ack_client_mismatch_cannot_store(self):
+        name = "case_ack_client_mismatch_cannot_store"
+        self.helper_invocations[name] = self.helper_invocations.get(name, 0) + 1
+        with self.database() as db:
+            before_s, before_r = self.sources(db), receipt_snapshot(db.receipt, db.receipt_path)
+            ack = copy.deepcopy(db.ack)
+            ack["queuedSubmission"]["clientUserMessageId"] = self.data["foreign_client"]
+            raw = support.canonical(ack)
+            self.expected_wrong_projection, self.expected_wrong_state = self.expected_p(db, raw), ("SUBMISSION_UNKNOWN", 1)
+            self.capture_wrong_commit = True
+            try:
+                result = self.invoke(db, ack=raw, reason="ACK_MISMATCH")
+                self.assertIsNone(result["record"])
+                self.assertEqual([], receipt_rows(db.peer_receipt))
+                self.assertEqual(before_s, self.sources(db))
+                self.assertEqual(before_r, receipt_snapshot(db.receipt, db.receipt_path))
+                self.helper_markers[name] = {"outcome": "PASS", "invocations": self.helper_invocations[name],
+                                            "peer_rows": 0, "reopen_rows": self.last_wrong_witness["reopen_row_count"]}
+            finally:
+                self.capture_wrong_commit = False
+
+    def case_prepared_intent_cannot_store_ack(self):
+        name = "case_prepared_intent_cannot_store_ack"
+        self.helper_invocations[name] = self.helper_invocations.get(name, 0) + 1
+        with self.database(unknown=False) as db:
+            before_s, before_r = self.sources(db), receipt_snapshot(db.receipt, db.receipt_path)
+            self.assertEqual(("PREPARED", 0), support.rows(db.intent)[0][6:])
+            self.expected_wrong_projection, self.expected_wrong_state = self.expected_p(db, db.ack_raw), ("PREPARED", 0)
+            self.capture_wrong_commit = True
+            try:
+                self.invoke(db, reason="INTENT_NOT_UNKNOWN")
+                self.assertEqual([], receipt_rows(db.peer_receipt))
+                self.assertEqual(before_s, self.sources(db))
+                self.assertEqual(before_r, receipt_snapshot(db.receipt, db.receipt_path))
+                self.helper_markers[name] = {"outcome": "PASS", "invocations": self.helper_invocations[name],
+                                            "peer_rows": 0, "reopen_rows": self.last_wrong_witness["reopen_row_count"]}
+            finally:
+                self.capture_wrong_commit = False
+
+    def test_ack_candidate_store_reuse_and_reopen(self):
+        with self.database() as db:
+            source = self.sources(db)
+            stored = self.invoke(db, reason="RECEIPT_STORED")
+            raw = support.canonical(self.expected_p(db, db.ack_raw))
+            self.assertEqual({"receipt_bytes": raw, "receipt_sha256": support.sha(raw)}, stored["record"])
+            self.assertEqual([(*db.key, raw, support.sha(raw))], receipt_rows(db.peer_receipt))
+            self.assertEqual(0x41515231, db.receipt.execute("PRAGMA application_id").fetchone()[0])
+            self.assertEqual(1, db.receipt.execute("PRAGMA user_version").fetchone()[0])
+            pinned = receipt_snapshot(db.receipt, db.receipt_path)
+            self.assertEqual(stored["record"], self.invoke(db, reason="RECEIPT_REUSED")["record"])
+            variants = [json.dumps(db.ack, indent=2, ensure_ascii=True).encode(),
+                        json.dumps(dict(queuedSubmission=dict(reversed(list(db.ack["queuedSubmission"].items())))), separators=(",", ":")).encode()]
+            changed = copy.deepcopy(db.ack)
+            changed["queuedSubmission"]["id"] = "different-valid-queued-id"
+            variants.append(support.canonical(changed))
+            for ack in variants:
+                self.assertNotEqual(support.sha(db.ack_raw), support.sha(ack))
+                self.invoke(db, ack=ack, reason="RECEIPT_CONFLICT")
+                self.assertEqual(pinned, receipt_snapshot(db.receipt, db.receipt_path))
+                self.assertEqual(source, self.sources(db))
+            for role in ("intent", "binding", "receipt"):
+                getattr(db, role).close()
+                setattr(db, role, support.connect(getattr(db, role + "_path")))
+            observed = self.invoke(db, "read_queue_receipt", receipt_pin=support.sha(raw), reason="RECEIPT_OBSERVED")
+            self.assertEqual(stored["record"], observed["record"])
+            self.assertEqual(source, self.sources(db))
+            file_raw = db.receipt_path.read_bytes()
+            for private in (db.raw, db.ack_raw, self.data["prompt_fixture"].encode(), self.data["intent"]["dev_root"].encode()):
+                self.assertNotIn(private, file_raw)
+
+    def test_unknown_receipt_is_immutable(self):
+        for code in (None, "RPC_REQUEST_TIMEOUT", "UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR"):
+            with self.subTest(code=code), self.database() as db:
+                source = self.sources(db)
+                stored = self.invoke(db, ack=None, code=code, reason="RECEIPT_STORED")
+                raw = support.canonical(self.expected_p(db, None, code))
+                self.assertEqual(raw, stored["record"]["receipt_bytes"])
+                pinned = receipt_snapshot(db.receipt, db.receipt_path)
+                self.assertEqual(stored["record"], self.invoke(db, ack=None, code=code, reason="RECEIPT_REUSED")["record"])
+                self.invoke(db, reason="RECEIPT_CONFLICT")  # A later valid ACK cannot overwrite UNKNOWN.
+                alternatives = sorted(ALLOWED_CODES) if code is None else ["RPC_CONNECT_FAILED"]
+                for other in alternatives:
+                    self.invoke(db, ack=None, code=other, reason="RECEIPT_CONFLICT")
+                    self.assertEqual(pinned, receipt_snapshot(db.receipt, db.receipt_path))
+                db.receipt.close()
+                db.receipt = support.connect(db.receipt_path)
+                observed = self.invoke(db, "read_queue_receipt", receipt_pin=support.sha(raw), reason="RECEIPT_OBSERVED")
+                self.assertEqual(stored["record"], observed["record"])
+                self.assertEqual(source, self.sources(db))
+
+    def test_receipt_validation_conflict_and_privacy(self):
+        self.case_ack_client_mismatch_cannot_store()
+        self.case_prepared_intent_cannot_store_ack()
+        with self.database() as db:
+            source, empty = self.sources(db), receipt_snapshot(db.receipt, db.receipt_path)
+            invalid = [({"ack": None, "ack_pin": "0"*64}, "ARGUMENTS_INVALID"),
+                       ({"ack_pin": None}, "ARGUMENTS_INVALID"), ({"code": "RPC_REQUEST_TIMEOUT"}, "ARGUMENTS_INVALID"),
+                       ({"ack": b""}, "ARGUMENTS_INVALID"), ({"ack": bytearray(db.ack_raw)}, "ARGUMENTS_INVALID"),
+                       ({"ack": b"x"*262145}, "ARGUMENTS_INVALID"), ({"submission": b"x"*131073}, "ARGUMENTS_INVALID"),
+                       ({"ack_pin": "0"*64}, "INPUT_HASH_MISMATCH"), ({"submission_pin": "0"*64}, "INPUT_HASH_MISMATCH"),
+                       ({"ack_pin": "A"*64}, "ARGUMENTS_INVALID"), ({"key": list(db.key)}, "ARGUMENTS_INVALID"),
+                       ({"key": (quota_support.Opaque(), *db.key[1:])}, "ARGUMENTS_INVALID")]
+            for code in ("PRIVATE_UNKNOWN_CALL_CODE_NEVER_PUBLIC", 1, quota_support.Opaque(),
+                         quota_support.HostileCode("RPC_REQUEST_TIMEOUT"), ValueError(support.PRIVATE_ERROR)):
+                invalid.append(({"ack": None, "code": code}, "ARGUMENTS_INVALID"))
+            for raw in (b"{}", b"[]", b"\xef\xbb\xbf{}", b'{"queuedSubmission":{},"queuedSubmission":{}}',
+                        b'{"x":NaN}', b'{"x":1e400}', b'{"x":1.0}', b'{"x":'+b'['*9+b'0'+b']'*9+b'}', b'\xff'):
+                invalid.append(({"ack": raw}, "INPUT_INVALID"))
+            for update in ({"id": "bad id"}, {"id": True}, {"extra": 1}, {"clientUserMessageId": 1},
+                           {"input": []}, {"input": [{"type": "image", "text": "x"}]},
+                           {"input": [{"type": "text", "text": "x", "text_elements": [1]}]},
+                           {"input": [{"type": "text", "text": "x"*16385}]},
+                           {"input": [{"type": "text", "text": "different valid prompt"}]}):
+                ack = copy.deepcopy(db.ack)
+                ack["queuedSubmission"].update(update)
+                expected = "ACK_MISMATCH" if update == {"input": [{"type": "text", "text": "different valid prompt"}]} else "INPUT_INVALID"
+                invalid.append(({"ack": support.canonical(ack)}, expected))
+            invalid.append(({"submission": json.dumps(db.params, indent=2).encode()}, "BINDING_MISMATCH"))
+            for index, (kwargs, expected) in enumerate(invalid):
+                with self.subTest(invalid=index):
+                    self.invoke(db, reason=expected, **kwargs)
+                    self.assertEqual(empty, receipt_snapshot(db.receipt, db.receipt_path))
+                    self.assertEqual(source, self.sources(db))
+            self.invoke(db, binding_pin="0"*64, reason="SOURCE_BLOCKED")
+            self.invoke(db, intent_pin="0"*64, reason="SOURCE_BLOCKED")
+            self.invoke(db, "read_queue_receipt", receipt_pin="0"*64, reason="RECEIPT_NOT_FOUND")
+        with self.database() as db:
+            db.intent.execute("UPDATE submission_intents SET revision=2").close()
+            source = self.sources(db)
+            self.invoke(db, reason="INTENT_NOT_UNKNOWN")
+            self.assertEqual([], receipt_rows(db.peer_receipt))
+            self.assertEqual(source, self.sources(db))
+        for corruption in ("hash", "canonical", "schema", "key", "relation"):
+            with self.database() as db:
+                stored = self.invoke(db, reason="RECEIPT_STORED")
+                pin = stored["record"]["receipt_sha256"]
+                self.invoke(db, "read_queue_receipt", receipt_pin="0"*64, reason="RECEIPT_PIN_MISMATCH")
+                self.invoke(db, "read_queue_receipt", receipt_pin=pin, binding_pin="0"*64, reason="RECEIPT_PIN_MISMATCH")
+                value = json.loads(stored["record"]["receipt_bytes"])
+                if corruption == "hash":
+                    db.receipt.execute("UPDATE queue_receipts SET receipt_sha256=?", ("0"*64,)).close()
+                else:
+                    if corruption == "schema":
+                        value["schema"] = True
+                    elif corruption == "key":
+                        value["task_id"] = "different-task"
+                    elif corruption == "relation":
+                        value["outcome"] = "UNKNOWN"
+                    raw = json.dumps(value, indent=2).encode() if corruption == "canonical" else support.canonical(value)
+                    db.receipt.execute("UPDATE queue_receipts SET receipt_bytes=?,receipt_sha256=?", (raw, support.sha(raw))).close()
+                before = receipt_snapshot(db.receipt, db.receipt_path)
+                self.invoke(db, "read_queue_receipt", receipt_pin=pin, reason="ROW_INVALID")
+                self.assertEqual(before, receipt_snapshot(db.receipt, db.receipt_path))
+
+    def test_receipt_database_faults_and_profiles(self):
+        with self.database(initialized=False) as db:
+            before = receipt_snapshot(db.receipt, db.receipt_path)
+            self.invoke(db, reason="SCHEMA_INVALID")
+            self.assertEqual(before, receipt_snapshot(db.receipt, db.receipt_path))
+            initial = self.invoke(db, "initialize_queue_receipts", reason="RECEIPTS_READY")
+            self.assertIsNone(initial["report"]["intent_transaction_closed"])
+            self.assertIsNone(initial["report"]["binding_transaction_closed"])
+            before = receipt_snapshot(db.receipt, db.receipt_path)
+            self.invoke(db, "initialize_queue_receipts", reason="DATABASE_NOT_EMPTY")
+            self.assertEqual(before, receipt_snapshot(db.receipt, db.receipt_path))
+        for sql in ("CREATE TABLE foreign_sentinel(value)", "PRAGMA application_id=7", "PRAGMA user_version=2"):
+            with self.database(initialized=False) as db:
+                db.receipt.execute(sql).close()
+                before = receipt_snapshot(db.receipt, db.receipt_path)
+                self.invoke(db, "initialize_queue_receipts", reason="DATABASE_NOT_EMPTY")
+                self.assertEqual(before, receipt_snapshot(db.receipt, db.receipt_path))
+        for sql in ("PRAGMA application_id=9", "PRAGMA user_version=9", "CREATE TABLE unexpected(value)"):
+            with self.database() as db:
+                db.receipt.execute(sql).close()
+                before = receipt_snapshot(db.receipt, db.receipt_path)
+                self.invoke(db, reason="SCHEMA_INVALID")
+                self.assertEqual(before, receipt_snapshot(db.receipt, db.receipt_path))
+        with self.database() as db:
+            for role in ("intent", "binding", "receipt"):
+                for invalid in (None, object(), quota_support.Opaque()):
+                    result = self.invoke(db, reason="CONNECTION_INVALID", **{role + "_connection": invalid})
+                    self.assertEqual([], self.last_sql)
+                    self.assertIs(result["report"][role + "_transaction_closed"], False)
+                closed = support.connect(db.receipt_path)
+                closed.close()
+                self.invoke(db, reason="CONNECTION_INVALID", **{role + "_connection": closed})
+                self.assertEqual([], self.last_sql)
+                connection = getattr(db, role)
+                connection.execute("BEGIN").close()
+                if role == "intent":
+                    connection.execute("UPDATE submission_intents SET client_user_message_id='caller-uncommitted'").close()
+                elif role == "binding":
+                    connection.execute("UPDATE submission_bindings SET binding_sha256=?", ("0"*64,)).close()
+                else:
+                    raw = support.canonical(self.expected_p(db, db.ack_raw))
+                    connection.execute("INSERT INTO queue_receipts VALUES (?,?,?,?,?)", (*db.key, raw, support.sha(raw))).close()
+                pending = (support.rows(connection) if role == "intent" else binding_support.binding_rows(connection)
+                           if role == "binding" else receipt_rows(connection))
+                self.invoke(db, reason="CONNECTION_INVALID")
+                self.assertEqual([], self.last_sql)
+                self.assertTrue(connection.in_transaction)
+                observed = (support.rows(connection) if role == "intent" else binding_support.binding_rows(connection)
+                            if role == "binding" else receipt_rows(connection))
+                self.assertEqual(pending, observed)
+                self.assertEqual([], receipt_rows(db.peer_receipt))
+                connection.rollback()
+                for attribute, invalid in (("row_factory", sqlite3.Row), ("text_factory", bytes), ("isolation_level", "DEFERRED")):
+                    previous = getattr(connection, attribute)
+                    setattr(connection, attribute, invalid)
+                    self.invoke(db, reason="CONNECTION_INVALID")
+                    self.assertEqual([], self.last_sql)
+                    setattr(connection, attribute, previous)
+                for sql, restore in (("PRAGMA synchronous=OFF", "PRAGMA synchronous=FULL"),
+                                     ("PRAGMA busy_timeout=1001", "PRAGMA busy_timeout=1000"),
+                                     ("CREATE TEMP TABLE private_temp(value)", "DROP TABLE private_temp"),
+                                     ("ATTACH DATABASE ':memory:' AS other", "DETACH DATABASE other")):
+                    connection.execute(sql).close()
+                    self.invoke(db, reason="CONNECTION_INVALID")
+                    connection.execute(restore).close()
+            for left, right in (("intent", "binding"), ("intent", "receipt"), ("binding", "receipt")):
+                self.invoke(db, reason="CONNECTION_INVALID", **{right + "_connection": getattr(db, left)})
+                self.assertEqual([], self.last_sql)
+                same_filename = support.connect(getattr(db, left + "_path"))
+                try:
+                    self.invoke(db, reason="CONNECTION_INVALID", **{right + "_connection": same_filename})
+                finally:
+                    same_filename.close()
+            memory = support.connect(":memory:")
+            try:
+                self.invoke(db, receipt_connection=memory, reason="CONNECTION_INVALID")
+            finally:
+                memory.close()
+        # D06 preflight: actual journal._one(connection, sql), ARITY TWO and exact hit count.
+        for role in ("intent", "binding", "receipt"):
+            for pragma in ("PRAGMA busy_timeout", "PRAGMA main.synchronous"):
+                with self.database() as db:
+                    actual_one, hits = journal._one, []
+                    before_s, before_r = self.sources(db), receipt_snapshot(db.receipt, db.receipt_path)
+
+                    def preflight(connection, sql):
+                        if connection is getattr(db, role) and sql == pragma:
+                            hits.append("ACTUAL_PROFILE_SQL_FAILURE")
+                            raise sqlite3.OperationalError(support.PRIVATE_ERROR)
+                        return actual_one(connection, sql)
+
+                    with mock.patch.object(journal, "_one", preflight):
+                        self.invoke(db, reason="CHECKPOINT_UNCONFIRMED", phase="PRECHECK")
+                    self.assertEqual(["ACTUAL_PROFILE_SQL_FAILURE"], hits)
+                    self.assertEqual(before_s, self.sources(db))
+                    self.assertEqual(before_r, receipt_snapshot(db.receipt, db.receipt_path))
+        for statement, after, phase in (("BEGIN IMMEDIATE", False, "RECEIPT_TRANSACTION"),
+                                        ("BEGIN IMMEDIATE", True, "RECEIPT_TRANSACTION"),
+                                        ("INSERT", False, "RECEIPT_WRITE"), ("INSERT", True, "RECEIPT_WRITE")):
+            with self.database() as db:
+                actual_execute, hits = product._execute, []
+                before_s, before_r = self.sources(db), receipt_snapshot(db.receipt, db.receipt_path)
+
+                def failed_execute(connection, sql, parameters=()):
+                    if connection is db.receipt and sql.strip().upper().startswith(statement) and not hits:
+                        hits.append("ACTUAL_SQL_BOUNDARY")
+                        if after:
+                            actual_execute(connection, sql, parameters)
+                        raise sqlite3.OperationalError(support.PRIVATE_ERROR)
+                    return actual_execute(connection, sql, parameters)
+
+                with mock.patch.object(product, "_execute", failed_execute):
+                    self.invoke(db, reason="CHECKPOINT_UNCONFIRMED", phase=phase)
+                self.assertEqual(["ACTUAL_SQL_BOUNDARY"], hits)
+                self.assertEqual(before_s, self.sources(db))
+                self.assertEqual(before_r, receipt_snapshot(db.receipt, db.receipt_path))
+        with self.database() as db:
+            actual_execute, inserts, denials = product._execute, [], []
+
+            def authorizer(action, name, column, database, origin):
+                if action == sqlite3.SQLITE_READ and name == "queue_receipts":
+                    denials.append("ACTUAL_READBACK_DENIED")
+                    return sqlite3.SQLITE_DENY
+                return sqlite3.SQLITE_OK
+
+            def arm_readback(connection, sql, parameters=()):
+                result = actual_execute(connection, sql, parameters)
+                if connection is db.receipt and sql.strip().upper().startswith("INSERT"):
+                    inserts.append("INSERT_SUCCEEDED")
+                    connection.set_authorizer(authorizer)
+                return result
+
+            with mock.patch.object(product, "_execute", arm_readback):
+                self.invoke(db, reason="CHECKPOINT_UNCONFIRMED", phase="RECEIPT_READBACK",
+                            after_call=lambda: db.receipt.set_authorizer(lambda *args: sqlite3.SQLITE_OK))
+            self.assertEqual(["INSERT_SUCCEEDED"], inserts)
+            self.assertEqual(["ACTUAL_READBACK_DENIED"], denials)
+            self.assertEqual([], receipt_rows(db.peer_receipt))
+        for after in (False, True):
+            with self.database() as db:
+                actual_commit, hits = product._commit, []
+                source = self.sources(db)
+
+                def failed_commit(connection):
+                    if connection is db.receipt:
+                        hits.append("ACTUAL_COMMIT_BOUNDARY")
+                        if after:
+                            actual_commit(connection)
+                        raise sqlite3.OperationalError(support.PRIVATE_ERROR)
+                    return actual_commit(connection)
+
+                with mock.patch.object(product, "_commit", failed_commit):
+                    self.invoke(db, reason="CHECKPOINT_UNCONFIRMED", phase="RECEIPT_COMMIT")
+                self.assertEqual(["ACTUAL_COMMIT_BOUNDARY"], hits)
+                self.assertEqual(1 if after else 0, len(receipt_rows(db.peer_receipt)))
+                self.assertEqual(source, self.sources(db))
+                if after:
+                    raw = support.canonical(self.expected_p(db, db.ack_raw))
+                    db.receipt.close()
+                    db.receipt = support.connect(db.receipt_path)
+                    observed = self.invoke(db, "read_queue_receipt", receipt_pin=support.sha(raw), reason="RECEIPT_OBSERVED")
+                    self.assertEqual(raw, observed["record"]["receipt_bytes"])
+        for rollback_after in (False, True):
+            with self.database() as db:
+                actual_execute, actual_rollback = product._execute, product._rollback
+                inserts, rollbacks = [], []
+
+                def after_insert(connection, sql, parameters=()):
+                    value = actual_execute(connection, sql, parameters)
+                    if connection is db.receipt and sql.strip().upper().startswith("INSERT"):
+                        inserts.append("ACTUAL_INSERT_THEN_FAILURE")
+                        raise sqlite3.OperationalError(support.PRIVATE_ERROR)
+                    return value
+
+                def failed_cleanup(connection):
+                    rollbacks.append("ACTUAL_OWNED_CLEANUP_FAILURE")
+                    if rollback_after:
+                        actual_rollback(connection)
+                    raise sqlite3.OperationalError(support.PRIVATE_ERROR)
+
+                with mock.patch.object(product, "_execute", after_insert), mock.patch.object(product, "_rollback", failed_cleanup):
+                    self.invoke(db, reason="CHECKPOINT_UNCONFIRMED", phase="RECEIPT_CLEANUP")
+                self.assertEqual(["ACTUAL_INSERT_THEN_FAILURE"], inserts)
+                self.assertEqual(["ACTUAL_OWNED_CLEANUP_FAILURE"], rollbacks)
+                self.assertEqual([], receipt_rows(db.peer_receipt))

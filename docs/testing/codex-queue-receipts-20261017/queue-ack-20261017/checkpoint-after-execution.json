@@ -1,0 +1,136 @@
+{
+  "project": "agent_project",
+  "excluded": [
+    "vms_project"
+  ],
+  "checkpoint_state": "ACK_NEW4_PASS_MUTANTS2_DETECTED_FINAL_REVIEW_READY",
+  "two_complete_native_tasks": "NOT_RUN",
+  "runtime_investigation": "HELD_D18_NO_FURTHER_CONTROL_PROBES",
+  "latest_usage": {
+    "status": "CLEARED_BY_NEW_OWNER_QUERY",
+    "ordinaryUsageAllowed": true,
+    "weekly_used_percent": 14,
+    "observed_unix": 1792198621,
+    "receipt_sha256": "57a25a332bf29dfe3eabaee2817a1be5d75dd8114177b6a82bac8d51a9e0825c"
+  },
+  "publications": {
+    "codex-daemon-transport-20261016": {
+      "commit": "8c1a9c18f496ad99311ad1e976c2e00c31817747",
+      "verified_files": 100,
+      "repository_clean": true,
+      "original_11_local_changes_unchanged": true,
+      "pr": "https://github.com/privateInt/agent_project/pull/16"
+    },
+    "codex-unattended-admission-20261016": {
+      "commit": "86b8861ba5b3ea049b77937e6c00da73a4330377",
+      "verified_files": 64,
+      "repository_clean": true,
+      "original_11_local_changes_unchanged": true,
+      "pr": "https://github.com/privateInt/agent_project/pull/17"
+    },
+    "codex-unattended-intent-20261016": {
+      "commit": "780d0755378b9f95f0282ec766ca99300b2b0b53",
+      "verified_files": 84,
+      "repository_clean": true,
+      "original_11_local_changes_unchanged": true,
+      "pr": "https://github.com/privateInt/agent_project/pull/18"
+    },
+    "codex-queue-correlation-20261016": {
+      "commit": "ddec1931eed8828cdd84ae783845729edf617fc1",
+      "verified_files": 97,
+      "repository_clean": true,
+      "original_11_local_changes_unchanged": true,
+      "pr": "https://github.com/privateInt/agent_project/pull/19"
+    },
+    "codex-owner-binding-20261017": {
+      "commit": "aef3af98d1bbc9037f1b75906e0217844bb5bd1d",
+      "verified_files": 232,
+      "repository_clean": true,
+      "original_11_local_changes_unchanged": true,
+      "pr": "https://github.com/privateInt/agent_project/pull/20"
+    }
+  },
+  "latest_turn_metadata": [
+    {
+      "thread": "01a13f12-328d-7342-b285-a0868ac66447",
+      "last_recorded_context": {
+        "turn_id": "01a1475a-2485-7ce2-962d-a3abc05ee970",
+        "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+        "approval_policy": "on-request",
+        "approvals_reviewer": "auto_review",
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "managed_boundary_sha256": "43ca1b2134fc90dfd51c4d5b37ae03b18b9d3ac08fbef38abce82b49990bd95e",
+      "last_turn_state": {
+        "turn_id": "01a14259-68b1-7ec0-ae48-297fb1c0a777",
+        "status": "interrupted",
+        "started_at": 1792114518,
+        "completed_at": 1792114672,
+        "error_present": false
+      },
+      "local_history_matches_context": false,
+      "history_is_live_liveness_proof": false,
+      "last_public_activity": {
+        "created_at_ms": 1792108616117,
+        "type": "commandExecution",
+        "status": "failed",
+        "command_sha256": "13238790f04024b5a534ec9f1e6e6d8687e1c6d7cf3397fe7b363c0385f372a2"
+      }
+    },
+    {
+      "thread": "01a13fb0-1721-7af3-82e6-747eac4de411",
+      "last_recorded_context": {
+        "turn_id": "01a1479b-55b7-7f40-9ec2-e6b90799103f",
+        "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+        "approval_policy": "on-request",
+        "approvals_reviewer": "auto_review",
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "managed_boundary_sha256": "43ca1b2134fc90dfd51c4d5b37ae03b18b9d3ac08fbef38abce82b49990bd95e",
+      "last_turn_state": {
+        "turn_id": "01a1479b-55b7-7f40-9ec2-e6b90799103f",
+        "status": "completed",
+        "started_at": 1792202724,
+        "completed_at": 1792203395,
+        "error_present": false
+      },
+      "local_history_matches_context": true,
+      "history_is_live_liveness_proof": false,
+      "last_public_activity": {
+        "created_at_ms": 1792203392629,
+        "type": "agentMessage",
+        "status": null,
+        "command_sha256": null
+      }
+    },
+    {
+      "thread": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+      "last_recorded_context": {
+        "turn_id": "01a147ae-5661-7c92-b22f-17e0c45c363b",
+        "cwd": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project",
+        "approval_policy": "on-request",
+        "approvals_reviewer": "auto_review",
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "managed_boundary_sha256": "43ca1b2134fc90dfd51c4d5b37ae03b18b9d3ac08fbef38abce82b49990bd95e",
+      "last_turn_state": {
+        "turn_id": "01a147ae-5661-7c92-b22f-17e0c45c363b",
+        "status": "inProgress",
+        "started_at": 1792203970,
+        "completed_at": null,
+        "error_present": false
+      },
+      "local_history_matches_context": true,
+      "history_is_live_liveness_proof": false,
+      "last_public_activity": {
+        "created_at_ms": 1792204006622,
+        "type": "commandExecution",
+        "status": "completed",
+        "command_sha256": "8750822540ced1327c69db5991212b96b63816e44d1c6d9adbf989a6f038ae46"
+      }
+    }
+  ]
+}

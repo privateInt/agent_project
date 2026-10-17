@@ -1,0 +1,75 @@
+{
+  "created_utc": "2026-10-17T02:08:22.994589+00:00",
+  "plan_sha256": "027cd5bda32eac67e91246b410d2177afb8a108830bde951ffeab7a0351521f7",
+  "review_sha256": "bdfb9175adb149a5295adbca21a32f336d527ecc6903a2ef241d44139a12fc74",
+  "budget_sha256": "b81401334b875233b0a8034df275b6ea428aa34928bfa5c355b7438cfb355d1e",
+  "deadline_utc": "2026-10-17T02:50:11.827731Z",
+  "clock_reset": false,
+  "helpers": {
+    "test_codex_unattended_intent_journal.py": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+    "test_codex_unattended_submission_binding.py": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6",
+    "test_codex_unattended_quota_reader.py": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476"
+  },
+  "original11": [
+    {
+      "status": " M",
+      "path": "docs/HANDOFF_NEXT_SESSION.md",
+      "sha256": "063c2aaf6076c9ac6e0943bdd916f42930e66dae822037434f859ced1ceb1243"
+    },
+    {
+      "status": " M",
+      "path": "docs/codex/work-plan.md",
+      "sha256": "e60f66cda0dbf64b4891e899ba67f47b0eac93fde21cf1326f2b4a9840dc2f25"
+    },
+    {
+      "status": " M",
+      "path": "docs/roadmap.md",
+      "sha256": "a11b78bae0c83136d36d14dd7713c13fcbe3dfff951657374e5ac77679e146b1"
+    },
+    {
+      "status": " M",
+      "path": "docs/status.md",
+      "sha256": "06e47755839a3e3724a8eff0f2a215f3682e9413873eb4c75d9fb662b96c66c7"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/preparation-blockers.md",
+      "sha256": "bc1f2ce493c8c31d8cd1ad3fbde50be510081505120bba8c015d1f013cce41b6"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/runtime-acceptance-cases.json",
+      "sha256": "8e8166e05bd69fe79980a353463f0b2b66a089b7e88bb1f379b523a0b38a3dcc"
+    },
+    {
+      "status": "??",
+      "path": "docs/codex/runtime-acceptance-plan.md",
+      "sha256": "6c826455f4a61db6a4785435a52d3562398a64cd6421fafcabb4867b5cf5f4bd"
+    },
+    {
+      "status": "??",
+      "path": "docs/plans/codex-preparation-verification-20261015.md",
+      "sha256": "d265642b6ace90c8e8f2e306c04de986baa848c3605e27a862bc746b3602449f"
+    },
+    {
+      "status": "??",
+      "path": "docs/plans/document-qa-f0a-validation-plan.md",
+      "sha256": "93cf5692286cdbee24530ff27ba9838bc42acad2a2a0313f535bbb6cb4cb8b51"
+    },
+    {
+      "status": "??",
+      "path": "docs/testing/codex-preparation-contract-20261015.json",
+      "sha256": "a056197c83aebd5bdef87963b6418bb949b790b09ed3050b5d464f0096bcba1f"
+    },
+    {
+      "status": "??",
+      "path": "docs/testing/codex-preparation-observed-20261015.json",
+      "sha256": "517981506b0b7d78ec722c5aad15fc5fcd34ac7f15a3f298213dc27f94d69aed"
+    }
+  ],
+  "tests_executed": 0,
+  "new_product_reads": 0,
+  "project_code_imports": 0,
+  "sqlite_connections_opened": 0,
+  "native_calls": 0
+}

@@ -1,0 +1,26 @@
+{
+  "roles": [
+    {
+      "role": "test_agent",
+      "turn_id": "01a1479b-55b7-7f40-9ec2-e6b90799103f",
+      "status": "completed",
+      "started_at": 1792202724,
+      "completed_at": 1792203395,
+      "error_present": false
+    },
+    {
+      "role": "reviewer",
+      "turn_id": "01a1479e-6e9c-7171-b408-da0469c29149",
+      "status": "completed",
+      "started_at": 1792202927,
+      "completed_at": 1792203035,
+      "error_present": false
+    }
+  ],
+  "actual_local_execution_completed": true,
+  "execution_summary_sha256": "3e58dc7d72443b95e0c2649a07a8c7086e47a489128519bd0c879ef54b7db3b6",
+  "previous_checkpoint_was_stale": true,
+  "remaining_execution_preconditions": [],
+  "next": "FINAL_INDEPENDENT_REVIEW_WITHOUT_RERUN",
+  "new_native_queries": 0
+}

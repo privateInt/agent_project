@@ -1,0 +1,451 @@
+{
+  "parent_commit": "aef3af98d1bbc9037f1b75906e0217844bb5bd1d",
+  "fixture_only": true,
+  "actual_runtime_transition": "NOT_COMPLETE",
+  "main_merged": false,
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-queue-receipts-20261017/review/final-review.md",
+    "sha256": "6673a9228bedcb63eaa6e3de61e6584b1543a5c5bf816ce2a7237b07725f66a3"
+  },
+  "raw_byte_retention": "Historical code/logs receive .txt suffix only; original bytes and paths are retained in mapping.",
+  "final_whole_suite_repeated": false,
+  "files": {
+    "src/ops/tools/codex_unattended_queue_receipts.py": {
+      "sha256": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af",
+      "source": "src/ops/tools/codex_unattended_queue_receipts.py"
+    },
+    "src/ops/tools/tests/test_codex_unattended_queue_receipts.py": {
+      "sha256": "730b8118103263175fbee94d30fde2fff5b5ae98d6b653e93f8da93db688fbf3",
+      "source": "src/ops/tools/tests/test_codex_unattended_queue_receipts.py"
+    },
+    "docs/testing/codex-queue-receipts-observed-20261017.json": {
+      "sha256": "7d232caf4c660ee87254112041b2e8998f7cda1b725250bc467fb3450a71847e",
+      "source": "docs/testing/codex-queue-receipts-observed-20261017.json"
+    },
+    "docs/development.md": {
+      "sha256": "fa2d996dccc5042bdbf90af3a54d6be006e77f7f1aa5aadb14954f8225b52dff",
+      "source": "docs/development.md"
+    },
+    "docs/status.md": {
+      "sha256": "9eb5649b4d620b315df03969bf91867c5b7dee42c8a9c27dfb78f145d47955e8",
+      "source": "docs/status.md"
+    },
+    "docs/roadmap.md": {
+      "sha256": "cdf4a0c696a6f2b597aa01df2dcbd6c6f7a61c0d1fd69637c2afba882e335dd6",
+      "source": "docs/roadmap.md"
+    },
+    "docs/HANDOFF_NEXT_SESSION.md": {
+      "sha256": "b038ec56965c09ec256c324680b93b7efbc833d0063648f4ddeb1e2b1cc3cf54",
+      "source": "docs/HANDOFF_NEXT_SESSION.md"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/ThreadQueueAddResponse.json": {
+      "sha256": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/ThreadQueueAddResponse.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/manifest.json": {
+      "sha256": "6a5a3117f704fdebf54305b9ce7529ce85470ce30387de9c004b41645009e6d0",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/manifest.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/synthetic.json": {
+      "sha256": "6524918db5f70e3d7e3ecef2121ffcbbe6effe03200eeb37b370b9fe3075b04d",
+      "source": "src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/synthetic.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/observed-before-final-review.json": {
+      "sha256": "87891ef6d2ccf3ba8609a2986b218ff73fddfd88b53f44ea7c180fdb5f3dfb84",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/codex-queue-receipts-20261017-observed-before-final-review.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/ThreadQueueAddResponse.json": {
+      "sha256": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/ThreadQueueAddResponse.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/checkpoint-after-execution.json": {
+      "sha256": "8acfe8aa976fe3647e0d649e4554abdfb4b56e313285c214931163a79ee44fc6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/checkpoint-after-execution.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/checkpoint-before-reconciliation-action-required.json": {
+      "sha256": "8b905de724ab05122fd4b28146704c53ca0808cde37f076abf687c19fa90a554",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/checkpoint-before-reconciliation-action-required.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/checkpoint-before-reconciliation-state.json": {
+      "sha256": "bed679c1c81dcdd831e29d82a35a81e6118e40302583b4b6e3e682a21ea81ae0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/checkpoint-before-reconciliation-state.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/final-review-completed.json": {
+      "sha256": "60cc5aa0d65dc8cd514e1d41c7efeaa2d0d8a2d04b7535ffe5d24dba463fc6d0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/final-review-completed.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/frozen-plan-v2.md": {
+      "sha256": "027cd5bda32eac67e91246b410d2177afb8a108830bde951ffeab7a0351521f7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/frozen-plan-v2.md"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/frozen-plan.md": {
+      "sha256": "4f5785120859d3bbc7d5ee306e6b616f44d4a9e195bb24e7fc69612f7d34f122",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/frozen-plan.md"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/implementation-plan-review.md": {
+      "sha256": "bdfb9175adb149a5295adbca21a32f336d527ecc6903a2ef241d44139a12fc74",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/implementation-plan-review.md"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/implementation-start.json": {
+      "sha256": "4dea4ca588a26c185791c0b2917aeb1efbc962c319271918d3d1bb8f54c9d521",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/implementation-start.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/observed-before-execution-reconciliation.json": {
+      "sha256": "89426f7fa3948de89bfbc978e38ef843be808c3703f4752749b4f9447cf6c844",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/observed-before-execution-reconciliation.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/owner-cli-static-contract.json": {
+      "sha256": "3f88ad91a67dd798adc658baec9407de94dbc138c3d6840c3884d08858c4496d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/owner-cli-static-contract.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/parent-preexecution-comparison.json": {
+      "sha256": "8faf53e4bc8424bf1583429f2f5e7ee643f6c388988baed5a54ef3726b83685e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/parent-preexecution-comparison.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/plan-freeze.json": {
+      "sha256": "fb5500ca41a15171ac3b8600ddddec486609f83fb1681d3ee106bf46d5629737",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/plan-freeze.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/plan-review.md": {
+      "sha256": "bdfb9175adb149a5295adbca21a32f336d527ecc6903a2ef241d44139a12fc74",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/plan-review.md"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/preservation-after-verification.json": {
+      "sha256": "37c5aadeb407d7d7afc7b49f4f5f595679a931308dc1c609733114275afd927d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/preservation-after-verification.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/publication-base-check.json": {
+      "sha256": "b9dd87bee7bbcf447e20d2545ba403c3b61f769135e9ecc50b6064789af84b4c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/publication-base-check.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/review-plan.md": {
+      "sha256": "027cd5bda32eac67e91246b410d2177afb8a108830bde951ffeab7a0351521f7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/review-plan.md"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_CLIENT/command.json": {
+      "sha256": "72d775815f7d738a172b46ebe2b5368a00b18dc56c48c4cc19e4f5743cb9910b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_CLIENT/command.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_CLIENT/first.log.txt": {
+      "sha256": "c8bc0b8770ba4ebef1fa19539960f107831c541ae06651ff6b9bfa90bac1b403",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_CLIENT/first.log"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_CLIENT/mutated-source.py.txt": {
+      "sha256": "56f05b75746f60ba8e744ad436d877c313403eb278fa3bacdb6becbfe1a87a90",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_CLIENT/mutated-source.py.txt"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_CLIENT/process.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_CLIENT/process.log"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_CLIENT/result.json": {
+      "sha256": "f7f1a55b5375dc68ee91b0f96f48d98f09a932ed5fd144c0a6d6434cc16514ac",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_CLIENT/result.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_CLIENT/source-copy-pins.json": {
+      "sha256": "fd1873aed6c3a46f2d1f8a2f51bfad9eb4694b0307ff6e64e03767b1adbc9371",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_CLIENT/source-copy-pins.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_STATE/command.json": {
+      "sha256": "da26956a7b706a0beebd47fc8c02a076d6afdcdf9ad158a558fee06aa1c08ff1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_STATE/command.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_STATE/first.log.txt": {
+      "sha256": "dd9a3be94ae45e77d9ac179e3c1b27f405e289ebe20e3717581d0ae1c03c54a7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_STATE/first.log"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_STATE/mutated-source.py.txt": {
+      "sha256": "bc1135e80bb9f55cc30ffff624776ff1a69ef2dd2470ce3eb0a5979b2dc38105",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_STATE/mutated-source.py.txt"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_STATE/process.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_STATE/process.log"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_STATE/result.json": {
+      "sha256": "29cf346c081f8f7f8b9a070d75c1cdcbe53f8955ce7798fb3ea41ccbb6ce4d5f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_STATE/result.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/M_STATE/source-copy-pins.json": {
+      "sha256": "b9b4ce1347c3043f7e1c275d2a4b472db79a4d72d8d1c614f66ee3160c3705f5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/M_STATE/source-copy-pins.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/authoring-before-static/run-once.py.txt": {
+      "sha256": "6edf9b9b83a3e87f9ee0fd27551ea321740ea397ca76abaf42e3f7a05564e61b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/authoring-before-static/run-once.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/authoring-before-static/test-before-boundary-cases.py.txt": {
+      "sha256": "baeb047fff32e671ffb30bae5de00e674e55c8079ccdf4c6fb949fb21e38c074",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/authoring-before-static/test-before-boundary-cases.py.txt"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/authoring-before-static/test_codex_unattended_queue_receipts.py.txt": {
+      "sha256": "6ccbf939d6a439d1432909fbb8013065801531f083a8503f32babb293665b674",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/authoring-before-static/test_codex_unattended_queue_receipts.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/environment.json": {
+      "sha256": "c09eaf9a6c98547d3a152c858896d1bda079fe2c582295a59148f3cddffa5ca4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/environment.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/execution-attempt.json": {
+      "sha256": "fb33374d1f8d770e7457f52b260061424411fa8bd3d0883dfbd592d0c5b2b00b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/execution-attempt.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/frozen-plan-v2.md": {
+      "sha256": "027cd5bda32eac67e91246b410d2177afb8a108830bde951ffeab7a0351521f7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/frozen-plan-v2.md"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/implementation-plan-review.md": {
+      "sha256": "bdfb9175adb149a5295adbca21a32f336d527ecc6903a2ef241d44139a12fc74",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/implementation-plan-review.md"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/review-plan.md": {
+      "sha256": "027cd5bda32eac67e91246b410d2177afb8a108830bde951ffeab7a0351521f7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/review-plan.md"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/run-once.py.txt": {
+      "sha256": "aa17d7ed3547024ba816295a95dcd412d05153fde53304b7a48c786461ea6ff4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/run-once.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/__init__.py.txt": {
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/__init__.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/__init__.py.txt": {
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/__init__.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_intent_journal.py.txt": {
+      "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_queue_observer.py.txt": {
+      "sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_queue_observer.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_queue_receipts.py.txt": {
+      "sha256": "24812dc20aa9e20f52ed7c920a301800c00f7568e950f1ed4a9782c1d44495af",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_queue_receipts.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_quota_reader.py.txt": {
+      "sha256": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_quota_reader.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_submission_binding.py.txt": {
+      "sha256": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/codex_unattended_submission_binding.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/github_check_audit.py.txt": {
+      "sha256": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/github_check_audit.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/github_fixture_collector.py.txt": {
+      "sha256": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/github_fixture_collector.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/github_fixture_ledger.py.txt": {
+      "sha256": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/github_fixture_ledger.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/ThreadQueueAddResponse.json": {
+      "sha256": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/ThreadQueueAddResponse.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/manifest.json": {
+      "sha256": "6a5a3117f704fdebf54305b9ce7529ce85470ce30387de9c004b41645009e6d0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/manifest.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/synthetic.json": {
+      "sha256": "6524918db5f70e3d7e3ecef2121ffcbbe6effe03200eeb37b370b9fe3075b04d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/synthetic.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_intent_journal.py.txt": {
+      "sha256": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_queue_receipts.py.txt": {
+      "sha256": "730b8118103263175fbee94d30fde2fff5b5ae98d6b653e93f8da93db688fbf3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_queue_receipts.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_quota_reader.py.txt": {
+      "sha256": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_quota_reader.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_submission_binding.py.txt": {
+      "sha256": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/src/ops/tools/tests/test_codex_unattended_submission_binding.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/tests-ready.json": {
+      "sha256": "74a2f1e2013c97aa5c79c95634254d5f54b5bfb4bb4b9fd0e9f18c42f18077b1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/tests-ready.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/initial-snapshot/unit-budget.json": {
+      "sha256": "b81401334b875233b0a8034df275b6ea428aa34928bfa5c355b7438cfb355d1e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/initial-snapshot/unit-budget.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/mutation-ast-audits.json": {
+      "sha256": "95bdf2f77d774c3a5cd1726e31f2c4cd52498114d6a690d845a9526724c8e5f5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/mutation-ast-audits.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/new-test.patch": {
+      "sha256": "d7c1afd95442a5c72e8d97aee4acb6db994628a2709c327b671facdc566c309a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/new-test.patch"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/normal/command.json": {
+      "sha256": "75ee86a0ca53082472104297b3e08e83f3672bee1e46ad236201b96d7b4a8654",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/normal/command.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/normal/first.log.txt": {
+      "sha256": "644fd2c6fd7f767cd1448119b3c5a81ba597f202455e63edfd429264a8963e1c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/normal/first.log"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/normal/process.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/normal/process.log"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/normal/result.json": {
+      "sha256": "08715a6b65651fdd291b9043a795bfedca2d8329b77c1c8e7c3f99e231b6bd31",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/normal/result.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/normal/source-copy-pins.json": {
+      "sha256": "155ef14645c65c23249f075eba97bcac3acdeed26568e9e41568852c3bc3df69",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/normal/source-copy-pins.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/preexecution-construction-diff.patch": {
+      "sha256": "dc8e1240b93a5d66be99bff14c0e700e265ba93e87137b917af5afc824b86fb9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/preexecution-construction-diff.patch"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/readiness-pins.json": {
+      "sha256": "82e3476de990a29cce984c727b0379f9c9c9c5f045da4201d51e421a366425f1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/readiness-pins.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/result.json": {
+      "sha256": "3e58dc7d72443b95e0c2649a07a8c7086e47a489128519bd0c879ef54b7db3b6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/result.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/run-once.py.txt": {
+      "sha256": "aa17d7ed3547024ba816295a95dcd412d05153fde53304b7a48c786461ea6ff4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/run-once.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/static-checks.json": {
+      "sha256": "fa5fb257b96b376f606c2a5754fc3b085d70e0a1fd0f9217cb8d253f8d5c79be",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/static-checks.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/test-writing-inputs.json": {
+      "sha256": "db8e612e3013d02a1387cf01e618ecac32b99470c2c068d682a5dcf10f889f73",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/test-writing-inputs.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/run-once.py.txt": {
+      "sha256": "aa17d7ed3547024ba816295a95dcd412d05153fde53304b7a48c786461ea6ff4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/run-once.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/__init__.py.txt": {
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/__init__.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/__init__.py.txt": {
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/__init__.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/codex_unattended_intent_journal.py.txt": {
+      "sha256": "902fb39e9d792d7e4a022fdc6e0eb6fdff8089d823c079762b444fba070a32d8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/codex_unattended_queue_observer.py.txt": {
+      "sha256": "0363984b66b46f53776d1991cf0b14d5908ca26c90436616c6f0d737ec96f17a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/codex_unattended_queue_observer.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/codex_unattended_quota_reader.py.txt": {
+      "sha256": "699f3a6e8993f28d88d7413ac51197a144b6d8b69a01f321da11a17398a4a23c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/codex_unattended_quota_reader.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/codex_unattended_submission_binding.py.txt": {
+      "sha256": "1663ab454e0f66a5e7f23382b9cf4c047068a0c86f10d895c4ad19a4d57f2a3c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/codex_unattended_submission_binding.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/github_check_audit.py.txt": {
+      "sha256": "d2b8deb1b9a652d396c63f42d2c581af51c7c19aa9bfa7785f2e740580b3515e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/github_check_audit.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/github_fixture_collector.py.txt": {
+      "sha256": "4a14a3f3412a44f4501266a4911e71a40b5acee5d50f07d27a4f7bf043e82ce0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/github_fixture_collector.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/github_fixture_ledger.py.txt": {
+      "sha256": "5d1998196d63e647558f9c5dd93065b99896e4c6dc56f3d4ea91a75c997535b4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/github_fixture_ledger.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/ThreadQueueAddResponse.json": {
+      "sha256": "c11b9772788427b19c9f9decf0765e2b41cbdead1aa9c3d39f42fdd70b339314",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/ThreadQueueAddResponse.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/manifest.json": {
+      "sha256": "6a5a3117f704fdebf54305b9ce7529ce85470ce30387de9c004b41645009e6d0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/manifest.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/synthetic.json": {
+      "sha256": "6524918db5f70e3d7e3ecef2121ffcbbe6effe03200eeb37b370b9fe3075b04d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/fixtures/codex_unattended_queue_receipts/synthetic.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/test_codex_unattended_intent_journal.py.txt": {
+      "sha256": "a7ed452257d098cd0003d25675722d83a73fb70affc999e0ea269efc14c49efe",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/test_codex_unattended_intent_journal.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/test_codex_unattended_queue_receipts.py.txt": {
+      "sha256": "730b8118103263175fbee94d30fde2fff5b5ae98d6b653e93f8da93db688fbf3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/test_codex_unattended_queue_receipts.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/test_codex_unattended_quota_reader.py.txt": {
+      "sha256": "7e57cdcef6f3ef48c975e9de9d494b34018e97f14b90478a273ae1820b8fb476",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/test_codex_unattended_quota_reader.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/test_codex_unattended_submission_binding.py.txt": {
+      "sha256": "63e1b380519df8f78d6e143c8824150049b73c4cf024a437442501ba9fd281d6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/src/ops/tools/tests/test_codex_unattended_submission_binding.py"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/static-checks.json": {
+      "sha256": "fa5fb257b96b376f606c2a5754fc3b085d70e0a1fd0f9217cb8d253f8d5c79be",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/static-checks.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/test-writing-inputs.json": {
+      "sha256": "db8e612e3013d02a1387cf01e618ecac32b99470c2c068d682a5dcf10f889f73",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/test-writing-inputs.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready-snapshot/tests-ready.json": {
+      "sha256": "74a2f1e2013c97aa5c79c95634254d5f54b5bfb4bb4b9fd0e9f18c42f18077b1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready-snapshot/tests-ready.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/run-1/tests-ready.json": {
+      "sha256": "74a2f1e2013c97aa5c79c95634254d5f54b5bfb4bb4b9fd0e9f18c42f18077b1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/run-1/tests-ready.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/source-ready.json": {
+      "sha256": "9914f89ea74d75cd90e9102916181d40cc8bccb719ce518f5d5e3e3bab9025da",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/source-ready.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/source-static-review.md": {
+      "sha256": "6c273a12051049e91cc6b6234c57d52dd0dccac442789a51f99e4a7511286db1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/source-static-review.md"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/stall-cause-and-resumption.json": {
+      "sha256": "6682d16227cdb1835577306a69df8470e52f11e4318739654dc4abd426ec3c89",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/stall-cause-and-resumption.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/status-clarification.json": {
+      "sha256": "f89d4a98e7809b394f2d4f4bf55b1fab1c8727f13843c3739fa4e258fba47788",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/status-clarification.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/unit-budget-before-conservative-correction.json": {
+      "sha256": "79f5b63b71d1dd95d0fc51d701d925643f406537b51f6ed4732b95d04eb43502",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/unit-budget-before-conservative-correction.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/queue-ack-20261017/unit-budget.json": {
+      "sha256": "b81401334b875233b0a8034df275b6ea428aa34928bfa5c355b7438cfb355d1e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/queue-ack-20261017/unit-budget.json"
+    },
+    "docs/testing/codex-queue-receipts-20261017/review/final-review.md": {
+      "sha256": "6673a9228bedcb63eaa6e3de61e6584b1543a5c5bf816ce2a7237b07725f66a3",
+      "source": "/tmp/agent-unattended-ack-final-review.md"
+    }
+  }
+}

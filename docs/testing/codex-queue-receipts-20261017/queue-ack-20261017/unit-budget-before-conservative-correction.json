@@ -1,0 +1,13 @@
+{
+  "unit": "U01b2_DURABLE_ACK_RECEIPT",
+  "started_utc": "2026-10-17T01:52:09.392724+00:00",
+  "deadline_utc": "2026-10-17T02:52:09.392724+00:00",
+  "max_same_failure_fixes": 3,
+  "base": "aef3af98d1bbc9037f1b75906e0217844bb5bd1d",
+  "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/ack-development",
+  "previous_unit": "PR20 complete and readback232 before its deadline",
+  "old_native_D18_hold": "UNCHANGED_NO_CONTROL_PROBES",
+  "scope": "New distinct local ACK receipt validation/persistence unit; not reopening old sandbox/owner runtime investigation",
+  "no_live_queue_or_RPC": true,
+  "scheduler": "PAUSED_UNCHANGED"
+}

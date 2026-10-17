@@ -1,0 +1,62 @@
+{
+  "provenance": "SYNTHETIC_ONLY_QUEUE_RECEIPT_NO_NATIVE_IO",
+  "intent": {
+    "schema": 1,
+    "project_id": "agent_project",
+    "repository": "fixture-owner/agent_project",
+    "dev_root": "/fixture/intent-clone",
+    "git_common_dir": "/fixture/intent-common-git",
+    "batch_id": "fixture-intent-batch-1",
+    "task_id": "T1",
+    "project_sha256": "26f5a2dcbfe67abd7c5f8cb4c848c104adb0e7f2378532cc2f106ca500c7ae3a",
+    "task_sha256": "b9d13452e979af7422dd269954eb2575dfce4eece6c267d8ed91366b6f4ad8b8",
+    "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "plan_sha256": "229a1c6e5a22cc49eaeeb92bbd60c686b89b0f3537aaaceff48f9b3efef71af8",
+    "prompt_sha256": "9daa7f4ce952acf86defcd5a56921e1836e8c590a366d59d8747f57acb53fe83",
+    "settings_sha256": "98c674204b66a4203f62abaeda03c111e9a0baf01c5ff61353435aa63757174e",
+    "clientUserMessageId": "fixture-client-T1"
+  },
+  "task_descriptor": {
+    "task_id": "T1",
+    "predecessor_id": null,
+    "plan_sha256": "229a1c6e5a22cc49eaeeb92bbd60c686b89b0f3537aaaceff48f9b3efef71af8",
+    "required_test_ids": [
+      "fixture.unit",
+      "fixture.contract"
+    ],
+    "allowed_files": [
+      "src/ops/tools/fixture_task.py"
+    ],
+    "timeout_sec": 600
+  },
+  "prompt_fixture": "ACK_RECEIPT_PRIVATE_PROMPT_NEVER_LOG\r\n\ud55c\uae00 caf\u00e9",
+  "settings_fixture": {
+    "cwd": "/fixture/intent-clone",
+    "approvalPolicy": {
+      "granular": {
+        "sandbox_approval": false,
+        "request_permissions": false,
+        "rules": false,
+        "mcp_elicitations": false,
+        "skill_approval": false
+      }
+    },
+    "approvalsReviewer": "auto_review",
+    "sandbox": {
+      "type": "workspaceWrite",
+      "networkAccess": false,
+      "writableRoots": [
+        "/fixture/intent-clone",
+        "/fixture/tmp"
+      ]
+    },
+    "runtimeWorkspaceRoots": [
+      "/fixture/intent-clone"
+    ]
+  },
+  "canonical_intent_sha256": "eb9bf073ae75cb8394c7f13658550c424c9f53b8337d168569539fcf0b0f3abc",
+  "plan_sha256": "4c005dd7c2a7703f0639ef71aed968c5a1fc5cf8b6ce404364debb779097d575",
+  "thread_id": "fixture-ack-thread",
+  "queued_id": "fixture-queued-ack-1",
+  "foreign_client": "fixture-other-valid-client"
+}

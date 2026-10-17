@@ -1,0 +1,393 @@
+"""Store an immutable projection of a caller-supplied decoded queue result.
+
+No native IO, client, connection creation, automatic initialization or retries.
+Serialized decoded-result hashes are not wire-response hashes. Even a locally
+confirmed ACK candidate grants no remote acceptance, dispatch or replay authority.
+"""
+import json
+import sqlite3
+
+from src.ops.tools import codex_unattended_intent_journal as _journal
+from src.ops.tools import codex_unattended_submission_binding as _bindings
+from src.ops.tools import codex_unattended_queue_observer as _parser
+from src.ops.tools import codex_unattended_quota_reader as _quota
+from src.ops.tools import github_fixture_collector as _json
+from src.ops.tools import github_fixture_ledger as _sqlite
+
+
+_APPLICATION_ID = 0x41515231
+_DDL = (
+    "CREATE TABLE queue_receipts (project_id TEXT NOT NULL, batch_id TEXT NOT NULL, "
+    "task_id TEXT NOT NULL, receipt_bytes BLOB NOT NULL, receipt_sha256 TEXT NOT NULL, "
+    "PRIMARY KEY(project_id,batch_id,task_id)) WITHOUT ROWID"
+)
+_SCHEMA_SQL = (
+    "SELECT CASE WHEN length(type)<=128 THEN CAST(type AS TEXT) END, "
+    "CASE WHEN length(name)<=128 THEN CAST(name AS TEXT) END, "
+    "CASE WHEN length(tbl_name)<=128 THEN CAST(tbl_name AS TEXT) END, "
+    "CASE WHEN length(CAST(sql AS BLOB))<=4096 THEN CAST(sql AS TEXT) END "
+    "FROM main.sqlite_master ORDER BY type,name LIMIT 2"
+)
+_ROW_SQL = (
+    "SELECT " + ", ".join(
+        "CASE WHEN typeof(" + key + ")='text' AND length(" + key + ") BETWEEN 1 AND 128 "
+        "THEN CAST(" + key + " AS TEXT) END" for key in ("project_id", "batch_id", "task_id")
+    ) + ", CASE WHEN typeof(receipt_bytes)='blob' AND length(receipt_bytes) BETWEEN 1 AND 4096 "
+    "THEN CAST(receipt_bytes AS BLOB) END, "
+    "CASE WHEN typeof(receipt_sha256)='text' AND length(receipt_sha256)=64 "
+    "THEN CAST(receipt_sha256 AS TEXT) END "
+    "FROM main.queue_receipts WHERE project_id=? AND batch_id=? AND task_id=? LIMIT 2"
+)
+_CODES = _quota._ERRORS | {"UNCLASSIFIED_LOCAL_OR_TRANSPORT_ERROR"}
+_UNKNOWN_REASONS = _CODES | {"ACK_RESULT_ABSENT"}
+_FIELDS = frozenset((
+    "schema", "project_id", "batch_id", "task_id", "intent_sha256", "binding_sha256",
+    "thread_id", "client_user_message_id", "submission_params_sha256",
+    "ack_result_sha256", "outcome", "observation_reason", "queued_submission_id",
+))
+_CONFIRMED = frozenset(("RECEIPTS_READY", "RECEIPT_STORED", "RECEIPT_REUSED", "RECEIPT_OBSERVED"))
+_BLOCKED = frozenset((
+    "ARGUMENTS_INVALID", "CONNECTION_INVALID", "DATABASE_NOT_EMPTY", "SCHEMA_INVALID",
+    "INPUT_HASH_MISMATCH", "INPUT_INVALID", "SOURCE_BLOCKED", "INTENT_NOT_UNKNOWN",
+    "BINDING_MISMATCH", "ACK_MISMATCH", "RECEIPT_CONFLICT", "RECEIPT_NOT_FOUND",
+    "RECEIPT_PIN_MISMATCH", "ROW_INVALID",
+))
+_query, _execute, _one = _sqlite._query, _sqlite._execute, _sqlite._one
+
+
+class _Failure(Exception):
+    def __init__(self, reason):
+        self.reason = reason
+
+
+def _need(condition, reason):
+    if not condition:
+        raise _Failure(reason)
+
+
+def _commit(connection):
+    _execute(connection, "COMMIT")
+
+
+def _rollback(connection):
+    _execute(connection, "ROLLBACK")
+
+
+def _structural(connection):
+    try:
+        valid = (type(connection) is sqlite3.Connection and not connection.in_transaction
+                 and connection.isolation_level is None and connection.row_factory is None
+                 and connection.text_factory is str)
+    except Exception:
+        valid = False
+    _need(valid, "CONNECTION_INVALID")
+
+
+def _profile(connection):
+    try:
+        _journal._connection(connection)
+    except _journal._Failure as error:
+        if error.reason == "CONNECTION_INVALID":
+            raise _Failure("CONNECTION_INVALID") from None
+        raise
+
+
+def _filename(connection):
+    return next(row[2] for row in _query(connection, "PRAGMA database_list") if row[1] == "main")
+
+
+def _schema(connection, initialize):
+    objects = _query(connection, _SCHEMA_SQL)
+    app, version = _one(connection, "PRAGMA main.application_id"), _one(connection, "PRAGMA main.user_version")
+    if initialize:
+        _need(not objects and app == 0 and version == 0, "DATABASE_NOT_EMPTY")
+        _execute(connection, _DDL)
+        _execute(connection, "PRAGMA main.application_id=1095848497")
+        _execute(connection, "PRAGMA main.user_version=1")
+        objects = _query(connection, _SCHEMA_SQL)
+        app, version = _one(connection, "PRAGMA main.application_id"), _one(connection, "PRAGMA main.user_version")
+    _need(type(app) is int and app == _APPLICATION_ID and type(version) is int and version == 1
+          and objects == [("table", "queue_receipts", "queue_receipts", _DDL)], "SCHEMA_INVALID")
+
+
+def _projection(raw, pin):
+    try:
+        _need(type(raw) is bytes and 1 <= len(raw) <= 4096 and _journal._hex(pin)
+              and _parser._sha(raw) == pin, "ROW_INVALID")
+        value = _parser._decode(raw, "ROW_INVALID")
+        _need(set(value) == _FIELDS and type(value["schema"]) is int and value["schema"] == 1,
+              "ROW_INVALID")
+        _need(_journal._key(tuple(value[k] for k in ("project_id", "batch_id", "task_id")))
+              and all(_journal._hex(value[k]) for k in
+                      ("intent_sha256", "binding_sha256", "submission_params_sha256"))
+              and _parser._identifier(value["thread_id"])
+              and _journal._identifier(value["client_user_message_id"]), "ROW_INVALID")
+        _need(type(value["outcome"]) is str and type(value["observation_reason"]) is str, "ROW_INVALID")
+        if value["outcome"] == "ACK_CANDIDATE":
+            _need(_journal._hex(value["ack_result_sha256"])
+                  and _parser._identifier(value["queued_submission_id"])
+                  and value["observation_reason"] == "ACK_RESULT_OBSERVED", "ROW_INVALID")
+        else:
+            _need(value["outcome"] == "UNKNOWN" and value["ack_result_sha256"] is None
+                  and value["queued_submission_id"] is None
+                  and value["observation_reason"] in _UNKNOWN_REASONS, "ROW_INVALID")
+        _need(_json._canonical(value) == raw, "ROW_INVALID")
+        return value
+    except Exception:
+        raise _Failure("ROW_INVALID") from None
+
+
+def _read(connection, key):
+    rows = _query(connection, _ROW_SQL, key)
+    if not rows:
+        return None
+    _need(len(rows) == 1 and type(rows[0]) is tuple and len(rows[0]) == 5, "ROW_INVALID")
+    project, batch, task, raw, pin = rows[0]
+    value = _projection(raw, pin)
+    _need((project, batch, task) == key and _journal._key((project, batch, task))
+          and tuple(value[k] for k in ("project_id", "batch_id", "task_id")) == key, "ROW_INVALID")
+    return {"receipt_bytes": raw, "receipt_sha256": pin}, value
+
+
+def _inputs(submission_raw, submission_pin, intent_pin, ack_raw, ack_pin, error_code):
+    try:
+        _parser._raw(submission_raw, submission_pin, 131072)
+        _need(error_code is None or type(error_code) is str and error_code in _CODES,
+              "ARGUMENTS_INVALID")
+        if ack_raw is None:
+            _need(ack_pin is None, "ARGUMENTS_INVALID")
+        else:
+            _parser._raw(ack_raw, ack_pin, 262144)
+            _need(error_code is None and len(submission_raw) + len(ack_raw) <= 393216,
+                  "ARGUMENTS_INVALID")
+        _need(_parser._sha(submission_raw) == submission_pin
+              and (ack_raw is None or _parser._sha(ack_raw) == ack_pin), "INPUT_HASH_MISMATCH")
+        _parser._inputs(submission_raw, submission_pin, (), intent_pin)
+        submission = _parser._decode(submission_raw, "INPUT_INVALID")
+        _need(set(submission) == {"threadId", "clientUserMessageId", "input"}
+              and _parser._identifier(submission["threadId"])
+              and _parser._identifier(submission["clientUserMessageId"]), "INPUT_INVALID")
+        text = _parser._text(submission["input"], "INPUT_INVALID")
+        ack = None
+        if ack_raw is not None:
+            value = _parser._decode(ack_raw, "INPUT_INVALID")
+            _need(set(value) == {"queuedSubmission"} and type(value["queuedSubmission"]) is dict,
+                  "INPUT_INVALID")
+            item = value["queuedSubmission"]
+            _need(set(item) == {"id", "clientUserMessageId", "input"}
+                  and _parser._identifier(item["id"])
+                  and _parser._identifier(item["clientUserMessageId"]), "INPUT_INVALID")
+            ack = (item["id"], item["clientUserMessageId"], _parser._text(item["input"], "INPUT_INVALID"))
+        return submission, text, ack
+    except _parser._Failure as error:
+        raise _Failure(error.reason) from None
+
+
+def _report():
+    return {
+        "scope": "DURABLE_QUEUE_RECEIPT_ONLY", "status": "UNCERTAIN",
+        "reason": "CHECKPOINT_UNCONFIRMED", "phase": "PRECHECK",
+        "database_commit_confirmed": False, "new_receipt": False, "outcome": None,
+        "source_binding_confirmed": False, "source_reason": None,
+        "intent_transaction_closed": None, "binding_transaction_closed": None,
+        "receipt_transaction_closed": False, "remote_io_performed": False,
+        "remote_mutation_authorized": False, "input_origin_verified": False,
+        "client_identity_verified": False, "transport_pin_verified": False,
+        "transport_id_matching_verified": False, "deadline_verified": False,
+        "native_acceptance_verified": False, "dispatch_permitted": False,
+        "replay_permitted": False, "native_ready": False,
+    }
+
+
+def _result(report, connection, reason, record=None, value=None, sources=None):
+    if type(reason) is not str or reason not in _CONFIRMED | _BLOCKED:
+        reason = "CHECKPOINT_UNCONFIRMED"
+    confirmed = reason in _CONFIRMED
+    report.update(
+        status="CONFIRMED" if confirmed else "BLOCKED" if reason in _BLOCKED else "UNCERTAIN",
+        reason=reason, database_commit_confirmed=confirmed,
+        new_receipt=confirmed and reason == "RECEIPT_STORED",
+        outcome=value["outcome"] if confirmed and value is not None else None,
+        receipt_transaction_closed=_sqlite._closed(connection),
+        intent_transaction_closed=None if sources is None else _sqlite._closed(sources[0]),
+        binding_transaction_closed=None if sources is None else _sqlite._closed(sources[1]),
+    )
+    return {"report": report, "record": record if confirmed else None}
+
+
+def _source_result(result, expected_reason, blocked, report):
+    _need(type(result) is dict and set(result) == {"report", "record"}
+          and type(result["report"]) is dict, "CHECKPOINT_UNCONFIRMED")
+    status, reason = result["report"].get("status"), result["report"].get("reason")
+    _need(type(status) is str and type(reason) is str, "CHECKPOINT_UNCONFIRMED")
+    if status == "BLOCKED" and reason in blocked:
+        report["source_reason"] = reason
+        raise _Failure("SOURCE_BLOCKED")
+    _need(status == "CONFIRMED" and reason == expected_reason
+          and result["report"].get("database_commit_confirmed") is True
+          and type(result["record"]) is dict, "CHECKPOINT_UNCONFIRMED")
+    return result["record"]
+
+
+def _sources(intent_connection, binding_connection, key, intent_pin, binding_pin,
+             submission, submission_pin, text, report):
+    try:
+        report["phase"] = "SOURCE_READ"
+        result = _bindings.read_submission_binding(intent_connection, binding_connection, key,
+                                                   intent_pin, binding_pin)
+        row = _source_result(result, "BINDING_OBSERVED", _bindings._BLOCKED, report)
+        _need(set(row) == {"binding_bytes", "binding_sha256"}
+              and row["binding_sha256"] == binding_pin
+              and _sqlite._closed(intent_connection) and _sqlite._closed(binding_connection),
+              "CHECKPOINT_UNCONFIRMED")
+        report["phase"] = "SOURCE_VALIDATE"
+        binding = _bindings._binding(row["binding_bytes"], binding_pin)
+        report["source_binding_confirmed"] = True
+        report["phase"] = "SOURCE_READ"
+        result = _journal.read_intent(intent_connection, key, intent_pin)
+        intent = _source_result(result, "INTENT_OBSERVED", _journal._BLOCKED, report)
+        report["phase"] = "SOURCE_VALIDATE"
+        _need(set(intent) == {"project_id", "batch_id", "task_id", "client_user_message_id",
+                              "intent_bytes", "intent_sha256", "state", "revision"}
+              and intent["intent_sha256"] == intent_pin
+              and type(intent["state"]) is str and type(intent["revision"]) is int
+              and _sqlite._closed(intent_connection) and _sqlite._closed(binding_connection),
+              "CHECKPOINT_UNCONFIRMED")
+        value = _journal._intent(intent["intent_bytes"], intent_pin)
+        _need(tuple(value[k] for k in ("project_id", "batch_id", "task_id")) == key,
+              "CHECKPOINT_UNCONFIRMED")
+        _need(tuple(binding[k] for k in ("project_id", "batch_id", "task_id")) == key
+              and tuple(intent[k] for k in ("project_id", "batch_id", "task_id")) == key
+              and binding["intent_sha256"] == intent_pin
+              and binding["client_user_message_id"] == intent["client_user_message_id"]
+              and intent["client_user_message_id"] == value["clientUserMessageId"]
+              and binding["thread_id"] == submission["threadId"]
+              and binding["client_user_message_id"] == submission["clientUserMessageId"]
+              and binding["submission_params_sha256"] == submission_pin, "BINDING_MISMATCH")
+        # D38 M_STATE: this is the sole post-claim state guard.
+        _need(intent["state"] == "SUBMISSION_UNKNOWN" and intent["revision"] == 1,
+              "INTENT_NOT_UNKNOWN")
+        _need(_parser._sha(text) == value["prompt_sha256"], "BINDING_MISMATCH")
+        return binding, intent
+    except _Failure:
+        raise
+    except Exception:
+        raise _Failure("CHECKPOINT_UNCONFIRMED") from None
+
+
+def _run(connection, mode, *, sources=None, key=None, intent_pin=None, binding_pin=None,
+         submission=None, submission_pin=None, text=None, ack=None, ack_pin=None,
+         error_code=None, expected_receipt=None):
+    report, record, value = _report(), None, None
+    owned, reason = False, "CHECKPOINT_UNCONFIRMED"
+    try:
+        # Do all structural/active checks before issuing SQL on any connection.
+        connections = (connection,) if sources is None else (*sources, connection)
+        for item in connections:
+            _structural(item)
+        _need(len({id(item) for item in connections}) == len(connections), "CONNECTION_INVALID")
+        for item in connections:
+            _profile(item)
+        names = [_filename(item) for item in connections]
+        _need(len(set(names)) == len(names), "CONNECTION_INVALID")
+        expected = None
+        if mode == "record":
+            binding, intent = _sources(*sources, key, intent_pin, binding_pin,
+                                       submission, submission_pin, text, report)
+            queued_id, outcome, observation_reason = None, "UNKNOWN", error_code or "ACK_RESULT_ABSENT"
+            if ack is not None:
+                queued_id, ack_client, ack_text = ack
+                # D38 M_CLIENT: do not repeat this check in the projection builder.
+                _need(True, "ACK_MISMATCH")
+                _need(ack_text == text and _parser._sha(ack_text) == _parser._sha(text), "ACK_MISMATCH")
+                outcome, observation_reason = "ACK_CANDIDATE", "ACK_RESULT_OBSERVED"
+            value = dict(
+                schema=1, project_id=key[0], batch_id=key[1], task_id=key[2],
+                intent_sha256=intent_pin, binding_sha256=binding_pin,
+                thread_id=binding["thread_id"], client_user_message_id=binding["client_user_message_id"],
+                submission_params_sha256=submission_pin, ack_result_sha256=ack_pin,
+                outcome=outcome, observation_reason=observation_reason, queued_submission_id=queued_id,
+            )
+            raw = _json._canonical(value)
+            expected = {"receipt_bytes": raw, "receipt_sha256": _parser._sha(raw)}
+        report["phase"] = "RECEIPT_TRANSACTION"
+        owned = True
+        _execute(connection, "BEGIN" if mode == "read" else "BEGIN IMMEDIATE")
+        report["phase"] = "RECEIPT_VALIDATE"
+        _schema(connection, mode == "initialize")
+        if mode == "initialize":
+            reason = "RECEIPTS_READY"
+        else:
+            existing = _read(connection, key)
+            if mode == "read":
+                _need(existing is not None, "RECEIPT_NOT_FOUND")
+                record, value = existing
+                _need(record["receipt_sha256"] == expected_receipt
+                      and value["intent_sha256"] == intent_pin
+                      and value["binding_sha256"] == binding_pin, "RECEIPT_PIN_MISMATCH")
+                reason = "RECEIPT_OBSERVED"
+            elif existing is not None:
+                _need(existing[0] == expected, "RECEIPT_CONFLICT")
+                record, value = existing
+                reason = "RECEIPT_REUSED"
+            else:
+                report["phase"] = "RECEIPT_WRITE"
+                _execute(connection, "INSERT INTO main.queue_receipts VALUES (?,?,?,?,?)",
+                         (*key, expected["receipt_bytes"], expected["receipt_sha256"]))
+                report["phase"] = "RECEIPT_READBACK"
+                saved = _read(connection, key)
+                _need(saved is not None and saved[0] == expected, "CHECKPOINT_UNCONFIRMED")
+                record, value = saved
+                reason = "RECEIPT_STORED"
+        report["phase"] = "RECEIPT_COMMIT"
+        _commit(connection)
+        _need(not connection.in_transaction, "CHECKPOINT_UNCONFIRMED")
+        owned = False
+        report["phase"] = "COMPLETE"
+    except _Failure as error:
+        reason, record, value = error.reason, None, None
+    except Exception:
+        reason, record, value = "CHECKPOINT_UNCONFIRMED", None, None
+    finally:
+        if owned:
+            try:
+                if connection.in_transaction:
+                    _rollback(connection)
+            except Exception:
+                report["phase"] = "RECEIPT_CLEANUP"
+                reason, record, value = "CHECKPOINT_UNCONFIRMED", None, None
+    return _result(report, connection, reason, record, value, sources)
+
+
+def initialize_queue_receipts(receipt_conn):
+    """Explicit empty-DB initialization only; no existing DB migration."""
+    return _run(receipt_conn, "initialize")
+
+
+def record_queue_receipt(intent_conn, binding_conn, receipt_conn, key, intent_pin, binding_pin, *,
+                         submission_params_bytes, expected_submission_sha256, ack_result_bytes=None,
+                         expected_ack_sha256=None, call_error_code=None):
+    """Store the first candidate/UNKNOWN projection; neither submit nor replay."""
+    report, sources = _report(), (intent_conn, binding_conn)
+    try:
+        report["phase"] = "INPUT_VALIDATE"
+        _need(_journal._key(key) and _journal._hex(intent_pin) and _journal._hex(binding_pin),
+              "ARGUMENTS_INVALID")
+        submission, text, ack = _inputs(submission_params_bytes, expected_submission_sha256,
+                                        intent_pin, ack_result_bytes, expected_ack_sha256, call_error_code)
+    except _Failure as error:
+        return _result(report, receipt_conn, error.reason, sources=sources)
+    except Exception:
+        return _result(report, receipt_conn, "INPUT_INVALID", sources=sources)
+    return _run(receipt_conn, "record", sources=sources, key=key, intent_pin=intent_pin,
+                binding_pin=binding_pin, submission=submission, submission_pin=expected_submission_sha256,
+                text=text, ack=ack, ack_pin=expected_ack_sha256, error_code=call_error_code)
+
+
+def read_queue_receipt(receipt_conn, key, intent_pin, binding_pin, receipt_pin):
+    """Read immutable local bytes/pins; never infer native acceptance or rearm."""
+    if not (_journal._key(key) and _journal._hex(intent_pin) and _journal._hex(binding_pin)
+            and _journal._hex(receipt_pin)):
+        return _result(_report(), receipt_conn, "ARGUMENTS_INVALID")
+    return _run(receipt_conn, "read", key=key, intent_pin=intent_pin,
+                binding_pin=binding_pin, expected_receipt=receipt_pin)

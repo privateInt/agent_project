@@ -1,0 +1,3171 @@
+{
+  "normal": {
+    "stage": "normal",
+    "testsRun": 4,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "methods": [
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_queue_receipts.QueueReceiptTests.test_ack_candidate_store_reuse_and_reopen",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_queue_receipts.QueueReceiptTests.test_unknown_receipt_is_immutable",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_queue_receipts.QueueReceiptTests.test_receipt_validation_conflict_and_privacy",
+        "outcome": "PASS"
+      },
+      {
+        "id": "src.ops.tools.tests.test_codex_unattended_queue_receipts.QueueReceiptTests.test_receipt_database_faults_and_profiles",
+        "outcome": "PASS"
+      }
+    ],
+    "boundary_violations": [],
+    "old_case_calls": [],
+    "sqlite_connections": [
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": true
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      }
+    ],
+    "runtime_calls": 0,
+    "source_copy": "/tmp/queue-ack-portable-normal-mqxtdiac/minimal-source",
+    "observations": [
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_REUSED",
+        "phase": "COMPLETE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_OBSERVED",
+        "phase": "COMPLETE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_REUSED",
+        "phase": "COMPLETE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_OBSERVED",
+        "phase": "COMPLETE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_REUSED",
+        "phase": "COMPLETE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_OBSERVED",
+        "phase": "COMPLETE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_REUSED",
+        "phase": "COMPLETE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_CONFLICT",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_OBSERVED",
+        "phase": "COMPLETE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ACK_MISMATCH",
+        "phase": "SOURCE_VALIDATE",
+        "sql_count": 53,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INTENT_NOT_UNKNOWN",
+        "phase": "SOURCE_VALIDATE",
+        "sql_count": 53,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_HASH_MISMATCH",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_HASH_MISMATCH",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ARGUMENTS_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ACK_MISMATCH",
+        "phase": "SOURCE_VALIDATE",
+        "sql_count": 53,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INPUT_INVALID",
+        "phase": "INPUT_VALIDATE",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "BINDING_MISMATCH",
+        "phase": "SOURCE_VALIDATE",
+        "sql_count": 53,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "BINDING_MISMATCH",
+        "phase": "SOURCE_VALIDATE",
+        "sql_count": 53,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ACK_MISMATCH",
+        "phase": "SOURCE_VALIDATE",
+        "sql_count": 53,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "ACK_MISMATCH",
+        "phase": "SOURCE_VALIDATE",
+        "sql_count": 53,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "SOURCE_BLOCKED",
+        "phase": "SOURCE_READ",
+        "sql_count": 42,
+        "source_reads": [
+          "binding"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "SOURCE_BLOCKED",
+        "phase": "SOURCE_READ",
+        "sql_count": 36,
+        "source_reads": [
+          "binding"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_NOT_FOUND",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "INTENT_NOT_UNKNOWN",
+        "phase": "SOURCE_VALIDATE",
+        "sql_count": 53,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_PIN_MISMATCH",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_PIN_MISMATCH",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "ROW_INVALID",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_PIN_MISMATCH",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_PIN_MISMATCH",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "ROW_INVALID",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_PIN_MISMATCH",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_PIN_MISMATCH",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "ROW_INVALID",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_PIN_MISMATCH",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_PIN_MISMATCH",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "ROW_INVALID",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_PIN_MISMATCH",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_PIN_MISMATCH",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "ROW_INVALID",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "SCHEMA_INVALID",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 58,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "DATABASE_NOT_EMPTY",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 11,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "DATABASE_NOT_EMPTY",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 11,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "DATABASE_NOT_EMPTY",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 11,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "DATABASE_NOT_EMPTY",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 11,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "SCHEMA_INVALID",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 58,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "SCHEMA_INVALID",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 58,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "SCHEMA_INVALID",
+        "phase": "RECEIPT_VALIDATE",
+        "sql_count": 58,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 2,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 1,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 5,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 4,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 7,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 6,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 10,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 9,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 11,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 15,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 14,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 18,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 18,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 18,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CONNECTION_INVALID",
+        "phase": "PRECHECK",
+        "sql_count": 13,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "PRECHECK",
+        "sql_count": 0,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "PRECHECK",
+        "sql_count": 1,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "PRECHECK",
+        "sql_count": 5,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "PRECHECK",
+        "sql_count": 6,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "PRECHECK",
+        "sql_count": 10,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "PRECHECK",
+        "sql_count": 11,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "RECEIPT_TRANSACTION",
+        "sql_count": 53,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "RECEIPT_TRANSACTION",
+        "sql_count": 55,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "RECEIPT_WRITE",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "RECEIPT_WRITE",
+        "sql_count": 60,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "RECEIPT_READBACK",
+        "sql_count": 60,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "RECEIPT_COMMIT",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "RECEIPT_COMMIT",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "read_queue_receipt",
+        "reason": "RECEIPT_OBSERVED",
+        "phase": "COMPLETE",
+        "sql_count": 12,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "RECEIPT_CLEANUP",
+        "sql_count": 59,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "CHECKPOINT_UNCONFIRMED",
+        "phase": "RECEIPT_CLEANUP",
+        "sql_count": 60,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      }
+    ],
+    "protected_original_opt_operator_reads": 0,
+    "normal_helper_markers": {
+      "case_ack_client_mismatch_cannot_store": {
+        "outcome": "PASS",
+        "invocations": 1,
+        "peer_rows": 0,
+        "reopen_rows": 0
+      },
+      "case_prepared_intent_cannot_store_ack": {
+        "outcome": "PASS",
+        "invocations": 1,
+        "peer_rows": 0,
+        "reopen_rows": 0
+      }
+    },
+    "all_pass": true,
+    "process_returncode": 0,
+    "result_sha256": "08715a6b65651fdd291b9043a795bfedca2d8329b77c1c8e7c3f99e231b6bd31",
+    "first_log_sha256": "644fd2c6fd7f767cd1448119b3c5a81ba597f202455e63edfd429264a8963e1c"
+  },
+  "M_CLIENT": {
+    "stage": "M_CLIENT",
+    "testsRun": 1,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "methods": [
+      {
+        "id": "case_ack_client_mismatch_cannot_store",
+        "outcome": "FAIL",
+        "exception_type": "AssertionError",
+        "last_test_assertion": {
+          "function": "invoke",
+          "line": 298
+        }
+      }
+    ],
+    "boundary_violations": [],
+    "old_case_calls": [],
+    "sqlite_connections": [
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      }
+    ],
+    "runtime_calls": 0,
+    "source_copy": "/tmp/queue-ack-portable-M_CLIENT-f80qn2z_/minimal-source",
+    "observations": [
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      }
+    ],
+    "protected_original_opt_operator_reads": 0,
+    "actual_wrong_commit_verified": true,
+    "wrong_commit_witness": {
+      "peer_row_count": 1,
+      "reopen_row_count": 1,
+      "peer_equals_reopen": true,
+      "intent_state": "SUBMISSION_UNKNOWN",
+      "intent_revision": 1,
+      "source_unchanged": true,
+      "rows": [
+        {
+          "projection": {
+            "ack_result_sha256": "5d96ed8937bfc58f7a42511201e8a42099241e8903554cf5a9c93130ec1e7359",
+            "batch_id": "fixture-intent-batch-1",
+            "binding_sha256": "579f747c74adbdc5b301a792f0ab821b43d2cf12ddb6a820767c89ac02d4153f",
+            "client_user_message_id": "fixture-client-T1",
+            "intent_sha256": "eb9bf073ae75cb8394c7f13658550c424c9f53b8337d168569539fcf0b0f3abc",
+            "observation_reason": "ACK_RESULT_OBSERVED",
+            "outcome": "ACK_CANDIDATE",
+            "project_id": "agent_project",
+            "queued_submission_id": "fixture-queued-ack-1",
+            "schema": 1,
+            "submission_params_sha256": "efd492709119216215439c81737c86d4c1f32ad3177ff3ac6e7e7f01be4efa00",
+            "task_id": "T1",
+            "thread_id": "fixture-ack-thread"
+          },
+          "receipt_sha256": "6e111729b7be7b12f56992ea490c882380c0b3fb7496af901083502417093483",
+          "actual_sha256": "6e111729b7be7b12f56992ea490c882380c0b3fb7496af901083502417093483"
+        }
+      ]
+    },
+    "helper_invocations": {
+      "case_ack_client_mismatch_cannot_store": 1
+    },
+    "wrong_commit_db_sha256": "12fa213390a85853fcac679ce3f4dc34c366be4124b61479b26d1a84928d9952",
+    "actual_wrong_candidate": {
+      "report": {
+        "scope": "DURABLE_QUEUE_RECEIPT_ONLY",
+        "status": "CONFIRMED",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "database_commit_confirmed": true,
+        "new_receipt": true,
+        "outcome": "ACK_CANDIDATE",
+        "source_binding_confirmed": true,
+        "source_reason": null,
+        "intent_transaction_closed": true,
+        "binding_transaction_closed": true,
+        "receipt_transaction_closed": true,
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "input_origin_verified": false,
+        "client_identity_verified": false,
+        "transport_pin_verified": false,
+        "transport_id_matching_verified": false,
+        "deadline_verified": false,
+        "native_acceptance_verified": false,
+        "dispatch_permitted": false,
+        "replay_permitted": false,
+        "native_ready": false
+      },
+      "record": {
+        "receipt_sha256": "6e111729b7be7b12f56992ea490c882380c0b3fb7496af901083502417093483",
+        "actual_bytes_sha256": "6e111729b7be7b12f56992ea490c882380c0b3fb7496af901083502417093483"
+      }
+    },
+    "semantic_fail1_error0": true,
+    "process_returncode": 0,
+    "result_sha256": "f7f1a55b5375dc68ee91b0f96f48d98f09a932ed5fd144c0a6d6434cc16514ac",
+    "first_log_sha256": "c8bc0b8770ba4ebef1fa19539960f107831c541ae06651ff6b9bfa90bac1b403"
+  },
+  "M_STATE": {
+    "stage": "M_STATE",
+    "testsRun": 1,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0,
+    "methods": [
+      {
+        "id": "case_prepared_intent_cannot_store_ack",
+        "outcome": "FAIL",
+        "exception_type": "AssertionError",
+        "last_test_assertion": {
+          "function": "invoke",
+          "line": 298
+        }
+      }
+    ],
+    "boundary_violations": [],
+    "old_case_calls": [],
+    "sqlite_connections": [
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      },
+      {
+        "dedicated_temporary": true,
+        "memory_rejection_fixture": false
+      }
+    ],
+    "runtime_calls": 0,
+    "source_copy": "/tmp/queue-ack-portable-M_STATE-10douvdk/minimal-source",
+    "observations": [
+      {
+        "operation": "initialize_queue_receipts",
+        "reason": "RECEIPTS_READY",
+        "phase": "COMPLETE",
+        "sql_count": 17,
+        "source_reads": [],
+        "runtime_calls": 0
+      },
+      {
+        "operation": "record_queue_receipt",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "sql_count": 61,
+        "source_reads": [
+          "binding",
+          "intent"
+        ],
+        "runtime_calls": 0
+      }
+    ],
+    "protected_original_opt_operator_reads": 0,
+    "actual_wrong_commit_verified": true,
+    "wrong_commit_witness": {
+      "peer_row_count": 1,
+      "reopen_row_count": 1,
+      "peer_equals_reopen": true,
+      "intent_state": "PREPARED",
+      "intent_revision": 0,
+      "source_unchanged": true,
+      "rows": [
+        {
+          "projection": {
+            "ack_result_sha256": "0f016aa8406199f3413f846d9bd8f2d77f65fc8446cc5342aec650efad0023e1",
+            "batch_id": "fixture-intent-batch-1",
+            "binding_sha256": "579f747c74adbdc5b301a792f0ab821b43d2cf12ddb6a820767c89ac02d4153f",
+            "client_user_message_id": "fixture-client-T1",
+            "intent_sha256": "eb9bf073ae75cb8394c7f13658550c424c9f53b8337d168569539fcf0b0f3abc",
+            "observation_reason": "ACK_RESULT_OBSERVED",
+            "outcome": "ACK_CANDIDATE",
+            "project_id": "agent_project",
+            "queued_submission_id": "fixture-queued-ack-1",
+            "schema": 1,
+            "submission_params_sha256": "efd492709119216215439c81737c86d4c1f32ad3177ff3ac6e7e7f01be4efa00",
+            "task_id": "T1",
+            "thread_id": "fixture-ack-thread"
+          },
+          "receipt_sha256": "6d38da76345a9d321a5c95a2a41b1389ec3ef74f68c41d71ad888fb9b9446687",
+          "actual_sha256": "6d38da76345a9d321a5c95a2a41b1389ec3ef74f68c41d71ad888fb9b9446687"
+        }
+      ]
+    },
+    "helper_invocations": {
+      "case_prepared_intent_cannot_store_ack": 1
+    },
+    "wrong_commit_db_sha256": "02cbcf3a3b4a598c39d48ad3190293700cf31420daf94990984862ccc6e1ae8c",
+    "actual_wrong_candidate": {
+      "report": {
+        "scope": "DURABLE_QUEUE_RECEIPT_ONLY",
+        "status": "CONFIRMED",
+        "reason": "RECEIPT_STORED",
+        "phase": "COMPLETE",
+        "database_commit_confirmed": true,
+        "new_receipt": true,
+        "outcome": "ACK_CANDIDATE",
+        "source_binding_confirmed": true,
+        "source_reason": null,
+        "intent_transaction_closed": true,
+        "binding_transaction_closed": true,
+        "receipt_transaction_closed": true,
+        "remote_io_performed": false,
+        "remote_mutation_authorized": false,
+        "input_origin_verified": false,
+        "client_identity_verified": false,
+        "transport_pin_verified": false,
+        "transport_id_matching_verified": false,
+        "deadline_verified": false,
+        "native_acceptance_verified": false,
+        "dispatch_permitted": false,
+        "replay_permitted": false,
+        "native_ready": false
+      },
+      "record": {
+        "receipt_sha256": "6d38da76345a9d321a5c95a2a41b1389ec3ef74f68c41d71ad888fb9b9446687",
+        "actual_bytes_sha256": "6d38da76345a9d321a5c95a2a41b1389ec3ef74f68c41d71ad888fb9b9446687"
+      }
+    },
+    "semantic_fail1_error0": true,
+    "process_returncode": 0,
+    "result_sha256": "29cf346c081f8f7f8b9a070d75c1cdcbe53f8955ce7798fb3ea41ccbb6ce4d5f",
+    "first_log_sha256": "dd9a3be94ae45e77d9ac179e3c1b27f405e289ebe20e3717581d0ae1c03c54a7"
+  },
+  "runtime_calls": 0,
+  "clock_reset": false,
+  "deadline_utc": "2026-10-17T02:50:11.827731+00:00",
+  "old_suites_rerun": false,
+  "normal_helper_pass_reused": [
+    "case_ack_client_mismatch_cannot_store",
+    "case_prepared_intent_cannot_store_ack"
+  ],
+  "all_required_verification_pass": true,
+  "completed_utc": "2026-10-17T02:21:22.708596+00:00"
+}

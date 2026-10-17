@@ -1,0 +1,19 @@
+{
+  "observed_utc": "2026-10-17T02:27:20.531010+00:00",
+  "cause": "Coordinator delayed checkpoint reconciliation and final-review dispatch after successful local execution; pending labels were stale",
+  "tests_completed_utc": "2026-10-17T02:21:22.708596+00:00",
+  "missing_local_execution_conditions": [],
+  "tests_repeated": false,
+  "static_review_repeated": false,
+  "test_agent": "COMPLETED",
+  "reviewer": "ACTUALLY_RUNNING_FINAL_REVIEW_NOT_APPROVAL_WAIT",
+  "queue_id": "01a147ae-5661-7c92-b22f-17ce466af7ee",
+  "turn_id": "01a147ae-5661-7c92-b22f-17e0c45c363b",
+  "approvals_reviewer": "auto_review",
+  "managed_boundary_sha256": "43ca1b2134fc90dfd51c4d5b37ae03b18b9d3ac08fbef38abce82b49990bd95e",
+  "new_native_probes": 0,
+  "scheduler": "PAUSE_UNCHANGED",
+  "old_runtime_D18": "HELD_UNCHANGED",
+  "deadline_utc": "2026-10-17T02:50:11.827731Z",
+  "next": "Final independent verdict, then isolated commit/DraftPR/full readback; no more tests unless concrete failure"
+}

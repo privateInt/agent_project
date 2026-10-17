@@ -1,0 +1,78 @@
+--- authoring-before-static/test_codex_unattended_queue_receipts.py
++++ tests-ready/test_codex_unattended_queue_receipts.py
+@@ -59,6 +59,9 @@
+     for cls in (support.IntentJournalTests, binding_support.SubmissionBindingTests, quota_support.QuotaReaderTests):
+         for value in cls.__dict__.values():
+             function = getattr(value, "__func__", value)
++            # contextmanager's generic wrapper code is shared with the new fixture/IO guards.
++            while hasattr(function, "__wrapped__"):
++                function = function.__wrapped__
+             code = getattr(function, "__code__", None)
+             if code is not None:
+                 codes.add(code)
+@@ -221,6 +224,7 @@
+             source_row = support.rows(db.peer_intent)[0]
+             self.last_wrong_witness = {"peer_row_count": len(peer_rows), "reopen_row_count": len(reopened_rows),
+                 "peer_equals_reopen": peer_rows == reopened_rows, "intent_state": source_row[6], "intent_revision": source_row[7],
++                "source_unchanged": self.sources(db) == self.expected_wrong_sources,
+                 "rows": [{"projection": json.loads(row[3]), "receipt_sha256": row[4], "actual_sha256": support.sha(row[3])} for row in peer_rows]}
+             if len(peer_rows) == 1 and peer_rows == reopened_rows:
+                 self.wrong_commit_db_bytes = db.receipt_path.read_bytes()
+@@ -305,6 +309,7 @@
+             ack["queuedSubmission"]["clientUserMessageId"] = self.data["foreign_client"]
+             raw = support.canonical(ack)
+             self.expected_wrong_projection, self.expected_wrong_state = self.expected_p(db, raw), ("SUBMISSION_UNKNOWN", 1)
++            self.expected_wrong_sources = before_s
+             self.capture_wrong_commit = True
+             try:
+                 result = self.invoke(db, ack=raw, reason="ACK_MISMATCH")
+@@ -324,6 +329,7 @@
+             before_s, before_r = self.sources(db), receipt_snapshot(db.receipt, db.receipt_path)
+             self.assertEqual(("PREPARED", 0), support.rows(db.intent)[0][6:])
+             self.expected_wrong_projection, self.expected_wrong_state = self.expected_p(db, db.ack_raw), ("PREPARED", 0)
++            self.expected_wrong_sources = before_s
+             self.capture_wrong_commit = True
+             try:
+                 self.invoke(db, reason="INTENT_NOT_UNKNOWN")
+@@ -348,6 +354,10 @@
+             self.assertEqual(stored["record"], self.invoke(db, reason="RECEIPT_REUSED")["record"])
+             variants = [json.dumps(db.ack, indent=2, ensure_ascii=True).encode(),
+                         json.dumps(dict(queuedSubmission=dict(reversed(list(db.ack["queuedSubmission"].items())))), separators=(",", ":")).encode()]
++            spans = copy.deepcopy(db.ack)
++            spans["queuedSubmission"]["input"][0]["text_elements"] = []
++            variants.append(support.canonical(spans))
++            variants.append(db.ack_raw + b" "*(262144-len(db.ack_raw)))
+             changed = copy.deepcopy(db.ack)
+             changed["queuedSubmission"]["id"] = "different-valid-queued-id"
+             variants.append(support.canonical(changed))
+@@ -413,7 +423,13 @@
+                 ack["queuedSubmission"].update(update)
+                 expected = "ACK_MISMATCH" if update == {"input": [{"type": "text", "text": "different valid prompt"}]} else "INPUT_INVALID"
+                 invalid.append(({"ack": support.canonical(ack)}, expected))
++            invalid.append(({"ack": support.canonical({"id": 1, "result": db.ack})}, "INPUT_INVALID"))
+             invalid.append(({"submission": json.dumps(db.params, indent=2).encode()}, "BINDING_MISMATCH"))
++            invalid.append(({"submission": db.raw + b" "*(131072-len(db.raw))}, "BINDING_MISMATCH"))
++            for text in (self.data["prompt_fixture"].replace("\r\n", "\n"), self.data["prompt_fixture"].replace("é", "e\u0301")):
++                changed = copy.deepcopy(db.ack)
++                changed["queuedSubmission"]["input"][0]["text"] = text
++                invalid.append(({"ack": support.canonical(changed)}, "ACK_MISMATCH"))
+             for index, (kwargs, expected) in enumerate(invalid):
+                 with self.subTest(invalid=index):
+                     self.invoke(db, reason=expected, **kwargs)
+--- authoring-before-static/run-once.py
++++ tests-ready/run-once.py
+@@ -382,4 +382,13 @@
+ 
+ 
+ if __name__ == "__main__":
+-    raise SystemExit(main())
++    try:
++        exit_status = main()
++    except BaseException as error:
++        if ROOT is not None:
++            with (HERE / "first-controller-error.log").open("x") as first_error:
++                traceback.print_exc(file=first_error)
++            save(HERE / "first-controller-error.json", {"error_type": type(error).__name__,
++                 "deadline_utc": DEADLINE.isoformat(), "clock_reset": False, "automatic_retry": False})
++        raise
++    raise SystemExit(exit_status)

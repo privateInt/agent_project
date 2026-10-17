@@ -1,0 +1,11 @@
+{
+  "observation": "codex queue --help, 3s TERM/+1KILL bound, once",
+  "exit_code": 0,
+  "printed_usage": "codex queue [OPTIONS] --thread <THREAD> --message <TEXT>",
+  "clientUserMessageId_option_listed": false,
+  "structured_ACK_output_option_listed": false,
+  "warning": "Could not create PATH aliases: read-only file system; help returned success; no alias write retried",
+  "requests_sent": 0,
+  "native_read_queries": 0,
+  "no_inference": "Absence in help is not a protocol capability proof; current controller cannot assume CLI accepts a caller-selected ID or emits native ACK JSON"
+}
