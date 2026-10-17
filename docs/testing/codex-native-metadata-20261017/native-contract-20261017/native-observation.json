@@ -1,0 +1,180 @@
+{
+  "status": "OBSERVED_READ_ONLY_METADATA",
+  "requests": [
+    {
+      "method": "initialize",
+      "params": {
+        "clientInfo": {
+          "name": "agent_project_contract_observer",
+          "version": "1"
+        },
+        "capabilities": {
+          "experimentalApi": true
+        }
+      },
+      "entered": true,
+      "response_observed": true
+    },
+    {
+      "method": "thread/read",
+      "params": {
+        "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+        "includeTurns": false
+      },
+      "entered": true,
+      "response_observed": true
+    },
+    {
+      "method": "thread/read",
+      "params": {
+        "threadId": "01a13fb0-1721-7af3-82e6-747eac4de411",
+        "includeTurns": false
+      },
+      "entered": true,
+      "response_observed": true
+    },
+    {
+      "method": "thread/read",
+      "params": {
+        "threadId": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+        "includeTurns": false
+      },
+      "entered": true,
+      "response_observed": true
+    },
+    {
+      "method": "thread/turns/list",
+      "params": {
+        "threadId": "01a13f12-328d-7342-b285-a0868ac66447",
+        "cursor": null,
+        "limit": 1,
+        "itemsView": "notLoaded",
+        "sortDirection": "desc"
+      },
+      "entered": true,
+      "response_observed": true
+    },
+    {
+      "method": "thread/turns/list",
+      "params": {
+        "threadId": "01a13fb0-1721-7af3-82e6-747eac4de411",
+        "cursor": null,
+        "limit": 1,
+        "itemsView": "notLoaded",
+        "sortDirection": "desc"
+      },
+      "entered": true,
+      "response_observed": true
+    },
+    {
+      "method": "thread/turns/list",
+      "params": {
+        "threadId": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+        "cursor": null,
+        "limit": 1,
+        "itemsView": "notLoaded",
+        "sortDirection": "desc"
+      },
+      "entered": true,
+      "response_observed": true
+    }
+  ],
+  "max_rpc": 7,
+  "retries": 0,
+  "deadline_utc": "2026-10-17T03:31:41+00:00",
+  "raw_payloads_retained": false,
+  "resume_or_mutating_methods": false,
+  "source_pins": {
+    "codex_daemon_websocket.py": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+    "codex_readiness.py": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399"
+  },
+  "threads": [
+    {
+      "id": "01a13f12-328d-7342-b285-a0868ac66447",
+      "cwd_matches_workspace": true,
+      "parentThreadId": null,
+      "status": {
+        "type": "notLoaded",
+        "activeFlags": []
+      },
+      "turns_count": 0,
+      "cwd_sha256": "db4573c7fda2fe7b819af26fe5504b8fe681a4e6f1330e5e984247676bafc14b",
+      "agentRole_sha256": null,
+      "cliVersion_sha256": "7c322dc5fe0920884c55bcc2f3007f7816207d7c1f1879ffbf8f45abbbcec6cc",
+      "model_sha256": "2da8faee9a3ed7401be88eab08f9f50de122763b54cdce94dced4c0d06e0ee4f",
+      "reasoningEffort_sha256": "168ca465deb3cd1d4c688dc5b1be70beed3a7810e61fe005d4e08ac128aa3aa5",
+      "historyMode_sha256": "361ec6d1d7ceb9ed2e70e6728ce2531eb3fbffb1cb4e19ae1b54676d76b4e767",
+      "canAcceptDirectInput_sha256": null,
+      "agentRole": null
+    },
+    {
+      "id": "01a13fb0-1721-7af3-82e6-747eac4de411",
+      "cwd_matches_workspace": true,
+      "parentThreadId": null,
+      "status": {
+        "type": "active",
+        "activeFlags": []
+      },
+      "turns_count": 0,
+      "cwd_sha256": "db4573c7fda2fe7b819af26fe5504b8fe681a4e6f1330e5e984247676bafc14b",
+      "agentRole_sha256": null,
+      "cliVersion_sha256": "ee57ed2a7441ed36d10badfd3a4b93e406628b48c68788493e7d095336b08fa5",
+      "model_sha256": "2da8faee9a3ed7401be88eab08f9f50de122763b54cdce94dced4c0d06e0ee4f",
+      "reasoningEffort_sha256": "168ca465deb3cd1d4c688dc5b1be70beed3a7810e61fe005d4e08ac128aa3aa5",
+      "historyMode_sha256": "361ec6d1d7ceb9ed2e70e6728ce2531eb3fbffb1cb4e19ae1b54676d76b4e767",
+      "canAcceptDirectInput_sha256": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "agentRole": null
+    },
+    {
+      "id": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+      "cwd_matches_workspace": true,
+      "parentThreadId": null,
+      "status": {
+        "type": "idle",
+        "activeFlags": []
+      },
+      "turns_count": 0,
+      "cwd_sha256": "db4573c7fda2fe7b819af26fe5504b8fe681a4e6f1330e5e984247676bafc14b",
+      "agentRole_sha256": null,
+      "cliVersion_sha256": "ee57ed2a7441ed36d10badfd3a4b93e406628b48c68788493e7d095336b08fa5",
+      "model_sha256": "2da8faee9a3ed7401be88eab08f9f50de122763b54cdce94dced4c0d06e0ee4f",
+      "reasoningEffort_sha256": "168ca465deb3cd1d4c688dc5b1be70beed3a7810e61fe005d4e08ac128aa3aa5",
+      "historyMode_sha256": "361ec6d1d7ceb9ed2e70e6728ce2531eb3fbffb1cb4e19ae1b54676d76b4e767",
+      "canAcceptDirectInput_sha256": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+      "agentRole": null
+    }
+  ],
+  "queues": [],
+  "turns": [
+    {
+      "thread_id": "01a13f12-328d-7342-b285-a0868ac66447",
+      "id": "01a147dc-833e-7b11-bbb2-144ccb9d3705",
+      "status": "interrupted",
+      "itemsView": "notLoaded",
+      "rootTurnId_sha256": "808b6e6923d06b1946439d1dc7c305034ed1084e7adac6af2b52a4d00b92cf73",
+      "startedAt_sha256": "b099ebb0e88e4cb138fd5929a548c31ec2969153caa2c2b91b47b358a37d6632",
+      "completedAt_sha256": null
+    },
+    {
+      "thread_id": "01a13fb0-1721-7af3-82e6-747eac4de411",
+      "id": "01a147e4-7730-7751-ac8e-bd28df8c68a3",
+      "status": "inProgress",
+      "itemsView": "notLoaded",
+      "rootTurnId_sha256": "5a7714909cea3eb39e2509c5d7b277fd95dc67e701075315d4d4bb52e519a907",
+      "startedAt_sha256": "2609cccfcc964480dc4eac28bd5ff4c80f137730370a56fbbe31df649baaf7c4",
+      "completedAt_sha256": null
+    },
+    {
+      "thread_id": "01a13fb0-1abe-7623-a15e-cf07071ce54a",
+      "id": "01a147e3-d6a9-7e32-a429-6d7282e8bcbc",
+      "status": "completed",
+      "itemsView": "notLoaded",
+      "rootTurnId_sha256": "2fb278d020a6e521d7b750e69bf6bb74cc80fa44a838def6f8516668ea5d15aa",
+      "startedAt_sha256": "16f272688f4d9bef0911c9bb8403bb6bc3bb9134a6d6ad713d338a1f173a4f64",
+      "completedAt_sha256": "a214dd14af80ff9ccf54234a4c0fcd961856477fa13de317b2cd797fa775094d"
+    }
+  ],
+  "items": [],
+  "elapsed_seconds": 0.021358,
+  "finished_utc": "2026-10-17T03:25:25.546989+00:00"
+}

@@ -1,0 +1,43 @@
+{
+  "scope": "STATIC_AUTHORING_ONLY",
+  "source_sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+  "original_sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+  "source_edited_by_test_writer": false,
+  "product_or_tests_imported": false,
+  "tests_executed": 0,
+  "native_calls": 0,
+  "native_investigation": "CLOSED",
+  "original11_edited_by_test_writer": false,
+  "old_passes_rerun": 0,
+  "exact_methods": [
+    "test_read_only_metadata_wire_and_id_binding",
+    "test_read_only_blocks_mutation_thread_and_pagination",
+    "test_read_only_wrong_response_id_is_not_accepted",
+    "test_read_only_deadlines_and_loss_never_replay"
+  ],
+  "normal_helper_calls": {
+    "case_read_only_include_turns_true_never_sent": [
+      "test_read_only_blocks_mutation_thread_and_pagination"
+    ],
+    "case_read_only_limit_two_never_sent": [
+      "test_read_only_blocks_mutation_thread_and_pagination"
+    ]
+  },
+  "all_four_include_addendum_helper_and_exact5keys": true,
+  "default_methods_unchanged_criterion": true,
+  "helper_error_codes": [
+    "RPC_THREAD_BINDING_MISMATCH",
+    "RPC_METADATA_UNCONFIRMED"
+  ],
+  "fixture_selected_AST_equal": true,
+  "old_testcase_methods_setup_classes_or_business_in_fixture": false,
+  "dependency": "only existing websocket-client1.9.0 directory .py bytes copied and pinned, no package import/install",
+  "portable_source_layout": "relative fixture + minimal package/source copy + pinned vendor/websocket, no private/operator fixture dependency",
+  "guard": "BaseException audit/metadata boundary; original checkout,/opt/operator/auth/network/socket/subprocess/DB forbidden; fake AF_UNIX superclass only",
+  "mutation_success": "exact one AST predicate True, designated semantic FAIL1/ERROR0 and actual masked wrong-wire bytes/hash/decoded method+params+ID",
+  "runtime_first_log_or_results_created": false,
+  "deadline_utc": "2026-10-17T04:00:00Z",
+  "clock_reset": false,
+  "scheduler_PAUSE_changed": false,
+  "first_authoring_stale_pin_preserved": "first-authoring-observation.json"
+}

@@ -1,0 +1,66 @@
+{
+  "stage": "M_INCLUDE_TURNS",
+  "testsRun": 1,
+  "failures": 1,
+  "errors": 0,
+  "skips": 0,
+  "methods": [
+    {
+      "id": "case_read_only_include_turns_true_never_sent",
+      "outcome": "FAIL",
+      "exception_type": "AssertionError",
+      "last_test_assertion": {
+        "function": "_blocked_mutation_target",
+        "line": 159
+      }
+    }
+  ],
+  "boundary_violations": [],
+  "source_copy": "/tmp/native-metadata-portable-M_INCLUDE_TURNS-s3m2ijw5/minimal-source",
+  "observations": [],
+  "fixture_cleanup": [
+    {
+      "sockets": 1,
+      "all_closed": true,
+      "forbidden": 0,
+      "graceful": 0,
+      "connects": 1,
+      "native_calls": 0
+    }
+  ],
+  "native_calls": 0,
+  "sqlite_connections": 0,
+  "old_testcase_calls": 0,
+  "old_testcase_absent_from_fixture": true,
+  "websocket_version": "1.9.0",
+  "websocket_file": "/tmp/native-metadata-portable-M_INCLUDE_TURNS-s3m2ijw5/minimal-source/vendor/websocket/__init__.py",
+  "allowed_reads": 89,
+  "wrong_wire_witness": {
+    "target": "case_read_only_include_turns_true_never_sent",
+    "observed_code": null,
+    "request_count": 1,
+    "actual_request": {
+      "id": 1,
+      "method": "thread/read",
+      "params": {
+        "threadId": "00000000-0000-4000-8000-000000000001",
+        "includeTurns": true
+      }
+    },
+    "expected_method": "thread/read",
+    "expected_params": {
+      "threadId": "00000000-0000-4000-8000-000000000001",
+      "includeTurns": true
+    },
+    "next_id": 2,
+    "connects": 1,
+    "request_wire_base64": "gfDC9aawudfP1ODPl5zgmMPEqprCkvjX0tiwkMfU7YfD0abXipKylNTRr4aEirnX0tiwkMfUi5GEiuDFloDyxZaA8tiWgPLFi4TyxZad+sWWgO/FloDyxZaA8sWWgPPXipKrm8Xct5HD5LeHyMPgz9LCt5DbzQ==",
+    "request_wire_sha256": "86cc4ee81ef9f695eb80b921fd735bc7b531bd589f0619bc6dca811e97a30951",
+    "native_calls": 0
+  },
+  "actual_wrong_wire_verified": true,
+  "helper_invocations": {
+    "case_read_only_include_turns_true_never_sent": 1
+  },
+  "semantic_fail1_error0": true
+}

@@ -1,0 +1,175 @@
+{
+  "ThreadReadParams": {
+    "sha256": "dfe040c6ac71d30795b8be3f3ff232e66f362a37f883b491e5d1ea367f470db4",
+    "properties": {
+      "includeTurns": {
+        "description": "When true, include turns and their items from rollout history. Full-history hydration is deprecated for paginated threads; prefer a metadata-only read and page with `thread/turns/list` and `thread/items/list`.",
+        "type": "boolean"
+      },
+      "threadId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "threadId"
+    ]
+  },
+  "ThreadReadResponse": {
+    "sha256": "d8b6934897c959f589fdf33be4f750a81f46f075df77bedcaaa92e15ad80a2b1",
+    "properties": {
+      "thread": {
+        "$ref": "#/definitions/Thread"
+      }
+    },
+    "required": [
+      "thread"
+    ]
+  },
+  "ThreadQueueListParams": {
+    "sha256": "b4c889089eee8a0f785ff85e0128a4d3f347353870fa848221096a472223773b",
+    "properties": {
+      "cursor": {
+        "description": "Opaque pagination cursor returned by a previous call.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "limit": {
+        "description": "Optional page size; defaults to the standard thread-list page size.",
+        "format": "uint32",
+        "minimum": 0.0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "threadId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "threadId"
+    ]
+  },
+  "ThreadQueueListResponse": {
+    "sha256": "be4e0bfa6fc776101f96582543605d2eff6186309a08903203512b99c5005926",
+    "properties": {
+      "data": {
+        "items": {
+          "$ref": "#/definitions/QueuedSubmission"
+        },
+        "type": "array"
+      },
+      "nextCursor": {
+        "description": "Opaque cursor for the next page, or `null` when no submissions remain.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "data"
+    ]
+  },
+  "ThreadTurnsListParams": {
+    "sha256": "2a8b93d7d4437cc25e16a1dde16d8db3c338d39e16c5eece2a56e943a21577d7",
+    "properties": {
+      "cursor": {
+        "description": "Opaque cursor to pass to the next call to continue after the last turn.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "itemsView": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/TurnItemsView"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "How much item detail to include for each returned turn; defaults to summary."
+      },
+      "limit": {
+        "description": "Optional turn page size.",
+        "format": "uint32",
+        "minimum": 0.0,
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "sortDirection": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/SortDirection"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "Optional turn pagination direction; defaults to descending."
+      },
+      "threadId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "threadId"
+    ]
+  },
+  "ThreadTurnsListResponse": {
+    "sha256": "eba82395d4479bb28091bbe6f39c929c7c66a30d7b0eeabedac39057ce72aceb",
+    "properties": {
+      "backwardsCursor": {
+        "description": "Opaque cursor to pass as `cursor` when reversing `sortDirection`. This is only populated when the page contains at least one turn. Use it with the opposite `sortDirection` to include the anchor turn again and catch updates to that turn.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "data": {
+        "items": {
+          "$ref": "#/definitions/Turn"
+        },
+        "type": "array"
+      },
+      "nextCursor": {
+        "description": "Opaque cursor to pass to the next call to continue after the last turn. if None, there are no more turns to return.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "data"
+    ]
+  },
+  "ThreadQueueAddParams": {
+    "sha256": "60f25b7d3e3357c215bef9d2fe7047200f545e030dca9e00527ac0620cd0c88f",
+    "properties": {
+      "clientUserMessageId": {
+        "type": "string"
+      },
+      "input": {
+        "items": {
+          "$ref": "#/definitions/UserInput"
+        },
+        "type": "array"
+      },
+      "threadId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "clientUserMessageId",
+      "input",
+      "threadId"
+    ]
+  }
+}

@@ -1,0 +1,847 @@
+{
+  "parent_commit": "d59de21d4b43a71f3e518592c589b0761e668de5",
+  "fixture_only": false,
+  "actual_runtime_transition": "NOT_COMPLETE",
+  "main_merged": false,
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-native-metadata-20261017/review/final-review.md",
+    "sha256": "850397b3226dde8683cdc2617127d0cdab8fc1cfca6a83475d37671511ca788a"
+  },
+  "raw_byte_retention": "Historical code/logs receive .txt suffix only; original bytes and paths are retained in mapping.",
+  "final_whole_suite_repeated": false,
+  "files": {
+    "src/ops/tools/codex_daemon_websocket.py": {
+      "sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+      "source": "src/ops/tools/codex_daemon_websocket.py"
+    },
+    "src/ops/tools/tests/test_codex_daemon_websocket_read_only.py": {
+      "sha256": "e6c485f1e1852ca365c70cdc5986478fee3f8619182dd00a19b8ed1d1589d3ac",
+      "source": "src/ops/tools/tests/test_codex_daemon_websocket_read_only.py"
+    },
+    "docs/testing/codex-native-metadata-observed-20261017.json": {
+      "sha256": "2a0b5f366a9e361360037d03aeaaf4f467dfd64158d775af7400a05a21931828",
+      "source": "docs/testing/codex-native-metadata-observed-20261017.json"
+    },
+    "docs/development.md": {
+      "sha256": "caaf272a272afc2a9febded76cb7f93456401f7e3a5c357b980e301ad948673e",
+      "source": "docs/development.md"
+    },
+    "docs/status.md": {
+      "sha256": "e1a15d1757158f766b1c438f300b40693ed8af7d98b1441b3b31990b08bf03e2",
+      "source": "docs/status.md"
+    },
+    "docs/roadmap.md": {
+      "sha256": "b747cb44d7a13ab1329990a56a750ad128f608a2615c294768cae19af6e7f68a",
+      "source": "docs/roadmap.md"
+    },
+    "docs/HANDOFF_NEXT_SESSION.md": {
+      "sha256": "a390a88cbfe77a5ab08e252ecd3c0ce6097facc6a6d495d21dbc4660b1d2eb06",
+      "source": "docs/HANDOFF_NEXT_SESSION.md"
+    },
+    "src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/manifest.json": {
+      "sha256": "007d17ec97c30eec9f5d5b30f9d9205e500505ec3f3626f54062f4a81f154862",
+      "source": "src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/manifest.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/synthetic.json": {
+      "sha256": "22036ceaf79a83def772b42110ef076343207a3c296c162d7df623efdea287b6",
+      "source": "src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/synthetic.json"
+    },
+    "src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/transport_primitives.py.txt": {
+      "sha256": "44639fbdfd9d120e82abd158f4b8a9416ba1122a3d6184014825233a1564fc0d",
+      "source": "src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/transport_primitives.py.txt"
+    },
+    "docs/testing/codex-native-metadata-20261017/observed-before-final-review.json": {
+      "sha256": "301294739b03fd7307b2965d19790a2c72aa88d2103e3eb8f5ebe1d73ead6ca5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/codex-native-metadata-20261017-observed-before-final-review.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/budget-final-before-count-reconciliation.json": {
+      "sha256": "48eb71e22e6bfa67750259fac03f52bf1f87ccdbbf25e2567299449f4a4123e5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/budget-final-before-count-reconciliation.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/budget-final.json": {
+      "sha256": "f44d887e46753569d1388a8cc4f300c6b948108d53a35e67b16f5d8583cfbcda",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/budget-final.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/budget.json": {
+      "sha256": "719178f8baba365ca210314d0fa15bc686291562b2b4cf8d1b4d89524ba10324",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/budget.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/generated-contract-projection.json": {
+      "sha256": "9babb5b84ab2327f477f021f83638ea57687c8f3773ddfb5ce398fbb04c5543f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/generated-contract-projection.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/installation-change-proposal.md": {
+      "sha256": "2aeb5f867ee66ded2b2e7995abc2eaa7d50c36b284b2875982b4f3abad87700b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/installation-change-proposal.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/installation-comparison.json": {
+      "sha256": "cc9459eb2ebd3992abb9c6672b322dce742c36c4bb1d905dc576cfbba6a53427",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/installation-comparison.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/installation-comparison.md": {
+      "sha256": "1ab053eafbedf7ca681eaa2e306937966742ee4109af5c51a9d6b7cbb0364346",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/installation-comparison.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/installation-files.json": {
+      "sha256": "641139326244f6e12475ac6be3ff13fa770e956a00c5e57ebdc3e0ede66b3851",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/installation-files.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/native-observation.json": {
+      "sha256": "1f99dbdbf0de5923cee9679e52e8742a7807910a6ce2e48772ebcfd14c419acd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/native-observation.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/observe_metadata_once_v2.py.txt": {
+      "sha256": "f0242b8964451e15fd1772330956854cdaa5c4d5cb07090dc727586fa0bdf9eb",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/observe_metadata_once_v2.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/observe_metadata_once_v3.py.txt": {
+      "sha256": "39e56cc65ba36ee4314384a26502e734720e9a232bc063407cee55ec3c19b790",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/observe_metadata_once_v3.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/observe_once.py.txt": {
+      "sha256": "5d609b664e56e16d6c582c609e5188e270540fd44855d55e54fc94a2f0107d7e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/observe_once.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/observed-version-comparison.json": {
+      "sha256": "3996b34b6037b9b27683753db55ea86c0a87967ca9f7f752a802dff5906aaffc",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/observed-version-comparison.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/offline-request-validation.json": {
+      "sha256": "449c92224ed8c1962336814b3b290995d7102f59d4839c7195fe6ea235112627",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/offline-request-validation.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/probe-review-input.json": {
+      "sha256": "e9fc495d408becbf103f07bab059439e04e01741bec35b0b4c373481e039f518",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/probe-review-input.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/probe-static-review.md": {
+      "sha256": "c8d196514d9b2ec2b051781b13834fea08fb094e881ddc0743b99481b4fa9134",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/probe-static-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/probe-v2-delta-review.md": {
+      "sha256": "9ff1f2841067c720d1eedbb48265d09533ab37935740fc25865ed998470c2049",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/probe-v2-delta-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/probe-v2-scope-tightening.json": {
+      "sha256": "2d7f498cc8893b850d7e63f3014092fc18002bd6d0c0765b24223f9e71ab8831",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/probe-v2-scope-tightening.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/probe-v3-delta-review.md": {
+      "sha256": "8d43a018cc50d7515dc58e8f74f82fa000b3dffc6c21a03ea320faf05abaa0a7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/probe-v3-delta-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/probe-v3-scope-tightening.json": {
+      "sha256": "d9ad5345070814599dc053ca40817a23b974cd3ed30fe880b42e1d4507f7a7d4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/probe-v3-scope-tightening.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-contract-20261017/service-observation.json": {
+      "sha256": "003bb913de067b527598e0ec46489acefe70b1851516798579803e61c10927b2",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/service-observation.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_INCLUDE_TURNS/command.json": {
+      "sha256": "6ee461cf940c1b77554bd69a382a019b83f14c3fdaabf1c868216ae6b87f412a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_INCLUDE_TURNS/command.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_INCLUDE_TURNS/first.log.txt": {
+      "sha256": "bba8b9c83efc82910a8dfc40813b0c243a2ba0eb369ac0948b083d34169991f3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_INCLUDE_TURNS/first.log"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_INCLUDE_TURNS/mutated-source.py.txt": {
+      "sha256": "45ceca876e4fe12a80cb25a487d977c3311665d13baff34183f29bbade1a8954",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_INCLUDE_TURNS/mutated-source.py.txt"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_INCLUDE_TURNS/process.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_INCLUDE_TURNS/process.log"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_INCLUDE_TURNS/result.json": {
+      "sha256": "b204556fe2bc418359cb18afeb9bce5b81475b9079b7de6bbc51cabe94bb6586",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_INCLUDE_TURNS/result.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_INCLUDE_TURNS/source-copy-pins.json": {
+      "sha256": "a9a022d170b782d715a541ce331b5dfe70bef2db9e71dccc72174d749895e7f8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_INCLUDE_TURNS/source-copy-pins.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_LIMIT/command.json": {
+      "sha256": "bbd0d9968cdf2e77701ed3531832f38cd3f023d96d6cbe950b1fe8df39a151f6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_LIMIT/command.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_LIMIT/first.log.txt": {
+      "sha256": "93d27887c9efb7a932890683c752abfdea73e1d69f5d0221e509ee8b01d09cc4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_LIMIT/first.log"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_LIMIT/mutated-source.py.txt": {
+      "sha256": "66c9f2e5c30a61b735c383beb2c362aced9d7da7741a6370d93d5a1a2117548e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_LIMIT/mutated-source.py.txt"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_LIMIT/process.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_LIMIT/process.log"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_LIMIT/result.json": {
+      "sha256": "249b4cc2d1f91c6d7f732be71ed86bcee34487e728bc6ef256595b74c2430186",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_LIMIT/result.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/M_LIMIT/source-copy-pins.json": {
+      "sha256": "7aa7c924c8d5c447b251d7dc99bb55e50a8fab34ba10ee2fad703d33406170c1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/M_LIMIT/source-copy-pins.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/authoring-environment.json": {
+      "sha256": "baea4f64ebcd2d9b4c498447fcddf78e4f08ca43907aa5c1254e570326e7e3fd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/authoring-environment.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/dependency-pins.json": {
+      "sha256": "b92969d34fd6945205015ec3bcee29dd04001d475eff65a5f18cce872e96ee13",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/dependency-pins.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/guard-snapshot.json": {
+      "sha256": "afa2decab7ff153eac426a11f61b7c2831e0b22d424966ec9981f67794cd5633",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/guard-snapshot.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/isolation.json": {
+      "sha256": "0ceae72c46153685a8e3e5382c18eaea0213b6c58c0b1c37f43949869b7bc63a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/isolation.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/plan-addendum.md": {
+      "sha256": "d101e3a675c01155feaa6ce07649d1cf8dab4faadb9b6af03469a455cd214394",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/plan-addendum.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/plan-review.md": {
+      "sha256": "9f2af3defc9387dce833a2c2d737999117c3f18938f6cab96847fa9aa7fd46e8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/plan-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/plan.md": {
+      "sha256": "67953b3166ad22a3211a85cd701511811aaffe71188f6291d7d3c811be74aa8c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/plan.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/primitive-extraction-audit.json": {
+      "sha256": "9d76bdae81125a2840cde0d542b68d3f6583322e43f47098433a111edcd3e3cf",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/primitive-extraction-audit.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/source-ready.json": {
+      "sha256": "d6f93b83a2c28038edebdd51bee860718757b6465f5c0963051befa0046201e9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/source-ready.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/source-review.md": {
+      "sha256": "2b4491b5e519f7748e4d56af4a4b1e7e75381e5e988efee39856529abd0e8435",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/source-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/static-authoring-checks.json": {
+      "sha256": "1d3721cb224051e69b81243e1ebdfe0dfa3feea3500fabc87c73760ef61dcdef",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/static-authoring-checks.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/transport-change.diff": {
+      "sha256": "dc2dcd8bb37cb765f4c994642f00888e1ec6c67a3dea43c3ab6b54a35ba540bc",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/transport-change.diff"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/evidence/transport-original.py.txt": {
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/evidence/transport-original.py.txt"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/run-once.py.txt": {
+      "sha256": "d1437cbbe0733a65968c49461e62f9e99cd13397cb5ed3cc3d781d7a6a83778c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/run-once.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/src/__init__.py.txt": {
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/src/__init__.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/src/ops/__init__.py.txt": {
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/src/ops/__init__.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/src/ops/tools/codex_daemon_websocket.py.txt": {
+      "sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/src/ops/tools/codex_daemon_websocket.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/src/ops/tools/codex_readiness.py.txt": {
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/src/ops/tools/codex_readiness.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/manifest.json": {
+      "sha256": "007d17ec97c30eec9f5d5b30f9d9205e500505ec3f3626f54062f4a81f154862",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/manifest.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/synthetic.json": {
+      "sha256": "22036ceaf79a83def772b42110ef076343207a3c296c162d7df623efdea287b6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/synthetic.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/transport_primitives.py.txt": {
+      "sha256": "44639fbdfd9d120e82abd158f4b8a9416ba1122a3d6184014825233a1564fc0d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/transport_primitives.py.txt"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/src/ops/tools/tests/test_codex_daemon_websocket_read_only.py.txt": {
+      "sha256": "e6c485f1e1852ca365c70cdc5986478fee3f8619182dd00a19b8ed1d1589d3ac",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/src/ops/tools/tests/test_codex_daemon_websocket_read_only.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authored-snapshot/tests-ready.json": {
+      "sha256": "0340218b94bc743e263289ccc7087de66ca3d794579b93d90c11783699f2eaec",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authored-snapshot/tests-ready.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authoring-artifact-pins.json": {
+      "sha256": "1420f0a49947333162c163ed9d402cce63d1a9f0adbf0e4f3555c05b76520eea",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authoring-artifact-pins.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/authoring-environment.json": {
+      "sha256": "baea4f64ebcd2d9b4c498447fcddf78e4f08ca43907aa5c1254e570326e7e3fd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/authoring-environment.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/checkpoint-helper-before.py.txt": {
+      "sha256": "19d1ef9df2cfabdaca96035892a16c630658307959c2a2a69de9054b25d4df2a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/checkpoint-helper-before.py.txt"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/checkpoint-helper.diff": {
+      "sha256": "1dba5b670b5683dbf343090617ce7db08b0ee24cb5fe987bb07e064452f4e817",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/checkpoint-helper.diff"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/coordinator-execution-attempt.json": {
+      "sha256": "d799c2c6b272304427e0779cafa54b34f1ebe690e7040a9197ebf009855f7942",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/coordinator-execution-attempt.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/coordinator.stderr.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/coordinator.stderr.log"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/coordinator.stdout.log.txt": {
+      "sha256": "9e10e35caa752896d68a3a80118b99424cd57f6ab0c54a18812c5e5c41065ff6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/coordinator.stdout.log"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/__init__.py.txt": {
+      "sha256": "2370998a3790e51927e87c67c0ee9065d35e65bb981305c1381eb67bfcb9c69d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/__init__.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_abnf.py.txt": {
+      "sha256": "440e18a4f52a1618148d0662de71737a3418f2ab797e949108e4cd5558b8c4a2",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_abnf.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_app.py.txt": {
+      "sha256": "a3ff4cf380c73f5e8f64f62d1e92ffcfa210f3e96931b0e39579b3a7234068fa",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_app.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_cookiejar.py.txt": {
+      "sha256": "d156c66a48b69d97fea82fe2103c5afe157189dd843e6a9827770ac4f0ce591a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_cookiejar.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_core.py.txt": {
+      "sha256": "dd77678a0f3ba5adcbcffadcf4657ccc577e12844f84e8bfab7bad3667546377",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_core.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_dispatcher.py.txt": {
+      "sha256": "1c733840e27db3a38ead1750c500f426e80ffc2f8ddf9d9a53023536a05c753b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_dispatcher.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_exceptions.py.txt": {
+      "sha256": "6af5b69235dedac81bcbe86c516fd0348b8c37a70cdd35dfded0669d26739e2b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_exceptions.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_handshake.py.txt": {
+      "sha256": "592717f96c2d809048bfebf76031497625080db6926bd3dc01dd8b5e913334ae",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_handshake.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_http.py.txt": {
+      "sha256": "689a4e94c61ccfa88f6f4dfa4dc2565830c89c539d2eb1161a41b0bf0d2ad7d4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_http.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_logging.py.txt": {
+      "sha256": "93b397367221dd475228d1dd656391e8f799de4d40653a53363832f049dcc29c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_logging.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_socket.py.txt": {
+      "sha256": "9556708eba36a86c5ca039a425f71685a98b029b17caa4165fbffb0211de54a8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_socket.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_ssl_compat.py.txt": {
+      "sha256": "8640bb3e243a6641fcd9ae839de3511c274aca936f4044ab21b812ee3dd1a96f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_ssl_compat.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_url.py.txt": {
+      "sha256": "e1635822b5ac0d515a660827712baf055a99536111c0c5b7b73c81c8f129ec48",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_url.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_utils.py.txt": {
+      "sha256": "43a127dc3ab201cb4a37903c0d96ff4ba014ade7274a31ff92a0a3dd55de7532",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_utils.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/_wsdump.py.txt": {
+      "sha256": "9d77f6987eec5471e13425b4cf5836c3efbbfd62ec77c9270fd956372322e3ec",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/_wsdump.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/__init__.py.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/__init__.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/echo-server.py.txt": {
+      "sha256": "c98c0a5e29a0aa8ea01c58c682a8640036fa7d19dc4ab17e39ec17e948a76558",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/echo-server.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_abnf.py.txt": {
+      "sha256": "47841054279dcdc02ceef153573babea6deb9f863ea9e2289476848404b7be05",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_abnf.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_app.py.txt": {
+      "sha256": "54bf6975e2f1950ac6067bf5c94daba0854709f36870a9f6f5ea9dae043359b6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_app.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_cookiejar.py.txt": {
+      "sha256": "3433b3950a8619b136039343699b842bb2dced2177f6d11585b1b84883774895",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_cookiejar.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_dispatcher.py.txt": {
+      "sha256": "3ddd1ca9d85b9ecad482a5438d6327ef1da380468e07ba31427769d32a539815",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_dispatcher.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_handshake_large_response.py.txt": {
+      "sha256": "3e1a707bfc5e799fad72d18a3ba6d54e0f0df8c5205e10aff794c26223bc9f72",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_handshake_large_response.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_http.py.txt": {
+      "sha256": "cdbb4c5fb446123ef0920a5abfcda372a08b3e1a80d9722a320af530cd1368c4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_http.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_large_payloads.py.txt": {
+      "sha256": "36786bc9805b5299845c75c26a2e93978ed90bcee078bd607aac2b4bf2f906a9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_large_payloads.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_socket.py.txt": {
+      "sha256": "45ba24eca10af3b66f964a29c1cd904f1dbf4a155047728ae7a441b1891f3ca2",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_socket.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_socket_bugs.py.txt": {
+      "sha256": "4d5df2705613b30d320e2fc0b065a0aa2bad6ac6dc2003ba5745616c6e4d81c4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_socket_bugs.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_ssl_compat.py.txt": {
+      "sha256": "37ec0a80dfdb92d38eecdf244a2d7e6e1457bf3057b4d631684decbdb89d46d0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_ssl_compat.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_ssl_edge_cases.py.txt": {
+      "sha256": "a8b57db58acea313173eb339884d95b2c063110252e7d160805ca65c78c12a92",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_ssl_edge_cases.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_url.py.txt": {
+      "sha256": "c305fdd91a0363479d0cac320ff3addeb2b6e25c6d8d9e38f22d580d632aaadb",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_url.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_utils.py.txt": {
+      "sha256": "bf4d46649fa0b8347a2df8ee4dfeabc99e9b8fc1a7ec5ef8fda55d3f1714c497",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_utils.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency/websocket/tests/test_websocket.py.txt": {
+      "sha256": "3513609599e545922bc911b16107695064cf934022e37eb01e80353b0e580b99",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency/websocket/tests/test_websocket.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/dependency-pins.json": {
+      "sha256": "b92969d34fd6945205015ec3bcee29dd04001d475eff65a5f18cce872e96ee13",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/dependency-pins.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/execute-and-checkpoint-once.py.txt": {
+      "sha256": "7666553fce9fc3347e7b4815e9cb8e2ffe41f945ec34e7371627a775ee1fb9a7",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/execute-and-checkpoint-once.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/execution-attempt.json": {
+      "sha256": "b0cbbb3471dc8a2635612fe328f4e4142e83a6102d85d8a8a88461a71cbd1093",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/execution-attempt.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/execution-checkpoint.json": {
+      "sha256": "506482f332cb0f66a34d60b289b7ca43542e483e03767a66d4243d619dca694f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/execution-checkpoint.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/execution-environment.json": {
+      "sha256": "64a6a572b9e736999ea9db351a6c864dc7d14de0a306b8345491e18138c383fe",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/execution-environment.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/final-review-addendum.md": {
+      "sha256": "019f03069897e4438071dae54dcee5f7515f64359b8fd6ff26b3915c1a969cad",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/final-review-addendum.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/final-review-initial-before-metadata-deltas.md": {
+      "sha256": "850397b3226dde8683cdc2617127d0cdab8fc1cfca6a83475d37671511ca788a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/final-review-initial-before-metadata-deltas.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/final-review.md": {
+      "sha256": "850397b3226dde8683cdc2617127d0cdab8fc1cfca6a83475d37671511ca788a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/final-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/first-authoring-observation.json": {
+      "sha256": "0ba377cad5adf6015348d118f4393702d97dfe16375b77818901d567309b3ddb",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/first-authoring-observation.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/guard-snapshot.json": {
+      "sha256": "afa2decab7ff153eac426a11f61b7c2831e0b22d424966ec9981f67794cd5633",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/guard-snapshot.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/helper-change-before-pin-correction.json": {
+      "sha256": "2bf659852f02f72d38e6638e284df37a9679e41a9a0c3afdd284edef6db88880",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/helper-change-before-pin-correction.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/authoring-environment.json": {
+      "sha256": "baea4f64ebcd2d9b4c498447fcddf78e4f08ca43907aa5c1254e570326e7e3fd",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/authoring-environment.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/dependency-pins.json": {
+      "sha256": "b92969d34fd6945205015ec3bcee29dd04001d475eff65a5f18cce872e96ee13",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/dependency-pins.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/guard-snapshot.json": {
+      "sha256": "afa2decab7ff153eac426a11f61b7c2831e0b22d424966ec9981f67794cd5633",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/guard-snapshot.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/isolation.json": {
+      "sha256": "0ceae72c46153685a8e3e5382c18eaea0213b6c58c0b1c37f43949869b7bc63a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/isolation.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/plan-addendum.md": {
+      "sha256": "d101e3a675c01155feaa6ce07649d1cf8dab4faadb9b6af03469a455cd214394",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/plan-addendum.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/plan-review.md": {
+      "sha256": "9f2af3defc9387dce833a2c2d737999117c3f18938f6cab96847fa9aa7fd46e8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/plan-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/plan.md": {
+      "sha256": "67953b3166ad22a3211a85cd701511811aaffe71188f6291d7d3c811be74aa8c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/plan.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/primitive-extraction-audit.json": {
+      "sha256": "9d76bdae81125a2840cde0d542b68d3f6583322e43f47098433a111edcd3e3cf",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/primitive-extraction-audit.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/source-ready.json": {
+      "sha256": "d6f93b83a2c28038edebdd51bee860718757b6465f5c0963051befa0046201e9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/source-ready.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/source-review.md": {
+      "sha256": "2b4491b5e519f7748e4d56af4a4b1e7e75381e5e988efee39856529abd0e8435",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/source-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/static-authoring-checks.json": {
+      "sha256": "1d3721cb224051e69b81243e1ebdfe0dfa3feea3500fabc87c73760ef61dcdef",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/static-authoring-checks.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/transport-change.diff": {
+      "sha256": "dc2dcd8bb37cb765f4c994642f00888e1ec6c67a3dea43c3ab6b54a35ba540bc",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/transport-change.diff"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/evidence/transport-original.py.txt": {
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/evidence/transport-original.py.txt"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/run-once.py.txt": {
+      "sha256": "d1437cbbe0733a65968c49461e62f9e99cd13397cb5ed3cc3d781d7a6a83778c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/run-once.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/src/__init__.py.txt": {
+      "sha256": "a1f6eb99790b0c12a63bf5ae400c258fe034e6ad7876c4645c2dacdca7145f64",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/src/__init__.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/src/ops/__init__.py.txt": {
+      "sha256": "39b0de92fc01d71e146b8ceb4719501ea7a985135dc9d8108c3daab9fe652284",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/src/ops/__init__.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/src/ops/tools/codex_daemon_websocket.py.txt": {
+      "sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/src/ops/tools/codex_daemon_websocket.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/src/ops/tools/codex_readiness.py.txt": {
+      "sha256": "5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/src/ops/tools/codex_readiness.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/manifest.json": {
+      "sha256": "007d17ec97c30eec9f5d5b30f9d9205e500505ec3f3626f54062f4a81f154862",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/manifest.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/synthetic.json": {
+      "sha256": "22036ceaf79a83def772b42110ef076343207a3c296c162d7df623efdea287b6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/synthetic.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/transport_primitives.py.txt": {
+      "sha256": "44639fbdfd9d120e82abd158f4b8a9416ba1122a3d6184014825233a1564fc0d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/src/ops/tools/tests/fixtures/codex_daemon_websocket_read_only/transport_primitives.py.txt"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/src/ops/tools/tests/test_codex_daemon_websocket_read_only.py.txt": {
+      "sha256": "e6c485f1e1852ca365c70cdc5986478fee3f8619182dd00a19b8ed1d1589d3ac",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/src/ops/tools/tests/test_codex_daemon_websocket_read_only.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/tests-ready.json": {
+      "sha256": "0340218b94bc743e263289ccc7087de66ca3d794579b93d90c11783699f2eaec",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/tests-ready.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/__init__.py.txt": {
+      "sha256": "2370998a3790e51927e87c67c0ee9065d35e65bb981305c1381eb67bfcb9c69d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/__init__.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_abnf.py.txt": {
+      "sha256": "440e18a4f52a1618148d0662de71737a3418f2ab797e949108e4cd5558b8c4a2",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_abnf.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_app.py.txt": {
+      "sha256": "a3ff4cf380c73f5e8f64f62d1e92ffcfa210f3e96931b0e39579b3a7234068fa",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_app.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_cookiejar.py.txt": {
+      "sha256": "d156c66a48b69d97fea82fe2103c5afe157189dd843e6a9827770ac4f0ce591a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_cookiejar.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_core.py.txt": {
+      "sha256": "dd77678a0f3ba5adcbcffadcf4657ccc577e12844f84e8bfab7bad3667546377",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_core.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_dispatcher.py.txt": {
+      "sha256": "1c733840e27db3a38ead1750c500f426e80ffc2f8ddf9d9a53023536a05c753b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_dispatcher.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_exceptions.py.txt": {
+      "sha256": "6af5b69235dedac81bcbe86c516fd0348b8c37a70cdd35dfded0669d26739e2b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_exceptions.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_handshake.py.txt": {
+      "sha256": "592717f96c2d809048bfebf76031497625080db6926bd3dc01dd8b5e913334ae",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_handshake.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_http.py.txt": {
+      "sha256": "689a4e94c61ccfa88f6f4dfa4dc2565830c89c539d2eb1161a41b0bf0d2ad7d4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_http.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_logging.py.txt": {
+      "sha256": "93b397367221dd475228d1dd656391e8f799de4d40653a53363832f049dcc29c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_logging.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_socket.py.txt": {
+      "sha256": "9556708eba36a86c5ca039a425f71685a98b029b17caa4165fbffb0211de54a8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_socket.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_ssl_compat.py.txt": {
+      "sha256": "8640bb3e243a6641fcd9ae839de3511c274aca936f4044ab21b812ee3dd1a96f",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_ssl_compat.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_url.py.txt": {
+      "sha256": "e1635822b5ac0d515a660827712baf055a99536111c0c5b7b73c81c8f129ec48",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_url.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_utils.py.txt": {
+      "sha256": "43a127dc3ab201cb4a37903c0d96ff4ba014ade7274a31ff92a0a3dd55de7532",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_utils.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/_wsdump.py.txt": {
+      "sha256": "9d77f6987eec5471e13425b4cf5836c3efbbfd62ec77c9270fd956372322e3ec",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/_wsdump.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/__init__.py.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/__init__.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/echo-server.py.txt": {
+      "sha256": "c98c0a5e29a0aa8ea01c58c682a8640036fa7d19dc4ab17e39ec17e948a76558",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/echo-server.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_abnf.py.txt": {
+      "sha256": "47841054279dcdc02ceef153573babea6deb9f863ea9e2289476848404b7be05",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_abnf.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_app.py.txt": {
+      "sha256": "54bf6975e2f1950ac6067bf5c94daba0854709f36870a9f6f5ea9dae043359b6",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_app.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_cookiejar.py.txt": {
+      "sha256": "3433b3950a8619b136039343699b842bb2dced2177f6d11585b1b84883774895",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_cookiejar.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_dispatcher.py.txt": {
+      "sha256": "3ddd1ca9d85b9ecad482a5438d6327ef1da380468e07ba31427769d32a539815",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_dispatcher.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_handshake_large_response.py.txt": {
+      "sha256": "3e1a707bfc5e799fad72d18a3ba6d54e0f0df8c5205e10aff794c26223bc9f72",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_handshake_large_response.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_http.py.txt": {
+      "sha256": "cdbb4c5fb446123ef0920a5abfcda372a08b3e1a80d9722a320af530cd1368c4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_http.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_large_payloads.py.txt": {
+      "sha256": "36786bc9805b5299845c75c26a2e93978ed90bcee078bd607aac2b4bf2f906a9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_large_payloads.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_socket.py.txt": {
+      "sha256": "45ba24eca10af3b66f964a29c1cd904f1dbf4a155047728ae7a441b1891f3ca2",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_socket.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_socket_bugs.py.txt": {
+      "sha256": "4d5df2705613b30d320e2fc0b065a0aa2bad6ac6dc2003ba5745616c6e4d81c4",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_socket_bugs.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_ssl_compat.py.txt": {
+      "sha256": "37ec0a80dfdb92d38eecdf244a2d7e6e1457bf3057b4d631684decbdb89d46d0",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_ssl_compat.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_ssl_edge_cases.py.txt": {
+      "sha256": "a8b57db58acea313173eb339884d95b2c063110252e7d160805ca65c78c12a92",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_ssl_edge_cases.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_url.py.txt": {
+      "sha256": "c305fdd91a0363479d0cac320ff3addeb2b6e25c6d8d9e38f22d580d632aaadb",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_url.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_utils.py.txt": {
+      "sha256": "bf4d46649fa0b8347a2df8ee4dfeabc99e9b8fc1a7ec5ef8fda55d3f1714c497",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_utils.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_websocket.py.txt": {
+      "sha256": "3513609599e545922bc911b16107695064cf934022e37eb01e80353b0e580b99",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/initial-snapshot/vendor/websocket/tests/test_websocket.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/isolation.json": {
+      "sha256": "0ceae72c46153685a8e3e5382c18eaea0213b6c58c0b1c37f43949869b7bc63a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/isolation.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/mutation-ast-audits.json": {
+      "sha256": "c288d845750b26e28206b29b564f893a69f95216fec4d7c895bcc3ca3b006da3",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/mutation-ast-audits.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/native-count-reconciliation-review.md": {
+      "sha256": "486922d30acc10fe02dfeed926997d62e33c726ee6468f4feb1712ad0e2445af",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/native-count-reconciliation-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/normal/command.json": {
+      "sha256": "4bed0ecd616b807cf50697c61a65b652e397d0f6281bc80c97be6d662796e065",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/normal/command.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/normal/first.log.txt": {
+      "sha256": "107d76abd55f24973378cb6650ab8000d97dc94187e434ace8a74d357567ce9d",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/normal/first.log"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/normal/process.log.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/normal/process.log"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/normal/result.json": {
+      "sha256": "df05271eb4b25bbcf2081deb9f996c2c8c9a398a12300e5de322f6fae6351ac5",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/normal/result.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/normal/source-copy-pins.json": {
+      "sha256": "13356f35c465c0e5a1d0c8808a48a09e952380c492e03c27249b1a0ce94da98a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/normal/source-copy-pins.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/observed-before-execution.json": {
+      "sha256": "b824fd809c64ca1f74da8dc71ad36c3ba259cda41c02f3ae90d8dfe2a74f791e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/observed-before-execution.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/original-preservation-before-publication.json": {
+      "sha256": "1381ead36941b98e4fd2a3b7fc97bdb452fdfec0e47181aa1595e802165cd549",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/original-preservation-before-publication.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/packaging-pin-correction-review.md": {
+      "sha256": "79dd0d90fade236427a62157a8b7fae585d8e83e5ebc21ff028c21fe365912f1",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/packaging-pin-correction-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/packaging-review.md": {
+      "sha256": "cb6cc14fd1d4b6300038af91bd300ce731a50ea30678176a15359bbb6eb6c983",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/packaging-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/plan-addendum.md": {
+      "sha256": "d101e3a675c01155feaa6ce07649d1cf8dab4faadb9b6af03469a455cd214394",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/plan-addendum.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/plan-review.md": {
+      "sha256": "9f2af3defc9387dce833a2c2d737999117c3f18938f6cab96847fa9aa7fd46e8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/plan-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/plan.md": {
+      "sha256": "67953b3166ad22a3211a85cd701511811aaffe71188f6291d7d3c811be74aa8c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/plan.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/preexecution-review.md": {
+      "sha256": "8500d6f545ab05dad6855340ddeaab83b53192f9e8e37f6e241ad273de113d6b",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/preexecution-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/primitive-extraction-audit.json": {
+      "sha256": "9d76bdae81125a2840cde0d542b68d3f6583322e43f47098433a111edcd3e3cf",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/primitive-extraction-audit.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/python310-static.json": {
+      "sha256": "4e97acb85077d10ee105e1e330d51c655530990138959c4356ab8b71f6d1f8af",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/python310-static.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/result.json": {
+      "sha256": "8657ac90b3cb7ddf8a7484ebe09aa9f28393b878094e7531921f111e171ff78e",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/result.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/run-once.py.txt": {
+      "sha256": "d1437cbbe0733a65968c49461e62f9e99cd13397cb5ed3cc3d781d7a6a83778c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/run-once.py"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/source-before-type-preflight.py.txt": {
+      "sha256": "0b706592dd1b76aa9f7044f2713b4fdada6d9e4d25887436e7fb0ef610ac422a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/source-before-type-preflight.py.txt"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/source-ready.json": {
+      "sha256": "d6f93b83a2c28038edebdd51bee860718757b6465f5c0963051befa0046201e9",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/source-ready.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/source-review.md": {
+      "sha256": "2b4491b5e519f7748e4d56af4a4b1e7e75381e5e988efee39856529abd0e8435",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/source-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/static-authoring-checks.json": {
+      "sha256": "1d3721cb224051e69b81243e1ebdfe0dfa3feea3500fabc87c73760ef61dcdef",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/static-authoring-checks.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/test-new-file.diff": {
+      "sha256": "d6033926f5cd219df34f09cf080ac7b2fd1c38db219ceaac966a19b4092eb28a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/test-new-file.diff"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/test-static-review.md": {
+      "sha256": "a93cd79854b0eb99a2867d327d52c7be75c4d18c856f6a77da43526e92ff5144",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/test-static-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/tests-ready.json": {
+      "sha256": "0340218b94bc743e263289ccc7087de66ca3d794579b93d90c11783699f2eaec",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/tests-ready.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/transport-change.diff": {
+      "sha256": "dc2dcd8bb37cb765f4c994642f00888e1ec6c67a3dea43c3ab6b54a35ba540bc",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/transport-change.diff"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/transport-original.py.txt": {
+      "sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/transport-original.py.txt"
+    },
+    "docs/testing/codex-native-metadata-20261017/native-metadata-run-1/unit-checkpoint.json": {
+      "sha256": "2f5435a10e96a2767994f200d00cb387d490281df34bef61ff9e7c77cb7b671a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/unit-checkpoint.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/records/native-metadata-plan.md": {
+      "sha256": "67953b3166ad22a3211a85cd701511811aaffe71188f6291d7d3c811be74aa8c",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-plan.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/records/native-metadata-plan-addendum.md": {
+      "sha256": "d101e3a675c01155feaa6ce07649d1cf8dab4faadb9b6af03469a455cd214394",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-plan-addendum.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/records/native-metadata-plan-review.md": {
+      "sha256": "9f2af3defc9387dce833a2c2d737999117c3f18938f6cab96847fa9aa7fd46e8",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-plan-review.md"
+    },
+    "docs/testing/codex-native-metadata-20261017/records/native-metadata-isolation.json": {
+      "sha256": "0ceae72c46153685a8e3e5382c18eaea0213b6c58c0b1c37f43949869b7bc63a",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-isolation.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/records/native-metadata-package-helper.diff": {
+      "sha256": "df44b3044106938f42816104909b608f7d098f6490f82321e7d6110cbbaf3787",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-package-helper.diff"
+    },
+    "docs/testing/codex-native-metadata-20261017/records/native-metadata-persist-helper.diff": {
+      "sha256": "e2f347798abae36477f23ba356a5c287db9e2a4411cc6c2c2257cde4626224bb",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-persist-helper.diff"
+    },
+    "docs/testing/codex-native-metadata-20261017/records/native-metadata-helper-change.json": {
+      "sha256": "ba9fe9ae95490d14da87e92c10dfe030e0441f58ed7250ea75cb815a15afb719",
+      "source": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-helper-change.json"
+    },
+    "docs/testing/codex-native-metadata-20261017/review/final-review.md": {
+      "sha256": "850397b3226dde8683cdc2617127d0cdab8fc1cfca6a83475d37671511ca788a",
+      "source": "/tmp/agent-unattended-native-metadata-final-review.md"
+    }
+  }
+}

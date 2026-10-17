@@ -1,0 +1,12 @@
+{
+  "base_commit": "d59de21d4b43a71f3e518592c589b0761e668de5",
+  "workspace": "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/native-metadata-development",
+  "branch": "codex/agent-project-native-metadata-20261017",
+  "created_by": "git clone --no-hardlinks existing reviewed local repository",
+  "native_investigation": "CLOSED; no further environment or socket probes",
+  "product_work_started_utc": "2026-10-17T03:26:02.516985+00:00",
+  "unit_deadline_utc": "2026-10-17T04:00:00Z",
+  "same_failure_max_corrections": 3,
+  "source_changes_before_plan_review": false,
+  "original_git_untouched": true
+}

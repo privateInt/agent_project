@@ -1,0 +1,18 @@
+unittest.case.FunctionTestCase (case_read_only_limit_two_never_sent)
+M_LIMIT.case_read_only_limit_two_never_sent ... FAIL
+
+======================================================================
+FAIL: unittest.case.FunctionTestCase (case_read_only_limit_two_never_sent)
+M_LIMIT.case_read_only_limit_two_never_sent
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/native-metadata-portable-M_LIMIT-2vvrf4u3/minimal-source/src/ops/tools/tests/test_codex_daemon_websocket_read_only.py", line 172, in case_read_only_limit_two_never_sent
+    self._blocked_mutation_target("case_read_only_limit_two_never_sent", "thread/turns/list", params)
+  File "/tmp/native-metadata-portable-M_LIMIT-2vvrf4u3/minimal-source/src/ops/tools/tests/test_codex_daemon_websocket_read_only.py", line 159, in _blocked_mutation_target
+    self.assertEqual("RPC_PARAMS_FORBIDDEN", observed_code)
+AssertionError: 'RPC_PARAMS_FORBIDDEN' != None
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+FAILED (failures=1)

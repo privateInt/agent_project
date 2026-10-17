@@ -1,0 +1,22 @@
+{
+  "M_INCLUDE_TURNS": {
+    "source_sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+    "mutated_source_sha256": "45ceca876e4fe12a80cb25a487d977c3311665d13baff34183f29bbade1a8954",
+    "target_count": 1,
+    "before_expression": "params[\"includeTurns\"] is False",
+    "after_expression": "True",
+    "line": 187,
+    "other_ast_equal": true,
+    "other_bytes_equal": true
+  },
+  "M_LIMIT": {
+    "source_sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+    "mutated_source_sha256": "66c9f2e5c30a61b735c383beb2c362aced9d7da7741a6370d93d5a1a2117548e",
+    "target_count": 1,
+    "before_expression": "params[\"limit\"] == 1",
+    "after_expression": "True",
+    "line": 191,
+    "other_ast_equal": true,
+    "other_bytes_equal": true
+  }
+}

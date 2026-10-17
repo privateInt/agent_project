@@ -1,0 +1,9 @@
+test_read_only_metadata_wire_and_id_binding (src.ops.tools.tests.test_codex_daemon_websocket_read_only.ReadOnlyMetadataTests) ... ok
+test_read_only_blocks_mutation_thread_and_pagination (src.ops.tools.tests.test_codex_daemon_websocket_read_only.ReadOnlyMetadataTests) ... ok
+test_read_only_wrong_response_id_is_not_accepted (src.ops.tools.tests.test_codex_daemon_websocket_read_only.ReadOnlyMetadataTests) ... ok
+test_read_only_deadlines_and_loss_never_replay (src.ops.tools.tests.test_codex_daemon_websocket_read_only.ReadOnlyMetadataTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.052s
+
+OK

@@ -1,0 +1,30 @@
+--- before
++++ after
+@@ -9,7 +9,7 @@
+ 
+ ROOT = Path(__file__).resolve().parent
+ parser = argparse.ArgumentParser()
+-parser.add_argument('unit', choices=('transport', 'admission', 'intent', 'correlation', 'binding', 'ack', 'owner_adapter'))
++parser.add_argument('unit', choices=('transport', 'admission', 'intent', 'correlation', 'binding', 'ack', 'owner_adapter', 'metadata'))
+ unit = parser.parse_args().unit
+ prefix = 'codex-daemon-transport-20261016' if unit == 'transport' else 'codex-unattended-admission-20261016'
+ if unit == 'intent':
+@@ -22,6 +22,8 @@
+     prefix = 'codex-queue-receipts-20261017'
+ if unit == 'owner_adapter':
+     prefix = 'codex-owner-ack-adapter-20261017'
++if unit == 'metadata':
++    prefix = 'codex-native-metadata-20261017'
+ delivery = ROOT / (prefix + '-delivery')
+ m = json.loads((delivery / 'remote.json').read_text())
+ expected = json.loads((delivery / 'hashes.json').read_text())
+@@ -44,6 +46,9 @@
+ if unit == 'owner_adapter':
+     expected_parent = '7806daca6bf48c220f7bcd228d1140ef79c2b230'
+     expected_base = 'codex/agent-project-queue-ack-20261017'
++if unit == 'metadata':
++    expected_parent = 'd59de21d4b43a71f3e518592c589b0761e668de5'
++    expected_base = 'codex/agent-project-owner-ack-adapter-20261017'
+ assert m['parent'] == expected_parent
+ assert m['pr']['draft'] and m['pr']['base'] == expected_base
+ assert set(m['files']) == set(expected) and all(x['bytes_match'] for x in m['files'].values())

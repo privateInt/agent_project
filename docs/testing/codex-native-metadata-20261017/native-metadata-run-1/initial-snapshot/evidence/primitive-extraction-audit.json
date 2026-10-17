@@ -1,0 +1,16 @@
+{
+  "original_test_sha256": "5085ce3d866a81afe7614cb6e4aeea785cf757da148395591dbc865ed0f3a9bf",
+  "source_test_commit": "8c1a9c18f496ad99311ad1e976c2e00c31817747",
+  "selected_segment_sha256": {
+    "encoded": "077aa5a880710dac1587c7930902f180bd86d1b414f913ba12d38461a13d9d4e",
+    "frame_header": "ad1df9db2624e0301fdf53dab77b8296b4eea3cd0de9e3176eb120ca35cb53ae",
+    "frame": "f4d09f7154332e94f795a095c53eb1fc3dcf4f3fe316c2d62a45c3bdfb2ce202",
+    "response": "73ae7991b8de282f13b7de04b17a33eaacbb2cdd09d3e48f274e5bcd69d1d752",
+    "outgoing_frame": "a05978bf8f5729a9f81d0a631194daceff283b95bfb94ccf87424e14479727e0",
+    "TransportFixture": "85769000496a90e0cb197ef64b99159d6b1a03717756cb1f375c1cb7adfcca96"
+  },
+  "extracted_fixture_sha256": "44639fbdfd9d120e82abd158f4b8a9416ba1122a3d6184014825233a1564fc0d",
+  "selected_ast_equal": true,
+  "old_testcase_setup_or_business_extracted": false,
+  "tests_executed": 0
+}

@@ -1,0 +1,41 @@
+--- before
++++ after
+@@ -9,6 +9,20 @@
+ ROOT = Path(__file__).resolve().parent
+ PARENT = 'c862bfc6951491192a9fe98b535c9a8be921ee35'
+ SETTINGS = {
++    'metadata': {
++        'parent': 'd59de21d4b43a71f3e518592c589b0761e668de5',
++        'workspace': 'native-metadata-development',
++        'module': 'codex_daemon_websocket',
++        'test': 'src/ops/tools/tests/test_codex_daemon_websocket_read_only.py',
++        'prefix': 'codex-native-metadata-20261017',
++        'summary_name': 'docs/testing/codex-native-metadata-observed-20261017.json',
++        'review': '/tmp/agent-unattended-native-metadata-final-review.md',
++        'families': ['native-contract-20261017', 'native-metadata-run-1'],
++        'records': ['native-metadata-plan.md','native-metadata-plan-addendum.md','native-metadata-plan-review.md','native-metadata-isolation.json', 'native-metadata-package-helper.diff', 'native-metadata-persist-helper.diff', 'native-metadata-helper-change.json'],
++        'reviews': [],
++        'extra_fixture_modules': ['codex_daemon_websocket_read_only'],
++        'fixture_only': False,
++    },
+     'owner_adapter': {
+         'parent': '7806daca6bf48c220f7bcd228d1140ef79c2b230',
+         'workspace': 'owner-ack-adapter-development',
+@@ -118,7 +132,7 @@
+ assert verdict.split(':', 1)[1].replace('*', '').strip().split()[0] == 'PASS', 'FINAL_REVIEW_NOT_PASS'
+ sha = lambda data: hashlib.sha256(data).hexdigest()
+ source = 'src/ops/tools/' + cfg['module'] + '.py'
+-test = 'src/ops/tools/tests/test_' + cfg['module'] + '.py'
++test = cfg.get('test', 'src/ops/tools/tests/test_' + cfg['module'] + '.py')
+ for name in (source, test):
+     assert sha((work / name).read_bytes()) in text, 'REVIEW_PIN_MISSING: ' + name
+ summary_name = cfg.get('summary_name', 'docs/testing/' + cfg['prefix'].replace('-20261016', '-observed-20261016') + '.json')
+@@ -179,7 +193,7 @@
+ summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
+ mapping[summary_name]['sha256'] = sha(summary_path.read_bytes())
+ manifest_name = prefix + '/publication-manifest.json'
+-manifest = {'parent_commit': PARENT, 'fixture_only': True,
++manifest = {'parent_commit': PARENT, 'fixture_only': cfg.get('fixture_only', True),
+             'actual_runtime_transition': 'NOT_COMPLETE', 'main_merged': False,
+             'final_independent_review': summary['final_independent_review'],
+             'raw_byte_retention': 'Historical code/logs receive .txt suffix only; original bytes and paths are retained in mapping.',

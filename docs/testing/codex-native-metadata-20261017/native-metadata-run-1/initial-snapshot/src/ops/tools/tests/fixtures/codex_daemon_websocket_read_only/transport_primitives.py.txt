@@ -1,0 +1,181 @@
+"""Pinned PR16 module-level primitives only; no old TestCase/setup/business code."""
+import base64
+import contextlib
+import hashlib
+import importlib.util
+import json
+import socket
+import struct
+from unittest import mock
+import websocket
+
+SOURCE = None
+ENDPOINT = None
+THREADS = ()
+PRIVATE = "SYNTHETIC_PRIVATE_METADATA_MUST_NOT_ESCAPE"
+
+def encoded(value):
+    return json.dumps(value, separators=(",", ":")).encode()
+
+
+def frame_header(length, opcode=1, fin=True):
+    first = (0x80 if fin else 0) | opcode
+    if length < 126:
+        return bytes((first, length))
+    if length < 65536:
+        return bytes((first, 126)) + struct.pack("!H", length)
+    return bytes((first, 127)) + struct.pack("!Q", length)
+
+
+def frame(data, opcode=1, fin=True):
+    return frame_header(len(data), opcode, fin) + data
+
+
+def response(request_id=1, result=None):
+    return frame(encoded({"id": request_id, "result": {} if result is None else result}))
+
+
+def outgoing_frame(data):
+    """Decode only fake-captured client sends, not the server decoder under test."""
+    opcode, length, pos = data[0] & 15, data[1] & 127, 2
+    if length == 126:
+        length, pos = struct.unpack("!H", data[2:4])[0], 4
+    elif length == 127:
+        length, pos = struct.unpack("!Q", data[2:10])[0], 10
+    if not data[1] & 128:
+        raise AssertionError("Client frames must be masked")
+    mask, pos = data[pos:pos + 4], pos + 4
+    payload = bytes(b ^ mask[i % 4] for i, b in enumerate(data[pos:]))
+    if len(payload) != length:
+        raise AssertionError("Unexpected partial fake send")
+    return opcode, json.loads(payload)
+
+
+class TransportFixture:
+    def __init__(self, wire=b"", *, status=101, delays=None, chunk=None,
+                 header_padding=0, failure=None):
+        self.clock = 0.0
+        self.wire, self.status, self.chunk = wire, status, chunk
+        self.delays, self.header_padding = delays or {}, header_padding
+        self.failure = failure
+        self.sockets, self.connects, self.ws_options = [], [], []
+        self.rpc_messages, self.frame_reads, self.http_requests = [], [], []
+        self.forbidden, self.close_calls, self.graceful_calls = [], 0, 0
+        self.clients, self.timeout_values = [], []
+        self.stack = contextlib.ExitStack()
+
+    def forbidden_io(self, *args, **kwargs):
+        self.forbidden.append("REAL_IO_ATTEMPT")
+        raise AssertionError("Real IO is forbidden by this fixture")
+
+    def delay(self, stage, sock):
+        if self.failure == stage:
+            raise OSError(PRIVATE)
+        amount = self.delays.get(stage, 0)
+        if amount:
+            if amount >= sock.timeout:
+                self.clock += sock.timeout
+                raise TimeoutError(PRIVATE)
+            self.clock += amount
+
+    def __enter__(self):
+        owner = self
+
+        class FakeSocketBase:
+            def __init__(sock, family, kind):
+                if (family, kind) != (socket.AF_UNIX, socket.SOCK_STREAM):
+                    raise AssertionError("Only a fake AF_UNIX stream is allowed")
+                sock.timeout, sock.closed = None, False
+                sock.http, sock.http_position, sock.frame_position = b"", 0, 0
+                owner.sockets.append(sock)
+
+            def settimeout(sock, timeout):
+                sock.timeout = timeout
+                owner.timeout_values.append(timeout)
+
+            def gettimeout(sock):
+                return sock.timeout
+
+            def connect(sock, endpoint):
+                owner.connects.append(endpoint)
+                if endpoint != ENDPOINT:
+                    raise AssertionError("Unapproved fixture endpoint")
+                owner.delay("connect", sock)
+
+            def send(sock, data, flags=0):
+                data = bytes(data)
+                if data.startswith(b"GET "):
+                    owner.delay("upgrade_send", sock)
+                    owner.http_requests.append(data)
+                    key = next(line.split(b": ", 1)[1] for line in data.split(b"\r\n")
+                               if line.lower().startswith(b"sec-websocket-key:"))
+                    accept = base64.b64encode(hashlib.sha1(
+                        key + b"258EAFA5-E914-47DA-95CA-C5AB0DC85B11").digest())
+                    sock.http = (
+                        ("HTTP/1.1 %d Fixture\r\n" % owner.status).encode()
+                        + b"Upgrade: websocket\r\nConnection: Upgrade\r\n"
+                        + b"Sec-WebSocket-Accept: " + accept + b"\r\n"
+                        + b"Location: ws://must-never-resolve.invalid/\r\n"
+                        + b"X-Fixture: " + b"x" * owner.header_padding + b"\r\n\r\n")
+                else:
+                    owner.delay("send", sock)
+                    owner.rpc_messages.append(outgoing_frame(data))
+                return len(data)
+
+            def recv(sock, size, flags=0):
+                stage = "upgrade_recv" if sock.handshaking else "recv"
+                owner.delay(stage, sock)
+                if sock.handshaking:
+                    out = sock.http[sock.http_position:sock.http_position + size]
+                    sock.http_position += len(out)
+                else:
+                    owner.frame_reads.append((sock.frame_position, size))
+                    size = min(size, owner.chunk) if owner.chunk else size
+                    out = owner.wire[sock.frame_position:sock.frame_position + size]
+                    sock.frame_position += len(out)
+                return out
+
+            def close(sock):
+                owner.close_calls += 1
+                sock.closed = True
+
+        # Execute the exact source bytes with a fake superclass: no FD exists.
+        spec = importlib.util.spec_from_file_location(
+            "src.ops.tools._codex_ws_offline_fixture", SOURCE)
+        self.module = importlib.util.module_from_spec(spec)
+        with mock.patch.object(socket, "socket", FakeSocketBase):
+            spec.loader.exec_module(self.module)
+        self.stack.enter_context(mock.patch.object(self.module.time, "monotonic",
+                                                  lambda: self.clock))
+        for name in ("socket", "create_connection", "getaddrinfo", "socketpair"):
+            self.stack.enter_context(mock.patch.object(socket, name, self.forbidden_io))
+        self.stack.enter_context(mock.patch("subprocess.Popen", self.forbidden_io))
+        real_class, real_connect = websocket.WebSocket, websocket.WebSocket.connect
+
+        def connect(ws, url, **kwargs):
+            self.ws_options.append((url, dict(kwargs)))
+            return real_connect(ws, url, **kwargs)
+
+        def graceful(*args, **kwargs):
+            self.graceful_calls += 1
+            raise AssertionError("Graceful close would start a new wait")
+
+        self.stack.enter_context(mock.patch.object(real_class, "connect", connect))
+        self.stack.enter_context(mock.patch.object(real_class, "close", graceful))
+        return self
+
+    def open(self, **kwargs):
+        client = self.module.UnixWebSocketRpc(ENDPOINT, THREADS, **kwargs)
+        self.clients.append(client)
+        return client
+
+    def __exit__(self, *exc):
+        try:
+            for client in self.clients:
+                client.close()
+            if self.forbidden or self.graceful_calls:
+                raise AssertionError("Forbidden IO or graceful close attempted")
+            if any(not s.closed for s in self.sockets):
+                raise AssertionError("Owned fake socket was not closed")
+        finally:
+            self.stack.close()

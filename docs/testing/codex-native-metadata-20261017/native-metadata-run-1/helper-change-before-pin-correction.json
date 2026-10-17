@@ -1,0 +1,6 @@
+{
+  "before_sha256": "a7d2387979ee762c670a4795a10bdad5283b9896f452f5b66a001e34fdb45747",
+  "after_sha256": "797d6d97941c0a25df37314c9d37b07b23df04adab2878ea564381212b0ebe30",
+  "scope": "Add metadata unit config and optional test/fixture_only override. Packaging only, no product/test execution. Existing unit defaults retained.",
+  "independent_final_review_required": true
+}

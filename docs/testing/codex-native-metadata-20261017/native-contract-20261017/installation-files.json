@@ -1,0 +1,37 @@
+{
+  "/etc/codex-agent/schedule.json": {
+    "sha256": "1840b98caac4689eff8186225f7ae5372029bb98eea97d9ccedac38b545a9237",
+    "uid": 65534,
+    "bytes": 137
+  },
+  "/etc/systemd/system/codex-nightly.service": {
+    "sha256": "26f1c496cb1a7d301eb00f529c7c6a5ff265b3b8aa2967622f3d48295b04a036",
+    "uid": 65534,
+    "bytes": 819
+  },
+  "/etc/systemd/system/codex-nightly.timer": {
+    "sha256": "ec94cea10a93fa647b176e451a2a21dec70eb193c0a75da1380705f3204069a6",
+    "uid": 65534,
+    "bytes": 222
+  },
+  "/etc/systemd/system/codex-nightly.service.d/98-flex-schedule.conf": {
+    "sha256": "6ddac0eb7999d4fcdd37a8b56267f61aac49aa514b8b1adaab73c1e59ce84499",
+    "uid": 65534,
+    "bytes": 176
+  },
+  "/opt/codex-agent/nightly-v1/orchestrator.py": {
+    "sha256": "5daa8c8407799c9d035827c4ce4d3916e471c2171ebd269d7257d373763a9acb",
+    "uid": 65534,
+    "bytes": 11700
+  },
+  "/opt/codex-agent/console-v2/console_api.py": {
+    "sha256": "d312bd69d123427ff36159304864488a03a58fa2954d9951aaf1368e3f1238a5",
+    "uid": 65534,
+    "bytes": 12162
+  },
+  "/opt/codex-agent/scheduler-v2/flex_gate.py": {
+    "sha256": "30419990ee0cd77dfe37923ac6fe051b6b47b94469a39cdf00452291b5daf16b",
+    "uid": 65534,
+    "bytes": 6323
+  }
+}

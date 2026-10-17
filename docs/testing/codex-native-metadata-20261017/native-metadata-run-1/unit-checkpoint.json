@@ -1,0 +1,37 @@
+{
+  "saved_utc": "2026-10-17T03:35:01.255087+00:00",
+  "state": "SOURCE_PASS_TESTS_AND_RUNNER_AUTHORING",
+  "investigation": "CLOSED at03:25:25Z;7responses/7RPC,0retry;no further native queries",
+  "source_sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+  "plan_sha256": "67953b3166ad22a3211a85cd701511811aaffe71188f6291d7d3c811be74aa8c",
+  "addendum_sha256": "d101e3a675c01155feaa6ce07649d1cf8dab4faadb9b6af03469a455cd214394",
+  "test_agent_queue": "01a147e8-b70d-7532-bd1e-d4e626fa3e70",
+  "reviewer_packaging_queue": "01a147ed-0e55-7a32-9705-982c03ede225",
+  "deadline_utc": "2026-10-17T04:00:00Z",
+  "next": [
+    "Await tests-ready authoring completion; source PASS reused",
+    "Independent static review new tests/fixtures/runner only",
+    "Coordinator first execution once; new4 failfast and2semanticmutants, preserve all failures",
+    "Final independent review then package metadata unit and Draft PR to PR22 branch",
+    "Exact remote commit/tree/files readback; persist metadata unit and verify original11"
+  ],
+  "publication": {
+    "base_commit": "d59de21d4b43a71f3e518592c589b0761e668de5",
+    "base_tree": "db330bda672ee0da85484d3014819f4d77c4cc75",
+    "base_branch": "codex/agent-project-owner-ack-adapter-20261017",
+    "branch": "codex/agent-project-native-metadata-20261017",
+    "branch_absent_at_preflight": true,
+    "package_command": "python3 -B var/unattended-20261015/package_unit.py metadata",
+    "persist_command": "python3 -B var/unattended-20261015/persist_unit_publication.py metadata",
+    "final_review_expected": "/tmp/agent-unattended-native-metadata-final-review.md"
+  },
+  "restrictions": [
+    "original11 preserved",
+    "scheduler PAUSE",
+    "operating source/DB/auth/Docker untouched",
+    "vms_project excluded",
+    "no old6script/thread-resume",
+    "no oldPASS/fullsuite repeat",
+    "no main merge"
+  ]
+}

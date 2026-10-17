@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-17T03:41:49.163089+00:00",
+  "command": [
+    "python3",
+    "-B",
+    "/home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-metadata-run-1/run-once.py",
+    "--source-ready",
+    "--source-sha256",
+    "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432"
+  ],
+  "retry": 0,
+  "preexecution_review_sha256": "8500d6f545ab05dad6855340ddeaab83b53192f9e8e37f6e241ad273de113d6b"
+}

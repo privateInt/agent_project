@@ -1,0 +1,137 @@
+"""One bounded metadata observation; no resume, dispatch or retry."""
+import datetime as dt
+import hashlib
+import json
+from pathlib import Path
+import sys
+import time
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[1]
+BASE = ROOT / 'bridge-development'
+END = dt.datetime(2026, 10, 17, 3, 31, 41, tzinfo=dt.timezone.utc)
+THREADS = ('01a13f12-328d-7342-b285-a0868ac66447',
+           '01a13fb0-1721-7af3-82e6-747eac4de411',
+           '01a13fb0-1abe-7623-a15e-cf07071ce54a')
+PINS = {'codex_daemon_websocket.py': '7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415',
+        'codex_readiness.py': '5b84534a6e0b3bb19fdd6a2bd6e3c38f23ea89edc205b461751b5c0e857ee399'}
+for name, pin in PINS.items():
+    assert hashlib.sha256((BASE / 'src/ops/tools' / name).read_bytes()).hexdigest() == pin
+sys.path.insert(0, str(BASE))
+from src.ops.tools.codex_daemon_websocket import UnixWebSocketRpc, ProbeError
+
+
+class MetadataOnly(UnixWebSocketRpc):
+    def _validate(self, method, params):
+        valid = False
+        if method == 'initialize':
+            valid = params == {'clientInfo': {'name': 'agent_project_contract_observer', 'version': '1'},
+                               'capabilities': {'experimentalApi': True}}
+        elif type(params) is dict and params.get('threadId') in THREADS:
+            if method == 'thread/read':
+                valid = set(params) == {'threadId', 'includeTurns'} and params['includeTurns'] is False
+            elif method == 'thread/queue/list':
+                valid = set(params) == {'threadId', 'cursor', 'limit'} and params['cursor'] is None and type(params['limit']) is int and params['limit'] == 20
+            elif method == 'thread/turns/list':
+                valid = params == {'threadId': THREADS[2], 'cursor': None, 'limit': 1,
+                                   'itemsView': 'notLoaded', 'sortDirection': 'desc'}
+            elif method == 'thread/items/list':
+                valid = (set(params) == {'threadId', 'turnId', 'cursor', 'limit', 'sortDirection'}
+                         and params['threadId'] == THREADS[2] and type(params['turnId']) is str
+                         and 1 <= len(params['turnId']) <= 128 and params['cursor'] is None
+                         and type(params['limit']) is int and params['limit'] == 2
+                         and params['sortDirection'] == 'asc')
+        if not valid:
+            raise ProbeError('RPC_METHOD_FORBIDDEN')
+
+
+def digest(value):
+    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=True).encode()).hexdigest()
+
+
+def main():
+    left = (END - dt.datetime.now(dt.timezone.utc)).total_seconds()
+    assert left > 55, 'BOUNDED_WINDOW_TOO_SHORT_NO_CONNECT'
+    dest = HERE / 'native-observation.json'
+    record = {'status': 'RESERVED', 'requests': [], 'max_rpc': 8, 'retries': 0,
+              'deadline_utc': END.isoformat(), 'raw_payloads_retained': False,
+              'resume_or_mutating_methods': False, 'source_pins': PINS,
+              'threads': [], 'queues': [], 'turns': [], 'items': []}
+    with dest.open('x') as stream:
+        json.dump(record, stream, indent=2)
+    dest.chmod(0o600)
+    def save():
+        part = dest.with_suffix('.next')
+        with part.open('x') as stream:
+            json.dump(record, stream, indent=2, allow_nan=False)
+        part.chmod(0o600)
+        part.replace(dest)
+    start = time.monotonic()
+    try:
+        with MetadataOnly('/home/codex_shshin/.codex/app-server-control/app-server-control.sock',
+                          THREADS, total_timeout=45, request_timeout=5) as client:
+            def call(method, params):
+                assert len(record['requests']) < 8
+                record['requests'].append({'method': method, 'params': params,
+                                           'entered': True, 'response_observed': False})
+                save()
+                result = client.call(method, params)
+                record['requests'][-1]['response_observed'] = True
+                save()
+                return result
+            call('initialize', {'clientInfo': {'name': 'agent_project_contract_observer', 'version': '1'},
+                                'capabilities': {'experimentalApi': True}})
+            client.notify_initialized()
+            for tid in THREADS:
+                value = call('thread/read', {'threadId': tid, 'includeTurns': False})['thread']
+                assert value['id'] == tid
+                projection = {key: value.get(key) for key in ('id', 'cwd', 'agentRole', 'parentThreadId',
+                               'cliVersion', 'model', 'reasoningEffort', 'historyMode', 'canAcceptDirectInput', 'status')}
+                projection['turns_count'] = len(value.get('turns', []))
+                record['threads'].append(projection)
+                save()
+            for tid in THREADS[1:]:
+                value = call('thread/queue/list', {'threadId': tid, 'cursor': None, 'limit': 20})
+                data = value['data']
+                assert type(data) is list and len(data) <= 20
+                record['queues'].append({'thread_id': tid, 'next_cursor_present': 'nextCursor' in value,
+                   'next_cursor_is_null': value.get('nextCursor') is None,
+                   'entries': [{'id': item.get('id'), 'client_user_message_id': item.get('clientUserMessageId'),
+                                'input_sha256': digest(item.get('input'))} for item in data]})
+                save()
+            value = call('thread/turns/list', {'threadId': THREADS[2], 'cursor': None, 'limit': 1,
+                                              'itemsView': 'notLoaded', 'sortDirection': 'desc'})
+            assert type(value['data']) is list and len(value['data']) <= 1
+            for turn in value['data']:
+                record['turns'].append({key: turn.get(key) for key in ('id', 'status', 'rootTurnId', 'startedAt', 'completedAt', 'itemsView')})
+                assert not turn.get('items')
+            save()
+            if value['data']:
+                turn_id = value['data'][0]['id']
+                value = call('thread/items/list', {'threadId': THREADS[2], 'turnId': turn_id,
+                                                 'cursor': None, 'limit': 2, 'sortDirection': 'asc'})
+                assert type(value['data']) is list and len(value['data']) <= 2
+                for entry in value['data']:
+                    item = entry['item']
+                    record['items'].append({'turn_id': entry.get('turnId'), 'id': item.get('id'),
+                        'type': item.get('type'), 'client_user_message_id': item.get('clientUserMessageId'),
+                        'content_sha256': digest(item.get('content')), 'field_names': sorted(item)})
+                save()
+            record['status'] = 'OBSERVED_READ_ONLY_METADATA'
+    except Exception as error:
+        attributes = BaseException.__dict__['__dict__'].__get__(error)
+        code = attributes.get('code') if type(attributes) is dict else None
+        record['error_type'] = type(error).__name__
+        record['error_code'] = code if type(code) is str and code.startswith('RPC_') and len(code) <= 64 else 'LOCAL_OR_UNCLASSIFIED'
+        record['status'] = 'STOPPED_NO_RETRY'
+    record['elapsed_seconds'] = round(time.monotonic() - start, 6)
+    record['finished_utc'] = dt.datetime.now(dt.timezone.utc).isoformat()
+    save()
+    print(json.dumps({'status': record['status'], 'rpc_entered': len(record['requests']),
+                      'responses': sum(r['response_observed'] for r in record['requests']),
+                      'elapsed_seconds': record['elapsed_seconds']}))
+    return 0 if record['status'] == 'OBSERVED_READ_ONLY_METADATA' else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

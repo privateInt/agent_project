@@ -1,0 +1,35 @@
+{
+  "observed_utc": "2026-10-17T03:20:38Z",
+  "source": "systemctl show read-only successful tool result, not a second query",
+  "service": {
+    "Id": "codex-nightly.service",
+    "ActiveState": "inactive",
+    "SubState": "dead",
+    "UnitFileState": "disabled",
+    "MainPID": 0,
+    "User": "codex_shshin",
+    "Group": "codex_shshin",
+    "WorkingDirectory": "/home/codex_shshin/workspace",
+    "ExecStart": "/usr/bin/python3 -B /opt/codex-agent/nightly-v1/orchestrator.py run-once",
+    "ExecCondition": "/usr/bin/python3 -B /opt/codex-agent/scheduler-v2/flex_gate.py",
+    "ReadWritePaths": [
+      "/home/codex_shshin"
+    ],
+    "PrivateTmp": true,
+    "ProtectSystem": "strict",
+    "NoNewPrivileges": true,
+    "FragmentPath": "/etc/systemd/system/codex-nightly.service",
+    "DropInPaths": [
+      "/etc/systemd/system/codex-nightly.service.d/98-flex-schedule.conf"
+    ]
+  },
+  "timer": {
+    "Id": "codex-nightly.timer",
+    "ActiveState": "inactive",
+    "SubState": "dead",
+    "UnitFileState": "disabled",
+    "FragmentPath": "/etc/systemd/system/codex-nightly.timer"
+  },
+  "operations_changed": false,
+  "pause_preserved": true
+}

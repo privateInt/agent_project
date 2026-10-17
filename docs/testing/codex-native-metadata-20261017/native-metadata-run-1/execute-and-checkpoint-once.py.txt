@@ -1,0 +1,83 @@
+"""Execute the pinned new checks once after independent pre-execution review."""
+import argparse
+import datetime as dt
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import time
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[1]
+WORK = ROOT / 'native-metadata-development'
+DEADLINE = dt.datetime(2026, 10, 17, 4, 0, 0, tzinfo=dt.timezone.utc)
+SOURCE = '6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432'
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+p = argparse.ArgumentParser()
+p.add_argument('--preexecution-review-sha256', required=True)
+args = p.parse_args()
+review_path = HERE / 'preexecution-review.md'
+assert sha(review_path) == args.preexecution_review_sha256
+review = review_path.read_text()
+verdict = next(line for line in review.splitlines()[:12] if line.startswith('판정:'))
+assert verdict.split(':', 1)[1].replace('*', '').strip().split()[0] == 'PASS'
+ready = json.loads((HERE / 'tests-ready.json').read_text())
+assert ready['source_sha256'] == SOURCE
+for path in (HERE / 'tests-ready.json', HERE / 'run-once.py',
+             WORK / 'src/ops/tools/codex_daemon_websocket.py',
+             WORK / 'src/ops/tools/tests/test_codex_daemon_websocket_read_only.py'):
+    assert sha(path) in review, 'PREEXECUTION_REVIEW_PIN_MISSING'
+command = ready['command']
+fixed_args = [str(HERE / 'run-once.py'), '--source-ready', '--source-sha256', SOURCE]
+assert command in (['python3', '-B'] + fixed_args, ['python3', '-I', '-S', '-B'] + fixed_args)
+left = (DEADLINE - dt.datetime.now(dt.timezone.utc)).total_seconds()
+assert left > 65, 'FIXED_UNIT_DEADLINE_TOO_CLOSE_NO_EXECUTION'
+assert not (HERE / 'execution-attempt.json').exists()
+assert not (HERE / 'result.json').exists()
+summary_path = WORK / 'docs/testing/codex-native-metadata-observed-20261017.json'
+with (HERE / 'observed-before-execution.json').open('xb') as out:
+    out.write(summary_path.read_bytes())
+with (HERE / 'coordinator-execution-attempt.json').open('x') as out:
+    json.dump({'utc': dt.datetime.now(dt.timezone.utc).isoformat(), 'command': command,
+               'retry': 0, 'preexecution_review_sha256': args.preexecution_review_sha256}, out, indent=2)
+returncode, error_type = None, None
+try:
+    with (HERE / 'coordinator.stdout.log').open('xb') as stdout, (HERE / 'coordinator.stderr.log').open('xb') as stderr:
+        completed = subprocess.run(command, cwd=WORK, stdout=stdout, stderr=stderr, timeout=min(60, left))
+    returncode = completed.returncode
+except Exception as error:
+    error_type = type(error).__name__
+result_path = HERE / 'result.json'
+result = json.loads(result_path.read_text()) if result_path.exists() else {}
+normal = result.get('normal') or {}
+stages = ('M_INCLUDE_TURNS', 'M_LIMIT')
+passed = (returncode == 0 and result.get('all_required_verification_pass') is True
+          and normal.get('testsRun') == 4 and all(normal.get(k) == 0 for k in ('failures', 'errors', 'skips'))
+          and all((result.get(stage) or {}).get('semantic_fail1_error0') is True
+                  and result[stage].get('actual_wrong_wire_verified') is True for stage in stages))
+receipt = {'status': 'PASS' if passed else 'STOPPED_INCOMPLETE_NO_RETRY',
+           'utc': dt.datetime.now(dt.timezone.utc).isoformat(), 'returncode': returncode,
+           'coordinator_error_type': error_type, 'result_sha256': sha(result_path) if result_path.exists() else None,
+           'normal': {key: normal.get(key) for key in ('testsRun', 'failures', 'errors', 'skips')},
+           'semantic_mutants': 2 if passed else 'INCOMPLETE', 'new_native_queries': 0,
+           'old_passes_repeated': False, 'checkpoint_saved_in_same_execution': True}
+(HERE / 'execution-checkpoint.json').write_text(json.dumps(receipt, indent=2) + '\n')
+summary = json.loads(summary_path.read_text())
+summary['new_tests'] = dict(receipt['normal'], status='PASS' if passed else 'INCOMPLETE',
+                            first_execution_only=True, result_sha256=receipt['result_sha256'])
+summary['semantic_mutants'] = {'status': 'DETECTED' if passed else 'INCOMPLETE', 'count': 2,
+                               'meaning': 'Actual wrong metadata request/frame/ID; no real socket or native call',
+                               'each': 'semantic FAIL1 ERROR0 SKIP0' if passed else 'See first immutable results'}
+summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
+for filename in ('state.json', 'action-required.json'):
+    path = ROOT / filename
+    value = json.loads(path.read_text())
+    phase = 'NATIVE_METADATA_NEW4_PASS_MUTANTS2_DETECTED' if passed else 'NATIVE_METADATA_FIRST_EXECUTION_INCOMPLETE'
+    if filename == 'state.json':
+        value.update(state=phase, active_review='FINAL_REVIEW_READY' if passed else 'FAILED_STAGE_DIAGNOSIS', last_saved_unix=int(time.time()))
+        value['native_metadata_unit'].update(status=phase, execution=receipt)
+    else:
+        value['native_metadata_unit'] = dict(status=phase, execution=receipt)
+    path.write_text(json.dumps(value, indent=2) + '\n')
+print(json.dumps(receipt))
+raise SystemExit(0 if passed else 1)

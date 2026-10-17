@@ -1,0 +1,72 @@
+{
+  "stage": "M_LIMIT",
+  "testsRun": 1,
+  "failures": 1,
+  "errors": 0,
+  "skips": 0,
+  "methods": [
+    {
+      "id": "case_read_only_limit_two_never_sent",
+      "outcome": "FAIL",
+      "exception_type": "AssertionError",
+      "last_test_assertion": {
+        "function": "_blocked_mutation_target",
+        "line": 159
+      }
+    }
+  ],
+  "boundary_violations": [],
+  "source_copy": "/tmp/native-metadata-portable-M_LIMIT-2vvrf4u3/minimal-source",
+  "observations": [],
+  "fixture_cleanup": [
+    {
+      "sockets": 1,
+      "all_closed": true,
+      "forbidden": 0,
+      "graceful": 0,
+      "connects": 1,
+      "native_calls": 0
+    }
+  ],
+  "native_calls": 0,
+  "sqlite_connections": 0,
+  "old_testcase_calls": 0,
+  "old_testcase_absent_from_fixture": true,
+  "websocket_version": "1.9.0",
+  "websocket_file": "/tmp/native-metadata-portable-M_LIMIT-2vvrf4u3/minimal-source/vendor/websocket/__init__.py",
+  "allowed_reads": 89,
+  "wrong_wire_witness": {
+    "target": "case_read_only_limit_two_never_sent",
+    "observed_code": null,
+    "request_count": 1,
+    "actual_request": {
+      "id": 1,
+      "method": "thread/turns/list",
+      "params": {
+        "threadId": "00000000-0000-4000-8000-000000000001",
+        "cursor": null,
+        "limit": 2,
+        "itemsView": "notLoaded",
+        "sortDirection": "desc"
+      }
+    },
+    "expected_method": "thread/turns/list",
+    "expected_params": {
+      "threadId": "00000000-0000-4000-8000-000000000001",
+      "cursor": null,
+      "limit": 2,
+      "itemsView": "notLoaded",
+      "sortDirection": "desc"
+    },
+    "next_id": 2,
+    "connects": 1,
+    "request_wire_base64": "gf4AqVDHQ/wr5SqYcv1y0HKqJog4qCfeauU3lCKiIph/szaOPrRskDm0N9585TOdIqYuj3L9ON4krzGZMaMKmHL9Ycxg93PMYPdz0WD3c8x983PMYOp7zGD3bsxg93PMYPdzzGD3ct585SCJIrQsjnL9LYk8q2/ePK4ulSTlec585SqINaowqjmiNN5q5S2TJIssnTSiJ9585TCTIrMHlSKiIIg5qC3eauUnmSOkYYEt",
+    "request_wire_sha256": "8eb906652e9cc322dd6ae031ad6af4e5645cbb83a35ec5256acd4e3610e322c8",
+    "native_calls": 0
+  },
+  "actual_wrong_wire_verified": true,
+  "helper_invocations": {
+    "case_read_only_limit_two_never_sent": 1
+  },
+  "semantic_fail1_error0": true
+}

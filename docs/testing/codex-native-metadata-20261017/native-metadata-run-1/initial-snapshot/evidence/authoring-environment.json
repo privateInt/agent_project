@@ -1,0 +1,19 @@
+{
+  "python_version": "3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0]",
+  "executable": "/usr/bin/python3",
+  "declared_turn_metadata": {
+    "sandbox_mode": "workspace-write",
+    "approvals_reviewer": "auto_review",
+    "network_access": "restricted",
+    "approval_policy": "NOT_EXPOSED_IN_CURRENT_TURN_CONTEXT",
+    "origin": "current developer/environment declarations only; no permission probes",
+    "permission_changes": 0,
+    "native_investigation": "CLOSED"
+  },
+  "project_imports": 0,
+  "websocket_imports": 0,
+  "tests_executed": 0,
+  "native_calls": 0,
+  "sqlite_connections": 0,
+  "python310_ast_parse": true
+}

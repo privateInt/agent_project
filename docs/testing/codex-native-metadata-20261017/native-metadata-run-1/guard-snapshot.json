@@ -1,0 +1,33 @@
+{
+  "source_sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+  "expressions": {
+    "M_INCLUDE_TURNS": "params[\"includeTurns\"] is False",
+    "M_LIMIT": "params[\"limit\"] == 1"
+  },
+  "locations": {
+    "M_INCLUDE_TURNS": {
+      "line": 187,
+      "column": 29,
+      "ast": "Compare(left=Subscript(value=Name(id='params', ctx=Load()), slice=Constant(value='includeTurns'), ctx=Load()), ops=[Is()], comparators=[Constant(value=False)])"
+    },
+    "M_LIMIT": {
+      "line": 191,
+      "column": 62,
+      "ast": "Compare(left=Subscript(value=Name(id='params', ctx=Load()), slice=Constant(value='limit'), ctx=Load()), ops=[Eq()], comparators=[Constant(value=1)])"
+    }
+  },
+  "semantic_assertion": {
+    "function": "_blocked_mutation_target",
+    "line": 159,
+    "expression": "self.assertEqual(\"RPC_PARAMS_FORBIDDEN\", observed_code)"
+  },
+  "normal_helper_calls": {
+    "case_read_only_include_turns_true_never_sent": [
+      "test_read_only_blocks_mutation_thread_and_pagination"
+    ],
+    "case_read_only_limit_two_never_sent": [
+      "test_read_only_blocks_mutation_thread_and_pagination"
+    ]
+  },
+  "mutants_executed": 0
+}

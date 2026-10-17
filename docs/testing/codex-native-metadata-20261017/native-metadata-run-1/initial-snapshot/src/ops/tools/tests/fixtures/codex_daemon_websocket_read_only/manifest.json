@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "fixture_only": true,
+  "source_test_sha256": "5085ce3d866a81afe7614cb6e4aeea785cf757da148395591dbc865ed0f3a9bf",
+  "source_test_commit": "8c1a9c18f496ad99311ad1e976c2e00c31817747",
+  "extracted_names": [
+    "encoded",
+    "frame_header",
+    "frame",
+    "response",
+    "outgoing_frame",
+    "TransportFixture"
+  ],
+  "extracted_ast_equal": true,
+  "files": {
+    "transport_primitives.py.txt": "44639fbdfd9d120e82abd158f4b8a9416ba1122a3d6184014825233a1564fc0d",
+    "synthetic.json": "22036ceaf79a83def772b42110ef076343207a3c296c162d7df623efdea287b6"
+  }
+}

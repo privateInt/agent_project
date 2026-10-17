@@ -1,0 +1,31 @@
+{
+  "scope": "Renewed D18 existing owner metadata only",
+  "start_utc": "2026-10-17T03:16:41Z",
+  "deadline_utc": "2026-10-17T03:31:41Z",
+  "rpc_limit": 8,
+  "rpc_sent": 7,
+  "retry": 0,
+  "thread_resume": "FORBIDDEN",
+  "old6RPC": "WITHDRAWN",
+  "scheduler": "PAUSE_UNCHANGED",
+  "targets": [
+    "agent_project",
+    "codex_shshin",
+    "/etc/codex-agent",
+    "/opt/codex-agent",
+    "existing app-server-control.sock"
+  ],
+  "status": "CLOSED_SUCCESS_NO_FURTHER_PROBES",
+  "rpc_sent_confirmed_by_matching_response": 7,
+  "rpc_entered": 7,
+  "retries": 0,
+  "initialized_notifications": 1,
+  "closed_utc": "2026-10-17T03:25:32.952671+00:00",
+  "remaining_rpc_not_reusable": 1,
+  "count_reconciliation": {
+    "reason": "initial reservation rpc_sent=0 was copied into final receipt; matching-response count7 is the actual final count",
+    "previous_final_receipt_preserved": "budget-final-before-count-reconciliation.json",
+    "utc": "2026-10-17T03:44:15.934964+00:00",
+    "new_rpc": 0
+  }
+}

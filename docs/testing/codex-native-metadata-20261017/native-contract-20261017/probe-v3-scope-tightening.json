@@ -1,0 +1,8 @@
+{
+  "max_rpc": 7,
+  "queue_list_removed": true,
+  "items_list_removed": true,
+  "strict_nested_projection": true,
+  "rpc_executed": 0,
+  "original_reviews_preserved": true
+}

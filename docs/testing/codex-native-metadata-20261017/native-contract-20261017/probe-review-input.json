@@ -1,0 +1,17 @@
+{
+  "script_sha256": "5d609b664e56e16d6c582c609e5188e270540fd44855d55e54fc94a2f0107d7e",
+  "command": "/usr/bin/timeout --signal=TERM --kill-after=1s 49s python3 -B /home/codex_shshin/public-github-dev-pol48i5q/repositories/agent_project/var/unattended-20261015/transition-evidence/native-contract-20261017/observe_once.py",
+  "maximum_rpc": 8,
+  "planned": [
+    "initialize",
+    "thread/read x3",
+    "thread/queue/list x2",
+    "thread/turns/list x1",
+    "thread/items/list x1 if latest turn exists"
+  ],
+  "deadline_utc": "2026-10-17T03:31:41Z",
+  "native_execution": "NOT_RUN",
+  "docs": "https://learn.chatgpt.com/docs/app-server",
+  "read_semantics": "thread/read without subscription/load; turns/items pagination without resume; queue/list method/schema from installed CLI-generated ClientRequest, not public documentation",
+  "request_effects_to_review": "No queue add/start/settings/resume methods allowed, one connection init/initialized only; no credentials read, original transport pinned unchanged; queue/list side effects require reviewer assessment"
+}

@@ -1,0 +1,24 @@
+{
+  "provenance": "SYNTHETIC_ONLY_NATIVE_METADATA_NO_REAL_SOCKET",
+  "endpoint": "/fixture/agent-project-control.sock",
+  "thread_id": "00000000-0000-4000-8000-000000000001",
+  "other_thread_id": "00000000-0000-4000-8000-000000000002",
+  "private_marker": "SYNTHETIC_PRIVATE_METADATA_MUST_NOT_ESCAPE",
+  "initialize_params": {
+    "clientInfo": {
+      "name": "native_metadata_fixture",
+      "version": "1"
+    }
+  },
+  "read_params": {
+    "threadId": "00000000-0000-4000-8000-000000000001",
+    "includeTurns": false
+  },
+  "turns_params": {
+    "threadId": "00000000-0000-4000-8000-000000000001",
+    "cursor": null,
+    "limit": 1,
+    "itemsView": "notLoaded",
+    "sortDirection": "desc"
+  }
+}

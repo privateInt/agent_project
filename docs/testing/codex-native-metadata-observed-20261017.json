@@ -1,0 +1,77 @@
+{
+  "scope": "EXISTING_OWNER_CLIENT_READ_ONLY_METADATA_TRANSPORT",
+  "base_commit": "d59de21d4b43a71f3e518592c589b0761e668de5",
+  "product": "src/ops/tools/codex_daemon_websocket.py",
+  "source_ready": {
+    "source_sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+    "original_sha256": "7f70d9eb3402fddd97f2a8c0f448b2b3336db28512d0c8e004adc7dc76e4b415",
+    "base_commit": "d59de21d4b43a71f3e518592c589b0761e668de5",
+    "plan_sha256": "67953b3166ad22a3211a85cd701511811aaffe71188f6291d7d3c811be74aa8c",
+    "addendum_sha256": "d101e3a675c01155feaa6ce07649d1cf8dab4faadb9b6af03469a455cd214394",
+    "new_errors": [
+      "RPC_THREAD_BINDING_MISMATCH",
+      "RPC_METADATA_UNCONFIRMED"
+    ],
+    "written_utc": "2026-10-17T03:30:14.430905+00:00",
+    "source_executed": false,
+    "native_queries": 0,
+    "preexecution_type_preflight_correction": true
+  },
+  "server_contract_observation": {
+    "status": "OBSERVED_READ_ONLY_METADATA",
+    "rpc": 7,
+    "retry": 0,
+    "elapsed_seconds": 0.021358,
+    "finished_utc": "2026-10-17T03:25:25.546989Z",
+    "final_product_native_acceptance": "NOT_RUN",
+    "queue_list": "NOT_RUN_READONLY_SIDE_EFFECT_CONTRACT_UNPROVEN",
+    "role_fields": "agentRole and parentThreadId null; caller mapping is separate"
+  },
+  "new_tests": {
+    "testsRun": 4,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "status": "PASS",
+    "first_execution_only": true,
+    "result_sha256": "8657ac90b3cb7ddf8a7484ebe09aa9f28393b878094e7531921f111e171ff78e",
+    "test_source_sha256": "e6c485f1e1852ca365c70cdc5986478fee3f8619182dd00a19b8ed1d1589d3ac",
+    "completed_utc": "2026-10-17T03:41:49.468473+00:00"
+  },
+  "semantic_mutants": {
+    "status": "DETECTED",
+    "count": 2,
+    "meaning": "Actual wrong metadata request/frame/ID; no real socket or native call",
+    "each": "semantic FAIL1 ERROR0 SKIP0"
+  },
+  "final_independent_review": {
+    "status": "PASS",
+    "file": "codex-native-metadata-20261017/review/final-review.md",
+    "sha256": "850397b3226dde8683cdc2617127d0cdab8fc1cfca6a83475d37671511ca788a"
+  },
+  "deployment": "NOT_RUN",
+  "two_native_tasks": "NOT_RUN",
+  "scheduler": "INACTIVE_DISABLED_PAUSE_RETAINED",
+  "operating_changes": false,
+  "old_passes_repeated": false,
+  "original_11_preserved": true,
+  "source_static_review": {
+    "status": "PASS",
+    "source_sha256": "6f704fc2d308406eb27e614e88cfb0bb4c317f8f6c695afa48319bdc5d402432",
+    "sha256": "2b4491b5e519f7748e4d56af4a4b1e7e75381e5e988efee39856529abd0e8435"
+  },
+  "preexecution_review": {
+    "status": "PASS",
+    "sha256": "8500d6f545ab05dad6855340ddeaab83b53192f9e8e37f6e241ad273de113d6b"
+  },
+  "actual_execution": {
+    "environment": "Python3.10 isolated -I -S -B fresh source copy; websocket-client1.9.0 pinned copy; fake AF_UNIX superclass, real websocket encode/decode",
+    "normal_count": 4,
+    "semantic_mutant_count": 2,
+    "old_methods_rerun": 0,
+    "new_native_queries": 0,
+    "boundary_violations": 0,
+    "result_sha256": "8657ac90b3cb7ddf8a7484ebe09aa9f28393b878094e7531921f111e171ff78e",
+    "first_error_preserved": "first-authoring-observation.json; static only, no test execution failure"
+  }
+}

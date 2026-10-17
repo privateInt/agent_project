@@ -89,3 +89,8 @@ F0a→F10a CI→F0b 문서 QA 제품 인수→학습데이터 이전/형식→Da
 ## Codex 시작 요청문
 
 > AGENTS.md와 docs/HANDOFF_NEXT_SESSION.md, docs/status.md, docs/plans/platform-expansion-work-plan-20261012.md를 읽고 실제 repository/runtime을 조회로 대조해줘. 첫 작업은 F0a 문서 QA 인용 누락 해결이야. 기존 head revision1과 정상 색인/Tool/Agent, 실패 질문/두 Run·plan·intent/key/receipt를 보존하고, 인용 검증을 유지하면서 코드/담당 부서 답변과 실제 출처·근거 없는 질문을 확인해줘. 모델 크기만으로 원인을 확정하거나 실패 후보를 발행하지 마. 관련 검사와 필요한 실제 인수 후 상태/다음 작업을 기록하고, 의존성이 충족된 계획의 다음 작은 단위로 이어서 진행해줘. 완료한 초기화·모델 생성·Flow 등록·성공 검사는 반복하지 말고, 실제 접근/필수 입력이 없는 항목은 미완료로 남기면서 독립 작업을 진행해줘.
+
+
+## 2026-10-17 소유 client의 제한된 metadata 연결
+
+2026-10-17 한정 D18 조사는 03:16:41–03:25:25Z, metadata7/7응답·retry0으로 닫았다(절대마감03:31:41Z). 남는 RPC는 이월하지 않으며 old6script/thread/resume은 실행하지 않는다. PR22 고정 d59de21d4b43a71f3e518592c589b0761e668de5 위에서 PR16 고정 전송기를 재사용한 read_only metadata 연결 단위를 별도 구현했고 새4/변이2 검증을 최초 실행에서 통과했다. scheduler PAUSE·운영/auth·VMS 제외·원본11 보존을 유지하고, 신규4/변이2와 최종 독립 검토는 현재 근거 JSON을 확인한다. 설치/service 활성화는 별도 변경안 검토 대상이다.
