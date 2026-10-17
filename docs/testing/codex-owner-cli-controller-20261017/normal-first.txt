@@ -1,0 +1,11 @@
+test_C01_claim_confirmation_competition_and_no_replay (__main__.ControllerAcceptance) ... ok
+test_C02_cli_receipts_constraints_and_storage_failures (__main__.ControllerAcceptance) ... ok
+test_C03_explicit_history_scope_and_matching_transport (__main__.ControllerAcceptance) ... ok
+test_C04_owner_binding_identity_and_exact_prompt (__main__.ControllerAcceptance) ... ok
+test_C05_pagination_terminal_states_and_storage (__main__.ControllerAcceptance) ... ok
+test_C06_bound_checks_and_draft_result_are_not_a_trusted_gate (__main__.ControllerAcceptance) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.719s
+
+OK

@@ -1,0 +1,13 @@
+{
+  "source_commit": "37fb6b9e1f1492776ab84eff6fc4f7f5d614d2a9",
+  "source_final_review": "PASS",
+  "artifact_independent_review": "PASS",
+  "source_final_review_sha256": "d4a00bdba3d25a2177d0ac5b1e3f189c892753288aa45eef2d531999f32a4b68",
+  "artifact_review_sha256": "6dab780e79440f78c7ae7b245d18c37fefac01ca2afe199b809ebf88414d0b0f",
+  "new_tests_pass": 6,
+  "semantic_mutants_detected": 1,
+  "old_tests_repeated": 0,
+  "owner_rpc_count": 0,
+  "actual_native_queue_count": 0,
+  "actual_installation": false
+}

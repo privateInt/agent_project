@@ -1,0 +1,7 @@
+{
+  "stage": "offline cached schema projection",
+  "first_error": "KeyError: anyOf; actual union uses oneOf",
+  "fix": "read oneOf with anyOf fallback; cached source hash already matched",
+  "native_rpc": 0,
+  "product_or_tests_executed": false
+}

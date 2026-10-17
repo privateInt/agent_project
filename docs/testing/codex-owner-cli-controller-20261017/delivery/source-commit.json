@@ -1,0 +1,35 @@
+{
+  "sha": "37fb6b9e1f1492776ab84eff6fc4f7f5d614d2a9",
+  "node_id": "C_kwDOVGwYlNoAKDM3ZmI2YjllMWYxNDkyNzc2YWI4NGVmZjZmYzRmN2Y1ZDYxNGQyYTk",
+  "url": "https://api.github.com/repos/privateInt/agent_project/git/commits/37fb6b9e1f1492776ab84eff6fc4f7f5d614d2a9",
+  "html_url": "https://github.com/privateInt/agent_project/commit/37fb6b9e1f1492776ab84eff6fc4f7f5d614d2a9",
+  "author": {
+    "name": "shin seung hoon",
+    "email": "95892797+privateInt@users.noreply.github.com",
+    "date": "2026-10-17T05:25:02Z"
+  },
+  "committer": {
+    "name": "shin seung hoon",
+    "email": "95892797+privateInt@users.noreply.github.com",
+    "date": "2026-10-17T05:25:02Z"
+  },
+  "tree": {
+    "sha": "33d70af662f376857567c10bfd7330bab1e6cb1f",
+    "url": "https://api.github.com/repos/privateInt/agent_project/git/trees/33d70af662f376857567c10bfd7330bab1e6cb1f"
+  },
+  "message": "Connect at-most-once owner CLI submission and bound turn observation",
+  "parents": [
+    {
+      "sha": "02724c5f7fbc0aadecebe2befdaf9f8990374869",
+      "url": "https://api.github.com/repos/privateInt/agent_project/git/commits/02724c5f7fbc0aadecebe2befdaf9f8990374869",
+      "html_url": "https://github.com/privateInt/agent_project/commit/02724c5f7fbc0aadecebe2befdaf9f8990374869"
+    }
+  ],
+  "verification": {
+    "verified": false,
+    "reason": "unsigned",
+    "signature": null,
+    "payload": null,
+    "verified_at": null
+  }
+}

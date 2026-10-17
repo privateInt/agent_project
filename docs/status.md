@@ -1,5 +1,7 @@
 # 프로젝트 현재 상태
 
+2026-10-17 CLI/controller: PR24 고정 기준에서 intent→신규 claim→기존 소유 CLI 1회→private 영수증, 명시적 owner turn binding→지원 이력 조회, 검사·Draft PR 구조 비교를 연결했다. 새6그룹 최초 PASS와 의미 변이1개 검출은 [실행 근거](testing/codex-owner-cli-controller-observed-20261017.json)를 따른다. CLI/history/GitHub는 명시적 대역이고 실제 SQLite·파일·대역 프로세스만 검증했다. 자동 CLI→turn 매핑과 인증된 검사·review·PR caller 연결은 미완료이며 실제 queue/RPC·설치·서비스 전환·PAUSE 해제는0이다. 최종 독립 판정은 같은 근거에서 연결한다.
+
 2026-10-17 owner ACK adapter: PR21 고정 commit 위에 기존 소유 client의 decoded 결과를 제한된 canonical bytes/hash 또는 고정 오류 코드로 준비하는 순수 함수를 추가했다. [이번 단위 근거](testing/codex-owner-ack-adapter-observed-20261017.json)는 이전 ACK 원장 PASS와 분리한다. 새4개 최초 실행 PASS(FAIL0/ERROR0/SKIP0)·의미 변이2개 검출(각 FAIL1/ERROR0, 실제 잘못 준비된 bytes/hash)과 임시 SQLite 저장·재개방 결합을 확인했다. 실행과 체크포인트 갱신을 묶었으며 최종 독립 판정은 같은 근거의 고정 보고서를 따른다. 실제 client 호출·controller 연결·두 native 작업은 미검증이고 PAUSE/D18 보류를 유지한다.
 
 2026-10-17 ACK: PR20 고정 commit 위의 decoded ACK 최초 관찰 원장을 새4개 최초 실행 PASS(FAIL0/ERROR0/SKIP0)와 의미 변이2개 검출(각 FAIL1/ERROR0·실제 오저장 witness)로 검증했다. [실행 근거](testing/codex-queue-receipts-observed-20261017.json). 최종 독립 검토 판정은 같은 근거의 고정 보고서를 따른다. 임시 SQLite의 저장·재개방 검증이며 native 연결·두 native 작업은 미검증이다. PAUSE/D18 보류를 유지한다.

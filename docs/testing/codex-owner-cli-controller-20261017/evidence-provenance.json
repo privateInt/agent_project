@@ -1,0 +1,26 @@
+{
+  "test-plan.md": {
+    "original_sha256": "d7dc4d312bbc0f5fce4289728d77e2d656d32531b7b58fe19a0f49bd305e8f7b",
+    "repository_whitespace_normalized_sha256": "ef77b380230e0b7dfb56505f22ea86fd8f0a56e4d328051700c72933d66c553b"
+  },
+  "plan-review-initial.md": {
+    "original_sha256": "3fee5a82c1ceb9a7302e4af516559e14148dd5caca99031bcbf7c22966d74815",
+    "repository_whitespace_normalized_sha256": "f44967299353f8dbac1c9ed8ab30da812b17def659c6ae6a21faa086b66bd031"
+  },
+  "plan-review.md": {
+    "original_sha256": "7a3c5eefa5687462834b7b9e9315c6f362b165dea5e091d45907ad9412f1e5e7",
+    "repository_whitespace_normalized_sha256": "92fd1eb08e49246bb65a88fa0719543184c3932d7a0cbb9a35b5fd0d4f80b7c8"
+  },
+  "preexecution-review-initial.md": {
+    "original_sha256": "59efb7168ecbcae9c986f743f89622a2cfbfe5180374605b19c75e24c640e73c",
+    "repository_whitespace_normalized_sha256": "1b51c826c6ce44079d5c6b1bf5ae37b064bc0df416e6798b89a06cf8d313d6b8"
+  },
+  "preexecution-review.md": {
+    "original_sha256": "1f9c359799fc4bc0226b6d436363f085719ff5d825b532c05839e6dad5937d69",
+    "repository_whitespace_normalized_sha256": "16f827a3ce95632736867dc27a270736bc799589d8d44de52589a7ce75d4fab0"
+  },
+  "final-review.md": {
+    "original_sha256": "d4a00bdba3d25a2177d0ac5b1e3f189c892753288aa45eef2d531999f32a4b68",
+    "repository_whitespace_normalized_sha256": "4e604c6772af7b771a4aa2895f4322a9251faf66f240ce9d3a42e10dee50ee75"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "base_PR24_commit": "02724c5f7fbc0aadecebe2befdaf9f8990374869",
+  "new_groups": {
+    "pass": 6,
+    "fail": 0,
+    "error": 0,
+    "skip": 0,
+    "first_run_only": true,
+    "seconds": 0.719
+  },
+  "mutant": {
+    "run": 1,
+    "failures": 1,
+    "errors": 0,
+    "designated_assertion_detected": true
+  },
+  "mutant_witness_sha256": "a6a689f6c3695097a309c510d855762350bf41e7005daae93f3fd510fb133e9b",
+  "retained_actual_local_state_hashes": {
+    "intents.sqlite": "d6c302067bf2678cba24b391f0eb3396c41658c08d8a4cd67e9b58abcd9c4d49",
+    "request.json": "9af52d3f138199b7c24eed41e22a55dffa7b2e4a63a4c20c34e2779d5702a7ea",
+    "cli-result.json": "837fe0d7ae990ebe57041808e437be5c187b7b748bbd08a6a5bab9ca759a19bf",
+    "stdout.bin": "e11bb271c356b96553296d0d401cac0d3372d4b4a99dd1b5aad5f109c9bf0288"
+  },
+  "actual_local_components": [
+    "SQLite journal and claim CAS",
+    "private filesystem/fsync/no-overwrite",
+    "bounded synthetic CLI subprocess and cleanup",
+    "existing transport call loop with fake wire frame"
+  ],
+  "simulated_components": [
+    "codex queue executable replaced by dedicated synthetic executable",
+    "owner native history replies",
+    "GitHub check/PR snapshots"
+  ],
+  "native_codex_queue_submissions": 0,
+  "owner_socket_rpcs": 0,
+  "actual_installation": false,
+  "service_switch": false,
+  "pause_release": false,
+  "old_passes_repeated": [],
+  "automatic_CLI_to_turn_mapping": "NOT_CONNECTED_MISSING_CONTRACT",
+  "supported_alternative": "owner explicitly supplies observed turn/user-item/clientId literal/request/receipt binding; documented read-only history thereafter",
+  "trusted_result_gate": "NOT_CONNECTED; only existing structural comparison recorded, origin and independence false",
+  "source_pin_file": "preexecution-pins-v3.json"
+}
